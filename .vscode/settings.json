@@ -1,0 +1,22 @@
+{
+  "sort-imports.default-sort-style": "module-compact",
+  "sort-imports.on-save": true,
+  "[markdown]": {
+    "editor.wordWrap": "bounded",
+    "editor.wordWrapColumn": 80
+  },
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["j"],
+      "after": ["g", "j"]
+    },
+    {
+      "before": ["k"],
+      "after": ["g", "k"]
+    }
+  ],
+  "god.tsconfig": "./tsconfig.json",
+  "search.exclude": {
+    "**/public/dist": true
+  }
+}

@@ -1,0 +1,16 @@
+/**
+ * DO NOT REMOVE:
+ *
+ * This is necessary for Jest to work.
+ */
+{
+  "presets": ["next/babel"],
+  "plugins": [
+    [
+      "babel-plugin-root-import",
+      {
+        "paths": [{ "rootPathSuffix": "./", "rootPathPrefix": "~/" }]
+      }
+    ]
+  ]
+}

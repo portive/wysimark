@@ -1,0 +1,51 @@
+{
+  "name": "wysimark-monorepo",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "@thesunny/script-utils": "^0.1.38",
+    "lerna": "^4.0.0",
+    "lerna-update-wizard": "^1.1.0",
+    "prettier": "^2.3.2"
+  },
+  "scripts": {
+    "-- dev": "# development",
+    "start:next": "yarn workspace demo-next run start:dev",
+    "start:next:clear": "yarn cache:clear:next && yarn workspace wysimark-demo run start:dev",
+    "start:quasar": "yarn workspace demo-quasar run start:dev",
+    "start:nuxt": "yarn workspace demo-nuxt run start:dev",
+    "-- test": "# test",
+    "test:once": "yarn workspace wysimark-editor run test:once",
+    "test:watch": "yarn workspace wysimark-editor test:watch",
+    "test:watch:types": "yarn workspace wysimark-editor test:watch:types",
+    "test:cypress": "yarn workspace wysimark-editor run test:cypress",
+    "-- build": "# build scripts",
+    "build": "yarn build:chunks",
+    "build:chunks": "yarn workspace wysimark-editor run build:chunks",
+    "-- release": "# release scripts",
+    "release:next": "yarn preflight && yarn build && yarn publish:next",
+    "release:latest": "yarn preflight && yarn build && yarn publish:latest",
+    "publish:next": "lerna publish patch --yes --dist-tag next",
+    "publish:latest": "lerna publish patch --yes --dist-tag latest",
+    "-- version": "# version",
+    "version:patch": "lerna version patch --yes",
+    "version:minor": "echo Use lerna version minor",
+    "version:major": "echo Use lerna version major",
+    "push:tags": "git push --follow-tags",
+    "--preflight": "# preflight checks",
+    "preflight": "is-git-clean && is-git-branch main && yarn lint && yarn test:once",
+    "-- lint": "# lint",
+    "lint": "lerna run lint",
+    "-- tsc": "# run typescript checker",
+    "tsc:once": "yarn workspace wysimark-editor run tsc",
+    "tsc:watch": "yarn tsc:once --watch",
+    "-- lerna and yarn": "# lerna and yarn helpers",
+    "lerna:update": "yarn lernaupdate",
+    "-- clear": "# clear caches",
+    "clear:yarn": "yarn cache clean",
+    "clear:next": "rm -r packages/demo-next/.next",
+    "-- end": "# end"
+  }
+}

@@ -1,0 +1,192 @@
+<template>
+  <!-- 
+    This is the target element for React to render into.
+
+    Give the div a `ref` which makes it accessible under `this.$refs` in our
+    `defineComponent` object method properties.
+
+    We add v-bind="$attrs" to get the leftover props to get added to the
+    div. See the comment for `inheritAttrs` for details.
+  -->
+  <div ref="reactContainer" v-bind="$attrs"></div>
+</template>
+
+<script lang="ts">
+/**
+ * ## Vue 2 vs Vue 3
+ *
+ * https://learnvue.co/2020/02/building-the-same-component-in-vue2-vs-vue3/
+ */
+/**
+ * COMPOSITION API:
+ *
+ * This Vue Component is built using the Options API.
+ *
+ * Vue components can be built using either:
+ *
+ * - Options API (Vue 2)
+ * - Composition API (Vue 3)
+ *
+ * Vue 3 can use either the Options API or the Composition API.
+ * Vue 2 can use the Options API and, with a plugin, can use the Composition API.
+ *
+ *
+ * ## Vue.extend removed
+ *
+ * https://v3.vuejs.org/guide/migration/global-api.html#vue-extend-removed
+ */
+/**
+ * IMPORTANT: Use relative path with '..'
+ *
+ * This MUST be `../../../` in order to work with the build. This is because
+ * we copy this component in order to create the build and the relative path
+ * needs to resolve to the same component. If we move this into a subdirectory,
+ * it's pointing to the wrong place.
+ */
+// import { createWysimark } from "../../../wysimark-editor/.dist/standalone/index"
+import { createWysimark } from "@wysimark/standalone"
+/**
+ * IMPORTANT: Do not import `vue`.
+ *
+ * We do not import `vue` because we want to be able to view this Component in
+ * Next.js. As soon as we add `vue` to the mix, the `jsx` breaks in Next.js.
+ */
+import { defineComponent } from "vue"
+
+type This = {
+  $refs: { reactContainer: HTMLElement }
+  $emit: (type: string, value: string) => void
+  props: {
+    modelValue: string
+    minHeight?: number
+    maxHeight?: number
+    appName: string
+    documentId: string
+    apiUrl: string
+    apiContext?: Record<string, any>
+  }
+  wysimark: ReturnType<typeof createWysimark>
+  getMarkdown: () => string
+}
+
+// const methods = {
+//   // getMarkdown(this: This): string {
+//   getMarkdown(this: This): string {
+//     /**
+//      * The `getMarkdown` method exists on the Wysimark controller which is
+//      * returned by the `createWysimark` method.
+//      */
+//     return this.wysimark.getMarkdown()
+//   },
+// }
+
+/**
+ * Vue and TypeScript
+ *
+ * https://v3.vuejs.org/guide/typescript-support.html#annotating-props
+ */
+
+/**
+ * Fake This
+ *
+ * https://www.typescriptlang.org/docs/handbook/release-notes/typescript-2-0.html#specifying-the-type-of-this-for-functions
+ */
+const WysimarkOptionsComponent = defineComponent({
+  /**
+   * This is a friendly name but is not used to determine the name of the tag.
+   * That is defined in the parent Component in its `components` property.
+   */
+
+  name: "WysimarkComponent",
+
+  /**
+   * Disable attribute inheritance which fixes an issue.
+   * * By default, the <template> will inherit the attributes that aren't
+   * specified in `props`. This is actually what we want. For some reason on
+   * HabitStack, this works but not in production so it may be because
+   * something is causing inheritAttrs to be false. We add the attributes
+   * back in by using v-bind="$attrs" as specified here:
+   *
+   * https://v3.vuejs.org/guide/component-attrs.html#attribute-inheritance
+   *
+   * Still, we want to disable inheritAttrs here in case there is some
+   * weird interaction.
+   */
+
+  inheritAttrs: false,
+
+  /**
+   * Specify the props to pass in. They are available in the `setup` method as
+   * the first argument or as part of `this.$props`
+   */
+
+  props: {
+    modelValue: { type: String, required: true },
+    minHeight: { type: Number, required: false },
+    maxHeight: { type: Number, required: false },
+    appName: { type: String, required: true },
+    documentId: { type: String, required: true },
+    apiUrl: { type: String, required: true },
+    apiContext: { type: Object, required: false },
+  },
+
+  /**
+   * Events that a component can emits to its parents.
+   *
+   * https://v3.vuejs.org/guide/migration/emits-option.html
+   */
+  emits: ["update:modelValue"],
+
+  setup(props: Record<string, any>) {
+    /**
+     * HINT:
+     *
+     * Whatever is returned from the `setup` method becomes part of `this`.
+     * For example, `this` can be accessed from the `methods` object defined
+     * in the component.
+     */
+    return {
+      props,
+    }
+  },
+
+  mounted(this: This) {
+    const props = this.props
+
+    const wysimark = createWysimark(this.$refs.reactContainer, {
+      initialMarkdown: props.modelValue,
+      minHeight: props.minHeight,
+      maxHeight: props.maxHeight,
+      appName: props.appName,
+      documentId: props.documentId,
+      apiUrl: props.apiUrl,
+      apiContext: props.apiContext,
+      onChange: (event) => {
+        const markdown = event.editor.getMarkdown()
+        this.$emit("update:modelValue", markdown)
+      },
+    })
+    this.wysimark = wysimark
+  },
+
+  beforeUnmount(this: This) {
+    /**
+     * The Wysimark Controller's unmount method takes care of unmounting for us
+     */
+    this.wysimark.unmount()
+  },
+
+  methods: {
+    // getMarkdown(this: This): string {
+    getMarkdown(): string {
+      /**
+       * The `getMarkdown` method exists on the Wysimark controller which is
+       * returned by the `createWysimark` method.
+       */
+      return this.wysimark.getMarkdown()
+    },
+  },
+})
+
+export default WysimarkOptionsComponent //as MergedWysimarkTypes
+</script>

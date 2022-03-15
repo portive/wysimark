@@ -1,0 +1,16 @@
+/**
+ * NOTE:
+ *
+ * Next.js insists on owning the main `tsconfig.json` so this is actually
+ * a specific version for Next.js.
+ */
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "module": "ESNext",
+    "sourceMap": true,
+    "incremental": true,
+    "jsx": "preserve",
+    "allowJs": true
+  }
+}

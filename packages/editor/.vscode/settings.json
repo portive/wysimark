@@ -1,0 +1,9 @@
+{
+  "sort-imports.default-sort-style": "module-compact",
+  "sort-imports.on-save": false,
+  "[markdown]": {
+    "editor.wordWrap": "bounded",
+    "editor.wordWrapColumn": 80
+  },
+  "god.tsconfig": "./tsconfig.json"
+}

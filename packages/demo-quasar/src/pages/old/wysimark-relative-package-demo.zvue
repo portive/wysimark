@@ -1,0 +1,47 @@
+<template>
+  <q-page class="row items-center justify-evenly">
+    <div>
+      <!--
+      `react-wysimark-component` is the dash case version of `ReactComponent` which is
+      the component name in `components`.
+
+      We can pass `props` in that are defined on the child component.
+
+      - If we pass them using the name of the prop, it is provided as text.
+      - If we pass them using `:someName` then the value will be executed.
+    -->
+      <div style="margin-bottom: 0.25em">Description</div>
+      <react-wysimark-component
+        ref="wysimark"
+        style="margin-bottom: 1em; width: 640px"
+        model-value="Value passed in from parent page"
+        @update:model-value="logMarkdown"
+      />
+      <button @click="clickButton">Get Markdown Button</button>
+    </div>
+  </q-page>
+</template>
+
+<script>
+import ReactWysimarkComponent from '../../../wysimark-vue-3-npm/.dist/index';
+import { defineComponent } from 'vue';
+
+/**
+ * `defineComponent` validates TypeScript.
+ * Otherwise, it's just a pass through.
+ */
+
+export default defineComponent({
+  name: 'PageIndex',
+  components: { ReactWysimarkComponent },
+  methods: {
+    logMarkdown(markdown) {
+      console.log('logMarkdown', markdown);
+    },
+    clickButton() {
+      const markdown = this.$refs.wysimark.getMarkdown();
+      console.log('markdown from ref:', markdown);
+    },
+  },
+});
+</script>

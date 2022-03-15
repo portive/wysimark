@@ -1,0 +1,88 @@
+{
+  /**
+   * Compiler Options
+   *
+   * NOTE:
+   *
+   * Ordered and grouped according to
+   * https://www.typescriptlang.org/tsconfig
+   */
+  "compilerOptions": {
+    /**
+     * Type Checking
+     *
+     * - `strict` to reduce type issues
+     */
+    "strict": true,
+    /**
+     * Interop Constraints
+     *
+     * - allow default imports like `import x from 'x'`
+     * - esModuleInterop supports supports
+     *   - `import * as x from 'x'` and
+     *   - `import x from 'x'`
+     * - ensure case sensitivity
+     * - strict isolated modules to help with interop
+     */
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    /**
+     * Languages and Environment
+     *
+     * - `target` and `lib` for modern JavaScript
+     */
+    "target": "esnext",
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "jsx": "preserve",
+    /**
+     * Modules
+     *
+     * - `baseUrl` to support `src/abc` to access `./src/abc`
+     * - `commonjs` for node projects
+     * - `node` for Node.js CommonJS implementation (`node12` or `nodenext` for future)
+     * - support JSON with `resolveJsonModule`
+     * - `rootDir` to specify what `.dist` root will be
+     * - `typeRoots` for where to look for premade types to be included
+     */
+    "baseUrl": ".",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "paths": {
+      "~/*": ["*"],
+      /**
+       * Required to support `typeRoots`
+       * https://stackoverflow.com/questions/64287224/typeroots-fails-to-find-d-ts-declaration-files-in-project
+       */
+      "*": ["types/*"]
+    },
+    "resolveJsonModule": true,
+    "rootDir": ".",
+    "typeRoots": [
+      "./types",
+      "./node_modules/@types",
+      "../../node_modules/@types"
+    ],
+    /**
+     * Emit
+     *
+     * - Don't emit in the regular `tsconfig`. We only do it in `tsconfig.build`
+     */
+    "noEmit": true,
+    /**
+     * Completeness
+     *
+     * - `skipLibCheck` improves performance but sacrifices accuracy with duplicate libraries
+     */
+    "skipLibCheck": true
+  },
+  "include": ["**/*.ts", "**/*.tsx"],
+  /**
+   * TODO:
+   *
+   * Added `rollup` here but eventually we should move this to a
+   * `tsconfig.custom.json` config file which imports this one.
+   */
+  "exclude": ["node_modules", "rollup"]
+}

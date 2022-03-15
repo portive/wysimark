@@ -1,0 +1,29 @@
+import Path from "path"
+import fs from "fs-extra"
+import { testParseAndSerialize } from "./convert-test-utils"
+
+/**
+ * TODO:
+ * So, it looks like we might have accidentally deleted some markdown-examples
+ * that we tested against. We should restore these from git history.
+ *
+ * Probably nothing critical in there, but a nice extra bit of testing for us.
+ */
+
+const EXAMPLES_DIR = Path.join(__dirname, "../../../../../../markdown-examples")
+
+describe.skip("convert examples", () => {
+  const subdirs = fs.readdirSync(EXAMPLES_DIR)
+
+  for (const subdir of subdirs) {
+    const files = fs.readdirSync(`${EXAMPLES_DIR}/${subdir}`)
+
+    for (const file of files) {
+      it(`should convert both ways ${subdir}/${file}`, async () => {
+        const path = Path.join(EXAMPLES_DIR, subdir, file)
+        const markdown = await fs.readFile(path, "utf-8")
+        testParseAndSerialize(markdown)
+      })
+    }
+  }
+})

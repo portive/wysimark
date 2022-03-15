@@ -1,0 +1,195 @@
+import Head from "next/head"
+import { useEffect, useRef } from "react"
+// import * as Vue3SFCLoader from "vue3-sfc-loader/dist/vue3-sfc-loader"
+// import type * as VueType from "vue"
+// import * as Vue from "vue"
+import type * as Vue3SFCLoaderTypes from "vue3-sfc-loader/dist/types/vue3"
+import WysimarkVue from "@wysimark/vue"
+// import { compileTemplate } from "@vue/compiler-sfc"
+
+/**
+ * ## Vue Type Conflicts
+ *
+ * This is mainly due to importing `vue` including transitively through
+ * `@wysimark/vue` means that Vue overrides `jsx` which breaks the `jsx`
+ * in our project. Often this shows up as broken `@emotion/styled` components
+ * but probably affects more.
+ *
+ * This TypeScript issue dives into it and shows other people that have the
+ * same problem:
+ *
+ * https://github.com/microsoft/TypeScript/issues/37053
+ *
+ * The solution would be to somehow NOT import vue while still using Vue.
+ *
+ * - [ ] A solution that hasn't been tried yet is to not include `vue` in the
+ *       build and try to export as a plain JavaScript object. Not sure if that
+ *       will work though.
+ */
+
+/**
+ * ## Using the `vue3-sfc-loader` to compile the template
+ *
+ * Most of the useful information can be found in the examples here:
+ *
+ * https://github.com/FranckFreiburger/vue3-sfc-loader/blob/main/docs/examples.md
+ *
+ * This minimalist example on that page
+ *
+ * https://github.com/FranckFreiburger/vue3-sfc-loader/blob/main/docs/examples.md#minimalist-hello-world-example
+ *
+ * And the GitHub home page for the project here
+ *
+ * https://github.com/FranckFreiburger/vue3-sfc-loader
+ *
+ *
+ * ## Import `vue3-sfc-loader` using CDN
+ *
+ * Use the CDN to load the `vue3-sfc-loader` because the loader will not work
+ * with SSR. We will get this error on a `CMD+R` reload.
+ *
+ * ```
+ * self is not defined
+ * ```
+ *
+ * For this reason, we load the the `vue3-sfc-loader` only on the browser by
+ * using the CDN
+ *
+ *
+ * WARNING: A CMD+R server reload will break but a hot reload won't.
+ *
+ * The error will not appear on a hot reload. This is because it only happens
+ * when there is an attempt to generate on the server.
+ *
+ *
+ * WARNING: Watch out for using the wrong version
+ *
+ * Make sure to use the vue-3-sfc-loader ... vue3-sfc-loader. It's easy to make
+ * a mistake because the vue-2-sfc-loader (for clarity "2" loader) is in the
+ * vue-3-sfc-loader package. So you must make sure vue3 shows up two times in
+ * the URL, not just once at the beginning.
+ *
+ * <script src="https://cdn.jsdelivr.net/npm/vue3-sfc-loader@0.8.4/dist/vue3-sfc-loader.js"></script>
+ *
+ *
+ * ## Import 'vue' directly. Do NOT use CDN.
+ *
+ * We must import Vue locally using `import * as Vue from "vue"`. If we don't,
+ * the version of Vue that's loaded by `@wysimark/vue` will be different and
+ * therefore we will get errors.
+ *
+ * One potential workaround to this is to use the old Vue 2 configuration.
+ */
+
+/**
+ * ## CDN Version of Vue
+ *
+ * We use the CDN version of Vue instead of trying to import it. The reason we
+ * do this is because React uses JSX and so does Vue. When we import Vue, the
+ * `jsx` declarations conflict with the React ones and causes errors.
+ *
+ * What we do instead is only import the Vue types and this seems to prevent
+ * the JSX declarations from interfering with the React ones.
+ *
+ * We then attach the Vue types to Window where the Vue CDN makes Vue
+ * available to us and this gives us the Vue types.
+ *
+ * ## Aliased `esm-bundler` version of Vue
+ *
+ * Add alias of `vue` to `vue.esm-bundler` in tsconfig.
+ *
+ * ```tsconfig.json
+ *       "vue": ["node_modules/vue/dist/vue.esm-bundler"]
+ * ```
+ *
+ */
+declare global {
+  interface Window {
+    "vue3-sfc-loader": typeof Vue3SFCLoaderTypes
+    Vue: any
+  }
+}
+
+/**
+ * Using Vue from CDN
+ *
+ * https://techformist.com/use-vue-from-url-simple-app/
+ *
+ *
+ */
+
+/**
+ * Vue Compiler converts a `.vue` template file into a render function.
+ * At the moment, it's not entirely clear what `this` refers to when it uses
+ * `with(this)`.
+ *
+ * https://magiccwl.github.io/vue-compiler-online/
+ */
+
+const source = `<template>
+<wysimark-vue
+ref="wysimark"
+style="margin-bottom: 1em; width: 640px"
+model-value="Value passed in from parent page"
+appName="demo-app"
+documentId="vue-demo-document"
+apiUrl="http://localhost:3006/api/v1/upload"
+:minHeight="120"
+:maxHeight="240"
+/>
+</template>`
+
+export default function VueDemo() {
+  // const appRef = useRef<Vue.App<Element>>()
+  const appRef = useRef<any>()
+  useEffect(() => {
+    async function initVueApp() {
+      console.log("initVueApp")
+      const Vue = window["Vue"]
+      // console.log("Vue", Vue)
+      // console.log("Vue", Vue)
+      const { loadModule } = window["vue3-sfc-loader"]
+      /**
+       * We @ts-ignore this below because the type definitions for loadModule
+       * require two extra properties that are unnecessary.
+       */
+      // @ts-ignore
+      const compiled = (await loadModule("any-value-is-okay.vue", {
+        moduleCache: { vue: Vue },
+        getFile: async () => source,
+        addStyle: () => {},
+      })) as { render: any }
+
+      const app = Vue.createApp({
+        name: "VueDemo",
+        components: { WysimarkVue },
+        render: compiled.render,
+      })
+      appRef.current = app
+
+      app.mount("#vue-root")
+    }
+    initVueApp()
+    return function () {
+      if (appRef.current) {
+        appRef.current.unmount()
+      }
+    }
+  }, [])
+
+  return (
+    <div>
+      <Head>
+        <script src="https://unpkg.com/vue@3.1.1"></script>
+        {/* <script src="https://cdn.jsdelivr.net/npm/vue@3.1.1"></script> */}
+        {/* <script src="https://unpkg.com/vue@3.1.1/dist/vue.global.js"></script> */}
+        {/* <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script> */}
+        <script src="https://cdn.jsdelivr.net/npm/vue3-sfc-loader@0.8.4/dist/vue3-sfc-loader.js"></script>
+      </Head>
+      <div className="container mx-auto">
+        <h1>Vue Demo</h1>
+        <div id="vue-root" />
+      </div>
+    </div>
+  )
+}

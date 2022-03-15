@@ -1,0 +1,43 @@
+{
+  "name": "@wysimark/react",
+  "version": "1.0.43",
+  "private": false,
+  "description": "Wysimark - WYSIWYG Markdown Editor for React",
+  "license": "UNLICENSED",
+  "author": "MeZine Inc.",
+  "main": ".dist/index.js",
+  "module": ".dist/index.esm.js",
+  "types": ".dist/index.d.ts",
+  "files": [
+    ".dist/**/*"
+  ],
+  "dependencies": {
+    "@emotion/cache": "10.0.29",
+    "@emotion/core": "10.0.35",
+    "@emotion/styled": "10.0.27",
+    "@wysimark/resource": "^0.2.9",
+    "axios": "^0.19.0",
+    "classnames": "^2.2.6",
+    "copy-to-clipboard": "^3.3.1",
+    "is-hotkey": "^0.1.4",
+    "is-url": "^1.2.4",
+    "lodash": "^4.17.15",
+    "mdast-move-images-to-root": "^1.0.0",
+    "pretty-bytes": "^5.6.0",
+    "prismjs": "^1.24.1",
+    "prop-types": "^15.8.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "remark-disable-tokenizers": "^1.0.24",
+    "remark-inline-links": "^5.0.0",
+    "remark-parse": "^8.0.3",
+    "remark-sub-super": "^1.0.19",
+    "shallowequal": "^1.1.0",
+    "slate": "^0.66.1",
+    "slate-history": "^0.66.0",
+    "slate-react": "^0.66.1",
+    "stylis-plugin-extra-scope": "^0.2.1",
+    "unified": "^9.0.0"
+  },
+  "gitHead": "2cc1cf05243968ecd0f9851559845ba7d72ee01e"
+}

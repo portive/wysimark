@@ -1,0 +1,110 @@
+<template>
+  <!-- 
+    This is the target element for the Editor to render into.
+
+    Give the div a `ref` which makes it accessible under `this.$refs` in our
+    `mounted` method.
+
+    We add v-bind="$attrs" to get the leftover props to get added to the
+    div. See the comment for `inheritAttrs` for details.
+  -->
+  <div ref="editorContainer" v-bind="$attrs"></div>
+</template>
+
+<script lang="ts">
+/**
+ * NOTE:
+ *
+ * If this `import` is failing, it's because the standalone component must be
+ * built. Go to the root directory and run `yarn build:standalone` to build all
+ * the standalone components.
+ */
+import { createWysimark } from '../../../wysimark-standalone-npm/.dist/index';
+
+export default {
+  /**
+   * This is a friendly name but is not used to determine the name of the tag.
+   * That is defined in the parent Component in its `components` property.
+   */
+
+  name: 'WysimarkVueComponent',
+
+  /**
+   * Disable attribute inheritance which fixes an issue.
+   *
+   * By default, the <template> will inherit the attributes that aren't
+   * specified in `props`. This is actually what we want. For some reason on
+   * HabitStack, this works but not in production so it may be because
+   * something is causing inheritAttrs to be false. We add the attributes
+   * back in by using v-bind="$attrs" as specified here:
+   *
+   * https://v3.vuejs.org/guide/component-attrs.html#attribute-inheritance
+   *
+   * Still, we want to disable inheritAttrs here in case there is some
+   * weird interaction.
+   */
+
+  inheritAttrs: false,
+
+  /**
+   * Specify the props to pass in. They are available in the `setup` method as
+   * the first argument or as part of `this.$props`
+   */
+
+  props: {
+    modelValue: { type: String, required: true },
+    appName: { type: String, required: true },
+    documentId: { type: String, required: true },
+    apiUrl: { type: String, required: true },
+    minHeight: { type: Number, required: false },
+    maxHeight: { type: Number, required: false },
+  },
+
+  setup(props) {
+    /**
+     * HINT:
+     *
+     * Whatever is returned from the `setup` method becomes part of `this`.
+     * For exmaple, `this` can be accessed from the `methods` object defined
+     * in the component.
+     */
+
+    return {
+      props,
+    };
+  },
+  mounted() {
+    const props = this.props;
+
+    const wysimark = createWysimark(this.$refs.editorContainer, {
+      initialMarkdown: props.modelValue,
+      appName: props.appName,
+      documentId: props.documentId,
+      apiUrl: props.apiUrl,
+      onChange: (event) => {
+        const markdown = event.editor.getMarkdown();
+        this.$emit('update:modelValue', markdown);
+      },
+      minHeight: props.minHeight,
+      maxHeight: props.maxHeight,
+    });
+    this.wysimark = wysimark;
+  },
+  beforeUnmount() {
+    /**
+     * The Wysimark Controller's unmount method takes care of unmounting for us
+     */
+    this.wysimark.unmount();
+  },
+  emits: ['update:modelValue'],
+  methods: {
+    getMarkdown() {
+      /**
+       * The `getMarkdown` method exists on the Wysimark controller which is
+       * returned by the `createWysimark` method.
+       */
+      return this.wysimark.getMarkdown();
+    },
+  },
+};
+</script>

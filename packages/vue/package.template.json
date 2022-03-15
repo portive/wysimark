@@ -1,0 +1,13 @@
+{
+  "name": "@wysimark/vue",
+  "version": "0.1.1",
+  "private": false,
+  "description": "Wysimark - WYSIWYG Markdown Editor for Vue",
+  "main": ".dist/index.js",
+  "module": ".dist/index.esm.js",
+  "types": ".dist/index.d.ts",
+  "files": [".dist/**/*"],
+  "author": "MeZine Inc.",
+  "license": "UNLICENSED",
+  "dependencies": {}
+}

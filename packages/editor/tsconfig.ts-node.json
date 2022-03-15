@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.base.json",
+  /**
+   * `ts-node` needs `tsconfig-paths/register` or it won't work with
+   * out custom `paths` specified in the base.
+   */
+  "ts-node": {
+    "require": ["tsconfig-paths/register"]
+  }
+}

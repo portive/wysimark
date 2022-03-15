@@ -1,0 +1,11 @@
+.babelrc
+.github
+.next/
+.build/
+.dist/
+.quasar/
+build/
+dist/
+node_modules/
+package.json
+cypress/

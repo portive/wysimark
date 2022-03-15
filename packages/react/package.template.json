@@ -1,0 +1,12 @@
+{
+  "name": "@wysimark/react",
+  "private": false,
+  "description": "Wysimark - WYSIWYG Markdown Editor for React",
+  "license": "UNLICENSED",
+  "author": "MeZine Inc.",
+  "main": ".dist/index.js",
+  "module": ".dist/index.esm.js",
+  "types": ".dist/index.d.ts",
+  "files": [".dist/**/*"],
+  "dependencies": {}
+}

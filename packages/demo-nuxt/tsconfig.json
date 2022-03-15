@@ -1,0 +1,12 @@
+{
+  // https://v3.nuxtjs.org/concepts/typescript
+  "extends": "./.nuxt/tsconfig.json",
+  "compilerOptions": {
+    /**
+     * I tried adding this here because the quasar config (not this Nuxt one)
+     * says this should be in root. I think the Nuxt one works as well but
+     * trying it out for now.
+     */
+    "baseUrl": "."
+  }
+}

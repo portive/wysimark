@@ -1,0 +1,12 @@
+{
+  "name": "@wysimark/standalone",
+  "description": "Wysimark - WYSIWYG Markdown Editor for JavaScript",
+  "main": ".dist/standalone.js",
+  "module": ".dist/standalone.esm.js",
+  "types": ".dist/standalone.d.ts",
+  "author": "MeZine Inc.",
+  "license": "UNLICENSED",
+  "private": false,
+  "files": [".dist/**/*"],
+  "dependencies": {}
+}

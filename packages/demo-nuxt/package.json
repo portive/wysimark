@@ -1,0 +1,14 @@
+{
+  "name": "demo-nuxt",
+  "version": "1.0.43",
+  "private": true,
+  "scripts": {
+    "start:dev": "rm -rf node_modules/.vite && nuxi dev --port 3081",
+    "start:dev:copy": "rm -rf node_modules/.vite && rm -rf node_modules/@wysimark/vue && cp -R ../wysimark-vue-npm node_modules/@wysimark/vue && nuxi dev",
+    "build": "nuxi build",
+    "start": "node .output/server/index.mjs"
+  },
+  "dependencies": {
+    "nuxt3": "^3.0.0-27356801.e9128f3"
+  }
+}
