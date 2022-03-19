@@ -1,7 +1,7 @@
 import { BaseEditor, Descendant, Range } from "slate"
 import { HistoryEditor } from "slate-history"
 import { ReactEditor } from "slate-react"
-import { Simplify } from "type-fest"
+import { JsonObject, Simplify } from "type-fest"
 import { SecretAPIUploadProps } from "@wysimark/resource"
 /**
  * IMPORTANT!
@@ -13,7 +13,19 @@ import { UseModalReturnType } from "../../lib/modal" // must be relative for bui
 import { ActiveImageEditor } from "../use-editor/with-create-active-image/types"
 import { RootBlockElement } from "."
 
-type DemoUploadOptions = { type: "demo"; url: string }
+type DemoUploadOptions = {
+  type: "demo"
+  url: string
+}
+
+export type BrowserUploadOptions = {
+  type: "browser"
+  url: string
+  appName: string
+  path: string
+  apiKeyId: string
+  apiPublicKey: string
+}
 
 type DirectUploadOptions = Simplify<
   {
@@ -22,15 +34,16 @@ type DirectUploadOptions = Simplify<
 >
 
 type CustomUploadOptions = {
-  type: "custom"
+  type: "server"
   url: string
-  data: Record<string, string>
+  data: JsonObject
 }
 
 export type UploadOptions =
   | DemoUploadOptions
   | DirectUploadOptions
   | CustomUploadOptions
+  | BrowserUploadOptions
 
 /**
  * Props that are added to the `editor` object passed in through the

@@ -1,0 +1,7 @@
+{
+  "name": "@wysimark/upload-api",
+  "version": "1.0.43",
+  "description": "Wysimark Upload API Tool for Server Uploads",
+  "main": "index.js",
+  "license": "MeZine Inc."
+}

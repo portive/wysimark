@@ -1,26 +1,24 @@
-import * as Custom from "../custom"
-
+import axios, { AxiosResponse } from "axios"
+import omit from "lodash/omit"
+import prettyBytes from "pretty-bytes"
+import React, { useCallback, useEffect } from "react"
+import { Editor } from "slate"
+import { assertUnreachable } from "~/lib/assert-unreachable"
+import { Form } from "~/lib/form"
+import { getImageSizeFromFile } from "~/lib/get-image-size-from-file"
+import { useInModal } from "~/lib/modal"
+import { Position } from "~/lib/modals/container"
+import { Dialog } from "~/lib/modals/dialog"
+import { uploadFile } from "~/lib/upload-file-to-s3/client"
+import { useStateRef } from "~/lib/use-state-ref"
+import styled from "@emotion/styled"
 import {
   DemoAPIUploadProps,
   UploadFileInfo,
   UploadResponse,
 } from "@wysimark/resource"
-import React, { useCallback, useEffect } from "react"
-import axios, { AxiosResponse } from "axios"
-
-import { Dialog } from "~/lib/modals/dialog"
-import { Editor } from "slate"
-import { Form } from "~/lib/form"
-import { Position } from "~/lib/modals/container"
+import * as Custom from "../custom"
 import { UploadState } from "./types"
-import { assertUnreachable } from "~/lib/assert-unreachable"
-import { getImageSizeFromFile } from "~/lib/get-image-size-from-file"
-import omit from "lodash/omit"
-import prettyBytes from "pretty-bytes"
-import styled from "@emotion/styled"
-import { uploadFile } from "~/lib/upload-file-to-s3/client"
-import { useInModal } from "~/lib/modal"
-import { useStateRef } from "~/lib/use-state-ref"
 
 /**
  * Returns true of there are one or more errors in the upload states
@@ -132,6 +130,15 @@ ${e}`,
 
           if (response.status === "error") {
             setUpload(file, { status: "error", message: response.message })
+            return
+          }
+          if (response.status !== "success") {
+            setUpload(file, {
+              status: "error",
+              message: `This response from the server does is invalid: ${JSON.stringify(
+                response
+              )}`,
+            })
             return
           }
 
