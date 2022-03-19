@@ -1,0 +1,20 @@
+# For dotenv environment variables
+.env/
+# distribution directories
+.npm/
+.build
+.dist/
+# used by Next.js
+.next/
+# ignore vercel link
+.vercel/
+# standard ignorable files found when using Yarn
+node_modules/
+.DS_Store
+
+# logging we can ignore
+yarn-error.log
+eslint.log
+
+# ignore the increment typescript build info
+tsconfig.tsbuildinfo

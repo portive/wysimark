@@ -1,0 +1,22 @@
+{
+  "extends": "./tsconfig.custom.json",
+  "compilerOptions": {
+    /**
+     * Without this, could cause issues with not understanding the `import`
+     * statement.
+     */
+    "module": "commonjs",
+    /**
+     * We need to switch this to `react` or else it breaks tests that include
+     * `tsx` files.
+     */
+    "jsx": "react"
+  },
+  /**
+   * `ts-node` needs `tsconfig-paths/register` or it won't work with
+   * our custom `paths` specified in the base.
+   */
+  "ts-node": {
+    "require": ["tsconfig-paths/register"]
+  }
+}

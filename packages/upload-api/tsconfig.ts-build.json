@@ -1,0 +1,29 @@
+{
+  "extends": "./tsconfig.custom.json",
+  "compilerOptions": {
+    /**
+     * When we do a build, we want the output to be in `commonjs` so that plain
+     * Node.js can understand it.
+     */
+    "module": "commonjs",
+    /**
+     * Emit
+     *
+     * Modify `tsconfig.json` to get it to emit.
+     *
+     * - emit `declaration`s
+     * - `noEmit` false so we get output
+     * - emit to `outDir` of `.dist`
+     * - convert `jsx` to React for a build (not Next.js expects this to
+     *   be preserve when used with it but for a build this is correct)
+     */
+    "declaration": true,
+    "noEmit": false,
+    "outDir": ".dist",
+    "jsx": "react-jsx"
+  },
+  /**
+   * Exclude `*.test.ts` files because they are not part of the output.
+   */
+  "exclude": ["**/*.test.ts", "**/test/**/*", "examples"]
+}

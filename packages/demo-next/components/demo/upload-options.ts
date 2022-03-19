@@ -38,8 +38,20 @@ export const UPLOAD_OPTIONS: Options<UploadOptions | undefined> = [
       type: "server",
       url: "/api/server-upload",
       data: {
-        username: "warlock",
-        secret: "secret",
+        username: "johndoe",
+        password: "password",
+      },
+    },
+  },
+  {
+    id: "local-server-fail",
+    caption: "localhost:3001 Server Fail",
+    value: {
+      type: "server",
+      url: "/api/server-upload",
+      data: {
+        username: "haxor",
+        secret: "whatsthesecretagain?",
       },
     },
   },

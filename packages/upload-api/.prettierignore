@@ -1,0 +1,5 @@
+.build/
+.dist/
+.next/
+.npm/
+node_modules/

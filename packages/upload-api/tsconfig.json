@@ -1,0 +1,7 @@
+/**
+ * tsc defaults to using this so we just extend tsconfig.custom.json
+ */
+{
+  "extends": "./tsconfig.custom.json",
+  "compilerOptions": {}
+}
