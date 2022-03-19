@@ -3,7 +3,7 @@
   "version": "1.0.43",
   "private": false,
   "description": "Wysimark - WYSIWYG Markdown Editor for JavaScript",
-  "license": "UNLICENSED",
+  "license": "GPLV3",
   "author": "MeZine Inc.",
   "main": ".dist/standalone.js",
   "module": ".dist/standalone.esm.js",

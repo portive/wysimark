@@ -3,7 +3,7 @@
   "version": "1.0.43",
   "private": false,
   "description": "Wysimark - WYSIWYG Markdown Editor for Vue",
-  "license": "UNLICENSED",
+  "license": "GPLV3",
   "author": "MeZine Inc.",
   "main": ".dist/vue-composition-component.js",
   "module": ".dist/vue-composition-component.es.js",
