@@ -1,4 +1,4 @@
-import { Editor, Element, } from "slate"
+import { Editor, Element } from "slate"
 
 /**
  * Take a union type and narrows it using a discriminant.

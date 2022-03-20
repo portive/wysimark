@@ -65,21 +65,17 @@ export type CompactMap<T extends Record<string, unknown>> = Pick<
  * Takes an object and removes all properties that match the type U
  */
 
-export type OmitType<T, U> = CompactMap<
-  {
-    [K in keyof T]: T[K] extends U ? never : T[K]
-  }
->
+export type OmitType<T, U> = CompactMap<{
+  [K in keyof T]: T[K] extends U ? never : T[K]
+}>
 
 /**
  * Takes an object and keeps only properties that match U
  */
 
-export type PickType<T, U> = CompactMap<
-  {
-    [K in keyof T]: T[K] extends U ? T[K] : never
-  }
->
+export type PickType<T, U> = CompactMap<{
+  [K in keyof T]: T[K] extends U ? T[K] : never
+}>
 
 /**
  * Takes an object and maps all the keys that extend This to Then and those that
@@ -128,13 +124,11 @@ export type Flatten<T> = T extends infer U ? { [K in keyof U]: U[K] } : never
  * A nested version of this code:
  * <https://medium.com/terria/typescript-transforming-optional-properties-to-required-properties-that-may-be-undefined-7482cb4e1585>
  */
-export type Complete<T> = Flatten<
-  {
-    [P in keyof Required<T>]: Pick<T, P> extends Required<Pick<T, P>>
-      ? Complete<T[P]>
-      : Complete<T[P]> | undefined
-  }
->
+export type Complete<T> = Flatten<{
+  [P in keyof Required<T>]: Pick<T, P> extends Required<Pick<T, P>>
+    ? Complete<T[P]>
+    : Complete<T[P]> | undefined
+}>
 
 // prettier-ignore
 export type NestedFlatten<T> =

@@ -782,7 +782,7 @@ describe("table", () => {
       compare(input, output, (editor) => Table.insertColumn(editor, 1))
     })
   })
-  
+
   describe("removeColumn", () => {
     it("remove a column", async () => {
       const input = (

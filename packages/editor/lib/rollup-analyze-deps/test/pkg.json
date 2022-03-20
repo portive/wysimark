@@ -10,9 +10,7 @@
   },
   "main": "public/build/wysimark/cjs/index.js",
   "types": "public/build/wysimark/cjs/wysimark/index.d.ts",
-  "files": [
-    "public/build/"
-  ],
+  "files": ["public/build/"],
   "-- engines": "# babel breaks if we upgrade node to 13.12.0",
   "importSort": {
     ".js, .jsx": {

@@ -149,6 +149,8 @@
     "lint:prettier": "prettier . --check",
     "lint:eslint": "eslint .",
     "lint:tsc": "tsc --build ./ --force",
+    "-- fix": "# fix syntax",
+    "fix:prettier": "yarn lint:prettier --write",
     "-- browser": "# browsers scripts",
     "open:dev": "open http://localhost:3005/",
     "-- testing": "# testing",

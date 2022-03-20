@@ -56,8 +56,6 @@ export function isWordSegment(segment?: Segment): segment is CustomText {
 /**
  * Is this a link segment
  */
-export function isLinkSegment(
-  segment?: Segment
-): segment is LinkElement {
+export function isLinkSegment(segment?: Segment): segment is LinkElement {
   return segment != null && "type" in segment && segment.type === "link"
 }

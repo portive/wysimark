@@ -19,9 +19,7 @@
       "Transforms",
       "createEditor"
     ],
-    "removedExports": [
-      "Location"
-    ],
+    "removedExports": ["Location"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/slate-react/dist/index.es.js",
       "/editor/editable/decorate/decorate-code.ts",
@@ -100,9 +98,7 @@
       "useSlateStatic",
       "withReact"
     ],
-    "removedExports": [
-      "useEditor"
-    ],
+    "removedExports": ["useEditor"],
     "dependents": [
       "/editor/editable/styled-editable.ts",
       "/editor/custom/editor/index.ts",
@@ -127,14 +123,9 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/prismjs/prism.js",
     "size": 54059,
     "origSize": 54021,
-    "renderedExports": [
-      "default",
-      "__moduleExports"
-    ],
+    "renderedExports": ["default", "__moduleExports"],
     "removedExports": [],
-    "dependents": [
-      "/editor/editable/decorate/decorate-code.ts"
-    ],
+    "dependents": ["/editor/editable/decorate/decorate-code.ts"],
     "percent": 5.26,
     "reduction": 0
   },
@@ -150,13 +141,7 @@
       "parse",
       "findIconDefinition"
     ],
-    "removedExports": [
-      "noAuto",
-      "layer",
-      "text",
-      "counter",
-      "dom"
-    ],
+    "removedExports": ["noAuto", "layer", "text", "counter", "dom"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/@fortawesome/react-fontawesome/index.es.js"
     ],
@@ -2038,12 +2023,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/parse-entities/index.js",
     "size": 11750,
     "origSize": 11821,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/decode.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/tokenize/auto-link.js",
@@ -2057,9 +2038,7 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/@fortawesome/react-fontawesome/index.es.js",
     "size": 10850,
     "origSize": 11116,
-    "renderedExports": [
-      "FontAwesomeIcon"
-    ],
+    "renderedExports": ["FontAwesomeIcon"],
     "removedExports": [],
     "dependents": [
       "/editor/render/render-element/link/link-popup.tsx",
@@ -2082,9 +2061,7 @@
       "join",
       "sep"
     ],
-    "removedExports": [
-      "default"
-    ],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/vfile/lib/core.js"
     ],
@@ -2095,14 +2072,9 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/unified/index.js",
     "size": 10168,
     "origSize": 10303,
-    "renderedExports": [
-      "default",
-      "__moduleExports"
-    ],
+    "renderedExports": ["default", "__moduleExports"],
     "removedExports": [],
-    "dependents": [
-      "/lib/convert/parse/parse-ast.ts"
-    ],
+    "dependents": ["/lib/convert/parse/parse-ast.ts"],
     "percent": 0.99,
     "reduction": 1.31
   },
@@ -2110,12 +2082,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/tokenize/list.js",
     "size": 9770,
     "origSize": 9735,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/parser.js"
     ],
@@ -2162,12 +2130,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/tokenizer.js",
     "size": 8143,
     "origSize": 8070,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/parser.js"
     ],
@@ -2178,12 +2142,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/tokenize/link.js",
     "size": 7355,
     "origSize": 7224,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/parser.js"
     ],
@@ -2194,12 +2154,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/clone/clone.js",
     "size": 7307,
     "origSize": 7293,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-disable-tokenizers/dist/index.js"
     ],
@@ -2210,12 +2166,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/debounce.js",
     "size": 6014,
     "origSize": 6100,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/throttle.js"
     ],
@@ -2233,12 +2185,8 @@
       "SAVING",
       "withHistory"
     ],
-    "removedExports": [
-      "HISTORY"
-    ],
-    "dependents": [
-      "/editor/use-editor/index.ts"
-    ],
+    "removedExports": ["HISTORY"],
+    "dependents": ["/editor/use-editor/index.ts"],
     "percent": 0.51,
     "reduction": 5.37
   },
@@ -2246,12 +2194,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/tokenize/definition.js",
     "size": 5172,
     "origSize": 5075,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/parser.js"
     ],
@@ -2262,12 +2206,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseClone.js",
     "size": 4799,
     "origSize": 5609,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/cloneDeep.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/omit.js"
@@ -2279,10 +2219,7 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/is-hotkey/lib/index.js",
     "size": 4668,
     "origSize": 4555,
-    "renderedExports": [
-      "default",
-      "__moduleExports"
-    ],
+    "renderedExports": ["default", "__moduleExports"],
     "removedExports": [],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/slate-react/dist/index.es.js",
@@ -2301,12 +2238,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/tokenize/table.js",
     "size": 4552,
     "origSize": 4482,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/parser.js"
     ],
@@ -2317,12 +2250,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/tokenize/url.js",
     "size": 4429,
     "origSize": 4563,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/parser.js"
     ],
@@ -2333,12 +2262,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/tokenize/code-fenced.js",
     "size": 4313,
     "origSize": 4180,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/parser.js"
     ],
@@ -2349,12 +2274,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/vfile/lib/core.js",
     "size": 4060,
     "origSize": 3982,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/vfile/lib/index.js"
     ],
@@ -2365,12 +2286,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/tokenize/reference.js",
     "size": 3650,
     "origSize": 3699,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/parser.js"
     ],
@@ -2381,12 +2298,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_equalByTag.js",
     "size": 3529,
     "origSize": 3746,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseIsEqualDeep.js"
     ],
@@ -2517,12 +2430,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/extend/index.js",
     "size": 3319,
     "origSize": 3321,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/unified/index.js"
     ],
@@ -2533,14 +2442,9 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/copy-to-clipboard/index.js",
     "size": 3214,
     "origSize": 3275,
-    "renderedExports": [
-      "default",
-      "__moduleExports"
-    ],
+    "renderedExports": ["default", "__moduleExports"],
     "removedExports": [],
-    "dependents": [
-      "/editor/render/render-element/link.tsx"
-    ],
+    "dependents": ["/editor/render/render-element/link.tsx"],
     "percent": 0.31,
     "reduction": 1.86
   },
@@ -2579,9 +2483,7 @@
       "isValidElementType",
       "typeOf"
     ],
-    "removedExports": [
-      "default"
-    ],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/react-is/index.js"
     ],
@@ -2592,12 +2494,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/parser.js",
     "size": 3076,
     "origSize": 3774,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/index.js"
     ],
@@ -2608,12 +2506,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_equalObjects.js",
     "size": 2943,
     "origSize": 2971,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseIsEqualDeep.js"
     ],
@@ -2624,12 +2518,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseIsEqualDeep.js",
     "size": 2729,
     "origSize": 3010,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseIsEqual.js"
     ],
@@ -2640,10 +2530,7 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/throttle.js",
     "size": 2639,
     "origSize": 2709,
-    "renderedExports": [
-      "default",
-      "__moduleExports"
-    ],
+    "renderedExports": ["default", "__moduleExports"],
     "removedExports": [],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/slate-react/dist/index.es.js",
@@ -2656,12 +2543,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/tokenize/heading-atx.js",
     "size": 2566,
     "origSize": 2505,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/parser.js"
     ],
@@ -2672,12 +2555,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_equalArrays.js",
     "size": 2554,
     "origSize": 2662,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_equalByTag.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseIsEqualDeep.js"
@@ -2689,12 +2568,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/tokenize/html-block.js",
     "size": 2553,
     "origSize": 2524,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/parser.js"
     ],
@@ -2705,9 +2580,7 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/compute-scroll-into-view/dist/index.module.js",
     "size": 2504,
     "origSize": 2515,
-    "renderedExports": [
-      "default"
-    ],
+    "renderedExports": ["default"],
     "removedExports": [],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/scroll-into-view-if-needed/es/index.js"
@@ -2719,12 +2592,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/tokenize/auto-link.js",
     "size": 2411,
     "origSize": 2444,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/parser.js"
     ],
@@ -2735,12 +2604,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/tokenize/blockquote.js",
     "size": 2348,
     "origSize": 2344,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/parser.js"
     ],
@@ -2751,12 +2616,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseIsTypedArray.js",
     "size": 2201,
     "origSize": 2222,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/isTypedArray.js"
     ],
@@ -2767,12 +2628,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/memoize.js",
     "size": 2184,
     "origSize": 2224,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_memoizeCapped.js"
     ],
@@ -2783,12 +2640,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/tokenize/code-inline.js",
     "size": 2098,
     "origSize": 2102,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/parser.js"
     ],
@@ -2799,12 +2652,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_initCloneByTag.js",
     "size": 2098,
     "origSize": 2261,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseClone.js"
     ],
@@ -2815,12 +2664,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/tokenize/code-indented.js",
     "size": 2025,
     "origSize": 2032,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/parser.js"
     ],
@@ -2831,12 +2676,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/unist-util-visit-parents/index.js",
     "size": 2014,
     "origSize": 2037,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/unist-util-visit/index.js"
     ],
@@ -2847,12 +2688,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/tokenize/paragraph.js",
     "size": 2008,
     "origSize": 2096,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/parser.js"
     ],
@@ -2863,14 +2700,9 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-sub-super/dist/index.js",
     "size": 1988,
     "origSize": 2019,
-    "renderedExports": [
-      "default",
-      "__moduleExports"
-    ],
+    "renderedExports": ["default", "__moduleExports"],
     "removedExports": [],
-    "dependents": [
-      "/lib/convert/parse/parse-ast.ts"
-    ],
+    "dependents": ["/lib/convert/parse/parse-ast.ts"],
     "percent": 0.19,
     "reduction": 1.54
   },
@@ -2878,14 +2710,9 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-disable-tokenizers/dist/index.js",
     "size": 1938,
     "origSize": 1980,
-    "renderedExports": [
-      "default",
-      "__moduleExports"
-    ],
+    "renderedExports": ["default", "__moduleExports"],
     "removedExports": [],
-    "dependents": [
-      "/lib/convert/parse/parse-ast.ts"
-    ],
+    "dependents": ["/lib/convert/parse/parse-ast.ts"],
     "percent": 0.19,
     "reduction": 2.12
   },
@@ -2893,12 +2720,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/vfile-message/index.js",
     "size": 1890,
     "origSize": 1904,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/vfile/lib/index.js"
     ],
@@ -2909,12 +2732,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/tokenize/heading-setext.js",
     "size": 1838,
     "origSize": 1788,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/parser.js"
     ],
@@ -2925,12 +2744,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/tokenize/email.js",
     "size": 1830,
     "origSize": 1953,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/parser.js"
     ],
@@ -2941,15 +2756,9 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/@fortawesome/pro-light-svg-icons/faUnlink.js",
     "size": 1643,
     "origSize": 1588,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
-    "dependents": [
-      "/editor/render/render-element/link/link-popup.tsx"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
+    "dependents": ["/editor/render/render-element/link/link-popup.tsx"],
     "percent": 0.16,
     "reduction": 0
   },
@@ -2957,12 +2766,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/tokenize/emphasis.js",
     "size": 1634,
     "origSize": 1739,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/parser.js"
     ],
@@ -2973,12 +2778,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_getTag.js",
     "size": 1631,
     "origSize": 1838,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseIsMap.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseIsSet.js",
@@ -2992,12 +2793,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/tokenize/strong.js",
     "size": 1581,
     "origSize": 1649,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/parser.js"
     ],
@@ -3008,16 +2805,9 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/emotion-theming/dist/emotion-theming.browser.esm.js",
     "size": 1566,
     "origSize": 3110,
-    "renderedExports": [
-      "ThemeProvider"
-    ],
-    "removedExports": [
-      "useTheme",
-      "withTheme"
-    ],
-    "dependents": [
-      "/lib/reset/index.tsx"
-    ],
+    "renderedExports": ["ThemeProvider"],
+    "removedExports": ["useTheme", "withTheme"],
+    "dependents": ["/lib/reset/index.tsx"],
     "percent": 0.15,
     "reduction": 49.65
   },
@@ -3025,12 +2815,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_arrayLikeKeys.js",
     "size": 1556,
     "origSize": 1778,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/keys.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/keysIn.js"
@@ -3042,12 +2828,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/isPlainObject.js",
     "size": 1525,
     "origSize": 1650,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_customOmitClone.js"
     ],
@@ -3058,15 +2840,9 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/@fortawesome/pro-light-svg-icons/faGlobe.js",
     "size": 1494,
     "origSize": 1440,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
-    "dependents": [
-      "/editor/render/render-element/link/link-popup.tsx"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
+    "dependents": ["/editor/render/render-element/link/link-popup.tsx"],
     "percent": 0.15,
     "reduction": 0
   },
@@ -3074,12 +2850,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/trough/index.js",
     "size": 1460,
     "origSize": 1478,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/unified/index.js"
     ],
@@ -3090,12 +2862,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/toNumber.js",
     "size": 1409,
     "origSize": 1519,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/debounce.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/toFinite.js"
@@ -3107,12 +2875,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/trough/wrap.js",
     "size": 1369,
     "origSize": 1370,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/trough/index.js"
     ],
@@ -3123,12 +2887,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/prop-types/factoryWithThrowingShims.js",
     "size": 1366,
     "origSize": 1621,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/prop-types/index.js"
     ],
@@ -3139,12 +2899,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/unist-util-is/convert.js",
     "size": 1316,
     "origSize": 1320,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/unist-util-visit-parents/index.js"
     ],
@@ -3155,9 +2911,7 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/scroll-into-view-if-needed/es/index.js",
     "size": 1312,
     "origSize": 1393,
-    "renderedExports": [
-      "default"
-    ],
+    "renderedExports": ["default"],
     "removedExports": [],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/slate-react/dist/index.es.js"
@@ -3169,10 +2923,7 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/omit.js",
     "size": 1289,
     "origSize": 1629,
-    "renderedExports": [
-      "default",
-      "__moduleExports"
-    ],
+    "renderedExports": ["default", "__moduleExports"],
     "removedExports": [],
     "dependents": [
       "/lib/convert/utils/get-mark-props.ts",
@@ -3185,12 +2936,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseIsNative.js",
     "size": 1282,
     "origSize": 1417,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_getNative.js"
     ],
@@ -3201,12 +2948,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/util/remove-indentation.js",
     "size": 1271,
     "origSize": 1341,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/tokenize/list.js"
     ],
@@ -3217,12 +2960,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_basePullAll.js",
     "size": 1245,
     "origSize": 1459,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/pullAll.js"
     ],
@@ -3233,12 +2972,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/tokenize/thematic-break.js",
     "size": 1244,
     "origSize": 1201,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/parser.js"
     ],
@@ -3249,12 +2984,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/vfile-location/index.js",
     "size": 1239,
     "origSize": 1236,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/parser.js"
     ],
@@ -3265,12 +2996,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/decode.js",
     "size": 1237,
     "origSize": 1297,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/parser.js"
     ],
@@ -3281,12 +3008,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/@fortawesome/pro-light-svg-icons/faEdit.js",
     "size": 1232,
     "origSize": 1179,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/editor/render/render-element/link/link-popup.tsx",
       "/editor/toolbar/index.tsx"
@@ -3298,15 +3021,9 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/@fortawesome/pro-light-svg-icons/faCopy.js",
     "size": 1220,
     "origSize": 1167,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
-    "dependents": [
-      "/editor/render/render-element/link/link-popup.tsx"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
+    "dependents": ["/editor/render/render-element/link/link-popup.tsx"],
     "percent": 0.12,
     "reduction": 0
   },
@@ -3314,12 +3031,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/repeat-string/index.js",
     "size": 1211,
     "origSize": 1213,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/tokenize/code-indented.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/util/remove-indentation.js",
@@ -3332,12 +3045,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseSet.js",
     "size": 1197,
     "origSize": 1385,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_basePickBy.js"
     ],
@@ -3348,14 +3057,9 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-inline-links/index.js",
     "size": 1152,
     "origSize": 1210,
-    "renderedExports": [
-      "default",
-      "__moduleExports"
-    ],
+    "renderedExports": ["default", "__moduleExports"],
     "removedExports": [],
-    "dependents": [
-      "/lib/convert/parse/parse-ast.ts"
-    ],
+    "dependents": ["/lib/convert/parse/parse-ast.ts"],
     "percent": 0.11,
     "reduction": 4.79
   },
@@ -3363,12 +3067,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_getRawTag.js",
     "size": 1130,
     "origSize": 1139,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseGetTag.js"
     ],
@@ -3379,10 +3079,7 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/classnames/index.js",
     "size": 1116,
     "origSize": 1328,
-    "renderedExports": [
-      "default",
-      "__moduleExports"
-    ],
+    "renderedExports": ["default", "__moduleExports"],
     "removedExports": [],
     "dependents": [
       "/editor/render/render-element/media.tsx",
@@ -3401,12 +3098,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseFlatten.js",
     "size": 1113,
     "origSize": 1201,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/flatten.js"
     ],
@@ -3417,10 +3110,7 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/range.js",
     "size": 1102,
     "origSize": 1151,
-    "renderedExports": [
-      "default",
-      "__moduleExports"
-    ],
+    "renderedExports": ["default", "__moduleExports"],
     "removedExports": [],
     "dependents": [
       "/editor/table/index.tsx",
@@ -3434,12 +3124,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/isBuffer.js",
     "size": 1080,
     "origSize": 1114,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_arrayLikeKeys.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseClone.js",
@@ -3452,12 +3138,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_overRest.js",
     "size": 1067,
     "origSize": 1096,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_flatRest.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseRest.js"
@@ -3469,12 +3151,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/tokenize/delete.js",
     "size": 1066,
     "origSize": 1132,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/parser.js"
     ],
@@ -3485,12 +3163,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_cloneBuffer.js",
     "size": 1062,
     "origSize": 1056,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseClone.js"
     ],
@@ -3501,12 +3175,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/tokenize/html-inline.js",
     "size": 1056,
     "origSize": 1147,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/parser.js"
     ],
@@ -3517,15 +3187,9 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/@fortawesome/free-solid-svg-icons/faCheckSquare.js",
     "size": 1054,
     "origSize": 992,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
-    "dependents": [
-      "/editor/render/render-element/list.tsx"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
+    "dependents": ["/editor/render/render-element/list.tsx"],
     "percent": 0.1,
     "reduction": 0
   },
@@ -3533,12 +3197,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/tokenize/blank-line.js",
     "size": 1047,
     "origSize": 1051,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/parser.js"
     ],
@@ -3549,12 +3209,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/tokenize/text.js",
     "size": 1024,
     "origSize": 1017,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/parser.js"
     ],
@@ -3565,12 +3221,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseToString.js",
     "size": 1018,
     "origSize": 1154,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/toString.js"
     ],
@@ -3581,12 +3233,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/mdast-util-definitions/index.js",
     "size": 991,
     "origSize": 1024,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-inline-links/index.js"
     ],
@@ -3597,12 +3245,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_nodeUtil.js",
     "size": 986,
     "origSize": 995,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/isTypedArray.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/isMap.js",
@@ -3615,14 +3259,9 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/shallowequal/index.js",
     "size": 980,
     "origSize": 979,
-    "renderedExports": [
-      "default",
-      "__moduleExports"
-    ],
+    "renderedExports": ["default", "__moduleExports"],
     "removedExports": [],
-    "dependents": [
-      "/lib/modal/index.tsx"
-    ],
+    "dependents": ["/lib/modal/index.tsx"],
     "percent": 0.1,
     "reduction": 0
   },
@@ -3630,12 +3269,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseRepeat.js",
     "size": 952,
     "origSize": 952,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/repeat.js"
     ],
@@ -3646,14 +3281,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/util/html.js",
     "size": 948,
     "origSize": 893,
-    "renderedExports": [
-      "__moduleExports",
-      "openCloseTag",
-      "tag"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports", "openCloseTag", "tag"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/tokenize/html-block.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/tokenize/html-inline.js"
@@ -3665,12 +3294,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_copyObject.js",
     "size": 947,
     "origSize": 1044,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseAssign.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseAssignIn.js",
@@ -3685,12 +3310,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/isArguments.js",
     "size": 946,
     "origSize": 1026,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_arrayLikeKeys.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_isFlattenable.js",
@@ -3703,10 +3324,7 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/isEqual.js",
     "size": 939,
     "origSize": 986,
-    "renderedExports": [
-      "default",
-      "__moduleExports"
-    ],
+    "renderedExports": ["default", "__moduleExports"],
     "removedExports": [],
     "dependents": [
       "/lib/convert/normalize/normalize-line.ts",
@@ -3721,12 +3339,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_shortOut.js",
     "size": 939,
     "origSize": 941,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_setToString.js"
     ],
@@ -3737,14 +3351,9 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/mdast-move-images-to-root/index.js",
     "size": 935,
     "origSize": 964,
-    "renderedExports": [
-      "default",
-      "__moduleExports"
-    ],
+    "renderedExports": ["default", "__moduleExports"],
     "removedExports": [],
-    "dependents": [
-      "/lib/convert/parse/parse-ast.ts"
-    ],
+    "dependents": ["/lib/convert/parse/parse-ast.ts"],
     "percent": 0.09,
     "reduction": 3.01
   },
@@ -3752,15 +3361,9 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/@fortawesome/pro-light-svg-icons/faCheck.js",
     "size": 935,
     "origSize": 879,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
-    "dependents": [
-      "/editor/render/render-element/link/link-popup.tsx"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
+    "dependents": ["/editor/render/render-element/link/link-popup.tsx"],
     "percent": 0.09,
     "reduction": 0
   },
@@ -3768,12 +3371,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseIsEqual.js",
     "size": 925,
     "origSize": 1019,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/isEqual.js"
     ],
@@ -3784,12 +3383,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/isFunction.js",
     "size": 923,
     "origSize": 993,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseIsNative.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/isArrayLike.js"
@@ -3801,12 +3396,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/unist-util-stringify-position/index.js",
     "size": 909,
     "origSize": 890,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/vfile-message/index.js"
     ],
@@ -3817,12 +3408,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/vfile/lib/index.js",
     "size": 904,
     "origSize": 987,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/vfile/index.js"
     ],
@@ -3833,12 +3420,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/parse-entities/decode-entity.browser.js",
     "size": 873,
     "origSize": 866,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/parse-entities/index.js"
     ],
@@ -3849,12 +3432,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/locate/email.js",
     "size": 865,
     "origSize": 929,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/tokenize/email.js"
     ],
@@ -3865,12 +3444,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_hasPath.js",
     "size": 863,
     "origSize": 1085,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/hasIn.js"
     ],
@@ -3881,15 +3456,9 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/@fortawesome/pro-light-svg-icons/faSquare.js",
     "size": 861,
     "origSize": 806,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
-    "dependents": [
-      "/editor/render/render-element/list.tsx"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
+    "dependents": ["/editor/render/render-element/list.tsx"],
     "percent": 0.08,
     "reduction": 0
   },
@@ -3897,12 +3466,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/unescape.js",
     "size": 853,
     "origSize": 844,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/parser.js"
     ],
@@ -3913,10 +3478,7 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/is-url/index.js",
     "size": 852,
     "origSize": 856,
-    "renderedExports": [
-      "default",
-      "__moduleExports"
-    ],
+    "renderedExports": ["default", "__moduleExports"],
     "removedExports": [],
     "dependents": [
       "/editor/data-transfer/on-paste.ts",
@@ -3929,15 +3491,9 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/@fortawesome/pro-light-svg-icons/faAngleDown.js",
     "size": 851,
     "origSize": 793,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
-    "dependents": [
-      "/editor/toolbar/index.tsx"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
+    "dependents": ["/editor/toolbar/index.tsx"],
     "percent": 0.08,
     "reduction": 0
   },
@@ -3945,12 +3501,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseRange.js",
     "size": 849,
     "origSize": 850,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_createRange.js"
     ],
@@ -3961,12 +3513,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/unherit/index.js",
     "size": 836,
     "origSize": 888,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/index.js"
     ],
@@ -3977,12 +3525,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/parse.js",
     "size": 832,
     "origSize": 900,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/parser.js"
     ],
@@ -3993,12 +3537,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_assignValue.js",
     "size": 831,
     "origSize": 899,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_copyObject.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseClone.js",
@@ -4011,12 +3551,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/toFinite.js",
     "size": 830,
     "origSize": 868,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_createRange.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/toInteger.js"
@@ -4028,12 +3564,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/inherits/inherits_browser.js",
     "size": 828,
     "origSize": 753,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/unherit/index.js"
     ],
@@ -4044,12 +3576,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/set-options.js",
     "size": 820,
     "origSize": 918,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/parser.js"
     ],
@@ -4060,12 +3588,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_getSymbols.js",
     "size": 813,
     "origSize": 886,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_copySymbols.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_getSymbolsIn.js",
@@ -4078,12 +3602,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/isLength.js",
     "size": 805,
     "origSize": 802,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseIsTypedArray.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/isArrayLike.js",
@@ -4096,12 +3616,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_isKey.js",
     "size": 804,
     "origSize": 880,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_castPath.js"
     ],
@@ -4112,12 +3628,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_stringToPath.js",
     "size": 793,
     "origSize": 840,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_castPath.js"
     ],
@@ -4128,12 +3640,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/eq.js",
     "size": 792,
     "origSize": 799,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_assocIndexOf.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_assignValue.js",
@@ -4147,12 +3655,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/toggle-selection/index.js",
     "size": 783,
     "origSize": 780,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/copy-to-clipboard/index.js"
     ],
@@ -4163,12 +3667,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseFindIndex.js",
     "size": 769,
     "origSize": 766,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseIndexOf.js"
     ],
@@ -4179,12 +3679,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_isIndex.js",
     "size": 760,
     "origSize": 759,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_arrayLikeKeys.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseSet.js",
@@ -4198,13 +3694,9 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/stylis-plugin-extra-scope/dist/stylis-plugin-extra-scope.es.js",
     "size": 757,
     "origSize": 798,
-    "renderedExports": [
-      "default"
-    ],
+    "renderedExports": ["default"],
     "removedExports": [],
-    "dependents": [
-      "/lib/reset/index.tsx"
-    ],
+    "dependents": ["/lib/reset/index.tsx"],
     "percent": 0.07,
     "reduction": 5.14
   },
@@ -4212,12 +3704,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/isArrayLike.js",
     "size": 755,
     "origSize": 830,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/keys.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/keysIn.js",
@@ -4230,12 +3718,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseSlice.js",
     "size": 755,
     "origSize": 756,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_parent.js"
     ],
@@ -4246,12 +3730,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseKeysIn.js",
     "size": 751,
     "origSize": 870,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/keysIn.js"
     ],
@@ -4262,12 +3742,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/keys.js",
     "size": 750,
     "origSize": 884,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseAssign.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_getAllKeys.js",
@@ -4280,12 +3756,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_stackSet.js",
     "size": 744,
     "origSize": 853,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_Stack.js"
     ],
@@ -4296,12 +3768,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_isIterateeCall.js",
     "size": 742,
     "origSize": 877,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_createRange.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/repeat.js"
@@ -4313,12 +3781,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_createRange.js",
     "size": 742,
     "origSize": 864,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/range.js"
     ],
@@ -4329,12 +3793,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_listCacheDelete.js",
     "size": 741,
     "origSize": 775,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_ListCache.js"
     ],
@@ -4345,9 +3805,7 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/is-plain-object/dist/is-plain-object.mjs",
     "size": 738,
     "origSize": 758,
-    "renderedExports": [
-      "isPlainObject"
-    ],
+    "renderedExports": ["isPlainObject"],
     "removedExports": [],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/slate/dist/index.es.js",
@@ -4360,12 +3818,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_hashGet.js",
     "size": 734,
     "origSize": 772,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_Hash.js"
     ],
@@ -4376,12 +3830,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/isObject.js",
     "size": 732,
     "origSize": 733,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/toNumber.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/debounce.js",
@@ -4401,12 +3851,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/block-elements.js",
     "size": 731,
     "origSize": 742,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/defaults.js"
     ],
@@ -4417,12 +3863,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/toInteger.js",
     "size": 723,
     "origSize": 760,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/repeat.js"
     ],
@@ -4433,14 +3875,9 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/repeat.js",
     "size": 723,
     "origSize": 893,
-    "renderedExports": [
-      "default",
-      "__moduleExports"
-    ],
+    "renderedExports": ["default", "__moduleExports"],
     "removedExports": [],
-    "dependents": [
-      "/lib/convert/serialize/serialize-code.ts"
-    ],
+    "dependents": ["/lib/convert/serialize/serialize-code.ts"],
     "percent": 0.07,
     "reduction": 19.04
   },
@@ -4448,12 +3885,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_apply.js",
     "size": 709,
     "origSize": 714,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_overRest.js"
     ],
@@ -4464,12 +3897,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_initCloneArray.js",
     "size": 704,
     "origSize": 692,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseClone.js"
     ],
@@ -4480,12 +3909,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseKeys.js",
     "size": 695,
     "origSize": 776,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/keys.js"
     ],
@@ -4496,12 +3921,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/util/get-indentation.js",
     "size": 689,
     "origSize": 666,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/util/remove-indentation.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/tokenize/list.js"
@@ -4513,12 +3934,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_basePickBy.js",
     "size": 680,
     "origSize": 791,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_basePick.js"
     ],
@@ -4529,14 +3946,9 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/pull.js",
     "size": 680,
     "origSize": 758,
-    "renderedExports": [
-      "default",
-      "__moduleExports"
-    ],
+    "renderedExports": ["default", "__moduleExports"],
     "removedExports": [],
-    "dependents": [
-      "/lib/format-hotkey/index.ts"
-    ],
+    "dependents": ["/lib/format-hotkey/index.ts"],
     "percent": 0.07,
     "reduction": 10.29
   },
@@ -4544,12 +3956,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/hasIn.js",
     "size": 672,
     "origSize": 753,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_basePick.js"
     ],
@@ -4560,12 +3968,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseGetTag.js",
     "size": 668,
     "origSize": 792,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/isSymbol.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/isFunction.js",
@@ -4581,12 +3985,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseGetAllKeys.js",
     "size": 668,
     "origSize": 739,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_getAllKeys.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_getAllKeysIn.js"
@@ -4598,12 +3998,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseIndexOfWith.js",
     "size": 665,
     "origSize": 660,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_basePullAll.js"
     ],
@@ -4614,12 +4010,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/pullAll.js",
     "size": 663,
     "origSize": 710,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/pull.js"
     ],
@@ -4630,12 +4022,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/tokenize/break.js",
     "size": 657,
     "origSize": 703,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/parser.js"
     ],
@@ -4646,12 +4034,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/unist-util-visit/index.js",
     "size": 652,
     "origSize": 668,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/mdast-util-definitions/index.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-inline-links/index.js",
@@ -4664,12 +4048,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseCreate.js",
     "size": 649,
     "origSize": 686,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_initCloneObject.js"
     ],
@@ -4680,12 +4060,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/util/interrupt.js",
     "size": 648,
     "origSize": 655,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/tokenize/blockquote.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/tokenize/list.js",
@@ -4698,14 +4074,9 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/cloneDeep.js",
     "size": 646,
     "origSize": 679,
-    "renderedExports": [
-      "default",
-      "__moduleExports"
-    ],
+    "renderedExports": ["default", "__moduleExports"],
     "removedExports": [],
-    "dependents": [
-      "/lib/convert/normalize/normalize-line.ts"
-    ],
+    "dependents": ["/lib/convert/normalize/normalize-line.ts"],
     "percent": 0.06,
     "reduction": 4.86
   },
@@ -4713,12 +4084,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/keysIn.js",
     "size": 642,
     "origSize": 778,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseAssignIn.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_getAllKeysIn.js",
@@ -4731,12 +4098,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_MapCache.js",
     "size": 636,
     "origSize": 869,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_stackSet.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_SetCache.js",
@@ -4749,12 +4112,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_arrayFilter.js",
     "size": 633,
     "origSize": 632,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_getSymbols.js"
     ],
@@ -4766,10 +4125,7 @@
     "size": 630,
     "origSize": 585,
     "renderedExports": [],
-    "removedExports": [
-      "default",
-      "__moduleExports"
-    ],
+    "removedExports": ["default", "__moduleExports"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/emotion-theming/dist/emotion-theming.browser.esm.js"
     ],
@@ -4780,12 +4136,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_ListCache.js",
     "size": 627,
     "origSize": 869,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_stackClear.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_mapCacheClear.js",
@@ -4799,12 +4151,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/isObjectLike.js",
     "size": 617,
     "origSize": 614,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/isSymbol.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseIsArguments.js",
@@ -4822,12 +4170,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/markdown-escapes/index.js",
     "size": 616,
     "origSize": 610,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/set-options.js"
     ],
@@ -4838,12 +4182,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/tokenize/escape.js",
     "size": 611,
     "origSize": 648,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/parser.js"
     ],
@@ -4854,12 +4194,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_strictIndexOf.js",
     "size": 603,
     "origSize": 600,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseIndexOf.js"
     ],
@@ -4870,12 +4206,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_memoizeCapped.js",
     "size": 601,
     "origSize": 633,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_stringToPath.js"
     ],
@@ -4886,12 +4218,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/isSymbol.js",
     "size": 598,
     "origSize": 682,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/toNumber.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_isKey.js",
@@ -4905,12 +4233,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_arraySome.js",
     "size": 593,
     "origSize": 594,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_equalArrays.js"
     ],
@@ -4921,12 +4245,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_getSymbolsIn.js",
     "size": 589,
     "origSize": 754,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_copySymbolsIn.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_getAllKeysIn.js"
@@ -4938,12 +4258,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_hashHas.js",
     "size": 584,
     "origSize": 626,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_Hash.js"
     ],
@@ -4954,12 +4270,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseAssignValue.js",
     "size": 584,
     "origSize": 625,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_assignValue.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_copyObject.js"
@@ -4971,12 +4283,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_objectToString.js",
     "size": 573,
     "origSize": 565,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseGetTag.js"
     ],
@@ -4987,12 +4295,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/isTypedArray.js",
     "size": 566,
     "origSize": 695,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_arrayLikeKeys.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseIsEqualDeep.js"
@@ -5004,12 +4308,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_toSource.js",
     "size": 562,
     "origSize": 556,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseIsNative.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_getTag.js"
@@ -5021,12 +4321,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_arrayMap.js",
     "size": 554,
     "origSize": 556,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseToString.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/omit.js",
@@ -5039,12 +4335,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_hashSet.js",
     "size": 552,
     "origSize": 598,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_Hash.js"
     ],
@@ -5055,12 +4347,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_Hash.js",
     "size": 550,
     "origSize": 747,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_mapCacheClear.js"
     ],
@@ -5071,10 +4359,7 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/pick.js",
     "size": 547,
     "origSize": 629,
-    "renderedExports": [
-      "default",
-      "__moduleExports"
-    ],
+    "renderedExports": ["default", "__moduleExports"],
     "removedExports": [],
     "dependents": [
       "/lib/convert/utils/get-mark-props.ts",
@@ -5087,12 +4372,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseGet.js",
     "size": 542,
     "origSize": 616,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_parent.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_basePickBy.js"
@@ -5104,12 +4385,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_arrayEach.js",
     "size": 536,
     "origSize": 537,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseClone.js"
     ],
@@ -5120,12 +4397,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/toString.js",
     "size": 532,
     "origSize": 580,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_castPath.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/repeat.js"
@@ -5137,12 +4410,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseSetToString.js",
     "size": 528,
     "origSize": 641,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_setToString.js"
     ],
@@ -5153,12 +4422,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/constant.js",
     "size": 527,
     "origSize": 528,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseSetToString.js"
     ],
@@ -5169,12 +4434,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseIndexOf.js",
     "size": 523,
     "origSize": 659,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_basePullAll.js"
     ],
@@ -5185,12 +4446,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_isMasked.js",
     "size": 521,
     "origSize": 564,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseIsNative.js"
     ],
@@ -5201,12 +4458,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_trimmedEndIndex.js",
     "size": 520,
     "origSize": 515,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseTrim.js"
     ],
@@ -5217,10 +4470,7 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/direction/index.js",
     "size": 515,
     "origSize": 523,
-    "renderedExports": [
-      "default",
-      "__moduleExports"
-    ],
+    "renderedExports": ["default", "__moduleExports"],
     "removedExports": [],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/slate-react/dist/index.es.js"
@@ -5232,10 +4482,7 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/@babel/runtime/helpers/defineProperty.js",
     "size": 512,
     "origSize": 367,
-    "renderedExports": [
-      "default",
-      "__moduleExports"
-    ],
+    "renderedExports": ["default", "__moduleExports"],
     "removedExports": [],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/emotion-theming/dist/emotion-theming.browser.esm.js"
@@ -5247,12 +4494,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/unist-util-flatmap/index.js",
     "size": 510,
     "origSize": 500,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/mdast-move-images-to-root/index.js"
     ],
@@ -5263,12 +4506,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_listCacheSet.js",
     "size": 508,
     "origSize": 553,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_ListCache.js"
     ],
@@ -5279,12 +4518,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseTimes.js",
     "size": 503,
     "origSize": 504,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_arrayLikeKeys.js"
     ],
@@ -5295,12 +4530,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_cloneSymbol.js",
     "size": 503,
     "origSize": 524,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_initCloneByTag.js"
     ],
@@ -5311,12 +4542,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_SetCache.js",
     "size": 503,
     "origSize": 632,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_equalArrays.js"
     ],
@@ -5327,12 +4554,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_isFlattenable.js",
     "size": 501,
     "origSize": 608,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseFlatten.js"
     ],
@@ -5343,12 +4566,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_nativeKeysIn.js",
     "size": 492,
     "origSize": 490,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseKeysIn.js"
     ],
@@ -5359,12 +4578,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/isMap.js",
     "size": 491,
     "origSize": 613,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseClone.js"
     ],
@@ -5375,12 +4590,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/isSet.js",
     "size": 491,
     "origSize": 613,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseClone.js"
     ],
@@ -5391,12 +4602,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_Stack.js",
     "size": 488,
     "origSize": 734,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseClone.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseIsEqualDeep.js"
@@ -5408,12 +4615,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/isArray.js",
     "size": 486,
     "origSize": 488,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_arrayLikeKeys.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseGetAllKeys.js",
@@ -5432,12 +4635,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_isPrototype.js",
     "size": 485,
     "origSize": 480,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseKeys.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseKeysIn.js",
@@ -5450,12 +4649,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_toKey.js",
     "size": 485,
     "origSize": 523,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseGet.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseUnset.js",
@@ -5469,12 +4664,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/now.js",
     "size": 483,
     "origSize": 520,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/debounce.js"
     ],
@@ -5485,12 +4676,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_cloneTypedArray.js",
     "size": 477,
     "origSize": 527,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_initCloneByTag.js"
     ],
@@ -5501,12 +4688,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_assocIndexOf.js",
     "size": 464,
     "origSize": 487,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_listCacheDelete.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_listCacheGet.js",
@@ -5520,12 +4703,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_cloneDataView.js",
     "size": 455,
     "origSize": 507,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_initCloneByTag.js"
     ],
@@ -5536,12 +4715,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_copyArray.js",
     "size": 453,
     "origSize": 454,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseClone.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_basePullAll.js"
@@ -5553,12 +4728,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/locate/url.js",
     "size": 450,
     "origSize": 456,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/tokenize/url.js"
     ],
@@ -5569,12 +4740,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/state-toggle/index.js",
     "size": 447,
     "origSize": 452,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/parser.js"
     ],
@@ -5585,12 +4752,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_mapCacheSet.js",
     "size": 447,
     "origSize": 489,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_MapCache.js"
     ],
@@ -5601,12 +4764,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseUnset.js",
     "size": 446,
     "origSize": 580,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/omit.js"
     ],
@@ -5617,12 +4776,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_hashDelete.js",
     "size": 445,
     "origSize": 445,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_Hash.js"
     ],
@@ -5633,12 +4788,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/flatten.js",
     "size": 442,
     "origSize": 489,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_flatRest.js"
     ],
@@ -5649,12 +4800,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_cloneRegExp.js",
     "size": 440,
     "origSize": 439,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_initCloneByTag.js"
     ],
@@ -5665,12 +4812,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseRest.js",
     "size": 438,
     "origSize": 559,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/pull.js"
     ],
@@ -5681,12 +4824,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_arrayPush.js",
     "size": 436,
     "origSize": 437,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_getSymbolsIn.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseGetAllKeys.js",
@@ -5699,12 +4838,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_customOmitClone.js",
     "size": 433,
     "origSize": 475,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/omit.js"
     ],
@@ -5715,12 +4850,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_isKeyable.js",
     "size": 429,
     "origSize": 430,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_getMapData.js"
     ],
@@ -5731,12 +4862,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_basePick.js",
     "size": 426,
     "origSize": 501,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/pick.js"
     ],
@@ -5747,12 +4874,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_setCacheAdd.js",
     "size": 425,
     "origSize": 424,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_SetCache.js"
     ],
@@ -5763,12 +4886,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/is-hexadecimal/index.js",
     "size": 418,
     "origSize": 428,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/parse-entities/index.js"
     ],
@@ -5779,12 +4898,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_castPath.js",
     "size": 418,
     "origSize": 569,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseGet.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseUnset.js",
@@ -5800,10 +4915,7 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/prop-types/index.js",
     "size": 415,
     "origSize": 710,
-    "renderedExports": [
-      "default",
-      "__moduleExports"
-    ],
+    "renderedExports": ["default", "__moduleExports"],
     "removedExports": [],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/@fortawesome/react-fontawesome/index.es.js"
@@ -5815,12 +4927,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_cloneArrayBuffer.js",
     "size": 413,
     "origSize": 449,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_cloneDataView.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_cloneTypedArray.js",
@@ -5833,12 +4941,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_mapCacheDelete.js",
     "size": 411,
     "origSize": 450,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_MapCache.js"
     ],
@@ -5849,12 +4953,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseIsArguments.js",
     "size": 410,
     "origSize": 488,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/isArguments.js"
     ],
@@ -5865,12 +4965,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseAssignIn.js",
     "size": 409,
     "origSize": 482,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseClone.js"
     ],
@@ -5881,12 +4977,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_stackDelete.js",
     "size": 406,
     "origSize": 405,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_Stack.js"
     ],
@@ -5897,12 +4989,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseIsMap.js",
     "size": 402,
     "origSize": 478,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/isMap.js"
     ],
@@ -5913,12 +5001,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseIsSet.js",
     "size": 402,
     "origSize": 478,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/isSet.js"
     ],
@@ -5929,12 +5013,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseAssign.js",
     "size": 399,
     "origSize": 470,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseClone.js"
     ],
@@ -5945,12 +5025,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_getNative.js",
     "size": 397,
     "origSize": 483,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_Map.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_nativeCreate.js",
@@ -5967,12 +5043,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/last.js",
     "size": 396,
     "origSize": 401,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseUnset.js"
     ],
@@ -5983,12 +5055,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/xtend/immutable.js",
     "size": 394,
     "origSize": 384,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/unherit/index.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/decode.js",
@@ -6004,12 +5072,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/stubArray.js",
     "size": 390,
     "origSize": 390,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_getSymbols.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_getSymbolsIn.js"
@@ -6021,12 +5085,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseTrim.js",
     "size": 389,
     "origSize": 444,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/toNumber.js"
     ],
@@ -6038,10 +5098,7 @@
     "size": 385,
     "origSize": 2743,
     "renderedExports": [],
-    "removedExports": [
-      "default",
-      "__moduleExports"
-    ],
+    "removedExports": ["default", "__moduleExports"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/emotion-theming/dist/emotion-theming.browser.esm.js"
     ],
@@ -6052,12 +5109,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_copySymbolsIn.js",
     "size": 384,
     "origSize": 470,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseClone.js"
     ],
@@ -6068,9 +5121,7 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/character-reference-invalid/index.json",
     "size": 379,
     "origSize": 393,
-    "renderedExports": [
-      "default"
-    ],
+    "renderedExports": ["default"],
     "removedExports": [],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/parse-entities/index.js"
@@ -6082,12 +5133,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_overArg.js",
     "size": 379,
     "origSize": 382,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_nativeKeys.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_getPrototype.js"
@@ -6099,12 +5146,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_listCacheGet.js",
     "size": 375,
     "origSize": 420,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_ListCache.js"
     ],
@@ -6115,12 +5158,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseHasIn.js",
     "size": 373,
     "origSize": 374,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/hasIn.js"
     ],
@@ -6131,12 +5170,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/identity.js",
     "size": 369,
     "origSize": 370,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseSetToString.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseRest.js"
@@ -6148,12 +5183,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/ccount/index.js",
     "size": 368,
     "origSize": 378,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/tokenize/url.js"
     ],
@@ -6164,12 +5195,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_mapToArray.js",
     "size": 363,
     "origSize": 363,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_equalByTag.js"
     ],
@@ -6180,12 +5207,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_copySymbols.js",
     "size": 362,
     "origSize": 446,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseClone.js"
     ],
@@ -6196,12 +5219,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_getAllKeysIn.js",
     "size": 361,
     "origSize": 488,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseClone.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/omit.js"
@@ -6213,12 +5232,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/is-alphabetical/index.js",
     "size": 360,
     "origSize": 369,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/is-alphanumerical/index.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/tokenize/url.js",
@@ -6233,12 +5248,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_getMapData.js",
     "size": 359,
     "origSize": 400,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_mapCacheDelete.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_mapCacheGet.js",
@@ -6252,12 +5263,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_listCacheHas.js",
     "size": 358,
     "origSize": 403,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_ListCache.js"
     ],
@@ -6268,12 +5275,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_initCloneObject.js",
     "size": 358,
     "origSize": 486,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseClone.js"
     ],
@@ -6284,12 +5287,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_parent.js",
     "size": 355,
     "origSize": 436,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseUnset.js"
     ],
@@ -6300,12 +5299,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/is-whitespace-character/index.js",
     "size": 349,
     "origSize": 342,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/tokenize/definition.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/tokenize/table.js",
@@ -6324,12 +5319,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_setToArray.js",
     "size": 345,
     "origSize": 345,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_equalByTag.js"
     ],
@@ -6340,9 +5331,7 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/@emotion/weak-memoize/dist/weak-memoize.browser.esm.js",
     "size": 342,
     "origSize": 372,
-    "renderedExports": [
-      "default"
-    ],
+    "renderedExports": ["default"],
     "removedExports": [],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/emotion-theming/dist/emotion-theming.browser.esm.js"
@@ -6354,12 +5343,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_mapCacheHas.js",
     "size": 340,
     "origSize": 382,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_MapCache.js"
     ],
@@ -6370,12 +5355,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_flatRest.js",
     "size": 338,
     "origSize": 457,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/omit.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/pick.js"
@@ -6387,12 +5368,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/is-word-character/index.js",
     "size": 335,
     "origSize": 342,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/tokenize/emphasis.js"
     ],
@@ -6403,12 +5380,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_cacheHas.js",
     "size": 335,
     "origSize": 337,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_equalArrays.js"
     ],
@@ -6419,12 +5392,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_getAllKeys.js",
     "size": 334,
     "origSize": 455,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseClone.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_equalObjects.js"
@@ -6436,12 +5405,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseUnary.js",
     "size": 331,
     "origSize": 332,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/isTypedArray.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/isMap.js",
@@ -6455,12 +5420,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/locate/link.js",
     "size": 327,
     "origSize": 339,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/tokenize/link.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/tokenize/reference.js"
@@ -6472,12 +5433,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/locate/strong.js",
     "size": 325,
     "origSize": 335,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/tokenize/strong.js"
     ],
@@ -6488,12 +5445,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/locate/emphasis.js",
     "size": 325,
     "origSize": 333,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/tokenize/emphasis.js"
     ],
@@ -6504,12 +5457,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_getValue.js",
     "size": 323,
     "origSize": 325,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_getNative.js"
     ],
@@ -6520,12 +5469,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_stackHas.js",
     "size": 321,
     "origSize": 323,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_Stack.js"
     ],
@@ -6536,12 +5481,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_setCacheHas.js",
     "size": 317,
     "origSize": 316,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_SetCache.js"
     ],
@@ -6552,12 +5493,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/prop-types/lib/ReactPropTypesSecret.js",
     "size": 310,
     "origSize": 314,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/prop-types/factoryWithThrowingShims.js"
     ],
@@ -6568,12 +5505,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_setToString.js",
     "size": 302,
     "origSize": 392,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_flatRest.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseRest.js"
@@ -6585,12 +5518,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/unified/node_modules/is-buffer/index.js",
     "size": 301,
     "origSize": 301,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/unified/index.js"
     ],
@@ -6601,12 +5530,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/trim/index.js",
     "size": 299,
     "origSize": 234,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/tokenize/blockquote.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/util/remove-indentation.js",
@@ -6622,12 +5547,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/vfile/node_modules/is-buffer/index.js",
     "size": 299,
     "origSize": 301,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/vfile/lib/core.js"
     ],
@@ -6638,12 +5559,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_mapCacheClear.js",
     "size": 298,
     "origSize": 393,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_MapCache.js"
     ],
@@ -6654,12 +5571,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseIsNaN.js",
     "size": 295,
     "origSize": 296,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseIndexOf.js"
     ],
@@ -6670,12 +5583,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_mapCacheGet.js",
     "size": 288,
     "origSize": 330,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_MapCache.js"
     ],
@@ -6686,12 +5595,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/is-decimal/index.js",
     "size": 283,
     "origSize": 297,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/is-alphanumerical/index.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/parse-entities/index.js",
@@ -6707,12 +5612,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/stubFalse.js",
     "size": 280,
     "origSize": 280,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/isBuffer.js"
     ],
@@ -6723,12 +5624,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_stackGet.js",
     "size": 269,
     "origSize": 271,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_Stack.js"
     ],
@@ -6739,14 +5636,9 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/index.js",
     "size": 267,
     "origSize": 362,
-    "renderedExports": [
-      "default",
-      "__moduleExports"
-    ],
+    "renderedExports": ["default", "__moduleExports"],
     "removedExports": [],
-    "dependents": [
-      "/lib/convert/parse/parse-ast.ts"
-    ],
+    "dependents": ["/lib/convert/parse/parse-ast.ts"],
     "percent": 0.03,
     "reduction": 26.24
   },
@@ -6754,13 +5646,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/vfile/lib/minproc.browser.js",
     "size": 252,
     "origSize": 228,
-    "renderedExports": [
-      "__moduleExports",
-      "cwd"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports", "cwd"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/vfile/lib/core.js"
     ],
@@ -6771,12 +5658,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_root.js",
     "size": 251,
     "origSize": 300,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/now.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_Symbol.js",
@@ -6797,12 +5680,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/unist-util-remove-position/index.js",
     "size": 249,
     "origSize": 279,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/parse.js"
     ],
@@ -6813,12 +5692,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/is-alphanumerical/index.js",
     "size": 243,
     "origSize": 330,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/parse-entities/index.js"
     ],
@@ -6829,12 +5704,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_hashClear.js",
     "size": 234,
     "origSize": 281,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_Hash.js"
     ],
@@ -6845,12 +5716,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/locate/break.js",
     "size": 233,
     "origSize": 247,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/tokenize/break.js"
     ],
@@ -6861,12 +5728,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/is-plain-obj/index.js",
     "size": 229,
     "origSize": 245,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/unified/index.js"
     ],
@@ -6877,12 +5740,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/util/normalize.js",
     "size": 227,
     "origSize": 294,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/tokenize/definition.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/tokenize/reference.js"
@@ -6894,12 +5753,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_listCacheClear.js",
     "size": 222,
     "origSize": 218,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_ListCache.js"
     ],
@@ -6910,12 +5765,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_stackClear.js",
     "size": 213,
     "origSize": 254,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_Stack.js"
     ],
@@ -6926,12 +5777,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_freeGlobal.js",
     "size": 205,
     "origSize": 173,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_root.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_nodeUtil.js"
@@ -6943,12 +5790,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_defineProperty.js",
     "size": 202,
     "origSize": 233,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseAssignValue.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseSetToString.js"
@@ -6960,12 +5803,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/trim-trailing-lines/index.js",
     "size": 175,
     "origSize": 180,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/tokenize/code-indented.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/tokenize/paragraph.js"
@@ -6977,12 +5816,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_nativeKeys.js",
     "size": 167,
     "origSize": 204,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseKeys.js"
     ],
@@ -6993,12 +5828,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/collapse-white-space/index.js",
     "size": 157,
     "origSize": 163,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/util/normalize.js"
     ],
@@ -7009,12 +5840,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_nativeCreate.js",
     "size": 148,
     "origSize": 187,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_hashClear.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_hashGet.js",
@@ -7028,12 +5855,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_DataView.js",
     "size": 137,
     "origSize": 210,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_getTag.js"
     ],
@@ -7044,12 +5867,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_Promise.js",
     "size": 137,
     "origSize": 207,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_getTag.js"
     ],
@@ -7060,12 +5879,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_WeakMap.js",
     "size": 137,
     "origSize": 207,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_getTag.js"
     ],
@@ -7076,12 +5891,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_getPrototype.js",
     "size": 128,
     "origSize": 163,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_getSymbolsIn.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_initCloneObject.js",
@@ -7094,12 +5905,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_coreJsData.js",
     "size": 126,
     "origSize": 157,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_isMasked.js"
     ],
@@ -7110,12 +5917,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_Map.js",
     "size": 121,
     "origSize": 195,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_mapCacheClear.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_stackSet.js",
@@ -7128,12 +5931,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_Set.js",
     "size": 121,
     "origSize": 195,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_getTag.js"
     ],
@@ -7144,12 +5943,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/defaults.js",
     "size": 114,
     "origSize": 144,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/set-options.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/parser.js"
@@ -7161,12 +5956,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/locate/code-inline.js",
     "size": 108,
     "origSize": 116,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/tokenize/code-inline.js"
     ],
@@ -7177,12 +5968,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/locate/escape.js",
     "size": 106,
     "origSize": 117,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/tokenize/escape.js"
     ],
@@ -7193,12 +5980,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/locate/delete.js",
     "size": 106,
     "origSize": 117,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/tokenize/delete.js"
     ],
@@ -7209,12 +5992,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/react-is/index.js",
     "size": 106,
     "origSize": 196,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/hoist-non-react-statics/dist/hoist-non-react-statics.cjs.js"
     ],
@@ -7225,12 +6004,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/locate/tag.js",
     "size": 101,
     "origSize": 116,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/tokenize/auto-link.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/tokenize/html-inline.js"
@@ -7242,12 +6017,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_Uint8Array.js",
     "size": 99,
     "origSize": 130,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_cloneArrayBuffer.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_equalByTag.js"
@@ -7259,12 +6030,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_Symbol.js",
     "size": 87,
     "origSize": 118,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_getRawTag.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_baseGetTag.js",
@@ -7280,12 +6047,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/bail/index.js",
     "size": 73,
     "origSize": 91,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/unified/index.js"
     ],
@@ -7296,12 +6059,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/unist-util-visit-parents/color.browser.js",
     "size": 69,
     "origSize": 62,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/unist-util-visit-parents/index.js"
     ],
@@ -7312,12 +6071,8 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/vfile/index.js",
     "size": 16,
     "origSize": 48,
-    "renderedExports": [
-      "__moduleExports"
-    ],
-    "removedExports": [
-      "default"
-    ],
+    "renderedExports": ["__moduleExports"],
+    "removedExports": ["default"],
     "dependents": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/unified/index.js"
     ],

@@ -1,5 +1,9 @@
 import { Mark, MarkProps } from "~/editor/types"
-import { diffMarksExceptCode, getMarksInOrder, tokenizeMarksExceptCode } from "../utils/diff-marks"
+import {
+  diffMarksExceptCode,
+  getMarksInOrder,
+  tokenizeMarksExceptCode,
+} from "../utils/diff-marks"
 
 describe("get marks", () => {
   it("should get marks in order", async () => {
@@ -62,7 +66,11 @@ describe("add marks", () => {
 
 describe("remove marks", () => {
   it("should remove marks", async () => {
-    const prevMarks: Mark[] = getMarksInOrder({ bold: true, del: true, sub: true })
+    const prevMarks: Mark[] = getMarksInOrder({
+      bold: true,
+      del: true,
+      sub: true,
+    })
     const nextMarkProps: MarkProps = {}
     const diff = diffMarksExceptCode({ prevMarks, nextMarkProps })
     expect(diff).toEqual({
@@ -74,7 +82,11 @@ describe("remove marks", () => {
   })
 
   it("should remove some marks in natural order", async () => {
-    const prevMarks: Mark[] = getMarksInOrder({ bold: true, del: true, sub: true })
+    const prevMarks: Mark[] = getMarksInOrder({
+      bold: true,
+      del: true,
+      sub: true,
+    })
     const nextMarkProps: MarkProps = { bold: true }
     const diff = diffMarksExceptCode({ prevMarks, nextMarkProps })
     expect(diff).toEqual({
@@ -88,7 +100,11 @@ describe("remove marks", () => {
 
 describe("remove and add marks", () => {
   it("should remove some marks in unnatural order and add some back", async () => {
-    const prevMarks: Mark[] = getMarksInOrder({ bold: true, del: true, sub: true })
+    const prevMarks: Mark[] = getMarksInOrder({
+      bold: true,
+      del: true,
+      sub: true,
+    })
     const nextMarkProps: MarkProps = { del: true }
     const diff = diffMarksExceptCode({ prevMarks, nextMarkProps })
     expect(diff).toEqual({

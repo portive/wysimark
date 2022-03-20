@@ -33,7 +33,7 @@ export const InputBox = css`
   }
   &::placeholder {
     font-style: italic;
-    color: rgba(0,0,0,0.2)
+    color: rgba(0, 0, 0, 0.2);
   }
 `
 

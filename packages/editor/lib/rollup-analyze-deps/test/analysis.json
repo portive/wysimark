@@ -740,9 +740,7 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/@fortawesome/pro-light-svg-icons/faAngleDown.js",
     "isEntry": false,
     "isExternal": false,
-    "importedIds": [
-      "commonjsHelpers.js"
-    ],
+    "importedIds": ["commonjsHelpers.js"],
     "importers": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/packages/wysimark-editor/editor/toolbar/index.tsx"
     ],
@@ -758,9 +756,7 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/@fortawesome/pro-light-svg-icons/faEdit.js",
     "isEntry": false,
     "isExternal": false,
-    "importedIds": [
-      "commonjsHelpers.js"
-    ],
+    "importedIds": ["commonjsHelpers.js"],
     "importers": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/packages/wysimark-editor/editor/render/render-element/link/link-popup.tsx",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/packages/wysimark-editor/editor/toolbar/index.tsx"
@@ -777,9 +773,7 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/classnames/index.js",
     "isEntry": false,
     "isExternal": false,
-    "importedIds": [
-      "commonjsHelpers.js"
-    ],
+    "importedIds": ["commonjsHelpers.js"],
     "importers": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/packages/wysimark-editor/editor/editable/custom-editable.tsx",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/packages/wysimark-editor/editor/render/render-editor/editor-with-toolbar.tsx",
@@ -822,9 +816,7 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/@babel/runtime/helpers/extends.js",
     "isEntry": false,
     "isExternal": false,
-    "importedIds": [
-      "commonjsHelpers.js"
-    ],
+    "importedIds": ["commonjsHelpers.js"],
     "importers": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/emotion-theming/dist/emotion-theming.browser.esm.js"
     ],
@@ -840,9 +832,7 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/@babel/runtime/helpers/defineProperty.js",
     "isEntry": false,
     "isExternal": false,
-    "importedIds": [
-      "commonjsHelpers.js"
-    ],
+    "importedIds": ["commonjsHelpers.js"],
     "importers": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/@emotion/styled-base/dist/styled-base.browser.esm.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/emotion-theming/dist/emotion-theming.browser.esm.js"
@@ -1149,9 +1139,7 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/is-hotkey/lib/index.js",
     "isEntry": false,
     "isExternal": false,
-    "importedIds": [
-      "commonjsHelpers.js"
-    ],
+    "importedIds": ["commonjsHelpers.js"],
     "importers": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/slate-react/dist/index.es.js",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/packages/wysimark-editor/editor/keydown/handle-key-down-enter-autocomplete.ts",
@@ -1397,9 +1385,7 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/@babel/runtime/helpers/setPrototypeOf.js",
     "isEntry": false,
     "isExternal": false,
-    "importedIds": [
-      "commonjsHelpers.js"
-    ],
+    "importedIds": ["commonjsHelpers.js"],
     "importers": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/@babel/runtime/helpers/setPrototypeOf.js?commonjs-proxy",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/@babel/runtime/helpers/inheritsLoose.js"
@@ -1555,9 +1541,7 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_freeGlobal.js",
     "isEntry": false,
     "isExternal": false,
-    "importedIds": [
-      "commonjsHelpers.js"
-    ],
+    "importedIds": ["commonjsHelpers.js"],
     "importers": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_freeGlobal.js?commonjs-proxy",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/lodash/_nodeUtil.js",
@@ -2288,9 +2272,7 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/clone/clone.js",
     "isEntry": false,
     "isExternal": false,
-    "importedIds": [
-      "commonjsHelpers.js"
-    ],
+    "importedIds": ["commonjsHelpers.js"],
     "importers": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/clone/clone.js?commonjs-proxy",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-disable-tokenizers/dist/index.js"
@@ -2361,9 +2343,7 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/scheduler/cjs/scheduler.production.min.js",
     "isEntry": false,
     "isExternal": false,
-    "importedIds": [
-      "commonjsHelpers.js"
-    ],
+    "importedIds": ["commonjsHelpers.js"],
     "importers": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/scheduler/cjs/scheduler.production.min.js?commonjs-proxy",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/scheduler/index.js"
@@ -5177,9 +5157,7 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/@fortawesome/pro-light-svg-icons/faSquare.js",
     "isEntry": false,
     "isExternal": false,
-    "importedIds": [
-      "commonjsHelpers.js"
-    ],
+    "importedIds": ["commonjsHelpers.js"],
     "importers": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/packages/wysimark-editor/editor/render/render-element/list.tsx"
     ],
@@ -6161,9 +6139,7 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/@fortawesome/free-solid-svg-icons/faCheckSquare.js",
     "isEntry": false,
     "isExternal": false,
-    "importedIds": [
-      "commonjsHelpers.js"
-    ],
+    "importedIds": ["commonjsHelpers.js"],
     "importers": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/packages/wysimark-editor/editor/render/render-element/list.tsx"
     ],
@@ -6315,9 +6291,7 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/inherits/inherits_browser.js",
     "isEntry": false,
     "isExternal": false,
-    "importedIds": [
-      "commonjsHelpers.js"
-    ],
+    "importedIds": ["commonjsHelpers.js"],
     "importers": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/inherits/inherits_browser.js?commonjs-proxy",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/unherit/index.js"
@@ -7787,9 +7761,7 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/trim/index.js",
     "isEntry": false,
     "isExternal": false,
-    "importedIds": [
-      "commonjsHelpers.js"
-    ],
+    "importedIds": ["commonjsHelpers.js"],
     "importers": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/trim/index.js?commonjs-proxy",
       "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/remark-parse/lib/tokenize/blockquote.js",
@@ -7834,9 +7806,7 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/prismjs/prism.js",
     "isEntry": false,
     "isExternal": false,
-    "importedIds": [
-      "commonjsHelpers.js"
-    ],
+    "importedIds": ["commonjsHelpers.js"],
     "importers": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/packages/wysimark-editor/editor/editable/decorate/decorate-code.ts"
     ],
@@ -10229,9 +10199,7 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/@fortawesome/pro-light-svg-icons/faCopy.js",
     "isEntry": false,
     "isExternal": false,
-    "importedIds": [
-      "commonjsHelpers.js"
-    ],
+    "importedIds": ["commonjsHelpers.js"],
     "importers": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/packages/wysimark-editor/editor/render/render-element/link/link-popup.tsx"
     ],
@@ -10247,9 +10215,7 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/@fortawesome/pro-light-svg-icons/faCheck.js",
     "isEntry": false,
     "isExternal": false,
-    "importedIds": [
-      "commonjsHelpers.js"
-    ],
+    "importedIds": ["commonjsHelpers.js"],
     "importers": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/packages/wysimark-editor/editor/render/render-element/link/link-popup.tsx"
     ],
@@ -10265,9 +10231,7 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/@fortawesome/pro-light-svg-icons/faUnlink.js",
     "isEntry": false,
     "isExternal": false,
-    "importedIds": [
-      "commonjsHelpers.js"
-    ],
+    "importedIds": ["commonjsHelpers.js"],
     "importers": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/packages/wysimark-editor/editor/render/render-element/link/link-popup.tsx"
     ],
@@ -10283,9 +10247,7 @@
     "id": "/Users/sunnyhirai/Projects/wysimark-monorepo/node_modules/@fortawesome/pro-light-svg-icons/faGlobe.js",
     "isEntry": false,
     "isExternal": false,
-    "importedIds": [
-      "commonjsHelpers.js"
-    ],
+    "importedIds": ["commonjsHelpers.js"],
     "importers": [
       "/Users/sunnyhirai/Projects/wysimark-monorepo/packages/wysimark-editor/editor/render/render-element/link/link-popup.tsx"
     ],
