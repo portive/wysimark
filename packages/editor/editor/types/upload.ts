@@ -1,15 +1,34 @@
 import { JsonObject } from "type-fest"
 
 /**
- * DemoUploadProps, BrowserUploadProps and ServerUploadProps should be exported
- * so that they can be used by the upload servers to confirm that the API
- * matches on the server.
+ * Upload File Info
+ *
+ * The shape of information passed from the browser to the upload API.
  */
-export type DemoUploadProps = {
+
+export type UploadGenericFileInfo = {
+  type: "generic"
+  filename: string
+  bytes: number
+}
+export type UploadImageFileInfo = {
+  type: "image"
+  filename: string
+  bytes: number
+  width: number
+  height: number
+}
+export type UploadFileInfo = UploadGenericFileInfo | UploadImageFileInfo
+
+/**
+ * Upload Base types used to create UploadProps and UploadOptions
+ */
+
+export type DemoUploadBase = {
   type: "demo"
 }
 
-export type BrowserUploadProps = {
+export type BrowserUploadBase = {
   type: "browser"
   appName: string
   path: string
@@ -17,22 +36,38 @@ export type BrowserUploadProps = {
   apiPublicKey: string
 }
 
-export type ServerUploadProps = {
+export type ServerUploadBase = {
   type: "server"
   data: JsonObject
 }
 
-export type DemoUploadOptions = {
-  url: string
-} & DemoUploadProps
+/**
+ * Upload Props from Upload Base
+ *
+ * DemoUploadProps, BrowserUploadProps and ServerUploadProps should be exported
+ * so that they can be used by the upload servers to confirm that the API
+ * matches on the server.
+ */
 
-export type BrowserUploadOptions = {
-  url: string
-} & BrowserUploadProps
+type FixedUploadProps = { file: UploadFileInfo }
 
-export type ServerUploadOptions = {
-  url: string
-} & ServerUploadProps
+export type DemoUploadProps = FixedUploadProps & DemoUploadBase
+export type BrowserUploadProps = FixedUploadProps & DemoUploadBase
+export type ServerUploadProps = FixedUploadProps & DemoUploadBase
+export type UploadProps =
+  | DemoUploadProps
+  | BrowserUploadProps
+  | ServerUploadProps
+
+/**
+ * Upload Options from Upload Base
+ */
+
+type FixedUploadOptions = { url: string }
+
+export type DemoUploadOptions = FixedUploadOptions & DemoUploadBase
+export type BrowserUploadOptions = FixedUploadOptions & BrowserUploadBase
+export type ServerUploadOptions = FixedUploadOptions & ServerUploadBase
 
 export type UploadOptions =
   | DemoUploadOptions
