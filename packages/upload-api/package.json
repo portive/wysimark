@@ -1,6 +1,6 @@
 {
   "name": "@wysimark/upload-api",
-  "version": "1.0.43",
+  "version": "1.0.44",
   "description": "Wysimark Upload API Tool for Server Uploads",
   "license": "MIT",
   "main": ".dist/src/index.js",

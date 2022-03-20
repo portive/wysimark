@@ -1,6 +1,6 @@
 {
   "name": "demo-nuxt",
-  "version": "1.0.43",
+  "version": "1.0.44",
   "private": true,
   "scripts": {
     "start:dev": "rm -rf node_modules/.vite && nuxi dev --port 3081",

@@ -1,6 +1,6 @@
 {
   "name": "demo-quasar",
-  "version": "1.0.43",
+  "version": "1.0.44",
   "description": "A Quasar Framework app",
   "productName": "Quasar App",
   "author": "Sunny Hirai <thesunny@gmail.com>",
@@ -16,7 +16,7 @@
     "@emotion/core": "10.0.35",
     "@emotion/styled": "10.0.27",
     "@quasar/extras": "^1.0.0",
-    "@wysimark/vue": "^1.0.43",
+    "@wysimark/vue": "^1.0.44",
     "axios": "^0.23.0",
     "core-js": "^3.6.5",
     "quasar": "^2.4",
