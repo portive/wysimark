@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { UploadOptions } from "~/editor/types"
 import { Options } from "./types"
 
@@ -14,10 +15,11 @@ export const UPLOAD_OPTIONS: Options<UploadOptions | undefined> = [
     id: "local-demo-fail",
     caption: "localhost:3001 Demo (fail)",
     value: {
+      // @ts-ignore
       type: "demo",
       url: "http://localhost:3001/api/v1/upload/demo",
       extraneous: "EXTRANEOUS PROPERTY",
-    } as any, // We use `any` to allow TypeScript to accept the extraneous bad properties
+    },
   },
   {
     id: "local-browser",
@@ -27,8 +29,9 @@ export const UPLOAD_OPTIONS: Options<UploadOptions | undefined> = [
       url: "http://localhost:3001/api/v1/upload/browser",
       appName: "browser",
       path: "a/b/c",
-      apiKeyId: process.env.NEXT_PUBLIC_BROWSER_KEY_ID,
-      apiPublicKey: process.env.NEXT_PUBLIC_BROWSER_PUBLIC_KEY,
+      // TODO: Make local browser demo only available if keys have been defined
+      apiKeyId: process.env.NEXT_PUBLIC_BROWSER_KEY_ID as any,
+      apiPublicKey: process.env.NEXT_PUBLIC_BROWSER_PUBLIC_KEY as any,
     },
   },
   {
