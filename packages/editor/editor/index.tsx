@@ -6,6 +6,7 @@ export { useEditor } from "./use-editor"
  * on the upload server
  */
 export type {
+  UploadFileInfo,
   DemoUploadProps,
   BrowserUploadProps,
   ServerUploadProps,
