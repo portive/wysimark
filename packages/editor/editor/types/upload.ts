@@ -52,8 +52,8 @@ export type ServerUploadBase = {
 type FixedUploadProps = { file: UploadFileInfo }
 
 export type DemoUploadProps = FixedUploadProps & DemoUploadBase
-export type BrowserUploadProps = FixedUploadProps & DemoUploadBase
-export type ServerUploadProps = FixedUploadProps & DemoUploadBase
+export type BrowserUploadProps = FixedUploadProps & BrowserUploadBase
+export type ServerUploadProps = FixedUploadProps & ServerUploadBase
 export type UploadProps =
   | DemoUploadProps
   | BrowserUploadProps
