@@ -4,6 +4,4 @@ Use this in your JavaScript or TypeScript based server to get upload credentials
 
 ## Usage
 
-```js
-
-```
+See [Sample Server Upload Demo](https://github.com/portive/wysimark/blob/main/packages/demo-next/pages/api/server-upload.ts)

@@ -12,8 +12,19 @@ export default async function handler(
 ) {
   const reqJson = req.body
 
-  console.log("req.body", reqJson)
+  /**
+   * Show request json in console so it's easier to see what's happening in the
+   * terminal.
+   */
+  console.log("request json", reqJson)
 
+  /**
+   * For this demo integration, we check if the username is `johndoe` and the
+   * password is `password`. If not, we return a message to the editor user
+   * saying they are not authorized.
+   *
+   * We use `generateUploadFailure` to create the response but
+   */
   if (
     reqJson.data.username !== "johndoe" ||
     reqJson.data.password !== "password"
@@ -22,6 +33,18 @@ export default async function handler(
       message: `The user ${JSON.stringify(
         reqJson.data.username
       )} is not authorized to upload`,
+    })
+    res.status(200).json(failureJson)
+    return
+  }
+
+  if (
+    process.env.SERVER_APP_NAME == null ||
+    process.env.SERVER_KEY_ID == null ||
+    process.env.SERVER_SECRET_KEY
+  ) {
+    const failureJson = generateUploadFailure({
+      message: `To test the custom server upload, please add SERVER_APP_NAME, SERVER_KEY_ID and SERVER_SECRET_KEY to the dotenv file ".env/dev.env"`,
     })
     res.status(200).json(failureJson)
     return
@@ -49,6 +72,12 @@ export default async function handler(
     apiKeyId: env.SERVER_KEY_ID,
     apiSecretKey: env.SERVER_SECRET_KEY,
   })
+
+  /**
+   * Show response json in console so it's easier to see what's happening in
+   * the terminal.
+   */
+  console.log("response json", resJson)
 
   res.status(200).json(resJson)
 }
