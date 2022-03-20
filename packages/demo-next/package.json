@@ -36,9 +36,10 @@
     "-- preset": "# Run preset from @thesunny/presets",
     "preset": "ts-node --project node_modules/@thesunny/presets/tsconfig.ts-node.json node_modules/@thesunny/presets/bin/index.ts",
     "-- lint": "# lint",
-    "lint": "yarn lint:prettier && yarn lint:eslint",
+    "lint": "yarn lint:prettier && yarn lint:eslint && yarn lint:tsc",
     "lint:prettier": "prettier . --check",
     "lint:eslint": "eslint .",
+    "lint:tsc": "tsc --build ./ --force",
     "-- end": "# end"
   }
 }

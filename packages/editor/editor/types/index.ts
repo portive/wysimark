@@ -15,6 +15,7 @@ export * from "./editor"
 export * from "./segment"
 export * from "./element"
 export * from "./wysimark"
+export * from "./upload"
 
 /**
  * Extend Slate's Element and Text type with our CustomTypes

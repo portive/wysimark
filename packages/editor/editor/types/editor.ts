@@ -1,8 +1,6 @@
 import { BaseEditor, Descendant, Range } from "slate"
 import { HistoryEditor } from "slate-history"
 import { ReactEditor } from "slate-react"
-import { JsonObject, Simplify } from "type-fest"
-import { SecretAPIUploadProps } from "@wysimark/resource"
 /**
  * IMPORTANT!
  *
@@ -11,39 +9,8 @@ import { SecretAPIUploadProps } from "@wysimark/resource"
  */
 import { UseModalReturnType } from "../../lib/modal" // must be relative for build step of types to work. Don't know why...
 import { ActiveImageEditor } from "../use-editor/with-create-active-image/types"
+import { UploadOptions } from "./upload"
 import { RootBlockElement } from "."
-
-type DemoUploadOptions = {
-  type: "demo"
-  url: string
-}
-
-export type BrowserUploadOptions = {
-  type: "browser"
-  url: string
-  appName: string
-  path: string
-  apiKeyId: string
-  apiPublicKey: string
-}
-
-type DirectUploadOptions = Simplify<
-  {
-    url: string
-  } & Omit<SecretAPIUploadProps, "file">
->
-
-type CustomUploadOptions = {
-  type: "server"
-  url: string
-  data: JsonObject
-}
-
-export type UploadOptions =
-  | DemoUploadOptions
-  | DirectUploadOptions
-  | CustomUploadOptions
-  | BrowserUploadOptions
 
 /**
  * Props that are added to the `editor` object passed in through the
