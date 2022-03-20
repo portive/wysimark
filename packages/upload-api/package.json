@@ -50,5 +50,6 @@
     "lint:eslint": "eslint .",
     "lint:tsc": "tsc --build ./ --force",
     "-- end": "# end"
-  }
+  },
+  "gitHead": "eaae342182d1350c98c646ab68e1a7b370879b76"
 }
