@@ -1,5 +1,5 @@
 import JWT from "jsonwebtoken"
-import { ServerUploadPayload, ServerUploadProps, UploadFileInfo } from "./types"
+import { JWTUploadPayload, JWTUploadProps, UploadFileInfo } from "./types"
 
 export async function generateUploadCredentials({
   file,
@@ -16,8 +16,8 @@ export async function generateUploadCredentials({
   apiSecretKey: string
   origin?: string
 }) {
-  const payload: ServerUploadPayload = {
-    type: "server",
+  const payload: JWTUploadPayload = {
+    type: "jwt",
     file,
     appName,
     path,
@@ -26,9 +26,10 @@ export async function generateUploadCredentials({
   }
   const jwt = JWT.sign(payload, apiSecretKey)
 
-  const props: ServerUploadProps = { type: "server", jwt }
+  const props: JWTUploadProps = { type: "jwt", jwt }
 
-  const url = `${origin}/api/v1/upload/server`
+  const url = `${origin}/api/v1/upload/jwt`
+  console.log(`fetch: ${JSON.stringify(url)}`)
 
   const response = await fetch(url, {
     method: "POST",

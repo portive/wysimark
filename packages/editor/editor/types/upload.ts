@@ -36,8 +36,8 @@ export type BrowserUploadBase = {
   apiPublicKey: string
 }
 
-export type ServerUploadBase = {
-  type: "server"
+export type CustomUploadBase = {
+  type: "custom"
   data: JsonObject
 }
 
@@ -53,11 +53,11 @@ type FixedUploadProps = { file: UploadFileInfo }
 
 export type DemoUploadProps = FixedUploadProps & DemoUploadBase
 export type BrowserUploadProps = FixedUploadProps & BrowserUploadBase
-export type ServerUploadProps = FixedUploadProps & ServerUploadBase
+export type CustomUploadProps = FixedUploadProps & CustomUploadBase
 export type UploadProps =
   | DemoUploadProps
   | BrowserUploadProps
-  | ServerUploadProps
+  | CustomUploadProps
 
 /**
  * Upload Options from Upload Base
@@ -67,9 +67,9 @@ type FixedUploadOptions = { url: string }
 
 export type DemoUploadOptions = FixedUploadOptions & DemoUploadBase
 export type BrowserUploadOptions = FixedUploadOptions & BrowserUploadBase
-export type ServerUploadOptions = FixedUploadOptions & ServerUploadBase
+export type CustomUploadOptions = FixedUploadOptions & CustomUploadBase
 
 export type UploadOptions =
   | DemoUploadOptions
-  | ServerUploadOptions
+  | CustomUploadOptions
   | BrowserUploadOptions

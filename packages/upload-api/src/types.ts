@@ -26,8 +26,8 @@ export type UploadFileInfo = UploadGenericFileInfo | UploadImageFileInfo
  * service
  */
 
-export type ServerUploadPayload = {
-  type: "server"
+export type JWTUploadPayload = {
+  type: "jwt"
   file: UploadFileInfo
   appName: string
   path: string
@@ -44,7 +44,7 @@ export type ServerUploadPayload = {
  * the encoded `ServerUploadPayload`
  */
 
-export type ServerUploadProps = {
-  type: "server"
+export type JWTUploadProps = {
+  type: "jwt"
   jwt: string
 }

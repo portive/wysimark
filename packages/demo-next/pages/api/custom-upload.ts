@@ -41,7 +41,7 @@ export default async function handler(
   if (
     process.env.SERVER_APP_NAME == null ||
     process.env.SERVER_KEY_ID == null ||
-    process.env.SERVER_SECRET_KEY
+    process.env.SERVER_SECRET_KEY == null
   ) {
     const failureJson = generateUploadFailure({
       message: `To test the custom server upload, please add SERVER_APP_NAME, SERVER_KEY_ID and SERVER_SECRET_KEY to the dotenv file ".env/dev.env"`,

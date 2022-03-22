@@ -9,5 +9,5 @@ export type {
   UploadFileInfo,
   DemoUploadProps,
   BrowserUploadProps,
-  ServerUploadProps,
+  CustomUploadProps,
 } from "./types"

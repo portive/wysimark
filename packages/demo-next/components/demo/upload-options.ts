@@ -38,8 +38,8 @@ export const UPLOAD_OPTIONS: Options<UploadOptions | undefined> = [
     id: "local-server",
     caption: "localhost:3001 Server",
     value: {
-      type: "server",
-      url: "/api/server-upload",
+      type: "custom",
+      url: "/api/custom-upload",
       data: {
         username: "johndoe",
         password: "password",
@@ -50,8 +50,8 @@ export const UPLOAD_OPTIONS: Options<UploadOptions | undefined> = [
     id: "local-server-fail",
     caption: "localhost:3001 Server Fail",
     value: {
-      type: "server",
-      url: "/api/server-upload",
+      type: "custom",
+      url: "/api/custom-upload",
       data: {
         username: "haxor",
         secret: "whatsthesecretagain?",
