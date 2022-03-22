@@ -1,6 +1,6 @@
 {
   "name": "@wysimark/react",
-  "version": "1.0.49",
+  "version": "1.0.50",
   "private": false,
   "description": "Wysimark - WYSIWYG Markdown Editor for React",
   "license": "GPLV3",
