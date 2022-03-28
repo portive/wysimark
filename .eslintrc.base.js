@@ -32,7 +32,10 @@ module.exports = {
     /**
      * Don't allow eslint to pass if there is a `FIXME:` in the code
      */
-    "no-warning-comments": ["error", { terms: ["FIXME:"] }],
+    "no-warning-comments": [
+      "error",
+      { terms: ["FIXME:"], location: "anywhere" },
+    ],
     /**
      * Looks for potentially added an accidental secret to the git repo.
      */
