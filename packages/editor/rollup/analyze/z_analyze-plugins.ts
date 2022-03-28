@@ -4,7 +4,8 @@ import {
   CleanedModuleInfo,
   analyzeDeps,
   cleanModuleInfo,
-} from "~/lib/rollup-analyze-deps"
+  isNodeModule,
+} from "~/lib/rollup-analyze-deps/utils"
 import commonjs from "@rollup/plugin-commonjs"
 import json from "@rollup/plugin-json"
 import resolve from "@rollup/plugin-node-resolve"
@@ -96,8 +97,8 @@ function getCleanedNodeModulesInfo(ctx: PluginContext): CleanedModuleInfo[] {
  * Returns true if the `moduleId` indicates that this is a `node_modules`
  * package. Otherwise, it's an import from within the project itself.
  */
-function isNodeModule(id: string) {
-  if (id.includes("node_modules")) return true
-  if (id.match(/^[^/]/)) return true
-  return false
-}
+// function isNodeModule(id: string) {
+//   if (id.includes("node_modules")) return true
+//   if (id.match(/^[^/]/)) return true
+//   return false
+// }
