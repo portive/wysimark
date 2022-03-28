@@ -1,4 +1,4 @@
-import { analyzeDeps } from "../utils"
+import { analyzeDeps } from "../analyze-deps"
 import analysis from "./analysis.json"
 import pkg from "./pkg.json"
 

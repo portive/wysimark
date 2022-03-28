@@ -1,19 +1,14 @@
 import beeper from "beeper"
 import { rollup } from "rollup"
 import typescript from "rollup-plugin-typescript2"
-import pluginAnalyzeDeps from "~/lib/rollup-analyze-deps/rollup-plugin-analyze-deps"
+import pluginAnalyzeDeps from "~/lib/rollup-plugin-analyze-deps"
 import commonjs from "@rollup/plugin-commonjs"
 import json from "@rollup/plugin-json"
 import resolve from "@rollup/plugin-node-resolve"
-// import { rollup } from "rollup"
 import * as util from "@thesunny/script-utils"
 import { onwarn } from "../onwarn"
-// import { onwarn } from "../onwarn"
-// import { plugins } from "./analyze-plugins"
 
 const INPUT_PATH = "editor/index.tsx"
-// const ANALYZE_DIR = "./.build/analyze"
-// const ANALYZE_CACHE_PATH = `${ANALYZE_DIR}/analysis.json`
 
 async function build() {
   try {
@@ -56,7 +51,10 @@ async function build() {
         typescript({
           tsconfig: "tsconfig.rollup.json",
         }),
-        pluginAnalyzeDeps({ packagePath: "package.json" }),
+        pluginAnalyzeDeps({
+          packagePath: "package.json",
+          destPackages: ["../react/package.json"],
+        }),
       ],
       onwarn,
     })
