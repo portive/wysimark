@@ -24,12 +24,7 @@ function isBlockType(block: BlockLike, types: string[]): boolean {
   )
 }
 
-/**
- * FIXME:
- *
- * Could be valuable to move this into `editor/types`. Maybe an `isLeafElement`
- * method.
- */
+// TODO: Consider moving these to `editor/types` with an `isLeafElement` method
 const TYPES_WITH_LINE_CHILDREN = [
   "p",
   "heading",

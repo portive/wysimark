@@ -1,20 +1,7 @@
 import chalk from "chalk"
+import pick from "lodash/pick"
+import { GetModuleInfo } from "rollup"
 import * as util from "@thesunny/script-utils"
-
-// type ModuleInfo = {
-//   dynamicallyImportedIds: string[]
-//   dynamicImporters: string[]
-//   hasModuleSideEffects: boolean
-//   id: string
-//   implicitlyLoadedAfterOneOf: string
-//   implicitlyLoadedBefore: string
-//   importedIds: string[]
-//   importers: string[]
-//   isEntry: boolean
-//   isExternal: boolean
-//   meta: Record<string, any>
-//   syntheticNamedExports: string
-// }
 
 /**
  * Type information from:
@@ -23,23 +10,31 @@ import * as util from "@thesunny/script-utils"
  *
  * Removed `code` and `ast` as it's unnecessary for this analysis.
  */
-export type ModuleInfo = {
-  id: string // the id of the module, for convenience
-  // code: string | null // the source code of the module, `null` if external or not yet available
-  // ast: ESTree.Program; // the parsed abstract syntax tree if available
-  isEntry: boolean // is this a user- or plugin-defined entry point
-  isExternal: boolean // for external modules that are referenced but not included in the graph
-  isIncluded?: boolean | null // is the module included after tree-shaking, `null` if external or not yet available
-  importedIds: string[] // the module ids statically imported by this module
-  importers: string[] // the ids of all modules that statically import this module
-  dynamicallyImportedIds: string[] // the module ids imported by this module via dynamic import()
-  dynamicImporters: string[] // the ids of all modules that import this module via dynamic import()
-  implicitlyLoadedAfterOneOf: string[] // implicit relationships, declared via this.emitFile
-  implicitlyLoadedBefore: string[] // implicit relationships, declared via this.emitFile
-  hasModuleSideEffects: boolean | "no-treeshake" // are imports of this module included if nothing is imported from it
-  meta: { [plugin: string]: any } // custom module meta-data
-  syntheticNamedExports: boolean | string // final value of synthetic named exports
-}
+export type ModuleInfo = NonNullable<ReturnType<GetModuleInfo>>
+
+/**
+ * A version of ModuleInfo with reduced information so that we can cache the
+ * info without it taking too much disk space and is JSON safe.
+ *
+ * type ModuleInfo = {
+ *   id: string // the id of the module, for convenience
+ *   // code: string | null // the source code of the module, `null` if external or not yet available
+ *   // ast: ESTree.Program; // the parsed abstract syntax tree if available
+ *   isEntry: boolean // is this a user- or plugin-defined entry point
+ *   isExternal: boolean // for external modules that are referenced but not included in the graph
+ *   isIncluded?: boolean | null // is the module included after tree-shaking, `null` if external or not yet available
+ *   importedIds: string[] // the module ids statically imported by this module
+ *   importers: string[] // the ids of all modules that statically import this module
+ *   dynamicallyImportedIds: string[] // the module ids imported by this module via dynamic import()
+ *   dynamicImporters: string[] // the ids of all modules that import this module via dynamic import()
+ *   implicitlyLoadedAfterOneOf: string[] // implicit relationships, declared via this.emitFile
+ *   implicitlyLoadedBefore: string[] // implicit relationships, declared via this.emitFile
+ *   hasModuleSideEffects: boolean | "no-treeshake" // are imports of this module included if nothing is imported from it
+ *   meta: { [plugin: string]: any } // custom module meta-data
+ *   syntheticNamedExports: boolean | string // final value of synthetic named exports
+ * }
+ */
+export type CleanedModuleInfo = Omit<ModuleInfo, "code" | "ast">
 
 /**
  * Remove null/end of string character which randomly pollutes the rollup
@@ -52,14 +47,14 @@ function clean(s: string) {
 /**
  * Remove null/end of string on an array of strings
  */
-function cleanLines(lines: string[]) {
+function cleanLines(lines: Readonly<string[]>) {
   return lines.map(clean)
 }
 
 /**
  * Takes
  */
-export function cleanModuleInfo(m: ModuleInfo) {
+export function cleanModuleInfo(m: ModuleInfo): CleanedModuleInfo {
   return {
     id: clean(m.id),
     isEntry: m.isEntry,
@@ -86,7 +81,7 @@ export function cleanModuleInfo(m: ModuleInfo) {
  *    "@org/package"
  * 2. Collapses any subpaths like `lodash/last` to `lodash` for deep imports.
  */
-function extractPackageName(id: string) {
+function extractPackageName(id: string): string {
   const ORG_PACKAGE_REGEXP = /.*\/node_modules\/([@][^/]+[/][^/]+)/
   const SINGLE_PACKAGE_REGEXP = /.*\/node_modules\/([^/]+)/
   const pkgMatch = id.match(ORG_PACKAGE_REGEXP)
@@ -96,7 +91,7 @@ function extractPackageName(id: string) {
   return id
 }
 
-export function isNodeModule(id: string) {
+export function isNodeModule(id: string): boolean {
   if (id.match(/\/node_modules\//)) {
     return true
   }
@@ -107,15 +102,9 @@ export function isNodeModule(id: string) {
 }
 
 export function analyzeDeps(
-  moduleInfos: ModuleInfo[],
+  moduleInfos: CleanedModuleInfo[],
   pkgDeps: Record<string, string>
-) {
-  const output: string[] = []
-
-  function log(s: string) {
-    output.push(s)
-  }
-
+): void {
   const dependencySet: Set<string> = new Set()
 
   for (const moduleInfo of moduleInfos) {
@@ -126,33 +115,57 @@ export function analyzeDeps(
     }
   }
   const dependencies = Array.from(dependencySet).sort()
-  for (const dep of dependencies) {
-    log(chalk.yellowBright(dep))
-  }
+
   const unusedDeps = { ...pkgDeps }
   for (const dep of dependencies) {
     delete unusedDeps[dep]
   }
 
-  util.heading("Dependencies found in rollup")
-  console.log(output.join("\n"))
+  /**
+   * Destination values for `package.json`
+   */
+  util.heading("Analyze Dependencies")
 
-  util.heading("Unused dependencies")
-  if (Object.keys(unusedDeps).length === 0) {
-    console.log("No unused dependencies\n")
+  util.task("Find dependencies")
+  const destPackageJson = { dependencies: pick(pkgDeps, ...dependencies) }
+  util.pass(`Found ${dependencies.length} dependencies`)
+  console.log(chalk.greenBright(JSON.stringify(destPackageJson, null, 2)))
+
+  util.task("Find unused dependencies in package.json")
+  const unusedDepCount = Object.keys(unusedDeps).length
+
+  if (unusedDepCount === 0) {
+    util.pass("No unused dependencies\n")
   } else {
-    console.log(Object.keys(unusedDeps).sort().join("\n"))
+    console.log(Object.keys(unusedDeps).sort())
+    util.alert(
+      `Found ${unusedDepCount} unused dependencies. Recommend removing them.`
+    )
   }
 
-  util.heading("Dependencies we forgot to add")
+  /**
+   * Find dependencies we forgot to add.
+   */
+  util.task("Find missing dependencies")
+
   const forgottenDepSet = new Set(dependencySet)
   for (const dep of Object.keys(pkgDeps)) {
     forgottenDepSet.delete(dep)
   }
+
+  /**
+   * `tslib` is not a forgotten dependency. It is automaticaly included by
+   * TypeScript. Notably it handles rest parameters and await.
+   */
+  forgottenDepSet.delete("tslib")
+
   const forgottenDeps = Array.from(forgottenDepSet)
   if (forgottenDeps.length === 0) {
-    console.log("No forgotten dependencies\n")
+    util.pass("No missing dependencies")
   } else {
     console.log(forgottenDeps)
+    util.fail(
+      `Found ${forgottenDeps.length} imports witout a corresponding dependency in package.json`
+    )
   }
 }

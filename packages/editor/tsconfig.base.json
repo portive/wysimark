@@ -84,5 +84,5 @@
    * Added `rollup` here but eventually we should move this to a
    * `tsconfig.custom.json` config file which imports this one.
    */
-  "exclude": ["node_modules", "rollup"]
+  "exclude": ["node_modules"]
 }

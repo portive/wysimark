@@ -1,8 +1,7 @@
-import chalk from "chalk"
-import { Plugin } from "rollup"
+import { Plugin, PluginContext } from "rollup"
 import typescript from "rollup-plugin-typescript2"
 import {
-  ModuleInfo,
+  CleanedModuleInfo,
   analyzeDeps,
   cleanModuleInfo,
 } from "~/lib/rollup-analyze-deps"
@@ -12,6 +11,12 @@ import resolve from "@rollup/plugin-node-resolve"
 import * as util from "@thesunny/script-utils"
 
 /**
+ * FIXME: Currently, we aren't copying the dependencies from `package.json`
+ * into the NPM packages like `packages/react`, `packages/standalone` and
+ * `packages/vue`
+ */
+
+/**
  * NOTE:
  *
  * Adding `typescriptDeclarations` affects the time to compile by only a few
@@ -19,7 +24,7 @@ import * as util from "@thesunny/script-utils"
  *
  * Tested on December 6, 2021 at 41.2s vs 46.7s
  */
-export function plugins({ analysisPath }: { analysisPath: string }) {
+export function plugins({ analysisCachePath }: { analysisCachePath: string }) {
   const pluginsArray: (Plugin | undefined)[] = [
     /**
      * ## Removed most processing
@@ -28,9 +33,11 @@ export function plugins({ analysisPath }: { analysisPath: string }) {
      * analysis. Trying to keep this simple so there is less opportunity for
      * breakage.
      */
-    // replace({ "process.env.NODE_ENV": JSON.stringify("production") }),
+    /**
+     * We include `resolve` and set these options. Without them we end up
+     * with a chatty terminal.
+     */
     resolve({
-      // jsnext: true,
       preferBuiltins: true,
       browser: true,
     }),
@@ -60,34 +67,35 @@ export function plugins({ analysisPath }: { analysisPath: string }) {
           return
         }
         util.heading("buildEnd")
-        const moduleIds = this.getModuleIds()
-        const nodeModules: ModuleInfo[] = []
-        for (const moduleId of moduleIds) {
-          if (isNodeModule(moduleId)) {
-            const m = this.getModuleInfo(moduleId)
-            if (m) {
-              nodeModules.push(cleanModuleInfo(m as any))
-            }
-          }
-        }
-        util.writeFile(analysisPath, JSON.stringify(nodeModules, null, 2))
+        const nodeModules = getCleanedNodeModulesInfo(this)
+        util.writeFile(analysisCachePath, JSON.stringify(nodeModules, null, 2))
         const pkg = JSON.parse(util.readFile("package.json"))
 
         analyzeDeps(nodeModules, pkg.dependencies)
-
-        console.log(
-          chalk.whiteBright(
-            `NOTE: We expect to see these transitive peer dependencies in "Unused dependencies"\n`
-          )
-        )
-        console.log("@fortawesome/fontawesome-common-types")
-        console.log("@fortawesome/fontawesome-svg-core\n")
       },
     },
   ]
   return pluginsArray
 }
 
+function getCleanedNodeModulesInfo(ctx: PluginContext): CleanedModuleInfo[] {
+  const moduleIds = ctx.getModuleIds()
+  const cleanedNodeModulesInfo: CleanedModuleInfo[] = []
+  for (const moduleId of moduleIds) {
+    if (isNodeModule(moduleId)) {
+      const m = ctx.getModuleInfo(moduleId)
+      if (m) {
+        cleanedNodeModulesInfo.push(cleanModuleInfo(m))
+      }
+    }
+  }
+  return cleanedNodeModulesInfo
+}
+
+/**
+ * Returns true if the `moduleId` indicates that this is a `node_modules`
+ * package. Otherwise, it's an import from within the project itself.
+ */
 function isNodeModule(id: string) {
   if (id.includes("node_modules")) return true
   if (id.match(/^[^/]/)) return true

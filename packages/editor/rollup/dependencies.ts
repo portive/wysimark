@@ -49,10 +49,6 @@ export function getDependencies() {
   const dependencies: Record<string, string> = {}
 
   for (const [key, value] of Object.entries(originalDependencies)) {
-    /**
-     * We want to bundle all of the FontAwesome stuff directly in the package
-     */
-    if (key.includes("@fortawesome")) continue
     dependencies[key] = value
   }
   return dependencies
