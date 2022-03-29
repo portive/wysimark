@@ -1,6 +1,6 @@
 {
   "name": "@wysimark/standalone",
-  "version": "1.0.50",
+  "version": "1.0.51",
   "private": false,
   "description": "Wysimark - WYSIWYG Markdown Editor for JavaScript",
   "license": "GPLV3",
