@@ -53,27 +53,15 @@ async function build() {
         }),
         pluginAnalyzeDeps({
           packagePath: "package.json",
-          destPackages: ["../react/package.json"],
+          destPackages: [
+            { path: "../react/package.json" },
+            { path: "../standalone/package.json" },
+            { path: "../vue/package.json", dependencies: { vue: "3.x.x" } },
+          ],
         }),
       ],
       onwarn,
     })
-
-    /**
-     * Run Analysis
-     */
-    // await rollup({
-    //   input: INPUT_PATH,
-    //   plugins: plugins({
-    //     analysisCachePath: ANALYZE_CACHE_PATH,
-    //   }),
-    //   onwarn,
-    // })
-
-    // /**
-    //  * Modify package.json to add dependencies
-    //  */
-    // addDependenciesToPackage(PACKAGE_PATH)
   } catch (e) {
     await beeper("**-**")
     throw e

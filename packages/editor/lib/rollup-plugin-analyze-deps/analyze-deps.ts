@@ -93,23 +93,3 @@ export function analyzeDeps(
 
   return destPackageJson
 }
-
-// /**
-//  * Returns an Array of information about each of the `node_modules` that is
-//  * included.
-//  */
-// export function getCleanedNodeModulesInfo(
-//   ctx: PluginContext
-// ): CleanedModuleInfo[] {
-//   const moduleIds = ctx.getModuleIds()
-//   const cleanedNodeModulesInfo: CleanedModuleInfo[] = []
-//   for (const moduleId of moduleIds) {
-//     if (isNodeModule(moduleId)) {
-//       const m = ctx.getModuleInfo(moduleId)
-//       if (m) {
-//         cleanedNodeModulesInfo.push(cleanModuleInfo(m))
-//       }
-//     }
-//   }
-//   return cleanedNodeModulesInfo
-// }
