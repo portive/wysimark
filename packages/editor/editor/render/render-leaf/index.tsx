@@ -11,18 +11,26 @@ import styled from "@emotion/styled"
 
 const $Leaf = styled.span`
   &.token-comment {
-    color: slategray;
+    span[data-slate-string] {
+      color: slategray;
+    }
   }
   &.token-operator,
   &.token-url {
-    color: #9a6e3a;
+    span[data-slate-string] {
+      color: #9a6e3a;
+    }
   }
   &.token-keyword {
-    color: #07a;
+    span[data-slate-string] {
+      color: #07a;
+    }
   }
   &.token-variable,
   &.token-regex {
-    color: #e90;
+    span[data-slate-string] {
+      color: #e90;
+    }
   }
 
   &.token-number,
@@ -32,21 +40,29 @@ const $Leaf = styled.span`
   &.token-symbol,
   &.token-attr-name,
   &.token-selector {
-    color: #905;
+    span[data-slate-string] {
+      color: #905;
+    }
   }
 
   &.token-punctuation {
-    color: #999;
+    span[data-slate-string] {
+      color: #999;
+    }
   }
 
   &.token-string,
   &.token-char {
-    color: #690;
+    span[data-slate-string] {
+      color: #690;
+    }
   }
 
   &.token-function,
   &.token-class-name {
-    color: #dd4a68;
+    span[data-slate-string] {
+      color: #dd4a68;
+    }
   }
 `
 
