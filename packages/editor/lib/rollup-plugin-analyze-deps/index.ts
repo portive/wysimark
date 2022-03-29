@@ -47,8 +47,6 @@ export default function rollupPluginAnalyzeDeps({
         }
         destPackageJSON.dependencies = destDependencies
         sortPackageJson(destPackageJSON)
-        // console.log(destPackage.path)
-        // console.log(destPackageJSON)
         util.removeFileIfExists(destPackage.path)
         util.writeFile(
           destPackage.path,
