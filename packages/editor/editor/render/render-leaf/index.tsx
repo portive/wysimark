@@ -96,7 +96,7 @@ export function renderLeaf(props: RenderLeafProps) {
       sub: leaf.sub,
       code: leaf.code,
     },
-    (decoratedLeaf as DecorateMarks).token ? `token-${decoratedLeaf.token}` : ""
+    decoratedLeaf.token ? `token-${decoratedLeaf.token}` : ""
   )
   /**
    * We only want to set the `spellCheck` attribute to `true` if we are in a
