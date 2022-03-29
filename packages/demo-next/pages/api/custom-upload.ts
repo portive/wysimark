@@ -39,12 +39,13 @@ export default async function handler(
   }
 
   if (
+    process.env.SERVER_ORIGIN == null ||
     process.env.SERVER_APP_NAME == null ||
     process.env.SERVER_KEY_ID == null ||
     process.env.SERVER_SECRET_KEY == null
   ) {
     const failureJson = generateUploadFailure({
-      message: `To test the custom server upload, please add SERVER_APP_NAME, SERVER_KEY_ID and SERVER_SECRET_KEY to the dotenv file ".env/dev.env"`,
+      message: `To test the custom server upload, please add SERVER_ORIGIN, SERVER_APP_NAME, SERVER_KEY_ID and SERVER_SECRET_KEY to the dotenv file ".env/dev.env"`,
     })
     res.status(200).json(failureJson)
     return
@@ -55,6 +56,7 @@ export default async function handler(
    * have defined them yet in `.env/dev.env`.
    */
   const env = getStaticEnv({
+    SERVER_ORIGIN: process.env.SERVER_ORIGIN,
     SERVER_APP_NAME: process.env.SERVER_APP_NAME,
     SERVER_KEY_ID: process.env.SERVER_KEY_ID,
     SERVER_SECRET_KEY: process.env.SERVER_SECRET_KEY,
@@ -65,7 +67,7 @@ export default async function handler(
    * never transmitted thus keeping it safe.
    */
   const resJson = await generateUploadCredentials({
-    origin: "http://localhost:3001",
+    origin: env.SERVER_ORIGIN,
     file: reqJson.file as UploadFileInfo,
     appName: env.SERVER_APP_NAME,
     path: "a/b/c",
