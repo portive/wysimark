@@ -1,102 +1,67 @@
 import beeper from "beeper"
 import { rollup } from "rollup"
+import typescript from "rollup-plugin-typescript2"
+import pluginAnalyzeDeps from "~/lib/rollup-plugin-analyze-deps"
+import commonjs from "@rollup/plugin-commonjs"
+import json from "@rollup/plugin-json"
+import resolve from "@rollup/plugin-node-resolve"
 import * as util from "@thesunny/script-utils"
 import { onwarn } from "../onwarn"
-import { plugins } from "./analyze-plugins"
 
 const INPUT_PATH = "editor/index.tsx"
-const ANALYZE_DIR = "./.dist/analyze"
-
-/**
- * Packages not to bundle up inside deliverable.
- *
- * This means these need to be added as dependencies of the package built.
- */
-// const EXTERNAL = [
-//   "axios",
-//   "react",
-//   "react-dom",
-//   "@emotion/cache",
-//   "@emotion/core",
-//   "@emotion/styled",
-// ]
-
-// const EXTERNAL = getExternal()
 
 async function build() {
-  // const start = new Date()
   try {
     /**
      * Clear directories
      */
-    util.title("Analyze Wysimark for React")
-    util.emptyDir(ANALYZE_DIR)
+    util.title("Analyze Dependencies")
+    // util.emptyDir(ANALYZE_DIR)
 
     /**
-     * Build Bundle for Analysis
+     * Run Rollup with `pluginAnalyzeDeps` as last plugin to do the analysis.
      */
-    util.heading("Build bundle for analysis")
     await rollup({
       input: INPUT_PATH,
-      plugins: plugins({ analysisPath: `${ANALYZE_DIR}/analysis.json` }),
+      plugins: [
+        /**
+         * ## Removed most processing
+         *
+         * Removed most of the processing because it's not required to do the
+         * analysis. Trying to keep this simple so there is less opportunity for
+         * breakage.
+         */
+        /**
+         * We include `resolve` and set these options. Without them we end up
+         * with a chatty terminal.
+         */
+        resolve({
+          preferBuiltins: true,
+          browser: true,
+        }),
+        /**
+         * JSON processing
+         */
+        json(),
+        /**
+         * `commonjs` must come after `resolve`
+         * <https://github.com/axios/axios/issues/1259>
+         */
+        commonjs(),
+        typescript({
+          tsconfig: "tsconfig.rollup.json",
+        }),
+        pluginAnalyzeDeps({
+          packagePath: "package.json",
+          destPackages: [
+            { path: "../react/package.json" },
+            { path: "../standalone/package.json" },
+            { path: "../vue/package.json", dependencies: { vue: "3.x.x" } },
+          ],
+        }),
+      ],
       onwarn,
-      // external: EXTERNAL,
     })
-
-    // /**
-    //  * Write CJS
-    //  */
-    // util.heading("Write CommonJS files")
-    // await bundle.write({
-    //   file: `${BUILD_DIR}/index.js`,
-    //   format: "cjs",
-    //   sourcemap: true,
-    // })
-
-    /**
-     * Write ESM
-     */
-    // util.heading("Write ESM files")
-    // await bundle.write({
-    //   file: `${ANALYZE_DIR}/index.esm.js`,
-    //   format: "esm",
-    // })
-
-    // /**
-    //  * Bundle Types
-    //  */
-    // util.heading("Compile TypeScript types into a single file")
-    // util.ensureFileExists(BUILD_TYPES_SRC_PATH)
-
-    // /**
-    //  * Build TypeScript Types
-    //  */
-    // const typesBundle = await rollup({
-    //   input: BUILD_TYPES_SRC_PATH,
-    //   plugins: [dts()],
-    // })
-
-    // /**
-    //  * Write TypeScript Types
-    //  */
-    // util.heading("Write Compiled TypeScript types")
-    // await typesBundle.write({ file: BUILD_TYPES_DEST_PATH, format: "es" })
-
-    // /**
-    //  * Copy dist files to NPM package directory
-    //  */
-    // util.heading("Copy files to NPM package directory")
-    // for (const filename of FILENAMES) {
-    //   util.copyFile(
-    //     `${BUILD_DIR}/${filename}`,
-    //     `${PACKAGE_DIST_DIR}/${filename}`
-    //   )
-    // }
-
-    // /**
-    //  * Modify package.json to add dependencies
-    //  */
-    // addDependenciesToPackage(PACKAGE_PATH)
   } catch (e) {
     await beeper("**-**")
     throw e

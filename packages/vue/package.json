@@ -15,6 +15,7 @@
     "@emotion/cache": "10.0.29",
     "@emotion/core": "10.0.35",
     "@emotion/styled": "10.0.27",
+    "@thesunny/assert-type": "^0.1.7",
     "@wysimark/resource": "^0.2.9",
     "axios": "^0.19.0",
     "classnames": "^2.2.6",
@@ -25,7 +26,6 @@
     "mdast-move-images-to-root": "^1.0.0",
     "pretty-bytes": "^5.6.0",
     "prismjs": "^1.24.1",
-    "prop-types": "^15.8.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "remark-disable-tokenizers": "^1.0.24",
@@ -36,8 +36,8 @@
     "slate": "^0.66.1",
     "slate-history": "^0.66.0",
     "slate-react": "^0.66.1",
-    "stylis-plugin-extra-scope": "^0.2.1",
-    "unified": "^9.0.0"
-  },
-  "gitHead": "90a9e3930b7618115f4c5ee3e50906407e0b0774"
+    "stylis-plugin-extra-scope": "^0.3.0",
+    "unified": "^9.0.0",
+    "vue": "3.x.x"
+  }
 }

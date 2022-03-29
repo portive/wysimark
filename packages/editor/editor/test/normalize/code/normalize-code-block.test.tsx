@@ -93,7 +93,7 @@ describe("normalize code", () => {
     })
 
     /**
-     * FIXME:
+     * TODO: convert invalid nested children into code-line
      */
     it.skip("should convert invalid nested children into code-line", async () => {
       const input = (

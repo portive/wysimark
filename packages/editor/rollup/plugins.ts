@@ -54,7 +54,7 @@ export function plugins(
      * <https://github.com/axios/axios/issues/1259>
      * <https://aleemisiaka.com/blog/configure-axios-rollup/>
      *
-     * FIXME:
+     * TODO:
      *
      * - If we don't include the `resolve`, then Vue breaks because it is
      *   looking for `process`
