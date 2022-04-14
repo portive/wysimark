@@ -5,7 +5,7 @@ import { stopEvent } from "~/lib/stop-event"
 import * as Custom from "../custom"
 import { MEDIA_REGEXPS } from "../render/render-element/media"
 
-export function onPaste(e: React.ClipboardEvent, editor: Editor) {
+export function onPaste(e: React.ClipboardEvent, editor: Editor): boolean {
   const x = pick(e, ["type", "clipboardData"])
   const { files, types } = e.clipboardData
   /**
@@ -13,6 +13,7 @@ export function onPaste(e: React.ClipboardEvent, editor: Editor) {
    */
   if (files.length > 0) {
     stopEvent(e)
+    if (editor.uploadOptions.type === "disabled") return true
     editor.upload(files)
     return true
   } else if (types.includes("text/plain")) {

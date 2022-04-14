@@ -77,6 +77,11 @@ export function UploadProgressDialog({
 
   useEffect(() => {
     ;(async function () {
+      const uploadOptions = editor.uploadOptions
+      if (uploadOptions.type === "disabled") {
+        throw new Error(`Uploading has been disabled`)
+      }
+
       /**
        * Upload all the files by first getting a policy from the API endpoint
        * and then sending the files based on the policy we retrieved.
@@ -110,7 +115,7 @@ export function UploadProgressDialog({
 
           try {
             rawResponse = await axios.post<UploadResponse>(
-              editor.uploadOptions.url,
+              uploadOptions.url,
               props
             )
           } catch (e) {
@@ -118,7 +123,7 @@ export function UploadProgressDialog({
               status: "error",
               message: `Could not access the upload API.
 The most likely cause is that the API URL ${JSON.stringify(
-                editor.uploadOptions.url
+                uploadOptions.url
               )} is configured incorrectly.
 The error is:
 ${e}`,

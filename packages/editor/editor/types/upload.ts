@@ -41,6 +41,10 @@ export type CustomUploadBase = {
   data: JsonObject
 }
 
+export type DisableUploadBase = {
+  type: "disabled"
+}
+
 /**
  * Upload Props from Upload Base
  *
@@ -68,8 +72,10 @@ type FixedUploadOptions = { url: string }
 export type DemoUploadOptions = FixedUploadOptions & DemoUploadBase
 export type BrowserUploadOptions = FixedUploadOptions & BrowserUploadBase
 export type CustomUploadOptions = FixedUploadOptions & CustomUploadBase
+export type DisableUploadOptions = DisableUploadBase
 
 export type UploadOptions =
   | DemoUploadOptions
   | CustomUploadOptions
   | BrowserUploadOptions
+  | DisableUploadOptions

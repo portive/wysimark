@@ -166,16 +166,23 @@ function ButtonGroup({
   className,
   items,
   toolbarState,
+  disable = [],
 }: {
   className?: string
   items: Item[]
   toolbarState: ToolbarState
+  disable: string[]
 }) {
   const editor = useSlate()
   return (
     <$ButtonGroup className={className}>
       {items.map((item) => {
-        if (isCommand(item)) {
+        if (
+          isCommand(item) &&
+          !disable.includes(
+            "id" in item ? (item.id !== undefined ? item.id : "") : ""
+          )
+        ) {
           return (
             <Button
               key={item.label}
@@ -221,6 +228,7 @@ const RenderEditorToolbar = React.memo(function RenderEditorToolbar({
           items={INSERT_COMMANDS}
           className="--desktop-only"
           toolbarState={toolbarState}
+          disable={["insert-file"]}
         />
       </$IconButtons>
     </$Toolbar>

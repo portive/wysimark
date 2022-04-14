@@ -63,4 +63,11 @@ export const UPLOAD_OPTIONS: Options<UploadOptions | undefined> = [
     caption: "Hosted: Browser Default",
     value: undefined,
   },
+  {
+    id: "disabled",
+    caption: "Disabled uploads",
+    value: {
+      type: "disabled",
+    },
+  },
 ]

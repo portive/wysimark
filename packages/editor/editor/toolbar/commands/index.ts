@@ -51,7 +51,7 @@ export type ActionProps = {
 type SVGComponent = (props: SVGProps<SVGSVGElement>) => JSX.Element
 
 export type Command = {
-  // faIcon?: IconDefinition
+  id?: string // optional id to identify certain commands for removal in toolbar
   SvgIcon?: SVGComponent
   iconProps?: SVGProps<SVGSVGElement>
   label: string
@@ -360,7 +360,6 @@ export const INSERT_COMMANDS: Item[] = [
     },
   },
   {
-    // faIcon: faHorizontalRule,
     SvgIcon: HrIcon,
     label: "Insert Horizontal Rule",
     hint: "Hint: type --- then hit enter",
@@ -403,7 +402,6 @@ export const INSERT_COMMANDS: Item[] = [
     },
   },
   {
-    // faIcon: faTable,
     SvgIcon: TableIcon,
     label: "Insert and modify table",
     hint: "Insert and remove columns and rows in table",
@@ -416,7 +414,6 @@ export const INSERT_COMMANDS: Item[] = [
     },
   },
   {
-    // faIcon: faCode,
     SvgIcon: CodeIcon,
     label: "Insert code block",
     hint: "Hint: click to see shortcuts to insert code block",
@@ -435,11 +432,10 @@ export const INSERT_COMMANDS: Item[] = [
     },
   },
   {
-    // faIcon: faPhotoVideo,
-    // fa: "fa-photo-video",
+    id: "insert-file",
     SvgIcon: ImageIcon,
-    label: "Insert media",
-    hint: "Hint: Paste media URL in editor",
+    label: "Insert image or file",
+    hint: "Hint: Upload image or file in editor",
     dropdown: true,
     action({ editor, modal, dest }) {
       modal.open(InsertImageDialog, {
@@ -449,18 +445,3 @@ export const INSERT_COMMANDS: Item[] = [
     },
   },
 ]
-
-if (SUPPORTS_UPLOAD) {
-  INSERT_COMMANDS.push({
-    SvgIcon: ImageIcon,
-    label: "Upload photo",
-    hint: "Hint: Paste or drop gif, jpeg or png file in editor",
-    dropdown: true,
-    action({ editor, modal, dest }) {
-      modal.open(InsertImageDialog, { editor, dest })
-    },
-    isActive(state) {
-      return isElementByType(state.block, "media")
-    },
-  })
-}
