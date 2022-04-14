@@ -10,7 +10,7 @@ import { token } from "./serialize-utils"
  */
 function serializeListItemToken(depth: number, block: ListItemElement) {
   const indent = range(depth)
-    .map(() => "  ")
+    .map(() => "   ")
     .join("")
   switch (block.type) {
     case "ordered-list-item":
