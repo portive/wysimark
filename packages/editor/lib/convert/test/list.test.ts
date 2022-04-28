@@ -1,6 +1,5 @@
-import { roundtrip, testParse } from "./convert-test-utils"
-
 import { RootBlockElement } from "~/editor/types"
+import { roundtrip, testParse } from "./convert-test-utils"
 
 describe("lists", () => {
   it("should handle one list item", () => {
@@ -73,7 +72,7 @@ describe("lists", () => {
     ]
     const markdown = `- 1
 
-  - 2`
+   - 2`
     const text = "* 1\n\n* 2"
     roundtrip(blocks, { markdown, text })
   })
@@ -191,7 +190,7 @@ describe("lists", () => {
     ]
     const markdown = `- item
 
-  - [ ] unchecked
+   - [ ] unchecked
 
 - [x] checked`
     const text = "* item\n\n[ ] unchecked\n\n[x] checked"
@@ -265,7 +264,7 @@ describe("lists", () => {
         children: [{ text: "" }],
       },
     ]
-    const markdown = `- &ZeroWidthSpace;\n\n  - &ZeroWidthSpace;`
+    const markdown = `- &ZeroWidthSpace;\n\n   - &ZeroWidthSpace;`
     const text = "* \n\n*"
     roundtrip(blocks, { markdown, text })
   })
@@ -288,7 +287,7 @@ describe("lists", () => {
         children: [{ text: "item" }],
       },
     ]
-    const markdown = `- item\n\n  - item`
+    const markdown = `- item\n\n   - item`
     const text = "* item\n\n* item"
     const reblocks: RootBlockElement[] = [
       {
