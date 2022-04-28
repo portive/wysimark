@@ -171,7 +171,7 @@ function ButtonGroup({
   className?: string
   items: Item[]
   toolbarState: ToolbarState
-  disable: string[]
+  disable?: string[]
 }) {
   const editor = useSlate()
   return (
