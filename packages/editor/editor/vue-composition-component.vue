@@ -31,7 +31,7 @@
 
 import { PropType, defineComponent, onBeforeUnmount, onMounted, ref } from "vue"
 import { createWysimark } from "./standalone"
-import { OnChange } from "./types"
+import { OnChange, UploadOptions } from "./types"
 
 /**
  * `defineComponent` helps add types to a Vue component
@@ -81,8 +81,14 @@ const component = defineComponent({
       type: Function as PropType<OnChange> | undefined,
       required: false,
     },
-    throttle: { type: Number, required: false },
-    upload: { type: Object, required: false },
+    throttle: {
+      type: Number,
+      required: false,
+    },
+    upload: {
+      type: Object as PropType<UploadOptions>,
+      required: false,
+    },
   },
 
   /**
@@ -149,7 +155,7 @@ const component = defineComponent({
           emit("blur", event)
         },
         throttle: props.throttle,
-        upload: props.upload as any,
+        upload: props.upload,
       })
     })
 
