@@ -17,6 +17,7 @@
         model-value="Value passed in from parent page"
         :minHeight="120"
         :maxHeight="240"
+        :upload="{ type: 'disabled' }"
         @update:model-value="logMarkdown"
       />
       <button @click="clickButton">Get Markdown Button</button>

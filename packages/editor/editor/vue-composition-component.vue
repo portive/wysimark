@@ -149,6 +149,7 @@ const component = defineComponent({
           emit("blur", event)
         },
         throttle: props.throttle,
+        upload: props.upload as any,
       })
     })
 

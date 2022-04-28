@@ -35,8 +35,9 @@
  *
  * https://v3.vuejs.org/guide/migration/global-api.html#vue-extend-removed
  */
-import { defineComponent } from "vue"
+import { PropType, defineComponent } from "vue"
 import { createWysimark } from "./standalone"
+import { EditorEvent, OnChange, UploadOptions } from "./types"
 /**
  * IMPORTANT: Do not import `vue`.
  *
@@ -46,11 +47,19 @@ import { createWysimark } from "./standalone"
 
 type This = {
   $refs: { reactContainer: HTMLElement }
-  $emit: (type: string, value: string) => void
+  $emit: ((type: "update:modelValue", value: string) => void) &
+    ((type: "change", value: EditorEvent) => void) &
+    ((type: "update", value: EditorEvent) => void) &
+    ((type: "blur", value: EditorEvent) => void)
   props: {
     modelValue: string
     minHeight?: number
     maxHeight?: number
+    onChange?: OnChange
+    onUpdate?: OnChange
+    onBlur?: OnChange
+    throttle?: number
+    upload?: UploadOptions
   }
   wysimark: ReturnType<typeof createWysimark>
   markdown: string
@@ -100,6 +109,20 @@ const WysimarkOptionsComponent = defineComponent({
     modelValue: { type: String, required: true },
     minHeight: { type: Number, required: false },
     maxHeight: { type: Number, required: false },
+    onChange: {
+      type: Function as PropType<OnChange> | undefined,
+      required: false,
+    },
+    onUpdate: {
+      type: Function as PropType<OnChange> | undefined,
+      required: false,
+    },
+    onBlur: {
+      type: Function as PropType<OnChange> | undefined,
+      required: false,
+    },
+    throttle: { type: Number, required: false },
+    upload: { type: Object, required: false },
   },
 
   /**
@@ -107,7 +130,7 @@ const WysimarkOptionsComponent = defineComponent({
    *
    * https://v3.vuejs.org/guide/migration/emits-option.html
    */
-  emits: ["update:modelValue"],
+  emits: ["update:modelValue", "change", "update", "blur"],
 
   setup(props: Record<string, unknown>) {
     /**
@@ -130,9 +153,27 @@ const WysimarkOptionsComponent = defineComponent({
       minHeight: props.minHeight,
       maxHeight: props.maxHeight,
       onChange: (event) => {
+        if (props.onChange) {
+          props.onChange(event)
+        }
+        this.$emit("change", event)
+      },
+      onUpdate: (event) => {
+        if (props.onUpdate) {
+          props.onUpdate(event)
+        }
         const markdown = event.getMarkdown()
+        this.$emit("update", event)
         this.$emit("update:modelValue", markdown)
       },
+      onBlur: (event) => {
+        if (props.onBlur) {
+          props.onBlur(event)
+        }
+        this.$emit("blur", event)
+      },
+      throttle: props.throttle,
+      upload: props.upload,
     })
     this.wysimark = wysimark
   },
