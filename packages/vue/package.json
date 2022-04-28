@@ -1,6 +1,6 @@
 {
   "name": "@wysimark/vue",
-  "version": "1.0.54",
+  "version": "1.0.55",
   "private": false,
   "description": "Wysimark - WYSIWYG Markdown Editor for Vue",
   "license": "GPLV3",
@@ -26,6 +26,7 @@
     "mdast-move-images-to-root": "^1.0.0",
     "pretty-bytes": "^5.6.0",
     "prismjs": "^1.24.1",
+    "prop-types": "^15.8.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "remark-disable-tokenizers": "^1.0.24",
