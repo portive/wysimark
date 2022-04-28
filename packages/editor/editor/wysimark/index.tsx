@@ -1,4 +1,5 @@
 import lodashThrottle from "lodash/throttle"
+import PropTypes from "prop-types"
 import React, { useCallback, useState } from "react"
 import ReactDOM from "react-dom"
 import { Descendant } from "slate"
@@ -10,6 +11,25 @@ import { getEditorEvent } from "../event/get-editor-event"
 import { Container } from "../render/render-editor/editor-with-toolbar"
 import { WysimarkContainerProps, WysimarkSlateProps } from "../types"
 import { EditorEvent } from "../types/editor-event"
+
+/**
+ * TODO: Remove PropTypes from React after adding to vue and standalone build
+ *
+ * Currently, PropTypes is not automatically being added as a dependency for
+ * the standalone build and the Vue build. There are two ways we can probably
+ * add it:
+ *
+ * 1. Manually add somewhere in the build process. Just declare that PropTypes
+ *    is a needed dependency for those two builds and add it.
+ * 2. Add the correct PropTypes to this file. This will add PropTypes as a
+ *    dependency here which will carry over into Standalone and Vue.
+ * 3. The "proper" way but probably overkill is to run a dependency check on
+ *    Standalone and Vue separately, and they will automaticaly discover their
+ *    own dependencies. The benefit of this is that if the Standalone or Vue
+ *    build ends up having other dependencies not required in the React build,
+ *    the build process will automatically figure it out.
+ */
+export { PropTypes }
 
 function noop() {
   /* noop */

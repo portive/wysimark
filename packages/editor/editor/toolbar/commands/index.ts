@@ -1,6 +1,5 @@
 import { SVGProps } from "react"
 import { Editor } from "slate"
-import { SUPPORTS_UPLOAD } from "~/editor/config"
 import {
   BlockquoteIndentIcon,
   BlockquoteOutdentIcon,
