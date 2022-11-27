@@ -17,7 +17,11 @@ export type $RenderLeafProps<$Text extends BaseText> = {
   children: any
   leaf: $Text
   text: $Text
-  attributes: {
-    "data-slate-leaf": true
-  }
+  /**
+   * Removed from the props given because we don't want the user to add it
+   * themselves.
+   */
+  // attributes: {
+  //   "data-slate-leaf": true
+  // }
 }

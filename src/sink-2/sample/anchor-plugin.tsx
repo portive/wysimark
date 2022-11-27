@@ -20,16 +20,11 @@ export type AnchorPluginCustomTypes = PluginCustomTypes<{
   Text: BaseText
 }>
 
-export const anchorPlugin = createPlugin<
-  "anchor",
-  AnchorEditor,
-  AnchorElement,
-  BaseText
->((editor) => {
+export const anchorPlugin = createPlugin<AnchorPluginCustomTypes>((editor) => {
   editor.supportsAnchors = true
   return {
     name: "anchor",
-    editorProps: {
+    editor: {
       isInline(element) {
         if (element.type === "anchor") return true
       },

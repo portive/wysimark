@@ -1,10 +1,10 @@
 import { BaseEditor, BaseElement, BaseText } from "slate"
 
-export type PluginCustomTypes<
-  T extends {
-    Name: string
-    Editor: BaseEditor
-    Element: BaseElement
-    Text: BaseText
-  }
-> = T
+export type BasePluginCustomTypes = {
+  Name: string
+  Editor: BaseEditor
+  Element: BaseElement
+  Text: BaseText
+}
+
+export type PluginCustomTypes<T extends BasePluginCustomTypes> = T

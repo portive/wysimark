@@ -1,52 +1,25 @@
-import React from "react"
-import { BaseEditor, BaseText } from "slate"
+import React, { useState } from "react"
+import { createEditor } from "slate"
+import { Editable, Slate, withReact } from "slate-react"
 
-import { createPlugin } from ".."
-import { PluginCustomTypes } from "../types"
+import { createSink } from "../create-sink"
+import { anchorPlugin } from "./anchor-plugin"
+import { boldPlugin } from "./bold-plugin"
+import { initialValue } from "./initial-value"
 
-export type AnchorEditor = BaseEditor & { supportsAnchors: true }
+/**
+ * TODO:
+ * `anchorPlugin` and `boldPlugin` conflict
+ */
+const Sink = createSink([anchorPlugin, boldPlugin])
 
-export type AnchorElement = {
-  type: "anchor"
-  href: string
-  target?: string
-  children: BaseText[]
+const Page = () => {
+  const [editor] = useState(() => Sink.withEditor(withReact(createEditor())))
+  return (
+    <Sink.Slate editor={editor} value={initialValue}>
+      <Sink.Editable />
+    </Sink.Slate>
+  )
 }
 
-export type AnchorPluginCustomTypes = PluginCustomTypes<{
-  Name: "anchor"
-  Editor: AnchorEditor
-  Element: AnchorElement
-  Text: BaseText
-}>
-
-export const anchorPlugin = createPlugin<
-  "anchor",
-  AnchorEditor,
-  AnchorElement,
-  BaseText
->((editor) => {
-  editor.supportsAnchors = true
-  return {
-    name: "anchor",
-    editorProps: {
-      isInline(element) {
-        if (element.type === "anchor") return true
-      },
-      isVoid(element) {
-        if (element.type === "anchor") return false
-      },
-    },
-    editableProps: {
-      renderElement: ({ element, attributes, children }) => {
-        if (element.type === "anchor") {
-          return (
-            <a {...attributes} href={element.href}>
-              {children}
-            </a>
-          )
-        }
-      },
-    },
-  }
-})
+export default Page
