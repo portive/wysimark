@@ -14,9 +14,13 @@ export const createPlugin = <
      * A string literal that uniquely identifies this plugin
      */
     name: PluginName
-    editor: PluginEditor
-    withEditor?: (editor: PluginEditor) => PluginEditor
-    editableProps: {
+    // editor: PluginEditor
+    // withEditor?: (editor: PluginEditor) => PluginEditor
+    editorProps?: {
+      isInline?: (element: PluginElement) => boolean | void
+      isVoid?: (element: PluginElement) => boolean | void
+    }
+    editableProps?: {
       /**
        * `renderElement` behaves similar to the `renderElement` prop on `Editable`
        * but if `renderElement` returns undefined, we move on to the next

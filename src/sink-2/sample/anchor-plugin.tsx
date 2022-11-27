@@ -41,7 +41,7 @@ export const anchorPlugin = createPlugin<
       renderElement: ({ element, attributes, children }) => {
         if (element.type === "anchor") {
           return (
-            <a {...attributes} href={element.href}>
+            <a {...attributes} href={element.href} target={element.target}>
               {children}
             </a>
           )
