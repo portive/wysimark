@@ -1,0 +1,6 @@
+.build/
+.dist/
+.next/
+.npm/
+.vercel/
+node_modules/
