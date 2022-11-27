@@ -1,5 +1,6 @@
 import { BaseEditor } from "slate"
 import { Editable, Slate, useSlateStatic } from "slate-react"
+import { UnionToIntersection } from "type-fest"
 
 import {
   BasePluginFunction,
