@@ -21,7 +21,13 @@ import { initialValue } from "./initial-value"
  * TODO:
  * `anchorPlugin` and `boldPlugin` conflict
  */
-const mySink = createSink([anchorPlugin, boldPlugin])
+const mySink = createSink([
+  // just to split the items
+  anchorPlugin,
+  boldPlugin,
+])
+
+type XX = typeof mySink["PluginFunctions"][number]
 
 type AllPluginCustomTypes = AnchorPluginCustomTypes | BoldPluginCustomTypes
 
@@ -36,7 +42,7 @@ type MergePluginCustomTypes<
 type CT = MergePluginCustomTypes<AllPluginCustomTypes>
 
 // type PluginCustomTypes = ExtractCustomTypes<typeof mySink>
-// type ParagraphElement = { type: "paragraph"; children: Text[] }
+type ParagraphElement = { type: "paragraph"; children: Text[] }
 
 /**
  * NOTE: As of THIS version, we couldn't get CustomTypes to work because of a
@@ -48,7 +54,7 @@ type CT = MergePluginCustomTypes<AllPluginCustomTypes>
 declare module "slate" {
   interface CustomTypes {
     Editor: BaseEditor & CT["Editor"]
-    Element: CT["Element"]
+    Element: ParagraphElement & CT["Element"]
     Text: CT["Text"]
   }
 }

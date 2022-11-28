@@ -1,3 +1,4 @@
+import React from "react"
 import { BaseEditor } from "slate"
 import { Editable, Slate, useSlateStatic } from "slate-react"
 

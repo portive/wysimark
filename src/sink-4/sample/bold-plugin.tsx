@@ -1,9 +1,8 @@
 import React from "react"
-import { BaseEditor, BaseElement, BaseText, Text } from "slate"
+import { BaseText } from "slate"
 
 import { createPlugin } from ".."
 import { PluginCustomTypes } from "../types"
-import { AnchorElement } from "./anchor-plugin"
 
 export type BoldEditor = { supportsBold: true }
 export type BoldText = BaseText & { bold?: true }
@@ -11,8 +10,8 @@ export type BoldText = BaseText & { bold?: true }
 export type BoldPluginCustomTypes = PluginCustomTypes<{
   Name: "bold"
   Editor: BoldEditor
-  Element: { children: BoldText[] }
-  Text: BoldText
+  Element: { children: (BaseText & BoldText)[] }
+  Text: BaseText & BoldText
 }>
 
 export const boldPlugin = createPlugin<BoldPluginCustomTypes>((editor) => {

@@ -1,24 +1,26 @@
 import { BaseElement, BaseText } from "slate"
 
-export type ConstrainedRenderElementProps<$Element extends BaseElement> = {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  children: any
-  element: $Element
-  attributes: {
-    "data-slate-node": "element"
-    "data-slate-inline"?: true
-    "data-slate-void"?: true
-    dir?: "rtl"
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    ref: any
-  }
-}
+export type ConstrainedRenderElementProps<Element> = Element extends BaseElement
+  ? {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      children: any
+      element: Element
+      attributes: {
+        "data-slate-node": "element"
+        "data-slate-inline"?: true
+        "data-slate-void"?: true
+        dir?: "rtl"
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        ref: any
+      }
+    }
+  : never
 
-export type ConstrainedRenderLeafProps<$Text extends BaseText> = {
+export type ConstrainedRenderLeafProps<Text> = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   children: any
-  leaf: $Text
-  text: $Text
+  leaf: Text
+  text: Text
   /**
    * KEEP:
    *
