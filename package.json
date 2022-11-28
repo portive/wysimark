@@ -5,6 +5,7 @@
   "author": "Sunny Hirai <thesunny@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@thesunny/assert-type": "^0.1.13",
     "@types/node": "^18.11.9",
     "@types/react": "^18.0.25",
     "@typescript-eslint/eslint-plugin": "^5.15.0",

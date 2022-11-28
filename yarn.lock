@@ -94,6 +94,13 @@
     tiny-glob "^0.2.9"
     tslib "^2.4.0"
 
+"@thesunny/assert-type@^0.1.13":
+  version "0.1.13"
+  resolved "https://registry.yarnpkg.com/@thesunny/assert-type/-/assert-type-0.1.13.tgz#d893351218cfa044329f8f2d5a5f8188d1698bf1"
+  integrity sha512-9uz7HcY7n+SdTCQvTy5e24pCn9oBge5XnnSWCYuXC9PUx+/TwjU4KpjqswdowVZUJ58URWXqLwpfok8GrkeREw==
+  dependencies:
+    ts-node "^10.9.1"
+
 "@tsconfig/node10@^1.0.7":
   version "1.0.9"
   resolved "https://registry.yarnpkg.com/@tsconfig/node10/-/node10-1.0.9.tgz#df4907fc07a886922637b15e02d4cebc4c0021b2"
