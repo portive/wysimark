@@ -21,7 +21,7 @@ type SinkEditor<T extends BasePluginCustomTypes> = {
 }
 
 type PluginCustomTypeToExtend = {
-  Name: string
+  Name: any
   Editor: any
   Element: any
   Text: any
