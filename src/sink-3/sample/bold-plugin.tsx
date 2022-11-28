@@ -5,12 +5,13 @@ import { createPlugin } from ".."
 import { PluginCustomTypes } from "../types"
 
 export type BoldEditor = BaseEditor & { supportsBold: true }
+export type BoldText = BaseText & { bold?: true }
 
 export type BoldPluginCustomTypes = PluginCustomTypes<{
   Name: "bold"
   Editor: BoldEditor
   Element: BaseElement
-  Text: BaseText & { bold?: true }
+  Text: BoldText
 }>
 
 export const boldPlugin = createPlugin<BoldPluginCustomTypes>((editor) => {

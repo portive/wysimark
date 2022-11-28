@@ -1,11 +1,15 @@
 import React, { useState } from "react"
-import { createEditor } from "slate"
+import { BaseEditor, BaseText, createEditor, Text } from "slate"
 import { withReact } from "slate-react"
 
 import { createSink } from "../create-sink"
-import { OExtractCustomTypes, OExtractEditor } from "../types"
-import { anchorPlugin } from "./anchor-plugin"
-import { boldPlugin } from "./bold-plugin"
+import { ArraySafePluginCustomTypes, ExtractCustomTypes } from "../types"
+import {
+  AnchorElement,
+  anchorPlugin,
+  AnchorPluginCustomTypes,
+} from "./anchor-plugin"
+import { boldPlugin, BoldPluginCustomTypes, BoldText } from "./bold-plugin"
 import { initialValue } from "./initial-value"
 
 /**
@@ -14,13 +18,16 @@ import { initialValue } from "./initial-value"
  */
 const mySink = createSink([anchorPlugin, boldPlugin])
 
-type X1 = typeof mySink
-type PluginFunctions = typeof mySink["PluginFunctions"]
-type PluginFunction = PluginFunctions[number]
-type PluginObject = ReturnType<PluginFunction>
-type Editor = OExtractEditor<PluginObject>
+type PluginCustomTypes = ExtractCustomTypes<typeof mySink>
+type ParagraphElement = { type: "paragraph"; children: Text[] }
 
-type CustomTypes = OExtractCustomTypes<ReturnType<PluginFunctions[number]>>
+declare module "slate" {
+  interface CustomTypes {
+    Editor: BaseEditor & PluginCustomTypes["Editor"]
+    Element: ParagraphElement | AnchorElement
+    Text: BaseText & BoldText
+  }
+}
 
 const Page = () => {
   const [editor] = useState(() => mySink.withEditor(withReact(createEditor())))
