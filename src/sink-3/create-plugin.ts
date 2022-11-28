@@ -1,4 +1,5 @@
 import React from "react"
+import { UnionToIntersection } from "type-fest"
 
 import { $RenderElementProps, $RenderLeafProps } from "./constrained"
 import { BasePluginCustomTypes } from "./types"
@@ -48,6 +49,48 @@ export type PluginObject<T extends BasePluginCustomTypes> = {
   }
 }
 
+/**
+ * Takes an PluginObject and extracts the CustomTypes from it
+ */
+export type OInferCustomTypes<PO> = PO extends PluginObject<infer T> ? T : never
+
+/**
+ * In the case of `Element`, we want don't want the properties to be merged
+ * together. They are either one type of `Element` or another. This is why we
+ * don't use `UnionToIntersection`
+ */
+export type OExtractName<PO> = OInferCustomTypes<PO>["Name"]
+
+/**
+ * In the case of the `Editor` we are merging the editor properties together to
+ * get our final editor which is why we use `UnionToIntersection`
+ */
+export type OExtractEditor<PO> = UnionToIntersection<
+  OInferCustomTypes<PO>["Editor"]
+>
+
+/**
+ * In the case of `Element`, we want don't want the properties to be merged
+ * together. They are either one type of `Element` or another. This is why we
+ * don't use `UnionToIntersection`
+ */
+export type OExtractElement<PO> = OInferCustomTypes<PO>["Element"]
+
+/**
+ * In the case of `Text`, we are merging the text properties together to
+ * get our final Text object which is why we use `UnionToIntersection`
+ */
+export type OExtractText<PO> = UnionToIntersection<
+  OInferCustomTypes<PO>["Text"]
+>
+
+export type OExtractCustomTypes<PO> = {
+  Name: OExtractName<PO>
+  Editor: OExtractEditor<PO>
+  Element: OExtractElement<PO>
+  Text: OExtractText<PO>
+}
+
 export type PluginFunction<T extends BasePluginCustomTypes> = (
   editor: T["Editor"]
 ) => PluginObject<T>
@@ -55,6 +98,10 @@ export type PluginFunction<T extends BasePluginCustomTypes> = (
 export type BasePluginObject = PluginObject<BasePluginCustomTypes>
 
 export type BasePluginFunction = PluginFunction<BasePluginCustomTypes>
+
+export type ExtractCustomTypesFromPluginFunctions<
+  P extends PluginFunction<any>[]
+> = OExtractText<ReturnType<P[number]>>
 
 export const createPlugin = <T extends BasePluginCustomTypes>(
   fn: PluginFunction<T>

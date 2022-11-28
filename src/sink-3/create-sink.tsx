@@ -30,8 +30,10 @@ type PluginCustomTypeToExtend = {
 /**
  * A sink is just a function
  */
-export const createSink = <F extends PluginFunction<PluginCustomTypeToExtend>>(
-  plugins: F[]
+export const createSink = <
+  F extends PluginFunction<PluginCustomTypeToExtend>[]
+>(
+  plugins: F
 ) => {
   /**
    * The `editor` in the props can be a `BaseEditor` but we transform it
@@ -72,5 +74,8 @@ export const createSink = <F extends PluginFunction<PluginCustomTypeToExtend>>(
     return <Editable {...props} />
   }
 
-  return { withEditor, Slate: SinkSlate, Editable: SinkEditable }
+  const returnValue = { withEditor, Slate: SinkSlate, Editable: SinkEditable }
+  return returnValue as {
+    PluginFunctions: F
+  } & typeof returnValue
 }
