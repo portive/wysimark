@@ -1,9 +1,14 @@
 import React, { useState } from "react"
 import { BaseEditor, BaseText, createEditor, Text } from "slate"
 import { withReact } from "slate-react"
+import { UnionToIntersection } from "type-fest"
 
 import { createSink } from "../create-sink"
-import { ArraySafePluginCustomTypes, ExtractCustomTypes } from "../types"
+import {
+  ArraySafePluginCustomTypes,
+  ExtractCustomTypes,
+  PluginCustomTypes,
+} from "../types"
 import {
   AnchorElement,
   anchorPlugin,
@@ -18,8 +23,20 @@ import { initialValue } from "./initial-value"
  */
 const mySink = createSink([anchorPlugin, boldPlugin])
 
-type PluginCustomTypes = ExtractCustomTypes<typeof mySink>
-type ParagraphElement = { type: "paragraph"; children: Text[] }
+type AllPluginCustomTypes = AnchorPluginCustomTypes | BoldPluginCustomTypes
+
+type MergePluginCustomTypes<
+  T extends PluginCustomTypes<ArraySafePluginCustomTypes>
+> = {
+  Editor: UnionToIntersection<T["Editor"]>
+  Element: T["Element"]
+  Text: UnionToIntersection<T["Text"]>
+}
+
+type CT = MergePluginCustomTypes<AllPluginCustomTypes>
+
+// type PluginCustomTypes = ExtractCustomTypes<typeof mySink>
+// type ParagraphElement = { type: "paragraph"; children: Text[] }
 
 /**
  * NOTE: As of THIS version, we couldn't get CustomTypes to work because of a
@@ -30,12 +47,9 @@ type ParagraphElement = { type: "paragraph"; children: Text[] }
  */
 declare module "slate" {
   interface CustomTypes {
-    Editor: PluginCustomTypes["Editor"]
-    Element: PluginCustomTypes["Element"]
-    Text: PluginCustomTypes["Text"]
-    // Editor: BaseEditor & PluginCustomTypes["Editor"]
-    // Element: ParagraphElement | AnchorElement
-    // Text: BaseText & BoldText
+    Editor: BaseEditor & CT["Editor"]
+    Element: CT["Element"]
+    Text: CT["Text"]
   }
 }
 
