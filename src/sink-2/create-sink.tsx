@@ -1,6 +1,6 @@
 import { BaseEditor } from "slate"
 import { Editable, Slate, useSlateStatic } from "slate-react"
-import { UnionToIntersection } from "type-fest"
+import {Union}
 
 import {
   BasePluginFunction,
@@ -24,8 +24,8 @@ type SinkEditor<T extends BasePluginCustomTypes> = {
 /**
  * A sink is just a function
  */
-export const createSink = <T extends BasePluginCustomTypes>(
-  plugins: PluginFunction<T>[]
+export const createSink = <T extends BasePluginCustomTypes, F extends PluginFunction<T>>(
+  plugins: F[]
 ) => {
   /**
    * The `editor` in the props can be a `BaseEditor` but we transform it
