@@ -1,70 +1,33 @@
 import React, { useState } from "react"
-import { BaseEditor, BaseText, createEditor, Text } from "slate"
+import { BaseEditor, createEditor, Text } from "slate"
 import { withReact } from "slate-react"
-import { UnionToIntersection } from "type-fest"
 
 import { createSink } from "../create-sink"
-import {
-  ArraySafePluginCustomTypes,
-  ExtractCustomTypes,
-  PluginCustomTypes,
-} from "../types"
-import {
-  AnchorElement,
-  anchorPlugin,
-  AnchorPluginCustomTypes,
-} from "./anchor-plugin"
-import { boldPlugin, BoldPluginCustomTypes, BoldText } from "./bold-plugin"
+import { SinkEditor, SinkElement, SinkText } from "../types"
+import { anchorPlugin, AnchorPluginCustomTypes } from "./anchor-plugin"
+import { boldPlugin, BoldPluginCustomTypes } from "./bold-plugin"
 import { initialValue } from "./initial-value"
 
-/**
- * TODO:
- * `anchorPlugin` and `boldPlugin` conflict
- */
-const mySink = createSink([
-  // just to split the items
-  anchorPlugin,
-  boldPlugin,
-])
+const MySink = createSink([anchorPlugin(), boldPlugin()])
 
-type XX = typeof mySink["PluginFunctions"][number]
+type PluginTypes = AnchorPluginCustomTypes | BoldPluginCustomTypes
 
-type AllPluginCustomTypes = AnchorPluginCustomTypes | BoldPluginCustomTypes
-
-type MergePluginCustomTypes<
-  T extends PluginCustomTypes<ArraySafePluginCustomTypes>
-> = {
-  Editor: UnionToIntersection<T["Editor"]>
-  Element: T["Element"]
-  Text: UnionToIntersection<T["Text"]>
-}
-
-type CT = MergePluginCustomTypes<AllPluginCustomTypes>
-
-// type PluginCustomTypes = ExtractCustomTypes<typeof mySink>
 type ParagraphElement = { type: "paragraph"; children: Text[] }
 
-/**
- * NOTE: As of THIS version, we couldn't get CustomTypes to work because of a
- * circular reference.
- *
- * In sink-4 we'll explore seeing if we can find another way to avoid this
- * but it may be well impossible.
- */
 declare module "slate" {
   interface CustomTypes {
-    Editor: BaseEditor & CT["Editor"]
-    Element: ParagraphElement & CT["Element"]
-    Text: CT["Text"]
+    Editor: BaseEditor & SinkEditor<PluginTypes>
+    Element: ParagraphElement | SinkElement<PluginTypes>
+    Text: SinkText<PluginTypes>
   }
 }
 
 const Page = () => {
-  const [editor] = useState(() => mySink.withEditor(withReact(createEditor())))
+  const [editor] = useState(() => MySink.withEditor(withReact(createEditor())))
   return (
-    <mySink.Slate editor={editor} value={initialValue}>
-      <mySink.Editable />
-    </mySink.Slate>
+    <MySink.Slate editor={editor} value={initialValue}>
+      <MySink.Editable />
+    </MySink.Slate>
   )
 }
 

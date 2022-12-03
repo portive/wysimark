@@ -88,6 +88,6 @@
      */
     "skipLibCheck": true
   },
-  "include": ["src/sink-4/**/*.ts", "src/sink-4/**/*.tsx"],
+  "include": ["**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
 }

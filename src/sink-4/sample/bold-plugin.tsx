@@ -14,16 +14,17 @@ export type BoldPluginCustomTypes = PluginCustomTypes<{
   Text: BaseText & BoldText
 }>
 
-export const boldPlugin = createPlugin<BoldPluginCustomTypes>((editor) => {
-  editor.supportsBold = true
-  return {
-    name: "bold",
-    editableProps: {
-      renderLeaf({ leaf, children }) {
-        if (leaf.bold) {
-          return <span style={{ fontWeight: "bold" }}>{children}</span>
-        }
+export const boldPlugin = () =>
+  createPlugin<BoldPluginCustomTypes>((editor) => {
+    editor.supportsBold = true
+    return {
+      name: "bold",
+      editableProps: {
+        renderLeaf({ leaf, children }) {
+          if (leaf.bold) {
+            return <span style={{ fontWeight: "bold" }}>{children}</span>
+          }
+        },
       },
-    },
-  }
-})
+    }
+  })

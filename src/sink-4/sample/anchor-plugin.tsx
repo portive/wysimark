@@ -4,7 +4,9 @@ import { BaseText, Text } from "slate"
 import { createPlugin } from ".."
 import { PluginCustomTypes } from "../types"
 
-export type AnchorEditor = { supportsAnchors: true }
+export type AnchorEditor = {
+  supportsAnchors: true
+}
 
 export type AnchorElement = {
   type: "anchor"
@@ -20,28 +22,29 @@ export type AnchorPluginCustomTypes = PluginCustomTypes<{
   Text: BaseText
 }>
 
-export const anchorPlugin = createPlugin<AnchorPluginCustomTypes>((editor) => {
-  editor.supportsAnchors = true
-  return {
-    name: "anchor",
-    editor: {
-      isInline(element) {
-        if (element.type === "anchor") return true
+export const anchorPlugin = () =>
+  createPlugin<AnchorPluginCustomTypes>((editor) => {
+    editor.supportsAnchors = true
+    return {
+      name: "anchor",
+      editor: {
+        isInline(element) {
+          if (element.type === "anchor") return true
+        },
+        isVoid(element) {
+          if (element.type === "anchor") return false
+        },
       },
-      isVoid(element) {
-        if (element.type === "anchor") return false
+      editableProps: {
+        renderElement: ({ element, attributes, children }) => {
+          if (element.type === "anchor") {
+            return (
+              <a {...attributes} href={element.href} target={element.target}>
+                {children}
+              </a>
+            )
+          }
+        },
       },
-    },
-    editableProps: {
-      renderElement: ({ element, attributes, children }) => {
-        if (element.type === "anchor") {
-          return (
-            <a {...attributes} href={element.href} target={element.target}>
-              {children}
-            </a>
-          )
-        }
-      },
-    },
-  }
-})
+    }
+  })

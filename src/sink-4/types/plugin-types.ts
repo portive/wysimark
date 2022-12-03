@@ -108,8 +108,8 @@ export type OExtractName<PO> = OInferCustomTypes<PO>["Name"]
  * In the case of the `Editor` we are merging the editor properties together to
  * get our final editor which is why we use `UnionToIntersection`
  */
-export type OExtractEditor<PO> = Simplify<
-  UnionToIntersection<OInferCustomTypes<PO>["Editor"]>
+export type OExtractEditor<PO> = UnionToIntersection<
+  OInferCustomTypes<PO>["Editor"]
 >
 
 /**
@@ -134,7 +134,7 @@ export type OExtractCustomTypes<PO> = {
   Text: OExtractText<PO>
 }
 
-export type PluginFunction<T extends ArraySafePluginCustomTypes> = (
+export type PluginFunction<T extends BasePluginCustomTypes> = (
   editor: T["Editor"]
 ) => PluginObject<T>
 

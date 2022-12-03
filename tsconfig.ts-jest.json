@@ -1,0 +1,33 @@
+{
+  "extends": "./tsconfig.custom.json",
+  "compilerOptions": {
+    /**
+     * Without this, could cause issues with not understanding the `import`
+     * statement.
+     */
+    "module": "commonjs",
+    /**
+     * We need to switch this to `react` or else it breaks tests that include
+     * `tsx` files.
+     */
+    "jsx": "react",
+    /**
+     * We enable `allowJs` as part of supporting `esm` in `ts-jest`. The reason
+     *
+     * If we don't enable it, TypeScript will ignore the JavaScript `esm`
+     * files that are passed to it. We prefer TypeScript to handle our `esm`
+     * files instead of babel (as per some other suggestions) to remove the
+     * dependency on `babel` and `@babel/preset-env`.
+     *
+     * https://github.com/kulshekhar/ts-jest/issues/970
+     */
+    "allowJs": true
+  },
+  /**
+   * `ts-node` needs `tsconfig-paths/register` or it won't work with
+   * our custom `paths` specified in the base.
+   */
+  "ts-node": {
+    "require": ["tsconfig-paths/register"]
+  }
+}
