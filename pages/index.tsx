@@ -1,8 +1,12 @@
-export default function Index() {
+import { MyEditor } from "~/components/my-editor"
+
+const Index = () => {
   return (
     <div>
-      <h1>Hello World</h1>
-      <p>Lorem ipsum dolar sit amet consecteteur.</p>
+      <h1>My Editor</h1>
+      <MyEditor />
     </div>
   )
 }
+
+export default Index
