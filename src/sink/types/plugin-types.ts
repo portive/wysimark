@@ -1,5 +1,5 @@
 import React, { ReactEventHandler } from "react"
-import { BaseEditor, BaseElement, BaseText } from "slate"
+import { BaseEditor, BaseElement, BaseText, Editor } from "slate"
 import { Simplify, UnionToIntersection } from "type-fest"
 
 import { ConstrainedRenderElementProps, ConstrainedRenderLeafProps } from "."
@@ -145,7 +145,12 @@ export type OExtractCustomTypes<PO> = {
 }
 
 export type PluginFunction<T extends BasePluginCustomTypes> = (
-  editor: T["Editor"]
+  /**
+   * We make this T["Editor"] to make sure we get all off the properties
+   * for the plugin but also add `Editor` so that Editor will pass the typing
+   * for Transform methods and such that take an `Editor` object.
+   */
+  editor: T["Editor"] & Editor
 ) => PluginObject<T>
 
 export type BasePluginObject = PluginObject<BasePluginCustomTypes>

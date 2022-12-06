@@ -7,6 +7,7 @@ import {
   Slate,
   useSlateStatic,
 } from "slate-react"
+import { EditableProps } from "slate-react/dist/components/editable"
 
 import {
   ArraySafePluginCustomTypes,
@@ -15,10 +16,6 @@ import {
   PluginObject,
 } from "../types"
 import { createIsInline } from "./create-is-inline"
-import {
-  createRenderElementPlugins,
-  createRenderLeafPlugins,
-} from "./sink-editable"
 
 export {}
 
@@ -29,8 +26,13 @@ export {}
 type SinkEditor<T extends BasePluginCustomTypes = BasePluginCustomTypes> = {
   sink: {
     plugins: PluginObject<T>[]
-    renderElementPlugins: PluginObject<T>[]
-    renderLeafPlugins: PluginObject<T>[]
+    pluginsFor: {
+      renderElement: PluginObject<T>[]
+      renderLeaf: PluginObject<T>[]
+      onKeyDown: PluginObject<T>[]
+      onKeyPress: PluginObject<T>[]
+      onKeyUp: PluginObject<T>[]
+    }
   }
 }
 
@@ -58,13 +60,21 @@ export const createSink = <
 
     editor.isInline = createIsInline(editor.isInline, plugins)
 
-    const renderElementPlugins = createRenderElementPlugins(plugins)
-    const renderLeafPlugins = createRenderLeafPlugins(plugins)
-
     sinkEditor.sink = {
       plugins: plugins,
-      renderElementPlugins,
-      renderLeafPlugins,
+      pluginsFor: {
+        renderElement: plugins.filter(
+          (plugin) => plugin.editableProps?.renderElement
+        ),
+        renderLeaf: plugins
+          .filter((plugin) => plugin.editableProps?.renderLeaf)
+          .reverse(),
+        onKeyDown: plugins.filter((plugin) => plugin.editableProps?.onKeyDown),
+        onKeyPress: plugins.filter(
+          (plugin) => plugin.editableProps?.onKeyPress
+        ),
+        onKeyUp: plugins.filter((plugin) => plugin.editableProps?.onKeyUp),
+      },
     }
     return sinkEditor
   }
@@ -96,7 +106,7 @@ export const createSink = <
        * result, then we go to the `renderElement` passed to the `SinkEditable`
        * component.
        */
-      for (const plugin of sink.renderElementPlugins) {
+      for (const plugin of sink.pluginsFor.renderElement) {
         const result = plugin.editableProps?.renderElement?.(renderElementProps)
         if (result) return result
       }
@@ -132,7 +142,7 @@ export const createSink = <
          */
         attributes: {} as RenderLeafProps["attributes"],
       })
-      for (const plugin of sink.renderLeafPlugins) {
+      for (const plugin of sink.pluginsFor.renderLeaf) {
         const possibleValue = plugin.editableProps?.renderLeaf?.({
           ...renderLeafProps,
           children: value,
@@ -144,11 +154,21 @@ export const createSink = <
       value = cloneElement(value, renderLeafProps.attributes) //{ key: 'your-unique-key-here' })
       return value
     }
+
+    const nextOnKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+      for (const plugin of sink.pluginsFor.onKeyDown) {
+        const result = plugin.editableProps?.onKeyDown?.(e)
+        if (result) return
+      }
+      originalProps.onKeyDown?.(e)
+    }
+
     return (
       <Editable
         {...originalProps}
         renderElement={nextRenderElement}
         renderLeaf={nextRenderLeaf}
+        onKeyDown={nextOnKeyDown}
       />
     )
   }
