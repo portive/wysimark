@@ -7,17 +7,10 @@ export type RenderElement = (
   x: RenderElementProps
 ) => JSX.Element | ReactElement | undefined
 
-export function createRenderElements(
-  pluginObjects: PluginObject<BasePluginCustomTypes>[]
+export function createRenderElementPlugins(
+  plugins: PluginObject<BasePluginCustomTypes>[]
 ) {
-  const renderElements: RenderElement[] = []
-  for (const plugin of pluginObjects) {
-    const renderElement = plugin.editableProps?.renderElement
-    if (renderElement) {
-      renderElements.push(renderElement)
-    }
-  }
-  return renderElements
+  return plugins.filter((plugin) => plugin.editableProps?.renderElement)
 }
 
 export type RenderLeaf = (

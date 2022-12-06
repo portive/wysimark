@@ -16,9 +16,8 @@ import {
 } from "../types"
 import { createIsInline } from "./create-is-inline"
 import {
-  createRenderElements,
+  createRenderElementPlugins,
   createRenderLeaf,
-  RenderElement,
   RenderLeaf,
 } from "./sink-editable"
 
@@ -31,7 +30,7 @@ export {}
 type SinkEditor<T extends BasePluginCustomTypes = BasePluginCustomTypes> = {
   sink: {
     plugins: PluginObject<T>[]
-    renderElements: RenderElement[]
+    renderElementPlugins: PluginObject<T>[]
     renderLeaves: RenderLeaf[]
   }
 }
@@ -60,12 +59,12 @@ export const createSink = <
 
     editor.isInline = createIsInline(editor.isInline, plugins)
 
-    const renderElements = createRenderElements(plugins)
+    const renderElementPlugins = createRenderElementPlugins(plugins)
     const renderLeaves = createRenderLeaf(plugins)
 
     sinkEditor.sink = {
       plugins: plugins,
-      renderElements,
+      renderElementPlugins,
       renderLeaves,
     }
     return sinkEditor
@@ -98,8 +97,8 @@ export const createSink = <
        * result, then we go to the `renderElement` passed to the `SinkEditable`
        * component.
        */
-      for (const renderElement of sink.renderElements) {
-        const result = renderElement(renderElementProps)
+      for (const plugin of sink.renderElementPlugins) {
+        const result = plugin.editableProps?.renderElement?.(renderElementProps)
         if (result) return result
       }
       if (originalProps.renderElement === undefined) {
@@ -124,6 +123,10 @@ export const createSink = <
       }
       let value = originalProps.renderLeaf({
         ...renderLeafProps,
+        /**
+         * We override this because `attributes` should only appear on the
+         * uppermost leaf element if there are several nested ones.
+         */
         attributes: {} as RenderLeafProps["attributes"],
       })
       for (const renderLeaf of sink.renderLeaves) {

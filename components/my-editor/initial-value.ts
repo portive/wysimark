@@ -28,7 +28,7 @@ export const initialValue: Descendant[] = [
     children: [
       { text: "Normal " },
       { text: "Bold ", bold: true },
-      { text: "Italic", italic: true },
+      { text: "Italic ", italic: true },
       { text: "Underline ", underline: true },
       { text: "Superscript ", sup: true },
       { text: "Subscript ", sub: true },
