@@ -8,14 +8,11 @@ export function createIsInline(
   originalIsInline: IsInline,
   plugins: PluginObject<BasePluginCustomTypes>[]
 ) {
-  const isInlineMethods = plugins
-    .map((plugin) => plugin.editor?.isInline)
-    .filter((isInline) => isInline !== undefined) as IsInline[]
+  const isInlinePlugins = plugins.filter((plugin) => plugin.editor?.isInline)
   return function nextIsInline(element: Parameters<IsInline>[0]) {
-    for (const isInlineMethod of isInlineMethods) {
-      const value = isInlineMethod(element)
-      if (value === undefined) continue
-      return value
+    for (const plugin of isInlinePlugins) {
+      const value = plugin.editor?.isInline?.(element)
+      if (value !== undefined) return value
     }
     return originalIsInline(element)
   }
