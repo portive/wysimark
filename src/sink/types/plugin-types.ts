@@ -1,10 +1,8 @@
+import React, { ReactEventHandler } from "react"
 import { BaseEditor, BaseElement, BaseText } from "slate"
 import { Simplify, UnionToIntersection } from "type-fest"
 
-import {
-  ConstrainedRenderElementProps,
-  ConstrainedRenderLeafProps,
-} from "../types"
+import { ConstrainedRenderElementProps, ConstrainedRenderLeafProps } from "."
 
 /**
  * When creating a single PluginCustomType, we want to constrain it as much as
@@ -63,6 +61,18 @@ export type PluginObject<T extends BasePluginCustomTypes> = {
     isVoid?: (element: T["Element"]) => boolean | void
   }
   editableProps?: {
+    /**
+     * All of these plugin event handlers work like the standard event handler
+     * with one exception. If the handler returns true, it signals that the
+     * plugin handled the event handler. If the handler return false, it signals
+     * that it hasn't handled it and will then try running the next one.
+     *
+     * The plugin must handle calling e.preventDefault and e.stopPropagation
+     * if it wishes to.
+     */
+    onKeyDown?: (e: React.SyntheticEvent<Element, KeyboardEvent>) => boolean
+    onKeyUp?: (e: React.SyntheticEvent<Element, KeyboardEvent>) => boolean
+    onKeyPress?: (e: React.SyntheticEvent<Element, KeyboardEvent>) => boolean
     /**
      * `renderElement` behaves similar to the `renderElement` prop on `Editable`
      * but if `renderElement` returns undefined, we move on to the next

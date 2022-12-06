@@ -1,3 +1,4 @@
+```typescript
 import React, { useState } from "react"
 import { BaseEditor, createEditor, Text } from "slate"
 import { withReact } from "slate-react"
@@ -32,3 +33,4 @@ const Page = () => {
 }
 
 export default Page
+```
