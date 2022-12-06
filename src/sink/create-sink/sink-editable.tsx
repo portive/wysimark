@@ -17,15 +17,8 @@ export type RenderLeaf = (
   x: RenderLeafProps
 ) => JSX.Element | ReactElement | undefined
 
-export function createRenderLeaf(
-  pluginObjects: PluginObject<BasePluginCustomTypes>[]
+export function createRenderLeafPlugins(
+  plugins: PluginObject<BasePluginCustomTypes>[]
 ) {
-  const renderLeaves: RenderLeaf[] = []
-  for (const plugin of pluginObjects) {
-    const renderLeaf = plugin.editableProps?.renderLeaf
-    if (renderLeaf) {
-      renderLeaves.push(renderLeaf)
-    }
-  }
-  return renderLeaves
+  return plugins.filter((plugin) => plugin.editableProps?.renderLeaf).reverse()
 }

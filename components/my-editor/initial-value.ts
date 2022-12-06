@@ -34,4 +34,15 @@ export const initialValue: Descendant[] = [
       { text: "Subscript ", sub: true },
     ],
   },
+  {
+    type: "paragraph",
+    children: [
+      { text: "Try out some " },
+      { text: "Inline Code", code: true },
+      { text: " to see how it works. Allow " },
+      { text: "bold", bold: true, code: true },
+      { text: " in code", code: true },
+      { text: "." },
+    ],
+  },
 ]

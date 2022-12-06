@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { BaseEditor, createEditor, Descendant } from "slate"
+import { BaseEditor, BaseElement, createEditor, Descendant } from "slate"
 import {
   ReactEditor,
   RenderElementProps,
@@ -7,13 +7,32 @@ import {
   Slate,
   withReact,
 } from "slate-react"
+import { Simplify, UnionToIntersection } from "type-fest"
 
-import { AnchorElement, AnchorPlugin } from "~/src/anchor-plugin"
-import { HeadingElement, HeadingPlugin } from "~/src/heading-plugin"
-import { MarksPlugin, MarksText } from "~/src/marks-plugin"
+import {
+  AnchorElement,
+  AnchorPlugin,
+  AnchorPluginCustomTypes,
+} from "~/src/anchor-plugin"
+import {
+  HeadingElement,
+  HeadingPlugin,
+  HeadingPluginCustomTypes,
+} from "~/src/heading-plugin"
+import {
+  InlineCodePlugin,
+  InlineCodePluginCustomTypes,
+  InlineCodeText,
+} from "~/src/inline-code-plugin"
+import {
+  MarksPlugin,
+  MarksPluginCustomTypes,
+  MarksText,
+} from "~/src/marks-plugin"
 import {
   BasePluginCustomTypes,
   createSink,
+  ExtractCustomTypes,
   PluginFunction,
   PluginObject,
 } from "~/src/sink"
@@ -29,20 +48,45 @@ const { withSink, SinkEditable } = createSink([
   //
   AnchorPlugin(),
   HeadingPlugin(),
+  InlineCodePlugin(),
   MarksPlugin(),
 ])
+
+type MergeCustomTypes<
+  T extends Array<{
+    Name: string
+    Editor: unknown
+    Element: unknown
+    Text: unknown
+  }>
+> = {
+  Name: T[number]["Name"]
+  Editor: T[number]["Editor"]
+  Element: Exclude<T[number]["Element"], BaseElement>
+  Text: UnionToIntersection<T[number]["Text"]>
+}
+
+export type PluginCustomTypes = MergeCustomTypes<
+  [
+    AnchorPluginCustomTypes,
+    HeadingPluginCustomTypes,
+    MarksPluginCustomTypes,
+    InlineCodePluginCustomTypes
+  ]
+>
 
 type ParagraphElement = {
   type: "paragraph"
   children: Descendant[]
 }
 
-type CustomText = { text: string } & MarksText
-type CustomElement = ParagraphElement | AnchorElement | HeadingElement
+type CustomEditor = BaseEditor & ReactEditor & PluginCustomTypes["Editor"]
+type CustomText = { text: string } & PluginCustomTypes["Text"]
+type CustomElement = ParagraphElement | PluginCustomTypes["Element"]
 
 declare module "slate" {
   interface CustomTypes {
-    Editor: BaseEditor & ReactEditor
+    Editor: CustomEditor
     Element: CustomElement
     Text: CustomText
   }
@@ -56,7 +100,7 @@ function renderElement({ children, element, attributes }: RenderElementProps) {
   }
 }
 
-function renderLeaf({ children, leaf, attributes }: RenderLeafProps) {
+function renderLeaf({ children, attributes }: RenderLeafProps) {
   return <span {...attributes}>{children}</span>
 }
 

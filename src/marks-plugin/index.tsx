@@ -33,14 +33,14 @@ export const MarksPlugin = () =>
           return (
             <span
               style={{
-                fontWeight: leaf.bold ? "bold" : "normal",
-                fontStyle: leaf.italic ? "italic" : "normal",
-                textDecoration: leaf.underline ? "underline" : "none",
+                fontWeight: leaf.bold ? "bold" : undefined,
+                fontStyle: leaf.italic ? "italic" : undefined,
+                textDecoration: leaf.underline ? "underline" : undefined,
                 verticalAlign: leaf.sup
                   ? "super"
                   : leaf.sub
                   ? "sub"
-                  : "baseline",
+                  : undefined,
               }}
             >
               {children}
