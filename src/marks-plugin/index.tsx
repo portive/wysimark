@@ -1,12 +1,12 @@
 import isHotkey from "is-hotkey"
 import React from "react"
-import { BaseElement, BaseText, Editor, Node, Text, Transforms } from "slate"
+import { BaseElement } from "slate"
 
-import { createPlugin } from "~/src/sink"
+import { createPlugin, toggleMark } from "~/src/sink"
 
 export type MarksEditor = {
   supportsMarks: true
-  marks: {
+  marksPlugin: {
     toggleBold: () => void
     toggleItalic: () => void
     toggleUnderline: () => void
@@ -31,31 +31,6 @@ export type MarksPluginCustomTypes = {
   Text: MarksText
 }
 
-export function toggleMark(
-  editor: Editor,
-  markKey: keyof Text,
-  unsetKey?: keyof Text
-) {
-  const [match] = Editor.nodes(editor, {
-    match: (n) => Text.isText(n) && !!n[markKey],
-  })
-
-  Transforms.setNodes(
-    editor,
-    { [markKey]: !match || null },
-    {
-      match: (n) => Text.isText(n),
-      split: true,
-    }
-  )
-  if (typeof unsetKey === "string") {
-    Transforms.unsetNodes(editor, unsetKey, {
-      match: (n) => Text.isText(n),
-      split: true,
-    })
-  }
-}
-
 export const MarksPlugin = () =>
   createPlugin<MarksPluginCustomTypes>((editor) => {
     editor.supportsMarks = true
@@ -64,7 +39,7 @@ export const MarksPlugin = () =>
     const isUnderline = isHotkey("mod+u")
     const isSup = isHotkey("mod+shift+p")
     const isSub = isHotkey("mod+shift+b")
-    editor.marks = {
+    editor.marksPlugin = {
       toggleBold: () => toggleMark(editor, "bold"),
       toggleItalic: () => toggleMark(editor, "italic"),
       toggleUnderline: () => toggleMark(editor, "underline"),
@@ -95,28 +70,29 @@ export const MarksPlugin = () =>
         onKeyDown: ({ nativeEvent: e }) => {
           if (isBold(e)) {
             e.preventDefault()
-            editor.marks.toggleBold()
+            console.log(editor)
+            editor.marksPlugin.toggleBold()
             return true
           }
           if (isItalic(e)) {
             e.preventDefault()
-            editor.marks.toggleItalic()
+            editor.marksPlugin.toggleItalic()
             return true
           }
           if (isUnderline(e)) {
             e.preventDefault()
-            editor.marks.toggleUnderline()
+            editor.marksPlugin.toggleUnderline()
             toggleMark(editor, "underline")
             return true
           }
           if (isSup(e)) {
             e.preventDefault()
-            editor.marks.toggleSup()
+            editor.marksPlugin.toggleSup()
             return true
           }
           if (isSub(e)) {
             e.preventDefault()
-            editor.marks.toggleSub()
+            editor.marksPlugin.toggleSub()
             return true
           }
           return false
