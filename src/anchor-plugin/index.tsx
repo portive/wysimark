@@ -1,5 +1,5 @@
 import React from "react"
-import { Text } from "slate"
+import { Descendant, Text } from "slate"
 
 import { createPlugin } from "~/src/sink"
 
@@ -11,7 +11,7 @@ export type AnchorElement = {
   type: "anchor"
   href: string
   target?: string
-  children: Text[]
+  children: Descendant[]
 }
 
 export type AnchorPluginCustomTypes = {
