@@ -1,5 +1,11 @@
 import { useState } from "react"
-import { BaseEditor, BaseElement, createEditor, Descendant } from "slate"
+import {
+  BaseEditor,
+  BaseElement,
+  BaseText,
+  createEditor,
+  Descendant,
+} from "slate"
 import {
   ReactEditor,
   RenderElementProps,
@@ -7,7 +13,7 @@ import {
   Slate,
   withReact,
 } from "slate-react"
-import { UnionToIntersection } from "type-fest"
+import { TupleToUnion, UnionToIntersection } from "type-fest"
 
 import {
   AnchorElement,
@@ -50,16 +56,47 @@ const { withSink, SinkEditable } = createSink([
 type MergeCustomTypes<
   T extends Array<{
     Name: string
-    Editor: unknown
-    Element: unknown
-    Text: unknown
+    Editor?: Record<string, unknown>
+    Element?: BaseElement
+    Text?: BaseText
   }>
 > = {
   Name: T[number]["Name"]
-  Editor: T[number]["Editor"]
-  Element: Exclude<T[number]["Element"], BaseElement>
-  Text: UnionToIntersection<T[number]["Text"]>
+  Editor: UnionToIntersection<T[number]["Editor"]>
+  Element: T[number]["Element"] extends BaseElement
+    ? T[number]["Element"]
+    : undefined
+  Text: UnionToIntersection<
+    T[number]["Text"] extends BaseText ? T[number]["Text"] : BaseText
+  >
 }
+
+// ============
+
+export type Tuple = [
+  AnchorPluginCustomTypes["Element"],
+  HeadingPluginCustomTypes["Element"],
+  MarksPluginCustomTypes["Element"],
+  InlineCodePluginCustomTypes["Element"]
+]
+
+type FilterUndefined<T extends unknown[]> = T extends []
+  ? []
+  : T extends [infer H, ...infer R]
+  ? H extends undefined
+    ? FilterUndefined<R>
+    : [H, ...FilterUndefined<R>]
+  : T
+
+export type C2<T extends Array<BaseElement | unknown>> = Exclude<
+  T[number],
+  undefined
+>
+
+export type T2 = [AnchorElement, HeadingElement, undefined, undefined]
+export type T3 = C2<[AnchorElement, HeadingElement, undefined, undefined]>
+
+// ============
 
 export type PluginCustomTypes = MergeCustomTypes<
   [

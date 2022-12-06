@@ -27,7 +27,6 @@ export type MarksText = {
 export type MarksPluginCustomTypes = {
   Name: "marks"
   Editor: MarksEditor
-  Element: BaseElement
   Text: MarksText
 }
 

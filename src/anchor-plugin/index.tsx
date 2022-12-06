@@ -1,5 +1,5 @@
 import React from "react"
-import { BaseText, Text } from "slate"
+import { Text } from "slate"
 
 import { createPlugin } from "~/src/sink"
 
@@ -18,7 +18,6 @@ export type AnchorPluginCustomTypes = {
   Name: "anchor"
   Editor: AnchorEditor
   Element: AnchorElement
-  Text: BaseText
 }
 
 export const AnchorPlugin = () =>

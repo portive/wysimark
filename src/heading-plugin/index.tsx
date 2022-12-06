@@ -21,7 +21,6 @@ export type HeadingPluginCustomTypes = {
   Name: "heading"
   Editor: HeadingEditor
   Element: HeadingElement
-  Text: BaseText
 }
 
 export const HeadingPlugin = () =>

@@ -15,7 +15,6 @@ export type InlineCodeText = {
 export type InlineCodePluginCustomTypes = {
   Name: "inline-code"
   Editor: InlineCodeEditor
-  Element: BaseElement
   Text: InlineCodeText
 }
 
