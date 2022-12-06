@@ -18,7 +18,6 @@ import { createIsInline } from "./create-is-inline"
 import {
   createRenderElementPlugins,
   createRenderLeafPlugins,
-  RenderLeaf,
 } from "./sink-editable"
 
 export {}
@@ -71,8 +70,8 @@ export const createSink = <
   }
 
   /**
-   * Make sure to have the editor as part of the context because we will use
-   * it in Editable
+   * We aren't using this yet but better to have it in case we need to add
+   * a React Context or something later on.
    */
   const SinkSlate = (props: Parameters<typeof Slate>[0]) => {
     return <Slate {...props} />
