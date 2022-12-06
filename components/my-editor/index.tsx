@@ -36,6 +36,7 @@ import {
   PluginFunction,
   PluginObject,
 } from "~/src/sink"
+import { AnchorEditor } from "~/src/sink/sample/anchor-plugin"
 
 import { initialValue } from "./initial-value"
 
@@ -80,9 +81,9 @@ type ParagraphElement = {
   children: Descendant[]
 }
 
-type CustomEditor = BaseEditor & ReactEditor & PluginCustomTypes["Editor"]
-type CustomText = { text: string } & PluginCustomTypes["Text"]
-type CustomElement = ParagraphElement | PluginCustomTypes["Element"]
+type CustomEditor = BaseEditor & ReactEditor & AnchorEditor
+type CustomText = { text: string } & MarksText & InlineCodeText
+type CustomElement = ParagraphElement | AnchorElement | HeadingElement
 
 declare module "slate" {
   interface CustomTypes {
