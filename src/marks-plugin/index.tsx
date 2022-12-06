@@ -1,4 +1,4 @@
-import isHotkey from "is-hotkey"
+import { isHotkey } from "is-hotkey"
 import React from "react"
 import { BaseElement } from "slate"
 

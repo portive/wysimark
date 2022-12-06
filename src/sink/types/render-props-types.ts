@@ -1,4 +1,4 @@
-import { BaseElement, BaseText } from "slate"
+import { BaseElement } from "slate"
 
 export type ConstrainedRenderElementProps<Element> = Element extends BaseElement
   ? {

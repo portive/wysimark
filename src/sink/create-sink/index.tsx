@@ -14,7 +14,7 @@ import {
   PluginFunction,
   PluginObject,
 } from "../types"
-import { createIsInline } from "./create-is-inline"
+import { createIsInline, createIsVoid } from "./editor-methods"
 
 export {}
 
@@ -58,6 +58,7 @@ export const createSink = <
     const plugins = pluginConfigs.map((pluginConfig) => pluginConfig(editor))
 
     editor.isInline = createIsInline(editor.isInline, plugins)
+    editor.isVoid = createIsVoid(editor.isVoid, plugins)
 
     sinkEditor.sink = {
       plugins: plugins,

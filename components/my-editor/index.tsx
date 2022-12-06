@@ -7,7 +7,7 @@ import {
   Slate,
   withReact,
 } from "slate-react"
-import { Simplify, UnionToIntersection } from "type-fest"
+import { UnionToIntersection } from "type-fest"
 
 import {
   AnchorElement,
@@ -29,13 +29,7 @@ import {
   MarksPluginCustomTypes,
   MarksText,
 } from "~/src/marks-plugin"
-import {
-  BasePluginCustomTypes,
-  createSink,
-  ExtractCustomTypes,
-  PluginFunction,
-  PluginObject,
-} from "~/src/sink"
+import { createSink } from "~/src/sink"
 import { AnchorEditor } from "~/src/sink/sample/anchor-plugin"
 
 import { initialValue } from "./initial-value"

@@ -1,5 +1,5 @@
 import React from "react"
-import { BaseText, Text } from "slate"
+import { BaseText } from "slate"
 
 import { createPlugin } from ".."
 import { PluginCustomTypes } from "../types"

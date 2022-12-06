@@ -1,4 +1,4 @@
-import { BaseEditor, BaseElement, NodeEntry } from "slate"
+import { BaseElement, NodeEntry } from "slate"
 
 export type EditorProps<$Element extends BaseElement> = {
   children: $Element[]

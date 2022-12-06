@@ -1,6 +1,6 @@
-import React, { ReactEventHandler } from "react"
-import { BaseEditor, BaseElement, BaseText, Editor } from "slate"
-import { Simplify, UnionToIntersection } from "type-fest"
+import React from "react"
+import { BaseElement, BaseText, Editor } from "slate"
+import { UnionToIntersection } from "type-fest"
 
 import { ConstrainedRenderElementProps, ConstrainedRenderLeafProps } from "."
 
