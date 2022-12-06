@@ -7,7 +7,6 @@ import {
   Slate,
   useSlateStatic,
 } from "slate-react"
-import { EditableProps } from "slate-react/dist/components/editable"
 
 import {
   ArraySafePluginCustomTypes,

@@ -6,9 +6,9 @@ type IsInline = BaseEditor["isInline"]
 
 export function createIsInline(
   originalIsInline: IsInline,
-  pluginObjects: PluginObject<BasePluginCustomTypes>[]
+  plugins: PluginObject<BasePluginCustomTypes>[]
 ) {
-  const isInlineMethods = pluginObjects
+  const isInlineMethods = plugins
     .map((plugin) => plugin.editor?.isInline)
     .filter((isInline) => isInline !== undefined) as IsInline[]
   return function nextIsInline(element: Parameters<IsInline>[0]) {
