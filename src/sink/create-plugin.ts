@@ -7,7 +7,7 @@ import { BasePluginCustomTypes, PluginFunction } from "./types"
  * Custom Types for the plugin because, apart from `Name`, most of the
  * keys except for `Name` are optional.
  */
-type InputPluginCustomTypes = {
+export type InputPluginCustomTypes = {
   Name: string
   /**
    * This describes the additional properties on the Editor, not the full
