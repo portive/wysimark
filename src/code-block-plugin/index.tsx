@@ -25,7 +25,7 @@ export type CodeBlockPluginCustomTypes = {
   Name: "code-block"
   Editor: CodeBlockEditor
   Element: CodeBlockElement | CodeBlockLineElement
-  Text: BaseText & { prismToken: string }
+  Text: BaseText & { prismToken?: string }
 }
 
 export const CodeBlockPlugin = () =>
