@@ -24,6 +24,24 @@ export const initialValue: Descendant[] = [
     ],
   },
   {
+    type: "code-block",
+    language: "javascript",
+    children: [
+      {
+        type: "code-block-line",
+        children: [{ text: "function hello() {" }],
+      },
+      {
+        type: "code-block-line",
+        children: [{ text: "  console.log('Hello);" }],
+      },
+      {
+        type: "code-block-line",
+        children: [{ text: "}" }],
+      },
+    ],
+  },
+  {
     type: "paragraph",
     children: [
       { text: "Normal " },

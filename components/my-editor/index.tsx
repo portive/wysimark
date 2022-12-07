@@ -19,6 +19,12 @@ import {
   BlockQuotePluginCustomTypes,
 } from "~/src/block-quote-plugin"
 import {
+  CodeBlockElement,
+  CodeBlockLineElement,
+  CodeBlockPlugin,
+  CodeBlockPluginCustomTypes,
+} from "~/src/code-block-plugin"
+import {
   HeadingElement,
   HeadingPlugin,
   HeadingPluginCustomTypes,
@@ -38,6 +44,7 @@ const { withSink, SinkEditable } = createSink([
   InlineCodePlugin(),
   MarksPlugin(),
   BlockQuotePlugin(),
+  CodeBlockPlugin(),
 ])
 
 export type PluginCustomTypes = MergePluginCustomTypes<
@@ -46,7 +53,8 @@ export type PluginCustomTypes = MergePluginCustomTypes<
     HeadingPluginCustomTypes,
     MarksPluginCustomTypes,
     InlineCodePluginCustomTypes,
-    BlockQuotePluginCustomTypes
+    BlockQuotePluginCustomTypes,
+    CodeBlockPluginCustomTypes
   ]
 >
 
@@ -54,8 +62,6 @@ type ParagraphElement = {
   type: "paragraph"
   children: Descendant[]
 }
-
-type PluginCustomElement = PluginCustomTypes["Element"]
 
 declare module "slate" {
   interface CustomTypes {
@@ -65,6 +71,8 @@ declare module "slate" {
       | AnchorElement
       | HeadingElement
       | BlockQuoteElement
+      | CodeBlockElement
+      | CodeBlockLineElement
     Text: { text: string } & PluginCustomTypes["Text"]
   }
 }
