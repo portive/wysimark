@@ -1,5 +1,4 @@
 import React from "react"
-import { BaseElement } from "slate"
 
 import { createHotkeyHandler, createPlugin, toggleMark } from "~/src/sink"
 

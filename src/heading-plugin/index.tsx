@@ -1,6 +1,6 @@
 import { isHotkey } from "is-hotkey"
 import React from "react"
-import { BaseText, Descendant } from "slate"
+import { Descendant } from "slate"
 
 import { createPlugin, replaceElements } from "~/src/sink"
 

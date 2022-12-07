@@ -1,5 +1,5 @@
 import React from "react"
-import { BaseElement, BaseText, Editor } from "slate"
+import { BaseElement, BaseRange, BaseText, Editor, Path } from "slate"
 import { UnionToIntersection } from "type-fest"
 
 import { ConstrainedRenderElementProps, ConstrainedRenderLeafProps } from "."
@@ -61,6 +61,7 @@ export type PluginObject<T extends BasePluginCustomTypes> = {
     isVoid?: (element: T["Element"]) => boolean | void
   }
   editableProps?: {
+    decorate?: ((entry: [T["Element"], Path]) => BaseRange[]) | undefined
     /**
      * All of these plugin event handlers work like the standard event handler
      * with one exception. If the handler returns true, it signals that the

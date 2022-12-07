@@ -1,5 +1,7 @@
 import Prism, { languages, tokenize } from "prismjs"
-import { Element, Node, NodeEntry, Range } from "slate"
+import { Element, Node, Path, Range } from "slate"
+
+import { CodeBlockElement, CodeBlockLineElement } from "."
 
 /**
  * Decorate Overview:
@@ -38,7 +40,9 @@ function getLineOffsets(lines: string[]) {
  * `decorate` method passed to `Editable`
  */
 
-export function decorate(nodeEntry: NodeEntry): Range[] {
+export function decorate(
+  nodeEntry: [CodeBlockElement | CodeBlockLineElement, Path]
+): Range[] {
   const [node, path] = nodeEntry
 
   if (!Element.isElement(node)) return []

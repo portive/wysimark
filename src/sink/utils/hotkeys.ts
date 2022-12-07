@@ -1,5 +1,4 @@
 import { isHotkey } from "is-hotkey"
-import { Editor } from "slate"
 
 import { isMac } from "./is-mac"
 

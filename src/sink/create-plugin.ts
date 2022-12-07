@@ -1,6 +1,6 @@
-import { BaseEditor, BaseElement, BaseText } from "slate"
+import { BaseElement, BaseText } from "slate"
 
-import { BasePluginCustomTypes, PluginFunction } from "./types"
+import { PluginFunction } from "./types"
 
 /**
  * These are the Input Custom Types for the Plugin which differ from the actual

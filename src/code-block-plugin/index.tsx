@@ -3,6 +3,7 @@ import { BaseText, Text } from "slate"
 
 import { createPlugin } from "~/src/sink"
 
+import { decorate } from "./decorate"
 import { tokenStyles } from "./theme"
 export * from "./decorate"
 
@@ -50,6 +51,7 @@ export const CodeBlockPlugin = () =>
         },
       },
       editableProps: {
+        decorate,
         renderElement: ({ element, attributes, children }) => {
           if (element.type === "code-block") {
             return (

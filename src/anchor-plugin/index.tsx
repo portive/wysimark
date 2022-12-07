@@ -1,5 +1,5 @@
 import React from "react"
-import { Descendant, Text } from "slate"
+import { Descendant } from "slate"
 
 import { createPlugin } from "~/src/sink"
 

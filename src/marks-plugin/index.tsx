@@ -1,6 +1,4 @@
-import { isHotkey } from "is-hotkey"
 import React from "react"
-import { BaseElement } from "slate"
 
 import { createHotkeyHandler, createPlugin, toggleMark } from "~/src/sink"
 

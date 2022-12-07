@@ -1,5 +1,5 @@
 import React, { cloneElement } from "react"
-import { BaseEditor } from "slate"
+import { BaseEditor, BaseElement, NodeEntry, Path, Range } from "slate"
 import {
   Editable,
   RenderElementProps,
@@ -26,11 +26,12 @@ type SinkEditor<T extends BasePluginCustomTypes = BasePluginCustomTypes> = {
   sink: {
     plugins: PluginObject<T>[]
     pluginsFor: {
-      renderElement: PluginObject<T>[]
-      renderLeaf: PluginObject<T>[]
+      decorate: PluginObject<T>[]
       onKeyDown: PluginObject<T>[]
       onKeyPress: PluginObject<T>[]
       onKeyUp: PluginObject<T>[]
+      renderElement: PluginObject<T>[]
+      renderLeaf: PluginObject<T>[]
     }
   }
 }
@@ -63,17 +64,18 @@ export const createSink = <
     sinkEditor.sink = {
       plugins: plugins,
       pluginsFor: {
+        decorate: plugins.filter((plugin) => plugin.editableProps?.decorate),
+        onKeyDown: plugins.filter((plugin) => plugin.editableProps?.onKeyDown),
+        onKeyPress: plugins.filter(
+          (plugin) => plugin.editableProps?.onKeyPress
+        ),
+        onKeyUp: plugins.filter((plugin) => plugin.editableProps?.onKeyUp),
         renderElement: plugins.filter(
           (plugin) => plugin.editableProps?.renderElement
         ),
         renderLeaf: plugins
           .filter((plugin) => plugin.editableProps?.renderLeaf)
           .reverse(),
-        onKeyDown: plugins.filter((plugin) => plugin.editableProps?.onKeyDown),
-        onKeyPress: plugins.filter(
-          (plugin) => plugin.editableProps?.onKeyPress
-        ),
-        onKeyUp: plugins.filter((plugin) => plugin.editableProps?.onKeyUp),
       },
     }
     return sinkEditor
@@ -92,6 +94,18 @@ export const createSink = <
    */
   const SinkEditable = (originalProps: Parameters<typeof Editable>[0]) => {
     const { sink } = useSlateStatic() as unknown as SinkEditor
+
+    const decorate = (entry: NodeEntry): Range[] => {
+      const ranges: Range[] = []
+      for (const plugin of sink.pluginsFor.decorate) {
+        const resultRanges = plugin.editableProps?.decorate?.(
+          entry as [BaseElement, Path]
+        )
+        if (resultRanges === undefined) continue
+        ranges.push(...resultRanges)
+      }
+      return ranges
+    }
 
     /**
      * Create the substituted `renderElement` method.
@@ -166,9 +180,10 @@ export const createSink = <
     return (
       <Editable
         {...originalProps}
+        decorate={decorate}
+        onKeyDown={nextOnKeyDown}
         renderElement={nextRenderElement}
         renderLeaf={nextRenderLeaf}
-        onKeyDown={nextOnKeyDown}
       />
     )
   }

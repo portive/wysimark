@@ -23,7 +23,6 @@ import {
   CodeBlockLineElement,
   CodeBlockPlugin,
   CodeBlockPluginCustomTypes,
-  decorate,
 } from "~/src/code-block-plugin"
 import {
   HeadingElement,
@@ -104,7 +103,7 @@ export const MyEditor = () => {
             margin: "4em",
             font: "16px arial",
           }}
-          decorate={decorate}
+          // decorate={decorate}
         />
       </Slate>
     </div>
