@@ -14,6 +14,11 @@ import {
   AnchorPluginCustomTypes,
 } from "~/src/anchor-plugin"
 import {
+  BlockQuoteElement,
+  BlockQuotePlugin,
+  BlockQuotePluginCustomTypes,
+} from "~/src/block-quote-plugin"
+import {
   HeadingElement,
   HeadingPlugin,
   HeadingPluginCustomTypes,
@@ -32,6 +37,7 @@ const { withSink, SinkEditable } = createSink([
   HeadingPlugin(),
   InlineCodePlugin(),
   MarksPlugin(),
+  BlockQuotePlugin(),
 ])
 
 export type PluginCustomTypes = MergePluginCustomTypes<
@@ -39,7 +45,8 @@ export type PluginCustomTypes = MergePluginCustomTypes<
     AnchorPluginCustomTypes,
     HeadingPluginCustomTypes,
     MarksPluginCustomTypes,
-    InlineCodePluginCustomTypes
+    InlineCodePluginCustomTypes,
+    BlockQuotePluginCustomTypes
   ]
 >
 
@@ -48,10 +55,16 @@ type ParagraphElement = {
   children: Descendant[]
 }
 
+type PluginCustomElement = PluginCustomTypes["Element"]
+
 declare module "slate" {
   interface CustomTypes {
     Editor: BaseEditor & ReactEditor & PluginCustomTypes["Editor"]
-    Element: ParagraphElement | AnchorElement | HeadingElement
+    Element:
+      | ParagraphElement
+      | AnchorElement
+      | HeadingElement
+      | BlockQuoteElement
     Text: { text: string } & PluginCustomTypes["Text"]
   }
 }
