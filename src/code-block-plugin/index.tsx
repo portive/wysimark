@@ -1,7 +1,10 @@
 import React from "react"
-import { BaseText, Descendant } from "slate"
+import { BaseText, Text } from "slate"
 
 import { createPlugin } from "~/src/sink"
+
+import { tokenStyles } from "./theme"
+export * from "./decorate"
 
 export type CodeBlockEditor = {
   supportsCodeBlock: true
@@ -9,20 +12,20 @@ export type CodeBlockEditor = {
 
 export type CodeBlockLineElement = {
   type: "code-block-line"
-  children: BaseText[]
+  children: Text[]
 }
 
 export type CodeBlockElement = {
   type: "code-block"
   language: string
-  // TODO: This would be better if it could be `CodeBlockLineElement``
-  children: Descendant[]
+  children: CodeBlockLineElement[]
 }
 
 export type CodeBlockPluginCustomTypes = {
   Name: "code-block"
   Editor: CodeBlockEditor
   Element: CodeBlockElement | CodeBlockLineElement
+  Text: BaseText & { prismToken: string }
 }
 
 export const CodeBlockPlugin = () =>
@@ -63,7 +66,21 @@ export const CodeBlockPlugin = () =>
               </pre>
             )
           } else if (element.type === "code-block-line") {
-            return <div {...attributes}>{children}</div>
+            return (
+              <div {...attributes} style={{ lineHeight: "1.5em" }}>
+                {children}
+              </div>
+            )
+          }
+        },
+        renderLeaf: ({ leaf, children }) => {
+          const style = leaf.prismToken
+            ? tokenStyles[leaf.prismToken] || null
+            : null
+          if (style === null) {
+            return children
+          } else {
+            return <span style={style}>{children}</span>
           }
         },
       },

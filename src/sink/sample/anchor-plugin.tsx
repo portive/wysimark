@@ -24,7 +24,7 @@ export type AnchorPluginCustomTypes = PluginCustomTypes<{
 
 export const anchorPlugin = () =>
   createPlugin<AnchorPluginCustomTypes>((editor) => {
-    editor.supportsAnchors = true
+    editor.supportsAnchor = true
     return {
       name: "anchor",
       editor: {

@@ -1,10 +1,13 @@
 import React from "react"
 import { BaseElement } from "slate"
 
-import { createPlugin } from "~/src/sink"
+import { createHotkeyHandler, createPlugin, toggleMark } from "~/src/sink"
 
 export type InlineCodeEditor = {
   supportsInlineCode: true
+  inlineCodePlugin: {
+    toggleInlineCode: () => void
+  }
 }
 
 export type InlineCodeText = {
@@ -21,6 +24,9 @@ export type InlineCodePluginCustomTypes = {
 export const InlineCodePlugin = () =>
   createPlugin<InlineCodePluginCustomTypes>((editor) => {
     editor.supportsInlineCode = true
+    const p = (editor.inlineCodePlugin = {
+      toggleInlineCode: () => toggleMark(editor, "code"),
+    })
     return {
       name: "inline-code",
       editableProps: {
@@ -41,6 +47,9 @@ export const InlineCodePlugin = () =>
             return children
           }
         },
+        onKeyDown: createHotkeyHandler({
+          "mod+j": () => p.toggleInlineCode(),
+        }),
       },
     }
   })

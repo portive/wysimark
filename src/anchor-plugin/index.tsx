@@ -4,7 +4,7 @@ import { Descendant, Text } from "slate"
 import { createPlugin } from "~/src/sink"
 
 export type AnchorEditor = {
-  supportsAnchors: true
+  supportsAnchor: true
 }
 
 export type AnchorElement = {
@@ -22,7 +22,7 @@ export type AnchorPluginCustomTypes = {
 
 export const AnchorPlugin = () =>
   createPlugin<AnchorPluginCustomTypes>((editor) => {
-    editor.supportsAnchors = true
+    editor.supportsAnchor = true
     return {
       name: "anchor",
       editor: {

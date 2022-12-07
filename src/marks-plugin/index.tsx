@@ -2,7 +2,7 @@ import { isHotkey } from "is-hotkey"
 import React from "react"
 import { BaseElement } from "slate"
 
-import { createPlugin, toggleMark } from "~/src/sink"
+import { createHotkeyHandler, createPlugin, toggleMark } from "~/src/sink"
 
 export type MarksEditor = {
   supportsMarks: true
@@ -33,18 +33,13 @@ export type MarksPluginCustomTypes = {
 export const MarksPlugin = () =>
   createPlugin<MarksPluginCustomTypes>((editor) => {
     editor.supportsMarks = true
-    const isBold = isHotkey("mod+b")
-    const isItalic = isHotkey("mod+i")
-    const isUnderline = isHotkey("mod+u")
-    const isSup = isHotkey("mod+shift+p")
-    const isSub = isHotkey("mod+shift+b")
-    editor.marksPlugin = {
+    const p = (editor.marksPlugin = {
       toggleBold: () => toggleMark(editor, "bold"),
       toggleItalic: () => toggleMark(editor, "italic"),
       toggleUnderline: () => toggleMark(editor, "underline"),
       toggleSup: () => toggleMark(editor, "sup", "sub"),
       toggleSub: () => toggleMark(editor, "sub", "sup"),
-    }
+    })
     return {
       name: "marks",
       editableProps: {
@@ -66,36 +61,13 @@ export const MarksPlugin = () =>
             </span>
           )
         },
-        onKeyDown: ({ nativeEvent: e }) => {
-          if (isBold(e)) {
-            e.preventDefault()
-            console.log(editor)
-            editor.marksPlugin.toggleBold()
-            return true
-          }
-          if (isItalic(e)) {
-            e.preventDefault()
-            editor.marksPlugin.toggleItalic()
-            return true
-          }
-          if (isUnderline(e)) {
-            e.preventDefault()
-            editor.marksPlugin.toggleUnderline()
-            toggleMark(editor, "underline")
-            return true
-          }
-          if (isSup(e)) {
-            e.preventDefault()
-            editor.marksPlugin.toggleSup()
-            return true
-          }
-          if (isSub(e)) {
-            e.preventDefault()
-            editor.marksPlugin.toggleSub()
-            return true
-          }
-          return false
-        },
+        onKeyDown: createHotkeyHandler({
+          "mod+b": () => p.toggleBold(),
+          "mod+i": () => p.toggleItalic(),
+          "mod+u": () => p.toggleUnderline(),
+          "super+p": () => p.toggleSup(),
+          "super+b": () => p.toggleSub(),
+        }),
       },
     }
   })
