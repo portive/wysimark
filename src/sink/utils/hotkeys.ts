@@ -10,15 +10,22 @@ export function isBetterHotkey(hotkey: string) {
   return isHotkey(modifiedHotkey)
 }
 
-type KeyboardAction = () => boolean | void
+/**
+ * The function that is executed when the hotkey is pressed.
+ *
+ * If it returns `void` (undefined) we assume the Action was executed.
+ * If we return a `boolean`, the Action is considered executed if it returns
+ * `true` or not handled if it returns `false`.
+ */
+type Action = () => boolean | void
 
 type IsKeyboardShortcut = (event: KeyboardEvent) => boolean
 
-type ShortcutTuple = [IsKeyboardShortcut, KeyboardAction]
+type ShortcutTuple = [IsKeyboardShortcut, Action]
 
 /**
  * Creates a `keyDown` handler from an object where the keys are the shortcut
- * and the values are the `KeyboardAction` function to execute. If the
+ * and the values are the `Action` function to execute. If the
  * function returns `true`, the event is considered handled and the event
  * is stopped.
  *
@@ -28,9 +35,7 @@ type ShortcutTuple = [IsKeyboardShortcut, KeyboardAction]
  * we want the original keyboard event to be handled by the browser.
  */
 
-export function createHotkeyHandler(
-  shortcutsObject: Record<string, KeyboardAction>
-) {
+export function createHotkeyHandler(shortcutsObject: Record<string, Action>) {
   /**
    * Don't populate the shortcuts at this point because it will run on the
    * server. We can't run it on the server because we need to determine if we
