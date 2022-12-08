@@ -2,8 +2,23 @@ import { BaseEditor } from "slate"
 
 import { BasePluginCustomTypes, PluginObject } from "../types"
 
+type InsertBreak = () => void
 type IsInline = BaseEditor["isInline"]
 type IsVoid = BaseEditor["isVoid"]
+
+export function createInsertBreak(
+  originalInsertBreak: InsertBreak,
+  plugins: PluginObject<BasePluginCustomTypes>[]
+) {
+  const insertBreakPlugins = plugins.filter((plugin) => plugin.editor?.isInline)
+  return function nextInsertBreak() {
+    for (const plugin of insertBreakPlugins) {
+      const isHandled = plugin.editor?.insertBreak?.()
+      if (isHandled) return
+    }
+    originalInsertBreak()
+  }
+}
 
 export function createIsInline(
   originalIsInline: IsInline,

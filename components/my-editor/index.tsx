@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { BaseEditor, createEditor, Descendant } from "slate"
+import { withHistory } from "slate-history"
 import {
   ReactEditor,
   RenderElementProps,
@@ -90,7 +91,9 @@ function renderLeaf({ children, attributes }: RenderLeafProps) {
 }
 
 export const MyEditor = () => {
-  const [editor] = useState(() => withSink(withReact(createEditor())))
+  const [editor] = useState(() =>
+    withSink(withReact(withHistory(createEditor())))
+  )
   return (
     <div>
       <Slate editor={editor} value={initialValue}>
@@ -103,7 +106,6 @@ export const MyEditor = () => {
             margin: "4em",
             font: "16px arial",
           }}
-          // decorate={decorate}
         />
       </Slate>
     </div>

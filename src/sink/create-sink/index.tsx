@@ -14,7 +14,11 @@ import {
   PluginFunction,
   PluginObject,
 } from "../types"
-import { createIsInline, createIsVoid } from "./editor-methods"
+import {
+  createInsertBreak,
+  createIsInline,
+  createIsVoid,
+} from "./editor-methods"
 
 export {}
 
@@ -58,6 +62,7 @@ export const createSink = <
      */
     const plugins = pluginConfigs.map((pluginConfig) => pluginConfig(editor))
 
+    editor.insertBreak = createInsertBreak(editor.insertBreak, plugins)
     editor.isInline = createIsInline(editor.isInline, plugins)
     editor.isVoid = createIsVoid(editor.isVoid, plugins)
 

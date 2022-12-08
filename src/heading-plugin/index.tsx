@@ -1,8 +1,12 @@
-import { isHotkey } from "is-hotkey"
 import React from "react"
-import { Descendant, Editor, Element, Range } from "slate"
+import { Descendant, Editor, Node, Path, Transforms } from "slate"
 
-import { createHotkeyHandler, createPlugin, replaceElements } from "~/src/sink"
+import {
+  createHotkeyHandler,
+  createPlugin,
+  matchNodeEOL,
+  replaceElements,
+} from "~/src/sink"
 
 export type HeadingEditor = {
   supportsHeadings: true
@@ -42,25 +46,22 @@ export const HeadingPlugin = () =>
         })
       },
     })
-    /**
-     * This allows a break to be inserted only if we are at the end of aline
-     */
-    // const originalInsertBreak = editor.insertBreak
-    // editor.insertBreak = () => {
-    //   if (editor.selection === null) return false
-    //   if (!Range.isCollapsed(editor.selection)) return false
-    //   const entry = Editor.above(editor, {
-    //     match: (node) => Element.isElement(node) && node.type === "heading",
-    //   })
-    //   if (entry === undefined) return false
-    //   if (Editor.isEnd(editor, editor.selection.anchor, entry[1])) {
-    //     originalInsertBreak()
-    //     return true
-    //   }
-    // }
     return {
       name: "heading",
       editor: {
+        insertBreak: () => {
+          const entry = matchNodeEOL(editor, "heading")
+          if (!entry) return false
+          insertNodesAndSelectAt(
+            editor,
+            {
+              type: "paragraph",
+              children: [{ text: "" }],
+            },
+            Path.next(entry[1])
+          )
+          return true
+        },
         isInline(element) {
           if (element.type === "heading") return false
         },
@@ -87,7 +88,14 @@ export const HeadingPlugin = () =>
     }
   })
 
-function stop(e: KeyboardEvent) {
-  e.preventDefault()
-  e.stopPropagation()
+function insertNodesAndSelectAt(
+  editor: Editor,
+  nodes: Node | Node[],
+  at: Path
+) {
+  Transforms.insertNodes(editor, nodes, { at })
+  Transforms.select(editor, {
+    anchor: Editor.start(editor, at),
+    focus: Editor.start(editor, at),
+  })
 }

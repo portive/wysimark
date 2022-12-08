@@ -57,6 +57,7 @@ export type PluginObject<T extends BasePluginCustomTypes> = {
   // editor: PluginEditor
   // withEditor?: (editor: PluginEditor) => PluginEditor
   editor?: {
+    insertBreak?: () => boolean
     isInline?: (element: T["Element"]) => boolean | void
     isVoid?: (element: T["Element"]) => boolean | void
   }
