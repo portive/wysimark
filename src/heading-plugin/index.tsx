@@ -1,8 +1,8 @@
 import { isHotkey } from "is-hotkey"
 import React from "react"
-import { Descendant } from "slate"
+import { Descendant, Editor, Element, Range } from "slate"
 
-import { createPlugin, replaceElements } from "~/src/sink"
+import { createHotkeyHandler, createPlugin, replaceElements } from "~/src/sink"
 
 export type HeadingEditor = {
   supportsHeadings: true
@@ -26,7 +26,7 @@ export type HeadingPluginCustomTypes = {
 export const HeadingPlugin = () =>
   createPlugin<HeadingPluginCustomTypes>((editor) => {
     editor.supportsHeadings = true
-    editor.headingPlugin = {
+    const p = (editor.headingPlugin = {
       toggleHeading: (level) => {
         replaceElements(editor, (element) => {
           if (element.type === "heading" && element.level === level) {
@@ -41,14 +41,23 @@ export const HeadingPlugin = () =>
           }
         })
       },
-    }
-    const { headingPlugin } = editor
-    const isHeading1 = isHotkey("ctrl+shift+1")
-    const isHeading2 = isHotkey("ctrl+shift+2")
-    const isHeading3 = isHotkey("ctrl+shift+3")
-    const isHeading4 = isHotkey("ctrl+shift+4")
-    const isHeading5 = isHotkey("ctrl+shift+5")
-    const isHeading6 = isHotkey("ctrl+shift+6")
+    })
+    /**
+     * This allows a break to be inserted only if we are at the end of aline
+     */
+    // const originalInsertBreak = editor.insertBreak
+    // editor.insertBreak = () => {
+    //   if (editor.selection === null) return false
+    //   if (!Range.isCollapsed(editor.selection)) return false
+    //   const entry = Editor.above(editor, {
+    //     match: (node) => Element.isElement(node) && node.type === "heading",
+    //   })
+    //   if (entry === undefined) return false
+    //   if (Editor.isEnd(editor, editor.selection.anchor, entry[1])) {
+    //     originalInsertBreak()
+    //     return true
+    //   }
+    // }
     return {
       name: "heading",
       editor: {
@@ -66,39 +75,14 @@ export const HeadingPlugin = () =>
             return <Heading {...attributes}>{children}</Heading>
           }
         },
-        onKeyDown: ({ nativeEvent: e }) => {
-          if (isHeading1(e)) {
-            stop(e)
-            headingPlugin.toggleHeading(1)
-            return true
-          }
-          if (isHeading2(e)) {
-            stop(e)
-            editor.headingPlugin.toggleHeading(2)
-            return true
-          }
-          if (isHeading3(e)) {
-            stop(e)
-            editor.headingPlugin.toggleHeading(3)
-            return true
-          }
-          if (isHeading4(e)) {
-            stop(e)
-            editor.headingPlugin.toggleHeading(4)
-            return true
-          }
-          if (isHeading5(e)) {
-            stop(e)
-            editor.headingPlugin.toggleHeading(5)
-            return true
-          }
-          if (isHeading6(e)) {
-            stop(e)
-            editor.headingPlugin.toggleHeading(6)
-            return true
-          }
-          return false
-        },
+        onKeyDown: createHotkeyHandler({
+          "super+1": () => p.toggleHeading(1),
+          "super+2": () => p.toggleHeading(2),
+          "super+3": () => p.toggleHeading(3),
+          "super+4": () => p.toggleHeading(4),
+          "super+5": () => p.toggleHeading(5),
+          "super+6": () => p.toggleHeading(6),
+        }),
       },
     }
   })
