@@ -16,6 +16,17 @@ function normalizeMatchNode(matchNode: MatchNode): (node: Node) => boolean {
     : (node: Node) => Element.isElement(node) && node.type === matchNode
 }
 
+export function matchElement(
+  editor: Editor,
+  matchNode: MatchNode
+): NodeEntry<Ancestor> | undefined {
+  // if no selection, there will be no match
+  if (editor.selection === null) return
+  const match = normalizeMatchNode(matchNode)
+  // look for a matching element
+  return Editor.above(editor, { match })
+}
+
 /**
  * Checks to see if the current selection is at the end of line for a node
  * that matches the `matchNode` argument.
@@ -28,15 +39,10 @@ export function matchNodeEOL(
   editor: Editor,
   matchNode: MatchNode
 ): NodeEntry<Ancestor> | undefined {
-  // if no selection, it's not end of line
   if (editor.selection === null) return
-  // If the range is expanded, it's not end of line
-  if (Range.isExpanded(editor.selection)) return
-  const match = normalizeMatchNode(matchNode)
-  // look for a match
-  const entry = Editor.above(editor, { match })
-  // if no match found, then not end of line
+  const entry = matchElement(editor, matchNode)
   if (entry === undefined) return
+  if (Range.isExpanded(editor.selection)) return
   // if we aren't at the end of the element, then we aren't at end of line
   if (!Editor.isEnd(editor, editor.selection.anchor, entry[1])) {
     return

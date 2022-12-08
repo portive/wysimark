@@ -36,6 +36,13 @@ import {
 } from "~/src/inline-code-plugin"
 import { MarksPlugin, MarksPluginCustomTypes } from "~/src/marks-plugin"
 import { createSink, MergePluginCustomTypes } from "~/src/sink"
+import {
+  TableCellElement,
+  TableElement,
+  TablePlugin,
+  TablePluginCustomTypes,
+  TableRowElement,
+} from "~/src/table-plugin"
 
 import { initialValue } from "./initial-value"
 
@@ -46,6 +53,7 @@ const { withSink, SinkEditable } = createSink([
   MarksPlugin(),
   BlockQuotePlugin(),
   CodeBlockPlugin(),
+  TablePlugin(),
 ])
 
 export type PluginCustomTypes = MergePluginCustomTypes<
@@ -55,7 +63,8 @@ export type PluginCustomTypes = MergePluginCustomTypes<
     MarksPluginCustomTypes,
     InlineCodePluginCustomTypes,
     BlockQuotePluginCustomTypes,
-    CodeBlockPluginCustomTypes
+    CodeBlockPluginCustomTypes,
+    TablePluginCustomTypes
   ]
 >
 
@@ -74,6 +83,9 @@ declare module "slate" {
       | BlockQuoteElement
       | CodeBlockElement
       | CodeBlockLineElement
+      | TableElement
+      | TableRowElement
+      | TableCellElement
     Text: { text: string } & PluginCustomTypes["Text"]
   }
 }

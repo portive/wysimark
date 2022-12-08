@@ -24,6 +24,47 @@ export const initialValue: Descendant[] = [
     ],
   },
   {
+    type: "table",
+    columns: [{ align: "left" }, { align: "center" }, { align: "right" }],
+    children: [
+      {
+        type: "table-row",
+        children: [
+          {
+            type: "table-cell",
+            index: 0,
+            children: [
+              {
+                type: "paragraph",
+                children: [{ text: "Alpha" }],
+              },
+            ],
+          },
+          {
+            type: "table-cell",
+            index: 1,
+            children: [
+              {
+                type: "paragraph",
+                children: [{ text: "Bravo" }],
+              },
+            ],
+          },
+          {
+            type: "table-cell",
+            index: 2,
+            children: [
+              {
+                type: "paragraph",
+                children: [{ text: "Charlie" }],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
     type: "code-block",
     language: "javascript",
     children: [
