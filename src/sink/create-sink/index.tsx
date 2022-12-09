@@ -18,6 +18,7 @@ import {
   createInsertBreak,
   createIsInline,
   createIsVoid,
+  createVoidAction,
 } from "./editor-methods"
 import { Reset } from "./reset"
 
@@ -63,7 +64,12 @@ export const createSink = <
      */
     const plugins = pluginConfigs.map((pluginConfig) => pluginConfig(editor))
 
-    editor.insertBreak = createInsertBreak(editor.insertBreak, plugins)
+    Object.assign(editor, {
+      insertBreak: createVoidAction(editor, "insertBreak", plugins),
+      deleteBackward: createVoidAction(editor, "deleteBackward", plugins),
+      deleteForward: createVoidAction(editor, "deleteForward", plugins),
+    })
+
     editor.isInline = createIsInline(editor.isInline, plugins)
     editor.isVoid = createIsVoid(editor.isVoid, plugins)
 

@@ -57,9 +57,25 @@ export type PluginObject<T extends BasePluginCustomTypes> = {
   // editor: PluginEditor
   // withEditor?: (editor: PluginEditor) => PluginEditor
   editor?: {
-    insertBreak?: () => boolean
+    /**
+     * If the element is considered handled, we return a boolean value.
+     * If it isn't handled yet, we don't return any value (e.g. `undefined`)
+     */
     isInline?: (element: T["Element"]) => boolean | void
     isVoid?: (element: T["Element"]) => boolean | void
+
+    /**
+     * If the action insert considered handled, we return `true`.
+     * If it isn't handled yet, return `false`.
+     * For type safety, you must return a `boolean` and must not return
+     * `undefined`.
+     */
+    deleteBackward?: (unit: "character" | "word" | "line" | "block") => boolean
+    deleteForward?: (...args: Parameters<Editor["deleteBackward"]>) => boolean
+    deleteFragment?: () => boolean
+    insertBreak?: () => boolean
+    insertFragment?: (fragment: Node[]) => boolean
+    insertNode?: (node: Node) => boolean
   }
   editableProps?: {
     decorate?: ((entry: [T["Element"], Path]) => BaseRange[]) | undefined

@@ -1,4 +1,4 @@
-import { Editor, Node, Path, Transforms } from "slate"
+import { Editor, Node, Path, Point, Range, Transforms } from "slate"
 import { useSelected } from "slate-react"
 export * from "./types"
 
@@ -11,7 +11,7 @@ import {
 
 import { MinusIcon, PlusIcon } from "./icons"
 import { createTableMethods } from "./methods"
-import { TableInfo } from "./methods/get-table-info"
+import { getTableInfo, TableInfo } from "./methods/get-table-info"
 import { renderElement } from "./render-element"
 import { TableCellElement, TableElement, TableRowElement } from "./types"
 
@@ -40,6 +40,16 @@ export const TablePlugin = () =>
           const entry = matchElement(editor, "table-cell")
           return !!entry
         },
+        deleteBackward: () => {
+          const t = p.getTableInfo()
+          if (!t) return false
+          return isStartOfPath(editor, t.cellPath)
+        },
+        deleteForward: () => {
+          const t = p.getTableInfo()
+          if (!t) return false
+          return isEndOfPath(editor, t.cellPath)
+        },
         isInline(element) {
           if (["table", "table-row", "table-cell"].includes(element.type))
             return false
@@ -65,3 +75,37 @@ export const TablePlugin = () =>
       },
     }
   })
+
+/**
+ * Private
+ *
+ * Turns a Point | Range | null into a Point | null for
+ */
+function normalizeToPoint(at: Point | Range | null): Point | null {
+  if (at === null) return null
+  if (Point.isPoint(at)) return at
+  if (Range.isExpanded(at)) {
+    return null
+  }
+  return at.anchor
+}
+
+function isStartOfPath(
+  editor: Editor,
+  path: Path,
+  { at = editor.selection }: { at?: Point | Range | null } = {}
+) {
+  const point = normalizeToPoint(at)
+  return point === null
+    ? false
+    : Point.equals(point, Editor.start(editor, path))
+}
+
+function isEndOfPath(
+  editor: Editor,
+  path: Path,
+  { at = editor.selection }: { at?: Point | Range | null } = {}
+) {
+  const point = normalizeToPoint(at)
+  return point === null ? false : Point.equals(point, Editor.end(editor, path))
+}
