@@ -1,3 +1,5 @@
+import "../../src/setup"
+
 import { useState } from "react"
 import { BaseEditor, createEditor, Descendant } from "slate"
 import { withHistory } from "slate-history"

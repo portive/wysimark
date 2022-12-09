@@ -1,11 +1,8 @@
 import { Editor, Location, Path } from "slate"
 
-import { matchElement } from "../sink"
-import {
-  TableCellElement,
-  TableElement,
-  TableRowElement,
-} from "./element-types"
+import { matchElement } from "~/src/sink"
+
+import { TableCellElement, TableElement, TableRowElement } from "../types"
 
 /**
  * The TableInfo object that includes quick access information starting from a

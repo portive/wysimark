@@ -1,4 +1,6 @@
+export * from "./curry"
 export * from "./hotkeys"
 export * from "./match-element"
 export * from "./replace-elements"
+export * from "./select"
 export * from "./toggle-mark"

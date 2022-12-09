@@ -19,6 +19,7 @@ import {
   createIsInline,
   createIsVoid,
 } from "./editor-methods"
+import { Reset } from "./reset"
 
 export {}
 
@@ -183,6 +184,7 @@ export const createSink = <
     }
 
     return (
+      // <Reset>
       <Editable
         {...originalProps}
         decorate={decorate}
@@ -190,6 +192,7 @@ export const createSink = <
         renderElement={nextRenderElement}
         renderLeaf={nextRenderLeaf}
       />
+      // </Reset>
     )
   }
 
