@@ -18,22 +18,10 @@ export function TableCell({
         border: "1px solid silver",
         padding: "0 0.5em",
         minWidth: "2em",
+        outline: selected ? "2px solid royalblue" : "none",
       }}
     >
       {children}
-      {selected ? (
-        <div
-          contentEditable={false}
-          style={{
-            position: "absolute",
-            top: -1,
-            left: -1,
-            bottom: -1,
-            right: -1,
-            border: "1px solid royalblue",
-          }}
-        />
-      ) : null}
     </td>
   )
 }
