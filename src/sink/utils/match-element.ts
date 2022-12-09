@@ -1,4 +1,12 @@
-import { Ancestor, Editor, Element, Node, NodeEntry, Range } from "slate"
+import {
+  Ancestor,
+  Editor,
+  Element,
+  Location,
+  Node,
+  NodeEntry,
+  Range,
+} from "slate"
 
 type MatchNode = string | ((node: Node) => boolean)
 
@@ -16,15 +24,20 @@ function normalizeMatchNode(matchNode: MatchNode): (node: Node) => boolean {
     : (node: Node) => Element.isElement(node) && node.type === matchNode
 }
 
-export function matchElement(
+/**
+ * Checks to see if the current selection is inside of a Node that matches
+ * `matchNode`.
+ */
+export function matchElement<T extends Ancestor & Element = Element>(
   editor: Editor,
-  matchNode: MatchNode
-): NodeEntry<Ancestor> | undefined {
+  matchNode: MatchNode,
+  { at = editor.selection }: { at?: Location | null } = {}
+): NodeEntry<T> | undefined {
   // if no selection, there will be no match
-  if (editor.selection === null) return
+  if (at === null) return
   const match = normalizeMatchNode(matchNode)
   // look for a matching element
-  return Editor.above(editor, { match })
+  return Editor.above(editor, { at, match })
 }
 
 /**
@@ -35,7 +48,7 @@ export function matchElement(
  * returns a boolean or it can be a string representing the `type` property of
  * an `Element`
  */
-export function matchNodeEOL(
+export function matchEndOfElement(
   editor: Editor,
   matchNode: MatchNode
 ): NodeEntry<Ancestor> | undefined {
@@ -49,5 +62,24 @@ export function matchNodeEOL(
   }
   // we passed all the failures and so we are at the end of line of the
   // given element.
+  return entry
+}
+
+/**
+ * NOTE:
+ *
+ * NOT TESTED YET!
+ *
+ * Use in lists where hitting enter in an empty list item should outdent the
+ * list at that position.
+ */
+export function matchEmptyElement(
+  editor: Editor,
+  matchNode: MatchNode
+): NodeEntry<Ancestor> | undefined {
+  if (editor.selection === null) return
+  const entry = matchElement(editor, matchNode)
+  if (entry === undefined) return
+  if (!Editor.isEmpty(editor, entry[0])) return
   return entry
 }

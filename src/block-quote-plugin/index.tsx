@@ -1,10 +1,14 @@
 import React from "react"
-import { Descendant } from "slate"
+import { Descendant, Element, Transforms } from "slate"
 
-import { createPlugin } from "~/src/sink"
+import { createHotkeyHandler, createPlugin } from "~/src/sink"
 
 export type BlockQuoteEditor = {
   supportsBlockQuote: true
+  blockQuotePlugin: {
+    indent: () => void
+    outdent: () => void
+  }
 }
 
 export type BlockQuoteElement = {
@@ -21,6 +25,26 @@ export type BlockQuotePluginCustomTypes = {
 export const BlockQuotePlugin = () =>
   createPlugin<BlockQuotePluginCustomTypes>((editor) => {
     editor.supportsBlockQuote = true
+    editor.blockQuotePlugin = {
+      indent: () => {
+        Transforms.wrapNodes(
+          editor,
+          { type: "block-quote", children: [] },
+          {
+            match: (node) =>
+              Element.isElement(node) &&
+              !editor.isVoid(node) &&
+              !editor.isInline(node),
+          }
+        )
+      },
+      outdent: () => {
+        Transforms.unwrapNodes(editor, {
+          match: (node) =>
+            Element.isElement(node) && node.type === "block-quote",
+        })
+      },
+    }
     return {
       name: "block-quote",
       editor: {
@@ -48,6 +72,10 @@ export const BlockQuotePlugin = () =>
             )
           }
         },
+        onKeyDown: createHotkeyHandler({
+          "mod+shift+.": editor.blockQuotePlugin.indent,
+          "mod+shift+,": editor.blockQuotePlugin.outdent,
+        }),
       },
     }
   })

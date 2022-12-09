@@ -60,11 +60,11 @@ export const MarksPlugin = () =>
           )
         },
         onKeyDown: createHotkeyHandler({
-          "mod+b": () => p.toggleBold(),
-          "mod+i": () => p.toggleItalic(),
-          "mod+u": () => p.toggleUnderline(),
-          "super+p": () => p.toggleSup(),
-          "super+b": () => p.toggleSub(),
+          "mod+b": p.toggleBold,
+          "mod+i": p.toggleItalic,
+          "mod+u": p.toggleUnderline,
+          "super+p": p.toggleSup,
+          "super+b": p.toggleSub,
         }),
       },
     }

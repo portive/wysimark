@@ -4,7 +4,7 @@ import { Descendant, Editor, Node, Path, Transforms } from "slate"
 import {
   createHotkeyHandler,
   createPlugin,
-  matchNodeEOL,
+  matchEndOfElement,
   replaceElements,
 } from "~/src/sink"
 
@@ -50,7 +50,7 @@ export const HeadingPlugin = () =>
       name: "heading",
       editor: {
         insertBreak: () => {
-          const entry = matchNodeEOL(editor, "heading")
+          const entry = matchEndOfElement(editor, "heading")
           if (!entry) return false
           insertNodesAndSelectAt(
             editor,
