@@ -59,6 +59,8 @@ export const TablePlugin = () =>
           "shift+tab": p.tabBackward,
           down: p.down,
           up: p.up,
+          "super+[": p.insertColumnLeft,
+          "super+]": p.insertColumnRight,
         }),
       },
     }
