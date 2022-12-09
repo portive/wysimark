@@ -1,10 +1,11 @@
 import { styled } from "goober"
+import { forwardRef } from "react"
 
 import { ConstrainedRenderElementProps } from "~/src/sink"
 
 import { TableElement } from "../types"
 
-const $Table = styled("table")`
+const $Table = styled("table", forwardRef)`
   border-collapse: collapse;
 `
 

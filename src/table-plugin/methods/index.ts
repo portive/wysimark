@@ -1,35 +1,12 @@
-import { Editor, Path, Transforms } from "slate"
+import { Editor } from "slate"
 
 import { curry, selectStartOfElement } from "~/src/sink"
 
 import { getTableInfo } from "./get-table-info"
-import { insertRow } from "./insert-row"
+import { insertRowAbove, insertRowAt, insertRowBelow } from "./insert-row"
 import { removeRow } from "./remove-row"
 import { removeTable } from "./remove-table"
-
-export function tabForward(editor: Editor) {
-  const t = getTableInfo(editor)
-  if (!t) return false
-
-  const { cellIndex, cellCount, rowIndex, rowCount, tablePath } = t
-
-  /**
-   * If we aren't in the last cell of the row, then select the next cell
-   */
-  if (cellIndex < cellCount - 1) {
-    selectStartOfElement(editor, [...tablePath, rowIndex, cellIndex + 1])
-    return true
-  }
-
-  /**
-   * If we are in the last cell of the row but we aren't in the last row of
-   * the table, then select the first cell in the next row.
-   */
-  if (rowIndex < rowCount - 1) {
-    selectStartOfElement(editor, [...tablePath, rowIndex + 1, 0])
-    return true
-  }
-}
+import { tabForward } from "./tab-foward"
 
 export function tabBackward(editor: Editor) {
   const t = getTableInfo(editor)
@@ -48,13 +25,35 @@ export function tabBackward(editor: Editor) {
   }
 }
 
+export function down(editor: Editor) {
+  const t = getTableInfo(editor)
+  if (!t) return false
+  const { cellIndex, rowIndex, rowCount, tablePath } = t
+  if (rowIndex < rowCount - 1) {
+    selectStartOfElement(editor, [...tablePath, rowIndex + 1, cellIndex])
+  }
+}
+
+export function up(editor: Editor) {
+  const t = getTableInfo(editor)
+  if (!t) return false
+  const { cellIndex, rowIndex, rowCount, tablePath } = t
+  if (rowIndex > 0) {
+    selectStartOfElement(editor, [...tablePath, rowIndex - 1, cellIndex])
+  }
+}
+
 export function createTableMethods(editor: Editor) {
   return {
     getTableInfo: curry(getTableInfo, editor),
-    insertRow: curry(insertRow, editor),
+    insertRowAt: curry(insertRowAt, editor),
+    insertRowAbove: curry(insertRowAbove, editor),
+    insertRowBelow: curry(insertRowBelow, editor),
     removeTable: curry(removeTable, editor),
     removeRow: curry(removeRow, editor),
     tabForward: curry(tabForward, editor),
     tabBackward: curry(tabBackward, editor),
+    down: curry(down, editor),
+    up: curry(up, editor),
   }
 }

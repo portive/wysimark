@@ -52,11 +52,13 @@ export const TablePlugin = () =>
       editableProps: {
         renderElement,
         onKeyDown: createHotkeyHandler({
-          "mod+shift+enter": () => p.insertRow(0),
-          "mod+enter": () => p.insertRow(1),
+          "mod+shift+enter": p.insertRowAbove,
+          "mod+enter": p.insertRowBelow,
           "super+r": p.removeRow,
           tab: p.tabForward,
           "shift+tab": p.tabBackward,
+          down: p.down,
+          up: p.up,
         }),
       },
     }

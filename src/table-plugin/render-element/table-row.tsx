@@ -15,7 +15,7 @@ export function TableRow({
   return (
     <tr {...attributes} style={{ position: "relative" }}>
       {children}
-      <div
+      {/* <div
         contentEditable={false}
         style={{
           position: "absolute",
@@ -25,7 +25,7 @@ export function TableRow({
           width: "1em",
           background: "rgba(0,0,0,0.05)",
         }}
-      />
+      /> */}
     </tr>
   )
 }
