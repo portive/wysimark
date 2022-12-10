@@ -1,7 +1,13 @@
 import { Editor, Element, NodeEntry, Path, Point, Range } from "slate"
 export * from "./types"
 
-import { createHotkeyHandler, createPlugin, matchElement } from "~/src/sink"
+import {
+  createHotkeyHandler,
+  createPlugin,
+  matchElement,
+  matchEndOfElement,
+  matchStartOfElement,
+} from "~/src/sink"
 
 import { createTableMethods } from "./methods"
 import { normalizeTableIndexes } from "./normalize/normalize-table"
@@ -40,17 +46,21 @@ export const TablePlugin = () =>
           return false
         },
         deleteBackward: () => {
-          const t = p.getTableInfo()
-          if (!t) return false
-          return isStartOfPath(editor, t.cellPath)
+          /**
+           * If we're at start of a cell, disable delete backward
+           */
+          return !!matchStartOfElement(editor, "table-cell")
         },
         deleteForward: () => {
-          const t = p.getTableInfo()
-          if (!t) return false
-          return isEndOfPath(editor, t.cellPath)
+          /**
+           * If we're at end of a cell, disable delete forward
+           */
+          return !!matchEndOfElement(editor, "table-cell")
         },
         insertBreak: () => {
-          // if we're in a table cell, disable insertBreak
+          /**
+           * IF we're anywhere in a table cell, disable insertBreak
+           */
           const entry = matchElement(editor, "table-cell")
           return !!entry
         },

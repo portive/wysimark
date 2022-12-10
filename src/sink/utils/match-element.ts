@@ -66,6 +66,49 @@ export function matchElement<T extends Ancestor & Element = Element>(
 }
 
 /**
+ * PRIVATE:
+ *
+ * A private helper function that checkes that there is a selection, that the
+ * selection is collapsed and that the selection is in a node that matches
+ * the `matchNode` argument.
+ */
+function matchCollapsedSelectionInElement(
+  editor: Editor,
+  matchNode: MatchNode
+): { entry: NodeEntry<Ancestor>; selection: Range } | undefined {
+  const { selection } = editor
+  if (selection == null) return
+  const entry = matchElement(editor, matchNode)
+  if (entry === undefined) return
+  if (Range.isExpanded(selection)) return
+  return { entry, selection }
+}
+
+/**
+ * Checks to see if the current selection is at the end of line for a node
+ * that matches the `matchNode` argument.
+ *
+ * The `matchNode` argument can either be a function that takes a `Node` and
+ * returns a boolean or it can be a string representing the `type` property of
+ * an `Element`
+ */
+export function matchStartOfElement(
+  editor: Editor,
+  matchNode: MatchNode
+): NodeEntry<Ancestor> | undefined {
+  const match = matchCollapsedSelectionInElement(editor, matchNode)
+  if (
+    !match ||
+    !Editor.isStart(editor, match.selection.anchor, match.entry[1])
+  ) {
+    return
+  }
+  // we passed all the failures and so we are at the end of line of the
+  // given element.
+  return match.entry
+}
+
+/**
  * Checks to see if the current selection is at the end of line for a node
  * that matches the `matchNode` argument.
  *
@@ -77,17 +120,13 @@ export function matchEndOfElement(
   editor: Editor,
   matchNode: MatchNode
 ): NodeEntry<Ancestor> | undefined {
-  if (editor.selection === null) return
-  const entry = matchElement(editor, matchNode)
-  if (entry === undefined) return
-  if (Range.isExpanded(editor.selection)) return
-  // if we aren't at the end of the element, then we aren't at end of line
-  if (!Editor.isEnd(editor, editor.selection.anchor, entry[1])) {
+  const match = matchCollapsedSelectionInElement(editor, matchNode)
+  if (!match || !Editor.isEnd(editor, match.selection.anchor, match.entry[1])) {
     return
   }
   // we passed all the failures and so we are at the end of line of the
   // given element.
-  return entry
+  return match.entry
 }
 
 /**
