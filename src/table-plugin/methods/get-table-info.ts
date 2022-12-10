@@ -2,7 +2,12 @@ import { Editor, Location, Path } from "slate"
 
 import { matchElement } from "~/src/sink"
 
-import { TableCellElement, TableElement, TableRowElement } from "../types"
+import {
+  TableCellElement,
+  TableColumn,
+  TableElement,
+  TableRowElement,
+} from "../types"
 
 /**
  * The TableInfo object that includes quick access information starting from a
@@ -16,6 +21,7 @@ import { TableCellElement, TableElement, TableRowElement } from "../types"
 export type TableInfo = {
   tableElement: TableElement
   tablePath: Path
+  tableColumns: TableColumn[]
   rowElement: TableRowElement
   rowPath: Path
   rowIndex: number
@@ -36,20 +42,18 @@ export function getTableInfo(
 ): TableInfo | undefined {
   if (at == null) return undefined
   const cellMatch = matchElement<TableCellElement>(editor, "table-cell", { at })
+  if (!cellMatch) return undefined
   const rowMatch = matchElement<TableRowElement>(editor, "table-row", { at })
+  if (!rowMatch) return undefined
   const tableMatch = matchElement<TableElement>(editor, "table", { at })
-  if (
-    cellMatch === undefined ||
-    rowMatch === undefined ||
-    tableMatch === undefined
-  )
-    return undefined
+  if (!tableMatch) return undefined
   const [tableElement, tablePath] = tableMatch
   const [rowElement, rowPath] = rowMatch
   const [cellElement, cellPath] = cellMatch
   return {
     tableElement,
     tablePath,
+    tableColumns: tableElement.columns,
     rowElement,
     rowPath,
     rowIndex: rowPath.slice(-1)[0],

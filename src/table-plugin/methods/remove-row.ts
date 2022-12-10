@@ -1,10 +1,13 @@
-import { Editor, Transforms } from "slate"
+import { Editor, Location, Transforms } from "slate"
 
 import { getTableInfo } from "./get-table-info"
 import { removeTable } from "./remove-table"
 
-export function removeRow(editor: Editor) {
-  const t = getTableInfo(editor)
+export function removeRow(
+  editor: Editor,
+  { at = editor.selection }: { at?: Location | null } = {}
+) {
+  const t = getTableInfo(editor, { at })
   if (t === undefined) return false
   if (t.rowCount === 1) {
     removeTable(editor)

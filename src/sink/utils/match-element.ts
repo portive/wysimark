@@ -5,6 +5,7 @@ import {
   Location,
   Node,
   NodeEntry,
+  Path,
   Range,
 } from "slate"
 
@@ -36,6 +37,18 @@ export function matchElement<T extends Ancestor & Element = Element>(
   // if no selection, there will be no match
   if (at === null) return
   const match = normalizeMatchNode(matchNode)
+  /**
+   * Normally, we are looking up from a range or a point, but if the `at`
+   * `Location` is a `Path`, then we need to check for an exact match at the
+   * `at` `Location` in addition to looking `Editor.above` the current
+   * `at` `Location`
+   */
+  if (Path.isPath(at)) {
+    const nodeEntryExactlyAt = Editor.node(editor, at)
+    if (nodeEntryExactlyAt && match(nodeEntryExactlyAt[0])) {
+      return nodeEntryExactlyAt as NodeEntry<T>
+    }
+  }
   // look for a matching element
   return Editor.above(editor, { at, match })
 }
