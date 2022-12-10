@@ -1,35 +1,29 @@
 import React, { useCallback, useState } from "react"
-import { Editor, Element } from "slate"
-import { ReactEditor, useSlateStatic } from "slate-react"
+import { useSlateStatic } from "slate-react"
 
 import { getTableInfo } from "../../methods/get-table-info"
 import { TableCellElement } from "../../types"
-import { $RowMenu, $RowMenuTile } from "./$row-menu"
 import { $AddButton, $RemoveButton } from "./$buttons"
-
-function getTableInfoFromElement(editor: Editor, element: Element) {
-  const cellPath = ReactEditor.findPath(editor, element)
-  return getTableInfo(editor, { at: cellPath })
-}
+import { $RowMenu, $RowMenuTile } from "./$row-menu"
 
 export function RowMenu({ cellElement }: { cellElement: TableCellElement }) {
   const editor = useSlateStatic()
   const [hover, setHover] = useState(false)
 
   const removeRowCallback = useCallback(() => {
-    const t = getTableInfoFromElement(editor, cellElement)
+    const t = getTableInfo(editor, { at: cellElement })
     if (!t) return
     editor.tablePlugin.removeRow({ at: t.cellPath })
   }, [editor, cellElement])
 
   const insertRowAboveCallback = useCallback(() => {
-    const t = getTableInfoFromElement(editor, cellElement)
+    const t = getTableInfo(editor, { at: cellElement })
     if (!t) return
     editor.tablePlugin.insertRowAt(t.rowPath, t.tableColumns.length)
   }, [editor, cellElement])
 
   const insertRowBelowCallback = useCallback(() => {
-    const t = getTableInfoFromElement(editor, cellElement)
+    const t = getTableInfo(editor, { at: cellElement })
     if (!t) return
     editor.tablePlugin.insertRowAt(
       [...t.tablePath, t.rowIndex + 1],

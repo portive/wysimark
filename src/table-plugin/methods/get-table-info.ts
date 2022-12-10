@@ -1,4 +1,4 @@
-import { Editor, Location, Path } from "slate"
+import { Editor, Element, Location, Path } from "slate"
 
 import { matchElement } from "~/src/sink"
 
@@ -38,7 +38,7 @@ export type TableInfo = {
 
 export function getTableInfo(
   editor: Editor,
-  { at = editor.selection }: { at?: Location | null } = {}
+  { at = editor.selection }: { at?: Location | Element | null } = {}
 ): TableInfo | undefined {
   if (at == null) return undefined
   const cellMatch = matchElement<TableCellElement>(editor, "table-cell", { at })

@@ -1,10 +1,15 @@
 import { Editor, Transforms } from "slate"
 
+import { MatchAt } from "~/src/sink"
+
 import { getTableInfo } from "./get-table-info"
 import { createCell } from "./utils"
 
-export function insertColumnOffset(editor: Editor, offset: 0 | 1): boolean {
-  const t = getTableInfo(editor)
+export function insertColumnOffset(
+  editor: Editor,
+  { offset = 0, at = editor.selection }: { offset?: 0 | 1; at?: MatchAt } = {}
+): boolean {
+  const t = getTableInfo(editor, { at })
   if (t === undefined) return false
   const { tableElement, tablePath, cellIndex } = t
   const nextCellIndex = cellIndex + offset
@@ -22,10 +27,10 @@ export function insertColumnOffset(editor: Editor, offset: 0 | 1): boolean {
   return true
 }
 
-export function insertColumnLeft(editor: Editor) {
-  return insertColumnOffset(editor, 0)
+export function insertColumnLeft(editor: Editor, { at }: { at?: MatchAt }) {
+  return insertColumnOffset(editor, { at })
 }
 
-export function insertColumnRight(editor: Editor) {
-  return insertColumnOffset(editor, 1)
+export function insertColumnRight(editor: Editor, { at }: { at?: MatchAt }) {
+  return insertColumnOffset(editor, { at, offset: 1 })
 }

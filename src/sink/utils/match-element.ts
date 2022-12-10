@@ -8,8 +8,14 @@ import {
   Path,
   Range,
 } from "slate"
+import { ReactEditor } from "slate-react"
 
-type MatchNode = string | ((node: Node) => boolean)
+/**
+ * We are able to match a `Location`, an `Element` or a `Selection` which
+ * could return `null`
+ */
+export type MatchAt = Location | Element | null
+export type MatchNode = string | ((node: Node) => boolean)
 
 /**
  * Takes a string or a function that matches a Node and in both cases,
@@ -25,6 +31,11 @@ function normalizeMatchNode(matchNode: MatchNode): (node: Node) => boolean {
     : (node: Node) => Element.isElement(node) && node.type === matchNode
 }
 
+function normalizeFlexibleAt(editor: Editor, at: Location | Element) {
+  if (!Element.isElement(at)) return at
+  return ReactEditor.findPath(editor, at)
+}
+
 /**
  * Checks to see if the current selection is inside of a Node that matches
  * `matchNode`.
@@ -32,10 +43,11 @@ function normalizeMatchNode(matchNode: MatchNode): (node: Node) => boolean {
 export function matchElement<T extends Ancestor & Element = Element>(
   editor: Editor,
   matchNode: MatchNode,
-  { at = editor.selection }: { at?: Location | null } = {}
+  { at = editor.selection }: { at?: MatchAt } = {}
 ): NodeEntry<T> | undefined {
   // if no selection, there will be no match
   if (at === null) return
+  const nextAt = normalizeFlexibleAt(editor, at)
   const match = normalizeMatchNode(matchNode)
   /**
    * Normally, we are looking up from a range or a point, but if the `at`
@@ -43,14 +55,14 @@ export function matchElement<T extends Ancestor & Element = Element>(
    * `at` `Location` in addition to looking `Editor.above` the current
    * `at` `Location`
    */
-  if (Path.isPath(at)) {
-    const nodeEntryExactlyAt = Editor.node(editor, at)
+  if (Path.isPath(nextAt)) {
+    const nodeEntryExactlyAt = Editor.node(editor, nextAt)
     if (nodeEntryExactlyAt && match(nodeEntryExactlyAt[0])) {
       return nodeEntryExactlyAt as NodeEntry<T>
     }
   }
   // look for a matching element
-  return Editor.above(editor, { at, match })
+  return Editor.above(editor, { at: nextAt, match })
 }
 
 /**
