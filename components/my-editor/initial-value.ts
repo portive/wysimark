@@ -32,7 +32,6 @@ export const initialValue: Descendant[] = [
         children: [
           {
             type: "table-cell",
-            index: 0,
             children: [
               {
                 type: "paragraph",
@@ -42,7 +41,6 @@ export const initialValue: Descendant[] = [
           },
           {
             type: "table-cell",
-            index: 1,
             children: [
               {
                 type: "paragraph",
@@ -52,7 +50,6 @@ export const initialValue: Descendant[] = [
           },
           {
             type: "table-cell",
-            index: 2,
             children: [
               {
                 type: "paragraph",
@@ -67,7 +64,6 @@ export const initialValue: Descendant[] = [
         children: [
           {
             type: "table-cell",
-            index: 0,
             children: [
               {
                 type: "paragraph",
@@ -77,7 +73,6 @@ export const initialValue: Descendant[] = [
           },
           {
             type: "table-cell",
-            index: 1,
             children: [
               {
                 type: "paragraph",
@@ -87,7 +82,6 @@ export const initialValue: Descendant[] = [
           },
           {
             type: "table-cell",
-            index: 2,
             children: [
               {
                 type: "paragraph",

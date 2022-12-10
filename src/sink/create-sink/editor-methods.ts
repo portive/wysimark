@@ -1,4 +1,4 @@
-import { BaseEditor, Editor } from "slate"
+import { BaseEditor } from "slate"
 
 import { BasePluginCustomTypes, PluginObject } from "../types"
 
@@ -13,6 +13,7 @@ type IsVoid = BaseEditor["isVoid"]
  */
 export function createVoidAction<
   K extends
+    | "normalizeNode"
     | "deleteBackward"
     | "deleteForward"
     | "deleteFragment"

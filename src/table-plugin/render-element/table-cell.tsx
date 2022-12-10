@@ -10,6 +10,9 @@ export function TableCell({
   children,
 }: ConstrainedRenderElementProps<TableCellElement>) {
   const selected = useSelected()
+  const isLeftColumn = element.x === 0
+  const isTopRow = element.y === 0
+  console.log({ isLeftColumn })
   return (
     <td
       {...attributes}
@@ -22,6 +25,32 @@ export function TableCell({
       }}
     >
       {children}
+      {isLeftColumn ? (
+        <div
+          contentEditable={false}
+          style={{
+            position: "absolute",
+            background: "rgba(0,0,0,0.05)",
+            top: -1,
+            bottom: -1,
+            width: "1em",
+            left: "-1em",
+          }}
+        />
+      ) : null}
+      {isTopRow ? (
+        <div
+          contentEditable={false}
+          style={{
+            position: "absolute",
+            background: "rgba(0,0,0,0.05)",
+            top: "-1em",
+            height: "1em",
+            left: -1,
+            right: -1,
+          }}
+        />
+      ) : null}
     </td>
   )
 }

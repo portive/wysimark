@@ -1,17 +1,10 @@
-import { Editor, Node, Path, Point, Range, Transforms } from "slate"
-import { useSelected } from "slate-react"
+import { Editor, Element, NodeEntry, Path, Point, Range } from "slate"
 export * from "./types"
 
-import {
-  createHotkeyHandler,
-  createPlugin,
-  matchElement,
-  matchEndOfElement,
-} from "~/src/sink"
+import { createHotkeyHandler, createPlugin, matchElement } from "~/src/sink"
 
-import { MinusIcon, PlusIcon } from "./icons"
 import { createTableMethods } from "./methods"
-import { getTableInfo, TableInfo } from "./methods/get-table-info"
+import { normalizeTableIndexes } from "./normalize/normalize-table"
 import { renderElement } from "./render-element"
 import { TableCellElement, TableElement, TableRowElement } from "./types"
 
@@ -35,10 +28,16 @@ export const TablePlugin = () =>
     return {
       name: "table",
       editor: {
-        insertBreak: () => {
-          // if we're in a table cell, disable insertBreak
-          const entry = matchElement(editor, "table-cell")
-          return !!entry
+        normalizeNode: (entry): boolean => {
+          const [node] = entry
+          if (!Element.isElement(node)) return false
+          if (node.type === "table") {
+            return normalizeTableIndexes(
+              editor,
+              entry as NodeEntry<TableElement>
+            )
+          }
+          return false
         },
         deleteBackward: () => {
           const t = p.getTableInfo()
@@ -49,6 +48,11 @@ export const TablePlugin = () =>
           const t = p.getTableInfo()
           if (!t) return false
           return isEndOfPath(editor, t.cellPath)
+        },
+        insertBreak: () => {
+          // if we're in a table cell, disable insertBreak
+          const entry = matchElement(editor, "table-cell")
+          return !!entry
         },
         isInline(element) {
           if (["table", "table-row", "table-cell"].includes(element.type))

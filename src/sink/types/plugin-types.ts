@@ -1,5 +1,12 @@
 import React from "react"
-import { BaseElement, BaseRange, BaseText, Editor, Path } from "slate"
+import {
+  BaseElement,
+  BaseRange,
+  BaseText,
+  Editor,
+  NodeEntry,
+  Path,
+} from "slate"
 import { UnionToIntersection } from "type-fest"
 
 import { ConstrainedRenderElementProps, ConstrainedRenderLeafProps } from "."
@@ -76,6 +83,7 @@ export type PluginObject<T extends BasePluginCustomTypes> = {
     insertBreak?: () => boolean
     insertFragment?: (fragment: Node[]) => boolean
     insertNode?: (node: Node) => boolean
+    normalizeNode?: (entry: NodeEntry) => boolean
   }
   editableProps?: {
     decorate?: ((entry: [T["Element"], Path]) => BaseRange[]) | undefined

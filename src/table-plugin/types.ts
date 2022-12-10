@@ -50,6 +50,7 @@ export type TableRowElement = {
 
 export type TableCellElement = {
   type: "table-cell"
-  index: number
+  x?: number
+  y?: number
   children: Descendant[]
 }
