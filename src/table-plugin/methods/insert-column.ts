@@ -5,7 +5,7 @@ import { MatchAt } from "~/src/sink"
 import { getTableInfo } from "./get-table-info"
 import { createCell } from "./utils"
 
-export function insertColumnOffset(
+export function insertColumn(
   editor: Editor,
   { offset = 0, at = editor.selection }: { offset?: 0 | 1; at?: MatchAt } = {}
 ): boolean {
@@ -39,12 +39,12 @@ export function insertColumnLeft(
   editor: Editor,
   { at }: { at?: MatchAt } = {}
 ) {
-  return insertColumnOffset(editor, { at })
+  return insertColumn(editor, { at })
 }
 
 export function insertColumnRight(
   editor: Editor,
   { at }: { at?: MatchAt } = {}
 ) {
-  return insertColumnOffset(editor, { at, offset: 1 })
+  return insertColumn(editor, { at, offset: 1 })
 }

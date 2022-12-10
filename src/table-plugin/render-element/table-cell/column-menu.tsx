@@ -24,7 +24,9 @@ export function ColumnMenu({ cellElement }: { cellElement: TableCellElement }) {
               left: "50%",
               marginLeft: "-0.5em",
             }}
-            // onMouseDown={removeColumnCallback}
+            onMouseDown={() =>
+              editor.tablePlugin.removeColumn({ at: cellElement })
+            }
           />
           <$AddButton
             style={{ left: "-0.5em", top: 0 }}

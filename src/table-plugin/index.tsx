@@ -75,6 +75,7 @@ export const TablePlugin = () =>
           up: p.up,
           "super+[": p.insertColumnLeft,
           "super+]": p.insertColumnRight,
+          "super+c": p.removeColumn,
         }),
       },
     }
