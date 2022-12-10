@@ -1,11 +1,13 @@
 import { Editor, Location, Transforms } from "slate"
 
+import { MatchAt } from "~/src/sink"
+
 import { getTableInfo } from "./get-table-info"
 import { removeTable } from "./remove-table"
 
 export function removeRow(
   editor: Editor,
-  { at = editor.selection }: { at?: Location | null } = {}
+  { at = editor.selection }: { at?: MatchAt } = {}
 ) {
   const t = getTableInfo(editor, { at })
   if (t === undefined) return false

@@ -30,6 +30,11 @@ export function TableCell({
   const tableContext = useContext(TableContext)
   const selected = useSelected()
   /**
+   * table has slection and we are in the top left cell
+   */
+  const showTableMenu =
+    tableContext.isSelected && element.x === 0 && element.y === 0
+  /**
    * table has selection and we are in the left columns
    */
   const showRowMenu = tableContext.isSelected && element.x === 0
@@ -40,6 +45,7 @@ export function TableCell({
   return (
     <$TableCell {...attributes} selected={selected}>
       {children}
+      {/* {showTableMenu ? <TableMenu /> : null} */}
       {showRowMenu ? <RowMenu cellElement={element} /> : null}
       {showColumnMenu ? <ColumnMenu cellElement={element} /> : null}
     </$TableCell>

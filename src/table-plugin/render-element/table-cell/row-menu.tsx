@@ -1,7 +1,6 @@
-import React, { useCallback, useState } from "react"
+import React, { useState } from "react"
 import { useSlateStatic } from "slate-react"
 
-import { getTableInfo } from "../../methods/get-table-info"
 import { TableCellElement } from "../../types"
 import { $AddButton, $RemoveButton } from "./$buttons"
 import { $RowMenu, $RowMenuTile } from "./$row-menu"
@@ -9,27 +8,6 @@ import { $RowMenu, $RowMenuTile } from "./$row-menu"
 export function RowMenu({ cellElement }: { cellElement: TableCellElement }) {
   const editor = useSlateStatic()
   const [hover, setHover] = useState(false)
-
-  const removeRowCallback = useCallback(() => {
-    const t = getTableInfo(editor, { at: cellElement })
-    if (!t) return
-    editor.tablePlugin.removeRow({ at: t.cellPath })
-  }, [editor, cellElement])
-
-  const insertRowAboveCallback = useCallback(() => {
-    const t = getTableInfo(editor, { at: cellElement })
-    if (!t) return
-    editor.tablePlugin.insertRowAt(t.rowPath, t.tableColumns.length)
-  }, [editor, cellElement])
-
-  const insertRowBelowCallback = useCallback(() => {
-    const t = getTableInfo(editor, { at: cellElement })
-    if (!t) return
-    editor.tablePlugin.insertRowAt(
-      [...t.tablePath, t.rowIndex + 1],
-      t.tableColumns.length
-    )
-  }, [editor, cellElement])
 
   return (
     <$RowMenu
@@ -46,15 +24,21 @@ export function RowMenu({ cellElement }: { cellElement: TableCellElement }) {
               left: 0,
               marginTop: "-0.5em",
             }}
-            onMouseDown={removeRowCallback}
+            onMouseDown={() =>
+              editor.tablePlugin.removeRow({ at: cellElement })
+            }
           />
           <$AddButton
             style={{ top: "-0.5em", left: 0 }}
-            onMouseDown={insertRowAboveCallback}
+            onMouseDown={() =>
+              editor.tablePlugin.insertRow({ at: cellElement })
+            }
           />
           <$AddButton
             style={{ bottom: "-0.5em", left: 0 }}
-            onMouseDown={insertRowBelowCallback}
+            onMouseDown={() =>
+              editor.tablePlugin.insertRow({ at: cellElement, offset: 1 })
+            }
           />
         </>
       ) : null}

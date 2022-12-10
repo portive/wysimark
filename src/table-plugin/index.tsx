@@ -76,10 +76,10 @@ export const TablePlugin = () =>
           /**
            * insert
            */
-          "mod+shift+enter": p.insertRowAbove,
-          "mod+enter": p.insertRowBelow,
-          "super+[": p.insertColumnLeft,
-          "super+]": p.insertColumnRight,
+          "mod+shift+enter": () => p.insertRow({ offset: 0 }),
+          "mod+enter": () => p.insertRow({ offset: 1 }),
+          "super+[": () => p.insertColumn({ offset: 0 }),
+          "super+]": () => p.insertColumn({ offset: 1 }),
           /**
            * remove
            */

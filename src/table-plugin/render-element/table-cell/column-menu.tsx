@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react"
+import React, { useState } from "react"
 import { useSlateStatic } from "slate-react"
 
 import { TableCellElement } from "../../types"
@@ -31,13 +31,13 @@ export function ColumnMenu({ cellElement }: { cellElement: TableCellElement }) {
           <$AddButton
             style={{ left: "-0.5em", top: 0 }}
             onMouseDown={() =>
-              editor.tablePlugin.insertColumnLeft({ at: cellElement })
+              editor.tablePlugin.insertColumn({ at: cellElement })
             }
           />
           <$AddButton
             style={{ right: "-0.5em", top: 0 }}
             onMouseDown={() =>
-              editor.tablePlugin.insertColumnRight({ at: cellElement })
+              editor.tablePlugin.insertColumn({ at: cellElement, offset: 1 })
             }
           />
         </>

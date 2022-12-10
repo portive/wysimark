@@ -35,16 +35,16 @@ export function insertColumn(
   return true
 }
 
-export function insertColumnLeft(
-  editor: Editor,
-  { at }: { at?: MatchAt } = {}
-) {
-  return insertColumn(editor, { at })
-}
+// export function insertColumnLeft(
+//   editor: Editor,
+//   { at }: { at?: MatchAt } = {}
+// ) {
+//   return insertColumn(editor, { at })
+// }
 
-export function insertColumnRight(
-  editor: Editor,
-  { at }: { at?: MatchAt } = {}
-) {
-  return insertColumn(editor, { at, offset: 1 })
-}
+// export function insertColumnRight(
+//   editor: Editor,
+//   { at }: { at?: MatchAt } = {}
+// ) {
+//   return insertColumn(editor, { at, offset: 1 })
+// }

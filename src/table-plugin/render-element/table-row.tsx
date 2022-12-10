@@ -1,5 +1,3 @@
-import { useSelected } from "slate-react"
-
 import { ConstrainedRenderElementProps } from "~/src/sink"
 
 import { TableRowElement } from "../types"
