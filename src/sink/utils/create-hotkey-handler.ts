@@ -1,14 +1,4 @@
-import { isHotkey } from "is-hotkey"
-
-import { isMac } from "./is-mac"
-
-export function isBetterHotkey(hotkey: string) {
-  const modifiedHotkey = hotkey.replace(
-    /\bsuper\b/g,
-    isMac() ? "cmd+alt" : "ctrl+shift"
-  )
-  return isHotkey(modifiedHotkey)
-}
+import { isBetterHotkey } from "./is-better-hotkey"
 
 /**
  * The function that is executed when the hotkey is pressed.

@@ -1,5 +1,6 @@
+export * from "./create-hotkey-handler"
 export * from "./curry"
-export * from "./hotkeys"
+export * from "./is-better-hotkey"
 export * from "./match-element"
 export * from "./replace-elements"
 export * from "./select"

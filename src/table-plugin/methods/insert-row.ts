@@ -1,4 +1,4 @@
-import { Editor, Path, Transforms } from "slate"
+import { Editor, Transforms } from "slate"
 
 import { MatchAt } from "~/src/sink"
 

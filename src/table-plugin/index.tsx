@@ -1,4 +1,4 @@
-import { Editor, Element, NodeEntry, Path, Point, Range } from "slate"
+import { Element, NodeEntry } from "slate"
 export * from "./types"
 
 import {
@@ -100,37 +100,3 @@ export const TablePlugin = () =>
       },
     }
   })
-
-/**
- * Private
- *
- * Turns a Point | Range | null into a Point | null for
- */
-function normalizeToPoint(at: Point | Range | null): Point | null {
-  if (at === null) return null
-  if (Point.isPoint(at)) return at
-  if (Range.isExpanded(at)) {
-    return null
-  }
-  return at.anchor
-}
-
-function isStartOfPath(
-  editor: Editor,
-  path: Path,
-  { at = editor.selection }: { at?: Point | Range | null } = {}
-) {
-  const point = normalizeToPoint(at)
-  return point === null
-    ? false
-    : Point.equals(point, Editor.start(editor, path))
-}
-
-function isEndOfPath(
-  editor: Editor,
-  path: Path,
-  { at = editor.selection }: { at?: Point | Range | null } = {}
-) {
-  const point = normalizeToPoint(at)
-  return point === null ? false : Point.equals(point, Editor.end(editor, path))
-}
