@@ -3,7 +3,31 @@ import { ReactEditor } from "slate-react"
 
 import { selectStartOfElement } from "~/src/sink"
 
-import { getTableInfo } from "./get-table-info"
+import { getTableInfo, TableInfo } from "./get-table-info"
+
+/**
+ * This is named with `...Unreliable...` because at the beginning of a line
+ * (e.g. the second line of a paragraph) the DOMRect returned will be for a
+ * position at the end of the previous line.
+ *
+ * So it's useful, but we need to handle the case where it's on the end of the
+ * previous line instead of the beginning of the line.
+ *
+ * NOTE:
+ *
+ * Inserting a `span` and removing it does not work. We can kind of getting it
+ * to work by inserting a span with some with (like has the letter "A") inside.
+ * It will then sometimes switch the problem so that the DOMRect return is on
+ * the next line instead of the previous; however, makes the cursor move into
+ * the wrong position when cursoring down the right side and this is worse than
+ * the problem is solves.
+ */
+function getUnreliableSelectionRect(): DOMRect | null {
+  const s = window.getSelection()
+  if (!s) return null
+  const range = s.getRangeAt(0)
+  return range.getBoundingClientRect()
+}
 
 /**
  * arrow down
@@ -11,37 +35,37 @@ import { getTableInfo } from "./get-table-info"
 export function down(editor: Editor): boolean {
   const t = getTableInfo(editor)
   if (!t) return false
-  const s = window.getSelection()
-  const selectionRange = s?.getRangeAt(0)
-  if (!selectionRange) return false
-  const span = document.createElement("span")
-  span.appendChild(document.createTextNode("HELLO"))
-  selectionRange.insertNode(span)
-  const spanParent = span.parentElement
-  if (!spanParent) return false
-  const spanRect = span.getBoundingClientRect()
-  const spanBottom = spanRect.bottom
-  console.log({ spanRect })
-  const spanRange = new Range()
-  spanRange.selectNode(span)
-  spanRange.deleteContents()
-  spanParent?.normalize()
-  const selectionRect = selectionRange?.getBoundingClientRect()
+  const selectionRect = getUnreliableSelectionRect()
   if (!selectionRect) return true
-  const pNode = ReactEditor.toDOMNode(
+  const cellNode = ReactEditor.toDOMNode(editor, t.cellElement)
+  const cellRect = cellNode.getBoundingClientRect()
+  const paragraphNode = ReactEditor.toDOMNode(
     editor,
     t.cellElement.children[t.cellElement.children.length - 1]
   )
-  if (!pNode) return true
-  const pStyle = getComputedStyle(pNode)
-  const pRect = pNode.getBoundingClientRect()
+  if (!paragraphNode) return true
+  const paragraphStyle = getComputedStyle(paragraphNode)
+  const paragraphRect = paragraphNode.getBoundingClientRect()
   const isInLastLine =
-    spanBottom > pRect.bottom - parseFloat(pStyle.paddingBottom) - 16
-  if (!isInLastLine) return false
-  /**
-   * exit if we're not in a table
-   */
-  if (!t) return false
+    selectionRect.bottom >
+    paragraphRect.bottom - parseFloat(paragraphStyle.paddingBottom) - 16
+  if (!isInLastLine) {
+    setTimeout(() => {
+      const selectionRect = getUnreliableSelectionRect()
+      if (!selectionRect) return
+      if (
+        selectionRect.left > cellRect.right ||
+        selectionRect.right < cellRect.left
+      ) {
+        selectCellBelow(editor, t)
+      }
+    })
+    return false
+  }
+  return selectCellBelow(editor, t)
+}
+
+function selectCellBelow(editor: Editor, t: TableInfo) {
   const { cellIndex, rowIndex, rowCount, tablePath } = t
   /**
    * if we aren't in the last row of a table, move down a row
