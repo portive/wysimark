@@ -1,18 +1,20 @@
+import { useContext } from "react"
 import { useSelected } from "slate-react"
 
 import { ConstrainedRenderElementProps } from "~/src/sink"
 
 import { TableCellElement } from "../types"
+import { TableContext } from "./table-context"
 
 export function TableCell({
   element,
   attributes,
   children,
 }: ConstrainedRenderElementProps<TableCellElement>) {
+  const tableContext = useContext(TableContext)
   const selected = useSelected()
-  const isLeftColumn = element.x === 0
-  const isTopRow = element.y === 0
-  console.log({ isLeftColumn })
+  const showLeftColumn = tableContext.isSelected && element.x === 0
+  const showTopRow = tableContext.isSelected && element.y === 0
   return (
     <td
       {...attributes}
@@ -25,7 +27,7 @@ export function TableCell({
       }}
     >
       {children}
-      {isLeftColumn ? (
+      {showLeftColumn ? (
         <div
           contentEditable={false}
           style={{
@@ -38,7 +40,7 @@ export function TableCell({
           }}
         />
       ) : null}
-      {isTopRow ? (
+      {showTopRow ? (
         <div
           contentEditable={false}
           style={{
