@@ -14,6 +14,7 @@ import {
   PluginFunction,
   PluginObject,
 } from "../types"
+import { $Editable } from "./$editable"
 import {
   createIsInline,
   createIsVoid,
@@ -194,7 +195,7 @@ export const createSink = <
 
     return (
       // <Reset>
-      <Editable
+      <$Editable
         {...originalProps}
         decorate={decorate}
         onKeyDown={nextOnKeyDown}

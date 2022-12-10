@@ -111,16 +111,7 @@ export const MyEditor = () => {
   return (
     <div>
       <Slate editor={editor} value={initialValue}>
-        <SinkEditable
-          renderElement={renderElement}
-          renderLeaf={renderLeaf}
-          style={{
-            border: "1px solid silver",
-            padding: "1em",
-            margin: "4em",
-            font: "16px arial",
-          }}
-        />
+        <SinkEditable renderElement={renderElement} renderLeaf={renderLeaf} />
       </Slate>
     </div>
   )

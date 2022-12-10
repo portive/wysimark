@@ -1,8 +1,8 @@
 import React, { useState } from "react"
 import { useSlateStatic } from "slate-react"
 
-import { TableCellElement } from "../../types"
-import { $AddButton, $RemoveButton } from "./$buttons"
+import { TableCellElement } from "../../../types"
+import { $AddButton, $RemoveButton } from "../$table-menu-buttons"
 import { $ColumnMenu, $ColumnMenuTile } from "./$column-menu"
 
 export function ColumnMenu({ cellElement }: { cellElement: TableCellElement }) {

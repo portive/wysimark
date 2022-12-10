@@ -8,6 +8,7 @@ import { TableCellElement } from "../../types"
 import { TableContext } from "../table-context"
 import { ColumnMenu } from "./column-menu"
 import { RowMenu } from "./row-menu"
+import { TableMenu } from "./table-menu"
 
 /**
  * TableCell with a `selected` prop to indicate the selection is in the
@@ -45,7 +46,7 @@ export function TableCell({
   return (
     <$TableCell {...attributes} selected={selected}>
       {children}
-      {/* {showTableMenu ? <TableMenu /> : null} */}
+      {showTableMenu ? <TableMenu cellElement={element} /> : null}
       {showRowMenu ? <RowMenu cellElement={element} /> : null}
       {showColumnMenu ? <ColumnMenu cellElement={element} /> : null}
     </$TableCell>
