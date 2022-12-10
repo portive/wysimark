@@ -66,16 +66,26 @@ export const TablePlugin = () =>
       editableProps: {
         renderElement,
         onKeyDown: createHotkeyHandler({
-          "mod+shift+enter": p.insertRowAbove,
-          "mod+enter": p.insertRowBelow,
-          "super+r": p.removeRow,
+          /**
+           * navigation
+           */
           tab: p.tabForward,
           "shift+tab": p.tabBackward,
           down: p.down,
           up: p.up,
+          /**
+           * insert
+           */
+          "mod+shift+enter": p.insertRowAbove,
+          "mod+enter": p.insertRowBelow,
           "super+[": p.insertColumnLeft,
           "super+]": p.insertColumnRight,
-          "super+c": p.removeColumn,
+          /**
+           * remove
+           */
+          "super+backspace": p.removeTable,
+          "mod+backspace": p.removeRow,
+          "mod+shift+backspace": p.removeColumn,
         }),
       },
     }
