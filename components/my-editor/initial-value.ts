@@ -11,6 +11,7 @@ export const initialValue: Descendant[] = [
     level: 2,
     children: [{ text: "Hello World 2" }],
   },
+  { type: "horizontal-rule", children: [{ text: "" }] },
   {
     type: "paragraph",
     children: [

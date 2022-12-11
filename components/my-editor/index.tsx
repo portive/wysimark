@@ -33,6 +33,11 @@ import {
   HeadingPluginCustomTypes,
 } from "~/src/heading-plugin"
 import {
+  HorizontalRuleElement,
+  HorizontalRulePlugin,
+  HorizontalRulePluginCustomTypes,
+} from "~/src/horizontal-rule-plugin"
+import {
   InlineCodePlugin,
   InlineCodePluginCustomTypes,
 } from "~/src/inline-code-plugin"
@@ -56,6 +61,7 @@ const { withSink, SinkEditable } = createSink([
   BlockQuotePlugin(),
   CodeBlockPlugin(),
   TablePlugin(),
+  HorizontalRulePlugin(),
 ])
 
 export type PluginCustomTypes = MergePluginCustomTypes<
@@ -66,7 +72,8 @@ export type PluginCustomTypes = MergePluginCustomTypes<
     InlineCodePluginCustomTypes,
     BlockQuotePluginCustomTypes,
     CodeBlockPluginCustomTypes,
-    TablePluginCustomTypes
+    TablePluginCustomTypes,
+    HorizontalRulePluginCustomTypes
   ]
 >
 
@@ -85,6 +92,7 @@ declare module "slate" {
       | BlockQuoteElement
       | CodeBlockElement
       | CodeBlockLineElement
+      | HorizontalRuleElement
       | TableElement
       | TableRowElement
       | TableCellElement
