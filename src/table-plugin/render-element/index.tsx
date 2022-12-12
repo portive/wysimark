@@ -8,6 +8,7 @@ import {
 } from "../types"
 import { Table } from "./table"
 import { TableCell } from "./table-cell"
+import { TableContent } from "./table-content"
 import { TableRow } from "./table-row"
 
 export function renderElement({
@@ -38,9 +39,9 @@ export function renderElement({
       )
     case "table-content":
       return (
-        <div {...attributes} style={{ background: "#e0e080" }}>
+        <TableContent element={element} attributes={attributes}>
           {children}
-        </div>
+        </TableContent>
       )
   }
 }
