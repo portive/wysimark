@@ -1,6 +1,11 @@
 import { ConstrainedRenderElementProps } from "~/src/sink"
 
-import { TableCellElement, TableElement, TableRowElement } from "../types"
+import {
+  TableCellElement,
+  TableContentElement,
+  TableElement,
+  TableRowElement,
+} from "../types"
 import { Table } from "./table"
 import { TableCell } from "./table-cell"
 import { TableRow } from "./table-row"
@@ -10,7 +15,7 @@ export function renderElement({
   attributes,
   children,
 }: ConstrainedRenderElementProps<
-  TableElement | TableRowElement | TableCellElement
+  TableElement | TableRowElement | TableCellElement | TableContentElement
 >) {
   switch (element.type) {
     case "table":
@@ -30,6 +35,12 @@ export function renderElement({
         <TableCell element={element} attributes={attributes}>
           {children}
         </TableCell>
+      )
+    case "table-content":
+      return (
+        <div {...attributes} style={{ background: "#e0e080" }}>
+          {children}
+        </div>
       )
   }
 }

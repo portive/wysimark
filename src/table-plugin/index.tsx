@@ -1,9 +1,18 @@
-import { Element, NodeEntry } from "slate"
+import {
+  Descendant,
+  Editor,
+  Element,
+  NodeEntry,
+  Path,
+  Text,
+  Transforms,
+} from "slate"
 export * from "./types"
 
 import {
   createHotkeyHandler,
   createPlugin,
+  getLines,
   matchElement,
   matchEndOfElement,
   matchStartOfElement,
@@ -12,7 +21,12 @@ import {
 import { createTableMethods } from "./methods"
 import { normalizeTableIndexes } from "./normalize/normalize-table"
 import { renderElement } from "./render-element"
-import { TableCellElement, TableElement, TableRowElement } from "./types"
+import {
+  TableCellElement,
+  TableContentElement,
+  TableElement,
+  TableRowElement,
+} from "./types"
 
 type TableMethods = ReturnType<typeof createTableMethods>
 
@@ -24,7 +38,11 @@ export type TableEditor = {
 export type TablePluginCustomTypes = {
   Name: "table"
   Editor: TableEditor
-  Element: TableElement | TableRowElement | TableCellElement
+  Element:
+    | TableElement
+    | TableRowElement
+    | TableCellElement
+    | TableContentElement
 }
 
 export const TablePlugin = () =>
@@ -34,17 +52,6 @@ export const TablePlugin = () =>
     return {
       name: "table",
       editor: {
-        normalizeNode: (entry): boolean => {
-          const [node] = entry
-          if (!Element.isElement(node)) return false
-          if (node.type === "table") {
-            return normalizeTableIndexes(
-              editor,
-              entry as NodeEntry<TableElement>
-            )
-          }
-          return false
-        },
         deleteBackward: () => {
           /**
            * If we're at start of a cell, disable delete backward
@@ -65,7 +72,11 @@ export const TablePlugin = () =>
           return !!entry
         },
         isInline(element) {
-          if (["table", "table-row", "table-cell"].includes(element.type))
+          if (
+            ["table", "table-row", "table-cell", "table-content"].includes(
+              element.type
+            )
+          )
             return false
         },
         isVoid(element) {
@@ -82,6 +93,44 @@ export const TablePlugin = () =>
         //     return false
         //   }
         // },
+        normalizeNode: (entry): boolean => {
+          const [node] = entry
+          if (!Element.isElement(node)) return false
+          switch (node.type) {
+            case "table":
+              return normalizeTableIndexes(
+                editor,
+                entry as NodeEntry<TableElement>
+              )
+            case "table-cell": {
+              if (
+                node.children.length === 1 &&
+                node.children[0].type === "table-content"
+              ) {
+                return false
+              }
+              const lines = getLines(editor, node.children)
+              const line = ([] as Descendant[]).concat(...lines)
+              const tableContentElement: TableContentElement = {
+                type: "table-content",
+                children: line,
+              }
+              Editor.withoutNormalizing(editor, () => {
+                Transforms.removeNodes(editor, { at: entry[1] })
+                Transforms.insertNodes(
+                  editor,
+                  {
+                    type: "table-cell",
+                    children: [tableContentElement],
+                  },
+                  { at: entry[1] }
+                )
+              })
+              return true
+            }
+          }
+          return false
+        },
       },
       editableProps: {
         renderElement,

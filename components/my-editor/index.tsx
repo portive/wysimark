@@ -45,6 +45,7 @@ import { MarksPlugin, MarksPluginCustomTypes } from "~/src/marks-plugin"
 import { createSink, MergePluginCustomTypes } from "~/src/sink"
 import {
   TableCellElement,
+  TableContentElement,
   TableElement,
   TablePlugin,
   TablePluginCustomTypes,
@@ -96,6 +97,7 @@ declare module "slate" {
       | TableElement
       | TableRowElement
       | TableCellElement
+      | TableContentElement
     Text: { text: string } & PluginCustomTypes["Text"]
   }
 }

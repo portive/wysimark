@@ -17,7 +17,7 @@ import { TableMenu } from "./table-menu"
 const $TableCell = styled("td", forwardRef)`
   position: relative;
   border: 1px solid silver;
-  padding: 0 0.5em;
+  padding: 0.5em;
   min-width: 2em;
   outline: ${(props: { selected: boolean }) =>
     props.selected ? "2px solid royalblue" : "none"};

@@ -1,4 +1,4 @@
-import { Descendant } from "slate"
+import { Descendant, Text } from "slate"
 
 /**
  * Alignment of Table Columns
@@ -52,5 +52,10 @@ export type TableCellElement = {
   type: "table-cell"
   x?: number
   y?: number
+  children: TableContentElement[]
+}
+
+export type TableContentElement = {
+  type: "table-content"
   children: Descendant[]
 }
