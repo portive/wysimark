@@ -99,6 +99,8 @@ export const BlockQuotePlugin = () =>
               <blockquote
                 {...attributes}
                 style={{
+                  marginTop: "1em",
+                  marginBottom: "1em",
                   marginLeft: 0,
                   borderLeft: "0.5em solid #e0e0e0",
                   paddingLeft: "1em",

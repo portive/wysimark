@@ -10,6 +10,7 @@ import { TableContext } from "./table-context"
 
 const $Table = styled("table", forwardRef)`
   border-collapse: collapse;
+  margin: 1em 0;
 `
 
 export function Table({

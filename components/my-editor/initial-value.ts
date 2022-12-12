@@ -94,6 +94,7 @@ export const initialValue: Descendant[] = [
       },
     ],
   },
+  { type: "paragraph", children: [{ text: "" }] },
   {
     type: "code-block",
     language: "javascript",
@@ -150,6 +151,8 @@ export const initialValue: Descendant[] = [
           },
         ],
       },
+
+      { type: "paragraph", children: [{ text: "" }] },
     ],
   },
 ]
