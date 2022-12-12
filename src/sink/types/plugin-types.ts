@@ -83,6 +83,7 @@ export type PluginObject<T extends BasePluginCustomTypes> = {
     insertBreak?: () => boolean
     insertFragment?: (fragment: Node[]) => boolean
     insertNode?: (node: Node) => boolean
+    insertText?: (text: string) => boolean
     normalizeNode?: (entry: NodeEntry) => boolean
   }
   editableProps?: {

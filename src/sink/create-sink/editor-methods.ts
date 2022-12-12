@@ -20,6 +20,7 @@ export function createVoidAction<
     | "insertBreak"
     | "insertFragment"
     | "insertNode"
+    | "insertText"
 >(
   editor: BaseEditor,
   actionKey: K,

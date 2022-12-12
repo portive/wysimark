@@ -72,6 +72,7 @@ export const createSink = <
       insertBreak: createVoidAction(editor, "insertBreak", plugins),
       insertFragment: createVoidAction(editor, "insertFragment", plugins),
       insertNode: createVoidAction(editor, "insertNode", plugins),
+      insertText: createVoidAction(editor, "insertText", plugins),
     })
 
     editor.isInline = createIsInline(editor.isInline, plugins)
