@@ -1,5 +1,5 @@
 import React from "react"
-import { Descendant, Element, Transforms } from "slate"
+import { Descendant, Editor, Element, Node, Path, Transforms } from "slate"
 
 import { createHotkeyHandler, createPlugin } from "~/src/sink"
 
@@ -22,6 +22,24 @@ export type BlockQuotePluginCustomTypes = {
   Element: BlockQuoteElement
 }
 
+function matchBlockQuoteSafe(node: Node) {
+  return (
+    Element.isElement(node) &&
+    /**
+     * TODO:
+     *
+     * This is probably:
+     * Element.isElement(node) && !Element.isInline(node) &&
+     * !Element.isDependant(node)
+     */
+    (node.type === "paragraph" ||
+      node.type === "code-block" ||
+      node.type === "table" ||
+      node.type === "horizontal-rule" ||
+      node.type === "heading")
+  )
+}
+
 export const BlockQuotePlugin = () =>
   createPlugin<BlockQuotePluginCustomTypes>((editor) => {
     editor.supportsBlockQuote = true
@@ -30,22 +48,12 @@ export const BlockQuotePlugin = () =>
         Transforms.wrapNodes(
           editor,
           { type: "block-quote", children: [] },
-          {
-            match: (node) =>
-              Element.isElement(node) &&
-              (node.type === "paragraph" ||
-                node.type === "code-block" ||
-                node.type === "table"),
-          }
+          { match: matchBlockQuoteSafe }
         )
       },
       outdent: () => {
         Transforms.liftNodes(editor, {
-          match: (node) =>
-            Element.isElement(node) &&
-            (node.type === "paragraph" ||
-              node.type === "code-block" ||
-              node.type === "table"),
+          match: (node, path) => matchBlockQuoteSafe(node) && path.length > 1,
         })
       },
     }
@@ -57,6 +65,31 @@ export const BlockQuotePlugin = () =>
         },
         isVoid(element) {
           if (element.type === "block-quote") return false
+        },
+        normalizeNode(entry) {
+          const [node, path] = entry
+          if (!Element.isElement(node) || node.type !== "block-quote") {
+            return false
+          }
+          const prevEntry = Editor.previous(editor, { at: path })
+          const nextEntry = Editor.next(editor, { at: path })
+          if (
+            prevEntry &&
+            Element.isElement(prevEntry[0]) &&
+            prevEntry[0].type === "block-quote"
+          ) {
+            Transforms.mergeNodes(editor, { at: path })
+            return true
+          }
+          if (
+            nextEntry &&
+            Element.isElement(nextEntry[0]) &&
+            nextEntry[0].type === "block-quote"
+          ) {
+            Transforms.mergeNodes(editor, { at: nextEntry[1] })
+            return true
+          }
+          return false
         },
       },
       editableProps: {
