@@ -51,6 +51,7 @@ import {
   TablePluginCustomTypes,
   TableRowElement,
 } from "~/src/table-plugin"
+import { TrailingBlockPlugin } from "~/src/trailing-block-plugin"
 
 import { initialValue } from "./initial-value"
 
@@ -63,6 +64,9 @@ const { withSink, SinkEditable } = createSink([
   CodeBlockPlugin(),
   TablePlugin(),
   HorizontalRulePlugin(),
+  TrailingBlockPlugin({
+    trailingBlock: { type: "paragraph", children: [{ text: "" }] },
+  }),
 ])
 
 export type PluginCustomTypes = MergePluginCustomTypes<
