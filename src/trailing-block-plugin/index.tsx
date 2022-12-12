@@ -1,13 +1,4 @@
-import React from "react"
-import {
-  Descendant,
-  Editor,
-  Element,
-  Node,
-  NodeEntry,
-  Path,
-  Transforms,
-} from "slate"
+import { Editor, Element, Node, Path, Transforms } from "slate"
 
 import { createPlugin } from "~/src/sink"
 
@@ -17,7 +8,13 @@ type TrailingBlockPluginCustomType = {
 }
 
 type Config = {
-  trailingBlock: Element
+  /**
+   * This needs to be a function instead of an Object because we want the
+   * resulting object to be reference unique. This is because the object is
+   * used in Slate's WeakMap and we end up with errors related to duplicate
+   * keys.
+   */
+  createTrailingBlock: () => Element
 }
 
 export const TrailingBlockPlugin = (config: Config) =>
@@ -50,7 +47,7 @@ export const TrailingBlockPlugin = (config: Config) =>
             Editor.hasBlocks(editor, lastElement) ||
             Editor.isVoid(editor, lastElement)
           ) {
-            Transforms.insertNodes(editor, config.trailingBlock, {
+            Transforms.insertNodes(editor, config.createTrailingBlock(), {
               at: Path.next(lastPath),
             })
           }

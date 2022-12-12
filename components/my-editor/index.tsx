@@ -65,7 +65,10 @@ const { withSink, SinkEditable } = createSink([
   TablePlugin(),
   HorizontalRulePlugin(),
   TrailingBlockPlugin({
-    trailingBlock: { type: "paragraph", children: [{ text: "" }] },
+    createTrailingBlock: () => ({
+      type: "paragraph",
+      children: [{ text: "" }],
+    }),
   }),
 ])
 
