@@ -52,6 +52,7 @@
     "-- end": "# end"
   },
   "dependencies": {
+    "clsx": "^1.2.1",
     "dotenv": "16.x",
     "goober": "^2.1.11",
     "is-hotkey": "^0.2.0",

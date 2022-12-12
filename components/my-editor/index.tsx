@@ -1,5 +1,6 @@
 import "../../src/setup"
 
+import { clsx } from "clsx"
 import { styled } from "goober"
 import { forwardRef, useState } from "react"
 import {
@@ -124,35 +125,23 @@ declare module "slate" {
   }
 }
 
-function css(strings: TemplateStringsArray) {
-  return strings.join()
-}
-
 const $Paragraph = styled("p", forwardRef)`
-  /* border: 1px solid rgba(0, 0, 0, 0); */
   padding: 0;
   margin: 1em 0;
 
   transition: background-color 200ms, margin-top 200ms, padding-top 200ms,
     margin-bottom 200ms, padding-bottom 200ms, font-size 200ms;
-  ${({
-    "data-collapsed": collapsed,
-  }: {
-    "data-collapsed": boolean | undefined
-  }) =>
-    collapsed === true
-      ? css`
-          font-size: 0.25em; /* font-size is collapsed to 1/4 of regular em */
-          margin: -4em 0; /* margin grows to 3/4 of regular em leaving space */
-          padding: 2em 0; /* this is kind of eye-balling it */
-          border-radius: 1em;
-          &:hover {
-            /* border: 1px solid rgba(0, 127, 255, 0.1); */
-            background: rgba(0, 127, 255, 0.1);
-            cursor: pointer;
-          }
-        `
-      : ``}
+
+  &.--collapsed {
+    font-size: 0.25em; /* font-size is collapsed to 1/4 of regular em */
+    margin: -4em 0; /* margin grows to 3/4 of regular em leaving space */
+    padding: 2em 0; /* this is kind of eye-balling it */
+    border-radius: 1em;
+    &:hover {
+      background: rgba(0, 127, 255, 0.1);
+      cursor: pointer;
+    }
+  }
 `
 
 function Paragraph({
@@ -190,12 +179,16 @@ function Paragraph({
    * condition is that the paragraph is empty, this check works and executes
    * faster.
    */
-  const dataCollapsed =
+  const collapsed =
     empty &&
     (!selected ||
       (selected && editor.selection && Range.isExpanded(editor.selection)))
   return (
-    <$Paragraph {...attributes} data-collapsed={!!dataCollapsed}>
+    <$Paragraph
+      {...attributes}
+      className={clsx({ "--collapsed": collapsed })}
+      data-collapsed={!!collapsed}
+    >
       {children}
     </$Paragraph>
   )
@@ -221,6 +214,7 @@ export const MyEditor = () => {
   const [editor] = useState(() =>
     withSink(withReact(withHistory(createEditor())))
   )
+
   return (
     <div>
       <Slate editor={editor} value={initialValue}>
