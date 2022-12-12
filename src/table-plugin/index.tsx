@@ -72,6 +72,16 @@ export const TablePlugin = () =>
           if (["table", "table-row", "table-cell"].includes(element.type))
             return false
         },
+        isInvalidProp() {
+          /* noop */
+        },
+        // isDependant(element) {
+        //   if (["table-row", "table-cell"].includes(element.type)) {
+        //     return true
+        //   } else if (["table"].includes(element.type)) {
+        //     return false
+        //   }
+        // },
       },
       editableProps: {
         renderElement,

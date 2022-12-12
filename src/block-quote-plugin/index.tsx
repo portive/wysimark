@@ -33,15 +33,19 @@ export const BlockQuotePlugin = () =>
           {
             match: (node) =>
               Element.isElement(node) &&
-              !editor.isVoid(node) &&
-              !editor.isInline(node),
+              (node.type === "paragraph" ||
+                node.type === "code-block" ||
+                node.type === "table"),
           }
         )
       },
       outdent: () => {
-        Transforms.unwrapNodes(editor, {
+        Transforms.liftNodes(editor, {
           match: (node) =>
-            Element.isElement(node) && node.type === "block-quote",
+            Element.isElement(node) &&
+            (node.type === "paragraph" ||
+              node.type === "code-block" ||
+              node.type === "table"),
         })
       },
     }
@@ -73,8 +77,8 @@ export const BlockQuotePlugin = () =>
           }
         },
         onKeyDown: createHotkeyHandler({
-          "mod+shift+.": editor.blockQuotePlugin.indent,
-          "mod+shift+,": editor.blockQuotePlugin.outdent,
+          "super+.": editor.blockQuotePlugin.indent,
+          "super+,": editor.blockQuotePlugin.outdent,
         }),
       },
     }

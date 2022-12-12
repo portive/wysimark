@@ -1,8 +1,8 @@
 import React from "react"
-import { Descendant } from "slate"
-import { useSelected } from "slate-react"
 
-import { ConstrainedRenderElementProps, createPlugin } from "~/src/sink"
+import { createPlugin } from "~/src/sink"
+
+import { HorizontalRule } from "./horizontal-rule"
 
 export type HorizontalRuleEditor = {
   supportsHorizontalRule: true
@@ -41,21 +41,3 @@ export const HorizontalRulePlugin = () =>
       },
     }
   })
-
-function HorizontalRule({
-  attributes,
-  children,
-}: ConstrainedRenderElementProps<HorizontalRuleElement>) {
-  const selected = useSelected()
-  return (
-    <div
-      {...attributes}
-      style={{ outline: selected ? "2px solid royalblue" : "none" }}
-    >
-      {children}
-      <div contentEditable={false}>
-        <hr />
-      </div>
-    </div>
-  )
-}
