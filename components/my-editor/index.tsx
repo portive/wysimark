@@ -19,7 +19,6 @@ import {
   Slate,
   useSelected,
   useSlate,
-  useSlateStatic,
   withReact,
 } from "slate-react"
 
@@ -53,6 +52,13 @@ import {
   InlineCodePlugin,
   InlineCodePluginCustomTypes,
 } from "~/src/inline-code-plugin"
+import {
+  ListElement,
+  ListItemContent,
+  ListItemElement,
+  ListPlugin,
+  ListPluginCustomTypes,
+} from "~/src/list-plugin"
 import { MarksPlugin, MarksPluginCustomTypes } from "~/src/marks-plugin"
 import {
   ConstrainedRenderElementProps,
@@ -80,6 +86,7 @@ const { withSink, SinkEditable } = createSink([
   CodeBlockPlugin(),
   TablePlugin(),
   HorizontalRulePlugin(),
+  ListPlugin(),
   TrailingBlockPlugin({
     createTrailingBlock: () => ({
       type: "paragraph",
@@ -97,7 +104,8 @@ export type PluginCustomTypes = MergePluginCustomTypes<
     BlockQuotePluginCustomTypes,
     CodeBlockPluginCustomTypes,
     TablePluginCustomTypes,
-    HorizontalRulePluginCustomTypes
+    HorizontalRulePluginCustomTypes,
+    ListPluginCustomTypes
   ]
 >
 
@@ -117,6 +125,9 @@ declare module "slate" {
       | CodeBlockElement
       | CodeBlockLineElement
       | HorizontalRuleElement
+      | ListElement
+      | ListItemElement
+      | ListItemContent
       | TableElement
       | TableRowElement
       | TableCellElement
