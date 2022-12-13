@@ -18,7 +18,17 @@ export type ListItemElement = {
    * `undefined` means a regular list item based on the surrounding `ListElement`
    */
   checked?: boolean
-  children: [ListContentElement] | [ListContentElement, ListElement]
+  /**
+   * Technically, it should be
+   *
+   * [ListContentElement] | [ListContentElement, ListElement]
+   *
+   * But we loosen it to help us with normalizing because it is often not
+   * in the exact shape as above and we can't test for it properly when
+   * TypeScript assumes it is always in a good state.
+   */
+
+  children: (ListContentElement | ListElement)[]
 }
 
 export type ListContentElement = {

@@ -9,7 +9,10 @@ export function ListContent({
   return (
     <div
       {...attributes}
-      style={{ background: "rgba(127,127,255,0.5)" }}
+      style={{
+        background: "rgba(127,127,255,0.5)",
+        borderBottom: "1px solid rgba(0,0,0,0.2)",
+      }}
       data-list-content
     >
       {children}

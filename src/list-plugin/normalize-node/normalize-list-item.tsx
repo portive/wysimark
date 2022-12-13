@@ -2,6 +2,7 @@ import { Editor, Element, Node, NodeEntry, Path, Transforms } from "slate"
 
 import { ListContentElement, ListElement, ListItemElement } from "../types"
 import { normalizeListItemChildrenTypes } from "./normalize-list-item-children-types"
+import { normalizeListItemTuple } from "./normalize-list-item-tuple"
 
 /**
  * The goal to normalizing a `ListItemElement` is to make sure that
@@ -38,71 +39,7 @@ export function normalizeListItem(
   editor: Editor,
   entry: NodeEntry<ListItemElement>
 ): boolean {
-  return normalizeListItemChildrenTypes(editor, entry)
-
-  const [node, path] = entry
-  let transformed = false
-  /**
-   * Indicates the previous path where a newly created `ListItemElement` was
-   * inserted. If none has been inserted yet, the `prevInsertPath` is the
-   * path of the current `ListItemElement`.
-   */
-  let prevInsertPath = [...path]
-  /**
-   * Indicates the index within the `ListItem` where we know we have to start
-   * normalizing because the children are invalid. We expect index 0 to be
-   * a `ListContentElement` and we expect index 1 to be a `ListElement`. We
-   * expect no more children after that.
-   *
-   * Anything that doesn't fall into those rules needs to be normalized.
-   */
-  let startIndex = 0
-  if (node.children.length >= 1 && node.children[0].type === "list-content") {
-    startIndex = 1
-    if (node.children.length >= 2 && node.children[1]?.type === "list") {
-      startIndex = 2
-    }
-  }
-  // for (let i = startIndex; i < node.children.length; i++) {
-  //   const child = node.children[i] as Node
-  // }
-  // for (let i = node.children.length - 1; i >= 1; i--) {
-  //   const child = node.children[i] as
-  //     | ListItemElement
-  //     | ListElement
-  //     | ListContentElement
-  //   if (!Element.isElement(child)) continue
-  //   if (child.type === "list-content") {
-  //     Editor.withoutNormalizing(editor, () => {
-  //       Transforms.wrapNodes(
-  //         editor,
-  //         /**
-  //          * We disable typescript because the children will be
-  //          * filled with the `list-content` Element we are wrapping.
-  //          * This appears to be a typing error in Slate.
-  //          */
-  //         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  //         // @ts-ignore
-  //         {
-  //           type: "list-item",
-  //           checked: node.checked === true ? false : node.checked,
-  //           children: [],
-  //         },
-  //         { at: [...path, i] }
-  //       )
-  //       Transforms.moveNodes(editor, {
-  //         at: [...path, i],
-  //         to: Path.next(path),
-  //       })
-  //     })
-  //     transformed = true
-  //   } else if (child.type === "list-item") {
-  //     Transforms.moveNodes(editor, {
-  //       at: [...path, i],
-  //       to: Path.next(path),
-  //     })
-  //     transformed = true
-  //   }
-  // }
-  return transformed
+  if (normalizeListItemChildrenTypes(editor, entry)) return true
+  if (normalizeListItemTuple(editor, entry)) return true
+  return false
 }
