@@ -1,10 +1,18 @@
 import { ConstrainedRenderElementProps } from "~/src/sink"
 
-import { ListItemContent } from ".."
+import { ListContentElement } from ".."
 
-export function ListItemContent({
+export function ListContent({
   attributes,
   children,
-}: ConstrainedRenderElementProps<ListItemContent>) {
-  return <div {...attributes}>{children}</div>
+}: ConstrainedRenderElementProps<ListContentElement>) {
+  return (
+    <div
+      {...attributes}
+      style={{ background: "rgba(127,127,255,0.5)" }}
+      data-list-content
+    >
+      {children}
+    </div>
+  )
 }

@@ -1,50 +1,36 @@
 import React from "react"
-import { Descendant, Text } from "slate"
+import { NodeEntry } from "slate"
 
 import { createPlugin } from "~/src/sink"
 
+import { normalizeNode } from "./normalize-node"
 import { List } from "./render-element/list"
-import { ListItemContent } from "./render-element/list-content"
+import { ListContent } from "./render-element/list-content"
 import { ListItem } from "./render-element/list-item"
+import {
+  ListContentElement,
+  ListElement,
+  ListItemElement,
+  ListPluginCustomTypes,
+} from "./types"
 
-export type ListEditor = {
-  supportsList: true
-}
-
-export type ListElement = {
-  type: "list"
-  style: "ordered" | "unordered" | "task"
-  children: ListItemElement[]
-}
-
-export type ListItemElement = {
-  type: "list-item"
-  /**
-   * `true` means checked
-   * `false` means unchecked
-   * `undefined` means a regular list item based on the surrounding `ListElement`
-   */
-  checked?: boolean
-  children: [ListItemContent] | [ListItemContent, ListElement]
-}
-
-export type ListItemContent = {
-  type: "list-content"
-  children: Descendant[] // line
-}
-
-export type ListPluginCustomTypes = {
-  Name: "list"
-  Editor: ListEditor
-  Element: ListElement | ListItemElement | ListItemContent
-}
+export * from "./types"
 
 export const ListPlugin = () =>
   createPlugin<ListPluginCustomTypes>((editor) => {
-    editor.supportsAnchor = true
+    editor.supportsList = true
     return {
       name: "list",
-      editor: {},
+      editor: {
+        normalizeNode: (entry) => {
+          return normalizeNode(
+            editor,
+            entry as NodeEntry<
+              ListElement | ListItemElement | ListContentElement
+            >
+          )
+        },
+      },
       editableProps: {
         renderElement: ({ element, attributes, children }) => {
           if (element.type === "list") {
@@ -61,9 +47,9 @@ export const ListPlugin = () =>
             )
           } else if (element.type === "list-content") {
             return (
-              <ListItemContent element={element} attributes={attributes}>
+              <ListContent element={element} attributes={attributes}>
                 {children}
-              </ListItemContent>
+              </ListContent>
             )
           }
         },

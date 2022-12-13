@@ -10,12 +10,14 @@ import { CheckecIcon, UncheckedIcon } from "./icons"
 
 const $ListItem = styled("li", forwardRef)`
   margin: 1em 0;
+  background: rgba(127, 255, 127, 0.5);
 `
 
 const $TaskListItem = styled("li", forwardRef)`
   position: relative;
   margin: 1em 0;
   list-style-type: none;
+  background: rgba(127, 255, 127, 0.5);
   svg {
     position: absolute;
     font-size: 1.25em;

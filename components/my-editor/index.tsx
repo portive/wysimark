@@ -53,8 +53,8 @@ import {
   InlineCodePluginCustomTypes,
 } from "~/src/inline-code-plugin"
 import {
+  ListContentElement,
   ListElement,
-  ListItemContent,
   ListItemElement,
   ListPlugin,
   ListPluginCustomTypes,
@@ -127,7 +127,7 @@ declare module "slate" {
       | HorizontalRuleElement
       | ListElement
       | ListItemElement
-      | ListItemContent
+      | ListContentElement
       | TableElement
       | TableRowElement
       | TableCellElement
