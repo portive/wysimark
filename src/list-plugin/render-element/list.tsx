@@ -8,6 +8,7 @@ import { ListElement } from ".."
 const $UnorderedList = styled("ul", forwardRef)`
   margin: 1em 0 1.25em;
   padding-left: 2em;
+  list-style-type: disc;
 `
 
 const $OrderedList = styled("ol", forwardRef)`

@@ -4,6 +4,7 @@ import { Descendant, Text } from "slate"
 import { createPlugin } from "~/src/sink"
 
 import { List } from "./render-element/list"
+import { ListItemContent } from "./render-element/list-content"
 import { ListItem } from "./render-element/list-item"
 
 export type ListEditor = {
@@ -59,7 +60,11 @@ export const ListPlugin = () =>
               </ListItem>
             )
           } else if (element.type === "list-content") {
-            return <span {...attributes}>{children}</span>
+            return (
+              <ListItemContent element={element} attributes={attributes}>
+                {children}
+              </ListItemContent>
+            )
           }
         },
       },

@@ -3,7 +3,7 @@ import { forwardRef, useCallback } from "react"
 import { Transforms } from "slate"
 import { ReactEditor, useSlateStatic } from "slate-react"
 
-import { ConstrainedRenderElementProps, matchElement } from "~/src/sink"
+import { ConstrainedRenderElementProps } from "~/src/sink"
 
 import { ListItemElement } from ".."
 import { CheckecIcon, UncheckedIcon } from "./icons"

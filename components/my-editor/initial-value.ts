@@ -105,6 +105,15 @@ export const initialValue: Descendant[] = [
                   { type: "list-content", children: [{ text: "Hit the Gym" }] },
                 ],
               },
+              {
+                type: "list-item",
+                children: [
+                  {
+                    type: "list-content",
+                    children: [{ text: "Just a bullet" }],
+                  },
+                ],
+              },
             ],
           },
         ],
