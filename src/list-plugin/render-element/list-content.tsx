@@ -4,6 +4,7 @@ import { forwardRef } from "react"
 import { ConstrainedRenderElementProps } from "~/src/sink"
 
 import { ListContentElement } from ".."
+import { isDebug } from "./debug"
 
 const $ListContent = styled("div", forwardRef)`
   &.--debug {
@@ -18,7 +19,7 @@ export function ListContent({
 }: ConstrainedRenderElementProps<ListContentElement>) {
   return (
     <$ListContent
-      // className="--debug"
+      className={isDebug ? "--debug" : ""}
       {...attributes}
       data-list-content
     >

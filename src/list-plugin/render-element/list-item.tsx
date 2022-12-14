@@ -6,6 +6,7 @@ import { ReactEditor, useSlateStatic } from "slate-react"
 import { ConstrainedRenderElementProps } from "~/src/sink"
 
 import { ListItemElement } from ".."
+import { isDebug } from "./debug"
 import { CheckecIcon, UncheckedIcon } from "./icons"
 
 const $ListItem = styled("li", forwardRef)`
@@ -50,6 +51,7 @@ export function ListItem({
   } else {
     return (
       <$ListItem
+        className={isDebug ? "--debug" : ""}
         // className="--debug"
         {...attributes}
       >
@@ -73,7 +75,7 @@ export function TaskListItem({
   }, [element.checked])
   return (
     <$TaskListItem
-      // className="--debug"
+      className={isDebug ? "--debug" : ""}
       {...attributes}
       data-list-item
     >

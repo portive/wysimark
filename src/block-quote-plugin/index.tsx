@@ -1,7 +1,11 @@
 import React from "react"
-import { Descendant, Editor, Element, Node, Path, Transforms } from "slate"
+import { Descendant, Element, Node, Transforms } from "slate"
 
-import { createHotkeyHandler, createPlugin } from "~/src/sink"
+import {
+  createHotkeyHandler,
+  createPlugin,
+  normalizeSiblings,
+} from "~/src/sink"
 
 export type BlockQuoteEditor = {
   supportsBlockQuote: true
@@ -67,29 +71,13 @@ export const BlockQuotePlugin = () =>
           if (element.type === "block-quote") return false
         },
         normalizeNode(entry) {
-          const [node, path] = entry
-          if (!Element.isElement(node) || node.type !== "block-quote") {
-            return false
-          }
-          const prevEntry = Editor.previous(editor, { at: path })
-          const nextEntry = Editor.next(editor, { at: path })
-          if (
-            prevEntry &&
-            Element.isElement(prevEntry[0]) &&
-            prevEntry[0].type === "block-quote"
-          ) {
-            Transforms.mergeNodes(editor, { at: path })
-            return true
-          }
-          if (
-            nextEntry &&
-            Element.isElement(nextEntry[0]) &&
-            nextEntry[0].type === "block-quote"
-          ) {
-            Transforms.mergeNodes(editor, { at: nextEntry[1] })
-            return true
-          }
-          return false
+          if (!Element.isElement(entry[0])) return false
+          if (entry[0].type !== "block-quote") return false
+          return normalizeSiblings(
+            editor,
+            entry,
+            (a, b) => a.type === "block-quote" && b.type === "block-quote"
+          )
         },
       },
       editableProps: {

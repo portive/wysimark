@@ -25,7 +25,9 @@ export type MatchNode = string | ((node: Node) => boolean)
  * returns a boolean or it can be a string representing the `type` property of
  * an `Element`
  */
-function normalizeMatchNode(matchNode: MatchNode): (node: Node) => boolean {
+export function normalizeMatchNode(
+  matchNode: MatchNode
+): (node: Node) => boolean {
   return typeof matchNode === "function"
     ? matchNode
     : (node: Node) => Element.isElement(node) && node.type === matchNode

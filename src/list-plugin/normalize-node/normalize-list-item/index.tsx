@@ -5,6 +5,7 @@ import { normalizeListItemChildrenHangingContent } from "./normalize-list-item-c
 import { normalizeListItemChildrenHangingList } from "./normalize-list-item-children-hanging-list"
 import { normalizeListItemChildrenTypes } from "./normalize-list-item-children-types"
 import { normalizeListItemFirstChild } from "./normalize-list-item-first-child"
+import { normalizeListItemParent } from "./normalize-list-item-parent"
 
 /**
  * The goal to normalizing a `ListItemElement` is to make sure that
@@ -49,5 +50,9 @@ export function normalizeListItem(
    * Make sure the last child isn't a hanging ListContentElement
    */
   if (normalizeListItemChildrenHangingContent(editor, entry)) return true
+  /**
+   * Make sure any ListItemElement is within a `ListElement`
+   */
+  if (normalizeListItemParent(editor, entry)) return true
   return false
 }

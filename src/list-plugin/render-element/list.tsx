@@ -4,6 +4,7 @@ import { forwardRef } from "react"
 import { ConstrainedRenderElementProps } from "~/src/sink"
 
 import { ListElement } from ".."
+import { isDebug } from "./debug"
 
 const $List = styled("ol", forwardRef)`
   margin: 1em 0 1.25em;
@@ -23,7 +24,7 @@ export function List({
       <$List
         as="ol"
         {...attributes}
-        // className="--debug"
+        className={isDebug ? "--debug" : ""}
         data-list
         data-ordered-list
       >
@@ -35,7 +36,7 @@ export function List({
       <$List
         as="ul"
         {...attributes}
-        // className="--debug"
+        className={isDebug ? "--debug" : ""}
         data-list
         data-unordered-list
       >
