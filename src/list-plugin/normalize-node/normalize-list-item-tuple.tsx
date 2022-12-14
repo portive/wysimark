@@ -15,23 +15,31 @@ function getValidChildrenCount(children: ListItemElement["children"]) {
  */
 export function normalizeListItemTuple(
   editor: Editor,
-  listItemEntry: NodeEntry<ListItemElement>
+  entry: NodeEntry<ListItemElement>
 ): boolean {
-  const [listItemElement, listItemPath] = listItemEntry
-  const { children: listItemChildren } = listItemElement
-  if (listItemChildren.length === 0) {
+  const [element, path] = entry
+  const { children } = element
+  if (children.length === 0) {
     throw new Error(`Handle this by inserting a 'list-content' Element`)
   }
-  const validChildrenCount = getValidChildrenCount(listItemChildren)
-  for (let i = listItemChildren.length - 1; i >= validChildrenCount; i--) {
-    const insertPath = Path.next(listItemPath)
+  const validChildrenCount = getValidChildrenCount(children)
+  if (validChildrenCount === children.length) return false
+  const insertPath = Path.next(path)
+  const lastIndex = children.length - 1
+  const lastChild = children[lastIndex]
+  const nextToLastIndex = children.length - 2
+  const nextToLastChild = children[nextToLastIndex]
+  if (lastChild.type === "list-content") {
     Editor.withoutNormalizing(editor, () => {
       Transforms.wrapNodes(
         editor,
         { type: "list-item", children: [] },
-        { at: [...listItemPath, i] }
+        { at: Editor.range(editor, [...path, lastIndex]) }
       )
-      Transforms.moveNodes(editor, { at: [...listItemPath, i], to: insertPath })
+      Transforms.moveNodes(editor, {
+        at: [...path, lastIndex],
+        to: insertPath,
+      })
     })
   }
   return true

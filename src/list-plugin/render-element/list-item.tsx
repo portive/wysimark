@@ -9,15 +9,15 @@ import { ListItemElement } from ".."
 import { CheckecIcon, UncheckedIcon } from "./icons"
 
 const $ListItem = styled("li", forwardRef)`
-  margin: 1em 0;
-  background: rgba(127, 255, 127, 0.5);
-`
-
-const $TaskListItem = styled("li", forwardRef)`
   position: relative;
   margin: 1em 0;
+  &.--debug {
+    background: rgba(127, 255, 127, 0.5);
+  }
+`
+
+const $TaskListItem = styled($ListItem, forwardRef)`
   list-style-type: none;
-  background: rgba(127, 255, 127, 0.5);
   svg {
     position: absolute;
     font-size: 1.25em;
@@ -49,7 +49,10 @@ export function ListItem({
     )
   } else {
     return (
-      <$ListItem {...attributes}>
+      <$ListItem
+        // className="--debug"
+        {...attributes}
+      >
         {typeof element.checked === "boolean" &&
           (element.checked === true ? <CheckecIcon /> : <UncheckedIcon />)}
         {children}
@@ -69,7 +72,11 @@ export function TaskListItem({
     Transforms.setNodes(editor, { checked: !element.checked }, { at })
   }, [element.checked])
   return (
-    <$TaskListItem {...attributes}>
+    <$TaskListItem
+      // className="--debug"
+      {...attributes}
+      data-list-item
+    >
       {element.checked === true ? (
         <CheckecIcon onClick={onClick} />
       ) : (

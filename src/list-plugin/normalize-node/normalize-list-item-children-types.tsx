@@ -32,7 +32,6 @@ export function normalizeListItemChildrenTypes(
     const child = children[i] as Element
     const childPath = [...path, i]
     if (["list-content", "list"].includes(child.type)) continue
-    console.log(`--- normalize-list-item-children-types ---`)
     /**
      * We have found a `Node` that is not a `list-content` or `list-item`
      * and now need to convert it.

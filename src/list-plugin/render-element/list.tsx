@@ -5,17 +5,12 @@ import { ConstrainedRenderElementProps } from "~/src/sink"
 
 import { ListElement } from ".."
 
-const $UnorderedList = styled("ul", forwardRef)`
+const $List = styled("ol", forwardRef)`
   margin: 1em 0 1.25em;
   padding-left: 2em;
-  list-style-type: disc;
-  background: rgba(255, 128, 128, 0.5);
-`
-
-const $OrderedList = styled("ol", forwardRef)`
-  margin: 1em 0 1.25em;
-  padding-left: 2em;
-  background: rgba(255, 128, 128, 0.5);
+  &.--debug {
+    background: rgba(255, 128, 128, 0.5);
+  }
 `
 
 export function List({
@@ -25,15 +20,27 @@ export function List({
 }: ConstrainedRenderElementProps<ListElement>) {
   if (element.style === "ordered") {
     return (
-      <$OrderedList {...attributes} data-list data-ordered-list>
+      <$List
+        as="ol"
+        {...attributes}
+        // className="--debug"
+        data-list
+        data-ordered-list
+      >
         {children}
-      </$OrderedList>
+      </$List>
     )
   } else if (element.style === "unordered") {
     return (
-      <$UnorderedList {...attributes} data-list data-unordered-list>
+      <$List
+        as="ul"
+        {...attributes}
+        // className="--debug"
+        data-list
+        data-unordered-list
+      >
         {children}
-      </$UnorderedList>
+      </$List>
     )
   } else {
     throw new Error(
