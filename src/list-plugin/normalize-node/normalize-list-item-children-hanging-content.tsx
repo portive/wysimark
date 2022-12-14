@@ -3,7 +3,7 @@ import { Editor, NodeEntry, Path } from "slate"
 import { ListItemElement } from "../types"
 import { wrapAndMoveNodes } from "./utils"
 
-export function normalizeListItemHangingContent(
+export function normalizeListItemChildrenHangingContent(
   editor: Editor,
   entry: NodeEntry<ListItemElement>
 ): boolean {
@@ -38,7 +38,7 @@ export function normalizeListItemHangingContent(
   return true
 }
 
-export function normalizeListItemHangingList(
+export function normalizeListItemChildrenHangingList(
   editor: Editor,
   entry: NodeEntry<ListItemElement>
 ): boolean {
