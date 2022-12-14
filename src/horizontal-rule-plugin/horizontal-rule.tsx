@@ -1,8 +1,20 @@
+import { styled } from "goober"
+import { forwardRef } from "react"
 import { useSelected } from "slate-react"
 
 import { ConstrainedRenderElementProps } from "~/src/sink"
 
 import { HorizontalRuleElement } from "."
+
+const $HorizontalRule = styled("hr", forwardRef)`
+  height: 1px;
+  background-color: rgba(127, 127, 127, 0.25);
+  border: none;
+  border-radius: 1px;
+  &.--selected {
+    outline: 2px solid rgb(96 165 250); /* bg-blue-400 */
+  }
+`
 
 export function HorizontalRule({
   attributes,
@@ -10,13 +22,10 @@ export function HorizontalRule({
 }: ConstrainedRenderElementProps<HorizontalRuleElement>) {
   const selected = useSelected()
   return (
-    <div
-      {...attributes}
-      style={{ outline: selected ? "2px solid royalblue" : "none" }}
-    >
+    <div {...attributes}>
       {children}
       <div contentEditable={false}>
-        <hr />
+        <$HorizontalRule className={selected ? "--selected" : ""} />
       </div>
     </div>
   )

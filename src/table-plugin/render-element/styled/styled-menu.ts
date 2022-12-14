@@ -10,7 +10,7 @@ const $Menu = styled("div", forwardRef)`
   /**
    * very slightly shaded
    */
-  background: rgba(0, 0, 0, 0.01);
+  background: rgba(0, 0, 0, 0.001);
 
   /**
    * hover 
