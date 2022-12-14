@@ -1,4 +1,4 @@
-import { Editor, Element, NodeEntry, Transforms } from "slate"
+import { Editor, Element, NodeEntry } from "slate"
 
 import { transformElementFromLines } from "~/src/sink/utils/transform-element-from-lines"
 
@@ -45,23 +45,4 @@ export function normalizeListItemChildrenTypes(
     transformed = true
   }
   return transformed
-}
-
-export function normalizeListItemFirst(
-  editor: Editor,
-  entry: NodeEntry<ListItemElement>
-) {
-  const [node, path] = entry
-  const { children } = node
-  if (children[0] && children[0].type !== "list-content") {
-    Transforms.insertNodes(
-      editor,
-      {
-        type: "list-content",
-        children: [{ text: "" }],
-      },
-      { at: [...path, 0] }
-    )
-  }
-  return false
 }

@@ -3,10 +3,8 @@ import { Editor, NodeEntry } from "slate"
 import { ListItemElement } from "../types"
 import { normalizeListItemChildrenHangingContent } from "./normalize-list-item-children-hanging-content"
 import { normalizeListItemChildrenHangingList } from "./normalize-list-item-children-hanging-list"
-import {
-  normalizeListItemChildrenTypes,
-  normalizeListItemFirst,
-} from "./normalize-list-item-children-types"
+import { normalizeListItemChildrenTypes } from "./normalize-list-item-children-types"
+import { normalizeListItemFirstChild } from "./normalize-list-item-first-child"
 
 /**
  * The goal to normalizing a `ListItemElement` is to make sure that
@@ -36,7 +34,7 @@ export function normalizeListItem(
   /**
    * Make sure the first child is a ListContentElement
    */
-  if (normalizeListItemFirst(editor, entry)) return true
+  if (normalizeListItemFirstChild(editor, entry)) return true
   /**
    * Make sure the children are all
    *
