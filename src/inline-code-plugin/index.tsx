@@ -37,6 +37,7 @@ export const InlineCodePlugin = () =>
                   backgroundColor: "#e0e0e0",
                   borderRadius: "0.25em",
                   padding: "0.25em",
+                  fontSize: "0.875em",
                 }}
               >
                 {children}

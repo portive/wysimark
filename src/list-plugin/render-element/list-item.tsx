@@ -50,11 +50,7 @@ export function ListItem({
     )
   } else {
     return (
-      <$ListItem
-        className={isDebug ? "--debug" : ""}
-        // className="--debug"
-        {...attributes}
-      >
+      <$ListItem className={isDebug ? "--debug" : ""} {...attributes}>
         {typeof element.checked === "boolean" &&
           (element.checked === true ? <CheckecIcon /> : <UncheckedIcon />)}
         {children}

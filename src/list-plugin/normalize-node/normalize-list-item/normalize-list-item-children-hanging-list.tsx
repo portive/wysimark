@@ -37,7 +37,11 @@ export function normalizeListItemChildrenHangingList(
   if (nextToLastChild.type === "list-content") {
     wrapAndMoveNodes(
       editor,
-      { type: "list-item", children: [] },
+      {
+        type: "list-item",
+        checked: typeof element.checked === "boolean" ? false : undefined,
+        children: [],
+      },
       { srcStart: nextToLastPath, srcEnd: lastPath, dest: Path.next(path) }
     )
   } else {
@@ -48,7 +52,11 @@ export function normalizeListItemChildrenHangingList(
      */
     wrapAndMoveNodes(
       editor,
-      { type: "list-item", children: [] },
+      {
+        type: "list-item",
+        checked: typeof element.checked === "boolean" ? false : undefined,
+        children: [],
+      },
       { srcStart: lastPath, srcEnd: lastPath, dest: Path.next(path) }
     )
   }

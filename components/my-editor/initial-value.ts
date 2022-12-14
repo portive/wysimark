@@ -126,7 +126,7 @@ export const initialValue: Descendant[] = [
   },
   {
     type: "table",
-    columns: [{ align: "left" }, { align: "center" }, { align: "right" }],
+    columns: [{ align: "left" }, { align: "left" }, { align: "right" }],
     children: [
       {
         type: "table-row",
@@ -136,7 +136,7 @@ export const initialValue: Descendant[] = [
             children: [
               {
                 type: "table-content",
-                children: [{ text: "Alpha" }],
+                children: [{ text: "Title" }],
               },
             ],
           },
@@ -145,7 +145,7 @@ export const initialValue: Descendant[] = [
             children: [
               {
                 type: "table-content",
-                children: [{ text: "Bravo" }],
+                children: [{ text: "Director" }],
               },
             ],
           },
@@ -154,7 +154,7 @@ export const initialValue: Descendant[] = [
             children: [
               {
                 type: "table-content",
-                children: [{ text: "Charlie" }],
+                children: [{ text: "Release Date" }],
               },
             ],
           },
@@ -168,7 +168,7 @@ export const initialValue: Descendant[] = [
             children: [
               {
                 type: "table-content",
-                children: [{ text: "Delta" }],
+                children: [{ text: "Blade Runner" }],
               },
             ],
           },
@@ -177,7 +177,7 @@ export const initialValue: Descendant[] = [
             children: [
               {
                 type: "table-content",
-                children: [{ text: "Echo" }],
+                children: [{ text: "Ridley Scott" }],
               },
             ],
           },
@@ -186,7 +186,71 @@ export const initialValue: Descendant[] = [
             children: [
               {
                 type: "table-content",
-                children: [{ text: "Foxtrot" }],
+                children: [{ text: "1982" }],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        type: "table-row",
+        children: [
+          {
+            type: "table-cell",
+            children: [
+              {
+                type: "table-content",
+                children: [{ text: "The Hunt for Red October" }],
+              },
+            ],
+          },
+          {
+            type: "table-cell",
+            children: [
+              {
+                type: "table-content",
+                children: [{ text: "John McTiernan" }],
+              },
+            ],
+          },
+          {
+            type: "table-cell",
+            children: [
+              {
+                type: "table-content",
+                children: [{ text: "1990" }],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        type: "table-row",
+        children: [
+          {
+            type: "table-cell",
+            children: [
+              {
+                type: "table-content",
+                children: [{ text: "Sicario" }],
+              },
+            ],
+          },
+          {
+            type: "table-cell",
+            children: [
+              {
+                type: "table-content",
+                children: [{ text: "Denis Villeneuve" }],
+              },
+            ],
+          },
+          {
+            type: "table-cell",
+            children: [
+              {
+                type: "table-content",
+                children: [{ text: "2015" }],
               },
             ],
           },
@@ -205,7 +269,7 @@ export const initialValue: Descendant[] = [
       },
       {
         type: "code-block-line",
-        children: [{ text: "  console.log('Hello);" }],
+        children: [{ text: "  console.log('Hello');" }],
       },
       {
         type: "code-block-line",

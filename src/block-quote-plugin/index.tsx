@@ -1,4 +1,5 @@
-import React from "react"
+import { styled } from "goober"
+import React, { forwardRef } from "react"
 import { Descendant, Element, Node, Transforms } from "slate"
 
 import {
@@ -25,6 +26,15 @@ export type BlockQuotePluginCustomTypes = {
   Editor: BlockQuoteEditor
   Element: BlockQuoteElement
 }
+
+const $BlockQuote = styled("blockquote", forwardRef)`
+  position: relative;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: 0;
+  border-left: 0.25em solid rgba(0, 0, 0, 0.075);
+  padding-left: 1.5em;
+`
 
 function matchBlockQuoteSafe(node: Node) {
   return (
@@ -83,20 +93,7 @@ export const BlockQuotePlugin = () =>
       editableProps: {
         renderElement: ({ element, attributes, children }) => {
           if (element.type === "block-quote") {
-            return (
-              <blockquote
-                {...attributes}
-                style={{
-                  marginTop: "1em",
-                  marginBottom: "1em",
-                  marginLeft: 0,
-                  borderLeft: "0.5em solid #e0e0e0",
-                  paddingLeft: "1em",
-                }}
-              >
-                {children}
-              </blockquote>
-            )
+            return <$BlockQuote {...attributes}>{children}</$BlockQuote>
           }
         },
         onKeyDown: createHotkeyHandler({

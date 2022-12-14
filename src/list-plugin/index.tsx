@@ -1,7 +1,7 @@
 import React from "react"
-import { NodeEntry } from "slate"
+import { Editor, NodeEntry, Path, Transforms } from "slate"
 
-import { createPlugin } from "~/src/sink"
+import { createHotkeyHandler, createPlugin, matchElement } from "~/src/sink"
 
 import { normalizeNode } from "./normalize-node"
 import { List } from "./render-element/list"
@@ -19,6 +19,17 @@ export * from "./types"
 export const ListPlugin = () =>
   createPlugin<ListPluginCustomTypes>((editor) => {
     editor.supportsList = true
+    const hotkeyHandler = createHotkeyHandler({
+      tab: () => {
+        console.log("tabbed!")
+        Transforms.wrapNodes(editor, {
+          type: "list",
+          style: "unordered",
+          children: [],
+        })
+        return true
+      },
+    })
     return {
       name: "list",
       editor: {
@@ -52,6 +63,10 @@ export const ListPlugin = () =>
               </ListContent>
             )
           }
+        },
+        onKeyDown(e) {
+          if (!matchElement(editor, "list")) return false
+          return hotkeyHandler(e)
         },
       },
     }

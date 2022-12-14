@@ -28,7 +28,11 @@ export function normalizeListItemChildrenHangingContent(
 
   wrapAndMoveNodes(
     editor,
-    { type: "list-item", children: [] },
+    {
+      type: "list-item",
+      checked: typeof element.checked === "boolean" ? false : undefined,
+      children: [],
+    },
     {
       srcStart: [...path, lastIndex],
       srcEnd: [...path, lastIndex],

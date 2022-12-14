@@ -1,9 +1,14 @@
 import React, { useState } from "react"
 import { useSlateStatic } from "slate-react"
 
+import { MinusIcon, PlusIcon } from "../../../icons"
 import { TableCellElement } from "../../../types"
-import { $AddButton, $RemoveButton } from "../$table-menu-buttons"
-import { $RowMenu, $RowMenuTile } from "./$row-menu"
+import {
+  $AddMenuButton,
+  $RemoveMenuButton,
+  $RowMenu,
+  $RowMenuTile,
+} from "../../styled"
 
 export function RowMenu({ cellElement }: { cellElement: TableCellElement }) {
   const editor = useSlateStatic()
@@ -15,10 +20,10 @@ export function RowMenu({ cellElement }: { cellElement: TableCellElement }) {
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
     >
-      <$RowMenuTile className="--row-menu-tile" />
+      <$RowMenuTile className="--tile" />
       {hover ? (
         <>
-          <$RemoveButton
+          <$RemoveMenuButton
             style={{
               top: "50%",
               left: 0,
@@ -27,19 +32,25 @@ export function RowMenu({ cellElement }: { cellElement: TableCellElement }) {
             onMouseDown={() =>
               editor.tablePlugin.removeRow({ at: cellElement })
             }
-          />
-          <$AddButton
+          >
+            <MinusIcon />
+          </$RemoveMenuButton>
+          <$AddMenuButton
             style={{ top: "-0.5em", left: 0 }}
             onMouseDown={() =>
               editor.tablePlugin.insertRow({ at: cellElement })
             }
-          />
-          <$AddButton
+          >
+            <PlusIcon />
+          </$AddMenuButton>
+          <$AddMenuButton
             style={{ bottom: "-0.5em", left: 0 }}
             onMouseDown={() =>
               editor.tablePlugin.insertRow({ at: cellElement, offset: 1 })
             }
-          />
+          >
+            <PlusIcon />
+          </$AddMenuButton>
         </>
       ) : null}
     </$RowMenu>

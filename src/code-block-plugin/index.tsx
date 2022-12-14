@@ -1,4 +1,5 @@
-import React from "react"
+import { styled } from "goober"
+import React, { forwardRef } from "react"
 import { BaseText, Text } from "slate"
 
 import { createPlugin } from "~/src/sink"
@@ -29,6 +30,34 @@ export type CodeBlockPluginCustomTypes = {
   Text: BaseText & { prismToken?: string }
 }
 
+const $CodeBlock = styled("pre", forwardRef)`
+  background: #f8f8f8;
+  margin: 1em 0;
+  padding: 1em;
+  border-radius: 0.5em;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  code {
+    font-family: "andale mono", AndaleMono, monospace;
+    font-size: 0.825em;
+  }
+  counter-reset: line;
+`
+
+const $CodeLine = styled("div", forwardRef)`
+  line-height: 1.5em;
+  counter-increment: line;
+  &:before {
+    content: counter(line);
+    color: rgba(0, 0, 0, 0.25);
+    border-right: 1px solid rgba(0, 0, 0, 0.05);
+    margin-right: 1em;
+    padding: 0em 1em 0 0;
+    text-align: right;
+    display: inline-block;
+    width: 1.25em;
+  }
+`
+
 export const CodeBlockPlugin = () =>
   createPlugin<CodeBlockPluginCustomTypes>((editor) => {
     editor.supportsCodeBlock = true
@@ -55,24 +84,12 @@ export const CodeBlockPlugin = () =>
         renderElement: ({ element, attributes, children }) => {
           if (element.type === "code-block") {
             return (
-              <pre
-                {...attributes}
-                style={{
-                  background: "#f0f0f0",
-                  padding: "1em",
-                  borderRadius: "0.5em",
-                  fontSize: "0.825em",
-                }}
-              >
-                <code>{children}</code>
-              </pre>
+              <$CodeBlock {...attributes}>
+                <code style={{ fontFamily: "andale mono" }}>{children}</code>
+              </$CodeBlock>
             )
           } else if (element.type === "code-block-line") {
-            return (
-              <div {...attributes} style={{ lineHeight: "1.5em" }}>
-                {children}
-              </div>
-            )
+            return <$CodeLine {...attributes}>{children}</$CodeLine>
           }
         },
         renderLeaf: ({ leaf, children }) => {

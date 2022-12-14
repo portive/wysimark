@@ -1,17 +1,12 @@
-import { styled } from "goober"
-import { forwardRef, useEffect } from "react"
+import { useEffect } from "react"
 import { ReactEditor, useSelected, useSlateStatic } from "slate-react"
 
 import { ConstrainedRenderElementProps } from "~/src/sink"
 
 import { normalizeTableIndexes } from "../normalize/normalize-table"
 import { TableElement } from "../types"
+import { $Table } from "./styled"
 import { TableContext } from "./table-context"
-
-const $Table = styled("table", forwardRef)`
-  border-collapse: collapse;
-  margin: 1em 0;
-`
 
 export function Table({
   element,

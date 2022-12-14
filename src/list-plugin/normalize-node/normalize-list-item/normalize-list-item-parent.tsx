@@ -21,7 +21,7 @@ function normalizeParentElement<T extends Node = Node>(
 }
 
 /**
- * Make sure the first child of a ListItemElement is always a ListContentElement.
+ * Make sure the parent of a ListItemElement is always a List.
  *
  * If it's not, insert one.
  */
