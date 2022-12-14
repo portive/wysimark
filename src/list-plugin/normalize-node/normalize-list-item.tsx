@@ -1,8 +1,14 @@
-import { Editor, Element, Node, NodeEntry, Path, Transforms } from "slate"
+import { Editor, NodeEntry } from "slate"
 
-import { ListContentElement, ListElement, ListItemElement } from "../types"
-import { normalizeListItemChildrenTypes } from "./normalize-list-item-children-types"
-import { normalizeListItemTuple } from "./normalize-list-item-tuple"
+import { ListItemElement } from "../types"
+import {
+  normalizeListItemChildrenTypes,
+  normalizeListItemFirst,
+} from "./normalize-list-item-children-types"
+import {
+  normalizeListItemHangingContent,
+  normalizeListItemHangingList,
+} from "./normalize-list-item-tuple"
 
 /**
  * The goal to normalizing a `ListItemElement` is to make sure that
@@ -39,7 +45,23 @@ export function normalizeListItem(
   editor: Editor,
   entry: NodeEntry<ListItemElement>
 ): boolean {
+  /**
+   * Make sure the first child is a ListContentElement
+   */
+  if (normalizeListItemFirst(editor, entry)) return true
+  /**
+   * Make sure the children are all
+   *
+   * `( ListContentElement | ListElement )[]`
+   */
   if (normalizeListItemChildrenTypes(editor, entry)) return true
-  if (normalizeListItemTuple(editor, entry)) return true
+  /**
+   * Make sure the last child isn't a hanging ListElement
+   */
+  if (normalizeListItemHangingList(editor, entry)) return true
+  /**
+   * Make sure the last child isn't a hanging ListContentElement
+   */
+  if (normalizeListItemHangingContent(editor, entry)) return true
   return false
 }
