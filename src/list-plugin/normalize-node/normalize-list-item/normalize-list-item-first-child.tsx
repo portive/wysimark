@@ -1,7 +1,12 @@
 import { Editor, NodeEntry, Transforms } from "slate"
 
-import { ListItemElement } from "../types"
+import { ListItemElement } from "../../types"
 
+/**
+ * Make sure the first child of a ListItemElement is always a ListContentElement.
+ *
+ * If it's not, insert one.
+ */
 export function normalizeListItemFirstChild(
   editor: Editor,
   entry: NodeEntry<ListItemElement>

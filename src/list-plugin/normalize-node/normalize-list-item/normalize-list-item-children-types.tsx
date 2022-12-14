@@ -2,7 +2,7 @@ import { Editor, Element, NodeEntry } from "slate"
 
 import { transformElementFromLines } from "~/src/sink/utils/transform-element-from-lines"
 
-import { ListItemElement } from "../types"
+import { ListItemElement } from "../../types"
 
 /**
  * Ensure that the children are all of type `ListContentElement` or

@@ -1,6 +1,6 @@
 import { Editor, NodeEntry } from "slate"
 
-import { ListItemElement } from "../types"
+import { ListItemElement } from "../../types"
 import { normalizeListItemChildrenHangingContent } from "./normalize-list-item-children-hanging-content"
 import { normalizeListItemChildrenHangingList } from "./normalize-list-item-children-hanging-list"
 import { normalizeListItemChildrenTypes } from "./normalize-list-item-children-types"
