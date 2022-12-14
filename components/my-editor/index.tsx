@@ -169,7 +169,7 @@ function Paragraph({
    * 3 nodes based on the way Slate normalizes to always have text nodes at
    * the end which is why this check works.
    */
-  const empty =
+  const isEmpty =
     element.children.length === 1 &&
     Node.string(element.children[0]).length === 0
   /**
@@ -191,7 +191,7 @@ function Paragraph({
    * faster.
    */
   const collapsed =
-    empty &&
+    isEmpty &&
     (!selected ||
       (selected && editor.selection && Range.isExpanded(editor.selection)))
   return (
