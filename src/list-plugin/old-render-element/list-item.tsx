@@ -7,7 +7,7 @@ import { ConstrainedRenderElementProps } from "~/src/sink"
 
 import { ListItemElement } from ".."
 import { isDebug } from "./debug"
-import { CheckedIcon, UncheckedIcon } from "./icons"
+import { CheckedIcon, UncheckedIcon } from "../render-element/icons"
 
 const $ListItem = styled("li", forwardRef)`
   position: relative;

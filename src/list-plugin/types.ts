@@ -1,5 +1,9 @@
 import { Descendant } from "slate"
 
+/**
+ * List Editor
+ */
+
 export type ListEditor = {
   supportsList: true
 }
@@ -44,6 +48,10 @@ export type ListItemElement =
   | OrderedListItemElement
   | UnorderedListItemElement
   | TaskListItemElement
+
+/**
+ * List Plugins Custom Types
+ */
 
 export type ListPluginCustomTypes = {
   Name: "list"

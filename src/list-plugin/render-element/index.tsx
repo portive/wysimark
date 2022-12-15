@@ -1,16 +1,12 @@
 import { ConstrainedRenderElementProps } from "~/src/sink"
 
 import {
-  BulletIcon,
-  CheckedIcon,
-  UncheckedIcon,
-} from "../render-element-old/icons"
-import {
   ListItemElement,
   OrderedListItemElement as OrderedListItem,
   TaskListItemElement,
   UnorderedListItemElement as UnorderedListItem,
 } from "../types"
+import { BulletIcon, CheckedIcon, UncheckedIcon } from "./icons"
 import { $OrderedListItem, $TaskListItem, $UnorderedListItem } from "./styles"
 
 function OrderedListItem({
