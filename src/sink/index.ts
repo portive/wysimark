@@ -1,5 +1,6 @@
 export * from "./create-plugin"
 export * from "./create-sink"
 export * from "./define-plugin"
+export * from "./is-debug"
 export * from "./types"
 export * from "./utils"

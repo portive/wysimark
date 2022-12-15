@@ -19,7 +19,7 @@ export type ListEditor = {
 export type OrderedListItemElement = {
   type: "ordered-list-item"
   depth: number
-  number: number
+  __firstAtDepth?: boolean // used internally to reset counters
   children: Descendant[]
 }
 
@@ -30,6 +30,7 @@ export type OrderedListItemElement = {
 export type UnorderedListItemElement = {
   type: "unordered-list-item"
   depth: number
+  __firstAtDepth?: boolean // used internally to reset counters
   children: Descendant[]
 }
 
@@ -40,6 +41,7 @@ export type UnorderedListItemElement = {
 export type TaskListItemElement = {
   type: "task-list-item"
   depth: number
+  __firstAtDepth?: boolean // used internally to reset counters
   checked: boolean
   children: Descendant[]
 }

@@ -1,6 +1,8 @@
 import { styled } from "goober"
 import { forwardRef } from "react"
 
+import { isDebug } from "~/src/sink"
+
 const $ListItem = styled("li", forwardRef)`
   margin-top: 1em;
   margin-bottom: 1em;
@@ -23,19 +25,20 @@ export const $UnorderedListItem = styled($ListItem, forwardRef)`
 export const $OrderedListItem = styled($ListItem, forwardRef)`
   position: relative;
   list-style-type: none;
-  .--list-item-number {
-    position: absolute;
-    top: 0;
-    left: -2em;
-    width: 1.5em;
-    text-align: right;
-    color: var(--shade-500);
-    /* force numbers to be monospaced for better alignment */
-    font-variant-numeric: tabular-nums;
+  counter-increment: var(--list-item-var);
+
+  &.--first-at-depth {
+    counter-reset: var(--list-item-var);
+    /**
+     * if isDebug is true, then show a highlight on list items that are marked
+     * as the first at a given depth.
+     */
+    background: ${isDebug ? "rgba(0, 255, 0, 0.2)" : "inherit"};
   }
+
   &:before {
     position: absolute;
-    content: counter(list) ".";
+    content: counter(var(--list-item-var)) ".";
     top: 0;
     left: -2em;
     width: 1.5em;

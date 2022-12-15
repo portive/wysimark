@@ -14,32 +14,37 @@ export const initialValueList: Descendant[] = [
   {
     type: "ordered-list-item",
     depth: 1,
-    number: 1,
     children: [{ text: "Apples" }],
   },
   {
     type: "ordered-list-item",
     depth: 1,
-    number: 2,
     children: [{ text: "Oranges" }],
   },
   {
     type: "ordered-list-item",
     depth: 2,
-    number: 2,
     children: [{ text: "Mandarin Oranges" }],
   },
   {
     type: "ordered-list-item",
     depth: 2,
-    number: 2,
     children: [{ text: "Sunkist Oranges" }],
   },
   {
     type: "ordered-list-item",
     depth: 1,
-    number: 3,
     children: [{ text: "Bananas" }],
+  },
+  {
+    type: "ordered-list-item",
+    depth: 2,
+    children: [{ text: "Cavendish Bananas" }],
+  },
+  {
+    type: "ordered-list-item",
+    depth: 2,
+    children: [{ text: "Plantains" }],
   },
   {
     type: "unordered-list-item",

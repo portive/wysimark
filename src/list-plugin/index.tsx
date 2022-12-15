@@ -7,6 +7,7 @@ import {
   transformNodes,
 } from "~/src/sink"
 
+import { normalizeNode } from "./normalize-node"
 import { renderElement } from "./render-element"
 import { ListItemElement, ListPluginCustomTypes } from "./types"
 
@@ -55,6 +56,9 @@ export const ListPlugin = () =>
     })
     return {
       name: "list",
+      editor: {
+        normalizeNode: (entry) => normalizeNode(editor, entry),
+      },
       editableProps: {
         renderElement,
         onKeyDown(e) {
