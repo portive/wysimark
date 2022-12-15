@@ -14,7 +14,7 @@ import {
   PluginFunction,
   PluginObject,
 } from "../types"
-import { $Editable } from "./$editable"
+import { $Editable, GlobalStyles } from "./$editable"
 import {
   createIsInline,
   createIsVoid,
@@ -196,13 +196,16 @@ export const createSink = <
 
     return (
       // <Reset>
-      <$Editable
-        {...originalProps}
-        decorate={decorate}
-        onKeyDown={nextOnKeyDown}
-        renderElement={nextRenderElement}
-        renderLeaf={nextRenderLeaf}
-      />
+      <>
+        <GlobalStyles />
+        <$Editable
+          {...originalProps}
+          decorate={decorate}
+          onKeyDown={nextOnKeyDown}
+          renderElement={nextRenderElement}
+          renderLeaf={nextRenderLeaf}
+        />
+      </>
       // </Reset>
     )
   }

@@ -31,11 +31,11 @@ export type CodeBlockPluginCustomTypes = {
 }
 
 const $CodeBlock = styled("pre", forwardRef)`
-  background: #f8f8f8;
+  background: var(--code-block-bgcolor);
   margin: 1em 0;
   padding: 1em;
   border-radius: 0.5em;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--code-block-border-color);
   code {
     font-family: "andale mono", AndaleMono, monospace;
     font-size: 0.825em;

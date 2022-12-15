@@ -1,4 +1,5 @@
-import React from "react"
+import { styled } from "goober"
+import React, { forwardRef } from "react"
 import { Descendant } from "slate"
 
 import { createPlugin } from "~/src/sink"
@@ -20,6 +21,13 @@ export type AnchorPluginCustomTypes = {
   Element: AnchorElement
 }
 
+const $Anchor = styled("a", forwardRef)`
+  color: var(--link-color, blue);
+  &:hover {
+    color: var(--link-hover-color, blue);
+  }
+`
+
 export const AnchorPlugin = () =>
   createPlugin<AnchorPluginCustomTypes>((editor) => {
     editor.supportsAnchor = true
@@ -37,9 +45,13 @@ export const AnchorPlugin = () =>
         renderElement: ({ element, attributes, children }) => {
           if (element.type === "anchor") {
             return (
-              <a {...attributes} href={element.href} target={element.target}>
+              <$Anchor
+                {...attributes}
+                href={element.href}
+                target={element.target}
+              >
                 {children}
-              </a>
+              </$Anchor>
             )
           }
         },

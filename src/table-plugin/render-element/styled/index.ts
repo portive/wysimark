@@ -16,7 +16,7 @@ export const $Table = styled("table", forwardRef)`
 export const $TableRow = styled("tr", forwardRef)`
   position: relative;
   &:first-child {
-    background: rgba(0, 0, 0, 0.025);
+    background: var(--table-head-bgcolor);
   }
 `
 
@@ -30,19 +30,20 @@ export const $TableCell = styled("td", forwardRef)`
   border-width: 1px;
   border-style: solid;
   border-color: rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.05);
+  border-color: var(--table-row-border-color) var(--table-column-border-color);
   padding: 0.75em 1em;
   min-width: 2em;
   &.--selected {
-    outline: 2px solid royalblue;
+    outline: 2px solid var(--select-color, blue);
   }
   /**
    * Stronger borders on the left and right edge
    */
   &:first-child {
-    border-left-color: rgba(0, 0, 0, 0.2);
+    border-left-color: var(--table-border-color);
   }
   &:last-child {
-    border-right-color: rgba(0, 0, 0, 0.2);
+    border-right-color: var(--table-border-color);
   }
 `
 

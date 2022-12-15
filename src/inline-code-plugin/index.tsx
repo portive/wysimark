@@ -1,4 +1,5 @@
-import React from "react"
+import { styled } from "goober"
+import React, { forwardRef } from "react"
 
 import { createHotkeyHandler, createPlugin, toggleMark } from "~/src/sink"
 
@@ -20,6 +21,13 @@ export type InlineCodePluginCustomTypes = {
   Text: InlineCodeText
 }
 
+const $InlineCode = styled("code", forwardRef)`
+  background-color: var(--inline-code-bgcolor);
+  border-radius: 0.25em;
+  padding: 0.25em;
+  font-size: 0.875em;
+`
+
 export const InlineCodePlugin = () =>
   createPlugin<InlineCodePluginCustomTypes>((editor) => {
     editor.supportsInlineCode = true
@@ -31,18 +39,7 @@ export const InlineCodePlugin = () =>
       editableProps: {
         renderLeaf: ({ leaf, children }) => {
           if (leaf.code) {
-            return (
-              <code
-                style={{
-                  backgroundColor: "#e0e0e0",
-                  borderRadius: "0.25em",
-                  padding: "0.25em",
-                  fontSize: "0.875em",
-                }}
-              >
-                {children}
-              </code>
-            )
+            return <$InlineCode>{children}</$InlineCode>
           } else {
             return children
           }

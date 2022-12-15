@@ -12,7 +12,7 @@ const $HorizontalRule = styled("hr", forwardRef)`
   border: none;
   border-radius: 1px;
   &.--selected {
-    outline: 2px solid rgb(96 165 250); /* bg-blue-400 */
+    outline: 2px solid var(--select-color, blue); /* bg-blue-400 */
   }
 `
 
