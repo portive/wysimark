@@ -3,6 +3,19 @@ import { createGlobalStyles } from "goober/global"
 import { forwardRef } from "react"
 import { Editable } from "slate-react"
 
+const blue = `
+--blue-50: rgb(239 246 255);
+--blue-100: rgb(219 234 254);
+blue-200: rgb(191 219 254);
+--blue-300: rgb(147 197 253);
+--blue-400: rgb(96 165 250);
+--blue-500: rgb(59 130 246);
+--blue-600: rgb(37 99 235);
+--blue-700: rgb(29 78 216);
+--blue-800: rgb(30 64 175);
+--blue-900: rgb(30 58 138);
+`
+
 const slateShades = `
 --shade-50: rgb(248 250 252);
 --shade-100: rgb(241 245 249);
@@ -45,16 +58,7 @@ const zincShades = `
 export const GlobalStyles = createGlobalStyles`
   :root {
     /* Tailwind Colors */
-    --blue-50: rgb(239 246 255);
-    --blue-100: rgb(219 234 254);
-    --blue-200: rgb(191 219 254);
-    --blue-300: rgb(147 197 253);
-    --blue-400: rgb(96 165 250);
-    --blue-500: rgb(59 130 246);
-    --blue-600: rgb(37 99 235);
-    --blue-700: rgb(29 78 216);
-    --blue-800: rgb(30 64 175);
-    --blue-900: rgb(30 58 138);
+    ${blue}
     ${zincShades}
     /* Select Colors */
     --select-color: var(--blue-400);
@@ -72,6 +76,8 @@ export const GlobalStyles = createGlobalStyles`
     --table-head-bgcolor: var(--shade-50);
     --table-menu-bgcolor: var(--shade-100);
     --table-menu-hover-bgcolor: var(--shade-200);
+    /* Horizontal Rule Colors */
+    --hr-color: var(--shade-300);
   }
 `
 

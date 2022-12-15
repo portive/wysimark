@@ -8,7 +8,7 @@ import { HorizontalRuleElement } from "."
 
 const $HorizontalRule = styled("hr", forwardRef)`
   height: 1px;
-  background-color: rgba(127, 127, 127, 0.25);
+  background-color: var(--hr-color);
   border: none;
   border-radius: 1px;
   &.--selected {

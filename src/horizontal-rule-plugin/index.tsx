@@ -3,21 +3,8 @@ import React from "react"
 import { createPlugin } from "~/src/sink"
 
 import { HorizontalRule } from "./horizontal-rule"
-
-export type HorizontalRuleEditor = {
-  supportsHorizontalRule: true
-}
-
-export type HorizontalRuleElement = {
-  type: "horizontal-rule"
-  children: [{ text: "" }]
-}
-
-export type HorizontalRulePluginCustomTypes = {
-  Name: "horizontal-rule"
-  Editor: HorizontalRuleEditor
-  Element: HorizontalRuleElement
-}
+import { HorizontalRulePluginCustomTypes } from "./types"
+export * from "./types"
 
 export const HorizontalRulePlugin = () =>
   createPlugin<HorizontalRulePluginCustomTypes>((editor) => {

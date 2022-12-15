@@ -1,62 +1,14 @@
-import { styled } from "goober"
-import React, { forwardRef } from "react"
-import { BaseText, Text } from "slate"
+import React from "react"
+import { useSelected } from "slate-react"
 
 import { createPlugin } from "~/src/sink"
 
 import { decorate } from "./decorate"
+import { $CodeBlock, $CodeLine } from "./styles"
 import { tokenStyles } from "./theme"
+import { CodeBlockPluginCustomTypes } from "./types"
 export * from "./decorate"
-
-export type CodeBlockEditor = {
-  supportsCodeBlock: true
-}
-
-export type CodeBlockLineElement = {
-  type: "code-block-line"
-  children: Text[]
-}
-
-export type CodeBlockElement = {
-  type: "code-block"
-  language: string
-  children: CodeBlockLineElement[]
-}
-
-export type CodeBlockPluginCustomTypes = {
-  Name: "code-block"
-  Editor: CodeBlockEditor
-  Element: CodeBlockElement | CodeBlockLineElement
-  Text: BaseText & { prismToken?: string }
-}
-
-const $CodeBlock = styled("pre", forwardRef)`
-  background: var(--code-block-bgcolor);
-  margin: 1em 0;
-  padding: 1em;
-  border-radius: 0.5em;
-  border: 1px solid var(--code-block-border-color);
-  code {
-    font-family: "andale mono", AndaleMono, monospace;
-    font-size: 0.825em;
-  }
-  counter-reset: line;
-`
-
-const $CodeLine = styled("div", forwardRef)`
-  line-height: 1.5em;
-  counter-increment: line;
-  &:before {
-    content: counter(line);
-    color: rgba(0, 0, 0, 0.25);
-    border-right: 1px solid rgba(0, 0, 0, 0.05);
-    margin-right: 1em;
-    padding: 0em 1em 0 0;
-    text-align: right;
-    display: inline-block;
-    width: 1.25em;
-  }
-`
+export * from "./types"
 
 export const CodeBlockPlugin = () =>
   createPlugin<CodeBlockPluginCustomTypes>((editor) => {
@@ -82,14 +34,25 @@ export const CodeBlockPlugin = () =>
       editableProps: {
         decorate,
         renderElement: ({ element, attributes, children }) => {
+          const selected = useSelected()
           if (element.type === "code-block") {
             return (
-              <$CodeBlock {...attributes}>
+              <$CodeBlock
+                className={selected ? "--selected" : ""}
+                {...attributes}
+              >
                 <code style={{ fontFamily: "andale mono" }}>{children}</code>
               </$CodeBlock>
             )
           } else if (element.type === "code-block-line") {
-            return <$CodeLine {...attributes}>{children}</$CodeLine>
+            return (
+              <$CodeLine
+                className={selected ? "--selected" : ""}
+                {...attributes}
+              >
+                {children}
+              </$CodeLine>
+            )
           }
         },
         renderLeaf: ({ leaf, children }) => {

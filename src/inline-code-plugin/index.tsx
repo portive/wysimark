@@ -1,32 +1,11 @@
-import { styled } from "goober"
-import React, { forwardRef } from "react"
+import React from "react"
 
 import { createHotkeyHandler, createPlugin, toggleMark } from "~/src/sink"
 
-export type InlineCodeEditor = {
-  supportsInlineCode: true
-  inlineCodePlugin: {
-    toggleInlineCode: () => void
-  }
-}
-
-export type InlineCodeText = {
-  text: string
-  code?: true
-}
-
-export type InlineCodePluginCustomTypes = {
-  Name: "inline-code"
-  Editor: InlineCodeEditor
-  Text: InlineCodeText
-}
-
-const $InlineCode = styled("code", forwardRef)`
-  background-color: var(--inline-code-bgcolor);
-  border-radius: 0.25em;
-  padding: 0.25em;
-  font-size: 0.875em;
-`
+import { $InlineCode } from "./styles"
+import { InlineCodePluginCustomTypes } from "./types"
+export * from "./styles"
+export * from "./types"
 
 export const InlineCodePlugin = () =>
   createPlugin<InlineCodePluginCustomTypes>((editor) => {
