@@ -6,6 +6,10 @@ import { Descendant } from "slate"
 
 export type ListEditor = {
   supportsList: true
+  list: {
+    indent: () => boolean
+    outdent: () => boolean
+  }
 }
 
 /**

@@ -1,48 +1,60 @@
 import { Editor, Element, Node } from "slate"
 
-import { createHotkeyHandler, createPlugin, transformNodes } from "~/src/sink"
+import {
+  createHotkeyHandler,
+  createIsElementType,
+  createPlugin,
+  transformNodes,
+} from "~/src/sink"
 
 import { renderElement } from "./render-element"
 import { ListItemElement, ListPluginCustomTypes } from "./types"
 
 export * from "./types"
 
-const LIST_ITEM_TYPES = [
+export const LIST_ITEM_TYPES: ListItemElement["type"][] = [
   "unordered-list-item",
   "ordered-list-item",
   "task-list-item",
 ]
 
-function isListItem(node: Node): node is Element {
-  return Element.isElement(node) && LIST_ITEM_TYPES.includes(node.type)
-}
+export const isListItem = createIsElementType<ListItemElement>(LIST_ITEM_TYPES)
 
 export const ListPlugin = () =>
   createPlugin<ListPluginCustomTypes>((editor) => {
     editor.supportsList = true
-    const hotkeyHandler = createHotkeyHandler({
-      tab: () => {
+    editor.list = {
+      indent: () => {
         transformNodes<ListItemElement>(editor, {
           match: isListItem,
           convert: (node) => ({ depth: node.depth + 1 }),
         })
         return true
       },
-      "shift+tab": () => {
+      outdent: () => {
+        /**
+         * Don't allow `shift+tab` if any of the list items are already at a
+         * depth of `0`
+         */
+        const entries = Editor.nodes<ListItemElement>(editor, {
+          match: isListItem,
+        })
+        for (const entry of entries) {
+          if (entry[0].depth === 0) return true
+        }
         transformNodes<ListItemElement>(editor, {
           match: isListItem,
           convert: (node) => ({ depth: Math.max(0, node.depth - 1) }),
         })
         return true
       },
+    }
+    const hotkeyHandler = createHotkeyHandler({
+      tab: editor.list.indent,
+      "shift+tab": editor.list.outdent,
     })
     return {
       name: "list",
-      editor: {
-        normalizeNode: () => {
-          return false
-        },
-      },
       editableProps: {
         renderElement,
         onKeyDown(e) {

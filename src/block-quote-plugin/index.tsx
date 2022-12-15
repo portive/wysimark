@@ -81,13 +81,17 @@ export const BlockQuotePlugin = () =>
           if (element.type === "block-quote") return false
         },
         normalizeNode(entry) {
-          if (!Element.isElement(entry[0])) return false
-          if (entry[0].type !== "block-quote") return false
-          return normalizeSiblings(
-            editor,
-            entry,
-            (a, b) => a.type === "block-quote" && b.type === "block-quote"
-          )
+          return normalizeSiblings(editor, entry, (a, b) => {
+            if (
+              Element.isElement(a[0]) &&
+              Element.isElement(b[0]) &&
+              a[0].type === "block-quote" &&
+              b[0].type === "block-quote"
+            ) {
+              Transforms.mergeNodes(editor, { at: b[1] })
+            }
+            return false
+          })
         },
       },
       editableProps: {
