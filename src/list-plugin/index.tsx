@@ -7,6 +7,7 @@ import {
   transformNodes,
 } from "~/src/sink"
 
+import { createListMethods } from "./methods"
 import { normalizeNode } from "./normalize-node"
 import { renderElement } from "./render-element"
 import { ListItemElement, ListPluginCustomTypes } from "./types"
@@ -24,35 +25,13 @@ export const isListItem = createIsElementType<ListItemElement>(LIST_ITEM_TYPES)
 export const ListPlugin = () =>
   createPlugin<ListPluginCustomTypes>((editor) => {
     editor.supportsList = true
-    editor.list = {
-      indent: () => {
-        transformNodes<ListItemElement>(editor, {
-          match: isListItem,
-          convert: (node) => ({ depth: node.depth + 1 }),
-        })
-        return true
-      },
-      outdent: () => {
-        /**
-         * Don't allow `shift+tab` if any of the list items are already at a
-         * depth of `0`
-         */
-        const entries = Editor.nodes<ListItemElement>(editor, {
-          match: isListItem,
-        })
-        for (const entry of entries) {
-          if (entry[0].depth === 0) return true
-        }
-        transformNodes<ListItemElement>(editor, {
-          match: isListItem,
-          convert: (node) => ({ depth: Math.max(0, node.depth - 1) }),
-        })
-        return true
-      },
-    }
+    editor.list = createListMethods(editor)
     const hotkeyHandler = createHotkeyHandler({
       tab: editor.list.indent,
       "shift+tab": editor.list.outdent,
+      // "super+7": editor.list.toggleOrderedList,
+      // "super+8": editor.list.toggleUnorderedList,
+      // "super+9": editor.list.toggleTaskList,
     })
     return {
       name: "list",

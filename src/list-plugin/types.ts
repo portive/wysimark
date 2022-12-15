@@ -1,15 +1,14 @@
 import { Descendant } from "slate"
 
+import { createListMethods } from "./methods"
+
 /**
  * List Editor
  */
 
 export type ListEditor = {
   supportsList: true
-  list: {
-    indent: () => boolean
-    outdent: () => boolean
-  }
+  list: ReturnType<typeof createListMethods>
 }
 
 /**

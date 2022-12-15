@@ -1,4 +1,4 @@
-import { Descendant, Text } from "slate"
+import { Descendant } from "slate"
 
 /**
  * Alignment of Table Columns
