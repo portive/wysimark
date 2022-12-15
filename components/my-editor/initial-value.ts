@@ -25,100 +25,60 @@ export const initialValue: Descendant[] = [
     ],
   },
   {
-    type: "list",
-    style: "unordered",
-    children: [
-      {
-        type: "list-item",
-        children: [
-          {
-            type: "list-content",
-            children: [{ text: "Milk is good for you" }],
-          },
-        ],
-      },
-      {
-        type: "list-item",
-        children: [
-          {
-            type: "list-content",
-            children: [{ text: "Fruits" }],
-          },
-          {
-            type: "list",
-            style: "ordered",
-            children: [
-              {
-                type: "list-item",
-                children: [
-                  { type: "list-content", children: [{ text: "Apples" }] },
-                ],
-              },
-              {
-                type: "list-item",
-                children: [
-                  { type: "list-content", children: [{ text: "Oranges" }] },
-                ],
-              },
-              {
-                type: "list-item",
-                children: [
-                  { type: "list-content", children: [{ text: "Bananas" }] },
-                ],
-              },
-            ],
-          },
-        ],
-      },
-      {
-        type: "list-item",
-        children: [
-          {
-            type: "list-content",
-            children: [{ text: "Exercise is good for you" }],
-          },
-          {
-            type: "list",
-            style: "unordered",
-            children: [
-              {
-                type: "list-item",
-                checked: false,
-                children: [
-                  {
-                    type: "list-content",
-                    children: [{ text: "Exercise in the morning" }],
-                  },
-                ],
-              },
-              {
-                type: "list-item",
-                checked: true,
-                children: [
-                  { type: "list-content", children: [{ text: "Biking" }] },
-                ],
-              },
-              {
-                type: "list-item",
-                checked: false,
-                children: [
-                  { type: "list-content", children: [{ text: "Hit the Gym" }] },
-                ],
-              },
-              {
-                type: "list-item",
-                children: [
-                  {
-                    type: "list-content",
-                    children: [{ text: "Just a bullet" }],
-                  },
-                ],
-              },
-            ],
-          },
-        ],
-      },
-    ],
+    type: "unordered-list-item",
+    depth: 0,
+    children: [{ text: "Milk is good for you" }],
+  },
+  {
+    type: "unordered-list-item",
+    depth: 0,
+    children: [{ text: "Fruits" }],
+  },
+  {
+    type: "ordered-list-item",
+    depth: 1,
+    number: 1,
+    children: [{ text: "Apples" }],
+  },
+  {
+    type: "ordered-list-item",
+    depth: 1,
+    number: 2,
+    children: [{ text: "Oranges" }],
+  },
+  {
+    type: "ordered-list-item",
+    depth: 1,
+    number: 3,
+    children: [{ text: "Bananas" }],
+  },
+  {
+    type: "unordered-list-item",
+    depth: 0,
+    children: [{ text: "Exercise is good for you" }],
+  },
+  {
+    type: "task-list-item",
+    depth: 1,
+    checked: false,
+    children: [{ text: "Exercise in the morning" }],
+  },
+  {
+    type: "task-list-item",
+    depth: 1,
+    checked: true,
+    children: [{ text: "Biking" }],
+  },
+  {
+    type: "task-list-item",
+    depth: 1,
+    checked: true,
+    children: [{ text: "Hit the Gym" }],
+  },
+  {
+    type: "unordered-list-item",
+    depth: 1,
+    children: [{ text: "Just a bullet" }],
   },
   {
     type: "paragraph",

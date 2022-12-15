@@ -1,32 +1,42 @@
-import React from "react"
-import { Editor, NodeEntry, Path, Transforms } from "slate"
+import { styled } from "goober"
+import { forwardRef } from "react"
+import { Transforms } from "slate"
 
 import { createHotkeyHandler, createPlugin, matchElement } from "~/src/sink"
 
-import { normalizeNode } from "./normalize-node"
-import { List } from "./render-element/list"
-import { ListContent } from "./render-element/list-content"
-import { ListItem } from "./render-element/list-item"
-import {
-  ListContentElement,
-  ListElement,
-  ListItemElement,
-  ListPluginCustomTypes,
-} from "./types"
+import { renderElement } from "./render-element"
+import { ListItemElement, ListPluginCustomTypes } from "./types"
 
 export * from "./types"
+
+const LIST_ITEM_TYPES = [
+  "unordered-list-item",
+  "ordered-list-item",
+  "task-list-item",
+]
 
 export const ListPlugin = () =>
   createPlugin<ListPluginCustomTypes>((editor) => {
     editor.supportsList = true
     const hotkeyHandler = createHotkeyHandler({
       tab: () => {
-        console.log("tabbed!")
-        Transforms.wrapNodes(editor, {
-          type: "list",
-          style: "unordered",
-          children: [],
-        })
+        const entry = matchElement<ListItemElement>(editor, LIST_ITEM_TYPES)
+        if (!entry) return false
+        Transforms.setNodes(
+          editor,
+          { depth: entry[0].depth + 1 },
+          { at: entry[1] }
+        )
+        return true
+      },
+      "shift+tab": () => {
+        const entry = matchElement<ListItemElement>(editor, LIST_ITEM_TYPES)
+        if (!entry) return false
+        Transforms.setNodes(
+          editor,
+          { depth: Math.max(0, entry[0].depth - 1) },
+          { at: entry[1] }
+        )
         return true
       },
     })
@@ -34,38 +44,13 @@ export const ListPlugin = () =>
       name: "list",
       editor: {
         normalizeNode: (entry) => {
-          return normalizeNode(
-            editor,
-            entry as NodeEntry<
-              ListElement | ListItemElement | ListContentElement
-            >
-          )
+          return false
         },
       },
       editableProps: {
-        renderElement: ({ element, attributes, children }) => {
-          if (element.type === "list") {
-            return (
-              <List element={element} attributes={attributes}>
-                {children}
-              </List>
-            )
-          } else if (element.type === "list-item") {
-            return (
-              <ListItem element={element} attributes={attributes}>
-                {children}
-              </ListItem>
-            )
-          } else if (element.type === "list-content") {
-            return (
-              <ListContent element={element} attributes={attributes}>
-                {children}
-              </ListContent>
-            )
-          }
-        },
+        renderElement,
         onKeyDown(e) {
-          if (!matchElement(editor, "list")) return false
+          if (!matchElement(editor, LIST_ITEM_TYPES)) return false
           return hotkeyHandler(e)
         },
       },

@@ -7,7 +7,7 @@ import { ConstrainedRenderElementProps } from "~/src/sink"
 
 import { ListItemElement } from ".."
 import { isDebug } from "./debug"
-import { CheckecIcon, UncheckedIcon } from "./icons"
+import { CheckedIcon, UncheckedIcon } from "./icons"
 
 const $ListItem = styled("li", forwardRef)`
   position: relative;
@@ -52,7 +52,7 @@ export function ListItem({
     return (
       <$ListItem className={isDebug ? "--debug" : ""} {...attributes}>
         {typeof element.checked === "boolean" &&
-          (element.checked === true ? <CheckecIcon /> : <UncheckedIcon />)}
+          (element.checked === true ? <CheckedIcon /> : <UncheckedIcon />)}
         {children}
       </$ListItem>
     )
@@ -76,7 +76,7 @@ export function TaskListItem({
       data-list-item
     >
       {element.checked === true ? (
-        <CheckecIcon onClick={onClick} />
+        <CheckedIcon onClick={onClick} />
       ) : (
         <UncheckedIcon onClick={onClick} />
       )}

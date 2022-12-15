@@ -4,40 +4,52 @@ export type ListEditor = {
   supportsList: true
 }
 
-export type ListElement = {
-  type: "list"
-  style: "ordered" | "unordered" | "task"
-  children: ListItemElement[]
+/**
+ * Ordered List Item Element
+ */
+
+export type OrderedListItemElement = {
+  type: "ordered-list-item"
+  depth: number
+  number: number
+  children: Descendant[]
 }
 
-export type ListItemElement = {
-  type: "list-item"
-  /**
-   * `true` means checked
-   * `false` means unchecked
-   * `undefined` means a regular list item based on the surrounding `ListElement`
-   */
-  checked?: boolean
-  /**
-   * Technically, it should be
-   *
-   * [ListContentElement] | [ListContentElement, ListElement]
-   *
-   * But we loosen it to help us with normalizing because it is often not
-   * in the exact shape as above and we can't test for it properly when
-   * TypeScript assumes it is always in a good state.
-   */
+/**
+ * Unordered List Item Element
+ */
 
-  children: (ListContentElement | ListElement)[]
+export type UnorderedListItemElement = {
+  type: "unordered-list-item"
+  depth: number
+  children: Descendant[]
 }
 
-export type ListContentElement = {
-  type: "list-content"
-  children: Descendant[] // line
+/**
+ * Checkable Task List Item Element
+ */
+
+export type TaskListItemElement = {
+  type: "task-list-item"
+  depth: number
+  checked: boolean
+  children: Descendant[]
 }
+
+/**
+ * Any List Item Element
+ */
+
+export type ListItemElement =
+  | OrderedListItemElement
+  | UnorderedListItemElement
+  | TaskListItemElement
 
 export type ListPluginCustomTypes = {
   Name: "list"
   Editor: ListEditor
-  Element: ListElement | ListItemElement | ListContentElement
+  Element:
+    | OrderedListItemElement
+    | UnorderedListItemElement
+    | TaskListItemElement
 }

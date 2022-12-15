@@ -3,14 +3,7 @@ import "../../src/setup"
 import { clsx } from "clsx"
 import { styled } from "goober"
 import { forwardRef, useState } from "react"
-import {
-  BaseEditor,
-  createEditor,
-  Descendant,
-  Element,
-  Node,
-  Range,
-} from "slate"
+import { BaseEditor, createEditor, Descendant, Node, Range } from "slate"
 import { withHistory } from "slate-history"
 import {
   ReactEditor,
@@ -53,11 +46,11 @@ import {
   InlineCodePluginCustomTypes,
 } from "~/src/inline-code-plugin"
 import {
-  ListContentElement,
-  ListElement,
-  ListItemElement,
   ListPlugin,
   ListPluginCustomTypes,
+  OrderedListItemElement,
+  TaskListItemElement,
+  UnorderedListItemElement,
 } from "~/src/list-plugin"
 import { MarksPlugin, MarksPluginCustomTypes } from "~/src/marks-plugin"
 import {
@@ -86,13 +79,13 @@ const { withSink, SinkEditable } = createSink([
   CodeBlockPlugin(),
   TablePlugin(),
   HorizontalRulePlugin(),
-  ListPlugin(),
   TrailingBlockPlugin({
     createTrailingBlock: () => ({
       type: "paragraph",
       children: [{ text: "" }],
     }),
   }),
+  ListPlugin(),
 ])
 
 export type PluginCustomTypes = MergePluginCustomTypes<
@@ -125,13 +118,13 @@ declare module "slate" {
       | CodeBlockElement
       | CodeBlockLineElement
       | HorizontalRuleElement
-      | ListElement
-      | ListItemElement
-      | ListContentElement
       | TableElement
       | TableRowElement
       | TableCellElement
       | TableContentElement
+      | OrderedListItemElement
+      | UnorderedListItemElement
+      | TaskListItemElement
     Text: { text: string } & PluginCustomTypes["Text"]
   }
 }

@@ -15,7 +15,7 @@ import { ReactEditor } from "slate-react"
  * could return `null`
  */
 export type MatchAt = Location | Element | null
-export type MatchNode = string | ((node: Node) => boolean)
+export type MatchNode = string | string[] | ((node: Node) => boolean)
 
 /**
  * Takes a string or a function that matches a Node and in both cases,
@@ -28,9 +28,15 @@ export type MatchNode = string | ((node: Node) => boolean)
 export function normalizeMatchNode(
   matchNode: MatchNode
 ): (node: Node) => boolean {
-  return typeof matchNode === "function"
-    ? matchNode
-    : (node: Node) => Element.isElement(node) && node.type === matchNode
+  if (typeof matchNode === "function") return matchNode
+  if (typeof matchNode === "string")
+    return (node: Node) => Element.isElement(node) && node.type === matchNode
+  if (Array.isArray(matchNode))
+    return (node: Node) =>
+      Element.isElement(node) && matchNode.includes(node.type)
+  throw new Error(
+    `Expected matchNode to be a function, string or array but is ${matchNode}`
+  )
 }
 
 function normalizeFlexibleAt(editor: Editor, at: Location | Element) {
