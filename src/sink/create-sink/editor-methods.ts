@@ -1,15 +1,17 @@
-import { BaseEditor } from "slate"
+import { BaseEditor, Element, Node } from "slate"
 
-import { BasePluginCustomTypes, PluginObject } from "../types"
-
-type InsertBreak = () => void
-type IsInline = BaseEditor["isInline"]
-type IsVoid = BaseEditor["isVoid"]
+import { BasePluginCustomTypes, PluginObject, SinkEditor } from "../types"
 
 /**
  * Creates an overrideable editor action like `insertBreak` or `deleteBackward`
  * that usually returns `void` and creates a new version of the action that
  * adds the action from the plugin.
+ *
+ * If the plugin returns `true` it takes the result and returns it.
+ *
+ * If the plugin returns `false`, it tries the next one.
+ *
+ * If no plugin handles the result, it executed the original action.
  */
 export function createVoidAction<
   K extends
@@ -41,48 +43,35 @@ export function createVoidAction<
   }
 }
 
-export function createInsertBreak(
-  originalInsertBreak: InsertBreak,
-  plugins: PluginObject<BasePluginCustomTypes>[]
-) {
-  const insertBreakPlugins = plugins.filter((plugin) => plugin.editor?.isInline)
-  return function nextInsertBreak(): void {
-    for (const plugin of insertBreakPlugins) {
-      const isHandled = plugin.editor?.insertBreak?.()
-      if (isHandled) return
-    }
-    originalInsertBreak()
-  }
-}
-
-export function createIsInline(
-  originalIsInline: IsInline,
-  plugins: PluginObject<BasePluginCustomTypes>[]
-) {
-  const isInlinePlugins = plugins.filter((plugin) => plugin.editor?.isInline)
-  return function nextIsInline(element: Parameters<IsInline>[0]) {
-    for (const plugin of isInlinePlugins) {
-      const value = plugin.editor?.isInline?.(element)
-      if (value !== undefined) return value
-    }
-    return originalIsInline(element)
-  }
-}
-
 /**
- * NOTE:
- * NOT BEING USED YET!
+ * Creates an overrideable editor action that takes a `Node` and returns a
+ * `boolean` and creates a new version of the action that incorporates the
+ * plugins.
+ *
+ * If the plugin returns a boolean, it takes the result and returns it.
+ *
+ * If the plugin returns undefined, it tries the next one.
+ *
+ * If no plugin handles the result, it returns the result of the original action.
  */
-export function createIsVoid(
-  originalIsVoid: IsVoid,
+export function createBooleanAction<
+  K extends "isVoid" | "isInline" | "isMaster" | "isSlave" | "isStandalone"
+>(
+  editor: BaseEditor & SinkEditor,
+  actionKey: K,
   plugins: PluginObject<BasePluginCustomTypes>[]
-) {
-  const isVoidPlugins = plugins.filter((plugin) => plugin.editor?.isVoid)
-  return function nextIsInline(element: Parameters<IsInline>[0]) {
-    for (const plugin of isVoidPlugins) {
-      const value = plugin.editor?.isVoid?.(element)
-      if (value !== undefined) return value
+): (node: Element) => boolean {
+  const originalAction = editor[actionKey]
+  const actionPlugins = plugins.filter((plugin) => plugin.editor?.[actionKey])
+  return function nextBooleanAction(node: Node): boolean {
+    for (const plugin of actionPlugins) {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      const result = plugin.editor?.[actionKey]?.(node)
+      if (typeof result === "boolean") return result
     }
-    return originalIsVoid(element)
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    return originalAction(node)
   }
 }

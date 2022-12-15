@@ -1,0 +1,41 @@
+import { BasePluginCustomTypes, PluginObject } from "../types"
+
+/**
+ * SinkEditor just adds a `sink` object where we drop all of our sink
+ * related data on.
+ */
+export type SinkEditor<
+  T extends BasePluginCustomTypes = BasePluginCustomTypes
+> = {
+  /**
+   * a master Element is one that has one or more elements that are depedant
+   * on it. For example, a `table` Element. For clarity, a `table-row` Element
+   * is not considered a master Element. Only the top-most element is.
+   *
+   * One use for identify a master is for adding a block quote. We want the
+   * block quote to always surround the master Element. A block-quote that
+   * surrounded a table-row, for example, would not make sense.
+   */
+  isMaster: (node: Node) => boolean
+  /**
+   * a slave Element is one that is dependant on another Element. For example,
+   * `table-row`, `table-cell` and `table-cotent` elements are all considered
+   * slave elements.
+   *
+   * At the time of writing, I haven't figured out a use case for a slave
+   * element actually...
+   */
+  isSlave: (node: Node) => boolean
+  isStandalone: (node: Node) => boolean
+  sink: {
+    plugins: PluginObject<T>[]
+    pluginsFor: {
+      decorate: PluginObject<T>[]
+      onKeyDown: PluginObject<T>[]
+      onKeyPress: PluginObject<T>[]
+      onKeyUp: PluginObject<T>[]
+      renderElement: PluginObject<T>[]
+      renderLeaf: PluginObject<T>[]
+    }
+  }
+}

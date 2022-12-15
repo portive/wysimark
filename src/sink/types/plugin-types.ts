@@ -70,6 +70,16 @@ export type PluginObject<T extends BasePluginCustomTypes> = {
      */
     isInline?: (element: T["Element"]) => boolean | void
     isVoid?: (element: T["Element"]) => boolean | void
+    /**
+     * Custom `SinkEditor` extensions to identify master and slave elements.
+     *
+     * Master and slave is out of style but the challenge was finding a name
+     * that better described the relationship. When one is found, change these
+     * names.
+     */
+    isMaster?: (element: T["Element"]) => boolean | void
+    isSlave?: (element: T["Element"]) => boolean | void
+    isStandalone?: (element: T["Element"]) => boolean | void
 
     /**
      * If the action insert considered handled, we return `true`.

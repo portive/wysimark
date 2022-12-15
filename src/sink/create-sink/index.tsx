@@ -10,37 +10,14 @@ import {
 
 import {
   ArraySafePluginCustomTypes,
-  BasePluginCustomTypes,
   PluginFunction,
-  PluginObject,
+  SinkEditor,
 } from "../types"
 import { $Editable, GlobalStyles } from "./$editable"
-import {
-  createIsInline,
-  createIsVoid,
-  createVoidAction,
-} from "./editor-methods"
+import { createBooleanAction, createVoidAction } from "./editor-methods"
 // import { Reset } from "./reset"
 
 export {}
-
-/**
- * SinkEditor just adds a `sink` object where we drop all of our sink
- * related data on.
- */
-type SinkEditor<T extends BasePluginCustomTypes = BasePluginCustomTypes> = {
-  sink: {
-    plugins: PluginObject<T>[]
-    pluginsFor: {
-      decorate: PluginObject<T>[]
-      onKeyDown: PluginObject<T>[]
-      onKeyPress: PluginObject<T>[]
-      onKeyUp: PluginObject<T>[]
-      renderElement: PluginObject<T>[]
-      renderLeaf: PluginObject<T>[]
-    }
-  }
-}
 
 /**
  * A sink is just a function
@@ -55,9 +32,20 @@ export const createSink = <
    * into a `SinkEditor` before returning it.
    */
   const withSink = <E extends BaseEditor>(
-    editor: E
+    editor: E & SinkEditor
   ): E & SinkEditor<ArraySafePluginCustomTypes> => {
     const sinkEditor = editor as E & SinkEditor<ArraySafePluginCustomTypes>
+
+    /**
+     * Create the default for SinkEditor methods if they don't already exist.
+     */
+    sinkEditor.isMaster =
+      "isMaster" in sinkEditor ? sinkEditor.isMaster : () => false
+    sinkEditor.isSlave =
+      "isSlave" in sinkEditor ? sinkEditor.isSlave : () => false
+    sinkEditor.isStandalone =
+      "isStandalone" in sinkEditor ? sinkEditor.isStandalone : () => false
+
     /**
      * Executes the plugin on the `editor` with every one of the
      * `pluginFunctions` to get the `pluginObject`
@@ -73,10 +61,12 @@ export const createSink = <
       insertFragment: createVoidAction(editor, "insertFragment", plugins),
       insertNode: createVoidAction(editor, "insertNode", plugins),
       insertText: createVoidAction(editor, "insertText", plugins),
+      isInline: createBooleanAction(editor, "isInline", plugins),
+      isVoid: createBooleanAction(editor, "isVoid", plugins),
+      isMaster: createBooleanAction(editor, "isMaster", plugins),
+      isSlave: createBooleanAction(editor, "isSlave", plugins),
+      isStandalone: createBooleanAction(editor, "isStandalone", plugins),
     })
-
-    editor.isInline = createIsInline(editor.isInline, plugins)
-    editor.isVoid = createIsVoid(editor.isVoid, plugins)
 
     sinkEditor.sink = {
       plugins: plugins,
