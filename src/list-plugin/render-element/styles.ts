@@ -33,6 +33,17 @@ export const $OrderedListItem = styled($ListItem, forwardRef)`
     /* force numbers to be monospaced for better alignment */
     font-variant-numeric: tabular-nums;
   }
+  &:before {
+    position: absolute;
+    content: counter(list) ".";
+    top: 0;
+    left: -2em;
+    width: 1.5em;
+    text-align: right;
+    color: var(--shade-500);
+    /* force numbers to be monospaced for better alignment */
+    font-variant-numeric: tabular-nums;
+  }
 `
 
 export const $TaskListItem = styled($ListItem, forwardRef)`

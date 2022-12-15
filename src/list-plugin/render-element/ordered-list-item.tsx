@@ -11,9 +11,9 @@ export function OrderedListItem({
   const style = { "--list-item-depth": element.depth } as React.CSSProperties
   return (
     <$OrderedListItem {...attributes} style={style}>
-      <div className="--list-item-number" contentEditable={false}>
+      {/* <div className="--list-item-number" contentEditable={false}>
         {element.number}.
-      </div>
+      </div> */}
       {children}
     </$OrderedListItem>
   )
