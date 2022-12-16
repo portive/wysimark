@@ -5,8 +5,8 @@ import {
   createHotkeyHandler,
   createPlugin,
   findElementUp,
-  matchEndOfElement,
-  matchStartOfElement,
+  isEndOfElement,
+  isStartOfElement,
 } from "~/src/sink"
 
 import { createTableMethods } from "./methods"
@@ -48,13 +48,13 @@ export const TablePlugin = () =>
           /**
            * If we're at start of a cell, disable delete backward
            */
-          return !!matchStartOfElement(editor, "table-cell")
+          return isStartOfElement(editor, "table-cell")
         },
         deleteForward: () => {
           /**
            * If we're at end of a cell, disable delete forward
            */
-          return !!matchEndOfElement(editor, "table-cell")
+          return isEndOfElement(editor, "table-cell")
         },
         insertBreak: () => {
           /**
