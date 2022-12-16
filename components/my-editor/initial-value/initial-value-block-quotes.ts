@@ -17,8 +17,6 @@ export const initialValueBlockQuotes: Descendant[] = [
           },
         ],
       },
-
-      { type: "paragraph", children: [{ text: "" }] },
     ],
   },
 ]

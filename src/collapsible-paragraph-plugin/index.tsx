@@ -1,7 +1,8 @@
-import { Descendant, Element, NodeEntry } from "slate"
+import { Descendant } from "slate"
 
-import { createPlugin, normalizeSiblings } from "~/src/sink"
+import { createPlugin, curry } from "~/src/sink"
 
+import { normalizeNode } from "./normalize-node"
 import { Paragraph } from "./render-element/paragraph"
 
 export type CollapsibleParagraphEditor = {
@@ -25,26 +26,7 @@ export const CollapsibleParagraphPlugin = () =>
     return {
       name: "collapsible-paragraph",
       editor: {
-        normalizeNode: (entry) => {
-          const [node, path] = entry
-          if (!Element.isElement(node)) return false
-          if (!editor.isVoid(node) && !editor.isMaster(node)) return false
-          return normalizeSiblings<Element>(
-            editor,
-            /**
-             * Not sure why this isn't cast as Element automatically from
-             * !Element.isElement above but pretty sure this typecast is
-             * okay.
-             */
-            [node, path],
-            (a, b) => {
-              if (!Element.isElement(a[0]) || !Element.isElement(b[0]))
-                return false
-              a
-              return false
-            }
-          )
-        },
+        normalizeNode: curry(normalizeNode, editor),
       },
       editableProps: {
         renderElement: (props) => {

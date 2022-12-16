@@ -21,6 +21,7 @@ export const initialValue: Descendant[] = [
   ...initialValueTable,
   // { type: "paragraph", children: [{ text: "" }] },
   { type: "horizontal-rule", children: [{ text: "" }] },
+  { type: "horizontal-rule", children: [{ text: "" }] },
   // { type: "paragraph", children: [{ text: "" }] },
   ...initialValueCodeBlocks,
   ...initialValueMarks,

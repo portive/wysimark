@@ -1,5 +1,5 @@
-import React, { cloneElement } from "react"
-import { BaseEditor, BaseElement, NodeEntry, Path, Range } from "slate"
+import React, { cloneElement, useEffect } from "react"
+import { BaseEditor, BaseElement, Editor, NodeEntry, Path, Range } from "slate"
 import {
   Editable,
   RenderElementProps,
@@ -101,7 +101,12 @@ export const createSink = <
    * the editor.
    */
   const SinkEditable = (originalProps: Parameters<typeof Editable>[0]) => {
-    const { sink } = useSlateStatic() as unknown as SinkEditor
+    const editor = useSlateStatic() as unknown as Editor & SinkEditor
+    const { sink } = editor
+
+    useEffect(() => {
+      Editor.normalize(editor, { force: true })
+    }, [])
 
     const decorate = (entry: NodeEntry): Range[] => {
       const ranges: Range[] = []
