@@ -1,7 +1,8 @@
 import { Editor } from "slate"
 
 import { NodeMatcher } from "../fix/fix-node-matcher"
-import { findElementUp, isCollapsed } from "../match-element"
+import { findElementUp } from "../match-element"
+import { isCollapsed } from "./is-collapsed"
 
 /**
  * Checks to see if the current selection is at the end of line for a node

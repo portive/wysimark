@@ -1,12 +1,4 @@
-import {
-  Ancestor,
-  Editor,
-  Element,
-  Location,
-  NodeEntry,
-  Path,
-  Range,
-} from "slate"
+import { Ancestor, Editor, Element, Location, NodeEntry, Path } from "slate"
 import { ReactEditor } from "slate-react"
 
 import { fixNodeMatcher, NodeMatcher } from "./fix/fix-node-matcher"
@@ -49,27 +41,6 @@ export function findElementUp<T extends Ancestor & Element = Element>(
   }
   // look for a matching element
   return Editor.above(editor, { at: nextAt, match })
-}
-
-/**
- * PRIVATE:
- *
- * A private helper function that checkes that there is a selection, that the
- * selection is collapsed and that the selection is in a node that matches
- * the `matchNode` argument.
- */
-// function findRangeInElement(
-//   editor: Editor,
-//   range: Range,
-//   matchNode: NodeMatcher
-// ): { entry: NodeEntry<Ancestor>; selection: Range } | undefined {
-//   const entry = findElementUp(editor, matchNode, { at: range })
-//   return entry
-// }
-
-export function isCollapsed(selection: Range | null): selection is Range {
-  if (selection === null) return false
-  return Range.isCollapsed(selection)
 }
 
 /**
