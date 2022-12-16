@@ -11,12 +11,10 @@ import { Editor, Node, NodeMatch, Transforms } from "slate"
  * us to specify a function argument. The function takes the original value of
  * an Element and returns the match.
  */
-export function setNodes<T extends Node>(
+export function setNodesDynamic<T extends Node>(
   editor: Editor,
-  {
-    match,
-    convert,
-  }: { match: NodeMatch<T>; convert: (node: T) => Record<string, unknown> }
+  convert: (node: T) => Record<string, unknown>,
+  { match }: { match: NodeMatch<T> }
 ) {
   const entries = Array.from(Editor.nodes<T>(editor, { match }))
   if (entries.length === 0) return false

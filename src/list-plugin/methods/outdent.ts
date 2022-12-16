@@ -1,6 +1,6 @@
 import { Editor } from "slate"
 
-import { setNodes } from "~/src/sink"
+import { setNodesDynamic } from "~/src/sink"
 
 import { isListItem, ListItemElement } from ".."
 
@@ -17,8 +17,11 @@ export function outdent(editor: Editor): boolean {
   for (const entry of entries) {
     if (entry[0].depth === 0) return true
   }
-  return setNodes<ListItemElement>(editor, {
-    match: isListItem,
-    convert: (node) => ({ depth: Math.max(0, node.depth - 1) }),
-  })
+  return setNodesDynamic<ListItemElement>(
+    editor,
+    (node) => ({ depth: Math.max(0, node.depth - 1) }),
+    {
+      match: isListItem,
+    }
+  )
 }
