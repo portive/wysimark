@@ -30,6 +30,9 @@ export const CodeBlockPlugin = () =>
           )
             return false
         },
+        isMaster(element) {
+          if (element.type === "code-block") return true
+        },
       },
       editableProps: {
         decorate,

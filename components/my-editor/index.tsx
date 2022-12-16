@@ -21,6 +21,10 @@ import {
   AnchorPluginCustomTypes,
 } from "~/src/anchor-plugin"
 import {
+  AtomicDeletePlugin,
+  AtomicDeletePluginCustomTypes,
+} from "~/src/atomic-delete-plugin"
+import {
   BlockQuoteElement,
   BlockQuotePlugin,
   BlockQuotePluginCustomTypes,
@@ -86,6 +90,7 @@ const { withSink, SinkEditable } = createSink([
     }),
   }),
   ListPlugin(),
+  AtomicDeletePlugin(),
 ])
 
 export type PluginCustomTypes = MergePluginCustomTypes<
@@ -98,7 +103,8 @@ export type PluginCustomTypes = MergePluginCustomTypes<
     CodeBlockPluginCustomTypes,
     TablePluginCustomTypes,
     HorizontalRulePluginCustomTypes,
-    ListPluginCustomTypes
+    ListPluginCustomTypes,
+    AtomicDeletePluginCustomTypes
   ]
 >
 

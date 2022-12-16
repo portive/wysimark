@@ -63,28 +63,9 @@ export const TablePlugin = () =>
           const entry = findElementUp(editor, "table-cell")
           return !!entry
         },
-        isInline(element) {
-          if (
-            ["table", "table-row", "table-cell", "table-content"].includes(
-              element.type
-            )
-          )
-            return false
+        isMaster(element) {
+          if (element.type === "table") return true
         },
-        isVoid(element) {
-          if (["table", "table-row", "table-cell"].includes(element.type))
-            return false
-        },
-        isInvalidProp() {
-          /* noop */
-        },
-        // isDependant(element) {
-        //   if (["table-row", "table-cell"].includes(element.type)) {
-        //     return true
-        //   } else if (["table"].includes(element.type)) {
-        //     return false
-        //   }
-        // },
         normalizeNode: (entry): boolean => {
           const [node] = entry
           if (!Element.isElement(node)) return false
