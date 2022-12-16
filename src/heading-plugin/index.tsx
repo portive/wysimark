@@ -1,11 +1,20 @@
 import React from "react"
-import { Descendant, Editor, Node, Path, Transforms } from "slate"
+import {
+  BaseEditor,
+  Descendant,
+  Editor,
+  Element,
+  Node,
+  NodeEntry,
+  Path,
+  Transforms,
+} from "slate"
 
 import {
   createHotkeyHandler,
   createPlugin,
   matchEndOfElement,
-  replaceElements,
+  toggle,
 } from "~/src/sink"
 
 export type HeadingEditor = {
@@ -32,18 +41,11 @@ export const HeadingPlugin = () =>
     editor.supportsHeadings = true
     const p = (editor.headingPlugin = {
       toggleHeading: (level) => {
-        replaceElements(editor, (element) => {
-          if (element.type === "heading" && element.level === level) {
-            return { type: "paragraph", children: element.children }
-          } else if (
-            element.type === "paragraph" ||
-            element.type === "heading"
-          ) {
-            return { type: "heading", level, children: element.children }
-          } else {
-            return null
-          }
-        })
+        toggle<HeadingElement>(
+          editor,
+          (element) => element.type === "heading" && element.level == level,
+          { type: "heading", level }
+        )
       },
     })
     return {
@@ -62,11 +64,8 @@ export const HeadingPlugin = () =>
           )
           return true
         },
-        isInline(element) {
-          if (element.type === "heading") return false
-        },
-        isVoid(element) {
-          if (element.type === "heading") return false
+        isConvertible(element) {
+          if (element.type === "heading") return true
         },
       },
       editableProps: {

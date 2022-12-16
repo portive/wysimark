@@ -2,6 +2,7 @@ import { BaseElement, BaseText } from "slate"
 import { TupleToUnion, UnionToIntersection } from "type-fest"
 
 import { MapPropIfExtends } from "./map-prop-if-extends"
+import { SinkEditor } from "./sink-editor"
 
 /**
  * This Generic takes a tuple containing all of the PluginCustomTypes for
@@ -24,7 +25,7 @@ export type MergePluginCustomTypes<
   }>
 > = {
   Name: T[number]["Name"]
-  Editor: UnionToIntersection<T[number]["Editor"]>
+  Editor: SinkEditor & UnionToIntersection<T[number]["Editor"]>
   Element: TupleToUnion<
     MapPropIfExtends<T, { Element: BaseElement }, "Element">
   >

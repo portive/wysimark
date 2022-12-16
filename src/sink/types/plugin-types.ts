@@ -65,6 +65,14 @@ export type PluginObject<T extends BasePluginCustomTypes> = {
   // withEditor?: (editor: PluginEditor) => PluginEditor
   editor?: {
     /**
+     * TODO:
+     *
+     * Consider forcing these methods to return either `true` or `void` and
+     * not have an ability to specify `false` directly. This would potentially
+     * be better to reduce the number of non-necessary steps since at the end
+     * these methods return `false` anyways.
+     */
+    /**
      * If the element is considered handled, we return a boolean value.
      * If it isn't handled yet, we don't return any value (e.g. `undefined`)
      */

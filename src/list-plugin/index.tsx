@@ -28,14 +28,20 @@ export const ListPlugin = () =>
     const hotkeyHandler = createHotkeyHandler({
       tab: editor.list.indent,
       "shift+tab": editor.list.outdent,
-      // "super+7": editor.list.toggleOrderedList,
-      // "super+8": editor.list.toggleUnorderedList,
-      // "super+9": editor.list.toggleTaskList,
+      "super+7": editor.list.toggleOrderedList,
+      "super+8": editor.list.toggleUnorderedList,
+      "super+9": editor.list.toggleTaskList,
     })
     return {
       name: "list",
       editor: {
         normalizeNode: (entry) => normalizeNode(editor, entry),
+        isConvertible: (element) => {
+          if (LIST_ITEM_TYPES.includes(element.type)) {
+            return true
+          }
+          return undefined
+        },
       },
       editableProps: {
         renderElement,

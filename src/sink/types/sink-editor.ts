@@ -1,3 +1,5 @@
+import { Element } from "slate"
+
 import { BasePluginCustomTypes, PluginObject } from "../types"
 
 /**
@@ -16,7 +18,7 @@ export type SinkEditor<
    * block quote to always surround the master Element. A block-quote that
    * surrounded a table-row, for example, would not make sense.
    */
-  isMaster: (node: Node) => boolean
+  isMaster: (node: Element) => boolean
   /**
    * An Element that is able to be toggled with a Paragraph or easily converted
    * to another type like a list item to a heading.
@@ -33,7 +35,7 @@ export type SinkEditor<
    * - Generally doesn't carry too many properties which make it more natural
    *   to convert to another type.
    */
-  isConvertible: (node: Node) => boolean
+  isConvertible: (node: Element) => boolean
   /**
    * a slave Element is one that is dependant on another Element. For example,
    * `table-row`, `table-cell` and `table-cotent` elements are all considered
@@ -42,8 +44,8 @@ export type SinkEditor<
    * At the time of writing, I haven't figured out a use case for a slave
    * element actually...
    */
-  isSlave: (node: Node) => boolean
-  isStandalone: (node: Node) => boolean
+  isSlave: (node: Element) => boolean
+  isStandalone: (node: Element) => boolean
   sink: {
     plugins: PluginObject<T>[]
     pluginsFor: {

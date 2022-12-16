@@ -1,14 +1,63 @@
 import { Editor } from "slate"
 
-import { curry, transformNodes } from "~/src/sink"
+import { curry, toggle, transformNodes } from "~/src/sink"
 
-import { isListItem, ListItemElement } from ".."
+import {
+  isListItem,
+  ListItemElement,
+  OrderedListItemElement,
+  TaskListItemElement,
+  UnorderedListItemElement,
+} from ".."
 
 export function createListMethods(editor: Editor) {
   return {
     indent: curry(indent, editor),
     outdent: curry(outdent, editor),
+    toggleUnorderedList: curry(toggleUnorderedList, editor),
+    toggleOrderedList: curry(toggleOrderedList, editor),
+    toggleTaskList: curry(toggleTaskList, editor),
   }
+}
+
+function toggleOrderedList(editor: Editor) {
+  return toggle<OrderedListItemElement>(
+    editor,
+    (element) => element.type === "ordered-list-item",
+    (element) => {
+      return {
+        type: "ordered-list-item",
+        depth: "depth" in element ? element.depth : 0,
+      }
+    }
+  )
+}
+
+function toggleUnorderedList(editor: Editor) {
+  return toggle<UnorderedListItemElement>(
+    editor,
+    (element) => element.type === "unordered-list-item",
+    (element) => {
+      return {
+        type: "unordered-list-item",
+        depth: "depth" in element ? element.depth : 0,
+      }
+    }
+  )
+}
+
+function toggleTaskList(editor: Editor) {
+  return toggle<TaskListItemElement>(
+    editor,
+    (element) => element.type === "task-list-item",
+    (element) => {
+      return {
+        type: "task-list-item",
+        checked: "checked" in element ? element.checked : false,
+        depth: "depth" in element ? element.depth : 0,
+      }
+    }
+  )
 }
 
 function indent(editor: Editor) {

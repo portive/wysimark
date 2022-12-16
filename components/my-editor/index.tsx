@@ -215,9 +215,11 @@ function renderLeaf({ children, attributes }: RenderLeafProps) {
 }
 
 export const MyEditor = () => {
-  const [editor] = useState(() =>
-    withSink(withReact(withHistory(createEditor())))
-  )
+  const [editor] = useState(() => {
+    const editor = createEditor()
+    editor.isConvertible = (element) => element.type === "paragraph"
+    return withSink(withReact(withHistory(editor)))
+  })
 
   return (
     <div>
