@@ -7,7 +7,6 @@ import { createListMethods } from "./methods"
  */
 
 export type ListEditor = {
-  supportsList: true
   list: ReturnType<typeof createListMethods>
 }
 

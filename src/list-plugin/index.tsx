@@ -23,14 +23,13 @@ export const isListItem = createIsElementType<ListItemElement>(LIST_ITEM_TYPES)
 
 export const ListPlugin = () =>
   createPlugin<ListPluginCustomTypes>((editor) => {
-    editor.supportsList = true
-    editor.list = createListMethods(editor)
+    const list = (editor.list = createListMethods(editor))
     const hotkeyHandler = createHotkeyHandler({
-      tab: editor.list.indent,
-      "shift+tab": editor.list.outdent,
-      "super+7": editor.list.toggleOrderedList,
-      "super+8": editor.list.toggleUnorderedList,
-      "super+9": editor.list.toggleTaskList,
+      tab: list.indent,
+      "shift+tab": list.outdent,
+      "super+7": list.toggleOrderedList,
+      "super+8": list.toggleUnorderedList,
+      "super+9": list.toggleTaskList,
     })
     return {
       name: "list",
@@ -42,7 +41,7 @@ export const ListPlugin = () =>
           }
           return undefined
         },
-        insertBreak: editor.list.insertBreak,
+        insertBreak: list.insertBreak,
       },
       editableProps: {
         renderElement,
