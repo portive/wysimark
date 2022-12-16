@@ -1,18 +1,7 @@
-import { Ancestor, Editor, Element, Location, NodeEntry, Path } from "slate"
-import { ReactEditor } from "slate-react"
+import { Ancestor, Editor, Element, NodeEntry, Path } from "slate"
 
+import { BetterAt, betterAt } from "./core-utils/better-at"
 import { fixNodeMatcher, NodeMatcher } from "./fix/fix-node-matcher"
-
-/**
- * We are able to match a `Location`, an `Element` or a `Selection` which
- * could return `null`
- */
-export type BetterAt = Location | Element | null
-
-function betterAt(editor: Editor, at: Location | Element) {
-  if (!Element.isElement(at)) return at
-  return ReactEditor.findPath(editor, at)
-}
 
 /**
  * Checks to see if the current selection is inside of a Node that matches
