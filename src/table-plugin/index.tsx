@@ -4,7 +4,7 @@ export * from "./types"
 import {
   createHotkeyHandler,
   createPlugin,
-  matchElement,
+  findElementUp,
   matchEndOfElement,
   matchStartOfElement,
 } from "~/src/sink"
@@ -60,7 +60,7 @@ export const TablePlugin = () =>
           /**
            * IF we're anywhere in a table cell, disable insertBreak
            */
-          const entry = matchElement(editor, "table-cell")
+          const entry = findElementUp(editor, "table-cell")
           return !!entry
         },
         isInline(element) {

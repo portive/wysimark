@@ -1,8 +1,7 @@
 import { Descendant } from "slate"
 
 export type HeadingEditor = {
-  supportsHeadings: true
-  headingPlugin: {
+  heading: {
     toggleHeading: (level: HeadingElement["level"]) => void
   }
 }

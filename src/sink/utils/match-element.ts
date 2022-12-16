@@ -26,7 +26,7 @@ function normalizeFlexibleAt(editor: Editor, at: Location | Element) {
  * Checks to see if the current selection is inside of a Node that matches
  * `matchNode`.
  */
-export function matchElement<T extends Ancestor & Element = Element>(
+export function findElementUp<T extends Ancestor & Element = Element>(
   editor: Editor,
   matchNode: NodeMatcher,
   { at = editor.selection }: { at?: MatchAt } = {}
@@ -58,16 +58,18 @@ export function matchElement<T extends Ancestor & Element = Element>(
  * selection is collapsed and that the selection is in a node that matches
  * the `matchNode` argument.
  */
-function matchCollapsedSelectionInElement(
-  editor: Editor,
-  matchNode: NodeMatcher
-): { entry: NodeEntry<Ancestor>; selection: Range } | undefined {
-  const { selection } = editor
-  if (selection == null) return
-  const entry = matchElement(editor, matchNode)
-  if (entry === undefined) return
-  if (Range.isExpanded(selection)) return
-  return { entry, selection }
+// function findRangeInElement(
+//   editor: Editor,
+//   range: Range,
+//   matchNode: NodeMatcher
+// ): { entry: NodeEntry<Ancestor>; selection: Range } | undefined {
+//   const entry = findElementUp(editor, matchNode, { at: range })
+//   return entry
+// }
+
+function isCollapsed(selection: Range | null): selection is Range {
+  if (selection === null) return false
+  return Range.isCollapsed(selection)
 }
 
 /**
@@ -82,16 +84,15 @@ export function matchStartOfElement(
   editor: Editor,
   matchNode: NodeMatcher
 ): NodeEntry<Ancestor> | undefined {
-  const match = matchCollapsedSelectionInElement(editor, matchNode)
-  if (
-    !match ||
-    !Editor.isStart(editor, match.selection.anchor, match.entry[1])
-  ) {
+  const { selection } = editor
+  if (!isCollapsed(selection)) return
+  const entry = findElementUp(editor, matchNode, { at: selection })
+  if (!entry || !Editor.isStart(editor, selection.anchor, entry[1])) {
     return
   }
   // we passed all the failures and so we are at the end of line of the
   // given element.
-  return match.entry
+  return entry
 }
 
 /**
@@ -106,13 +107,15 @@ export function matchEndOfElement(
   editor: Editor,
   matchNode: NodeMatcher
 ): NodeEntry<Ancestor> | undefined {
-  const match = matchCollapsedSelectionInElement(editor, matchNode)
-  if (!match || !Editor.isEnd(editor, match.selection.anchor, match.entry[1])) {
+  const { selection } = editor
+  if (!isCollapsed(selection)) return
+  const entry = findElementUp(editor, matchNode, { at: selection })
+  if (!entry || !Editor.isEnd(editor, selection.anchor, entry[1])) {
     return
   }
   // we passed all the failures and so we are at the end of line of the
   // given element.
-  return match.entry
+  return entry
 }
 
 /**
@@ -128,7 +131,7 @@ export function matchEmptyElement(
   matchNode: NodeMatcher
 ): NodeEntry<Ancestor> | undefined {
   if (editor.selection === null) return
-  const entry = matchElement(editor, matchNode)
+  const entry = findElementUp(editor, matchNode)
   if (entry === undefined) return
   if (!Editor.isEmpty(editor, entry[0])) return
   return entry

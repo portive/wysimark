@@ -1,20 +1,18 @@
 export * from "./types"
 
-import { Editor, Node, Path, Transforms } from "slate"
-
 import {
   createHotkeyHandler,
   createPlugin,
-  matchEndOfElement,
+  curry,
   toggleElements,
 } from "~/src/sink"
 
+import { insertBreak } from "./insert-break"
 import { HeadingElement, HeadingPluginCustomTypes } from "./types"
 
 export const HeadingPlugin = () =>
   createPlugin<HeadingPluginCustomTypes>((editor) => {
-    editor.supportsHeadings = true
-    const p = (editor.headingPlugin = {
+    editor.heading = {
       toggleHeading: (level) => {
         toggleElements<HeadingElement>(
           editor,
@@ -22,23 +20,11 @@ export const HeadingPlugin = () =>
           { type: "heading", level }
         )
       },
-    })
+    }
     return {
       name: "heading",
       editor: {
-        insertBreak: () => {
-          const entry = matchEndOfElement(editor, "heading")
-          if (!entry) return false
-          insertNodesAndSelectAt(
-            editor,
-            {
-              type: "paragraph",
-              children: [{ text: "" }],
-            },
-            Path.next(entry[1])
-          )
-          return true
-        },
+        insertBreak: curry(insertBreak, editor),
         isConvertible(element) {
           if (element.type === "heading") return true
         },
@@ -51,35 +37,13 @@ export const HeadingPlugin = () =>
           }
         },
         onKeyDown: createHotkeyHandler({
-          "super+1": () => p.toggleHeading(1),
-          "super+2": () => p.toggleHeading(2),
-          "super+3": () => p.toggleHeading(3),
-          "super+4": () => p.toggleHeading(4),
-          "super+5": () => p.toggleHeading(5),
-          "super+6": () => p.toggleHeading(6),
+          "super+1": curry(editor.heading.toggleHeading, 1),
+          "super+2": curry(editor.heading.toggleHeading, 2),
+          "super+3": curry(editor.heading.toggleHeading, 3),
+          "super+4": curry(editor.heading.toggleHeading, 4),
+          "super+5": curry(editor.heading.toggleHeading, 5),
+          "super+6": curry(editor.heading.toggleHeading, 6),
         }),
       },
     }
   })
-
-function insertNodesAndSelectAt(
-  editor: Editor,
-  nodes: Node | Node[],
-  at: Path
-) {
-  Transforms.insertNodes(editor, nodes, { at })
-  Transforms.select(editor, {
-    anchor: Editor.start(editor, at),
-    focus: Editor.start(editor, at),
-  })
-}
-
-// function insertBreakAtEndOfElement<T extends Element = Element>(
-//   editor: Editor,
-//   elementMatcher: MatchNode,
-//   convertElement: ConvertElement
-// ) {
-//   const entry = matchEndOfElement(editor, elementMatcher)
-//   if (!entry) return false
-//   const nextElement = fixConvertElement(convertElement)(entry[0])
-// }

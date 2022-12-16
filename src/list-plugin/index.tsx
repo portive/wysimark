@@ -1,9 +1,10 @@
-import { Editor } from "slate"
+import { Editor, Transforms } from "slate"
 
 import {
   createHotkeyHandler,
   createIsElementType,
   createPlugin,
+  matchEndOfElement,
 } from "~/src/sink"
 
 import { createListMethods } from "./methods"
@@ -45,6 +46,7 @@ export const ListPlugin = () =>
         // insertBreak: () => {
         //   const entry = matchEndOfElement(editor, isListItem)
         //   if (!entry) return false
+        //   Transforms.insertNodes(editor)
         //   insertNodesAndSelectAt(
         //     editor,
         //     {

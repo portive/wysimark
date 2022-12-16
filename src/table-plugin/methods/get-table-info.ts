@@ -1,6 +1,6 @@
 import { Editor, Element, Location, Path } from "slate"
 
-import { matchElement } from "~/src/sink"
+import { findElementUp } from "~/src/sink"
 
 import {
   TableCellElement,
@@ -41,11 +41,15 @@ export function getTableInfo(
   { at = editor.selection }: { at?: Location | Element | null } = {}
 ): TableInfo | undefined {
   if (at == null) return undefined
-  const cellMatch = matchElement<TableCellElement>(editor, "table-cell", { at })
+  const cellMatch = findElementUp<TableCellElement>(editor, "table-cell", {
+    at,
+  })
   if (!cellMatch) return undefined
-  const rowMatch = matchElement<TableRowElement>(editor, "table-row", { at })
+  const rowMatch = findElementUp<TableRowElement>(editor, "table-row", {
+    at,
+  })
   if (!rowMatch) return undefined
-  const tableMatch = matchElement<TableElement>(editor, "table", { at })
+  const tableMatch = findElementUp<TableElement>(editor, "table", { at })
   if (!tableMatch) return undefined
   const [tableElement, tablePath] = tableMatch
   const [rowElement, rowPath] = rowMatch
