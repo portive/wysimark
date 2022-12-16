@@ -1,6 +1,6 @@
 import { Editor, Transforms } from "slate"
 
-import { MatchAt } from "~/src/sink"
+import { BetterAt } from "~/src/sink"
 
 import { TableRowElement } from "../types"
 import { getTableInfo } from "./get-table-info"
@@ -19,7 +19,7 @@ function createRow(columnCount: number): TableRowElement {
  */
 export function insertRow(
   editor: Editor,
-  { at = editor.selection, offset = 0 }: { at?: MatchAt; offset?: 0 | 1 } = {}
+  { at = editor.selection, offset = 0 }: { at?: BetterAt; offset?: 0 | 1 } = {}
 ): boolean {
   const t = getTableInfo(editor, { at })
   if (!t) return false
@@ -35,7 +35,7 @@ export function insertRow(
  */
 export function insertRowAbove(
   editor: Editor,
-  { at }: { at?: MatchAt } = {}
+  { at }: { at?: BetterAt } = {}
 ): boolean {
   return insertRow(editor, { at })
 }
@@ -45,7 +45,7 @@ export function insertRowAbove(
  */
 export function insertRowBelow(
   editor: Editor,
-  { at }: { at?: MatchAt } = {}
+  { at }: { at?: BetterAt } = {}
 ): boolean {
   return insertRow(editor, { at, offset: 1 })
 }

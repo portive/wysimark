@@ -1,13 +1,13 @@
 import { Editor, Transforms } from "slate"
 
-import { MatchAt } from "~/src/sink"
+import { BetterAt } from "~/src/sink"
 
 import { getTableInfo } from "./get-table-info"
 import { createCell } from "./utils"
 
 export function insertColumn(
   editor: Editor,
-  { offset = 0, at = editor.selection }: { offset?: 0 | 1; at?: MatchAt } = {}
+  { offset = 0, at = editor.selection }: { offset?: 0 | 1; at?: BetterAt } = {}
 ): boolean {
   const t = getTableInfo(editor, { at })
   if (t === undefined) return false

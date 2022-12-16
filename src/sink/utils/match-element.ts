@@ -7,9 +7,9 @@ import { fixNodeMatcher, NodeMatcher } from "./fix/fix-node-matcher"
  * We are able to match a `Location`, an `Element` or a `Selection` which
  * could return `null`
  */
-export type MatchAt = Location | Element | null
+export type BetterAt = Location | Element | null
 
-function normalizeFlexibleAt(editor: Editor, at: Location | Element) {
+function betterAt(editor: Editor, at: Location | Element) {
   if (!Element.isElement(at)) return at
   return ReactEditor.findPath(editor, at)
 }
@@ -21,11 +21,11 @@ function normalizeFlexibleAt(editor: Editor, at: Location | Element) {
 export function findElementUp<T extends Ancestor & Element = Element>(
   editor: Editor,
   matchNode: NodeMatcher,
-  { at = editor.selection }: { at?: MatchAt } = {}
+  { at = editor.selection }: { at?: BetterAt } = {}
 ): NodeEntry<T> | undefined {
   // if no selection, there will be no match
   if (at === null) return
-  const nextAt = normalizeFlexibleAt(editor, at)
+  const nextAt = betterAt(editor, at)
   const match = fixNodeMatcher(matchNode)
   /**
    * Normally, we are looking up from a range or a point, but if the `at`
