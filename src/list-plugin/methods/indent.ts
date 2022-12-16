@@ -1,5 +1,7 @@
 import { Editor } from "slate"
+
 import { transformNodes } from "~/src/sink"
+
 import { isListItem, ListItemElement } from ".."
 
 export function indent(editor: Editor) {

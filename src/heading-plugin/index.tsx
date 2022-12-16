@@ -1,14 +1,4 @@
-import React from "react"
-import {
-  BaseEditor,
-  Descendant,
-  Editor,
-  Element,
-  Node,
-  NodeEntry,
-  Path,
-  Transforms,
-} from "slate"
+import { Descendant, Editor, Node, Path, Transforms } from "slate"
 
 import {
   createHotkeyHandler,
