@@ -1,5 +1,6 @@
 import { Editor, Element } from "slate"
 
+import { ConvertElement } from "./fix-convert-element"
 import { rewrapElement } from "./rewrap-element"
 
 /**
@@ -16,12 +17,10 @@ import { rewrapElement } from "./rewrap-element"
  * If not every one matches, then we toggle to the `targetElement`. To make this
  * method more flexibl
  */
-export function toggleElements<T extends Element>(
+export function toggleElements<T extends Element = Element>(
   editor: Editor,
   match: (element: Element) => boolean,
-  convertElement:
-    | Omit<T, "children">
-    | ((element: Element) => Omit<T, "children">)
+  convertElement: ConvertElement<T>
 ) {
   /**
    * Find convertible elements

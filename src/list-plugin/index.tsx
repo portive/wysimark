@@ -42,6 +42,19 @@ export const ListPlugin = () =>
           }
           return undefined
         },
+        // insertBreak: () => {
+        //   const entry = matchEndOfElement(editor, isListItem)
+        //   if (!entry) return false
+        //   insertNodesAndSelectAt(
+        //     editor,
+        //     {
+        //       type: "paragraph",
+        //       children: [{ text: "" }],
+        //     },
+        //     Path.next(entry[1])
+        //   )
+        //   return true
+        // },
       },
       editableProps: {
         renderElement,
