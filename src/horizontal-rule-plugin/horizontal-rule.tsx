@@ -11,8 +11,12 @@ const $HorizontalRule = styled("hr", forwardRef)`
   background-color: var(--hr-color);
   border: none;
   border-radius: 1px;
+  margin: 1.5em 0;
+  &:hover {
+    outline: 2px solid var(--hover-color);
+  }
   &.--selected {
-    outline: 2px solid var(--select-color, blue); /* bg-blue-400 */
+    outline: 2px solid var(--select-color, blue);
   }
 `
 

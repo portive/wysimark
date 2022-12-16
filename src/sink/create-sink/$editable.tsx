@@ -6,7 +6,7 @@ import { Editable } from "slate-react"
 const blue = `
 --blue-50: rgb(239 246 255);
 --blue-100: rgb(219 234 254);
-blue-200: rgb(191 219 254);
+--blue-200: rgb(191 219 254);
 --blue-300: rgb(147 197 253);
 --blue-400: rgb(96 165 250);
 --blue-500: rgb(59 130 246);
@@ -68,6 +68,7 @@ export const GlobalStyles = createGlobalStyles`
     ${zincShades}
     /* Select Colors */
     --select-color: var(--blue-400);
+    --hover-color: var(--blue-200);
     /* Link Colors */
     --link-color: var(--blue-600);
     --link-hover-color: var(--blue-700);
