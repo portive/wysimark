@@ -1,14 +1,16 @@
-import { Descendant } from "slate"
-
-import { TableCellElement } from "../types"
+import { TableCellElement, TableContentElement } from "../types"
 
 export function createCell(
   index: number,
-  children: Descendant[] = [{ type: "paragraph", children: [{ text: "" }] }]
+  children: TableContentElement[] = [
+    {
+      type: "table-content",
+      children: [{ type: "table-content", children: [{ text: "" }] }],
+    },
+  ]
 ): TableCellElement {
   return {
     type: "table-cell",
-    index,
     children,
   }
 }

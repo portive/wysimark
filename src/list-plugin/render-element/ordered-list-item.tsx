@@ -1,4 +1,4 @@
-import clsx from "clsx"
+import { clsx } from "clsx"
 import { useEffect } from "react"
 import { ReactEditor, useSlateStatic } from "slate-react"
 

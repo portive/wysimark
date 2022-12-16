@@ -1,18 +1,9 @@
-import {
-  Descendant,
-  Editor,
-  Element,
-  NodeEntry,
-  Path,
-  Text,
-  Transforms,
-} from "slate"
+import { Element, NodeEntry } from "slate"
 export * from "./types"
 
 import {
   createHotkeyHandler,
   createPlugin,
-  getLines,
   matchElement,
   matchEndOfElement,
   matchStartOfElement,

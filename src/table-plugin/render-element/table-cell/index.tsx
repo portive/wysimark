@@ -33,7 +33,7 @@ export function TableCell({
   return (
     <$TableCell className={selected ? "--selected" : ""} {...attributes}>
       {children}
-      {showTableMenu ? <TableMenu cellElement={element} /> : null}
+      {showTableMenu ? <TableMenu /> : null}
       {showRowMenu ? <RowMenu cellElement={element} /> : null}
       {showColumnMenu ? <ColumnMenu cellElement={element} /> : null}
     </$TableCell>

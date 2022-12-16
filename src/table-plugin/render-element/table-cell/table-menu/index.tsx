@@ -1,20 +1,8 @@
-import React, { useState } from "react"
-import { useSlateStatic } from "slate-react"
-
-import { TableCellElement } from "../../../types"
-import { $AddMenuButton, $RemoveMenuButton } from "../$table-menu-buttons"
 import { $TableMenu, $TableMenuTile } from "./$table-menu"
 
-export function TableMenu({ cellElement }: { cellElement: TableCellElement }) {
-  const editor = useSlateStatic()
-  const [hover, setHover] = useState(false)
-
+export function TableMenu() {
   return (
-    <$TableMenu
-      contentEditable={false}
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
-    >
+    <$TableMenu contentEditable={false}>
       <$TableMenuTile className="--table-menu-tile" />
     </$TableMenu>
   )

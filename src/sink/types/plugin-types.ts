@@ -78,6 +78,7 @@ export type PluginObject<T extends BasePluginCustomTypes> = {
      * names.
      */
     isMaster?: (element: T["Element"]) => boolean | void
+    isConvertible?: (element: T["Element"]) => boolean | void
     isSlave?: (element: T["Element"]) => boolean | void
     isStandalone?: (element: T["Element"]) => boolean | void
 
@@ -189,11 +190,3 @@ export type PluginFunction<T extends BasePluginCustomTypes> = (
    */
   editor: T["Editor"] & Editor
 ) => PluginObject<T>
-
-export type BasePluginObject = PluginObject<BasePluginCustomTypes>
-
-export type BasePluginFunction = PluginFunction<BasePluginCustomTypes>
-
-export type ExtractCustomTypesFromPluginFunctions<
-  P extends PluginFunction<any>[]
-> = OExtractText<ReturnType<P[number]>>

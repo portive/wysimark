@@ -1,10 +1,7 @@
 import Prism, { languages, tokenize } from "prismjs"
 import { Element, Node, Path, Range } from "slate"
 
-import {
-  CodeBlockElement,
-  CodeBlockLineElement,
-} from "CodeBlockPluginCustomTypes"
+import { CodeBlockElement, CodeBlockLineElement } from "./types"
 
 /**
  * Decorate Overview:

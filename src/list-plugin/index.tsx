@@ -1,10 +1,9 @@
-import { Editor, Element, Node } from "slate"
+import { Editor } from "slate"
 
 import {
   createHotkeyHandler,
   createIsElementType,
   createPlugin,
-  transformNodes,
 } from "~/src/sink"
 
 import { createListMethods } from "./methods"

@@ -1,6 +1,6 @@
 import { BaseElement, BaseText } from "slate"
 
-import { PluginFunction } from "./types"
+import { PluginFunction, SinkEditor } from "./types"
 
 /**
  * These are the Input Custom Types for the Plugin which differ from the actual
@@ -27,12 +27,14 @@ export type InputPluginCustomTypes = {
 
 type CreatePluginOutputCustomTypes<T extends InputPluginCustomTypes> = {
   Name: T["Name"]
-  /**
-   * Line doesn't want us to define an empty object because it's usually in
-   * error, but I think this is exactly what we want here.
-   */
-  // eslint-disable-next-line @typescript-eslint/ban-types
-  Editor: T["Editor"] extends Record<string, unknown> ? T["Editor"] : {}
+  Editor: T["Editor"] extends Record<string, unknown>
+    ? T["Editor"] & SinkEditor
+    : /**
+       * Line doesn't want us to define an empty object because it's usually in
+       * error, but I think this is exactly what we want here.
+       */
+      // eslint-disable-next-line @typescript-eslint/ban-types
+      {}
   Element: T["Element"] extends BaseElement ? T["Element"] : BaseElement
   Text: T["Text"] extends BaseText ? T["Text"] : BaseText
 }

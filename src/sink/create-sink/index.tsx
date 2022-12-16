@@ -32,19 +32,19 @@ export const createSink = <
    * into a `SinkEditor` before returning it.
    */
   const withSink = <E extends BaseEditor>(
-    editor: E & SinkEditor
+    originalEditor: E
   ): E & SinkEditor<ArraySafePluginCustomTypes> => {
-    const sinkEditor = editor as E & SinkEditor<ArraySafePluginCustomTypes>
+    const editor = originalEditor as E & SinkEditor<ArraySafePluginCustomTypes>
 
     /**
      * Create the default for SinkEditor methods if they don't already exist.
      */
-    sinkEditor.isMaster =
-      "isMaster" in sinkEditor ? sinkEditor.isMaster : () => false
-    sinkEditor.isSlave =
-      "isSlave" in sinkEditor ? sinkEditor.isSlave : () => false
-    sinkEditor.isStandalone =
-      "isStandalone" in sinkEditor ? sinkEditor.isStandalone : () => false
+    editor.isMaster = "isMaster" in editor ? editor.isMaster : () => false
+    editor.isConvertible =
+      "isConvertible" in editor ? editor.isConvertible : () => false
+    editor.isSlave = "isSlave" in editor ? editor.isSlave : () => false
+    editor.isStandalone =
+      "isStandalone" in editor ? editor.isStandalone : () => false
 
     /**
      * Executes the plugin on the `editor` with every one of the
@@ -64,11 +64,12 @@ export const createSink = <
       isInline: createBooleanAction(editor, "isInline", plugins),
       isVoid: createBooleanAction(editor, "isVoid", plugins),
       isMaster: createBooleanAction(editor, "isMaster", plugins),
+      isConvertible: createBooleanAction(editor, "isConvertible", plugins),
       isSlave: createBooleanAction(editor, "isSlave", plugins),
       isStandalone: createBooleanAction(editor, "isStandalone", plugins),
     })
 
-    sinkEditor.sink = {
+    editor.sink = {
       plugins: plugins,
       pluginsFor: {
         decorate: plugins.filter((plugin) => plugin.editableProps?.decorate),
@@ -85,7 +86,7 @@ export const createSink = <
           .reverse(),
       },
     }
-    return sinkEditor
+    return editor
   }
 
   /**
