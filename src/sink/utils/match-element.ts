@@ -42,22 +42,3 @@ export function findElementUp<T extends Ancestor & Element = Element>(
   // look for a matching element
   return Editor.above(editor, { at: nextAt, match })
 }
-
-/**
- * NOTE:
- *
- * NOT TESTED YET!
- *
- * Use in lists where hitting enter in an empty list item should outdent the
- * list at that position.
- */
-export function matchEmptyElement(
-  editor: Editor,
-  matchNode: NodeMatcher
-): NodeEntry<Ancestor> | undefined {
-  if (editor.selection === null) return
-  const entry = findElementUp(editor, matchNode)
-  if (entry === undefined) return
-  if (!Editor.isEmpty(editor, entry[0])) return
-  return entry
-}

@@ -1,4 +1,5 @@
 export * from "./is-collapsed"
 export * from "./is-element-type"
 export * from "./is-end-of-element"
+export * from "./is-in-empty-element"
 export * from "./is-start-of-element"
