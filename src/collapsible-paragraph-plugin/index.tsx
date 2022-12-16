@@ -1,32 +1,58 @@
-import { styled } from "goober"
-import { forwardRef } from "react"
-import { Descendant } from "slate"
+import { Descendant, Element, NodeEntry } from "slate"
 
-import { createPlugin } from "~/src/sink"
+import { createPlugin, normalizeSiblings } from "~/src/sink"
 
-export type ___Editor = {
-  ___: true
+import { Paragraph } from "./render-element/paragraph"
+
+export type CollapsibleParagraphEditor = {
+  collapsibleParagraph: true
 }
 
-export type ___Element = {
-  type: "___"
-  href: string
+export type ParagraphElement = {
+  type: "paragraph"
+  __collapsible?: true
   children: Descendant[]
 }
 
-export type ___PluginCustomTypes = {
-  Name: "___"
-  Editor: ___Editor
-  Element: ___Element
+export type CollapsibleParagraphPluginCustomTypes = {
+  Name: "collapsible-paragraph"
+  Editor: CollapsibleParagraphEditor
+  Element: ParagraphElement
 }
 
-const $___ = styled("div", forwardRef)``
-
-export const AnchorPlugin = () =>
-  createPlugin<___PluginCustomTypes>((editor) => {
+export const CollapsibleParagraphPlugin = () =>
+  createPlugin<CollapsibleParagraphPluginCustomTypes>((editor) => {
     return {
-      name: "___",
-      editor: {},
-      editableProps: {},
+      name: "collapsible-paragraph",
+      editor: {
+        normalizeNode: (entry) => {
+          const [node, path] = entry
+          if (!Element.isElement(node)) return false
+          if (!editor.isVoid(node) && !editor.isMaster(node)) return false
+          return normalizeSiblings<Element>(
+            editor,
+            /**
+             * Not sure why this isn't cast as Element automatically from
+             * !Element.isElement above but pretty sure this typecast is
+             * okay.
+             */
+            [node, path],
+            (a, b) => {
+              if (!Element.isElement(a[0]) || !Element.isElement(b[0]))
+                return false
+              a
+              return false
+            }
+          )
+        },
+      },
+      editableProps: {
+        renderElement: (props) => {
+          switch (props.element.type) {
+            case "paragraph":
+              return <Paragraph {...props} />
+          }
+        },
+      },
     }
   })

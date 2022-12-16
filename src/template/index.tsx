@@ -10,7 +10,6 @@ export type ___Editor = {
 
 export type ___Element = {
   type: "___"
-  href: string
   children: Descendant[]
 }
 
@@ -22,7 +21,7 @@ export type ___PluginCustomTypes = {
 
 const $___ = styled("div", forwardRef)``
 
-export const AnchorPlugin = () =>
+export const ___Plugin = () =>
   createPlugin<___PluginCustomTypes>((editor) => {
     return {
       name: "___",

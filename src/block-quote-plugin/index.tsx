@@ -81,7 +81,10 @@ export const BlockQuotePlugin = () =>
           if (element.type === "block-quote") return false
         },
         normalizeNode(entry) {
-          return normalizeSiblings(editor, entry, (a, b) => {
+          const [node, path] = entry
+          if (!Element.isElement(node)) return false
+          if (node.type !== "block-quote") return false
+          return normalizeSiblings<Element>(editor, [node, path], (a, b) => {
             if (
               Element.isElement(a[0]) &&
               Element.isElement(b[0]) &&

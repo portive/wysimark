@@ -1,4 +1,4 @@
-import { Editor, Node, NodeEntry, Transforms } from "slate"
+import { Editor, Element, Node, NodeEntry, Transforms } from "slate"
 
 import { isElementType, normalizeSiblings } from "~/src/sink"
 
@@ -29,7 +29,9 @@ export function normalizeOrderedFirstAtDepth(
   editor: Editor,
   entry: NodeEntry<Node>
 ): boolean {
-  return normalizeSiblings(editor, entry, (a, b) => {
+  const [node, path] = entry
+  if (!Element.isElement(node)) return false
+  return normalizeSiblings<Element>(editor, [node, path], (a, b) => {
     if (
       !isListItem(a[0]) ||
       !isElementType<OrderedListItemElement>(b[0], "ordered-list-item")

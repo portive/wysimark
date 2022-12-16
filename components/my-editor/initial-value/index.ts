@@ -18,11 +18,10 @@ export const initialValue: Descendant[] = [
     children: [{ text: "Hello World 2" }],
   },
   ...initialValueList,
-
   ...initialValueTable,
-  { type: "paragraph", children: [{ text: "" }] },
+  // { type: "paragraph", children: [{ text: "" }] },
   { type: "horizontal-rule", children: [{ text: "" }] },
-  { type: "paragraph", children: [{ text: "" }] },
+  // { type: "paragraph", children: [{ text: "" }] },
   ...initialValueCodeBlocks,
   ...initialValueMarks,
   {
