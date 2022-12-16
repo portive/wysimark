@@ -1,7 +1,7 @@
 import { Editor, Element } from "slate"
 
-import { ConvertElement } from "./fix-convert-element"
-import { rewrapElement } from "./rewrap-element"
+import { ConvertElement } from "../fix/fix-convert-element"
+import { rewrapElement } from "../rewrap-element"
 
 /**
  * Toggle convertible elements to a targetElement like headings and list items.

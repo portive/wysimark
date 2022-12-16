@@ -73,3 +73,13 @@ function insertNodesAndSelectAt(
     focus: Editor.start(editor, at),
   })
 }
+
+// function insertBreakAtEndOfElement<T extends Element = Element>(
+//   editor: Editor,
+//   elementMatcher: MatchNode,
+//   convertElement: ConvertElement
+// ) {
+//   const entry = matchEndOfElement(editor, elementMatcher)
+//   if (!entry) return false
+//   const nextElement = fixConvertElement(convertElement)(entry[0])
+// }

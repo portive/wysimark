@@ -1,6 +1,6 @@
 import { Editor, Element, NodeEntry, Path, Transforms } from "slate"
 
-import { ConvertElement, fixConvertElement } from "./fix-convert-element"
+import { ConvertElement, fixConvertElement } from "./fix/fix-convert-element"
 
 /**
  * Takes an existing Element at path `at` and swaps out that Element with a

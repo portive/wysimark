@@ -3,41 +3,19 @@ import {
   Editor,
   Element,
   Location,
-  Node,
   NodeEntry,
   Path,
   Range,
 } from "slate"
 import { ReactEditor } from "slate-react"
 
+import { fixNodeMatcher, NodeMatcher } from "./fix/fix-node-matcher"
+
 /**
  * We are able to match a `Location`, an `Element` or a `Selection` which
  * could return `null`
  */
 export type MatchAt = Location | Element | null
-export type MatchNode = string | string[] | ((node: Node) => boolean)
-
-/**
- * Takes a string or a function that matches a Node and in both cases,
- * returns a function that matches a Node.
- *
- * The `matchNode` argument can either be a function that takes a `Node` and
- * returns a boolean or it can be a string representing the `type` property of
- * an `Element`
- */
-export function normalizeMatchNode(
-  matchNode: MatchNode
-): (node: Node) => boolean {
-  if (typeof matchNode === "function") return matchNode
-  if (typeof matchNode === "string")
-    return (node: Node) => Element.isElement(node) && node.type === matchNode
-  if (Array.isArray(matchNode))
-    return (node: Node) =>
-      Element.isElement(node) && matchNode.includes(node.type)
-  throw new Error(
-    `Expected matchNode to be a function, string or array but is ${matchNode}`
-  )
-}
 
 function normalizeFlexibleAt(editor: Editor, at: Location | Element) {
   if (!Element.isElement(at)) return at
@@ -50,13 +28,13 @@ function normalizeFlexibleAt(editor: Editor, at: Location | Element) {
  */
 export function matchElement<T extends Ancestor & Element = Element>(
   editor: Editor,
-  matchNode: MatchNode,
+  matchNode: NodeMatcher,
   { at = editor.selection }: { at?: MatchAt } = {}
 ): NodeEntry<T> | undefined {
   // if no selection, there will be no match
   if (at === null) return
   const nextAt = normalizeFlexibleAt(editor, at)
-  const match = normalizeMatchNode(matchNode)
+  const match = fixNodeMatcher(matchNode)
   /**
    * Normally, we are looking up from a range or a point, but if the `at`
    * `Location` is a `Path`, then we need to check for an exact match at the
@@ -82,7 +60,7 @@ export function matchElement<T extends Ancestor & Element = Element>(
  */
 function matchCollapsedSelectionInElement(
   editor: Editor,
-  matchNode: MatchNode
+  matchNode: NodeMatcher
 ): { entry: NodeEntry<Ancestor>; selection: Range } | undefined {
   const { selection } = editor
   if (selection == null) return
@@ -102,7 +80,7 @@ function matchCollapsedSelectionInElement(
  */
 export function matchStartOfElement(
   editor: Editor,
-  matchNode: MatchNode
+  matchNode: NodeMatcher
 ): NodeEntry<Ancestor> | undefined {
   const match = matchCollapsedSelectionInElement(editor, matchNode)
   if (
@@ -126,7 +104,7 @@ export function matchStartOfElement(
  */
 export function matchEndOfElement(
   editor: Editor,
-  matchNode: MatchNode
+  matchNode: NodeMatcher
 ): NodeEntry<Ancestor> | undefined {
   const match = matchCollapsedSelectionInElement(editor, matchNode)
   if (!match || !Editor.isEnd(editor, match.selection.anchor, match.entry[1])) {
@@ -147,7 +125,7 @@ export function matchEndOfElement(
  */
 export function matchEmptyElement(
   editor: Editor,
-  matchNode: MatchNode
+  matchNode: NodeMatcher
 ): NodeEntry<Ancestor> | undefined {
   if (editor.selection === null) return
   const entry = matchElement(editor, matchNode)
