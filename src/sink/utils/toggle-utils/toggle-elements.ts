@@ -1,6 +1,6 @@
 import { Editor, Element } from "slate"
 
-import { TargetElement } from "../fix/fix-convert-element"
+import { TargetElement } from "../fix/target-element"
 import { rewrapElement } from "../transform-utils/rewrap-element"
 
 /**
