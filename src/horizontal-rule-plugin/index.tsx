@@ -12,9 +12,6 @@ export const HorizontalRulePlugin = () =>
     return {
       name: "horizontal-rule",
       editor: {
-        isInline(element) {
-          if (element.type === "horizontal-rule") return false
-        },
         isVoid(element) {
           if (element.type === "horizontal-rule") return true
         },
