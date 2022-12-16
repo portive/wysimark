@@ -3,6 +3,7 @@ import { Editor } from "slate"
 import { curry } from "~/src/sink"
 
 import { indent } from "./indent"
+import { insertBreak } from "./insert-break"
 import { outdent } from "./outdent"
 import { toggleOrderedList } from "./toggle-ordered-list"
 import { toggleTaskList } from "./toggle-task-list"
@@ -15,5 +16,6 @@ export function createListMethods(editor: Editor) {
     toggleUnorderedList: curry(toggleUnorderedList, editor),
     toggleOrderedList: curry(toggleOrderedList, editor),
     toggleTaskList: curry(toggleTaskList, editor),
+    insertBreak: curry(insertBreak, editor),
   }
 }

@@ -1,10 +1,9 @@
-import { Editor, Transforms } from "slate"
+import { Editor } from "slate"
 
 import {
   createHotkeyHandler,
   createIsElementType,
   createPlugin,
-  findElementUp,
 } from "~/src/sink"
 
 import { createListMethods } from "./methods"
@@ -43,33 +42,7 @@ export const ListPlugin = () =>
           }
           return undefined
         },
-        insertBreak: () => {
-          const entry = findElementUp(editor, isListItem)
-          if (!entry) return false
-          /**
-           * Defalt insertBreak transform
-           */
-          Transforms.splitNodes(editor, { always: true })
-          /**
-           * Find the list item we are now in
-           */
-          const nextEntry = findElementUp<ListItemElement>(editor, isListItem)
-          if (!nextEntry) return true
-          /**
-           * If it's a checked task list, then make it an unchecked one
-           */
-          if (
-            nextEntry[0].type === "task-list-item" &&
-            nextEntry[0].checked === true
-          ) {
-            Transforms.setNodes(
-              editor,
-              { checked: false },
-              { at: nextEntry[1] }
-            )
-          }
-          return true
-        },
+        insertBreak: editor.list.insertBreak,
       },
       editableProps: {
         renderElement,
