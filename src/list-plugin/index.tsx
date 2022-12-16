@@ -1,11 +1,10 @@
-import { Editor, Range, Transforms } from "slate"
+import { Editor, Transforms } from "slate"
 
 import {
   createHotkeyHandler,
   createIsElementType,
   createPlugin,
   findElementUp,
-  matchEndOfElement,
 } from "~/src/sink"
 
 import { createListMethods } from "./methods"
