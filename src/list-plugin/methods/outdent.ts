@@ -4,10 +4,12 @@ import { transformNodes } from "~/src/sink"
 
 import { isListItem, ListItemElement } from ".."
 
-export function outdent(editor: Editor) {
-  const entries = Editor.nodes<ListItemElement>(editor, {
-    match: isListItem,
-  })
+export function outdent(editor: Editor): boolean {
+  const entries = Array.from(
+    Editor.nodes<ListItemElement>(editor, {
+      match: isListItem,
+    })
+  )
   /**
    * Don't allow `shift+tab` if any of the list items are already at a
    * depth of `0`

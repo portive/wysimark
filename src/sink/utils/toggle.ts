@@ -23,19 +23,33 @@ export function toggle<T extends Element>(
     | Omit<T, "children">
     | ((element: Element) => Omit<T, "children">)
 ) {
+  /**
+   * Find convertible elements
+   */
   const entries = Array.from(
     Editor.nodes<Element>(editor, {
       match: (node) => Element.isElement(node) && editor.isConvertible(node),
     })
   )
+  /**
+   * If there aren't any, don't toggle
+   */
   if (entries.length === 0) return false
   if (entries.every((entry) => match(entry[0]))) {
+    /**
+     * If all of the entries are already the target type, then revert them to
+     * a paragraph
+     */
     Editor.withoutNormalizing(editor, () => {
       for (const entry of entries) {
         rewrapElement(editor, { type: "paragraph" }, entry[1])
       }
     })
   } else {
+    /**
+     * If any of the entries aren't the target type, then convert them to the
+     * target type.
+     */
     Editor.withoutNormalizing(editor, () => {
       for (const entry of entries) {
         rewrapElement(editor, convertElement, entry[1])

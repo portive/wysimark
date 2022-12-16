@@ -7,9 +7,11 @@ export function transformNodes<T extends Node>(
     convert,
   }: { match: NodeMatch<T>; convert: (node: T) => Record<string, unknown> }
 ) {
-  const entries = Editor.nodes<T>(editor, { match })
+  const entries = Array.from(Editor.nodes<T>(editor, { match }))
+  if (entries.length === 0) return false
   for (const entry of entries) {
     const [node] = entry
     Transforms.setNodes(editor, convert(node), { at: entry[1] })
   }
+  return true
 }
