@@ -5,11 +5,16 @@ import { isElementType, normalizeSiblings } from "~/src/sink"
 import { isListItem, OrderedListItemElement } from ".."
 
 /**
+ * Makes sure that when a list item is deeper than a preceding one, that we
+ * reset the counter.
+ *
+ * How it works:
+ *
  * If we have any two list item siblings where the second sibling is an
  * `ordered-list-item`, then the second sibling should have the property
  * `_firstOfType` be `true` if the depth of the second sibling is higher.
  *
- * We use this to reset the counter in lists.
+ * Why we need it:
  *
  * We need to do this manually because our implementation of lists does not
  * actually nest lists within lists. We took the approach because the cost
