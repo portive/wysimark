@@ -1,7 +1,7 @@
 import { ConstrainedRenderElementProps } from "~/src/sink"
 
 import { TaskListItemElement } from "../types"
-import { CheckedIcon, UncheckedIcon } from "./icons"
+import { CheckedIcon, UncheckedIcon } from "./list-icons"
 import { $TaskListItem } from "./styles"
 
 export function TaskListItem({
