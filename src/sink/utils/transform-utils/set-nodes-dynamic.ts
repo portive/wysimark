@@ -1,4 +1,4 @@
-import { Editor, Node, NodeMatch, Transforms } from "slate"
+import { Editor, EditorNodesOptions, Node, Transforms } from "slate"
 
 /**
  * An improved version of `setNodes` that takes a `convert` option.
@@ -13,10 +13,10 @@ import { Editor, Node, NodeMatch, Transforms } from "slate"
  */
 export function setNodesDynamic<T extends Node>(
   editor: Editor,
-  convert: (node: T) => Record<string, unknown>,
-  { match }: { match: NodeMatch<T> }
+  convert: (node: T) => Partial<T>,
+  options: EditorNodesOptions<T>
 ) {
-  const entries = Array.from(Editor.nodes<T>(editor, { match }))
+  const entries = Array.from(Editor.nodes<T>(editor, options))
   if (entries.length === 0) return false
   for (const entry of entries) {
     const [node] = entry
