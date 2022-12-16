@@ -1,6 +1,6 @@
 import { Editor, Element, NodeEntry, Path, Transforms } from "slate"
 
-import { ConvertElement, fixConvertElement } from "./fix/fix-convert-element"
+import { createTargetElement, TargetElement } from "../fix/fix-convert-element"
 
 /**
  * Takes an existing Element at path `at` and swaps out that Element with a
@@ -11,12 +11,12 @@ import { ConvertElement, fixConvertElement } from "./fix/fix-convert-element"
  */
 export function rewrapElement<T extends Element = Element>(
   editor: Editor,
-  convertElement: ConvertElement<T>,
+  targetElement: TargetElement<T>,
   at: Path
 ) {
   Editor.withoutNormalizing(editor, () => {
     const originalEntry = Editor.node(editor, at) as NodeEntry<Element>
-    const nextElement = fixConvertElement(convertElement)(originalEntry[0])
+    const nextElement = createTargetElement(originalEntry[0], targetElement)
     /**
      * Technicall, it's Omit<Element, 'children'> but `wrapNodes` actually
      * accepts that just fine so we override the type.

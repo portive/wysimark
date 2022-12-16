@@ -4,7 +4,7 @@ export function normalizeSiblings<T extends Node>(
   editor: Editor,
   entry: NodeEntry<T>,
   transform: (a: NodeEntry, b: NodeEntry) => boolean
-) {
+): boolean {
   const [, path] = entry
 
   const prevEntry = Editor.previous(editor, { at: path })

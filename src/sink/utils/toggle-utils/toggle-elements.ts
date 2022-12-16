@@ -1,7 +1,7 @@
 import { Editor, Element } from "slate"
 
-import { ConvertElement } from "../fix/fix-convert-element"
-import { rewrapElement } from "../rewrap-element"
+import { TargetElement } from "../fix/fix-convert-element"
+import { rewrapElement } from "../transform-utils/rewrap-element"
 
 /**
  * Toggle convertible elements to a targetElement like headings and list items.
@@ -20,7 +20,7 @@ import { rewrapElement } from "../rewrap-element"
 export function toggleElements<T extends Element = Element>(
   editor: Editor,
   match: (element: Element) => boolean,
-  convertElement: ConvertElement<T>
+  targetElement: TargetElement<T>
 ) {
   /**
    * Find convertible elements
@@ -51,7 +51,7 @@ export function toggleElements<T extends Element = Element>(
      */
     Editor.withoutNormalizing(editor, () => {
       for (const entry of entries) {
-        rewrapElement(editor, convertElement, entry[1])
+        rewrapElement(editor, targetElement, entry[1])
       }
     })
   }

@@ -1,5 +1,8 @@
 import { Editor, Text, Transforms } from "slate"
 
+/**
+ * Toggles a mark
+ */
 export function toggleMark(
   editor: Editor,
   markKey: keyof Text,
