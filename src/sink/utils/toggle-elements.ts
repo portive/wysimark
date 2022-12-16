@@ -16,7 +16,7 @@ import { rewrapElement } from "./rewrap-element"
  * If not every one matches, then we toggle to the `targetElement`. To make this
  * method more flexibl
  */
-export function toggle<T extends Element>(
+export function toggleElements<T extends Element>(
   editor: Editor,
   match: (element: Element) => boolean,
   convertElement:

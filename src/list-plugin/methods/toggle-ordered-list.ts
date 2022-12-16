@@ -1,11 +1,11 @@
 import { Editor } from "slate"
 
-import { toggle } from "~/src/sink"
+import { toggleElements } from "~/src/sink"
 
 import { OrderedListItemElement } from ".."
 
 export function toggleOrderedList(editor: Editor) {
-  return toggle<OrderedListItemElement>(
+  return toggleElements<OrderedListItemElement>(
     editor,
     (element) => element.type === "ordered-list-item",
     (element) => {

@@ -4,7 +4,7 @@ import {
   createHotkeyHandler,
   createPlugin,
   matchEndOfElement,
-  toggle,
+  toggleElements,
 } from "~/src/sink"
 
 export type HeadingEditor = {
@@ -31,7 +31,7 @@ export const HeadingPlugin = () =>
     editor.supportsHeadings = true
     const p = (editor.headingPlugin = {
       toggleHeading: (level) => {
-        toggle<HeadingElement>(
+        toggleElements<HeadingElement>(
           editor,
           (element) => element.type === "heading" && element.level == level,
           { type: "heading", level }
