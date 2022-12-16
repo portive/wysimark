@@ -76,6 +76,7 @@ export const GlobalStyles = createGlobalStyles`
     --code-block-bgcolor: var(--shade-50);
     --code-block-border-color: var(--shade-300);
     --inline-code-bgcolor: var(--shade-100);
+    --inline-code-border-color: var(--shade-200);
     /* Table Colors */
     --table-border-color: var(--shade-300);
     --table-row-border-color: var(--shade-300);
@@ -98,4 +99,7 @@ export const $Editable = styled(Editable, forwardRef)`
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   color: rgb(39 39 42); /* shade-800 */
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 `
