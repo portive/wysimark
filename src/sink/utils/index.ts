@@ -1,6 +1,6 @@
 export * from "./core-utils"
 export * from "./hotkey-utils"
-export * from "./is"
+export * from "./is-utils"
 export * from "./match-element"
 export * from "./normalize-utils/normalize-siblings"
 export * from "./select-utils"
