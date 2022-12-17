@@ -8,8 +8,7 @@ import {
 } from "slate-react"
 import { EditableProps } from "slate-react/dist/components/editable"
 
-import { RenderEditable, SinkEditor } from "../../types"
-import { $Editable, GlobalStyles } from "./styles"
+import { SinkEditor } from "../../types"
 
 /**
  * In Editable, we use the Slate context to grab the right things from

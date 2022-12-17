@@ -1,7 +1,6 @@
 import { styled } from "goober"
 import { createGlobalStyles } from "goober/global"
 import { forwardRef } from "react"
-import { Editable } from "slate-react"
 
 const blue = `
 --blue-50: rgb(239 246 255);

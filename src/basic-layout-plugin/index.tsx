@@ -1,4 +1,7 @@
-import { createPlugin } from "~/src/sink"
+import { clsx } from "clsx"
+import { useFocused } from "slate-react"
+
+import { createPlugin, RenderEditable } from "~/src/sink"
 
 import { $Editable } from "./styles"
 
@@ -16,10 +19,19 @@ export const BasicLayoutPlugin = () =>
     editor.basicLayout = true
     return {
       name: "basic-layout",
-      renderEditable: ({ attributes, Editable }) => {
-        return <Editable as={$Editable} {...attributes} />
-      },
+      renderEditable,
       editor: {},
       editableProps: {},
     }
   })
+
+const renderEditable: RenderEditable = ({ attributes, Editable }) => {
+  const focused = useFocused()
+  return (
+    <Editable
+      className={clsx({ "--focused": focused })}
+      as={$Editable}
+      {...attributes}
+    />
+  )
+}

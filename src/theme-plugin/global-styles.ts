@@ -65,6 +65,7 @@ export const GlobalStyles = createGlobalStyles`
     ${zincShades}
     /* Select Colors */
     --select-color: var(--blue-400);
+    --select-editor-color: var(--blue-200);
     --hover-color: var(--blue-200);
     /* Link Colors */
     --link-color: var(--blue-600);
@@ -72,6 +73,7 @@ export const GlobalStyles = createGlobalStyles`
     /* Code Block Colors */
     --code-block-bgcolor: var(--shade-50);
     --code-block-border-color: var(--shade-300);
+    /* Inline Code Colors */
     --inline-code-bgcolor: var(--shade-100);
     --inline-code-border-color: var(--shade-200);
     /* Table Colors */
