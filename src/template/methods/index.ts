@@ -26,4 +26,4 @@ export function create___Methods(editor: Editor) {
  * Add this to your plugin definition
  */
 
-// Editor.___ = create___Methods(editor)
+// editor.___ = create___Methods(editor)

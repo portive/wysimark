@@ -1,9 +1,10 @@
 import React from "react"
 import { useSelected } from "slate-react"
 
-import { createPlugin } from "~/src/sink"
+import { createHotkeyHandler, createPlugin } from "~/src/sink"
 
 import { decorate } from "./decorate"
+import { createCodeBlockMethods } from "./methods"
 import { $CodeBlock, $CodeLine } from "./styles"
 import { tokenStyles } from "./theme"
 import { CodeBlockPluginCustomTypes } from "./types"
@@ -12,7 +13,7 @@ export * from "./types"
 
 export const CodeBlockPlugin = () =>
   createPlugin<CodeBlockPluginCustomTypes>((editor) => {
-    editor.supportsCodeBlock = true
+    editor.codeBlock = createCodeBlockMethods(editor)
     return {
       name: "code-block",
       editor: {
@@ -36,6 +37,9 @@ export const CodeBlockPlugin = () =>
       },
       editableProps: {
         decorate,
+        onKeyDown: createHotkeyHandler({
+          "super+`": editor.codeBlock.createCodeBlock,
+        }),
         renderElement: ({ element, attributes, children }) => {
           const selected = useSelected()
           if (element.type === "code-block") {

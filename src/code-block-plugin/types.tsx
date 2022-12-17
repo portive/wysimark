@@ -1,18 +1,22 @@
 import { BaseText, Text } from "slate"
 
-export type CodeBlockEditor = {
-  supportsCodeBlock: true
-}
+import { createCodeBlockMethods } from "./methods"
 
-export type CodeBlockLineElement = {
-  type: "code-block-line"
-  children: Text[]
+type CodeBlockMethods = ReturnType<typeof createCodeBlockMethods>
+
+export type CodeBlockEditor = {
+  codeBlock: CodeBlockMethods
 }
 
 export type CodeBlockElement = {
   type: "code-block"
   language: string
   children: CodeBlockLineElement[]
+}
+
+export type CodeBlockLineElement = {
+  type: "code-block-line"
+  children: Text[]
 }
 
 export type CodeBlockPluginCustomTypes = {
