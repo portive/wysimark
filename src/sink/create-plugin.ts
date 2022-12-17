@@ -30,7 +30,7 @@ type CreatePluginOutputCustomTypes<T extends InputPluginCustomTypes> = {
   Editor: T["Editor"] extends Record<string, unknown>
     ? T["Editor"] & SinkEditor
     : /**
-       * Line doesn't want us to define an empty object because it's usually in
+       * Lint doesn't want us to define an empty object because it's usually in
        * error, but I think this is exactly what we want here.
        */
       // eslint-disable-next-line @typescript-eslint/ban-types
