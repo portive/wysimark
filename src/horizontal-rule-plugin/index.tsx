@@ -1,14 +1,15 @@
 import React from "react"
 
-import { createPlugin } from "~/src/sink"
+import { createHotkeyHandler, createPlugin } from "~/src/sink"
 
 import { HorizontalRule } from "./horizontal-rule"
+import { createHorizontalRuleMethods } from "./methods"
 import { HorizontalRulePluginCustomTypes } from "./types"
 export * from "./types"
 
 export const HorizontalRulePlugin = () =>
   createPlugin<HorizontalRulePluginCustomTypes>((editor) => {
-    editor.supportsHorizontalRule = true
+    editor.horizontalRule = createHorizontalRuleMethods(editor)
     return {
       name: "horizontal-rule",
       editor: {
@@ -22,6 +23,9 @@ export const HorizontalRulePlugin = () =>
             return <HorizontalRule {...props} />
           }
         },
+        onKeyDown: createHotkeyHandler({
+          "super+-": editor.horizontalRule.insertHorizontalRule,
+        }),
       },
     }
   })

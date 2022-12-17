@@ -1,5 +1,9 @@
+import { createHorizontalRuleMethods } from "./methods"
+
+type HorizontalRuleMethods = ReturnType<typeof createHorizontalRuleMethods>
+
 export type HorizontalRuleEditor = {
-  supportsHorizontalRule: true
+  horizontalRule: HorizontalRuleMethods
 }
 
 export type HorizontalRuleElement = {
