@@ -1,7 +1,7 @@
 import { BaseElement, BaseText } from "slate"
 import { TupleToUnion, UnionToIntersection } from "type-fest"
 
-import { SinkEditor } from "./sink-editor"
+import { SinkEditor } from "../sink/sink-editor"
 
 /**
  * Takes a Tuple and extracts the property at a given key K if the item in the

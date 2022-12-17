@@ -1,6 +1,6 @@
 import { Element } from "slate"
 
-import { BasePluginCustomTypes, PluginObject } from "../types"
+import { BasePluginCustomTypes, PluginObject } from ".."
 
 /**
  * SinkEditor just adds a `sink` object where we drop all of our sink

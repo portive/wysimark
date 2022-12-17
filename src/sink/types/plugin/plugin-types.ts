@@ -8,7 +8,7 @@ import {
   Path,
 } from "slate"
 
-import { ConstrainedRenderElementProps, ConstrainedRenderLeafProps } from "."
+import { ConstrainedRenderElementProps, ConstrainedRenderLeafProps } from ".."
 
 /**
  * When creating a single PluginCustomType, we want to constrain it as much as
