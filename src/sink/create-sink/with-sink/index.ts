@@ -62,9 +62,28 @@ export function createWithSink(
           (plugin) => plugin.editableProps?.onKeyPress
         ),
         onKeyUp: plugins.filter((plugin) => plugin.editableProps?.onKeyUp),
+        /**
+         * These get handled in reverse order. We wrap the last one around the
+         * actual `Editable` and the earlier ones wrap around those. This
+         * feels more natural because the first plugin handles the outermost
+         * and we work our way inward.
+         */
+        renderEditable: plugins
+          .filter((plugin) => plugin.renderEditable)
+          .reverse(),
+        /**
+         * These get handled in forward order. The first one that returns
+         * handled the rendering.
+         */
         renderElement: plugins.filter(
           (plugin) => plugin.editableProps?.renderElement
         ),
+        /**
+         * These get handled in reverse order. We wrap the last one around the
+         * actual `Text` and the earlier ones wrap around those. This
+         * feels more natural because the first plugin handles the outermost
+         * and we work our way inward.
+         */
         renderLeaf: plugins
           .filter((plugin) => plugin.editableProps?.renderLeaf)
           .reverse(),

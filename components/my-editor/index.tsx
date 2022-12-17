@@ -60,6 +60,7 @@ import {
   TablePluginCustomTypes,
   TableRowElement,
 } from "~/src/table-plugin"
+import { ToolbarPlugin, ToolbarPluginCustomTypes } from "~/src/toolbar-plugin"
 import { TrailingBlockPlugin } from "~/src/trailing-block-plugin"
 
 import { initialValue } from "./initial-value"
@@ -82,6 +83,7 @@ const { withSink, SinkEditable } = createSink([
   ListPlugin(),
   AtomicDeletePlugin(),
   CollapsibleParagraphPlugin(),
+  ToolbarPlugin(),
 ])
 
 export type PluginCustomTypes = MergePluginCustomTypes<
@@ -95,7 +97,8 @@ export type PluginCustomTypes = MergePluginCustomTypes<
     TablePluginCustomTypes,
     HorizontalRulePluginCustomTypes,
     ListPluginCustomTypes,
-    AtomicDeletePluginCustomTypes
+    AtomicDeletePluginCustomTypes,
+    ToolbarPluginCustomTypes
   ]
 >
 

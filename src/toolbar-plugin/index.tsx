@@ -15,6 +15,15 @@ export const ToolbarPlugin = () =>
     return {
       name: "toolbar",
       editor: {},
+      renderEditable: ({ attributes, Editable }) => {
+        console.log(attributes)
+        return (
+          <div style={{ border: "10px solid orange" }}>
+            <div>Toolbar</div>
+            <Editable {...attributes} />
+          </div>
+        )
+      },
       editableProps: {},
     }
   })

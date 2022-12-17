@@ -6,8 +6,9 @@ import {
   RenderLeafProps,
   useSlateStatic,
 } from "slate-react"
+import { EditableProps } from "slate-react/dist/components/editable"
 
-import { SinkEditor } from "../../types"
+import { RenderEditable, SinkEditor } from "../../types"
 import { $Editable, GlobalStyles } from "./styles"
 
 /**
@@ -144,11 +145,50 @@ export function SinkEditable(originalProps: Parameters<typeof Editable>[0]) {
     originalProps.onKeyDown?.(e)
   }
 
+  const NextEditable = (props: EditableProps) => {
+    /**
+     * This creates the bottom-most RenderEditable which itself will only
+     * take an `attributes` prop.
+     *
+     * Every RenderEditable in the chain
+     */
+    let CurrentRenderEditable = (props: EditableProps) => (
+      <Editable as={$Editable} {...props} />
+    )
+    for (const plugin of sink.pluginsFor.renderEditable) {
+      /**
+       * Assigns the CurrentRenderEditable as the previous one so that we can
+       * have it available to call in the NextRenderEditable
+       */
+      const PrevRenderEditable = CurrentRenderEditable
+
+      CurrentRenderEditable = (props: EditableProps) => {
+        /**
+         * TODO:
+         *
+         * This should probably be fixed in the actual types; however, we
+         * know at this point that `renderEditable` is defined because we
+         * filtered it in an earlier step.
+         */
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        return plugin.renderEditable!({
+          attributes: props,
+          Editable: PrevRenderEditable,
+        })
+      }
+
+      //   CurrentEditable = function MyEditable({ attributes }) {
+      //     return <PrevEditable attributes={attributes} Editable={PrevEditable} />
+      //   }
+    }
+    return <CurrentRenderEditable {...props} />
+  }
+
   return (
     // <Reset>
     <>
       <GlobalStyles />
-      <$Editable
+      <NextEditable
         {...originalProps}
         decorate={decorate}
         onKeyDown={nextOnKeyDown}

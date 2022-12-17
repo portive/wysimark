@@ -1,8 +1,15 @@
 import React from "react"
 import { BaseRange, Editor, NodeEntry, Path } from "slate"
+import { Editable } from "slate-react"
+import { EditableProps } from "slate-react/dist/components/editable"
 
 import { ConstrainedRenderElementProps, ConstrainedRenderLeafProps } from ".."
 import { BasePluginCustomTypes } from "./plugin-custom-types"
+
+export type RenderEditable = (props: {
+  attributes: EditableProps
+  Editable: typeof Editable
+}) => React.ReactElement
 
 /**
  * Once a Plugin is executed, it returns this Object that defines how the
@@ -57,6 +64,22 @@ export type PluginObject<T extends BasePluginCustomTypes> = {
     insertText?: (text: string) => boolean
     normalizeNode?: (entry: NodeEntry) => boolean
   }
+  /**
+   * Let's a plugin modify the way the `Editable` is rendered.
+   *
+   * It's defined similar to `renderElement` but instead of adding `attributes`
+   * to your own React components, you can modify the `attributes` and add
+   * them to `Editable`.
+   *
+   * <Editable {...attributes} />
+   *
+   * Some things you can do with this are you can add an outer container and
+   * a toolbar before the `Editable` to add a toolbar. Another way this could
+   * be implemented would be to strip the `styles` and `className` from
+   * attributes and add it to your own container, and pass the rest of the
+   * non-styling attributes to `Editable`.
+   */
+  renderEditable?: RenderEditable
   editableProps?: {
     decorate?: ((entry: [T["Element"], Path]) => BaseRange[]) | undefined
     /**
