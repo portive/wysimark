@@ -90,6 +90,8 @@ export const GlobalStyles = createGlobalStyles`
 `
 
 export const $Editable = styled(Editable, forwardRef)`
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   padding: 2em;
   border: 1px solid rgb(203 213 225); /* shade-300 */
   border-radius: 0.5em;
@@ -100,6 +102,4 @@ export const $Editable = styled(Editable, forwardRef)`
     Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   color: rgb(39 39 42); /* shade-800 */
   line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 `
