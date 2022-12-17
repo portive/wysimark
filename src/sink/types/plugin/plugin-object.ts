@@ -1,55 +1,8 @@
 import React from "react"
-import {
-  BaseElement,
-  BaseRange,
-  BaseText,
-  Editor,
-  NodeEntry,
-  Path,
-} from "slate"
+import { BaseRange, Editor, NodeEntry, Path } from "slate"
 
 import { ConstrainedRenderElementProps, ConstrainedRenderLeafProps } from ".."
-
-/**
- * When creating a single PluginCustomType, we want to constrain it as much as
- * possible. These are the constraints.
- */
-export type BasePluginCustomTypes = {
-  Name: string
-  Editor: Record<string, unknown>
-  Element: BaseElement
-  Text: BaseText
-}
-
-/**
- * When we are accepting an array of plugins, unfortunately we can't be as
- * restrictive as TypeScript throws an error saying that the second plugin is
- * incompatible with the first. So we have a less type safe version with any
- * for that use case.
- *
- * WEIRD:
- *
- * If I make any of these property keys optional, for example to suggest that
- * you don't need to provide a property for every entry in the array, this
- * shows a type mismatch when used in an array. It shows a type mismatch even
- * if the items in the array are all provided or if the array has only one
- * item that matches.
- */
-export type ArraySafePluginCustomTypes = {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  Name: any
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  Editor: any
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  Element: any
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  Text: any
-}
-
-/**
- * This is how we define the PluginCustomTypes.
- */
-export type PluginCustomTypes<T extends BasePluginCustomTypes> = T
+import { BasePluginCustomTypes } from "./plugin-custom-types"
 
 /**
  * Once a Plugin is executed, it returns this Object that defines how the
@@ -146,12 +99,3 @@ export type PluginObject<T extends BasePluginCustomTypes> = {
     ) => React.ReactElement | undefined
   }
 }
-
-export type PluginFunction<T extends BasePluginCustomTypes> = (
-  /**
-   * We make this T["Editor"] to make sure we get all off the properties
-   * for the plugin but also add `Editor` so that Editor will pass the typing
-   * for Transform methods and such that take an `Editor` object.
-   */
-  editor: T["Editor"] & Editor
-) => PluginObject<T>
