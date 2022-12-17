@@ -44,6 +44,13 @@ export function SinkEditable(originalProps: Parameters<typeof Editable>[0]) {
     Editor.normalize(editor, { force: true })
   }, [])
 
+  /**
+   * Create the substituted `decorate` method.
+   *
+   * With decorate, we are taking all the ranges from all the decorators and
+   * combining them together, including the ranges created from the `decorate`
+   * attribute on `SinkEditable`.
+   */
   const decorate = (entry: NodeEntry): Range[] => {
     const ranges: Range[] = []
     for (const plugin of sink.pluginsFor.decorate) {
@@ -52,6 +59,9 @@ export function SinkEditable(originalProps: Parameters<typeof Editable>[0]) {
       )
       if (resultRanges === undefined) continue
       ranges.push(...resultRanges)
+    }
+    if (originalProps.decorate) {
+      ranges.push(...originalProps.decorate(entry))
     }
     return ranges
   }
@@ -118,6 +128,14 @@ export function SinkEditable(originalProps: Parameters<typeof Editable>[0]) {
     return value
   }
 
+  /**
+   * Iterate through all the plugins trying to handle the `onKeyDown`.
+   * If it finds one (which is identified when the function returns `true`)
+   * then we stop and return.
+   *
+   * If we don't find one, we follow through to the `onKeyDown` found in the
+   * `SinkEditable` component.
+   */
   const nextOnKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
     for (const plugin of sink.pluginsFor.onKeyDown) {
       const result = plugin.editableProps?.onKeyDown?.(e)
