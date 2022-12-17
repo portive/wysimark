@@ -1,13 +1,30 @@
-import { BaseElement, BaseText } from "slate"
+import { BaseEditor, BaseElement, BaseText } from "slate"
 
 /**
  * When creating a single PluginCustomType, we want to constrain it as much as
  * possible. These are the constraints.
  */
 export type BasePluginCustomTypes = {
+  /**
+   * Define a unique name for this plugin. This value must be manually set
+   * during the plugin definition so that it is part of the `PluginObject`.
+   *
+   * This is important because we want to be able to identify each plugin
+   * uniquely for debugging purposes.
+   */
   Name: string
-  Editor: Record<string, unknown>
+  /**
+   * This is the **extension** to the Editor and not the combined editor.
+   * In other words, the properties here will not be part of `BaseEditor`.
+   */
+  Editor: Omit<Record<string, unknown>, keyof BaseEditor>
+  /**
+   * Element should extend the BaseElement
+   */
   Element: BaseElement
+  /**
+   * Text should extend the BaseText
+   */
   Text: BaseText
 }
 
@@ -37,6 +54,7 @@ export type ArraySafePluginCustomTypes = {
 }
 
 /**
- * This is how we define the PluginCustomTypes.
+ * When we define a new Plugin's Custom Types, we want it to extend the
+ * BasePluginCustomTypes to get some level of type safety.
  */
 export type PluginCustomTypes<T extends BasePluginCustomTypes> = T
