@@ -153,7 +153,7 @@ export function SinkEditable(originalProps: Parameters<typeof Editable>[0]) {
      * Every RenderEditable in the chain
      */
     let CurrentRenderEditable = (props: EditableProps) => (
-      <Editable as={$Editable} {...props} />
+      <Editable {...props} />
     )
     for (const plugin of sink.pluginsFor.renderEditable) {
       /**
@@ -186,16 +186,13 @@ export function SinkEditable(originalProps: Parameters<typeof Editable>[0]) {
 
   return (
     // <Reset>
-    <>
-      <GlobalStyles />
-      <NextEditable
-        {...originalProps}
-        decorate={decorate}
-        onKeyDown={nextOnKeyDown}
-        renderElement={nextRenderElement}
-        renderLeaf={nextRenderLeaf}
-      />
-    </>
+    <NextEditable
+      {...originalProps}
+      decorate={decorate}
+      onKeyDown={nextOnKeyDown}
+      renderElement={nextRenderElement}
+      renderLeaf={nextRenderLeaf}
+    />
     // </Reset>
   )
 }

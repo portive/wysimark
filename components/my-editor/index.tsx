@@ -15,6 +15,10 @@ import {
   AtomicDeletePluginCustomTypes,
 } from "~/src/atomic-delete-plugin"
 import {
+  BasicLayoutPlugin,
+  BasicLayoutPluginCustomTypes,
+} from "~/src/basic-layout-plugin"
+import {
   BlockQuoteElement,
   BlockQuotePlugin,
   BlockQuotePluginCustomTypes,
@@ -60,6 +64,7 @@ import {
   TablePluginCustomTypes,
   TableRowElement,
 } from "~/src/table-plugin"
+import { ThemePlugin, ThemePluginCustomTypes } from "~/src/theme-plugin"
 import { ToolbarPlugin, ToolbarPluginCustomTypes } from "~/src/toolbar-plugin"
 import { TrailingBlockPlugin } from "~/src/trailing-block-plugin"
 
@@ -83,7 +88,9 @@ const { withSink, SinkEditable } = createSink([
   ListPlugin(),
   AtomicDeletePlugin(),
   CollapsibleParagraphPlugin(),
-  ToolbarPlugin(),
+  ThemePlugin(),
+  BasicLayoutPlugin(),
+  // ToolbarPlugin(),
 ])
 
 export type PluginCustomTypes = MergePluginCustomTypes<
@@ -98,6 +105,8 @@ export type PluginCustomTypes = MergePluginCustomTypes<
     HorizontalRulePluginCustomTypes,
     ListPluginCustomTypes,
     AtomicDeletePluginCustomTypes,
+    ThemePluginCustomTypes,
+    BasicLayoutPluginCustomTypes,
     ToolbarPluginCustomTypes
   ]
 >

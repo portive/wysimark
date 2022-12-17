@@ -8,6 +8,7 @@ import {
 } from "~/src/sink"
 
 import { insertBreak } from "./insert-break"
+import { $Heading } from "./styles"
 import { HeadingElement, HeadingPluginCustomTypes } from "./types"
 
 export const HeadingPlugin = () =>
@@ -32,8 +33,12 @@ export const HeadingPlugin = () =>
       editableProps: {
         renderElement: ({ element, attributes, children }) => {
           if (element.type === "heading") {
-            const Heading = `h${element.level}`
-            return <Heading {...attributes}>{children}</Heading>
+            const tag = `h${element.level}`
+            return (
+              <$Heading as={tag} {...attributes}>
+                {children}
+              </$Heading>
+            )
           }
         },
         onKeyDown: createHotkeyHandler({
