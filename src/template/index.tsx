@@ -1,5 +1,3 @@
-import { styled } from "goober"
-import { forwardRef } from "react"
 import { Descendant } from "slate"
 
 import { createPlugin } from "~/src/sink"
@@ -19,10 +17,9 @@ export type ___PluginCustomTypes = {
   Element: ___Element
 }
 
-const $___ = styled("div", forwardRef)``
-
 export const ___Plugin = () =>
   createPlugin<___PluginCustomTypes>((editor) => {
+    editor.___ = true
     return {
       name: "___",
       editor: {},

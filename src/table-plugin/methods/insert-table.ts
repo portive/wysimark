@@ -1,6 +1,6 @@
 import { Editor, Element, Location, Path, Transforms } from "slate"
 
-import { BetterAt, findElementUp } from "~/src/sink"
+import { findElementUp } from "~/src/sink"
 
 import { TableColumn, TableElement, TableRowElement } from "../types"
 import { createCell } from "./utils"

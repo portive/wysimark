@@ -1,4 +1,4 @@
-import { Editor, Element, NodeEntry, Path, Range, Transforms } from "slate"
+import { Editor, Element, NodeEntry, Path, Transforms } from "slate"
 
 import { createPlugin, findElementUp } from "~/src/sink"
 

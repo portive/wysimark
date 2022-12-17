@@ -1,4 +1,4 @@
-import { Descendant, Editor, Node, NodeEntry } from "slate"
+import { Descendant, Editor, NodeEntry } from "slate"
 
 export function normalizeSiblings<T extends Descendant>(
   editor: Editor,
