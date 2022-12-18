@@ -3,7 +3,7 @@ import "../../src/setup"
 import { useState } from "react"
 import { BaseEditor, createEditor } from "slate"
 import { withHistory } from "slate-history"
-import { ReactEditor, RenderLeafProps, Slate, withReact } from "slate-react"
+import { ReactEditor, RenderLeafProps, withReact } from "slate-react"
 
 import {
   AnchorElement,
@@ -14,10 +14,6 @@ import {
   AtomicDeletePlugin,
   AtomicDeletePluginCustomTypes,
 } from "~/src/atomic-delete-plugin"
-import {
-  BasicLayoutPlugin,
-  BasicLayoutPluginCustomTypes,
-} from "~/src/basic-layout-plugin"
 import {
   BlockQuoteElement,
   BlockQuotePlugin,
@@ -70,7 +66,7 @@ import { TrailingBlockPlugin } from "~/src/trailing-block-plugin"
 
 import { initialValue } from "./initial-value"
 
-const { withSink, SinkEditable } = createSink([
+const Sink = createSink([
   AnchorPlugin(),
   HeadingPlugin(),
   InlineCodePlugin(),
@@ -92,6 +88,8 @@ const { withSink, SinkEditable } = createSink([
   // BasicLayoutPlugin(),
   ToolbarPlugin(),
 ])
+
+const { withSink, SinkSlate, SinkEditable } = Sink
 
 export type PluginCustomTypes = MergePluginCustomTypes<
   [
@@ -146,9 +144,9 @@ export const MyEditor = () => {
 
   return (
     <div>
-      <Slate editor={editor} value={initialValue}>
+      <SinkSlate editor={editor} value={initialValue}>
         <SinkEditable renderLeaf={renderLeaf} />
-      </Slate>
+      </SinkSlate>
     </div>
   )
 }
