@@ -19,12 +19,36 @@ export type Modal<T extends Record<string, unknown> = Record<string, unknown>> =
      * - error box
      */
     type: string
+    /**
+     * The React Component (currently supported as only a FunctionComponent)
+     * to render.
+     */
     Component: FunctionComponent<T>
+    /**
+     * The Props to be passed to the FunctionComponent
+     */
     props: T
   }
 
+/**
+ * A Lookup Record that contains all the currently opened Compnent objects.
+ *
+ * NOTE:
+ *
+ * The structure is designed such that only one Component object can exist at
+ * any given key. The `key` represents the `type` of the Modal. So, for example,
+ * only one "tooltip" type can be open at once.
+ */
 export type ModalsRecord = Record<string, Modal>
 
+/**
+ * The value of the `ModalsContext` that is passed around.
+ *
+ * NOTE:
+ *
+ * This is an implementation detail and wouldn't be used directly. Instead,
+ * the interface to this library should be through the `useModal` method.
+ */
 export type ModalsContextValue = {
   modals: ModalsRecord
   setModals: Dispatch<SetStateAction<ModalsRecord>>

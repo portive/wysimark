@@ -5,8 +5,8 @@ import { ModalsProvider } from "~/src/modal"
 import { createPlugin } from "~/src/sink"
 
 import { Button } from "./button"
-import { Item, items } from "./config"
 import * as Icon from "./icons"
+import { Item, items } from "./items"
 import { $$Container, $Divider, $Editable, $Toolbar } from "./styles"
 
 export type ToolbarEditor = {
