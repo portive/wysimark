@@ -3,7 +3,7 @@ import { forwardRef } from "react"
 
 import { SinkReset } from "~/src/sink/create-sink/sink-editable"
 
-export const Panel = styled(SinkReset, forwardRef)`
+export const $Panel = styled(SinkReset, forwardRef)`
   position: absolute;
   z-index: 1000;
   border: 1px solid var(--table-border-color);

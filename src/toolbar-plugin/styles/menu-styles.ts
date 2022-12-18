@@ -1,9 +1,9 @@
 import { styled } from "goober"
 import { forwardRef } from "react"
 
-import { Panel } from "./panel-styles"
+import { $Panel } from "./panel-styles"
 
-export const $Menu = styled(Panel, forwardRef)`
+export const $Menu = styled($Panel, forwardRef)`
   padding-top: 0.5em;
   padding-bottom: 0.5em;
 `
