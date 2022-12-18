@@ -1,6 +1,8 @@
 import { styled } from "goober"
 import { forwardRef } from "react"
 
+import { SinkReset } from "../sink/create-sink/sink-editable"
+
 /**
  * NOTE:
  *
@@ -13,14 +15,9 @@ import { forwardRef } from "react"
  *   the padding on the $Container but also use the $Container styling
  *   directly on the Editable Component.
  */
-export const $Container = styled("div", forwardRef)`
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+export const $Container = styled(SinkReset, forwardRef)`
   border: 1px solid var(--shade-300); /* shade-300 */
   border-radius: 0.5em;
-  font-size: 16px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   color: rgb(39 39 42); /* shade-800 */
   line-height: 1.5;
   /**

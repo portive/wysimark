@@ -1,13 +1,14 @@
 import { clsx } from "clsx"
 import { useFocused } from "slate-react"
 
-import { LayersProvider } from "~/src/layer"
+import { Layers } from "~/src/layer"
 import { createPlugin } from "~/src/sink"
 
-import { Button } from "./button"
+import { Button } from "./components"
 import * as Icon from "./icons"
-import { Item, items } from "./items"
-import { $$Container, $Divider, $Editable, $Toolbar } from "./styles"
+import { items } from "./items"
+import { $$Container, $Divider, $Editable, $Toolbar } from "./styles/styles"
+import { Item } from "./types"
 
 export type ToolbarEditor = {
   toolbar: true
@@ -23,7 +24,7 @@ function RenderToolbarItem(item: Item, index: number) {
     return <$Divider key={index} />
   } else {
     return (
-      <Button key={index} title={item.title}>
+      <Button key={index} item={item}>
         <item.icon />
         {item.more ? <Icon.More /> : null}
       </Button>
@@ -41,9 +42,9 @@ export const ToolbarPlugin = () =>
         const focused = useFocused()
         return (
           <$$Container className={clsx({ "--focused": focused })}>
-            <LayersProvider>
+            <Layers>
               <$Toolbar>{items.map(RenderToolbarItem)}</$Toolbar>
-            </LayersProvider>
+            </Layers>
             <Editable as={$Editable} {...attributes} />
           </$$Container>
         )

@@ -34,7 +34,7 @@ export const LayersContext = createContext<LayersContextValue>(
  *   `getBoundingClientRect`
  *
  */
-export function LayersProvider({ children }: { children: React.ReactNode }) {
+export function Layers({ children }: { children: React.ReactNode }) {
   const [layers, setLayers] = useState<LayersRecord>({})
   return (
     <LayersContext.Provider value={{ layers, setLayers }}>

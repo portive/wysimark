@@ -9,6 +9,7 @@ import {
 import { EditableProps } from "slate-react/dist/components/editable"
 
 import { SinkEditor } from "../../types"
+export { SinkReset } from "./styles"
 
 /**
  * In Editable, we use the Slate context to grab the right things from

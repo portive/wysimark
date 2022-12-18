@@ -1,7 +1,9 @@
 import { styled } from "goober"
 import { forwardRef } from "react"
 
-import { $Container } from "../shared-layout"
+import { SinkReset } from "~/src/sink/create-sink/sink-editable"
+
+import { $Container } from "../../shared-layout"
 
 export const $$Container = styled($Container, forwardRef)`
   /**
@@ -83,5 +85,55 @@ export const $Button = styled("div", forwardRef)`
     svg {
       /* stroke-width: 2px; */
     }
+  }
+`
+
+export const $Menu = styled(SinkReset, forwardRef)`
+  position: absolute;
+  z-index: 1000;
+  border: 1px solid var(--table-border-color);
+  border-radius: 0.5em;
+  overflow: clip;
+  /* filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.1))
+    drop-shadow(0 1px 1px rgb(0 0 0 / 0.06)); */
+  filter: drop-shadow(0 4px 3px rgb(0 0 0 / 0.07))
+    drop-shadow(0 2px 2px rgb(0 0 0 / 0.06));
+  background: white;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+`
+
+export const $MenuItem = styled("div", forwardRef)`
+  display: flex;
+  padding: 0 1em 0 1.5em;
+  height: 2em;
+  align-items: center;
+  .--icon {
+    display: block;
+    font-size: 1.25em;
+    height: 1em;
+    padding-right: 0.75em;
+    color: var(--shade-400);
+    svg {
+      stroke-width: 1.5px;
+    }
+  }
+  .--title {
+    font-size: 0.875em;
+    color: var(--shade-800);
+  }
+  .--hotkey {
+    font-size: 0.75em;
+    padding-left: 1.5em;
+    color: var(--shade-500);
+  }
+  background: white;
+  /* border-top: 1px solid var(--shade-200);
+  &:first-of-type {
+    border-top: 0px none;
+  } */
+  cursor: pointer;
+  &:hover {
+    background: var(--blue-50);
   }
 `
