@@ -29,14 +29,26 @@ export function Button({
         items: item.children,
         close: menu.close,
       })
+    } else {
+      menu.close()
     }
   }, [])
 
-  const onMouseEnter = useCallback((e: MouseEvent<HTMLElement>) => {
-    if (item.title !== undefined) {
-      tooltip.open({ title: item.title, dest: e.currentTarget })
-    }
-  }, [])
+  const onMouseEnter = useCallback(
+    (e: MouseEvent<HTMLElement>) => {
+      if (item.title !== undefined) {
+        tooltip.open({ title: item.title, dest: e.currentTarget })
+      }
+      if (menu.layer && item.children !== undefined) {
+        menu.open({
+          dest: e.currentTarget,
+          items: item.children,
+          close: menu.close,
+        })
+      }
+    },
+    [menu.layer]
+  )
 
   useEffect(() => {
     /**

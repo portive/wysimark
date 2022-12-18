@@ -8,7 +8,7 @@ export function useLayer<T extends Record<string, unknown>>(
   type: string,
   Component: FunctionComponent<T>
 ) {
-  const { openLayer, closeLayer } = useContext(LayersContext)
+  const { openLayer, closeLayer, layers } = useContext(LayersContext)
 
   function open(props: T) {
     const layer = { type, Component, props } as Layer<UnknownRecord>
@@ -19,5 +19,11 @@ export function useLayer<T extends Record<string, unknown>>(
     closeLayer(type)
   }
 
-  return { open, close, type, Component }
+  return {
+    open,
+    close,
+    layer: layers[type],
+    type,
+    Component,
+  }
 }
