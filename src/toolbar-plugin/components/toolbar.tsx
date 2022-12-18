@@ -6,12 +6,12 @@ import { $Divider, $Toolbar } from "../styles/styles"
 import { Item } from "../types"
 import { Button } from "./button"
 
-function RenderToolbarItem(item: Item, index: number) {
+function ToolbarItem({ item }: { item: Item }) {
   if (item === "divider") {
-    return <$Divider key={index} />
+    return <$Divider />
   } else {
     return (
-      <Button key={index} item={item}>
+      <Button item={item}>
         <item.icon />
         {item.more ? <Icon.More /> : null}
       </Button>
@@ -22,7 +22,11 @@ function RenderToolbarItem(item: Item, index: number) {
 export function Toolbar() {
   return (
     <Layers>
-      <$Toolbar>{items.map(RenderToolbarItem)}</$Toolbar>
+      <$Toolbar>
+        {items.map((item, index) => (
+          <ToolbarItem key={index} item={item} />
+        ))}
+      </$Toolbar>
     </Layers>
   )
 }
