@@ -4,7 +4,7 @@ import { useFocused } from "slate-react"
 import { createPlugin } from "~/src/sink"
 
 import { Toolbar } from "./components"
-import { $Editable, $OuterContainer } from "./styles/styles"
+import { $Editable, $OuterContainer } from "./styles"
 
 export type ToolbarEditor = {
   toolbar: true

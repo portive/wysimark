@@ -2,20 +2,19 @@ import { clsx } from "clsx"
 import { MouseEvent, useCallback, useEffect, useRef } from "react"
 
 import { useLayer } from "../../layer"
-import { $Button } from "../styles/styles"
+import * as Icon from "../icons"
+import { $ToolbarButton } from "../styles"
 import { Item } from "../types"
 import { Menu } from "./menu"
 import { Tooltip } from "./tooltip"
 
 const debug = false
 
-export function Button({
+export function ToolbarButton({
   active,
-  children,
   item,
 }: {
   active?: boolean
-  children: React.ReactNode
   item: Exclude<Item, "divider">
 }) {
   const ref = useRef<HTMLDivElement>(null)
@@ -65,14 +64,15 @@ export function Button({
   }, [])
 
   return (
-    <$Button
+    <$ToolbarButton
       ref={ref}
       onMouseEnter={onMouseEnter}
       onMouseLeave={tooltip.close}
       onClick={onClick}
       className={clsx({ "--active": active })}
     >
-      {children}
-    </$Button>
+      <item.icon />
+      {item.more ? <Icon.More /> : null}
+    </$ToolbarButton>
   )
 }

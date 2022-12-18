@@ -1,6 +1,6 @@
 import { CloseMask } from "~/src/layer/close-mask"
 
-import { $Menu, $MenuDivider, $MenuItem } from "../styles/styles"
+import { $Menu, $MenuDivider, $MenuItem } from "../styles"
 import { Item } from "../types"
 
 function useRect(dest: HTMLElement): DOMRect {
