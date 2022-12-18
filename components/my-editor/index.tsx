@@ -89,8 +89,8 @@ const { withSink, SinkEditable } = createSink([
   AtomicDeletePlugin(),
   CollapsibleParagraphPlugin(),
   ThemePlugin(),
-  BasicLayoutPlugin(),
-  // ToolbarPlugin(),
+  // BasicLayoutPlugin(),
+  ToolbarPlugin(),
 ])
 
 export type PluginCustomTypes = MergePluginCustomTypes<
@@ -106,7 +106,7 @@ export type PluginCustomTypes = MergePluginCustomTypes<
     ListPluginCustomTypes,
     AtomicDeletePluginCustomTypes,
     ThemePluginCustomTypes,
-    BasicLayoutPluginCustomTypes,
+    // BasicLayoutPluginCustomTypes,
     ToolbarPluginCustomTypes
   ]
 >
