@@ -55,4 +55,6 @@ export type LayersRecord = Record<string, Layer>
 export type LayersContextValue = {
   layers: LayersRecord
   setLayers: Dispatch<SetStateAction<LayersRecord>>
+  openLayer: (layer: Layer) => void
+  closeLayer: (layerType: string) => void
 }

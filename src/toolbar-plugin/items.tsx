@@ -11,6 +11,14 @@ const headingItems: Item[] = [
   { icon: Icon.Paragraph, title: "Paragraph", hotkey: "super+0" },
 ]
 
+const styleItems: Item[] = [
+  { icon: Icon.Code, title: "Inline Code", hotkey: "mod+j" },
+  { icon: Icon.Superscript, title: "Superscript", hotkey: "super+p" },
+  { icon: Icon.Subscript, title: "Subscript", hotkey: "super+b" },
+  { icon: Icon.Strikethrough, title: "Strikethrough", hotkey: "super+k" },
+  { icon: Icon.RemoveStyles, title: "Remove Styles", hotkey: "super+0" },
+]
+
 export const items: Item[] = [
   {
     icon: Icon.H,
@@ -21,7 +29,7 @@ export const items: Item[] = [
   "divider",
   { icon: Icon.Bold, title: "Bold", hotkey: "mod+b" },
   { icon: Icon.Italic, title: "Italic", hotkey: "mod+i" },
-  { icon: Icon.Style, title: "Text Style", more: true },
+  { icon: Icon.Style, title: "Text Style", more: true, children: styleItems },
   "divider",
   { icon: Icon.BulletList, title: "List", more: true },
   "divider",

@@ -1,7 +1,7 @@
 import { createContext, useState } from "react"
 
 import { Portal } from "./portal"
-import { LayersContextValue, LayersRecord } from "./types"
+import { Layer, LayersContextValue, LayersRecord } from "./types"
 
 /**
  * Wrap this around the Component in which you want to have the ability to
@@ -17,32 +17,68 @@ export const LayersContext = createContext<LayersContextValue>(
   {} as LayersContextValue
 )
 
+export const LayerContext = createContext<Layer>({} as Layer)
+
 /**
- * The LayersProvider should be wrapped around the Component or Components for
+ * The `Layers` Component should be wrapped around the Component or Components
  * which you want to have layer support.
  *
- * The `useLayer` hook can only be used inside a `LayersProvider`.
+ * The `useLayer` hook must be called inside a `Layers` Component.
  *
  * It provides these necessary functions:
  *
- * - Makes available to its children access to `layers` and `setLayers`
- *   which are used to modify the current state of which layers are open.
+ * - Makes available the resources necessary to open and close layers.
  *
- * - Renders the currently open `layers` to the DOM at the top level of the
+ * - Renders the currently open layers to the DOM at the top level of the
  *   DOM. We do this to simplify positioning as we can position everything
  *   relative to the full window which is what is returned by
  *   `getBoundingClientRect`
  *
+ * NOTE:
+ *
+ * As a design decision, we wrap many components with the Layer instead of
+ * having a Layer per component. This design decision is important because
+ * we may want to open multiple layers of the same type and if we open another
+ * layer of the same type, we want any other layers to close.
+ *
+ * For example, consider a Dialog. If we open a differnet Dialog, we want the
+ * first one to close. This can only be done when a single component knows
+ * about the existence of both.
  */
 export function Layers({ children }: { children: React.ReactNode }) {
   const [layers, setLayers] = useState<LayersRecord>({})
+
+  /**
+   * Open a layer
+   */
+  function openLayer(layer: Layer) {
+    setLayers((layers) => {
+      return {
+        ...layers,
+        [layer.type]: layer,
+      }
+    })
+  }
+
+  function closeLayer(layerType: string) {
+    setLayers((layers) => {
+      const nextLayers = { ...layers }
+      delete nextLayers[layerType]
+      return nextLayers
+    })
+  }
+
   return (
-    <LayersContext.Provider value={{ layers, setLayers }}>
+    <LayersContext.Provider
+      value={{ layers, setLayers, openLayer, closeLayer }}
+    >
       {children}
       {Object.entries(layers).map(([, layer]) => {
         return (
           <Portal key={layer.type}>
-            <layer.Component {...layer.props} />
+            <LayerContext.Provider value={layer}>
+              <layer.Component {...layer.props} />
+            </LayerContext.Provider>
           </Portal>
         )
       })}

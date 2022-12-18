@@ -142,3 +142,27 @@ export const Plus = () => (
     <path d="M12 5v14M5 12h14" />
   </Icon>
 )
+export const Superscript = () => (
+  <Icon>
+    <path d="m5 7 8 10m-8 0 8-10M21 11h-4l3.5-4A1.73 1.73 0 0 0 17 5" />
+  </Icon>
+)
+
+export const Subscript = () => (
+  <Icon>
+    <path d="m5 7 8 10m-8 0 8-10M21 20h-4l3.5-4a1.73 1.73 0 0 0-3.5-2" />
+  </Icon>
+)
+
+export const Strikethrough = () => (
+  <Icon>
+    <path d="M5 12h14M16 6.5A4 2 0 0 0 12 5h-1a3.5 3.5 0 0 0 0 7h2a3.5 3.5 0 0 1 0 7h-1.5a4 2 0 0 1-4-1.5" />
+  </Icon>
+)
+
+export const RemoveStyles = () => (
+  <Icon>
+    <path d="m14 6 7 7-2 2M10 10l-4.172 4.172a2.828 2.828 0 1 0 4 4L14 14" />
+    <path d="m16 12 4.414-4.414a2 2 0 0 0 0-2.829l-1.171-1.171a2 2 0 0 0-2.829 0L12 8M4 20l1.768-1.768M3 3l18 18" />
+  </Icon>
+)

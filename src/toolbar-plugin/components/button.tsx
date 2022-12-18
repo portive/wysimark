@@ -16,40 +16,45 @@ export function Button({
   children: React.ReactNode
   item: Exclude<Item, "divider">
 }) {
+  const ref = useRef<HTMLDivElement>(null)
   const tooltip = useLayer("tooltip", Tooltip)
-
-  const openMenu = useCallback((e: MouseEvent<HTMLElement>) => {
-    if (item.children === undefined) return
-    menu.open({ dest: e.currentTarget, items: item.children })
-  }, [])
-
-  const openTooltip = useCallback((e: MouseEvent<HTMLElement>) => {
-    openMenu(e)
-    if (item.title === undefined) return
-    tooltip.open({ title: item.title, dest: e.currentTarget })
-  }, [])
-
   const menu = useLayer("menu", Menu)
 
-  const ref = useRef<HTMLDivElement>(null)
+  const onMouseEnter = useCallback((e: MouseEvent<HTMLElement>) => {
+    if (item.title !== undefined) {
+      tooltip.open({ title: item.title, dest: e.currentTarget })
+    }
+    if (item.children !== undefined) {
+      menu.open({
+        dest: e.currentTarget,
+        items: item.children,
+        close: menu.close,
+      })
+    }
+  }, [])
+
+  const onMouseLeave = useCallback(() => {
+    tooltip.close()
+    menu.close()
+  }, [])
 
   /**
    * TEMPORARY:
    *
    * Immediately open the menu so we can view it while playing with it.
    */
-  useEffect(() => {
-    if (item.children === undefined) return
-    if (ref.current === null) return
-    menu.open({ dest: ref.current, items: item.children })
-  }, [])
+  // useEffect(() => {
+  //   if (item.children === undefined) return
+  //   if (ref.current === null) return
+  //   menu.open({ dest: ref.current, items: item.children, close: menu.close })
+  // }, [])
 
   return (
     <$Button
       ref={ref}
-      onMouseEnter={openTooltip}
-      onMouseLeave={tooltip.close}
-      onClick={openMenu}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+      onClick={onMouseEnter}
       className={clsx({ "--active": active })}
     >
       {children}
