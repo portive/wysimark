@@ -1,5 +1,8 @@
 import { Dispatch, FunctionComponent, SetStateAction } from "react"
 
+/**
+ * Everything needed to render and identify a currently opened Modal.
+ */
 export type Modal<T extends Record<string, unknown> = Record<string, unknown>> =
   {
     /**
