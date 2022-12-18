@@ -1,7 +1,7 @@
 import { clsx } from "clsx"
 import { useFocused } from "slate-react"
 
-import { ModalsProvider } from "~/src/layer"
+import { LayersProvider } from "~/src/layer"
 import { createPlugin } from "~/src/sink"
 
 import { Button } from "./button"
@@ -41,9 +41,9 @@ export const ToolbarPlugin = () =>
         const focused = useFocused()
         return (
           <$$Container className={clsx({ "--focused": focused })}>
-            <ModalsProvider>
+            <LayersProvider>
               <$Toolbar>{items.map(RenderToolbarItem)}</$Toolbar>
-            </ModalsProvider>
+            </LayersProvider>
             <Editable as={$Editable} {...attributes} />
           </$$Container>
         )
