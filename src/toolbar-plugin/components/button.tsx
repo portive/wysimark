@@ -22,10 +22,7 @@ export function Button({
   const tooltip = useLayer("tooltip", Tooltip)
   const menu = useLayer("menu", Menu)
 
-  const onMouseEnter = useCallback((e: MouseEvent<HTMLElement>) => {
-    if (item.title !== undefined) {
-      tooltip.open({ title: item.title, dest: e.currentTarget })
-    }
+  const onClick = useCallback((e: MouseEvent<HTMLElement>) => {
     if (item.children !== undefined) {
       menu.open({
         dest: e.currentTarget,
@@ -35,9 +32,10 @@ export function Button({
     }
   }, [])
 
-  const onMouseLeave = useCallback(() => {
-    tooltip.close()
-    menu.close()
+  const onMouseEnter = useCallback((e: MouseEvent<HTMLElement>) => {
+    if (item.title !== undefined) {
+      tooltip.open({ title: item.title, dest: e.currentTarget })
+    }
   }, [])
 
   useEffect(() => {
@@ -58,8 +56,8 @@ export function Button({
     <$Button
       ref={ref}
       onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
-      onClick={onMouseEnter}
+      onMouseLeave={tooltip.close}
+      onClick={onClick}
       className={clsx({ "--active": active })}
     >
       {children}

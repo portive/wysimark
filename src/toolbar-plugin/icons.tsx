@@ -1,9 +1,18 @@
 import { SVGProps } from "react"
 
+/**
+ * Efficient way to create a Tabler Icon.
+ *
+ * https://tabler-icons.io/
+ *
+ * - Grab the SVG from the Tabler Icon.
+ * - Run it through https://react-svgr.com/playground/?icon=true&typescript=true
+ * - Grab everything EXCEPT the first `path` which is unnecessary
+ * - Place it as the children of this `<Icon>`
+ */
 const Icon = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    className="icon icon-tabler icon-tabler-h-1"
     width="1em"
     height="1em"
     // strokeWidth={2}
@@ -97,17 +106,41 @@ export const Link = () => (
   </Icon>
 )
 
-export const BlockQuote = () => (
+/**
+ * Block Quote
+ */
+
+export const Blockquote = () => (
   <Icon>
     <path d="M6 15h15M21 19H6M15 11h6M21 7h-6M9 9h1a1 1 0 1 1-1 1V7.5a2 2 0 0 1 2-2M3 9h1a1 1 0 1 1-1 1V7.5a2 2 0 0 1 2-2" />
   </Icon>
 )
+
+export const Quote = () => (
+  <Icon>
+    <path d="M10 11H6a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v6c0 2.667-1.333 4.333-4 5M19 11h-4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v6c0 2.667-1.333 4.333-4 5" />
+  </Icon>
+)
+
+export const QuoteOff = () => (
+  <Icon>
+    <path d="M10 11H6a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1m4 4v3c0 2.667-1.333 4.333-4 5M19 11h-4m-1-1V7a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v6c0 .66-.082 1.26-.245 1.798m-1.653 2.29c-.571.4-1.272.704-2.102.912M3 3l18 18" />
+  </Icon>
+)
+
+/**
+ * List
+ */
 
 export const BulletList = () => (
   <Icon>
     <path d="M9 6h11M9 12h11M9 18h11M5 6v.01M5 12v.01M5 18v.01" />
   </Icon>
 )
+
+/**
+ * Table
+ */
 
 export const Table = () => (
   <Icon>
@@ -116,11 +149,19 @@ export const Table = () => (
   </Icon>
 )
 
+/**
+ * Code
+ */
+
 export const Code = () => (
   <Icon>
     <path d="m7 8-4 4 4 4M17 8l4 4-4 4M14 4l-4 16" />
   </Icon>
 )
+
+/**
+ * Media and Files
+ */
 
 export const Image = () => (
   <Icon>
@@ -136,6 +177,10 @@ export const Attachment = () => (
     <path d="m15 7-6.5 6.5a1.5 1.5 0 0 0 3 3L18 10a3 3 0 0 0-6-6l-6.5 6.5a4.5 4.5 0 0 0 9 9L21 13" />
   </Icon>
 )
+
+/**
+ * Text Styles
+ */
 
 export const Plus = () => (
   <Icon>
@@ -164,5 +209,17 @@ export const RemoveStyles = () => (
   <Icon>
     <path d="m14 6 7 7-2 2M10 10l-4.172 4.172a2.828 2.828 0 1 0 4 4L14 14" />
     <path d="m16 12 4.414-4.414a2 2 0 0 0 0-2.829l-1.171-1.171a2 2 0 0 0-2.829 0L12 8M4 20l1.768-1.768M3 3l18 18" />
+  </Icon>
+)
+
+export const ListCheck = () => (
+  <Icon>
+    <path d="M3.5 5.5 5 7l2.5-2.5M3.5 11.5 5 13l2.5-2.5M3.5 17.5 5 19l2.5-2.5M11 6h9M11 12h9M11 18h9" />
+  </Icon>
+)
+
+export const ListNumbers = () => (
+  <Icon>
+    <path d="M11 6h9M11 12h9M12 18h8M4 16a2 2 0 1 1 4 0c0 .591-.5 1-1 1.5L4 20h4M6 10V4L4 6" />
   </Icon>
 )

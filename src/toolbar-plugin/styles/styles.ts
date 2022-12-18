@@ -5,7 +5,7 @@ import { SinkReset } from "~/src/sink/create-sink/sink-editable"
 
 import { $Container } from "../../shared-layout"
 
-export const $$Container = styled($Container, forwardRef)`
+export const $OuterContainer = styled($Container, forwardRef)`
   /**
    * We use this to make sure the top of the container is rounded even though
    * the toolbar inside is square. We keep the toolbar square so that as the
@@ -136,4 +136,11 @@ export const $MenuItem = styled("div", forwardRef)`
   &:hover {
     background: var(--blue-50);
   }
+`
+
+export const $MenuDivider = styled("div", forwardRef)`
+  height: 1px;
+  background: var(--shade-200);
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
 `
