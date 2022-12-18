@@ -1,7 +1,7 @@
 import { clsx } from "clsx"
 import { useFocused } from "slate-react"
 
-import { ModalsProvider } from "~/src/modal"
+import { ModalsProvider } from "~/src/layer"
 import { createPlugin } from "~/src/sink"
 
 import { Button } from "./button"

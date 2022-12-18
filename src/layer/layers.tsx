@@ -1,20 +1,20 @@
 import { createContext, useState } from "react"
 
 import { Portal } from "./portal"
-import { ModalsContextValue, ModalsRecord } from "./types"
+import { LayersContextValue, LayersRecord } from "./types"
 
 /**
  * Wrap this around the Component in which you want to have the ability to
  * display one or more modals at once.
  */
-export const ModalsContext = createContext<ModalsContextValue>(
+export const LayersContext = createContext<LayersContextValue>(
   /**
    * This is set to an invalid value and then typecast as the correct type.
    *
    * This is okay though because in `ModalsProvider` we set the value to the
    * proper type before they are used for the first time.
    */
-  {} as ModalsContextValue
+  {} as LayersContextValue
 )
 
 /**
@@ -35,17 +35,17 @@ export const ModalsContext = createContext<ModalsContextValue>(
  *
  */
 export function ModalsProvider({ children }: { children: React.ReactNode }) {
-  const [modals, setModals] = useState<ModalsRecord>({})
+  const [layers, setLayers] = useState<LayersRecord>({})
   return (
-    <ModalsContext.Provider value={{ modals, setModals }}>
+    <LayersContext.Provider value={{ layers, setLayers }}>
       {children}
-      {Object.entries(modals).map(([, modal]) => {
+      {Object.entries(layers).map(([, modal]) => {
         return (
           <Portal key={modal.type}>
             <modal.Component {...modal.props} />
           </Portal>
         )
       })}
-    </ModalsContext.Provider>
+    </LayersContext.Provider>
   )
 }

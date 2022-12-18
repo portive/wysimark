@@ -3,7 +3,7 @@ import { Dispatch, FunctionComponent, SetStateAction } from "react"
 /**
  * Everything needed to render and identify a currently opened Modal.
  */
-export type Modal<T extends Record<string, unknown> = Record<string, unknown>> =
+export type Layer<T extends Record<string, unknown> = Record<string, unknown>> =
   {
     /**
      * The `type` identifies the use case for the modal and is special in that
@@ -42,7 +42,7 @@ export type Modal<T extends Record<string, unknown> = Record<string, unknown>> =
  * any given key. The `key` represents the `type` of the Modal. So, for example,
  * only one "tooltip" type can be open at once.
  */
-export type ModalsRecord = Record<string, Modal>
+export type LayersRecord = Record<string, Layer>
 
 /**
  * The value of the `ModalsContext` that is passed around.
@@ -52,7 +52,7 @@ export type ModalsRecord = Record<string, Modal>
  * This is an implementation detail and wouldn't be used directly. Instead,
  * the interface to this library should be through the `useModal` method.
  */
-export type ModalsContextValue = {
-  modals: ModalsRecord
-  setModals: Dispatch<SetStateAction<ModalsRecord>>
+export type LayersContextValue = {
+  layers: LayersRecord
+  setLayers: Dispatch<SetStateAction<LayersRecord>>
 }
