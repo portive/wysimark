@@ -1,11 +1,13 @@
 import { clsx } from "clsx"
 import { useFocused } from "slate-react"
 
+import { ModalsProvider } from "~/src/modal"
 import { createPlugin } from "~/src/sink"
 
+import { Button } from "./button"
 import { Item, items } from "./config"
 import * as Icon from "./icons"
-import { $$Container, $Button, $Divider, $Editable, $Toolbar } from "./styles"
+import { $$Container, $Divider, $Editable, $Toolbar } from "./styles"
 
 export type ToolbarEditor = {
   toolbar: true
@@ -16,22 +18,12 @@ export type ToolbarPluginCustomTypes = {
   Editor: ToolbarEditor
 }
 
-function Button({
-  active,
-  children,
-}: {
-  active?: boolean
-  children: React.ReactNode
-}) {
-  return <$Button className={clsx({ "--active": active })}>{children}</$Button>
-}
-
 function RenderToolbarItem(item: Item, index: number) {
   if (item === "divider") {
     return <$Divider key={index} />
   } else {
     return (
-      <Button key={index}>
+      <Button key={index} title={item.title}>
         <item.icon />
         {item.more ? <Icon.More /> : null}
       </Button>
@@ -49,7 +41,9 @@ export const ToolbarPlugin = () =>
         const focused = useFocused()
         return (
           <$$Container className={clsx({ "--focused": focused })}>
-            <$Toolbar>{items.map(RenderToolbarItem)}</$Toolbar>
+            <ModalsProvider>
+              <$Toolbar>{items.map(RenderToolbarItem)}</$Toolbar>
+            </ModalsProvider>
             <Editable as={$Editable} {...attributes} />
           </$$Container>
         )
