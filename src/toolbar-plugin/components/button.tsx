@@ -7,6 +7,8 @@ import { Item } from "../types"
 import { Menu } from "./menu"
 import { Tooltip } from "./tooltip"
 
+const debug = false
+
 export function Button({
   active,
   children,
@@ -38,16 +40,19 @@ export function Button({
     menu.close()
   }, [])
 
-  /**
-   * TEMPORARY:
-   *
-   * Immediately open the menu so we can view it while playing with it.
-   */
-  // useEffect(() => {
-  //   if (item.children === undefined) return
-  //   if (ref.current === null) return
-  //   menu.open({ dest: ref.current, items: item.children, close: menu.close })
-  // }, [])
+  useEffect(() => {
+    /**
+     * DEBUG:
+     *
+     * Immediately open the menu so we can view it while playing with it when
+     * `debug` is true.
+     */
+    if (debug) {
+      if (item.children === undefined) return
+      if (ref.current === null) return
+      menu.open({ dest: ref.current, items: item.children, close: menu.close })
+    }
+  }, [])
 
   return (
     <$Button
