@@ -1,10 +1,11 @@
-import { styled } from "goober"
-import React, { forwardRef } from "react"
-import { Descendant, Editor, Transforms } from "slate"
+import { clsx } from "clsx"
+import { Descendant } from "slate"
+import { useSelected } from "slate-react"
 
-import { createPlugin } from "~/src/sink"
+import { ConstrainedRenderElementProps, createPlugin } from "~/src/sink"
 
 import { createAnchorMethods } from "./methods"
+import { $Anchor, $Edge } from "./styles"
 
 type AnchorMethods = ReturnType<typeof createAnchorMethods>
 
@@ -25,13 +26,6 @@ export type AnchorPluginCustomTypes = {
   Element: AnchorElement
 }
 
-const $Anchor = styled("a", forwardRef)`
-  color: var(--link-color, blue);
-  &:hover {
-    color: var(--link-hover-color, blue);
-  }
-`
-
 export const AnchorPlugin = () =>
   createPlugin<AnchorPluginCustomTypes>((editor) => {
     editor.anchor = createAnchorMethods(editor)
@@ -41,24 +35,39 @@ export const AnchorPlugin = () =>
         isInline(element) {
           if (element.type === "anchor") return true
         },
-        isVoid(element) {
-          if (element.type === "anchor") return false
-        },
       },
       editableProps: {
         renderElement: ({ element, attributes, children }) => {
           if (element.type === "anchor") {
             return (
-              <$Anchor
-                {...attributes}
-                href={element.href}
-                target={element.target}
-              >
+              <Anchor element={element} attributes={attributes}>
                 {children}
-              </$Anchor>
+              </Anchor>
             )
           }
         },
       },
     }
   })
+
+function Anchor({
+  element,
+  attributes,
+  children,
+}: ConstrainedRenderElementProps<AnchorElement>) {
+  const selected = useSelected()
+  return (
+    <$Anchor
+      className={clsx({ "--selected": selected })}
+      {...attributes}
+      href={element.href}
+      target={element.target}
+    >
+      {/* Edge allow Chrome to differentiate in/out of the link */}
+      <$Edge contentEditable={false} />
+      <span>{children}</span>
+      {/* Edge allow Chrome to differentiate in/out of the link */}
+      <$Edge contentEditable={false} />
+    </$Anchor>
+  )
+}
