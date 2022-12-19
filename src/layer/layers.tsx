@@ -49,7 +49,7 @@ export function Layers({ children }: { children: React.ReactNode }) {
   const [layers, setLayers] = useState<LayersRecord>({})
 
   /**
-   * Open a layer
+   * Open a layer of the given type
    */
   function openLayer(layer: Layer) {
     setLayers((layers) => {
@@ -60,6 +60,9 @@ export function Layers({ children }: { children: React.ReactNode }) {
     })
   }
 
+  /**
+   * Close a layer of the given type
+   */
   function closeLayer(layerType: string) {
     setLayers((layers) => {
       const nextLayers = { ...layers }
@@ -68,6 +71,10 @@ export function Layers({ children }: { children: React.ReactNode }) {
     })
   }
 
+  /**
+   * - provide the layers context
+   * - render the layers at the top of the DOM using a Portal
+   */
   return (
     <LayersContext.Provider
       value={{ layers, setLayers, openLayer, closeLayer }}
