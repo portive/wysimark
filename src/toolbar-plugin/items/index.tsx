@@ -43,7 +43,15 @@ export const items: Item[] = [
   },
   { icon: Icon.Code, title: "Code Block", more: true },
   "divider",
-  { icon: Icon.Link, title: "Insert Link", hotkey: "mod+k" },
+  {
+    icon: Icon.Link,
+    title: "Insert Link",
+    hotkey: "mod+k",
+    action: (editor) =>
+      editor.anchor.insertLink("https://www.google.com/", "Google", {
+        select: true,
+      }),
+  },
   { icon: Icon.Image, title: "Insert Image" },
   { icon: Icon.Attachment, title: "Insert Attachment" },
   "divider",

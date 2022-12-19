@@ -1,11 +1,15 @@
 import { styled } from "goober"
 import React, { forwardRef } from "react"
-import { Descendant } from "slate"
+import { Descendant, Editor, Transforms } from "slate"
 
 import { createPlugin } from "~/src/sink"
 
+import { createAnchorMethods } from "./methods"
+
+type AnchorMethods = ReturnType<typeof createAnchorMethods>
+
 export type AnchorEditor = {
-  supportsAnchor: true
+  anchor: AnchorMethods
 }
 
 export type AnchorElement = {
@@ -30,7 +34,7 @@ const $Anchor = styled("a", forwardRef)`
 
 export const AnchorPlugin = () =>
   createPlugin<AnchorPluginCustomTypes>((editor) => {
-    editor.supportsAnchor = true
+    editor.anchor = createAnchorMethods(editor)
     return {
       name: "anchor",
       editor: {
