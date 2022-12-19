@@ -4,7 +4,7 @@ import { forwardRef } from "react"
 import { $Panel } from "./panel-styles"
 
 export const $Menu = styled($Panel, forwardRef)`
-  position: fixed;
+  position: absolute;
   padding-top: 0.5em;
   padding-bottom: 0.5em;
 `

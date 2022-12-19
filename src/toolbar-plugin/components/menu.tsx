@@ -1,11 +1,10 @@
+import { useRef } from "react"
+
 import { CloseMask } from "~/src/layer/close-mask"
+import { useAbsoluteReposition } from "~/src/use-reposition"
 
 import { $Menu, $MenuDivider, $MenuItem } from "../styles"
 import { Item } from "../types"
-
-function useRect(dest: HTMLElement): DOMRect {
-  return dest.getBoundingClientRect()
-}
 
 const key = {
   cmd: "\u2318",
@@ -24,16 +23,15 @@ export function Menu({
   close: () => void
   items: Item[]
 }) {
-  const rect = useRect(dest)
+  const ref = useRef<HTMLDivElement>(null)
+  const style = useAbsoluteReposition({ src: ref, dest }, ({ src, dest }) => {
+    return { left: dest.left, top: dest.top + dest.height }
+  })
+
   return (
     <>
       <CloseMask close={close} />
-      <$Menu
-        style={{
-          left: rect.left,
-          top: rect.bottom,
-        }}
-      >
+      <$Menu ref={ref} style={style}>
         {items.map((item, index) => {
           if (item === "divider") {
             return <$MenuDivider key={index} />
