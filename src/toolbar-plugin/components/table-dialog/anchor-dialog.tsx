@@ -46,8 +46,6 @@ export function AnchorDialog({
     }
   )
 
-  console.log("AnchorDialog style", style)
-
   const [url, setUrl] = useState("")
 
   const insertLink = () => {

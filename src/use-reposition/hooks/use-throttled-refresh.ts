@@ -1,4 +1,15 @@
-import throttle from "just-throttle"
+/**
+ * NOTE:
+ *
+ * We have a preference for `just` packages like `just-throttle` since they
+ * tend to be micro, but `just-throttle` has a bug. It does not execute
+ * on the trailing edge even when told to do so.
+ *
+ * We ran a test where we logged the call to `refresh` and when the refresh was
+ * executed and there were leftover `refresh` calls without a trailing
+ * execution.
+ */
+import throttle from "lodash.throttle"
 import { useState } from "react"
 
 /**
@@ -10,6 +21,7 @@ import { useState } from "react"
  */
 export function useThrottledRefresh(intervalInMs = 100) {
   const [counter, setState] = useState(0)
+
   const refresh = throttle(
     () => {
       setState((counter) => counter + 1)
@@ -17,5 +29,6 @@ export function useThrottledRefresh(intervalInMs = 100) {
     intervalInMs,
     { trailing: true }
   )
+
   return Object.assign(refresh, { counter })
 }
