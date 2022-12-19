@@ -1,8 +1,9 @@
-import { Descendant } from "slate"
+import { Descendant, Element, Transforms } from "slate"
 
-import { createPlugin } from "~/src/sink"
+import { createPlugin, curry } from "~/src/sink"
 
 import { createAnchorMethods } from "./methods"
+import { normalizeNode } from "./normalize-node"
 import { Anchor } from "./render-element/anchor"
 
 type AnchorMethods = ReturnType<typeof createAnchorMethods>
@@ -33,6 +34,7 @@ export const AnchorPlugin = () =>
         isInline(element) {
           if (element.type === "anchor") return true
         },
+        normalizeNode: curry(normalizeNode, editor),
       },
       editableProps: {
         renderElement: ({ element, attributes, children }) => {
