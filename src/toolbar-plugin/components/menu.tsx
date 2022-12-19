@@ -1,4 +1,6 @@
-import { useRef } from "react"
+import { useCallback, useRef } from "react"
+import { Editor } from "slate"
+import { ReactEditor, useSlateStatic } from "slate-react"
 
 import { useAbsoluteReposition } from "~/src/use-reposition"
 
@@ -23,6 +25,7 @@ export function Menu({
   close: () => void
   items: Item[]
 }) {
+  const editor = useSlateStatic()
   const ref = useRef<HTMLDivElement>(null)
   const style = useAbsoluteReposition({ src: ref, dest }, ({ src, dest }) => {
     return { left: dest.left, top: dest.top + dest.height }
@@ -36,7 +39,9 @@ export function Menu({
           if (item === "divider") {
             return <$MenuDivider key={index} />
           } else {
-            return <MenuItem key={index} item={item} />
+            return (
+              <MenuItem key={index} editor={editor} item={item} close={close} />
+            )
           }
         })}
       </$Menu>
@@ -44,10 +49,24 @@ export function Menu({
   )
 }
 
-export function MenuItem({ item }: { item: Exclude<Item, "divider"> }) {
+export function MenuItem({
+  editor,
+  item,
+  close,
+}: {
+  editor: Editor
+  item: Exclude<Item, "divider">
+  close: () => void
+}) {
+  const onClick = useCallback(() => {
+    if (!item.action) return
+    item.action(editor)
+    ReactEditor.focus(editor)
+    close()
+  }, [editor, item])
   return (
     <>
-      <$MenuItem>
+      <$MenuItem onClick={onClick}>
         <div className="--icon">
           <item.icon />
         </div>

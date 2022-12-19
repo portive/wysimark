@@ -8,6 +8,10 @@ export const $Menu = styled($Panel, forwardRef)`
   padding-top: 0.5em;
   padding-bottom: 0.5em;
   transition: all 200ms;
+  /**
+   * Prevent clicks from stealing focus from the editor
+   */
+  user-select: none;
 `
 
 export const $MenuItem = styled("div", forwardRef)`

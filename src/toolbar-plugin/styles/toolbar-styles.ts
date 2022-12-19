@@ -19,6 +19,10 @@ export const $Toolbar = styled("div", forwardRef)`
   padding: 0 0.5em;
   border-bottom: 1px solid var(--shade-300);
   box-sizing: border-box;
+  /**
+   * Prevent clicks from stealing focus from the editor
+   */
+  user-select: none;
 `
 
 export const $ToolbarDivider = styled("div", forwardRef)`

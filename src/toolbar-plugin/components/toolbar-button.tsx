@@ -1,5 +1,6 @@
 import { clsx } from "clsx"
 import { MouseEvent, useCallback, useEffect, useRef } from "react"
+import { ReactEditor, useSlateStatic } from "slate-react"
 
 import { useLayer } from "../../layer"
 import * as Icon from "../icons"
@@ -17,6 +18,7 @@ export function ToolbarButton({
   active?: boolean
   item: Exclude<Item, "divider">
 }) {
+  const editor = useSlateStatic()
   const ref = useRef<HTMLDivElement>(null)
   const tooltip = useLayer("tooltip")
   const menu = useLayer("menu")
@@ -29,6 +31,11 @@ export function ToolbarButton({
   }, [item])
 
   const onClick = useCallback(() => {
+    if (item.action) {
+      item.action(editor)
+      ReactEditor.focus(editor)
+      return
+    }
     if (menu.layer) {
       menu.close()
     } else {

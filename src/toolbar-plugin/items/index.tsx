@@ -13,8 +13,18 @@ export const items: Item[] = [
     children: headingItems,
   },
   "divider",
-  { icon: Icon.Bold, title: "Bold", hotkey: "mod+b" },
-  { icon: Icon.Italic, title: "Italic", hotkey: "mod+i" },
+  {
+    icon: Icon.Bold,
+    title: "Bold",
+    hotkey: "mod+b",
+    action: (editor) => editor.marksPlugin.toggleBold(),
+  },
+  {
+    icon: Icon.Italic,
+    title: "Italic",
+    hotkey: "mod+i",
+    action: (editor) => editor.marksPlugin.toggleItalic(),
+  },
   { icon: Icon.Style, title: "Text Style", more: true, children: styleItems },
   "divider",
   {
