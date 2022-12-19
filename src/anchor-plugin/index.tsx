@@ -59,9 +59,9 @@ function Anchor({
   return (
     <$Anchor
       className={clsx({ "--selected": selected })}
-      {...attributes}
       href={element.href}
       target={element.target}
+      {...attributes}
     >
       {/* Edge allow Chrome to differentiate in/out of the link */}
       <$Edge contentEditable={false} />
