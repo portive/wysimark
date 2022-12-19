@@ -27,6 +27,9 @@ export const CollapsibleParagraphPlugin = () =>
       name: "collapsible-paragraph",
       editor: {
         normalizeNode: curry(normalizeNode, editor),
+        isConvertible: (element) => {
+          if (element.type === "paragraph") return true
+        },
       },
       editableProps: {
         renderElement: (props) => {

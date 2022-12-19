@@ -1,15 +1,18 @@
+import clsx from "clsx"
 import React from "react"
 
 import { createHotkeyHandler, createPlugin, toggleMark } from "~/src/sink"
 
+import { $Span } from "./styles"
+
 export type MarksEditor = {
-  supportsMarks: true
   marksPlugin: {
     toggleBold: () => void
     toggleItalic: () => void
     toggleUnderline: () => void
     toggleSup: () => void
     toggleSub: () => void
+    toggleStrike: () => void
   }
 }
 
@@ -20,6 +23,7 @@ export type MarksText = {
   underline?: true
   sup?: true
   sub?: true
+  strike?: true
 }
 
 export type MarksPluginCustomTypes = {
@@ -30,33 +34,31 @@ export type MarksPluginCustomTypes = {
 
 export const MarksPlugin = () =>
   createPlugin<MarksPluginCustomTypes>((editor) => {
-    editor.supportsMarks = true
     const p = (editor.marksPlugin = {
       toggleBold: () => toggleMark(editor, "bold"),
       toggleItalic: () => toggleMark(editor, "italic"),
       toggleUnderline: () => toggleMark(editor, "underline"),
       toggleSup: () => toggleMark(editor, "sup", "sub"),
       toggleSub: () => toggleMark(editor, "sub", "sup"),
+      toggleStrike: () => toggleMark(editor, "strike"),
     })
     return {
       name: "marks",
       editableProps: {
         renderLeaf: ({ leaf, children }) => {
           return (
-            <span
-              style={{
-                fontWeight: leaf.bold ? "bold" : undefined,
-                fontStyle: leaf.italic ? "italic" : undefined,
-                textDecoration: leaf.underline ? "underline" : undefined,
-                verticalAlign: leaf.sup
-                  ? "super"
-                  : leaf.sub
-                  ? "sub"
-                  : undefined,
-              }}
+            <$Span
+              className={clsx({
+                "--bold": leaf.bold,
+                "--italic": leaf.italic,
+                "--underline": leaf.underline,
+                "--sup": leaf.sup,
+                "--sub": leaf.sub,
+                "--strike": leaf.strike,
+              })}
             >
               {children}
-            </span>
+            </$Span>
           )
         },
         onKeyDown: createHotkeyHandler({
@@ -65,6 +67,7 @@ export const MarksPlugin = () =>
           "mod+u": p.toggleUnderline,
           "super+p": p.toggleSup,
           "super+b": p.toggleSub,
+          "super+k": p.toggleStrike,
         }),
       },
     }
