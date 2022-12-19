@@ -7,6 +7,7 @@ export const $Menu = styled($Panel, forwardRef)`
   position: absolute;
   padding-top: 0.5em;
   padding-bottom: 0.5em;
+  transition: all 200ms;
 `
 
 export const $MenuItem = styled("div", forwardRef)`
