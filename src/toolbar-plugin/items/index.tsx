@@ -7,6 +7,15 @@ import { listItems } from "./list-items"
 import { quoteItems } from "./quote-items"
 import { styleItems } from "./style-items"
 
+/**
+ * A collection of `Item` objects that describe either
+ *
+ * - A Button in the toolbar
+ * - A Menu Item in a drop down of the toolbar
+ *
+ * An `Item` is described in the same way whether it is a button or a menu
+ * item making them interchangeable.
+ */
 export const items: Item[] = [
   {
     icon: Icon.H,

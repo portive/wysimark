@@ -1,4 +1,4 @@
-import { Descendant, Element, Transforms } from "slate"
+import { Descendant } from "slate"
 
 import { createPlugin, curry } from "~/src/sink"
 

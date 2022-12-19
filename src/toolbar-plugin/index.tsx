@@ -23,6 +23,13 @@ export const ToolbarPlugin = () =>
       editor: {},
       renderEditable: ({ attributes, Editable }) => {
         const focused = useFocused()
+        /**
+         * The Toolbar works by rendering an $OuterContainer which is the border
+         * around the entire editor.
+         *
+         * Inside the $OuterContainer, we have our actual Toolbar and the
+         * actual Editable.
+         */
         return (
           <$OuterContainer className={clsx({ "--focused": focused })}>
             <Toolbar />
