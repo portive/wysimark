@@ -1,10 +1,10 @@
 import { RefObject } from "react"
 
-import { getFixedRect } from "./get-fixed-rect"
-import { getFixedViewport } from "./get-fixed-viewport"
-import { MapHTMLElementLikeRecordToRectRecord, Rect } from "./types"
+import { getFixedRect } from "../get-methods/get-fixed-rect"
+import { getFixedViewport } from "../get-methods/get-fixed-viewport"
+import { MapHTMLElementLikeRecordToRectRecord, Rect } from "../types"
 import { useReposition } from "./use-reposition"
-import { mapHTMLElementLikeRecordToRectRecord } from "./utils"
+import { mapHTMLElementLikeRecordToRectRecord } from "../utils"
 
 export function useFixedReposition<
   T extends Record<string, HTMLElement | RefObject<HTMLElement>>,

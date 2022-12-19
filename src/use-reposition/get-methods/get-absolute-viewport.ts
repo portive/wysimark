@@ -1,5 +1,5 @@
+import { Rect } from "../types"
 import { getFixedViewport } from "./get-fixed-viewport"
-import { Rect } from "./types"
 
 export function getAbsoluteViewport(): Rect {
   const rect = getFixedViewport()

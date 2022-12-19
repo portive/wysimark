@@ -1,4 +1,4 @@
-import { Rect } from "./types"
+import { Rect } from "../types"
 
 export function getFixedRect(domElement: HTMLElement): Rect {
   const bounds = domElement.getBoundingClientRect()
