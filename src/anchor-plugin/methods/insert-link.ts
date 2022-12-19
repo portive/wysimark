@@ -1,4 +1,4 @@
-import { Editor, Range, Transforms } from "slate"
+import { Editor, Range, Text, Transforms } from "slate"
 
 export function insertLink(
   editor: Editor,
@@ -6,6 +6,9 @@ export function insertLink(
   text: string = href,
   { select = true }: { select?: boolean } = {}
 ) {
+  /**
+   * If there is no selection, we default by inserting at the start of document.
+   */
   const selection = editor.selection || {
     anchor: Editor.start(editor, [0]),
     focus: Editor.start(editor, [0]),
@@ -31,10 +34,16 @@ export function insertLink(
       Transforms.select(editor, entry[1])
     }
   } else {
+    /**
+     * If there is a selection, we wrap the selection with our anchor.
+     */
     Transforms.wrapNodes(
       editor,
       { type: "anchor", href, children: [] },
-      { split: true }
+      {
+        split: true,
+        match: (node) => Text.isText(node) || Editor.isInline(editor, node),
+      }
     )
   }
 }
