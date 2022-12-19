@@ -5,7 +5,7 @@ import { useAbsoluteReposition } from "~/src/use-reposition"
 
 import { $Menu, $MenuDivider } from "../../styles"
 import { Item } from "../../types"
-import { CloseMask } from "../close-mask"
+import { CloseMask } from "../shared/close-mask"
 import { MenuItem } from "./menu-item"
 
 export const key = {

@@ -1,35 +1,15 @@
 import clsx from "clsx"
-import { styled } from "goober"
-import { forwardRef, useCallback, useRef, useState } from "react"
+import { useCallback, useRef, useState } from "react"
 import { ReactEditor, useSlateStatic } from "slate-react"
 
 import { useAbsoluteReposition } from "~/src/use-reposition"
 
-import { $Panel } from "../../styles"
-import { CloseMask } from "../close-mask"
-
-const $TableDialog = styled($Panel, forwardRef)`
-  padding: 0.5em;
-`
-
-const $TableDialogGrid = styled("div", forwardRef)`
-  display: grid;
-  grid-template-columns: repeat(5, 1.75em);
-  grid-template-rows: 1.5em;
-  /* grid-gap: 1px; */
-`
-
-const $TableDialogGridCell = styled("div", forwardRef)`
-  background: var(--shade-100);
-  height: 1.5em;
-  border-radius: 0.125em;
-  border-right: 1px solid white;
-  border-top: 1px solid white;
-  cursor: pointer;
-  &.--selected {
-    background: var(--blue-100);
-  }
-`
+import {
+  $TableDialog,
+  $TableDialogGrid,
+  $TableDialogGridCell,
+} from "../../styles/table-styles"
+import { CloseMask } from "../shared/close-mask"
 
 function createRange(size: number): number[] {
   return [...Array(size).keys()]

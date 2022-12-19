@@ -3,6 +3,15 @@ import { forwardRef } from "react"
 
 import { SinkReset } from "~/src/sink/create-sink/sink-editable"
 
+/**
+ * $Panel is a nice box that goes around a Drop Down menu or a Dialog Box.
+ *
+ * We don't use $Panel directly and instead we extend it.
+ *
+ * The $Panel itself extends the `SinkReset` and we do this because the
+ * Component appears at the root. So any styling, for example like from
+ * Bootstrap or Material UI will affect what's in the Panel.
+ */
 export const $Panel = styled(SinkReset, forwardRef)`
   position: absolute;
   z-index: 1000;
