@@ -1,10 +1,10 @@
 import { useRef } from "react"
 
-import { CloseMask } from "~/src/layer/close-mask"
 import { useAbsoluteReposition } from "~/src/use-reposition"
 
 import { $Menu, $MenuDivider, $MenuItem } from "../styles"
 import { Item } from "../types"
+import { CloseMask } from "./close-mask"
 
 const key = {
   cmd: "\u2318",
