@@ -1,12 +1,13 @@
-import { styled } from "goober"
-import React, { forwardRef } from "react"
-import { Descendant, Element, Node, Transforms } from "slate"
+import React from "react"
+import { Descendant, Editor, Element, Node, Transforms } from "slate"
 
 import {
   createHotkeyHandler,
   createPlugin,
   normalizeSiblings,
 } from "~/src/sink"
+
+import { $BlockQuote } from "./styles"
 
 export type BlockQuoteEditor = {
   supportsBlockQuote: true
@@ -26,15 +27,6 @@ export type BlockQuotePluginCustomTypes = {
   Editor: BlockQuoteEditor
   Element: BlockQuoteElement
 }
-
-const $BlockQuote = styled("blockquote", forwardRef)`
-  position: relative;
-  margin-top: 1em;
-  margin-bottom: 1em;
-  margin-left: 0;
-  border-left: 0.25em solid rgba(0, 0, 0, 0.075);
-  padding-left: 1.5em;
-`
 
 function matchBlockQuoteSafe(node: Node) {
   return (
@@ -74,12 +66,6 @@ export const BlockQuotePlugin = () =>
     return {
       name: "block-quote",
       editor: {
-        isInline(element) {
-          if (element.type === "block-quote") return false
-        },
-        isVoid(element) {
-          if (element.type === "block-quote") return false
-        },
         normalizeNode(entry) {
           const [node, path] = entry
           if (!Element.isElement(node)) return false
@@ -93,7 +79,7 @@ export const BlockQuotePlugin = () =>
             ) {
               Transforms.mergeNodes(editor, { at: b[1] })
             }
-            return false
+            return true
           })
         },
       },
