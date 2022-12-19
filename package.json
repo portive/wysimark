@@ -23,6 +23,7 @@
     "eslint-plugin-react": "^7.27",
     "eslint-plugin-simple-import-sort": "^8.0",
     "jest": "^27",
+    "plop": "^2",
     "prettier": "^2",
     "ts-jest": "^27",
     "ts-node": "^10.9.1",
@@ -49,6 +50,8 @@
     "-- next": "# NextJs",
     "start:local": "DOTENV=.env/local.env next dev -p 3732",
     "open": "open -a 'google chrome' http://localhost:3732",
+    "-- plop": "# Plop: specify ts-node https://github.com/plopjs/plop/issues/192",
+    "plop": "TS_NODE_PROJECT=tsconfig.ts-node.json plop --plopfile plop/plopfile.ts",
     "-- end": "# end"
   },
   "dependencies": {
