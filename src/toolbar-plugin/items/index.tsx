@@ -1,3 +1,4 @@
+import { TablePanel } from "../components"
 import * as Icon from "../icons"
 import { Item } from "../types"
 import { headingItems } from "./heading-items"
@@ -34,7 +35,12 @@ export const items: Item[] = [
     children: listItems,
   },
   "divider",
-  { icon: Icon.Table, title: "Table", more: true },
+  {
+    icon: Icon.Table,
+    title: "Table",
+    more: true,
+    Component: TablePanel,
+  },
   {
     icon: Icon.Blockquote,
     title: "Block Quote",

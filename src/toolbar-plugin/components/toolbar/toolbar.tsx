@@ -1,8 +1,8 @@
 import { Layers } from "~/src/layer"
 
-import { items } from "../items"
-import { $Toolbar, $ToolbarDivider } from "../styles"
-import { Item } from "../types"
+import { items } from "../../items"
+import { $Toolbar, $ToolbarDivider } from "../../styles"
+import { Item } from "../../types"
 import { ToolbarButton } from "./toolbar-button"
 
 function ToolbarItem({ item }: { item: Item }) {

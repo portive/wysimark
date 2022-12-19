@@ -1,11 +1,9 @@
-import { clsx } from "clsx"
 import { Descendant } from "slate"
-import { useSelected } from "slate-react"
 
-import { ConstrainedRenderElementProps, createPlugin } from "~/src/sink"
+import { createPlugin } from "~/src/sink"
 
 import { createAnchorMethods } from "./methods"
-import { $Anchor, $Edge } from "./styles"
+import { Anchor } from "./render-element/anchor"
 
 type AnchorMethods = ReturnType<typeof createAnchorMethods>
 
@@ -49,25 +47,3 @@ export const AnchorPlugin = () =>
       },
     }
   })
-
-function Anchor({
-  element,
-  attributes,
-  children,
-}: ConstrainedRenderElementProps<AnchorElement>) {
-  const selected = useSelected()
-  return (
-    <$Anchor
-      className={clsx({ "--selected": selected })}
-      href={element.href}
-      target={element.target}
-      {...attributes}
-    >
-      {/* Edge allow Chrome to differentiate in/out of the link */}
-      <$Edge contentEditable={false} />
-      <span>{children}</span>
-      {/* Edge allow Chrome to differentiate in/out of the link */}
-      <$Edge contentEditable={false} />
-    </$Anchor>
-  )
-}

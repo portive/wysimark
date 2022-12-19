@@ -1,3 +1,4 @@
+import { FunctionComponent } from "react"
 import { Editor } from "slate"
 
 export type Item =
@@ -8,5 +9,6 @@ export type Item =
       action?: (editor: Editor) => void
       more?: boolean
       children?: Item[]
+      Component?: FunctionComponent<{ dest: HTMLElement; close: () => void }>
     }
   | "divider"

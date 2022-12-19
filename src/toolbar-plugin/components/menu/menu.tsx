@@ -1,14 +1,14 @@
-import { useCallback, useRef } from "react"
-import { Editor } from "slate"
-import { ReactEditor, useSlateStatic } from "slate-react"
+import { useRef } from "react"
+import { useSlateStatic } from "slate-react"
 
 import { useAbsoluteReposition } from "~/src/use-reposition"
 
-import { $Menu, $MenuDivider, $MenuItem } from "../styles"
-import { Item } from "../types"
-import { CloseMask } from "./close-mask"
+import { $Menu, $MenuDivider } from "../../styles"
+import { Item } from "../../types"
+import { CloseMask } from "../close-mask"
+import { MenuItem } from "./menu-item"
 
-const key = {
+export const key = {
   cmd: "\u2318",
   ctrl: "\u2303",
   shift: "⇧",
@@ -45,37 +45,6 @@ export function Menu({
           }
         })}
       </$Menu>
-    </>
-  )
-}
-
-export function MenuItem({
-  editor,
-  item,
-  close,
-}: {
-  editor: Editor
-  item: Exclude<Item, "divider">
-  close: () => void
-}) {
-  const onClick = useCallback(() => {
-    if (!item.action) return
-    item.action(editor)
-    ReactEditor.focus(editor)
-    close()
-  }, [editor, item])
-  return (
-    <>
-      <$MenuItem onClick={onClick}>
-        <div className="--icon">
-          <item.icon />
-        </div>
-        <div className="--title">{item.title}</div>
-        <div className="--hotkey">
-          {key.opt}
-          {key.cmd}1
-        </div>
-      </$MenuItem>
     </>
   )
 }

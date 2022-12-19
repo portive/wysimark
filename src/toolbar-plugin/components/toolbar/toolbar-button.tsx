@@ -2,11 +2,11 @@ import { clsx } from "clsx"
 import { MouseEvent, useCallback, useEffect, useRef } from "react"
 import { ReactEditor, useSlateStatic } from "slate-react"
 
-import { useLayer } from "../../layer"
-import * as Icon from "../icons"
-import { $ToolbarButton } from "../styles"
-import { Item } from "../types"
-import { Menu } from "./menu"
+import { useLayer } from "../../../layer"
+import * as Icon from "../../icons"
+import { $ToolbarButton } from "../../styles"
+import { Item } from "../../types"
+import { Menu } from "../menu/menu"
 import { Tooltip } from "./tooltip"
 
 const debug = false
@@ -26,8 +26,13 @@ export function ToolbarButton({
   const openMenu = useCallback(() => {
     const dest = ref.current
     const items = item.children
-    if (!dest || !items) return
-    menu.open(() => <Menu dest={dest} items={items} close={menu.close} />)
+    const Component = item.Component
+    if (!dest) return
+    if (items) {
+      menu.open(() => <Menu dest={dest} items={items} close={menu.close} />)
+    } else if (Component) {
+      menu.open(() => <Component dest={dest} close={menu.close} />)
+    }
   }, [item])
 
   const onClick = useCallback(() => {
