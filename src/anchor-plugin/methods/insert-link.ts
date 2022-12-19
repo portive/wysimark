@@ -6,6 +6,7 @@ export function insertLink(
   text: string = href,
   { select = true }: { select?: boolean } = {}
 ) {
+  console.log({ href, text, select })
   /**
    * Insert the node and select it if select is true
    */

@@ -1,16 +1,26 @@
-import { styled } from "goober"
-import { forwardRef, useRef } from "react"
-import { useSlateStatic } from "slate-react"
+import { isHotkey } from "is-hotkey"
+import {
+  ChangeEvent,
+  KeyboardEvent,
+  useCallback,
+  useRef,
+  useState,
+} from "react"
+import { ReactEditor, useSlateStatic } from "slate-react"
 
 import { useAbsoluteReposition } from "~/src/use-reposition"
 
 import * as Icon from "../../icons"
-import { $Panel } from "../../styles"
+import {
+  $AnchorDialog,
+  $AnchorDialogButton,
+  $AnchorDialogHint,
+  $AnchorDialogInput,
+  $AnchorDialogInputLine,
+} from "../../styles"
 import { CloseMask } from "../shared/close-mask"
 
-function createRange(size: number): number[] {
-  return [...Array(size).keys()]
-}
+const isEnter = isHotkey("enter")
 
 export function AnchorDialog({
   dest,
@@ -21,72 +31,51 @@ export function AnchorDialog({
 }) {
   const editor = useSlateStatic()
   const ref = useRef<HTMLDivElement>(null)
-  const style = useAbsoluteReposition({ src: ref, dest }, ({ src, dest }) => {
+  const style = useAbsoluteReposition({ src: ref, dest }, ({ dest }) => {
     return { left: dest.left, top: dest.top + dest.height }
   })
+
+  const [url, setUrl] = useState("")
+
+  const insertLink = () => {
+    editor.anchor.insertLink(url, url, { select: true })
+    ReactEditor.focus(editor)
+    close()
+  }
+
+  const onChangeInput = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
+      setUrl(e.currentTarget.value)
+    },
+    [setUrl]
+  )
+
+  const onKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (!isEnter(e)) return
+    e.preventDefault()
+    e.stopPropagation()
+    insertLink()
+  }
 
   return (
     <>
       <CloseMask close={close} />
       <$AnchorDialog ref={ref} style={style}>
-        <$InputLine>
-          <$Input type="text" value="https://www.google.com/" autoFocus />
-          <$Button>
+        <$AnchorDialogInputLine>
+          <$AnchorDialogInput
+            type="text"
+            value={url}
+            autoFocus
+            onChange={onChangeInput}
+            onKeyDown={onKeyDown}
+          />
+          <$AnchorDialogButton onClick={insertLink}>
             <Icon.Link />
             <Icon.LinkPlus />
-          </$Button>
-        </$InputLine>
-        <$Title>Enter URL of link</$Title>
+          </$AnchorDialogButton>
+        </$AnchorDialogInputLine>
+        <$AnchorDialogHint>Enter URL of link</$AnchorDialogHint>
       </$AnchorDialog>
     </>
   )
 }
-
-export const $AnchorDialog = styled($Panel, forwardRef)`
-  padding: 1em;
-  width: 24em;
-`
-export const $Title = styled("div", forwardRef)`
-  font-size: 0.875em;
-  margin-top: 0.5em;
-  color: var(--shade-500);
-`
-const $InputLine = styled("div", forwardRef)`
-  display: flex;
-  gap: 0.5em;
-`
-
-export const $Input = styled("input", forwardRef)`
-  flex: 1 1 auto;
-  padding: 0.5em 0.75em;
-  border-radius: 0.25em;
-  color: var(--shade-700);
-  border: 1px solid var(--shade-300);
-  font-size: 0.9375em;
-  &:focus {
-    outline: 2px solid var(--blue-200);
-  }
-`
-
-const $Button = styled("div", forwardRef)`
-  /* Center vertically and horizontally */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  font-size: 1.25em;
-  padding: 0 0.5em;
-  text-align: center;
-  color: var(--blue-100);
-  background: var(--blue-400);
-  transition: all 100ms;
-  &:hover {
-    color: var(--blue-50);
-    background: var(--blue-500);
-    outline: 2px solid var(--blue-200);
-  }
-  border-radius: 0.25em;
-  svg {
-    stroke-width: 2px;
-  }
-`
