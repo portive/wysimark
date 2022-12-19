@@ -5,12 +5,19 @@ import { Rect } from "../types"
  * the window viewport.
  */
 export function getFixedViewport(): Rect {
+  /**
+   * Get the width of the viewport not including the scrollbar
+   *
+   * https://stackoverflow.com/a/25298418
+   */
+  const width =
+    document.documentElement.clientWidth || document.body.clientWidth
   return {
     top: 0,
-    right: window.innerWidth,
+    right: width,
     bottom: window.innerHeight,
     left: 0,
-    width: window.innerWidth,
+    width: width,
     height: window.innerHeight,
   }
 }

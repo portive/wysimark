@@ -8,7 +8,7 @@ import {
 } from "react"
 import { ReactEditor, useSlateStatic } from "slate-react"
 
-import { useAbsoluteReposition } from "~/src/use-reposition"
+import { positionInside, useAbsoluteReposition } from "~/src/use-reposition"
 
 import * as Icon from "../../icons"
 import {
@@ -31,9 +31,22 @@ export function AnchorDialog({
 }) {
   const editor = useSlateStatic()
   const ref = useRef<HTMLDivElement>(null)
-  const style = useAbsoluteReposition({ src: ref, dest }, ({ dest }) => {
-    return { left: dest.left, top: dest.top + dest.height }
-  })
+  const style = useAbsoluteReposition(
+    { src: ref, dest },
+    ({ src, dest }, viewport) => {
+      return positionInside(
+        src,
+        viewport,
+        {
+          left: dest.left,
+          top: dest.top + dest.height,
+        },
+        { margin: 16 }
+      )
+    }
+  )
+
+  console.log("AnchorDialog style", style)
 
   const [url, setUrl] = useState("")
 
