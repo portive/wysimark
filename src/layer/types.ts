@@ -3,35 +3,30 @@ import { Dispatch, FunctionComponent, SetStateAction } from "react"
 /**
  * Everything needed to render and identify a currently opened Layer.
  */
-export type Layer<T extends Record<string, unknown> = Record<string, unknown>> =
-  {
-    /**
-     * The `type` identifies the use case for the layer and is special in that
-     * only one layer can be open for each type.
-     *
-     * For example, let's say a user opens a tooltip then opens another tooltip.
-     * The first opened tooltip will automatically be closed. This reflects how
-     * user interface usually work in that only one of each type of Layer can
-     * be opened at a time but layers at different levels can be open at the same
-     * time like a pop up form and a tooltip for a component in the popup form.
-     *
-     * Examples of different types are:
-     *
-     * - toolbar
-     * - dialog box
-     * - error box
-     */
-    type: string
-    /**
-     * The React Component (currently supported as only a FunctionComponent)
-     * to render.
-     */
-    Component: FunctionComponent<T>
-    /**
-     * The Props to be passed to the FunctionComponent
-     */
-    props: T
-  }
+export type Layer = {
+  /**
+   * The `type` identifies the use case for the layer and is special in that
+   * only one layer can be open for each type.
+   *
+   * For example, let's say a user opens a tooltip then opens another tooltip.
+   * The first opened tooltip will automatically be closed. This reflects how
+   * user interface usually work in that only one of each type of Layer can
+   * be opened at a time but layers at different levels can be open at the same
+   * time like a pop up form and a tooltip for a component in the popup form.
+   *
+   * Examples of different types are:
+   *
+   * - toolbar
+   * - dialog box
+   * - error box
+   */
+  type: string
+  /**
+   * The React Component (currently supported as only a FunctionComponent)
+   * to render.
+   */
+  Component: FunctionComponent<Record<string, never>>
+}
 
 /**
  * A Lookup Record that contains all the currently opened Compnent objects.

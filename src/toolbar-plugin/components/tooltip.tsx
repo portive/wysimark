@@ -23,7 +23,22 @@ const $Tooltip = styled("div", forwardRef)`
   white-space: nowrap;
 `
 
-export function Tooltip({ title, dest }: { title: string; dest: HTMLElement }) {
+const $Hotkey = styled("span", forwardRef)`
+  margin-left: 0.75em;
+  font-size: 0.875em;
+  font-weight: 500;
+  color: var(--shade-400);
+`
+
+export function Tooltip({
+  title,
+  hotkey,
+  dest,
+}: {
+  title: string
+  hotkey?: string
+  dest: HTMLElement
+}) {
   const rect = useRect(dest)
   return (
     <$Tooltip
@@ -33,6 +48,8 @@ export function Tooltip({ title, dest }: { title: string; dest: HTMLElement }) {
       }}
     >
       {title}
+
+      {hotkey ? <$Hotkey>{hotkey.toUpperCase()}</$Hotkey> : null}
     </$Tooltip>
   )
 }

@@ -77,7 +77,7 @@ export function Layers({ children }: { children: React.ReactNode }) {
         return (
           <Portal key={layer.type}>
             <LayerContext.Provider value={layer}>
-              <layer.Component {...layer.props} />
+              <layer.Component />
             </LayerContext.Provider>
           </Portal>
         )
