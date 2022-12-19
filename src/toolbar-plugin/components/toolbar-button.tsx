@@ -8,7 +8,7 @@ import { Item } from "../types"
 import { Menu } from "./menu"
 import { Tooltip } from "./tooltip"
 
-const debug = true
+const debug = false
 
 export function ToolbarButton({
   active,
