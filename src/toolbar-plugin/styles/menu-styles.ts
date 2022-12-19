@@ -3,6 +3,9 @@ import { forwardRef } from "react"
 
 import { $Panel } from "./panel-styles"
 
+/**
+ * Drop Down Menu
+ */
 export const $Menu = styled($Panel, forwardRef)`
   position: absolute;
   padding-top: 0.5em;
@@ -14,11 +17,19 @@ export const $Menu = styled($Panel, forwardRef)`
   user-select: none;
 `
 
+/**
+ * Individual items in Drop Down Menu
+ */
 export const $MenuItem = styled("div", forwardRef)`
   display: flex;
   padding: 0 1em 0 1.5em;
   height: 2em;
   align-items: center;
+  /**
+   * Normally we don't do it this way but since each part of the MenuItem
+   * is tightly related to the display: flex, this seemed the easiest way
+   * to set this up.
+   */
   .--icon {
     flex: 0 0;
     display: block;

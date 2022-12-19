@@ -1,4 +1,5 @@
-import { TablePanel } from "../components"
+import { TableDialog } from "../components"
+import { AnchorDialog } from "../components/table-dialog/anchor-dialog"
 import * as Icon from "../icons"
 import { Item } from "../types"
 import { headingItems } from "./heading-items"
@@ -39,7 +40,7 @@ export const items: Item[] = [
     icon: Icon.Table,
     title: "Table",
     more: true,
-    Component: TablePanel,
+    Component: TableDialog,
   },
   {
     icon: Icon.Blockquote,
@@ -53,10 +54,11 @@ export const items: Item[] = [
     icon: Icon.Link,
     title: "Insert Link",
     hotkey: "mod+k",
-    action: (editor) =>
-      editor.anchor.insertLink("https://www.google.com/", "Google", {
-        select: true,
-      }),
+    // action: (editor) =>
+    //   editor.anchor.insertLink("https://www.google.com/", "Google", {
+    //     select: true,
+    //   }),
+    Component: AnchorDialog,
   },
   { icon: Icon.Image, title: "Insert Image" },
   { icon: Icon.Attachment, title: "Insert Attachment" },

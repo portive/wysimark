@@ -15,7 +15,7 @@ function createRange(size: number): number[] {
   return [...Array(size).keys()]
 }
 
-export function TablePanel({
+export function TableDialog({
   dest,
   close,
 }: {

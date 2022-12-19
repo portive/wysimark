@@ -37,6 +37,12 @@ export const More = () => (
   </Icon>
 )
 
+export const LinkPlus = () => (
+  <Icon width="0.5em" viewBox="6 0 12 24">
+    <path d="M9 12h6M12 9v6" />
+  </Icon>
+)
+
 export const H1 = () => (
   <Icon>
     <path d="M19 18v-8l-2 2M4 6v12M12 6v12M11 18h2M3 18h2M4 12h8M3 6h2M11 6h2" />
