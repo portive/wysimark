@@ -64,10 +64,11 @@ import { ThemePlugin, ThemePluginCustomTypes } from "~/src/theme-plugin"
 import { ToolbarPlugin, ToolbarPluginCustomTypes } from "~/src/toolbar-plugin"
 import { TrailingBlockPlugin } from "~/src/trailing-block-plugin"
 import {
-  UploadElement,
-  UploadPlugin,
-  UploadPluginCustomTypes,
-} from "~/src/upload-plugin"
+  UploadAttachmentElement,
+  UploadAttachmentPlugin,
+  UploadAttachmentPluginCustomTypes,
+} from "~/src/upload-attachment-plugin"
+import { UploadPlugin, UploadPluginCustomTypes } from "~/src/upload-plugin"
 
 import { initialValue } from "./initial-value"
 
@@ -93,6 +94,7 @@ const Sink = createSink([
   // BasicLayoutPlugin(),
   ToolbarPlugin(),
   UploadPlugin({ authToken: process.env.NEXT_PUBLIC_PORTIVE_AUTH_TOKEN }),
+  UploadAttachmentPlugin(),
 ])
 
 const { withSink, SinkSlate, SinkEditable } = Sink
@@ -110,9 +112,9 @@ export type PluginCustomTypes = MergePluginCustomTypes<
     ListPluginCustomTypes,
     AtomicDeletePluginCustomTypes,
     ThemePluginCustomTypes,
-    // BasicLayoutPluginCustomTypes,
     ToolbarPluginCustomTypes,
-    UploadPluginCustomTypes
+    UploadPluginCustomTypes,
+    UploadAttachmentPluginCustomTypes
   ]
 >
 
@@ -134,7 +136,7 @@ declare module "slate" {
       | UnorderedListItemElement
       | TaskListItemElement
       | ParagraphElement
-      | UploadElement
+      | UploadAttachmentElement
     Text: { text: string } & PluginCustomTypes["Text"]
   }
 }

@@ -15,15 +15,9 @@ export type UploadEditor = {
   }
 }
 
-export type UploadElement = {
-  type: "upload"
-  children: Descendant[]
-}
-
 export type UploadPluginCustomTypes = {
   Name: "upload"
   Editor: UploadEditor
-  Element: UploadElement
 }
 
 export const UploadPlugin = ({ authToken }: { authToken?: string }) =>
