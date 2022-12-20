@@ -1,18 +1,17 @@
 import { Client, createClient } from "@portive/client"
 import { Descendant } from "slate"
 
-import { createPlugin, curry } from "~/src/sink"
+import { createPlugin } from "~/src/sink"
 
 import { createUploadMethods } from "./methods"
-import { normalizeNode } from "./normalize-node"
 
 type UploadMethods = ReturnType<typeof createUploadMethods>
 
 export type UploadEditor = {
   upload: UploadMethods & {
     client: Client
-    onUploadImageFile: () => boolean
-    onUploadFile: () => boolean
+    onUploadImageFile: (hashUrl: string, file: File) => boolean
+    onUploadFile: (hashUrl: string, file: File) => boolean
   }
 }
 
@@ -35,15 +34,19 @@ export const UploadPlugin = ({ authToken }: { authToken?: string }) =>
     const client = createClient({ authToken })
     editor.upload = {
       client,
-      onUploadImageFile: () => false,
-      onUploadFile: () => false,
+      onUploadImageFile: () => {
+        console.log("called onUploadImageFile")
+        return false
+      },
+      onUploadFile: () => {
+        console.log("called onUploadFile")
+        return false
+      },
       ...createUploadMethods(editor),
     }
     return {
       name: "upload",
-      editor: {
-        normalizeNode: curry(normalizeNode, editor),
-      },
+      editor: {},
       editableProps: {
         onPaste(e) {
           const files = e.nativeEvent.clipboardData?.files
