@@ -6,8 +6,8 @@ import { UploadAttachment } from "./upload-attachment"
 export function renderElement(
   props: ConstrainedRenderElementProps<UploadAttachmentElement>
 ) {
-  if (props.element.type === "upload-attachment") {
-    return <UploadAttachment {...props} />
+  switch (props.element.type) {
+    case "upload-attachment":
+      return <UploadAttachment {...props} />
   }
-  return
 }
