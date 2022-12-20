@@ -2,6 +2,14 @@ import { styled } from "goober"
 import { forwardRef } from "react"
 
 export const $UploadAttachment = styled("span", forwardRef)`
+  @keyframes spin-progress-icon {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(359deg);
+    }
+  }
   display: inline-block;
   border: 1px solid var(--shade-300);
   font-size: 0.875em;
@@ -41,6 +49,22 @@ export const $UploadAttachment = styled("span", forwardRef)`
         stroke-width: 2px;
       }
       color: white;
+      background: var(--select-color);
+    }
+  }
+  .--progress {
+    padding: 0.25em;
+    display: flex;
+    align-items: center;
+    user-select: none;
+    color: green;
+    animation: spin-progress-icon 1s linear infinite;
+    stroke-width: 2px;
+    &:hover {
+      svg {
+        color: green;
+      }
+      color: green;
       background: var(--select-color);
     }
   }

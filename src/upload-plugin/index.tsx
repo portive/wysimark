@@ -4,6 +4,7 @@ import { Descendant } from "slate"
 import { createPlugin } from "~/src/sink"
 
 import { createUploadMethods } from "./methods"
+import { createUploadStore, UploadStore } from "./store"
 
 type UploadMethods = ReturnType<typeof createUploadMethods>
 
@@ -12,6 +13,7 @@ export type UploadEditor = {
     client: Client
     onUploadImageFile: (hashUrl: string, file: File) => boolean
     onUploadFile: (hashUrl: string, file: File) => boolean
+    useUploadStore: ReturnType<typeof createUploadStore>
   }
 }
 
@@ -36,6 +38,7 @@ export const UploadPlugin = ({ authToken }: { authToken?: string }) =>
         console.log("called onUploadFile")
         return false
       },
+      useUploadStore: createUploadStore(),
       ...createUploadMethods(editor),
     }
     return {

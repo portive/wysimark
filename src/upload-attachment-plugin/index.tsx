@@ -26,6 +26,7 @@ export type UploadAttachmentElement = {
    */
   url: string
   title: string
+  bytes?: number
   children: Descendant[]
 }
 
@@ -43,6 +44,7 @@ export const UploadAttachmentPlugin = () =>
         type: "upload-attachment",
         title: file.name,
         url: hashUrl,
+        bytes: file.size,
         children: [{ text: "" }],
       })
       return true

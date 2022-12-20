@@ -8,7 +8,7 @@ export type UploadProgress = {
    * user's computer.
    */
   url: string
-  status: "uploading"
+  status: "progress"
   sentBytes: number
   totalBytes: number
 }
@@ -21,7 +21,7 @@ export type UploadComplete = {
    * This is a URL to the final place of the file
    */
   url: string
-  status: "complete"
+  status: "success"
 }
 
 /**
