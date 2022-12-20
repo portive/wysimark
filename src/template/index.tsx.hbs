@@ -1,0 +1,28 @@
+import { Descendant } from "slate"
+
+import { createPlugin } from "~/src/sink"
+
+export type {{pascalcase name}}Editor = {
+  {{camelcase name}}: true
+}
+
+export type {{pascalcase name}}Element = {
+  type: "{{dashcase name}}"
+  children: Descendant[]
+}
+
+export type {{pascalcase name}}PluginCustomTypes = {
+  Name: "{{camelcase name}}"
+  Editor: {{pascalcase name}}Editor
+  Element: {{pascalcase name}}Element
+}
+
+export const {{pascalcase name}}Plugin = () =>
+  createPlugin<{{pascalcase name}}PluginCustomTypes>((editor) => {
+    editor.{{camelcase name}} = true
+    return {
+      name: "{{camelcase name}}",
+      editor: {},
+      editableProps: {},
+    }
+  })
