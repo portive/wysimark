@@ -58,6 +58,7 @@
     "-- end": "# end"
   },
   "dependencies": {
+    "@portive/client": "^10.0.2",
     "@types/lodash.throttle": "^4.1.7",
     "clsx": "^1.2.1",
     "dotenv": "16.x",

@@ -43,7 +43,7 @@ export default function (plop: NodePlopAPI) {
         //   return template
         // },
         templateFiles: "../src/template/**/*.(ts|tsx)",
-        destination: "../src/{{ dashCase name }}/",
+        destination: "../src/{{ dashCase name }}-plugin/",
       },
     ],
   })

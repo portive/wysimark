@@ -6,10 +6,12 @@ import { EditableProps } from "slate-react/dist/components/editable"
 import { ConstrainedRenderElementProps, ConstrainedRenderLeafProps } from ".."
 import { BasePluginCustomTypes } from "./plugin-custom-types"
 
-export type RenderEditable = (props: {
+export type RenderEditableProps = {
   attributes: EditableProps
   Editable: typeof Editable
-}) => React.ReactElement
+}
+
+export type RenderEditable = (props: RenderEditableProps) => React.ReactElement
 
 /**
  * Once a Plugin is executed, it returns this Object that defines how the
@@ -94,6 +96,7 @@ export type PluginObject<T extends BasePluginCustomTypes> = {
     onKeyDown?: (e: React.SyntheticEvent<Element, KeyboardEvent>) => boolean
     onKeyUp?: (e: React.SyntheticEvent<Element, KeyboardEvent>) => boolean
     onKeyPress?: (e: React.SyntheticEvent<Element, KeyboardEvent>) => boolean
+    onPaste?: (e: React.ClipboardEvent<Element>) => boolean
     /**
      * `renderElement` behaves similar to the `renderElement` prop on `Editable`
      * but if `renderElement` returns undefined, we move on to the next

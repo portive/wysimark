@@ -63,6 +63,11 @@ import {
 import { ThemePlugin, ThemePluginCustomTypes } from "~/src/theme-plugin"
 import { ToolbarPlugin, ToolbarPluginCustomTypes } from "~/src/toolbar-plugin"
 import { TrailingBlockPlugin } from "~/src/trailing-block-plugin"
+import {
+  UploadElement,
+  UploadPlugin,
+  UploadPluginCustomTypes,
+} from "~/src/upload-plugin"
 
 import { initialValue } from "./initial-value"
 
@@ -87,6 +92,7 @@ const Sink = createSink([
   ThemePlugin(),
   // BasicLayoutPlugin(),
   ToolbarPlugin(),
+  UploadPlugin({ authToken: process.env.NEXT_PUBLIC_PORTIVE_AUTH_TOKEN }),
 ])
 
 const { withSink, SinkSlate, SinkEditable } = Sink
@@ -105,7 +111,8 @@ export type PluginCustomTypes = MergePluginCustomTypes<
     AtomicDeletePluginCustomTypes,
     ThemePluginCustomTypes,
     // BasicLayoutPluginCustomTypes,
-    ToolbarPluginCustomTypes
+    ToolbarPluginCustomTypes,
+    UploadPluginCustomTypes
   ]
 >
 
@@ -127,6 +134,7 @@ declare module "slate" {
       | UnorderedListItemElement
       | TaskListItemElement
       | ParagraphElement
+      | UploadElement
     Text: { text: string } & PluginCustomTypes["Text"]
   }
 }

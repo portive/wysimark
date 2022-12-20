@@ -1,6 +1,6 @@
 import { Descendant } from "slate"
 
-import { createPlugin } from "~/src/sink"
+import { createPlugin, curry } from "~/src/sink"
 
 import { create__VarName__Methods } from "./methods"
 import { normalizeNode } from "./normalize-node"
@@ -23,14 +23,12 @@ export type __VarName__PluginCustomTypes = {
 }
 
 export const __VarName__Plugin = () =>
-  /* fails type until you add it to CustomTypes. Then remove this comment. */
-  // @ts-ignore
   createPlugin<__VarName__PluginCustomTypes>((editor) => {
     editor.__varName__ = create__VarName__Methods(editor)
     return {
       name: "__var-name__",
       editor: {
-        normalizeNode,
+        normalizeNode: curry(normalizeNode, editor),
       },
       editableProps: {},
     }

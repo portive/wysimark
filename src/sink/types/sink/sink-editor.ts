@@ -53,6 +53,7 @@ export type SinkEditor<
       onKeyDown: PluginObject<T>[]
       onKeyPress: PluginObject<T>[]
       onKeyUp: PluginObject<T>[]
+      onPaste: PluginObject<T>[]
       renderEditable: PluginObject<T>[]
       renderElement: PluginObject<T>[]
       renderLeaf: PluginObject<T>[]

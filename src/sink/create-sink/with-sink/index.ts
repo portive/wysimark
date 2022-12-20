@@ -62,6 +62,7 @@ export function createWithSink(
           (plugin) => plugin.editableProps?.onKeyPress
         ),
         onKeyUp: plugins.filter((plugin) => plugin.editableProps?.onKeyUp),
+        onPaste: plugins.filter((plugin) => plugin.editableProps?.onPaste),
         /**
          * These get handled in reverse order. We wrap the last one around the
          * actual `Editable` and the earlier ones wrap around those. This
