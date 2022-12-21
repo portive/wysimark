@@ -96,7 +96,7 @@ export type ImageBlockElement = {
  */
 
 export type ImageInlineElement = {
-  type: "inline-image"
+  type: "image-inline"
 } & ImageInterface
 
 export type ImagePluginCustomTypes = {

@@ -22,9 +22,17 @@ export const ImagePlugin = ({
     }
     editor.upload.onUploadImageFile = (e) => {
       if (e.width <= 64 && e.height <= 64) {
-        /**
-         * noop
-         */
+        Transforms.insertNodes(editor, {
+          type: "image-inline",
+          url: e.hashUrl,
+          title: e.file.name,
+          bytes: e.file.size,
+          width: e.width,
+          height: e.height,
+          srcWidth: e.width,
+          srcHeight: e.height,
+          children: [{ text: "" }],
+        })
       } else {
         const initialSize = resizeInBounds(
           { width: e.width, height: e.height },
@@ -51,6 +59,9 @@ export const ImagePlugin = ({
           if (["image-block", "image-inline"].includes(element.type)) {
             return true
           }
+        },
+        isInline: (element) => {
+          if (element.type === "image-inline") return true
         },
         normalizeNode: curry(normalizeNode, editor),
       },

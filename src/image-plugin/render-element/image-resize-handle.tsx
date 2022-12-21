@@ -1,22 +1,14 @@
-import clsx from "clsx"
-import { styled } from "goober"
-import {
-  Dispatch,
-  forwardRef,
-  SetStateAction,
-  useCallback,
-  useState,
-} from "react"
+import { clsx } from "clsx"
+import { Dispatch, SetStateAction, useCallback, useState } from "react"
 
 import { stopEvent } from "~/src/sink"
 
-import { ImageSize } from "../types"
-import { minMax, resizeToWidth } from "../utils"
-import { ResizeIcon } from "./icons"
 import {
   $ImageResizeHandle,
   $ImageResizeInvisibleHandle,
-} from "./image-resize-control-styles"
+} from "../styles/image-resize-handle-styles"
+import { ImageSize } from "../types"
+import { minMax, resizeToWidth } from "../utils"
 
 export function ImageResizeControl({
   srcSize,
@@ -31,7 +23,7 @@ export function ImageResizeControl({
 
   const width = size.width
   const maxWidth = srcSize.width
-  const minWidth = Math.min(32, srcSize.width)
+  const minWidth = Math.min(12, srcSize.width)
 
   const onMouseDown = useCallback(
     (e: React.MouseEvent) => {

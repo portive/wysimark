@@ -3,6 +3,7 @@ import { forwardRef } from "react"
 
 export const $ImageResizeInvisibleHandle = styled("div", forwardRef)`
   position: absolute;
+  display: block;
   background: rgba(127, 127, 127, 0.001);
   top: 0;
   right: calc(-1em - 2px);
