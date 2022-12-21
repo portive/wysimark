@@ -1,5 +1,7 @@
 import { clsx } from "clsx"
 import { Dispatch, SetStateAction, useCallback, useState } from "react"
+import { Transforms } from "slate"
+import { ReactEditor, useSlateStatic } from "slate-react"
 
 import { stopEvent } from "~/src/sink"
 
@@ -7,18 +9,21 @@ import {
   $ImageResizeHandle,
   $ImageResizeInvisibleHandle,
 } from "../styles/image-resize-handle-styles"
-import { ImageSize } from "../types"
+import { ImageBlockElement, ImageInlineElement, ImageSize } from "../types"
 import { minMax, resizeToWidth } from "../utils"
 
 export function ImageResizeControl({
+  element,
   srcSize,
   size,
   setSize,
 }: {
+  element: ImageBlockElement | ImageInlineElement
   srcSize: ImageSize
   size: ImageSize
   setSize: Dispatch<SetStateAction<ImageSize | null>>
 }) {
+  const editor = useSlateStatic()
   const [isDragging, setIsDragging] = useState(false)
 
   /**
@@ -38,6 +43,8 @@ export function ImageResizeControl({
       const startX = e.clientX
       const startWidth = size.width
 
+      let nextSize = { ...size }
+
       /**
        * Watch mouse movement during dragging
        */
@@ -49,7 +56,7 @@ export function ImageResizeControl({
           min: minWidth,
           max: maxWidth,
         })
-        const nextSize = resizeToWidth(nextWidth, srcSize)
+        nextSize = resizeToWidth(nextWidth, srcSize)
 
         setSize(nextSize)
       }
@@ -60,6 +67,12 @@ export function ImageResizeControl({
       const onDocumentMouseUp = () => {
         document.removeEventListener("mousemove", onDocumentMouseMove)
         document.removeEventListener("mouseup", onDocumentMouseUp)
+        const path = ReactEditor.findPath(editor, element)
+        Transforms.setNodes(
+          editor,
+          { width: nextSize.width, height: nextSize.height },
+          { at: path }
+        )
         setIsDragging(false)
       }
 
@@ -69,7 +82,7 @@ export function ImageResizeControl({
       document.addEventListener("mousemove", onDocumentMouseMove)
       document.addEventListener("mouseup", onDocumentMouseUp)
     },
-    [srcSize.width, srcSize.height, size.width]
+    [srcSize.width, srcSize.height, size.width, element]
   )
 
   /**

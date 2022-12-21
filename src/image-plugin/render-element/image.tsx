@@ -5,7 +5,7 @@ import { useSelected } from "slate-react"
 import { useUpload } from "~/src/upload-plugin/store"
 
 import { $Image, $ImageContainer } from "../styles/image-styles"
-import { ImageInterface } from "../types"
+import { ImageBlockElement, ImageInlineElement } from "../types"
 import { ImageResizeControl } from "./image-resize-handle"
 
 /**
@@ -25,7 +25,7 @@ export function Image({
   element,
   inline = false,
 }: {
-  element: ImageInterface
+  element: ImageBlockElement | ImageInlineElement
   inline?: boolean
 }) {
   const upload = useUpload(element.url)
@@ -68,7 +68,12 @@ export function Image({
         height={size?.height}
       />
       {showResizeControls ? (
-        <ImageResizeControl srcSize={srcSize} size={size} setSize={setSize} />
+        <ImageResizeControl
+          element={element}
+          srcSize={srcSize}
+          size={size}
+          setSize={setSize}
+        />
       ) : null}
     </$ImageContainer>
   )
