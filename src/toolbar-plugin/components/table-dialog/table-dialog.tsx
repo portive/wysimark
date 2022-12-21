@@ -1,4 +1,4 @@
-import clsx from "clsx"
+import { clsx } from "clsx"
 import { useCallback, useRef, useState } from "react"
 import { ReactEditor, useSlateStatic } from "slate-react"
 
@@ -25,7 +25,7 @@ export function TableDialog({
   const [hover, setHover] = useState({ x: 0, y: 0 })
   const editor = useSlateStatic()
   const ref = useRef<HTMLDivElement>(null)
-  const style = useAbsoluteReposition({ src: ref, dest }, ({ src, dest }) => {
+  const style = useAbsoluteReposition({ src: ref, dest }, ({ dest }) => {
     return { left: dest.left, top: dest.top + dest.height }
   })
   const rows = createRange(5).map((i) => i + 1)

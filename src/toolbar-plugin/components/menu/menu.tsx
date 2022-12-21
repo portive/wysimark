@@ -27,7 +27,7 @@ export function Menu({
 }) {
   const editor = useSlateStatic()
   const ref = useRef<HTMLDivElement>(null)
-  const style = useAbsoluteReposition({ src: ref, dest }, ({ src, dest }) => {
+  const style = useAbsoluteReposition({ src: ref, dest }, ({ dest }) => {
     return { left: dest.left, top: dest.top + dest.height }
   })
 

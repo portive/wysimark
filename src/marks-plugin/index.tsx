@@ -1,4 +1,4 @@
-import clsx from "clsx"
+import { clsx } from "clsx"
 import React from "react"
 
 import { createHotkeyHandler, createPlugin, toggleMark } from "~/src/sink"

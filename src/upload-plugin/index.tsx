@@ -1,10 +1,9 @@
 import { Client, createClient } from "@portive/client"
-import { Descendant } from "slate"
 
 import { createPlugin } from "~/src/sink"
 
 import { createUploadMethods } from "./methods"
-import { createUploadStore, UploadStore } from "./store"
+import { createUploadStore } from "./store"
 
 type UploadMethods = ReturnType<typeof createUploadMethods>
 

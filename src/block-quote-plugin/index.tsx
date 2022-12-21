@@ -1,5 +1,5 @@
 import React from "react"
-import { Descendant, Editor, Element, Node, Transforms } from "slate"
+import { Descendant, Element, Node, Transforms } from "slate"
 
 import {
   createHotkeyHandler,

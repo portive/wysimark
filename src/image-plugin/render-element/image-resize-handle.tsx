@@ -21,10 +21,16 @@ export function ImageResizeControl({
 }) {
   const [isDragging, setIsDragging] = useState(false)
 
+  /**
+   * Create some convenience constants that we use a lot below
+   */
   const width = size.width
   const maxWidth = srcSize.width
   const minWidth = Math.min(12, srcSize.width)
 
+  /**
+   * Start dragging
+   */
   const onMouseDown = useCallback(
     (e: React.MouseEvent) => {
       stopEvent(e)
@@ -32,6 +38,9 @@ export function ImageResizeControl({
       const startX = e.clientX
       const startWidth = size.width
 
+      /**
+       * Watch mouse movement during dragging
+       */
       const onDocumentMouseMove = (e: MouseEvent) => {
         stopEvent(e)
 
@@ -45,6 +54,9 @@ export function ImageResizeControl({
         setSize(nextSize)
       }
 
+      /**
+       * Remove dragging event listeners when releasing mouse button
+       */
       const onDocumentMouseUp = () => {
         document.removeEventListener("mousemove", onDocumentMouseMove)
         document.removeEventListener("mouseup", onDocumentMouseUp)
@@ -52,7 +64,7 @@ export function ImageResizeControl({
       }
 
       /**
-       * Attach document event listeners
+       * Attach event listeners directly to document
        */
       document.addEventListener("mousemove", onDocumentMouseMove)
       document.addEventListener("mouseup", onDocumentMouseUp)
@@ -60,6 +72,9 @@ export function ImageResizeControl({
     [srcSize.width, srcSize.height, size.width]
   )
 
+  /**
+   * Add special classNames to modify appearance of resize controls
+   */
   const className = clsx({
     "--center": width < maxWidth && width > minWidth,
     "--left": width == maxWidth && width > minWidth,

@@ -2,7 +2,7 @@ import { clsx } from "clsx"
 import prettyBytes from "pretty-bytes"
 import { useSelected } from "slate-react"
 
-import { ConstrainedRenderElementProps, stopEvent } from "~/src/sink"
+import { ConstrainedRenderElementProps } from "~/src/sink"
 import { useUpload } from "~/src/upload-plugin/store"
 
 import { UploadAttachmentElement } from ".."

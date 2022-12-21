@@ -1,10 +1,8 @@
-import { styled } from "goober"
-import { forwardRef } from "react"
-
 import { ConstrainedRenderElementProps } from "~/src/sink"
 
 import { ImageBlockElement, ImageInlineElement } from "../types"
-import { Image } from "./image"
+import { ImageBlock } from "./image-block"
+import { ImageInline } from "./image-inline"
 
 export function renderElement({
   element,
@@ -25,43 +23,4 @@ export function renderElement({
         </ImageInline>
       )
   }
-}
-
-const $ImageBlockContainer = styled("div", forwardRef)`
-  display: block;
-  margin: 1em 0;
-`
-
-function ImageBlock({
-  element,
-  attributes,
-  children,
-}: ConstrainedRenderElementProps<ImageBlockElement>) {
-  return (
-    <div {...attributes}>
-      <$ImageBlockContainer contentEditable={false}>
-        <Image element={element} />
-      </$ImageBlockContainer>
-      {children}
-    </div>
-  )
-}
-
-const $ImageInlineContainer = styled("span", forwardRef)`
-  display: inline;
-`
-
-function ImageInline({
-  element,
-  attributes,
-  children,
-}: ConstrainedRenderElementProps<ImageInlineElement>) {
-  return (
-    <span {...attributes} style={{ display: "inline-block" }}>
-      <$ImageInlineContainer contentEditable={false}>
-        <Image element={element} inline />
-      </$ImageInlineContainer>
-      {children}
-    </span>
-  )
 }
