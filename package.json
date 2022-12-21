@@ -58,10 +58,13 @@
     "-- end": "# end"
   },
   "dependencies": {
+    "@emoji-mart/data": "^1.1.0",
+    "@emoji-mart/react": "^1.1.0",
     "@portive/client": "^10.0.2",
     "@types/lodash.throttle": "^4.1.7",
     "clsx": "^1.2.1",
     "dotenv": "16.x",
+    "emoji-mart": "^5.4.0",
     "goober": "^2.1.11",
     "is-hotkey": "^0.2.0",
     "just-map-values": "^3.2.0",

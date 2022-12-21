@@ -204,3 +204,10 @@ export const ListNumbers = () => (
     <path d="M11 6h9M11 12h9M12 18h8M4 16a2 2 0 1 1 4 0c0 .591-.5 1-1 1.5L4 20h4M6 10V4L4 6" />
   </TablerIcon>
 )
+
+export const Emoji = () => (
+  <TablerIcon>
+    <circle cx={12} cy={12} r={9} />
+    <path d="M9 10h.01M15 10h.01M9.5 15a3.5 3.5 0 0 0 5 0" />
+  </TablerIcon>
+)

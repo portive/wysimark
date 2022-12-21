@@ -1,5 +1,6 @@
 import { TableDialog } from "../components"
 import { AnchorDialog } from "../components/table-dialog/anchor-dialog"
+import { EmojiDialog } from "../components/table-dialog/emoji-dialog"
 import * as Icon from "../icons"
 import { Item } from "../types"
 import { headingItems } from "./heading-items"
@@ -72,4 +73,6 @@ export const items: Item[] = [
   { icon: Icon.Image, title: "Insert Image" },
   { icon: Icon.Attachment, title: "Insert Attachment" },
   "divider",
+
+  { icon: Icon.Emoji, title: "Insert Emoji", Component: EmojiDialog },
 ]
