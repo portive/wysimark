@@ -39,6 +39,12 @@ import {
   HorizontalRulePlugin,
   HorizontalRulePluginCustomTypes,
 } from "~/src/horizontal-rule-plugin"
+import { ImagePlugin } from "~/src/image-plugin"
+import {
+  ImageBlockElement,
+  ImageInlineElement,
+  ImagePluginCustomTypes,
+} from "~/src/image-plugin/types"
 import {
   InlineCodePlugin,
   InlineCodePluginCustomTypes,
@@ -95,6 +101,7 @@ const Sink = createSink([
   ToolbarPlugin(),
   UploadPlugin({ authToken: process.env.NEXT_PUBLIC_PORTIVE_AUTH_TOKEN }),
   UploadAttachmentPlugin(),
+  ImagePlugin(),
 ])
 
 const { withSink, SinkSlate, SinkEditable } = Sink
@@ -114,7 +121,8 @@ export type PluginCustomTypes = MergePluginCustomTypes<
     ThemePluginCustomTypes,
     ToolbarPluginCustomTypes,
     UploadPluginCustomTypes,
-    UploadAttachmentPluginCustomTypes
+    UploadAttachmentPluginCustomTypes,
+    ImagePluginCustomTypes
   ]
 >
 
@@ -137,6 +145,8 @@ declare module "slate" {
       | TaskListItemElement
       | ParagraphElement
       | UploadAttachmentElement
+      | ImageBlockElement
+      | ImageInlineElement
     Text: { text: string } & PluginCustomTypes["Text"]
   }
 }

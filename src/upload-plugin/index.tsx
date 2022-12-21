@@ -8,11 +8,14 @@ import { createUploadStore, UploadStore } from "./store"
 
 type UploadMethods = ReturnType<typeof createUploadMethods>
 
+type UploadFileEvent = { hashUrl: string; file: File }
+type UploadImageFileEvent = UploadFileEvent & { width: number; height: number }
+
 export type UploadEditor = {
   upload: UploadMethods & {
     client: Client
-    onUploadImageFile: (hashUrl: string, file: File) => boolean
-    onUploadFile: (hashUrl: string, file: File) => boolean
+    onUploadImageFile: (e: UploadImageFileEvent) => boolean
+    onUploadFile: (e: UploadFileEvent) => boolean
     useUploadStore: ReturnType<typeof createUploadStore>
   }
 }

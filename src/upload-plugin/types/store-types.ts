@@ -17,11 +17,11 @@ export type UploadProgress = {
  * Indicates an `Origin` that has completed uploading
  */
 export type UploadComplete = {
+  status: "success"
   /**
    * This is a URL to the final place of the file
    */
   url: string
-  status: "success"
 }
 
 /**
@@ -29,8 +29,8 @@ export type UploadComplete = {
  * message
  */
 export type UploadError = {
-  url: string
   status: "error"
+  url: string
   message: string
 }
 

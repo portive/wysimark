@@ -14,7 +14,6 @@ export const $UploadAttachment = styled("span", forwardRef)`
   border: 1px solid var(--shade-300);
   font-size: 0.875em;
   border-radius: 0.5em;
-  cursor: pointer;
   overflow: clip;
   &:hover {
     border-color: var(--hover-color);
@@ -37,6 +36,7 @@ export const $UploadAttachment = styled("span", forwardRef)`
   .--title {
     padding: 0 0.25em;
     color: var(--shade-700);
+    white-space: nowrap;
   }
   .--download {
     padding: 0.25em;

@@ -39,7 +39,7 @@ export type UploadAttachmentPluginCustomTypes = {
 export const UploadAttachmentPlugin = () =>
   createPlugin<UploadAttachmentPluginCustomTypes>((editor) => {
     editor.uploadAttachment = createUploadAttachmentMethods(editor)
-    editor.upload.onUploadFile = (hashUrl, file) => {
+    editor.upload.onUploadFile = ({ hashUrl, file }) => {
       Transforms.insertNodes(editor, {
         type: "upload-attachment",
         title: file.name,

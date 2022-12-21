@@ -2,7 +2,7 @@ import { clsx } from "clsx"
 import prettyBytes from "pretty-bytes"
 import { useSelected } from "slate-react"
 
-import { ConstrainedRenderElementProps } from "~/src/sink"
+import { ConstrainedRenderElementProps, stopEvent } from "~/src/sink"
 import { useUpload } from "~/src/upload-plugin/store"
 
 import { UploadAttachmentElement } from ".."
@@ -24,11 +24,20 @@ export function UploadAttachment({
   const selected = useSelected()
   const upload = useUpload(element.url)
   const title = getTitleFromElement(element)
+
+  const background =
+    upload.status === "progress"
+      ? `linear-gradient(90deg, white, white ${
+          (100 * upload.sentBytes) / upload.totalBytes
+        }%, var(--shade-200) ${(100 * upload.sentBytes) / upload.totalBytes}%)`
+      : undefined
   return (
     <$UploadAttachment
       className={clsx({ "--selected": selected })}
       {...attributes}
       title={title}
+      style={{ background }}
+      draggable
     >
       <div className="--flex" contentEditable={false}>
         <span className="--paperclip">

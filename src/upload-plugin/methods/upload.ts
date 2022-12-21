@@ -22,8 +22,8 @@ export function upload(editor: Editor, file: File) {
     file,
     onBeforeFetch: ({ clientFile }) => {
       setUpload(editor, hashUrl, {
-        url: objectUrl,
         status: "progress",
+        url: objectUrl,
         sentBytes: 0,
         totalBytes: clientFile.bytes,
       })
@@ -31,13 +31,21 @@ export function upload(editor: Editor, file: File) {
        * If it's an image, we try to handle it with `onUploadImageFile`.
        */
       if (clientFile.type === "image") {
-        if (editor.upload.onUploadImageFile(hashUrl, file)) return true
+        if (
+          editor.upload.onUploadImageFile({
+            hashUrl,
+            file,
+            width: clientFile.width,
+            height: clientFile.height,
+          })
+        )
+          return true
       }
       /**
        * If it's not an image or `onUploadImageFile` doesn't handle it, then
        * we allow the more general `onUploadFile` to handle it.
        */
-      if (editor.upload.onUploadFile(hashUrl, file)) return true
+      if (editor.upload.onUploadFile({ hashUrl, file })) return true
       return false
     },
     onProgress: ({ sentBytes, totalBytes }) => {
