@@ -51,7 +51,7 @@ export type ImageEditor = {
   image: ImageMethods & Required<ImagePluginConfig>
 }
 
-type ImageBaseElement = {
+export interface ImageInterface {
   /**
    * The `url` represents either
    *
@@ -88,7 +88,7 @@ type ImageBaseElement = {
 
 export type ImageBlockElement = {
   type: "image-block"
-} & ImageBaseElement
+} & ImageInterface
 /**
  * Default for smaller images, 48px and less
  *
@@ -97,7 +97,7 @@ export type ImageBlockElement = {
 
 export type ImageInlineElement = {
   type: "inline-image"
-} & ImageBaseElement
+} & ImageInterface
 
 export type ImagePluginCustomTypes = {
   Name: "image"

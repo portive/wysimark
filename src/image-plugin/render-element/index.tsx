@@ -6,7 +6,7 @@ import { useSelected } from "slate-react"
 import { ConstrainedRenderElementProps } from "~/src/sink"
 import { useUpload } from "~/src/upload-plugin/store"
 
-import { ImageBlockElement, ImageInlineElement } from "../types"
+import { ImageBlockElement, ImageInlineElement, ImageInterface } from "../types"
 import { ImageResizeControl } from "./image-resize-control"
 
 export function renderElement({
@@ -49,6 +49,17 @@ function ImageBlock({
   attributes,
   children,
 }: ConstrainedRenderElementProps<ImageBlockElement>) {
+  return (
+    <div {...attributes}>
+      <$ImageBlockContainer contentEditable={false}>
+        <Image element={element} />
+      </$ImageBlockContainer>
+      {children}
+    </div>
+  )
+}
+
+export function Image({ element }: { element: ImageInterface }) {
   const upload = useUpload(element.url)
   const selected = useSelected()
 
@@ -65,27 +76,17 @@ function ImageBlock({
     element.srcWidth && element.srcHeight
       ? { width: element.srcWidth, height: element.srcHeight }
       : null
-
   return (
-    <div {...attributes}>
-      <$ImageBlockContainer contentEditable={false}>
-        <$TightImageWrapper>
-          <$Image
-            className={clsx({ "--selected": selected })}
-            src={upload.url}
-            width={size?.width}
-            height={size?.height}
-          />
-          {selected && size && srcSize ? (
-            <ImageResizeControl
-              srcSize={srcSize}
-              size={size}
-              setSize={setSize}
-            />
-          ) : null}
-        </$TightImageWrapper>
-      </$ImageBlockContainer>
-      {children}
-    </div>
+    <$TightImageWrapper>
+      <$Image
+        className={clsx({ "--selected": selected })}
+        src={upload.url}
+        width={size?.width}
+        height={size?.height}
+      />
+      {selected && size && srcSize ? (
+        <ImageResizeControl srcSize={srcSize} size={size} setSize={setSize} />
+      ) : null}
+    </$TightImageWrapper>
   )
 }
