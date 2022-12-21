@@ -1,7 +1,6 @@
 import data from "@emoji-mart/data"
 import Picker from "@emoji-mart/react"
 import { styled } from "goober"
-import { isHotkey } from "is-hotkey"
 import { forwardRef, useCallback, useRef } from "react"
 import { Transforms } from "slate"
 import { ReactEditor, useSlateStatic } from "slate-react"

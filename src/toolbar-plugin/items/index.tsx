@@ -1,6 +1,6 @@
 import { TableDialog } from "../components"
-import { AnchorDialog } from "../components/table-dialog/anchor-dialog"
-import { EmojiDialog } from "../components/table-dialog/emoji-dialog"
+import { AnchorDialog } from "../components/dialog/anchor-dialog"
+import { EmojiDialog } from "../components/dialog/emoji-dialog"
 import * as Icon from "../icons"
 import { Item } from "../types"
 import { headingItems } from "./heading-items"
