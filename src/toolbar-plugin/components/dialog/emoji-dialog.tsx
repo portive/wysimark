@@ -53,6 +53,4 @@ export function EmojiDialog({
   )
 }
 
-export const $EmojiDialog = styled($Panel, forwardRef)`
-  /* width: 24em; */
-`
+export const $EmojiDialog = styled($Panel, forwardRef)``
