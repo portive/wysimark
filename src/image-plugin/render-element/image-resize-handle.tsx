@@ -17,14 +17,17 @@ export function ImageResizeControl({
   srcSize,
   size,
   setSize,
+  isDragging,
+  setIsDragging,
 }: {
   element: ImageBlockElement | ImageInlineElement
   srcSize: ImageSize
   size: ImageSize
   setSize: Dispatch<SetStateAction<ImageSize | null>>
+  isDragging: boolean
+  setIsDragging: Dispatch<SetStateAction<boolean>>
 }) {
   const editor = useSlateStatic()
-  const [isDragging, setIsDragging] = useState(false)
 
   /**
    * Create some convenience constants that we use a lot below

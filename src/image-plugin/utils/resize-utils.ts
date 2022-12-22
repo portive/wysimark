@@ -2,12 +2,12 @@ import { ImageSize } from "../types"
 
 export function resizeToWidth(width: number, srcSize: ImageSize): ImageSize {
   const aspect = srcSize.width / srcSize.height
-  return { width, height: width / aspect }
+  return { width, height: Math.round(width / aspect) }
 }
 
 export function resizeToHeight(height: number, srcSize: ImageSize): ImageSize {
   const aspect = srcSize.width / srcSize.height
-  return { width: height * aspect, height }
+  return { width: Math.round(height * aspect), height }
 }
 
 /**
