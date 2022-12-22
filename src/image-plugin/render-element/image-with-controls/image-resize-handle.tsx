@@ -8,9 +8,9 @@ import { stopEvent } from "~/src/sink"
 import {
   $ImageResizeHandle,
   $ImageResizeInvisibleHandle,
-} from "../styles/image-resize-handle-styles"
-import { ImageBlockElement, ImageInlineElement, ImageSize } from "../types"
-import { minMax, resizeToWidth } from "../utils"
+} from "../../styles/image-with-controls-styles/image-resize-handle-styles"
+import { ImageBlockElement, ImageInlineElement, ImageSize } from "../../types"
+import { minMax, resizeToWidth } from "../../utils"
 
 export function ImageResizeControl({
   element,

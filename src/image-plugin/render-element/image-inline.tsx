@@ -2,7 +2,7 @@ import { ConstrainedRenderElementProps } from "~/src/sink"
 
 import { $ImageInline } from "../styles/image-inline-styles"
 import { ImageInlineElement } from "../types"
-import { Image } from "./image"
+import { ImageWithControls } from "./image-with-controls"
 
 export function ImageInline({
   element,
@@ -12,7 +12,7 @@ export function ImageInline({
   return (
     <span {...attributes} style={{ display: "inline-block" }}>
       <$ImageInline contentEditable={false}>
-        <Image element={element} inline />
+        <ImageWithControls element={element} inline />
       </$ImageInline>
       {children}
     </span>

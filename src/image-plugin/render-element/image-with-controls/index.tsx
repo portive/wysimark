@@ -1,13 +1,16 @@
 import { clsx } from "clsx"
-import { styled } from "goober"
-import { forwardRef, useState } from "react"
+import { useState } from "react"
 import { useSelected } from "slate-react"
 
 import { useUpload } from "~/src/upload-plugin/store"
 
-import { $Image, $ImageContainer } from "../styles/image-styles"
-import { ImageBlockElement, ImageInlineElement, ImageSize } from "../types"
+import {
+  $Image,
+  $ImageContainer,
+} from "../../styles/image-with-controls-styles/image-with-controls-styles"
+import { ImageBlockElement, ImageInlineElement } from "../../types"
 import { ImageResizeControl } from "./image-resize-handle"
+import { ImageSizeStatus } from "./image-size-status"
 
 /**
  * The `Image` Component is responsible for:
@@ -22,7 +25,7 @@ import { ImageResizeControl } from "./image-resize-handle"
  * placed inside a `block` element for the `image-block` and a `span` element
  * for `image-inline`.
  */
-export function Image({
+export function ImageWithControls({
   element,
   inline = false,
 }: {
@@ -61,10 +64,11 @@ export function Image({
     "--inline": inline,
     "--small": size && (size.width <= 64 || size.height <= 64),
   })
+
   return (
     <$ImageContainer className={className}>
       <$Image
-        className={className}
+        // className={className}
         src={upload.url}
         width={size?.width}
         height={size?.height}
@@ -81,34 +85,5 @@ export function Image({
         />
       ) : null}
     </$ImageContainer>
-  )
-}
-
-const $ImageSizeStatus = styled("div", forwardRef)`
-  position: absolute;
-  bottom: 4px;
-  .--small > & {
-    bottom: calc(-2em - 4px);
-  }
-  transition: bottom 250ms;
-  left: 4px;
-  font-size: 0.625em;
-  line-height: 2em;
-  padding: 0 0.5em;
-  color: white;
-  background: #404040;
-  outline: 1px solid rgba(255, 255, 255, 0.5);
-  border-radius: 0.5em;
-  white-space: nowrap;
-
-  /* force numbers to be monospaced for better alignment */
-  font-variant-numeric: tabular-nums;
-`
-
-function ImageSizeStatus({ size }: { size: ImageSize }) {
-  return (
-    <$ImageSizeStatus>
-      {size.width} &times; {size.height}
-    </$ImageSizeStatus>
   )
 }

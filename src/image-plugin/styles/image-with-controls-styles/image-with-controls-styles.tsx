@@ -18,13 +18,15 @@ export const $ImageContainer = styled("span", forwardRef)`
    */
   position: relative;
 `
+
 export const $Image = styled("img", forwardRef)`
   /**
    * Rounded borders are pretty and also help the selection outline look
    * pretty.
    */
+  transition: border-radius 250ms;
   border-radius: 0.5em;
-  &.--small {
+  .--small > & {
     border-radius: 1px;
   }
   display: block;
@@ -34,7 +36,7 @@ export const $Image = styled("img", forwardRef)`
    * that an image that is the same color as the selection border will still
    * look selected.
    */
-  &.--selected {
+  .--selected > & {
     outline: 2px solid var(--select-color);
     outline-offset: 1px;
   }
