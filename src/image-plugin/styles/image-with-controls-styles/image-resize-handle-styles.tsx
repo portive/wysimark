@@ -18,6 +18,11 @@ export const $ImageResizeInvisibleHandle = styled("div", forwardRef)`
   &.--right {
     cursor: e-resize;
   }
+  &.--small {
+    right: calc(-1.25em);
+    /* background: green; */
+    width: 1.25em;
+  }
 `
 const $ImageResizeHandleBase = styled("div", forwardRef)`
   position: absolute;
@@ -45,22 +50,19 @@ export const $ImageResizeHandle = styled($ImageResizeHandleBase, forwardRef)`
     left: calc(50% - 1px);
   }
   .--small > & {
+    width: 0.75em;
     height: 1em;
+    left: 0.25em;
     margin-top: -0.5em;
   }
   .--small.--center > & {
-    left: 0.625em;
-    width: 0.75em;
     border-radius: 0.25em;
   }
   .--small.--left > & {
     border-radius: 0.25em 0 0 0.25em;
-    left: calc(0.125em + 1px);
   }
   .--small.--right > & {
     border-radius: 0 0.25em 0.25em 0;
-    width: 0.75em;
-    left: calc(50% - 1px);
   }
   .--bar {
     position: absolute;
@@ -68,10 +70,6 @@ export const $ImageResizeHandle = styled($ImageResizeHandleBase, forwardRef)`
     width: 1px;
     top: 0.5em;
     bottom: 0.5em;
-  }
-  .--small > & > .--bar {
-    top: 0.25em;
-    bottom: 0.25em;
   }
   .--bar-center {
     left: calc(50% - 0.5px);
@@ -81,5 +79,25 @@ export const $ImageResizeHandle = styled($ImageResizeHandleBase, forwardRef)`
   }
   .--bar-right {
     left: calc(50% + 2.5px);
+  }
+  /**
+   * When the resized image is smaller, the bars:
+   *
+   * - get shorter
+   * - get thinner
+   * - two bars instead of three bars
+   */
+  .--small > & > .--bar {
+    top: 0.25em;
+    bottom: 0.25em;
+  }
+  .--small > & > .--bar-left {
+    left: calc(50% - 2px);
+  }
+  .--small > & > .--bar-center {
+    display: none;
+  }
+  .--small > & > .--bar-right {
+    left: calc(50% + 1px);
   }
 `
