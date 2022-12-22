@@ -10,6 +10,7 @@ import {
 } from "../../styles/image-with-controls-styles/image-with-controls-styles"
 import { ImageBlockElement, ImageInlineElement } from "../../types"
 import { ImageResizeControl } from "./image-resize-handle"
+import { ImageResizePresets } from "./image-resize-presets"
 import { ImageSizeStatus } from "./image-size-status"
 
 /**
@@ -56,7 +57,7 @@ export function ImageWithControls({
    * Show resize controls if the element is selected, it has a `size` and
    * it has a `srcSize`
    */
-  const showResizeControls = selected && size && srcSize
+  const isResizable = selected && size && srcSize
 
   /**
    * Add classes for:
@@ -65,14 +66,23 @@ export function ImageWithControls({
    */
   const className = clsx({
     "--selected": selected,
+    "--dragging": isDragging,
     "--small": size && (size.width <= 64 || size.height <= 64),
   })
 
   return (
     <$ImageContainer className={className}>
       <$Image src={upload.url} width={size?.width} height={size?.height} />
+      {isResizable && (
+        <ImageResizePresets
+          element={element}
+          size={size}
+          setSize={setSize}
+          srcSize={srcSize}
+        />
+      )}
       {isDragging && size ? <ImageSizeStatus size={size} /> : null}
-      {showResizeControls ? (
+      {isResizable ? (
         <ImageResizeControl
           element={element}
           srcSize={srcSize}

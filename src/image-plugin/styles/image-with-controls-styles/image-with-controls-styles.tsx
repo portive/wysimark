@@ -45,4 +45,14 @@ export const $Image = styled("img", forwardRef)`
    * space that the image will eventually load into.
    */
   background: var(--shade-100);
+
+  /**
+   * When we change the image via a preset, we want to animate the change;
+   * however, when we are dragging to resize, a transition adds a janky delay
+   * to the resize so we remove the transition during drag resizing.
+   */
+  transition: width 100ms, height 100ms;
+  .--dragging > & {
+    transition: border-radius 250ms;
+  }
 `

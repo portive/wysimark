@@ -7,10 +7,6 @@ export const $ImageResizeInvisibleHandle = styled("div", forwardRef)`
   background: rgba(127, 127, 127, 0.001);
   top: 0;
   right: calc(-1em - 2px);
-  /* transition: right 250ms;
-  &.--offset {
-    right: calc(-1em - 6px);
-  } */
   width: 2em;
   bottom: 0;
   &.--left {
@@ -22,26 +18,10 @@ export const $ImageResizeInvisibleHandle = styled("div", forwardRef)`
   &.--right {
     cursor: e-resize;
   }
-  /* &::before {
-    content: "";
-    position: absolute;
-    background: var(--select-color);
-    width: 2px;
-    left: calc(1em - 1px);
-    top: 0.5em;
-    bottom: 0.5em;
-    z-index: 1;
-  } */
 `
 const $ImageResizeHandleBase = styled("div", forwardRef)`
   position: absolute;
   display: block;
-  /* :hover > & {
-    background: var(--blue-500);
-  } */
-  /* .--dragging > & {
-    background: var(--blue-500);
-  } */
   background: var(--select-color);
   top: 50%;
 `
