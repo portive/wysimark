@@ -12,7 +12,7 @@ export function ImageInline({
   return (
     <span {...attributes} style={{ display: "inline-block" }}>
       <$ImageInline contentEditable={false}>
-        <ImageWithControls element={element} inline />
+        <ImageWithControls element={element} />
       </$ImageInline>
       {children}
     </span>

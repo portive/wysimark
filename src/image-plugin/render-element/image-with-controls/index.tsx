@@ -27,7 +27,6 @@ import { ImageSizeStatus } from "./image-size-status"
  */
 export function ImageWithControls({
   element,
-  inline = false,
 }: {
   element: ImageBlockElement | ImageInlineElement
   inline?: boolean
@@ -59,20 +58,19 @@ export function ImageWithControls({
    */
   const showResizeControls = selected && size && srcSize
 
+  /**
+   * Add classes for:
+   *
+   * - selected state
+   */
   const className = clsx({
     "--selected": selected,
-    "--inline": inline,
     "--small": size && (size.width <= 64 || size.height <= 64),
   })
 
   return (
     <$ImageContainer className={className}>
-      <$Image
-        // className={className}
-        src={upload.url}
-        width={size?.width}
-        height={size?.height}
-      />
+      <$Image src={upload.url} width={size?.width} height={size?.height} />
       {isDragging && size ? <ImageSizeStatus size={size} /> : null}
       {showResizeControls ? (
         <ImageResizeControl
