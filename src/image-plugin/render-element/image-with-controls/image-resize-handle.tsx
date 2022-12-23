@@ -52,8 +52,6 @@ export function ImageResizeControl({
        * Watch mouse movement during dragging
        */
       const onDocumentMouseMove = (e: MouseEvent) => {
-        stopEvent(e)
-
         const nextWidth = minMax({
           value: startWidth + e.clientX - startX,
           min: minWidth,
@@ -88,6 +86,47 @@ export function ImageResizeControl({
     [srcSize.width, srcSize.height, size.width, element]
   )
 
+  const onTouchStart = useCallback(
+    (e: React.TouchEvent) => {
+      stopEvent(e)
+      setIsDragging(true)
+      const startX = e.changedTouches[0].clientX
+      const startWidth = size.width
+
+      let nextSize = { ...size }
+
+      const onDocumentTouchMove = (te: TouchEvent) => {
+        // stopEvent(te)
+        const e = te.changedTouches[0]
+
+        const nextWidth = minMax({
+          value: startWidth + e.clientX - startX,
+          min: minWidth,
+          max: maxWidth,
+        })
+        nextSize = resizeToWidth(nextWidth, srcSize)
+
+        setSize(nextSize)
+      }
+      const onDocumentTouchEnd = () => {
+        console.log("end")
+        document.removeEventListener("touchmove", onDocumentTouchMove)
+        document.removeEventListener("touchend", onDocumentTouchEnd)
+        const path = ReactEditor.findPath(editor, element)
+        Transforms.setNodes(
+          editor,
+          { width: nextSize.width, height: nextSize.height },
+          { at: path }
+        )
+        setIsDragging(false)
+      }
+
+      document.addEventListener("touchmove", onDocumentTouchMove)
+      document.addEventListener("touchend", onDocumentTouchEnd)
+    },
+    [srcSize.width, srcSize.height, size.width, element]
+  )
+
   /**
    * Add special classNames to modify appearance of resize controls
    */
@@ -104,6 +143,7 @@ export function ImageResizeControl({
       <$ImageResizeInvisibleHandle
         className={className}
         onMouseDown={onMouseDown}
+        onTouchStart={onTouchStart}
       >
         <$ImageResizeHandle>
           <div className="--bar --bar-left" />
