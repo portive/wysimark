@@ -5,6 +5,7 @@ import { EditableProps } from "slate-react/dist/components/editable"
 
 import { ConstrainedRenderElementProps, ConstrainedRenderLeafProps } from ".."
 import { BasePluginCustomTypes } from "./plugin-custom-types"
+import { VoidActionReturn } from "./void-action"
 
 export type RenderEditableProps = {
   attributes: EditableProps
@@ -28,10 +29,22 @@ export type PluginObject<T extends BasePluginCustomTypes> = {
     /**
      * TODO:
      *
+     * Option 1:
+     *
      * Consider forcing these methods to return either `true` or `void` and
      * not have an ability to specify `false` directly. This would potentially
      * be better to reduce the number of non-necessary steps since at the end
      * these methods return `false` anyways.
+     *
+     * Option 2:
+     *
+     * This may be better. Method should return either `true` or `false`.
+     * If it returns true, then the value is actually `true`. If it returns
+     * `false`, the the value is `false` unless some other plugin says it's
+     * true.
+     *
+     * This is a little harder to reason about, but it is more intuitive to
+     * say `false` than `undefined`.
      */
     /**
      * If the element is considered handled, we return a boolean value.
@@ -52,19 +65,28 @@ export type PluginObject<T extends BasePluginCustomTypes> = {
     isStandalone?: (element: T["Element"]) => boolean | void
 
     /**
-     * If the action insert considered handled, we return `true`.
-     * If it isn't handled yet, return `false`.
-     * For type safety, you must return a `boolean` and must not return
-     * `undefined`.
+     * - If the action insert considered handled, we return `true`.
+     * - If it isn't handled yet, return `false`.
+     * - If it isn't handled but we want a function to be called after it is
+     *   handled (e.g. to execute a normalizer) then return a void function
+     *   `() => void`
+     *
+     * For type safety, you can't return `undefined`.
+     *
+     * For a detailed description of this approach, see `./void-action.ts`
      */
-    deleteBackward?: (unit: "character" | "word" | "line" | "block") => boolean
-    deleteForward?: (...args: Parameters<Editor["deleteBackward"]>) => boolean
-    deleteFragment?: () => boolean
-    insertBreak?: () => boolean
-    insertFragment?: (fragment: Node[]) => boolean
-    insertNode?: (node: Node) => boolean
-    insertText?: (text: string) => boolean
-    normalizeNode?: (entry: NodeEntry) => boolean
+    deleteBackward?: (
+      unit: "character" | "word" | "line" | "block"
+    ) => VoidActionReturn
+    deleteForward?: (
+      unit: "character" | "word" | "line" | "block"
+    ) => VoidActionReturn
+    deleteFragment?: () => VoidActionReturn
+    insertBreak?: () => VoidActionReturn
+    insertFragment?: (fragment: Node[]) => VoidActionReturn
+    insertNode?: (node: Node) => VoidActionReturn
+    insertText?: (text: string) => VoidActionReturn
+    normalizeNode?: (entry: NodeEntry) => VoidActionReturn
   }
   /**
    * Let's a plugin modify the way the `Editable` is rendered.

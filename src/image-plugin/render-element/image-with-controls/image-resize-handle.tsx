@@ -1,5 +1,5 @@
 import { clsx } from "clsx"
-import { Dispatch, SetStateAction, useCallback, useState } from "react"
+import { Dispatch, SetStateAction, useCallback } from "react"
 import { Transforms } from "slate"
 import { ReactEditor, useSlateStatic } from "slate-react"
 

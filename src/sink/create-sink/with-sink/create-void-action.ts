@@ -31,14 +31,22 @@ export function createVoidAction<
   const originalAction = editor[actionKey]
   const actionPlugins = plugins.filter((plugin) => plugin.editor?.[actionKey])
   return function nextVoidAction(...args: Parameters<BaseEditor[K]>[]): void {
+    let isHandled = false
+    const afterHandledCallbacks: (() => void)[] = []
     for (const plugin of actionPlugins) {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
-      const isHandled = plugin.editor?.[actionKey]?.(...args)
-      if (isHandled) return
+      const response = plugin.editor?.[actionKey]?.(...args)
+      if (typeof response === "function") {
+        afterHandledCallbacks.push(response)
+      } else if (response === true) {
+        isHandled = true
+        break
+      }
     }
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    originalAction(...args)
+    if (!isHandled) {
+      // @ts-ignore
+      originalAction(...args)
+    }
+    afterHandledCallbacks.forEach((callback) => callback())
   }
 }

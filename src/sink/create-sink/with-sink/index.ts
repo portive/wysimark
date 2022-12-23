@@ -45,6 +45,7 @@ export function createWithSink(
       insertFragment: createVoidAction(editor, "insertFragment", plugins),
       insertNode: createVoidAction(editor, "insertNode", plugins),
       insertText: createVoidAction(editor, "insertText", plugins),
+
       isInline: createBooleanAction(editor, "isInline", plugins),
       isVoid: createBooleanAction(editor, "isVoid", plugins),
       isMaster: createBooleanAction(editor, "isMaster", plugins),

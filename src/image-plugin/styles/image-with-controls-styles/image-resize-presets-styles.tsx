@@ -13,10 +13,13 @@ export const $ImageResizePresets = styled("div", forwardRef)`
    * width
    */
   left: -3px;
-  font-size: 0.625em;
+  font-size: 0.75em;
   line-height: 2em;
   border-radius: 0.5em;
   display: flex;
+  /**
+   * So that inner Preset design shows within the rounded corners.
+   */
   overflow: clip;
   transition: opacity 200ms;
   outline: 1px solid white;

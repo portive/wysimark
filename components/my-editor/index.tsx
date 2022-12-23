@@ -57,6 +57,10 @@ import {
   UnorderedListItemElement,
 } from "~/src/list-plugin"
 import { MarksPlugin, MarksPluginCustomTypes } from "~/src/marks-plugin"
+import {
+  NormalizeAfterDeletePlugin,
+  NormalizeAfterDeletePluginCustomTypes,
+} from "~/src/normalize-after-delete-plugin"
 import { createSink, MergePluginCustomTypes } from "~/src/sink"
 import {
   TableCellElement,
@@ -97,11 +101,11 @@ const Sink = createSink([
   AtomicDeletePlugin(),
   CollapsibleParagraphPlugin(),
   ThemePlugin(),
-  // BasicLayoutPlugin(),
   ToolbarPlugin(),
   UploadPlugin({ authToken: process.env.NEXT_PUBLIC_PORTIVE_AUTH_TOKEN }),
   UploadAttachmentPlugin(),
   ImagePlugin(),
+  NormalizeAfterDeletePlugin(),
 ])
 
 const { withSink, SinkSlate, SinkEditable } = Sink
@@ -122,7 +126,8 @@ export type PluginCustomTypes = MergePluginCustomTypes<
     ToolbarPluginCustomTypes,
     UploadPluginCustomTypes,
     UploadAttachmentPluginCustomTypes,
-    ImagePluginCustomTypes
+    ImagePluginCustomTypes,
+    NormalizeAfterDeletePluginCustomTypes
   ]
 >
 
