@@ -3,7 +3,7 @@ import "../../src/setup"
 import { useState } from "react"
 import { BaseEditor, createEditor } from "slate"
 import { withHistory } from "slate-history"
-import { ReactEditor, RenderLeafProps, withReact } from "slate-react"
+import { ReactEditor, RenderLeafProps, Slate, withReact } from "slate-react"
 
 import {
   AnchorElement,
@@ -108,7 +108,7 @@ const Sink = createSink([
   NormalizeAfterDeletePlugin(),
 ])
 
-const { withSink, SinkSlate, SinkEditable } = Sink
+const { withSink, SinkEditable } = Sink
 
 export type PluginCustomTypes = MergePluginCustomTypes<
   [
@@ -169,9 +169,9 @@ export const MyEditor = () => {
 
   return (
     <div>
-      <SinkSlate editor={editor} value={initialValue}>
+      <Slate editor={editor} value={initialValue}>
         <SinkEditable renderLeaf={renderLeaf} />
-      </SinkSlate>
+      </Slate>
     </div>
   )
 }

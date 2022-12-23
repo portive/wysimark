@@ -1,7 +1,6 @@
 import { ArraySafePluginCustomTypes, PluginFunction } from "../types"
 import { SinkEditable } from "./sink-editable"
-import { SinkSlate } from "./sink-slate"
-import { createWithSink } from "./with-sink"
+import { createWithSink } from "./sink-editor"
 
 /**
  * A sink is just a function
@@ -11,7 +10,7 @@ export const createSink = (
 ) => {
   const withSink = createWithSink(pluginConfigs)
 
-  const returnValue = { withSink, SinkSlate, SinkEditable }
+  const returnValue = { withSink, SinkEditable }
   return returnValue as {
     PluginFunctions: PluginFunction<ArraySafePluginCustomTypes>
   } & typeof returnValue
