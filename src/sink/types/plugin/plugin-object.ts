@@ -1,5 +1,5 @@
 import React from "react"
-import { BaseRange, Editor, NodeEntry, Path } from "slate"
+import { BaseRange, NodeEntry, Path } from "slate"
 import { Editable } from "slate-react"
 import { EditableProps } from "slate-react/dist/components/editable"
 

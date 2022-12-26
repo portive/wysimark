@@ -15,7 +15,9 @@ export { SinkReset } from "./styles"
  * In Editable, we use the Slate context to grab the right things from
  * the editor.
  */
-export function SinkEditable(originalProps: Parameters<typeof Editable>[0]) {
+export function SinkEditable(
+  originalProps: Parameters<typeof Editable>[0]
+): ReturnType<typeof Editable> {
   const editor = useSlateStatic() as unknown as Editor & SinkEditor
   const { sink } = editor
 
@@ -208,10 +210,6 @@ export function SinkEditable(originalProps: Parameters<typeof Editable>[0]) {
           Editable: PrevRenderEditable,
         })
       }
-
-      //   CurrentEditable = function MyEditable({ attributes }) {
-      //     return <PrevEditable attributes={attributes} Editable={PrevEditable} />
-      //   }
     }
     return <CurrentRenderEditable {...props} />
   }
