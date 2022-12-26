@@ -1,6 +1,6 @@
 import { clsx } from "clsx"
 import { Dispatch, SetStateAction, useCallback } from "react"
-import { Transforms } from "slate"
+import { Editor, Transforms } from "slate"
 import { ReactEditor, useSlateStatic } from "slate-react"
 
 import { stopEvent } from "~/src/sink"
@@ -11,6 +11,25 @@ import {
 } from "../../styles/image-with-controls-styles/image-resize-handle-styles"
 import { ImageBlockElement, ImageInlineElement, ImageSize } from "../../types"
 import { minMax, resizeToWidth } from "../../utils"
+
+/**
+ * Helper function finds the `img` inside the current Slate `Element`.
+ *
+ * The `Element` in the DOM points to the surrounding container, so we search
+ * inside of it for the `img` tag which know there is only one of.
+ *
+ * We then get the client rect from it.
+ */
+function getImageBoundsFromSlateElement(
+  editor: Editor,
+  element: ImageBlockElement | ImageInlineElement
+): DOMRect {
+  const imageContainerDOMNode = ReactEditor.toDOMNode(editor, element)
+  const imgDOMNode = imageContainerDOMNode.querySelector("img")
+  if (!imgDOMNode)
+    throw new Error(`Image Element could not be found but should exist`)
+  return imgDOMNode.getBoundingClientRect()
+}
 
 export function ImageResizeControl({
   element,
@@ -43,8 +62,29 @@ export function ImageResizeControl({
     (e: React.MouseEvent) => {
       stopEvent(e)
       setIsDragging(true)
+
+      /**
+       * Position of mouse pointer when mouse down is pressed
+       */
       const startX = e.clientX
-      const startWidth = size.width
+
+      /**
+       * The initial image size for the visual image (i.e. the image we are
+       * seeing on the screen) can vary from the image width as stored in the
+       * Document value.
+       *
+       * This is because if the document image width value is larger than the
+       * screen width, we have constrained the image so that it fits.
+       *
+       * When we start a resize, we want the resize to start at the visual
+       * image width though or the drag may appear broken. For example, if you
+       * start resizing smaller, if the image is larger than the width of the
+       * screen, the resize will take no effect.
+       *
+       * For this reason, we start with the visual screen width.
+       */
+      const bounds = getImageBoundsFromSlateElement(editor, element)
+      const startWidth = bounds.width
 
       let nextSize = { ...size }
 
@@ -69,11 +109,35 @@ export function ImageResizeControl({
         document.removeEventListener("mousemove", onDocumentMouseMove)
         document.removeEventListener("mouseup", onDocumentMouseUp)
         const path = ReactEditor.findPath(editor, element)
-        Transforms.setNodes(
-          editor,
-          { width: nextSize.width, height: nextSize.height },
-          { at: path }
-        )
+        /**
+         * When we save the image to the document, at the moment, we have
+         * decided to save the image at the actual resize width, as stored
+         * in the resize state. This is different than using the visual
+         * image width which is constrained to the width of the screen.
+         *
+         * Not sure if this is the right approach, but it does allow for a
+         * manual workaround if desired where the content is being edited in
+         * a smaller screen than the output window and the user wants to have
+         * the image display at a larger size.
+         *
+         * Note that this is already possible (to save at a larger size than
+         * the screen width) when using presets so it's not entirely out of
+         * character for our editor either.
+         */
+        const size = {
+          width: nextSize.width,
+          height: nextSize.height,
+        }
+        /**
+         * It's not, at the moment, strictly necessary to set the size because
+         * the size is set during mouse move; however, I'm keeping this here
+         * as (a) a sanity check to ensure this is always correct and (b) if
+         * we ever decide to modify the size before saving (see the comment
+         * above when setting size) then we don't end up in a bad state. This
+         * is something that already occurred once during experimenting.
+         */
+        setSize(size)
+        Transforms.setNodes(editor, size, { at: path })
         setIsDragging(false)
       }
 
