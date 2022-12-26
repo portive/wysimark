@@ -28,7 +28,7 @@ export const $Image = styled("img", forwardRef)`
    * Constrains the maximum resize width of an image to 100% of the space
    * available. This prevents the image from stepping outside its boundaries.
    *
-   * Problems:
+   * Problem:
    *
    * - The "height" is set to "auto" which likely conflicts with the height
    *   provided as an image attribute of "height" set by the application.
@@ -36,12 +36,6 @@ export const $Image = styled("img", forwardRef)`
    *   except when the image hasn't been loaded yet, I think it's possible
    *   and perhaps likely that there may be a reflow that happens before/after
    *   the image is loaded.
-   *
-   * - When the user goes to resize the image and it is greater than the current
-   *   max width, then we resizing smaller, there is some drag with no visible
-   *   change making it seem like resize is broken. Perhaps this can be repaired
-   *   to some degree though by resetting the image width at the beginning of
-   *   a drag to the current actual width.
    */
   max-width: 100%;
   height: auto;
