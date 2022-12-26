@@ -1,4 +1,5 @@
 export * from "./use-absolute-reposition"
 export * from "./use-fixed-reposition"
 export * from "./use-reposition"
+export * from "./use-resize-browser"
 export * from "./use-throttled-refresh"

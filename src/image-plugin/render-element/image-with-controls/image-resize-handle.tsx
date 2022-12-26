@@ -4,13 +4,14 @@ import { Editor, Transforms } from "slate"
 import { ReactEditor, useSlateStatic } from "slate-react"
 
 import { stopEvent } from "~/src/sink"
+import { useResizeBrowser } from "~/src/use-reposition/hooks"
 
 import {
   $ImageResizeHandle,
   $ImageResizeInvisibleHandle,
 } from "../../styles/image-with-controls-styles/image-resize-handle-styles"
 import { ImageBlockElement, ImageInlineElement, ImageSize } from "../../types"
-import { minMax, resizeToWidth } from "../../utils"
+import { getEditorWidth, minMax, resizeToWidth } from "../../utils"
 
 /**
  * Helper function finds the `img` inside the current Slate `Element`.
@@ -49,10 +50,23 @@ export function ImageResizeControl({
   const editor = useSlateStatic()
 
   /**
+   * Refreshes the rendering of the resize handle if the browser width is
+   * changed. This is useful, for example, if the browser is resized, making
+   * the editable area smaller, which in some cases shoudl cause the resize
+   * handle to indicate that the image can only be resized smaller.
+   */
+  useResizeBrowser()
+
+  /**
+   * Retrieve the inner (usable) width of the editor.
+   */
+  const editorWidth = getEditorWidth(editor)
+
+  /**
    * Create some convenience constants that we use a lot below
    */
   const width = size.width
-  const maxWidth = srcSize.width
+  const maxWidth = Math.min(srcSize.width, editorWidth)
   const minWidth = Math.min(12, srcSize.width)
 
   /**
@@ -205,8 +219,8 @@ export function ImageResizeControl({
    */
   const className = clsx({
     "--center": width < maxWidth && width > minWidth,
-    "--left": width == maxWidth && width > minWidth,
-    "--right": width === minWidth && width < maxWidth,
+    "--left": width >= maxWidth && width > minWidth,
+    "--right": width <= minWidth && width < maxWidth,
     "--dragging": isDragging,
     "--small": width <= 64 || size.height <= 64,
   })
