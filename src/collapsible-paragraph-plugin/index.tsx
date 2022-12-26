@@ -23,6 +23,11 @@ export type CollapsibleParagraphPluginCustomTypes = {
 
 export const CollapsibleParagraphPlugin = () =>
   createPlugin<CollapsibleParagraphPluginCustomTypes>((editor) => {
+    if (!editor.normalizeAfterDelete) {
+      throw new Error(
+        `The collapsible-paragraph-plugin has a dependency on the normalize-after-delete plugin. Please add that plugin before this one.`
+      )
+    }
     return {
       name: "collapsible-paragraph",
       editor: {

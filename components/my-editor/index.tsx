@@ -27,6 +27,7 @@ import {
 } from "~/src/code-block-plugin"
 import {
   CollapsibleParagraphPlugin,
+  CollapsibleParagraphPluginCustomTypes,
   ParagraphElement,
 } from "~/src/collapsible-paragraph-plugin"
 import {
@@ -99,13 +100,13 @@ const Sink = createSink([
   }),
   ListPlugin(),
   AtomicDeletePlugin(),
+  NormalizeAfterDeletePlugin(),
   CollapsibleParagraphPlugin(),
   ThemePlugin(),
   ToolbarPlugin(),
   UploadPlugin({ authToken: process.env.NEXT_PUBLIC_PORTIVE_AUTH_TOKEN }),
   UploadAttachmentPlugin(),
   ImagePlugin(),
-  NormalizeAfterDeletePlugin(),
 ])
 
 const { withSink, SinkEditable } = Sink
@@ -122,12 +123,13 @@ export type PluginCustomTypes = MergePluginCustomTypes<
     HorizontalRulePluginCustomTypes,
     ListPluginCustomTypes,
     AtomicDeletePluginCustomTypes,
+    NormalizeAfterDeletePluginCustomTypes,
+    CollapsibleParagraphPluginCustomTypes,
     ThemePluginCustomTypes,
     ToolbarPluginCustomTypes,
     UploadPluginCustomTypes,
     UploadAttachmentPluginCustomTypes,
-    ImagePluginCustomTypes,
-    NormalizeAfterDeletePluginCustomTypes
+    ImagePluginCustomTypes
   ]
 >
 
