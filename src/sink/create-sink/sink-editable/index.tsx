@@ -161,6 +161,22 @@ export function SinkEditable(originalProps: Parameters<typeof Editable>[0]) {
     originalProps.onPaste?.(e)
   }
 
+  /**
+   * Iterate through all the plugins trying to handle the `onKeyDown`.
+   * If it finds one (which is identified when the function returns `true`)
+   * then we stop and return.
+   *
+   * If we don't find one, we follow through to the `onKeyDown` found in the
+   * `SinkEditable` component.
+   */
+  const nextOnDrop = (e: React.DragEvent<HTMLDivElement>) => {
+    for (const plugin of sink.pluginsFor.onPaste) {
+      const result = plugin.editableProps?.onDrop?.(e)
+      if (result) return
+    }
+    originalProps.onDrop?.(e)
+  }
+
   const NextEditable = (props: EditableProps) => {
     /**
      * This creates the bottom-most RenderEditable which itself will only
@@ -207,6 +223,7 @@ export function SinkEditable(originalProps: Parameters<typeof Editable>[0]) {
       decorate={decorate}
       onKeyDown={nextOnKeyDown}
       onPaste={nextOnPaste}
+      onDrop={nextOnDrop}
       renderElement={nextRenderElement}
       renderLeaf={nextRenderLeaf}
     />

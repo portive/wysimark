@@ -55,6 +55,14 @@ export const UploadPlugin = ({ authToken }: { authToken?: string }) =>
           }
           return true
         },
+        onDrop(e) {
+          const files = e.nativeEvent.dataTransfer?.files
+          if (!files || files.length === 0) return false
+          for (const file of files) {
+            editor.upload.upload(file)
+          }
+          return true
+        },
       },
     }
   })

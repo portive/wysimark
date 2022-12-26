@@ -119,6 +119,7 @@ export type PluginObject<T extends BasePluginCustomTypes> = {
     onKeyUp?: (e: React.SyntheticEvent<Element, KeyboardEvent>) => boolean
     onKeyPress?: (e: React.SyntheticEvent<Element, KeyboardEvent>) => boolean
     onPaste?: (e: React.ClipboardEvent<Element>) => boolean
+    onDrop?: (e: React.DragEvent<Element>) => boolean
     /**
      * `renderElement` behaves similar to the `renderElement` prop on `Editable`
      * but if `renderElement` returns undefined, we move on to the next
