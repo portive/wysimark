@@ -21,6 +21,32 @@ export const $ImageContainer = styled("span", forwardRef)`
 
 export const $Image = styled("img", forwardRef)`
   /**
+   * TODO:
+   *
+   * This is a bit of a hack but is a better experience than not anything.
+   *
+   * Constrains the maximum resize width of an image to 100% of the space
+   * available. This prevents the image from stepping outside its boundaries.
+   *
+   * Problems:
+   *
+   * - The "height" is set to "auto" which likely conflicts with the height
+   *   provided as an image attribute of "height" set by the application.
+   *   Effectively, this means that the "height" is ignored which is fine
+   *   except when the image hasn't been loaded yet, I think it's possible
+   *   and perhaps likely that there may be a reflow that happens before/after
+   *   the image is loaded.
+   *
+   * - When the user goes to resize the image and it is greater than the current
+   *   max width, then we resizing smaller, there is some drag with no visible
+   *   change making it seem like resize is broken. Perhaps this can be repaired
+   *   to some degree though by resetting the image width at the beginning of
+   *   a drag to the current actual width.
+   */
+  max-width: 100%;
+  height: auto;
+
+  /**
    * Rounded borders are pretty and also help the selection outline look
    * pretty.
    */
