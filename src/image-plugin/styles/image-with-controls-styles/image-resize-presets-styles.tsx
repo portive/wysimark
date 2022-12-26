@@ -6,8 +6,16 @@ export const $ImageResizePresets = styled("div", forwardRef)`
   /**
    * On top of the image +1 for space inside outline, +2 for outline,
    * +2 for space outside outline.
+   *
+   * DO NOT MOVE TO BOTTOM:
+   *
+   * This is a reminder not to move the preset to the bottom. Visually, it is
+   * less obtrusive at the bottom; however, an issue is that when switching
+   * between different presets, the preset UI moves up/down making it difficult
+   * to switch between different presets. When kept at the top, the preset
+   * UI doesn't move.
    */
-  bottom: calc(-2em - 5px);
+  top: calc(-2em - 5px);
   /**
    * Align left to the outline: +1 for space inside outline, +2 for outline
    * width
