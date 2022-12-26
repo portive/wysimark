@@ -86,6 +86,15 @@ export function ImageResizeControl({
     [srcSize.width, srcSize.height, size.width, element]
   )
 
+  /**
+   * FIXME:
+   *
+   * This can be refactored so that it shares more code with `onMouseDown`
+   * above. They are nearly identical except:
+   *
+   * - the event listeners that are added/removed
+   * - the way way in which clientX is retrieved
+   */
   const onTouchStart = useCallback(
     (e: React.TouchEvent) => {
       stopEvent(e)

@@ -7,7 +7,7 @@ export const $ImageResizePresets = styled("div", forwardRef)`
    * On top of the image +1 for space inside outline, +2 for outline,
    * +2 for space outside outline.
    */
-  top: calc(-2em - 5px);
+  bottom: calc(-2em - 5px);
   /**
    * Align left to the outline: +1 for space inside outline, +2 for outline
    * width
