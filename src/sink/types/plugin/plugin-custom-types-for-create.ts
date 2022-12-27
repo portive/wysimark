@@ -1,12 +1,27 @@
 import { BaseElement, BaseText } from "slate"
 
-import { PluginFunction, SinkEditor } from "./types"
+import { SinkEditor } from ".."
+
+/**
+ * TODO:
+ *
+ * These should be merged with the `plugin-custom-types` in the same directory.
+ *
+ * At some point, there was some fancy typing efforts in order to get the
+ * CustomTypes automatically extracted from the plugins; however, it turns out
+ * that due to limitations in TypeScript, at least as hard as we've tried,
+ * this is impossible.
+ *
+ * Because of this, we should probably make efforts to simplify the Custom
+ * Types as much as possible.
+ */
 
 /**
  * These are the Input Custom Types for the Plugin which differ from the actual
  * Custom Types for the plugin because, apart from `Name`, most of the
  * keys except for `Name` are optional.
  */
+
 export type InputPluginCustomTypes = {
   Name: string
   /**
@@ -24,23 +39,12 @@ export type InputPluginCustomTypes = {
    */
   Text?: BaseText
 }
-
-type CreatePluginOutputCustomTypes<T extends InputPluginCustomTypes> = {
+export type CreatePluginOutputCustomTypes<T extends InputPluginCustomTypes> = {
   Name: T["Name"]
   Editor: T["Editor"] extends Record<string, unknown>
     ? T["Editor"] & SinkEditor
-    : /**
-       * Lint doesn't want us to define an empty object because it's usually in
-       * error, but I think this is exactly what we want here.
-       */
-      // eslint-disable-next-line @typescript-eslint/ban-types
+    : // eslint-disable-next-line @typescript-eslint/ban-types
       {}
   Element: T["Element"] extends BaseElement ? T["Element"] : BaseElement
   Text: T["Text"] extends BaseText ? T["Text"] : BaseText
-}
-
-export const createPlugin = <T extends InputPluginCustomTypes>(
-  fn: PluginFunction<CreatePluginOutputCustomTypes<T>>
-) => {
-  return fn as PluginFunction<CreatePluginOutputCustomTypes<T>>
 }
