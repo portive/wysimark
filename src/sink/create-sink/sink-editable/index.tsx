@@ -215,7 +215,6 @@ export function SinkEditable(
   }
 
   return (
-    // <Reset>
     <NextEditable
       {...originalProps}
       decorate={decorate}
@@ -225,6 +224,5 @@ export function SinkEditable(
       renderElement={nextRenderElement}
       renderLeaf={nextRenderLeaf}
     />
-    // </Reset>
   )
 }
