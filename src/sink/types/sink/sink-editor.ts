@@ -48,15 +48,5 @@ export type SinkEditor<
   isStandalone: (node: Element) => boolean
   sink: {
     plugins: PluginObject<T>[]
-    pluginsFor: {
-      decorate: PluginObject<T>[]
-      onKeyDown: PluginObject<T>[]
-      onKeyPress: PluginObject<T>[]
-      onKeyUp: PluginObject<T>[]
-      onPaste: PluginObject<T>[]
-      renderEditable: PluginObject<T>[]
-      renderElement: PluginObject<T>[]
-      renderLeaf: PluginObject<T>[]
-    }
   }
 }

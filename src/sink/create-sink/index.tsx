@@ -6,9 +6,9 @@ import { createWithSink } from "./sink-editor"
  * A sink is just a function
  */
 export const createSink = (
-  pluginConfigs: PluginFunction<ArraySafePluginCustomTypes>[]
+  pluginFunctions: PluginFunction<ArraySafePluginCustomTypes>[]
 ) => {
-  const withSink = createWithSink(pluginConfigs)
+  const withSink = createWithSink(pluginFunctions)
 
   const returnValue = { withSink, SinkEditable }
   return returnValue as {

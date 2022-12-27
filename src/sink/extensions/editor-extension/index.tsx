@@ -2,42 +2,18 @@ import { BaseEditor } from "slate"
 
 import {
   ArraySafePluginCustomTypes,
-  PluginFunction,
+  PluginObject,
   SinkEditor,
 } from "../../types"
+import { Extension } from ".."
 import { createBooleanAction } from "./create-boolean-action"
 import { createVoidAction } from "./create-void-action"
 
-export function createWithSink(
-  pluginConfigs: PluginFunction<ArraySafePluginCustomTypes>[]
-) {
-  /**
-   * The `editor` in the props can be a `BaseEditor` but we transform it
-   * into a `SinkEditor` before returning it.
-   */
-  return <E extends BaseEditor>(
-    originalEditor: E
-  ): E & SinkEditor<ArraySafePluginCustomTypes> => {
-    const editor = originalEditor as E & SinkEditor<ArraySafePluginCustomTypes>
-
-    /**
-     * Executes the plugin on the `editor` with every one of the
-     * `pluginFunctions` to get the `pluginObject`
-     */
-    const plugins = pluginConfigs.map((pluginConfig) => pluginConfig(editor))
-
-    // /**
-    //  * Exexcutes what we call extensions which you can think of more of like
-    //  * ways to extend the functionality of a Sink Editor that is core. That is,
-    //  * this is all the processing of the plugins, but we want to keep these
-    //  * modular like plugins as well to create related functionality near each
-    //  * other.
-    //  */
-    // for (const extension of extensions) {
-    //   const extendEditor = extension?.extendEditor
-    //   if (extendEditor) extendEditor(editor, plugins)
-    // }
-
+export const EditorExtension: Extension = {
+  extendEditor: (
+    editor: BaseEditor & SinkEditor<ArraySafePluginCustomTypes>,
+    plugins: PluginObject<ArraySafePluginCustomTypes>[]
+  ) => {
     /**
      * Create the default for SinkEditor methods if they don't already exist.
      */
@@ -70,10 +46,5 @@ export function createWithSink(
       isSlave: createBooleanAction(editor, "isSlave", plugins),
       isStandalone: createBooleanAction(editor, "isStandalone", plugins),
     })
-
-    editor.sink = {
-      plugins,
-    }
-    return editor
-  }
+  },
 }

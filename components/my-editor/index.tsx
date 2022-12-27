@@ -162,7 +162,31 @@ function renderLeaf({ children, attributes }: RenderLeafProps) {
   return <span {...attributes}>{children}</span>
 }
 
+// function useEditor<T extends BaseEditor>(fn: () => T, deps: unknown[]): T {
+//   const [editor, setEditor] = useState(fn)
+//   useMemo(() => {
+//     setEditor(fn())
+//   }, deps)
+//   return editor
+// }
+
 export const MyEditor = () => {
+  /**
+   * TODO:
+   *
+   * In order to get this to work, I think we need to create the Sink inside
+   * of the Component. Otherwise, React doesn't recognize the changes in the
+   * Editor components.
+   */
+
+  // function useEditor<T extends BaseEditor>(fn: () => T, deps: unknown[]): T {
+  //   const [editor, setEditor] = useState(fn)
+  //   useMemo(() => {
+  //     setEditor(fn())
+  //   }, deps)
+  //   return editor
+  // }
+
   const [editor] = useState(() => {
     const editor = createEditor()
     editor.isConvertible = (element) => element.type === "paragraph"

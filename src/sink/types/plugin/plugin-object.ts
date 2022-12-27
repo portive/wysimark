@@ -107,20 +107,6 @@ export type PluginObject<T extends BasePluginCustomTypes> = {
   editableProps?: {
     decorate?: ((entry: [T["Element"], Path]) => BaseRange[]) | undefined
     /**
-     * All of these plugin event handlers work like the standard event handler
-     * with one exception. If the handler returns true, it signals that the
-     * plugin handled the event handler. If the handler return false, it signals
-     * that it hasn't handled it and will then try running the next one.
-     *
-     * The plugin must handle calling e.preventDefault and e.stopPropagation
-     * if it wishes to.
-     */
-    onKeyDown?: (e: React.SyntheticEvent<Element, KeyboardEvent>) => boolean
-    onKeyUp?: (e: React.SyntheticEvent<Element, KeyboardEvent>) => boolean
-    onKeyPress?: (e: React.SyntheticEvent<Element, KeyboardEvent>) => boolean
-    onPaste?: (e: React.ClipboardEvent<Element>) => boolean
-    onDrop?: (e: React.DragEvent<Element>) => boolean
-    /**
      * `renderElement` behaves similar to the `renderElement` prop on `Editable`
      * but if `renderElement` returns undefined, we move on to the next
      * next plugin's `renderElement`.
@@ -146,5 +132,19 @@ export type PluginObject<T extends BasePluginCustomTypes> = {
     renderLeaf?: (
       props: ConstrainedRenderLeafProps<T["Text"]>
     ) => React.ReactElement | undefined
+    /**
+     * All of these plugin event handlers work like the standard event handler
+     * with one exception. If the handler returns true, it signals that the
+     * plugin handled the event handler. If the handler return false, it signals
+     * that it hasn't handled it and will then try running the next one.
+     *
+     * The plugin must handle calling e.preventDefault and e.stopPropagation
+     * if it wishes to.
+     */
+    onKeyDown?: (e: React.SyntheticEvent<Element, KeyboardEvent>) => boolean
+    onKeyUp?: (e: React.SyntheticEvent<Element, KeyboardEvent>) => boolean
+    onKeyPress?: (e: React.SyntheticEvent<Element, KeyboardEvent>) => boolean
+    onPaste?: (e: React.ClipboardEvent<Element>) => boolean
+    onDrop?: (e: React.DragEvent<Element>) => boolean
   }
 }
