@@ -1,18 +1,18 @@
 import { EditableProps } from "slate-react/dist/components/editable"
 
-import { ArraySafePluginCustomTypes, PluginObject } from "../../types"
+import { ArraySafePluginCustomTypes, PluginObject } from "../types"
 import { defined } from "./utils"
 
 /**
- * Create the substituted `renderElement` method.
+ * Create the substituted event handler method.
  *
  * Generally, we are looking for the first result from any plugin or on
  * SinkEditable and return the first one that returns a value only.
  *
- * Iterate over all the plugin `renderElement`. If they return nothing
- * then we go to the next one until we hit a result. If we don't hit a
- * result, then we go to the `renderElement` passed to the `SinkEditable`
- * component.
+ * Iterate over all the plugin handlers. If one handler returns `false`
+ * then we go to the next one until we get one that returns `true`. If we don't
+ * fine on that returns `true`, then we go to the handler passed to the
+ * `SinkEditable` component.
  */
 
 export function createOnKeyDown(

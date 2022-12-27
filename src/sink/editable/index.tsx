@@ -3,7 +3,7 @@ import { Editor } from "slate"
 import { useSlateStatic } from "slate-react"
 import { EditableProps } from "slate-react/dist/components/editable"
 
-import { SinkEditor } from "../../types"
+import { SinkEditor } from "../types"
 import { createDecorate } from "./create-decorate"
 import { createEditable } from "./create-editable"
 import { createOnDrop, createOnKeyDown, createOnPaste } from "./create-handler"

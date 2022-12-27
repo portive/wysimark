@@ -1,7 +1,7 @@
 import { RenderElementProps } from "slate-react"
 import { EditableProps } from "slate-react/dist/components/editable"
 
-import { ArraySafePluginCustomTypes, PluginObject } from "../../types"
+import { ArraySafePluginCustomTypes, PluginObject } from "../types"
 import { defined } from "./utils"
 
 /**

@@ -1,7 +1,7 @@
 import { styled } from "goober"
 import { forwardRef } from "react"
 
-import { SinkReset } from "~/src/sink/create-sink/sink-editable"
+import { SinkReset } from "~/src/sink/editable"
 
 /**
  * $Panel is a nice box that goes around a Drop Down menu or a Dialog Box.

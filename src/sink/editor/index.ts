@@ -2,18 +2,31 @@ import { BaseEditor } from "slate"
 
 import {
   ArraySafePluginCustomTypes,
-  PluginObject,
+  PluginFunction,
   SinkEditor,
-} from "../../types"
-import { Extension } from ".."
+} from "../types"
 import { createBooleanAction } from "./create-boolean-action"
 import { createVoidAction } from "./create-void-action"
 
-export const EditorExtension: Extension = {
-  extendEditor: (
-    editor: BaseEditor & SinkEditor<ArraySafePluginCustomTypes>,
-    plugins: PluginObject<ArraySafePluginCustomTypes>[]
-  ) => {
+export function createWithSink(
+  pluginConfigs: PluginFunction<ArraySafePluginCustomTypes>[]
+) {
+  /**
+   * The `editor` in the props can be a `BaseEditor` but we transform it
+   * into a `SinkEditor` before returning it.
+   */
+  return <E extends BaseEditor>(
+    originalEditor: E
+  ): E & SinkEditor<ArraySafePluginCustomTypes> => {
+    const editor = originalEditor as E & SinkEditor<ArraySafePluginCustomTypes>
+
+    /**
+     * Executes the plugin on the `editor` with every one of the
+     * `pluginFunctions` to get the `pluginObject`
+     */
+    const plugins = pluginConfigs.map((pluginConfig) => pluginConfig(editor))
+    editor.sink = { plugins }
+
     /**
      * Create the default for SinkEditor methods if they don't already exist.
      */
@@ -46,5 +59,7 @@ export const EditorExtension: Extension = {
       isSlave: createBooleanAction(editor, "isSlave", plugins),
       isStandalone: createBooleanAction(editor, "isStandalone", plugins),
     })
-  },
+
+    return editor
+  }
 }

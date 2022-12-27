@@ -1,7 +1,7 @@
 import { styled } from "goober"
 import { forwardRef } from "react"
 
-import { SinkReset } from "../sink/create-sink/sink-editable"
+import { SinkReset } from "../sink/editable"
 
 /**
  * NOTE:

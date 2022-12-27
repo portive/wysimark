@@ -1,6 +1,6 @@
+import { SinkEditable } from "../editable"
+import { createWithSink } from "../editor"
 import { ArraySafePluginCustomTypes, PluginFunction } from "../types"
-import { SinkEditable } from "./sink-editable"
-import { createWithSink } from "./sink-editor"
 
 /**
  * A sink is just a function

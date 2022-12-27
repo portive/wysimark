@@ -1,6 +1,6 @@
 import { BaseEditor, Element, Node } from "slate"
 
-import { BasePluginCustomTypes, PluginObject, SinkEditor } from "../../types"
+import { BasePluginCustomTypes, PluginObject, SinkEditor } from "../types"
 
 /**
  * Creates an overrideable editor action that takes a `Node` and returns a

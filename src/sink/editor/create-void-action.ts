@@ -1,6 +1,6 @@
 import { BaseEditor } from "slate"
 
-import { BasePluginCustomTypes, PluginObject } from "../../types"
+import { BasePluginCustomTypes, PluginObject } from "../types"
 
 /**
  * Creates an overrideable editor action like `insertBreak` or `deleteBackward`
