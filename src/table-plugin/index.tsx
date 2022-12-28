@@ -8,7 +8,7 @@ import {
   isStartOfElement,
 } from "~/src/sink"
 
-import { deleteFragment } from "./delete-fragment"
+import { deleteFragmentWithProtectedTypes } from "./delete-fragment"
 import { createTableMethods } from "./methods"
 import { normalizeTableIndexes } from "./normalize/normalize-table"
 import { normalizeTableCell } from "./normalize/normalize-table-cell"
@@ -60,7 +60,8 @@ export const TablePlugin = () =>
            */
           return isEndOfElement(editor, "table-cell")
         },
-        deleteFragment: () => deleteFragment(editor, ["table-cell"]),
+        deleteFragment: () =>
+          deleteFragmentWithProtectedTypes(editor, ["table-cell"]),
         insertBreak: () => {
           /**
            * IF we're anywhere in a table cell, disable insertBreak
