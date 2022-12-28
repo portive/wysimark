@@ -31,3 +31,8 @@ export function findElementUp<T extends Ancestor & Element = Element>(
   // look for a matching element
   return Editor.above(editor, { at: nextAt, match })
 }
+
+export function findElementUpPath(...args: Parameters<typeof findElementUp>) {
+  const entry = findElementUp(...args)
+  return entry?.[1]
+}

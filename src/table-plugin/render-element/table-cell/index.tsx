@@ -31,7 +31,12 @@ export function TableCell({
    */
   const showColumnMenu = tableContext.isSelected && element.y === 0
   return (
-    <$TableCell className={selected ? "--selected" : ""} {...attributes}>
+    <$TableCell
+      className={selected ? "--selected" : ""}
+      {...attributes}
+      data-x={element.x}
+      data-y={element.y}
+    >
       {children}
       {showTableMenu ? <TableMenu /> : null}
       {showRowMenu ? <RowMenu cellElement={element} /> : null}
