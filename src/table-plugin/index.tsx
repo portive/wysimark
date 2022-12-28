@@ -60,75 +60,7 @@ export const TablePlugin = () =>
            */
           return isEndOfElement(editor, "table-cell")
         },
-        deleteFragment: () => deleteFragment(editor),
-        // deleteFragment: () => {
-        //   if (editor.selection == null) return false
-        //   const [start, end] = Editor.edges(editor, editor.selection)
-        //   const startTdEntry = findElementUp<TableCellElement>(
-        //     editor,
-        //     "table-cell",
-        //     { at: start }
-        //   )
-        //   const endTdEntry = findElementUp<TableCellElement>(
-        //     editor,
-        //     "table-cell",
-        //     { at: end }
-        //   )
-        //   /**
-        //    * If the start or the end of the selection isn't in a table cell,
-        //    * then the default handler works fine so return `false`
-        //    */
-        //   if (!startTdEntry && !endTdEntry) return false
-        //   /**
-        //    * If the start and end are in the same TD, then the default handler
-        //    * works fine so return `false`
-        //    */
-        //   if (startTdEntry && endTdEntry && startTdEntry[0] === endTdEntry[0])
-        //     return false
-        //   const positions = [
-        //     ...Editor.positions(editor, { at: editor.selection }),
-        //   ]
-
-        //   const ranges: Range[] = []
-
-        //   let startPos: BasePoint,
-        //     prevPos: BasePoint,
-        //     startTdPath: Path | undefined
-        //   startPos = prevPos = positions[0]
-        //   startTdPath = startTdEntry && startTdEntry[1]
-        //   for (const pos of positions) {
-        //     const tdEntry = findElementUp<TableCellElement>(
-        //       editor,
-        //       "table-cell",
-        //       { at: pos }
-        //     )
-        //     const tdPath = tdEntry && tdEntry[1]
-        //     if (
-        //       (startTdPath && tdPath && Path.equals(startTdPath, tdPath)) ||
-        //       (startTdPath == undefined && tdPath == undefined)
-        //     ) {
-        //       prevPos = pos
-        //     } else {
-        //       const range = { anchor: startPos, focus: prevPos }
-        //       ranges.push(range)
-        //       startPos = prevPos = pos
-        //       startTdPath = tdPath
-        //     }
-        //   }
-        //   const range = { anchor: startPos, focus: prevPos }
-        //   ranges.push(range)
-        //   ranges.reverse()
-
-        //   Editor.withoutNormalizing(editor, () => {
-        //     for (const range of ranges) {
-        //       Transforms.delete(editor, { at: range })
-        //     }
-
-        //     Transforms.collapse(editor, { edge: "start" })
-        //   })
-
-        //   return true
-        // },
+        deleteFragment: () => deleteFragment(editor, ["table-cell"]),
         insertBreak: () => {
           /**
            * IF we're anywhere in a table cell, disable insertBreak

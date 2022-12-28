@@ -6,7 +6,8 @@ const PROTECTED_ELEMENT_TYPES = ["table-cell"]
 
 function getReversedDeleteSafeRanges(
   editor: Editor,
-  deleteRange: Range
+  deleteRange: Range,
+  protectedTypes: string[]
 ): Range[] {
   const positions = [...Editor.positions(editor, { at: deleteRange })]
 
@@ -14,12 +15,12 @@ function getReversedDeleteSafeRanges(
 
   let startPos: BasePoint, prevPos: BasePoint, startTdPath: Path | undefined
   startPos = prevPos = positions[0]
-  startTdPath = findElementUpPath(editor, PROTECTED_ELEMENT_TYPES, {
+  startTdPath = findElementUpPath(editor, protectedTypes, {
     at: startPos,
   })
 
   for (const pos of positions) {
-    const tdPath = findElementUpPath(editor, PROTECTED_ELEMENT_TYPES, {
+    const tdPath = findElementUpPath(editor, protectedTypes, {
       at: pos,
     })
     if (
@@ -40,31 +41,55 @@ function getReversedDeleteSafeRanges(
   return ranges
 }
 
-export function deleteFragment(editor: Editor) {
+export function deleteFragment(editor: Editor, protectedTypes: string[]) {
   if (editor.selection == null) return false
   const [start, end] = Editor.edges(editor, editor.selection)
-  const startTdPath = findElementUpPath(editor, PROTECTED_ELEMENT_TYPES, {
+  const startProtectedPath = findElementUpPath(editor, protectedTypes, {
     at: start,
   })
-  const endTdPath = findElementUpPath(editor, PROTECTED_ELEMENT_TYPES, {
+  const endProtectedPath = findElementUpPath(editor, protectedTypes, {
     at: end,
   })
   /**
    * If the start or the end of the selection isn't in a table cell,
    * then the default handler works fine so return `false`
    */
-  if (!startTdPath && !endTdPath) return false
+  if (!startProtectedPath && !endProtectedPath) {
+    return false
+  }
+
   /**
    * If the start and end are in the same TD, then the default handler
    * works fine so return `false`
    */
-  if (startTdPath && endTdPath && Path.equals(startTdPath, endTdPath))
+  if (
+    startProtectedPath &&
+    endProtectedPath &&
+    Path.equals(startProtectedPath, endProtectedPath)
+  ) {
     return false
+  }
 
-  const ranges = getReversedDeleteSafeRanges(editor, editor.selection)
+  const reversedRanges = getReversedDeleteSafeRanges(
+    editor,
+    editor.selection,
+    protectedTypes
+  )
 
+  /**
+   * We iterate through the ranges backwards deleting each delete safe range.
+   * At the end, we collapse the originally selected deletion range to the
+   * front.
+   *
+   * NOTE:
+   *
+   * Ideally, we'd actually collapse this to the start or end depending on the
+   * direction of the delete; however, that information is not presently
+   * provided to us. Might be a small improvement in the future that requires
+   * us to update Slate.
+   */
   Editor.withoutNormalizing(editor, () => {
-    for (const range of ranges) {
+    for (const range of reversedRanges) {
       Transforms.delete(editor, { at: range })
     }
     Transforms.collapse(editor, { edge: "start" })
