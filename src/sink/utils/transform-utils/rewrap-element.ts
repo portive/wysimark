@@ -1,6 +1,9 @@
 import { Editor, Element, NodeEntry, Path, Transforms } from "slate"
 
-import { createTargetElement, TargetElement } from "../fix/target-element"
+import {
+  createTargetElement,
+  TargetElement,
+} from "../standardize-utils/target-element"
 
 /**
  * Takes an existing Element at path `at` and swaps out that Element with a

@@ -1,7 +1,10 @@
 import { Ancestor, Editor, Element, NodeEntry, Path } from "slate"
 
-import { BetterAt, betterAt } from "./core-utils/better-at"
-import { fixNodeMatcher, NodeMatcher } from "./fix/fix-node-matcher"
+import { BetterAt, betterAt } from "../core-utils/better-at"
+import {
+  NodeMatcher,
+  standardizeNodeMatcher,
+} from "../standardize-utils/standardize-node-matcher"
 
 /**
  * Checks to see if the current selection is inside of a Node that matches
@@ -15,7 +18,7 @@ export function findElementUp<T extends Ancestor & Element = Element>(
   // if no selection, there will be no match
   if (at === null) return
   const nextAt = betterAt(editor, at)
-  const match = fixNodeMatcher(matchNode)
+  const match = standardizeNodeMatcher(matchNode)
   /**
    * Normally, we are looking up from a range or a point, but if the `at`
    * `Location` is a `Path`, then we need to check for an exact match at the

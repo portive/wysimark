@@ -1,6 +1,6 @@
 import { Editor, Element } from "slate"
 
-import { TargetElement } from "../fix/target-element"
+import { TargetElement } from "../standardize-utils/target-element"
 import { rewrapElement } from "../transform-utils/rewrap-element"
 
 /**

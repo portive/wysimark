@@ -11,7 +11,7 @@ export type NodeMatcher = string | string[] | ((node: Node) => boolean)
  * an `Element`
  */
 
-export function fixNodeMatcher(
+export function standardizeNodeMatcher(
   matchNode: NodeMatcher
 ): (node: Node) => boolean {
   if (typeof matchNode === "function") return matchNode
