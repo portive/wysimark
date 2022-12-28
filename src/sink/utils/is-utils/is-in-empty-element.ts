@@ -1,7 +1,7 @@
 import { Editor } from "slate"
 
+import { findElementUp } from "../find-element-up"
 import { NodeMatcher } from "../fix/fix-node-matcher"
-import { findElementUp } from "../match-element"
 import { isCollapsed } from "./is-collapsed"
 
 /**
