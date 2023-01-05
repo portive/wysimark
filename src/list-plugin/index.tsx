@@ -23,6 +23,7 @@ export const isListItem = createIsElementType<ListItemElement>(LIST_ITEM_TYPES)
 
 export const ListPlugin = () =>
   createPlugin<ListPluginCustomTypes>((editor) => {
+    editor.convertible.addConvertibleType(LIST_ITEM_TYPES)
     const list = (editor.list = createListMethods(editor))
     const hotkeyHandler = createHotkeyHandler({
       tab: list.indent,
@@ -35,12 +36,6 @@ export const ListPlugin = () =>
       name: "list",
       editor: {
         normalizeNode: (entry) => normalizeNode(editor, entry),
-        isConvertible: (element) => {
-          if (LIST_ITEM_TYPES.includes(element.type)) {
-            return true
-          }
-          return undefined
-        },
         insertBreak: list.insertBreak,
       },
       editableProps: {

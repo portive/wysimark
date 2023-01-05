@@ -6,7 +6,7 @@ import { rewrapElement } from "../transform-utils/rewrap-element"
 /**
  * Toggle convertible elements to a targetElement like headings and list items.
  *
- * Looks for `editor.isConvertible` elements to toggle.
+ * Looks for `editor.convertible.isConvertible` elements to toggle.
  *
  * If it doesn't find any, returns false.
  *
@@ -27,7 +27,8 @@ export function toggleElements<T extends Element = Element>(
    */
   const entries = Array.from(
     Editor.nodes<Element>(editor, {
-      match: (node) => Element.isElement(node) && editor.isConvertible(node),
+      match: (node) =>
+        Element.isElement(node) && editor.convertible.isConvertible(node),
     })
   )
   /**

@@ -214,8 +214,9 @@ export const MyEditor = () => {
 
   const [editor] = useState(() => {
     const editor = createEditor()
-    editor.isConvertible = (element) => element.type === "paragraph"
-    return withSink(withReact(withHistory(editor)))
+    const nextEditor = withSink(withReact(withHistory(editor)))
+    nextEditor.convertible.addConvertibleType("paragraph")
+    return nextEditor
   })
 
   return (

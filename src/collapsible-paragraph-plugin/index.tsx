@@ -23,6 +23,7 @@ export type CollapsibleParagraphPluginCustomTypes = {
 
 export const CollapsibleParagraphPlugin = () =>
   createPlugin<CollapsibleParagraphPluginCustomTypes>((editor) => {
+    editor.convertible.addConvertibleType("paragraph")
     if (!editor.normalizeAfterDelete) {
       throw new Error(
         `The collapsible-paragraph-plugin has a dependency on the normalize-after-delete plugin. Please add that plugin before this one.`
@@ -32,9 +33,6 @@ export const CollapsibleParagraphPlugin = () =>
       name: "collapsible-paragraph",
       editor: {
         normalizeNode: curry(normalizeNode, editor),
-        isConvertible: (element) => {
-          if (element.type === "paragraph") return true
-        },
       },
       editableProps: {
         renderElement: (props) => {

@@ -14,13 +14,7 @@ import { BasePluginCustomTypes, PluginObject, SinkEditor } from "../types"
  * If no plugin handles the result, it returns the result of the original action.
  */
 export function createBooleanAction<
-  K extends
-    | "isVoid"
-    | "isInline"
-    | "isMaster"
-    | "isConvertible"
-    | "isSlave"
-    | "isStandalone"
+  K extends "isVoid" | "isInline" | "isMaster" | "isSlave" | "isStandalone"
 >(
   editor: BaseEditor & SinkEditor,
   actionKey: K,

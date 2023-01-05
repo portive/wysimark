@@ -61,7 +61,6 @@ export type PluginObject<T extends BasePluginCustomTypes> = {
      * names.
      */
     isMaster?: (element: T["Element"]) => boolean | void
-    isConvertible?: (element: T["Element"]) => boolean | void
     isSlave?: (element: T["Element"]) => boolean | void
     isStandalone?: (element: T["Element"]) => boolean | void
 

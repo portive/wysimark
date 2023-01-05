@@ -13,6 +13,7 @@ import { HeadingElement, HeadingPluginCustomTypes } from "./types"
 
 export const HeadingPlugin = () =>
   createPlugin<HeadingPluginCustomTypes>((editor) => {
+    editor.convertible.addConvertibleType("heading")
     editor.heading = {
       toggleHeading: (level) => {
         toggleElements<HeadingElement>(
@@ -26,9 +27,6 @@ export const HeadingPlugin = () =>
       name: "heading",
       editor: {
         insertBreak: curry(insertBreak, editor),
-        isConvertible(element) {
-          if (element.type === "heading") return true
-        },
       },
       editableProps: {
         renderElement: ({ element, attributes, children }) => {

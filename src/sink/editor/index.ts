@@ -31,8 +31,6 @@ export function createWithSink(
      * Create the default for SinkEditor methods if they don't already exist.
      */
     editor.isMaster = "isMaster" in editor ? editor.isMaster : () => false
-    editor.isConvertible =
-      "isConvertible" in editor ? editor.isConvertible : () => false
     editor.isSlave = "isSlave" in editor ? editor.isSlave : () => false
     editor.isStandalone =
       "isStandalone" in editor ? editor.isStandalone : () => false
@@ -55,7 +53,6 @@ export function createWithSink(
       isInline: createBooleanAction(editor, "isInline", plugins),
       isVoid: createBooleanAction(editor, "isVoid", plugins),
       isMaster: createBooleanAction(editor, "isMaster", plugins),
-      isConvertible: createBooleanAction(editor, "isConvertible", plugins),
       isSlave: createBooleanAction(editor, "isSlave", plugins),
       isStandalone: createBooleanAction(editor, "isStandalone", plugins),
     })
