@@ -9,10 +9,14 @@ export * from "./types"
 
 export const InlineCodePlugin = () =>
   createPlugin<InlineCodePluginCustomTypes>((editor) => {
+    if (!editor.marksPlugin)
+      throw new Error(
+        "InlineCodePlugin has a dependency on the MarksPlugin but the MarksPlugin has not been added or is added after the InlineCodePlugin"
+      )
     editor.supportsInlineCode = true
-    const p = (editor.inlineCodePlugin = {
+    editor.inlineCodePlugin = {
       toggleInlineCode: () => editor.marksPlugin.toggleMark("code"),
-    })
+    }
     return {
       name: "inline-code",
       editableProps: {
@@ -24,7 +28,7 @@ export const InlineCodePlugin = () =>
           }
         },
         onKeyDown: createHotkeyHandler({
-          "mod+j": () => p.toggleInlineCode(),
+          "mod+j": () => editor.inlineCodePlugin.toggleInlineCode(),
         }),
       },
     }
