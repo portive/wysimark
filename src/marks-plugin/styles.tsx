@@ -1,7 +1,7 @@
 import { styled } from "goober"
 import { forwardRef } from "react"
 
-export const $Span = styled("span", forwardRef)`
+export const $MarksSpan = styled("span", forwardRef)`
   &.--bold {
     font-weight: bold;
   }

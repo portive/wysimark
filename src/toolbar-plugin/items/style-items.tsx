@@ -6,13 +6,13 @@ export const styleItems: Item[] = [
     icon: Icon.Superscript,
     title: "Superscript",
     hotkey: "super+p",
-    action: (editor) => editor.marksPlugin.toggleSup(),
+    action: (editor) => editor.marks.toggleSup(),
   },
   {
     icon: Icon.Subscript,
     title: "Subscript",
     hotkey: "super+b",
-    action: (editor) => editor.marksPlugin.toggleSub(),
+    action: (editor) => editor.marks.toggleSub(),
   },
   "divider",
   {

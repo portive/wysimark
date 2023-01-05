@@ -3,10 +3,10 @@ import React from "react"
 
 import { createHotkeyHandler, createPlugin, toggleMark } from "~/src/sink"
 
-import { $Span } from "./styles"
+import { $MarksSpan } from "./styles"
 
 export type MarksEditor = {
-  marksPlugin: {
+  marks: {
     toggleBold: () => void
     toggleItalic: () => void
     toggleUnderline: () => void
@@ -34,20 +34,20 @@ export type MarksPluginCustomTypes = {
 
 export const MarksPlugin = () =>
   createPlugin<MarksPluginCustomTypes>((editor) => {
-    const p = (editor.marksPlugin = {
+    editor.marks = {
       toggleBold: () => toggleMark(editor, "bold"),
       toggleItalic: () => toggleMark(editor, "italic"),
       toggleUnderline: () => toggleMark(editor, "underline"),
       toggleSup: () => toggleMark(editor, "sup", "sub"),
       toggleSub: () => toggleMark(editor, "sub", "sup"),
       toggleStrike: () => toggleMark(editor, "strike"),
-    })
+    }
     return {
       name: "marks",
       editableProps: {
         renderLeaf: ({ leaf, children }) => {
           return (
-            <$Span
+            <$MarksSpan
               className={clsx({
                 "--bold": leaf.bold,
                 "--italic": leaf.italic,
@@ -58,16 +58,16 @@ export const MarksPlugin = () =>
               })}
             >
               {children}
-            </$Span>
+            </$MarksSpan>
           )
         },
         onKeyDown: createHotkeyHandler({
-          "mod+b": p.toggleBold,
-          "mod+i": p.toggleItalic,
-          "mod+u": p.toggleUnderline,
-          "super+p": p.toggleSup,
-          "super+b": p.toggleSub,
-          "super+k": p.toggleStrike,
+          "mod+b": editor.marks.toggleBold,
+          "mod+i": editor.marks.toggleItalic,
+          "mod+u": editor.marks.toggleUnderline,
+          "super+p": editor.marks.toggleSup,
+          "super+b": editor.marks.toggleSub,
+          "super+k": editor.marks.toggleStrike,
         }),
       },
     }
