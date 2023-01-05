@@ -31,6 +31,10 @@ import {
   ParagraphElement,
 } from "~/src/collapsible-paragraph-plugin"
 import {
+  ConvertiblePlugin,
+  ConvertiblePluginCustomTypes,
+} from "~/src/convertible-plugin"
+import {
   HeadingElement,
   HeadingPlugin,
   HeadingPluginCustomTypes,
@@ -84,6 +88,7 @@ import { UploadPlugin, UploadPluginCustomTypes } from "~/src/upload-plugin"
 import { initialValue } from "./initial-value"
 
 const Sink = createSink([
+  ConvertiblePlugin(),
   AnchorPlugin(),
   HeadingPlugin(),
   InlineCodePlugin(),
@@ -113,6 +118,7 @@ const { withSink, SinkEditable } = Sink
 
 export type PluginCustomTypes = MergePluginCustomTypes<
   [
+    ConvertiblePluginCustomTypes,
     AnchorPluginCustomTypes,
     HeadingPluginCustomTypes,
     MarksPluginCustomTypes,
