@@ -1,12 +1,19 @@
 import { Descendant } from "slate"
 
-import { createPlugin, curry } from "~/src/sink"
+import {
+  createHotkeyHandler,
+  createPlugin,
+  curry,
+  toggleElements,
+} from "~/src/sink"
 
 import { normalizeNode } from "./normalize-node"
 import { Paragraph } from "./render-element/paragraph"
 
 export type CollapsibleParagraphEditor = {
-  collapsibleParagraph: true
+  collapsibleParagraph: {
+    toggleParagraph: () => void
+  }
 }
 
 export type ParagraphElement = {
@@ -24,6 +31,13 @@ export type CollapsibleParagraphPluginCustomTypes = {
 export const CollapsibleParagraphPlugin = () =>
   createPlugin<CollapsibleParagraphPluginCustomTypes>((editor) => {
     editor.convertible.addConvertibleType("paragraph")
+    editor.collapsibleParagraph = {
+      toggleParagraph: () => {
+        toggleElements<ParagraphElement>(editor, () => false, {
+          type: "paragraph",
+        })
+      },
+    }
     if (!editor.normalizeAfterDelete) {
       throw new Error(
         `The collapsible-paragraph-plugin has a dependency on the normalize-after-delete plugin. Please add that plugin before this one.`
@@ -41,6 +55,9 @@ export const CollapsibleParagraphPlugin = () =>
               return <Paragraph {...props} />
           }
         },
+        onKeyDown: createHotkeyHandler({
+          "super+0": editor.collapsibleParagraph.toggleParagraph,
+        }),
       },
     }
   })
