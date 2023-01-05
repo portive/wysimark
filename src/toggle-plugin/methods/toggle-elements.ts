@@ -1,7 +1,11 @@
 import { Editor, Element } from "slate"
 
-import { TargetElement } from "../standardize-utils/target-element"
-import { rewrapElement } from "../transform-utils/rewrap-element"
+import { rewrapElement, TargetElement } from "~/src/sink"
+
+export type CurriedToggleElements = <T extends Element = Element>(
+  match: (element: Element) => boolean,
+  targetElement: TargetElement<T>
+) => void
 
 /**
  * Toggle convertible elements to a targetElement like headings and list items.
@@ -27,8 +31,7 @@ export function toggleElements<T extends Element = Element>(
    */
   const entries = Array.from(
     Editor.nodes<Element>(editor, {
-      match: (node) =>
-        Element.isElement(node) && editor.convertible.isConvertible(node),
+      match: (node) => Element.isElement(node) && editor.toggle.isToggle(node),
     })
   )
   /**

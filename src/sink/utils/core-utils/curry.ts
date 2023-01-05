@@ -9,6 +9,14 @@
  *
  * This is not a full implementation of a curry but gives us what we want in
  * a lightweight manner, with low complexity and good typing.
+ *
+ * WARNING FOR GENERICS:
+ *
+ * If the function you are currying has a generic, you will need to write a
+ * generic manually for it then apply it manually using `as`. For example:
+ *
+ * const curriedToggleElements =
+ *   curry(toggleElements, editor) as CurriedToggleElements
  */
 export function curry<CA, RA extends unknown[], R>(
   fn: (curriedArg: CA, ...restArgs: RA) => R,

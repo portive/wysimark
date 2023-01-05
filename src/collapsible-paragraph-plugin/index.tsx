@@ -1,11 +1,6 @@
 import { Descendant } from "slate"
 
-import {
-  createHotkeyHandler,
-  createPlugin,
-  curry,
-  toggleElements,
-} from "~/src/sink"
+import { createHotkeyHandler, createPlugin, curry } from "~/src/sink"
 
 import { normalizeNode } from "./normalize-node"
 import { Paragraph } from "./render-element/paragraph"
@@ -30,10 +25,10 @@ export type CollapsibleParagraphPluginCustomTypes = {
 
 export const CollapsibleParagraphPlugin = () =>
   createPlugin<CollapsibleParagraphPluginCustomTypes>((editor) => {
-    editor.convertible.addConvertibleType("paragraph")
+    editor.toggle.addToggleType("paragraph")
     editor.collapsibleParagraph = {
       toggleParagraph: () => {
-        toggleElements<ParagraphElement>(editor, () => false, {
+        editor.toggle.toggleElements<ParagraphElement>(() => false, {
           type: "paragraph",
         })
       },

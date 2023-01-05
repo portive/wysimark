@@ -11,7 +11,6 @@ export function toggleMark(
   const [match] = Editor.nodes(editor, {
     match: (n) => Text.isText(n) && !!n[markKey],
   })
-
   Transforms.setNodes(
     editor,
     { [markKey]: !match || null },

@@ -1,11 +1,6 @@
 export * from "./types"
 
-import {
-  createHotkeyHandler,
-  createPlugin,
-  curry,
-  toggleElements,
-} from "~/src/sink"
+import { createHotkeyHandler, createPlugin, curry } from "~/src/sink"
 
 import { insertBreak } from "./insert-break"
 import { $Heading } from "./styles"
@@ -13,11 +8,10 @@ import { HeadingElement, HeadingPluginCustomTypes } from "./types"
 
 export const HeadingPlugin = () =>
   createPlugin<HeadingPluginCustomTypes>((editor) => {
-    editor.convertible.addConvertibleType("heading")
+    editor.toggle.addToggleType("heading")
     editor.heading = {
       toggleHeading: (level) => {
-        toggleElements<HeadingElement>(
-          editor,
+        editor.toggle.toggleElements<HeadingElement>(
           (element) => element.type === "heading" && element.level == level,
           { type: "heading", level }
         )

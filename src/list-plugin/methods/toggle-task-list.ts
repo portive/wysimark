@@ -1,12 +1,9 @@
 import { Editor } from "slate"
 
-import { toggleElements } from "~/src/sink"
-
 import { TaskListItemElement } from ".."
 
 export function toggleTaskList(editor: Editor) {
-  return toggleElements<TaskListItemElement>(
-    editor,
+  return editor.toggle.toggleElements<TaskListItemElement>(
     (element) => element.type === "task-list-item",
     (element) => {
       return {

@@ -1,12 +1,9 @@
 import { Editor } from "slate"
 
-import { toggleElements } from "~/src/sink"
-
 import { UnorderedListItemElement } from ".."
 
 export function toggleUnorderedList(editor: Editor) {
-  return toggleElements<UnorderedListItemElement>(
-    editor,
+  return editor.toggle.toggleElements<UnorderedListItemElement>(
     (element) => element.type === "unordered-list-item",
     (element) => {
       return {

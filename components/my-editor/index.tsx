@@ -22,10 +22,6 @@ import {
   CollapsibleParagraphPlugin,
   CollapsibleParagraphPluginCustomTypes,
 } from "~/src/collapsible-paragraph-plugin"
-import {
-  ConvertiblePlugin,
-  ConvertiblePluginCustomTypes,
-} from "~/src/convertible-plugin"
 import { HeadingPlugin, HeadingPluginCustomTypes } from "~/src/heading-plugin"
 import {
   HorizontalRulePlugin,
@@ -46,6 +42,7 @@ import {
 import { createSink, MergePluginCustomTypes } from "~/src/sink"
 import { TablePlugin, TablePluginCustomTypes } from "~/src/table-plugin"
 import { ThemePlugin, ThemePluginCustomTypes } from "~/src/theme-plugin"
+import { TogglePlugin, TogglePluginCustomTypes } from "~/src/toggle-plugin"
 import { ToolbarPlugin, ToolbarPluginCustomTypes } from "~/src/toolbar-plugin"
 import { TrailingBlockPlugin } from "~/src/trailing-block-plugin"
 import {
@@ -82,7 +79,7 @@ import { initialValue } from "./initial-value"
  * with an emphasis on how we wrote the `Element` portion.
  */
 const Sink = createSink([
-  ConvertiblePlugin(),
+  TogglePlugin(),
   AnchorPlugin(),
   HeadingPlugin(),
   InlineCodePlugin(),
@@ -112,7 +109,7 @@ const { withSink, SinkEditable } = Sink
 
 export type PluginCustomTypes = MergePluginCustomTypes<
   [
-    ConvertiblePluginCustomTypes,
+    TogglePluginCustomTypes,
     AnchorPluginCustomTypes,
     HeadingPluginCustomTypes,
     MarksPluginCustomTypes,
@@ -168,7 +165,7 @@ export const MyEditor = () => {
   const [editor] = useState(() => {
     const editor = createEditor()
     const nextEditor = withSink(withReact(withHistory(editor)))
-    nextEditor.convertible.addConvertibleType("paragraph")
+    nextEditor.toggle.addToggleType("paragraph")
     return nextEditor
   })
 
