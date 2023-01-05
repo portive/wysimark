@@ -8,10 +8,10 @@ import { HeadingElement, HeadingPluginCustomTypes } from "./types"
 
 export const HeadingPlugin = () =>
   createPlugin<HeadingPluginCustomTypes>((editor) => {
-    editor.toggle.addToggleType("heading")
+    editor.toggleElement.addToggleElementType("heading")
     editor.heading = {
       toggleHeading: (level) => {
-        editor.toggle.toggleElements<HeadingElement>(
+        editor.toggleElement.toggleElements<HeadingElement>(
           (element) => element.type === "heading" && element.level == level,
           { type: "heading", level }
         )

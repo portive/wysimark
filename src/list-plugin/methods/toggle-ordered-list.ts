@@ -3,7 +3,7 @@ import { Editor } from "slate"
 import { OrderedListItemElement } from ".."
 
 export function toggleOrderedList(editor: Editor) {
-  return editor.toggle.toggleElements<OrderedListItemElement>(
+  return editor.toggleElement.toggleElements<OrderedListItemElement>(
     (element) => element.type === "ordered-list-item",
     (element) => {
       return {

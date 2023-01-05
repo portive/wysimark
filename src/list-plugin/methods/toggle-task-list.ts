@@ -3,7 +3,7 @@ import { Editor } from "slate"
 import { TaskListItemElement } from ".."
 
 export function toggleTaskList(editor: Editor) {
-  return editor.toggle.toggleElements<TaskListItemElement>(
+  return editor.toggleElement.toggleElements<TaskListItemElement>(
     (element) => element.type === "task-list-item",
     (element) => {
       return {

@@ -3,7 +3,7 @@ import { Editor } from "slate"
 import { UnorderedListItemElement } from ".."
 
 export function toggleUnorderedList(editor: Editor) {
-  return editor.toggle.toggleElements<UnorderedListItemElement>(
+  return editor.toggleElement.toggleElements<UnorderedListItemElement>(
     (element) => element.type === "unordered-list-item",
     (element) => {
       return {

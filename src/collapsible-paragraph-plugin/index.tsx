@@ -25,10 +25,10 @@ export type CollapsibleParagraphPluginCustomTypes = {
 
 export const CollapsibleParagraphPlugin = () =>
   createPlugin<CollapsibleParagraphPluginCustomTypes>((editor) => {
-    editor.toggle.addToggleType("paragraph")
+    editor.toggleElement.addToggleElementType("paragraph")
     editor.collapsibleParagraph = {
       toggleParagraph: () => {
-        editor.toggle.toggleElements<ParagraphElement>(() => false, {
+        editor.toggleElement.toggleElements<ParagraphElement>(() => false, {
           type: "paragraph",
         })
       },

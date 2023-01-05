@@ -31,7 +31,8 @@ export function toggleElements<T extends Element = Element>(
    */
   const entries = Array.from(
     Editor.nodes<Element>(editor, {
-      match: (node) => Element.isElement(node) && editor.toggle.isToggle(node),
+      match: (node) =>
+        Element.isElement(node) && editor.toggleElement.isToggleElement(node),
     })
   )
   /**

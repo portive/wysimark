@@ -42,7 +42,10 @@ import {
 import { createSink, MergePluginCustomTypes } from "~/src/sink"
 import { TablePlugin, TablePluginCustomTypes } from "~/src/table-plugin"
 import { ThemePlugin, ThemePluginCustomTypes } from "~/src/theme-plugin"
-import { TogglePlugin, TogglePluginCustomTypes } from "~/src/toggle-plugin"
+import {
+  ToggleElementPlugin,
+  ToggleElementPluginCustomTypes,
+} from "~/src/toggle-element-plugin"
 import { ToolbarPlugin, ToolbarPluginCustomTypes } from "~/src/toolbar-plugin"
 import { TrailingBlockPlugin } from "~/src/trailing-block-plugin"
 import {
@@ -79,7 +82,7 @@ import { initialValue } from "./initial-value"
  * with an emphasis on how we wrote the `Element` portion.
  */
 const Sink = createSink([
-  TogglePlugin(),
+  ToggleElementPlugin(),
   AnchorPlugin(),
   HeadingPlugin(),
   InlineCodePlugin(),
@@ -109,7 +112,7 @@ const { withSink, SinkEditable } = Sink
 
 export type PluginCustomTypes = MergePluginCustomTypes<
   [
-    TogglePluginCustomTypes,
+    ToggleElementPluginCustomTypes,
     AnchorPluginCustomTypes,
     HeadingPluginCustomTypes,
     MarksPluginCustomTypes,
@@ -165,7 +168,7 @@ export const MyEditor = () => {
   const [editor] = useState(() => {
     const editor = createEditor()
     const nextEditor = withSink(withReact(withHistory(editor)))
-    nextEditor.toggle.addToggleType("paragraph")
+    nextEditor.toggleElement.addToggleElementType("paragraph")
     return nextEditor
   })
 
