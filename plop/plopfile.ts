@@ -26,7 +26,8 @@ export default function (plop: NodePlopAPI) {
       {
         type: "input",
         name: "name",
-        message: "Name of package (aka folder under './src')",
+        message:
+          "Name of package (aka folder under './src') without the work plugin",
       },
     ],
     actions: [
