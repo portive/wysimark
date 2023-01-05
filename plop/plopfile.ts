@@ -18,32 +18,39 @@ function transform(template: string, data: Record<string, string>) {
   return nextTemplate
 }
 
+const PACKAGE_NAME_PROMPT = {
+  type: "input",
+  name: "name",
+  message: "Name of package (aka folder under './src') without the work plugin",
+}
+
 export default function (plop: NodePlopAPI) {
   registerHandleBarHelpers(plop)
   plop.setGenerator("plugin", {
     description: "Create new plugin",
-    prompts: [
-      {
-        type: "input",
-        name: "name",
-        message:
-          "Name of package (aka folder under './src') without the work plugin",
-      },
-    ],
+    prompts: [PACKAGE_NAME_PROMPT],
     actions: [
       {
         type: "addMany",
         base: "../src/template/",
         transform,
-        // transform: (
-        //   template: string,
-        //   data: Record<string, string>,
-        //   cfg: any
-        // ) => {
-        //   console.log("transform", template, data, cfg)
-        //   return template
-        // },
         templateFiles: "../src/template/**/*.(ts|tsx)",
+        destination: "../src/{{ dashCase name }}-plugin/",
+      },
+    ],
+  })
+  plop.setGenerator("methods", {
+    description: "Add methods to existing plugin",
+    prompts: [PACKAGE_NAME_PROMPT],
+    actions: [
+      {
+        type: "addMany",
+        base: "../src/template/",
+        transform,
+        templateFiles: [
+          "../src/template/methods/**/*.(ts|tsx)",
+          "../src/template/temp-methods.ts",
+        ],
         destination: "../src/{{ dashCase name }}-plugin/",
       },
     ],

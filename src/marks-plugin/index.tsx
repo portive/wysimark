@@ -1,19 +1,19 @@
 import { clsx } from "clsx"
 import React from "react"
 
-import { createHotkeyHandler, createPlugin, toggleMark } from "~/src/sink"
+import { createHotkeyHandler, createPlugin } from "~/src/sink"
 
+import { createMarksMethods } from "./methods"
 import { $MarksSpan } from "./styles"
 
 export type MarksEditor = {
-  marks: {
-    toggleBold: () => void
-    toggleItalic: () => void
-    toggleUnderline: () => void
-    toggleSup: () => void
-    toggleSub: () => void
-    toggleStrike: () => void
-  }
+  /**
+   * IMPORTANT:
+   *
+   * This cannot be named `marks` because it conflicts with the `editor.marks`
+   * built into the BaseEditor.j
+   */
+  marksPlugin: ReturnType<typeof createMarksMethods>
 }
 
 export type MarksText = {
@@ -34,14 +34,7 @@ export type MarksPluginCustomTypes = {
 
 export const MarksPlugin = () =>
   createPlugin<MarksPluginCustomTypes>((editor) => {
-    editor.marks = {
-      toggleBold: () => toggleMark(editor, "bold"),
-      toggleItalic: () => toggleMark(editor, "italic"),
-      toggleUnderline: () => toggleMark(editor, "underline"),
-      toggleSup: () => toggleMark(editor, "sup", "sub"),
-      toggleSub: () => toggleMark(editor, "sub", "sup"),
-      toggleStrike: () => toggleMark(editor, "strike"),
-    }
+    editor.marksPlugin = createMarksMethods(editor)
     return {
       name: "marks",
       editableProps: {
@@ -62,12 +55,12 @@ export const MarksPlugin = () =>
           )
         },
         onKeyDown: createHotkeyHandler({
-          "mod+b": editor.marks.toggleBold,
-          "mod+i": editor.marks.toggleItalic,
-          "mod+u": editor.marks.toggleUnderline,
-          "super+p": editor.marks.toggleSup,
-          "super+b": editor.marks.toggleSub,
-          "super+k": editor.marks.toggleStrike,
+          "mod+b": editor.marksPlugin.toggleBold,
+          "mod+i": editor.marksPlugin.toggleItalic,
+          "mod+u": editor.marksPlugin.toggleUnderline,
+          "super+p": editor.marksPlugin.toggleSup,
+          "super+b": editor.marksPlugin.toggleSub,
+          "super+k": editor.marksPlugin.toggleStrike,
         }),
       },
     }

@@ -1,5 +1,7 @@
 import { Editor, Text, Transforms } from "slate"
 
+// import { curry } from "~/src/sink"
+
 /**
  * Toggles a mark.
  *
@@ -30,5 +32,16 @@ export function toggleMark(
       match: (n) => Text.isText(n),
       split: true,
     })
+  }
+}
+
+export function createMarksMethods(editor: Editor) {
+  return {
+    toggleBold: () => toggleMark(editor, "bold"),
+    toggleItalic: () => toggleMark(editor, "italic"),
+    toggleUnderline: () => toggleMark(editor, "underline"),
+    toggleSup: () => toggleMark(editor, "sup", "sub"),
+    toggleSub: () => toggleMark(editor, "sub", "sup"),
+    toggleStrike: () => toggleMark(editor, "strike"),
   }
 }
