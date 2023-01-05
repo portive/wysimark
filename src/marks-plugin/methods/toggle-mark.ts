@@ -9,6 +9,7 @@ import { Editor, Text, Transforms } from "slate"
  * is toggled on, the `unsetKey` mark is toggled off automatically. When the
  * mark is toggled off, it will ignore the `unsetKey`
  */
+
 export function toggleMark(
   editor: Editor,
   markKey: keyof Text,
