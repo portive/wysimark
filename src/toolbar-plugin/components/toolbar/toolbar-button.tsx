@@ -2,7 +2,7 @@ import { clsx } from "clsx"
 import { MouseEvent, useCallback, useEffect, useRef } from "react"
 import { ReactEditor, useSlateStatic } from "slate-react"
 
-import { useLayer } from "../../../layer"
+import { useLayer } from "../../../use-layer"
 import * as Icon from "../../icons"
 import { $ToolbarButton } from "../../styles"
 import { Item } from "../../types"
