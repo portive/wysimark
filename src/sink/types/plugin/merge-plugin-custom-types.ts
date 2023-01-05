@@ -1,36 +1,7 @@
 import { BaseElement, BaseText } from "slate"
-import { TupleToUnion, UnionToIntersection } from "type-fest"
+import { UnionToIntersection } from "type-fest"
 
 import { SinkEditor } from "../sink/sink-editor"
-
-/**
- * Takes a Tuple and extracts the property at a given key K if the item in the
- * Tuple extends a given X.
- *
- * e.g.
- * type Mapped = MapPropIfExtends<[{a: 1}, {a: "alpha"}], {a: string}, 'a'>
- *
- * => [{a: 'alpha'}]
- *
- * Inspired from
- * https://stackoverflow.com/questions/54607400/typescript-remove-entries-from-tuple-type
- *
- * Uses Recursive Conditional Types in TS 4.1
- * https://devblogs.microsoft.com/typescript/announcing-typescript-4-1/#recursive-conditional-types
- */
-type MapPropIfExtends<
-  T extends unknown[],
-  X extends Record<string, unknown>,
-  K extends keyof X
-> = T extends []
-  ? [] // if it's an empty tuple, return the empty tuple
-  : T extends [infer H, ...infer R] // breaks into `H`ead and `R`est
-  ? H extends X
-    ? // if it extends our X, then grab the prop `H[K]` and recurse
-      [H[K], ...MapPropIfExtends<R, X, K>]
-    : // if it doesn't extend our X, then skip it and recurse
-      MapPropIfExtends<R, X, K>
-  : T
 
 /**
  * This Generic takes a tuple containing all of the PluginCustomTypes for
@@ -56,8 +27,10 @@ export type MergePluginCustomTypes<
   Editor: SinkEditor & UnionToIntersection<T[number]["Editor"]>
   /**
    * The first part with the `infer` is so that we can extract
-   * `PluginCustomType` cleanly. The conditional is only there so that we can
-   * infer.
+   * `PluginCustomType` cleanly. If we don't extract `Element` first and we try
+   * and operate on the object, can't seem to get the typing to work. Note that
+   * the conditional is only there so that we can `infer` the
+   * `PluginCustomType`.
    *
    * The second part checks to see if there is an `Element` property and if
    * there is, we extract that. TypeScript will turn all of these extracted
@@ -76,7 +49,19 @@ export type MergePluginCustomTypes<
        */
       never
 
+  /**
+   * Same as above to create the `Union` but then at the very end we turn it
+   * into an intersection using the `type-fest` generic `UnionToIntersection`
+   */
   Text: UnionToIntersection<
-    TupleToUnion<MapPropIfExtends<T, { Text: BaseText }, "Text">>
+    T extends Array<infer PluginCustomType>
+      ? PluginCustomType extends { Text: unknown }
+        ? PluginCustomType["Text"]
+        : never
+      : /**
+         * This actually should never happen because the incoming T is already
+         * typed to extend Array.
+         */
+        never
   >
 }

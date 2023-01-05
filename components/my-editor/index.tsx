@@ -56,6 +56,31 @@ import { UploadPlugin, UploadPluginCustomTypes } from "~/src/upload-plugin"
 
 import { initialValue } from "./initial-value"
 
+/**
+ * TODO:
+ *
+ * One of the big challenges has been whether we can extract the
+ * PluginCustomTypes from the `Sink` object.
+ *
+ * We initially had a problem with extracting `Element` by using
+ * `MergePluginCustomTypes` as is currently shown below which we have been able
+ * to overcome.
+ *
+ * The current problem with `createSink` is the incompatible types of
+ * `ArraySafePluginCustomTypes` and `BasePluginCustomTypes` and how they are
+ * incompatible with each other.
+ *
+ * The solution may come in the form of being able to use the same type which I
+ * think may be possible.
+ *
+ * The initial problem that was caused was that the plugin CustomTypes are
+ * provided and inferred/extracted as an Array or something that feels like a
+ * long variable length tuple.
+ *
+ * This seems similar to the problem we had with `MergPluginCustomTypes` so we
+ * may wish to take inspiration from `MergePluginCustomTypes` and particularly
+ * with an emphasis on how we wrote the `Element` portion.
+ */
 const Sink = createSink([
   ConvertiblePlugin(),
   AnchorPlugin(),
