@@ -54,9 +54,28 @@ export type MergePluginCustomTypes<
 > = {
   Name: T[number]["Name"]
   Editor: SinkEditor & UnionToIntersection<T[number]["Editor"]>
-  Element: TupleToUnion<
-    MapPropIfExtends<T, { Element: BaseElement }, "Element">
-  >
+  /**
+   * The first part with the `infer` is so that we can extract
+   * `PluginCustomType` cleanly. The conditional is only there so that we can
+   * infer.
+   *
+   * The second part checks to see if there is an `Element` property and if
+   * there is, we extract that. TypeScript will turn all of these extracted
+   * `Element` types into a union (i.e. they will be "|" together).
+   *
+   * If the property doesn't exist, it will be treated as `never`. In TypeScript
+   * when we `|` a type with a `never` type, the `never` just gets ignored.
+   */
+  Element: T extends Array<infer PluginCustomType>
+    ? PluginCustomType extends { Element: unknown }
+      ? PluginCustomType["Element"]
+      : never
+    : /**
+       * This actually should never happen because the incoming T is already
+       * typed to extend Array.
+       */
+      never
+
   Text: UnionToIntersection<
     TupleToUnion<MapPropIfExtends<T, { Text: BaseText }, "Text">>
   >
