@@ -1,6 +1,8 @@
-import { Editor, Element, NodeEntry, Path, Transforms } from "slate"
+import { Editor, Transforms } from "slate"
 
-import { createPlugin, findElementUp } from "~/src/sink"
+import { createPlugin } from "~/src/sink"
+
+import { isSafeDelete } from "./is-safe-delete"
 
 export type AtomicDeletePluginCustomTypes = {
   Name: "atomic-delete"
@@ -54,43 +56,3 @@ export const AtomicDeletePlugin = () =>
       },
     }
   })
-
-function isSafeDelete(
-  editor: Editor,
-  a: NodeEntry | undefined,
-  b: NodeEntry | undefined
-) {
-  if (!a || !b) return true
-  /**
-   * If the current Node and the next Node are the same, short circuit
-   * and leave early. Good for performance.
-   */
-  if (Path.equals(a[1], b[1])) return true
-  const masterEntryA = findElementUp(
-    editor,
-    (el) => Element.isElement(el) && editor.isMaster(el),
-    { at: a[1] }
-  )
-  const masterEntryB = findElementUp(
-    editor,
-    (el) => {
-      return Element.isElement(el) && editor.isMaster(el)
-    },
-    { at: b[1] }
-  )
-  /**
-   * If neither have a master, then don't worry about it.
-   */
-  if (!masterEntryA && !masterEntryB) return true
-  /**
-   * If they both have a master but it's the same master, then don't
-   * worry about it.
-   */
-  if (
-    masterEntryA &&
-    masterEntryB &&
-    Path.equals(masterEntryA[1], masterEntryB[1])
-  )
-    return true
-  return false
-}
