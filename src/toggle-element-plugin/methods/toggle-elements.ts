@@ -2,6 +2,11 @@ import { Editor, Element } from "slate"
 
 import { rewrapElement, TargetElement } from "~/src/sink"
 
+/**
+ * A type with generic for `toggleElements` (below) to be used with the curry
+ * method. TypeScript, unfortunately, cannot automatically curry generics for
+ * us so we have to do it manually.
+ */
 export type CurriedToggleElements = <T extends Element = Element>(
   match: (element: Element) => boolean,
   targetElement: TargetElement<T>
