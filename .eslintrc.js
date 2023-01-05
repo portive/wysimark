@@ -38,6 +38,12 @@ module.exports = {
      */
     "@typescript-eslint/explicit-module-boundary-types": "off",
     /**
+     * It's a common pattern to import a module as a single default value
+     * and the current VS Code tooling doesn't allow us to automatically fix
+     * this so leaving it in for now.
+     */
+    "import/no-named-as-default-member": "off",
+    /**
      * Don't allow eslint to pass if there is a `FIXME:` in the code
      */
     "no-warning-comments": ["error", { terms: ["FIXME:"] }],

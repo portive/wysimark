@@ -8,13 +8,13 @@ export const listItems: Item[] = [
     action: (editor) => editor.list.toggleUnorderedList(),
   },
   {
-    icon: Icon.ListCheck,
-    title: "Checklist",
-    action: (editor) => editor.list.toggleTaskList(),
-  },
-  {
     icon: Icon.ListNumbers,
     title: "Numbered List",
     action: (editor) => editor.list.toggleOrderedList(),
+  },
+  {
+    icon: Icon.ListCheck,
+    title: "Checklist",
+    action: (editor) => editor.list.toggleTaskList(),
   },
 ]

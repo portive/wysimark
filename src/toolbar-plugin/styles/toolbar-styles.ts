@@ -3,9 +3,9 @@ import { forwardRef } from "react"
 
 export const $Toolbar = styled("div", forwardRef)`
   /**
-   * If "position: sticky;" is not working, check the ancestor for 
-   * "overflow: hidden;" of any kind. This will stop sticky from working.
-   * A good workaround is to use "overflow: clip;" instead.
+   * If "position: sticky;" is not working, check the ancestor for "overflow:
+   * hidden;" of any kind. This will stop sticky from working. A good workaround
+   * is to use "overflow: clip;" instead.
    *
    * https://stackoverflow.com/a/73051006
    */
@@ -23,6 +23,12 @@ export const $Toolbar = styled("div", forwardRef)`
    * Prevent clicks from stealing focus from the editor
    */
   user-select: none;
+  /**
+   * Extreme attention to detail. When the sticky is ending and the toolbar
+   * is stuck to the bottom of the editor, setting margin-bottom to -1px will
+   * fix the 2px bottom border and make it the proper 1px.
+   */
+  margin-bottom: -1px;
 `
 
 export const $ToolbarDivider = styled("div", forwardRef)`

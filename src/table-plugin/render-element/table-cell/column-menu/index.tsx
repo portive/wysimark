@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { useSlateStatic } from "slate-react"
 
-import { MinusIcon, PlusIcon } from "~/src/table-plugin/icons"
+import { BarsIcon, MinusIcon, PlusIcon } from "~/src/table-plugin/icons"
 
 import { TableCellElement } from "../../../types"
 import {
@@ -21,7 +21,9 @@ export function ColumnMenu({ cellElement }: { cellElement: TableCellElement }) {
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
     >
-      <$ColumnMenuTile className="--tile" />
+      <$ColumnMenuTile className="--tile">
+        <BarsIcon />
+      </$ColumnMenuTile>
       {hover ? (
         <>
           <$RemoveMenuButton

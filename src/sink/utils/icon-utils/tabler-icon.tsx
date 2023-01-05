@@ -1,6 +1,13 @@
 import { SVGProps } from "react"
 
 /**
+ * A shortcut type to SVGProps<SVGSVGElement> but also more explicit in its
+ * intent and allows for changing the props in the future without another
+ * refactor.
+ */
+export type TablerIconProps = SVGProps<SVGSVGElement>
+
+/**
  * Efficient way to create a Tabler Icon.
  *
  * https://tabler-icons.io/
@@ -13,7 +20,7 @@ import { SVGProps } from "react"
 export const TablerIcon = ({
   strokeWidth = 1.5,
   ...props
-}: SVGProps<SVGSVGElement>) => (
+}: TablerIconProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"

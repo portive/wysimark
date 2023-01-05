@@ -1,7 +1,7 @@
 import "../../src/setup"
 
 import { useState } from "react"
-import { BaseEditor, createEditor } from "slate"
+import { BaseEditor, BaseText, createEditor } from "slate"
 import { withHistory } from "slate-history"
 import { ReactEditor, RenderLeafProps, Slate, withReact } from "slate-react"
 
@@ -136,6 +136,30 @@ export type PluginCustomTypes = MergePluginCustomTypes<
 declare module "slate" {
   interface CustomTypes {
     Editor: BaseEditor & ReactEditor & PluginCustomTypes["Editor"]
+    /**
+     * TODO:
+     *
+     * This doesn't work because of a claim of a circular reference. But, I
+     * think I discovered a fix.
+     *
+     * PluginCustomTypes["Element"]
+     *
+     * It appears the issue is in MergePluginCustomTypes because of this code:
+     *
+     * Element: TupleToUnion<MapPropIfExtends<T, { Element: BaseElement },
+     *   "Element">
+     *
+     * The circule reference comes from { Element: BaseElement } which is
+     * replaced when the Element value does not exist. This was used primarily
+     * so that if the `Element` type does not exist for the plugin, then it
+     * defaults to `BaseElement` but `BaseElement` refers to children of type
+     * `Descendant` which itself refers back to `CustomTypes`.
+     *
+     * So a solution that worked when I tried it as a proof of concept was to
+     * instead set `Element: never` and when we `|` it together with other
+     * elements, it will basically just ignore the `CustomTypes["Element"]` for
+     * that particular plugin.
+     */
     Element:
       | AnchorElement
       | HeadingElement
@@ -154,7 +178,7 @@ declare module "slate" {
       | UploadAttachmentElement
       | ImageBlockElement
       | ImageInlineElement
-    Text: { text: string } & PluginCustomTypes["Text"]
+    Text: BaseText & PluginCustomTypes["Text"]
   }
 }
 
@@ -162,17 +186,12 @@ function renderLeaf({ children, attributes }: RenderLeafProps) {
   return <span {...attributes}>{children}</span>
 }
 
-// function useEditor<T extends BaseEditor>(fn: () => T, deps: unknown[]): T {
-//   const [editor, setEditor] = useState(fn)
-//   useMemo(() => {
-//     setEditor(fn())
-//   }, deps)
-//   return editor
-// }
-
 export const MyEditor = () => {
   /**
    * TODO:
+   *
+   * We want to get a new instance of the editor if any of the plugins are
+   * updated.
    *
    * In order to get this to work, I think we need to create the Sink inside
    * of the Component. Otherwise, React doesn't recognize the changes in the
@@ -198,6 +217,19 @@ export const MyEditor = () => {
       <Slate editor={editor} value={initialValue}>
         <SinkEditable renderLeaf={renderLeaf} />
       </Slate>
+      <div className="">
+        {[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0].map((x, i) => (
+          <p key={i}>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+        ))}
+      </div>
     </div>
   )
 }

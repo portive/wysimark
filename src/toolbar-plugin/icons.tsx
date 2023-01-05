@@ -195,7 +195,8 @@ export const RemoveStyles = () => (
 
 export const ListCheck = () => (
   <TablerIcon>
-    <path d="M3.5 5.5 5 7l2.5-2.5M3.5 11.5 5 13l2.5-2.5M3.5 17.5 5 19l2.5-2.5M11 6h9M11 12h9M11 18h9" />
+    <path d="m9 11 3 3 8-8" />
+    <path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9" />
   </TablerIcon>
 )
 

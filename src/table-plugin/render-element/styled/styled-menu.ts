@@ -37,6 +37,7 @@ export const $ColumnMenu = styled($Menu, forwardRef)`
    */
   left: -1px;
   right: -1px;
+  right: 0;
   height: 3em;
   top: -3em;
 `
@@ -75,8 +76,30 @@ const $MenuTile = styled("div", forwardRef)`
  */
 export const $ColumnMenuTile = styled($MenuTile, forwardRef)`
   top: 50%;
-  border-top-left-radius: 0.5em;
-  border-top-right-radius: 0.5em;
+  border-bottom: none;
+  border-right: none;
+  bottom: 1px;
+  td:first-child & {
+    border-top-left-radius: 0.5em;
+  }
+  td:last-child & {
+    border-top-right-radius: 0.5em;
+    border-right: 1px solid rgba(0, 0, 0, 0.05);
+    right: -1px;
+  }
+  svg {
+    position: absolute;
+    top: 0.1875em;
+    left: 50%;
+    margin-left: -0.5em;
+    color: rgba(0, 0, 0, 0.2);
+  }
+  &:hover svg {
+    color: rgba(0, 0, 0, 0.5);
+  }
+
+  /* border-top-left-radius: 0.5em;
+  border-top-right-radius: 0.5em; */
 `
 
 /**
@@ -85,8 +108,30 @@ export const $ColumnMenuTile = styled($MenuTile, forwardRef)`
  */
 export const $RowMenuTile = styled($MenuTile, forwardRef)`
   left: 50%;
-  border-top-left-radius: 0.5em;
-  border-bottom-left-radius: 0.5em;
+  border-right: none;
+  border-bottom: none;
+  right: 1px;
+  tr:first-child & {
+    border-top-left-radius: 0.5em;
+  }
+  tr:last-child & {
+    border-bottom-left-radius: 0.5em;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    bottom: 0;
+  }
+  svg {
+    position: absolute;
+    left: 0.25em;
+    top: 50%;
+    margin-top: -0.5em;
+    color: rgba(0, 0, 0, 0.2);
+  }
+  &:hover svg {
+    color: rgba(0, 0, 0, 0.5);
+  }
+
+  /* border-top-left-radius: 0.5em;
+  border-bottom-left-radius: 0.5em; */
 `
 
 /**
