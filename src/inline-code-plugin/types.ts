@@ -1,6 +1,5 @@
 export type InlineCodeEditor = {
-  supportsInlineCode: true
-  inlineCodePlugin: {
+  inlineCode: {
     toggleInlineCode: () => void
   }
 }

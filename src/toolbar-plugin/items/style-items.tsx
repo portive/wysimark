@@ -26,7 +26,7 @@ export const styleItems: Item[] = [
     icon: Icon.Code,
     title: "Inline Code",
     hotkey: "mod+j",
-    action: (editor) => editor.inlineCodePlugin.toggleInlineCode(),
+    action: (editor) => editor.inlineCode.toggleInlineCode(),
   },
   "divider",
   { icon: Icon.RemoveStyles, title: "Remove Styles", hotkey: "super+0" },

@@ -13,8 +13,7 @@ export const InlineCodePlugin = () =>
       throw new Error(
         "InlineCodePlugin has a dependency on the MarksPlugin but the MarksPlugin has not been added or is added after the InlineCodePlugin"
       )
-    editor.supportsInlineCode = true
-    editor.inlineCodePlugin = {
+    editor.inlineCode = {
       toggleInlineCode: () => editor.marksPlugin.toggleMark("code"),
     }
     return {
@@ -28,7 +27,7 @@ export const InlineCodePlugin = () =>
           }
         },
         onKeyDown: createHotkeyHandler({
-          "mod+j": () => editor.inlineCodePlugin.toggleInlineCode(),
+          "mod+j": () => editor.inlineCode.toggleInlineCode(),
         }),
       },
     }
