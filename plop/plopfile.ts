@@ -3,7 +3,7 @@ import { NodePlopAPI } from "plop"
 
 import { registerHandleBarHelpers } from "./register-handle-bar-helpers"
 
-function transform(template: string, data: Record<string, string>) {
+function transformVarNames(template: string, data: Record<string, string>) {
   let nextTemplate = template
   for (const [key, value] of Object.entries(data)) {
     const mappings = {
@@ -18,35 +18,38 @@ function transform(template: string, data: Record<string, string>) {
   return nextTemplate
 }
 
-const PACKAGE_NAME_PROMPT = {
+/**
+ * Prompts the user for a plugin name
+ */
+const PLUGIN_NAME_PROMPT = {
   type: "input",
   name: "name",
-  message: "Name of package (aka folder under './src') without the work plugin",
+  message: "Name of plugin without the word plugin (e.g. 'heading' or 'image')",
 }
 
 export default function (plop: NodePlopAPI) {
   registerHandleBarHelpers(plop)
   plop.setGenerator("plugin", {
     description: "Create new plugin",
-    prompts: [PACKAGE_NAME_PROMPT],
+    prompts: [PLUGIN_NAME_PROMPT],
     actions: [
       {
         type: "addMany",
         base: "../src/template/",
-        transform,
+        transform: transformVarNames,
         templateFiles: "../src/template/**/*.(ts|tsx)",
         destination: "../src/{{ dashCase name }}-plugin/",
       },
     ],
   })
-  plop.setGenerator("methods", {
+  plop.setGenerator("plugin methods", {
     description: "Add methods to existing plugin",
-    prompts: [PACKAGE_NAME_PROMPT],
+    prompts: [PLUGIN_NAME_PROMPT],
     actions: [
       {
         type: "addMany",
         base: "../src/template/",
-        transform,
+        transform: transformVarNames,
         templateFiles: [
           "../src/template/methods/**/*.(ts|tsx)",
           "../src/template/temp-methods.ts",

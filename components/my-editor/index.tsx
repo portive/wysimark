@@ -2,7 +2,7 @@ import "../../src/setup"
 
 import { useState } from "react"
 import { BaseEditor, BaseText, createEditor } from "slate"
-import { withHistory } from "slate-history"
+import { HistoryEditor, withHistory } from "slate-history"
 import { ReactEditor, RenderLeafProps, Slate, withReact } from "slate-react"
 
 import { AnchorPlugin, AnchorPluginCustomTypes } from "~/src/anchor-plugin"
@@ -135,7 +135,10 @@ export type PluginCustomTypes = MergePluginCustomTypes<
 
 declare module "slate" {
   interface CustomTypes {
-    Editor: BaseEditor & ReactEditor & PluginCustomTypes["Editor"]
+    Editor: BaseEditor &
+      ReactEditor &
+      HistoryEditor &
+      PluginCustomTypes["Editor"]
     Element: PluginCustomTypes["Element"]
     Text: BaseText & PluginCustomTypes["Text"]
   }
