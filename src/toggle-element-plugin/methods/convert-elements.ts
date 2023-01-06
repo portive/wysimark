@@ -3,7 +3,7 @@ import { Editor, Element } from "slate"
 import { rewrapElement, TargetElement } from "~/src/sink"
 
 /**
- * A type with generic for `toggleElements` (below) to be used with the curry
+ * A type with generic for `convertElements` (below) to be used with the curry
  * method. TypeScript, unfortunately, cannot automatically curry generics for
  * us so we have to do it manually.
  */
@@ -14,18 +14,34 @@ export type CurriedConvertElements = <T extends Element = Element>(
 ) => void
 
 /**
- * Toggle convertible elements to a targetElement like headings and list items.
+ * The `convertElements` takes a Block Element that has been identified as being
+ * convertible and converts it into another type of Element.
  *
- * Looks for `editor.convertible.isConvertible` elements to toggle.
+ * For example:
  *
- * If it doesn't find any, returns false.
+ * - headings
+ * - list items
  *
- * If it does find them, then it looks to see if all the entries already `match`
- * the target of the toggle (like a heading with level 3). If they all match,
- * then we toggle back to a paragraph.
+ * It also allows for toggling. In this scenario, if all the convertible
+ * elements are already in the target state (e.g. we are converting to a heading
+ * 2 and all the convertible elemtns are already a heading 2) then the elements
+ * will convert back to a `paragraph` element.
  *
- * If not every one matches, then we toggle to the `targetElement`. To make this
- * method more flexibl
+ * NOTE:
+ *
+ * Why is there an unusual signature?
+ *
+ * This method has a somewhat unusual and not-DRY signature which is in the form
+ * of having a `matchForToggle` (which allows us to specify when an Element is
+ * already matching the `targetElement`) and also an `allowToggle`; however, we
+ * could make `matchForToggle` optional and only `allowToggle` if it is
+ * specified.
+ *
+ * That being said, the signature is set up this way to reduce friction when
+ * creating a specific convert function like `convertHeading`. In this scenario,
+ * we can have the created `convertHeading` pass through the argument to
+ * `allowToggle` and pass it through to this `convertElements` function making
+ * that code easier to understand.
  */
 export function convertElements<T extends Element = Element>(
   editor: Editor,

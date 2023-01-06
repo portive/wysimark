@@ -6,20 +6,21 @@ import {
   UnorderedListItemElement,
 } from ".."
 
-export function toggleOrderedList(editor: Editor) {
-  return editor.toggleElement.toggleElements<OrderedListItemElement>(
+export function convertOrderedList(editor: Editor, allowToggle: boolean) {
+  return editor.toggleElement.convertElements<OrderedListItemElement>(
     (element) => element.type === "ordered-list-item",
     (element) => {
       return {
         type: "ordered-list-item",
         depth: "depth" in element ? element.depth : 0,
       }
-    }
+    },
+    allowToggle
   )
 }
 
-export function toggleTaskList(editor: Editor) {
-  return editor.toggleElement.toggleElements<TaskListItemElement>(
+export function convertTaskList(editor: Editor, allowToggle: boolean) {
+  return editor.toggleElement.convertElements<TaskListItemElement>(
     (element) => element.type === "task-list-item",
     (element) => {
       return {
@@ -27,18 +28,20 @@ export function toggleTaskList(editor: Editor) {
         checked: "checked" in element ? element.checked : false,
         depth: "depth" in element ? element.depth : 0,
       }
-    }
+    },
+    allowToggle
   )
 }
 
-export function toggleUnorderedList(editor: Editor) {
-  return editor.toggleElement.toggleElements<UnorderedListItemElement>(
+export function convertUnorderedList(editor: Editor, allowToggle: boolean) {
+  return editor.toggleElement.convertElements<UnorderedListItemElement>(
     (element) => element.type === "unordered-list-item",
     (element) => {
       return {
         type: "unordered-list-item",
         depth: "depth" in element ? element.depth : 0,
       }
-    }
+    },
+    allowToggle
   )
 }

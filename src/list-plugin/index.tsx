@@ -4,6 +4,7 @@ import {
   createHotkeyHandler,
   createIsElementType,
   createPlugin,
+  curry,
 } from "~/src/sink"
 
 import { createListMethods } from "./methods"
@@ -28,9 +29,9 @@ export const ListPlugin = () =>
     const hotkeyHandler = createHotkeyHandler({
       tab: list.indent,
       "shift+tab": list.outdent,
-      "super+7": list.toggleOrderedList,
-      "super+8": list.toggleUnorderedList,
-      "super+9": list.toggleTaskList,
+      "super+7": curry(list.convertOrderedList, true),
+      "super+8": curry(list.convertUnorderedList, true),
+      "super+9": curry(list.convertTaskList, true),
     })
     return {
       name: "list",
