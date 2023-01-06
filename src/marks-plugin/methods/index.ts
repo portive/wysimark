@@ -1,12 +1,12 @@
 import { Editor } from "slate"
 
-import { curry } from "~/src/sink"
+import { curryOne } from "~/src/sink"
 
 import { toggleMark } from "./toggle-mark"
 
 export function createMarksMethods(editor: Editor) {
   return {
-    toggleMark: curry(toggleMark, editor),
+    toggleMark: curryOne(toggleMark, editor),
     toggleBold: () => toggleMark(editor, "bold"),
     toggleItalic: () => toggleMark(editor, "italic"),
     toggleUnderline: () => toggleMark(editor, "underline"),

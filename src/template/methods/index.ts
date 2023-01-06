@@ -1,6 +1,6 @@
 import { Editor } from "slate"
 
-import { curry } from "~/src/sink"
+import { curryOne } from "~/src/sink"
 
 function noop(editor: Editor) {
   editor
@@ -8,6 +8,6 @@ function noop(editor: Editor) {
 
 export function create__VarName__Methods(editor: Editor) {
   return {
-    noop: curry(noop, editor),
+    noop: curryOne(noop, editor),
   }
 }

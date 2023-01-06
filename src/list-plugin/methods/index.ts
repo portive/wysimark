@@ -1,6 +1,6 @@
 import { Editor } from "slate"
 
-import { curry } from "~/src/sink"
+import { curryOne } from "~/src/sink"
 
 import {
   convertOrderedList,
@@ -13,11 +13,11 @@ import { outdent } from "./outdent"
 
 export function createListMethods(editor: Editor) {
   return {
-    indent: curry(indent, editor),
-    outdent: curry(outdent, editor),
-    convertUnorderedList: curry(convertUnorderedList, editor),
-    convertOrderedList: curry(convertOrderedList, editor),
-    convertTaskList: curry(convertTaskList, editor),
-    insertBreak: curry(insertBreak, editor),
+    indent: curryOne(indent, editor),
+    outdent: curryOne(outdent, editor),
+    convertUnorderedList: curryOne(convertUnorderedList, editor),
+    convertOrderedList: curryOne(convertOrderedList, editor),
+    convertTaskList: curryOne(convertTaskList, editor),
+    insertBreak: curryOne(insertBreak, editor),
   }
 }

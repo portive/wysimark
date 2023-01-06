@@ -1,6 +1,6 @@
 import { Descendant } from "slate"
 
-import { createHotkeyHandler, createPlugin, curry } from "~/src/sink"
+import { createHotkeyHandler, createPlugin, curryOne } from "~/src/sink"
 
 import { normalizeNode } from "./normalize-node"
 import { Paragraph } from "./render-element/paragraph"
@@ -45,7 +45,7 @@ export const CollapsibleParagraphPlugin = () =>
     return {
       name: "collapsible-paragraph",
       editor: {
-        normalizeNode: curry(normalizeNode, editor),
+        normalizeNode: curryOne(normalizeNode, editor),
       },
       editableProps: {
         renderElement: (props) => {

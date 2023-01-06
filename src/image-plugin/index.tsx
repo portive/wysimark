@@ -1,6 +1,6 @@
 import { Transforms } from "slate"
 
-import { createPlugin, curry } from "~/src/sink"
+import { createPlugin, curryOne } from "~/src/sink"
 
 import { createImageMethods } from "./methods"
 import { normalizeNode } from "./normalize-node"
@@ -63,7 +63,7 @@ export const ImagePlugin = ({
         isInline: (element) => {
           if (element.type === "image-inline") return true
         },
-        normalizeNode: curry(normalizeNode, editor),
+        normalizeNode: curryOne(normalizeNode, editor),
       },
       editableProps: {
         renderElement,

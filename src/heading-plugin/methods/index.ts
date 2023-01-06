@@ -1,6 +1,6 @@
 import { Editor } from "slate"
 
-import { curry } from "~/src/sink"
+import { curryOne } from "~/src/sink"
 
 import { HeadingElement } from "../types"
 
@@ -18,6 +18,6 @@ function convertHeading(
 
 export function createHeadingMethods(editor: Editor) {
   return {
-    convertHeading: curry(convertHeading, editor),
+    convertHeading: curryOne(convertHeading, editor),
   }
 }

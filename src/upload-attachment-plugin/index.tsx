@@ -1,6 +1,6 @@
 import { Descendant, Transforms } from "slate"
 
-import { createPlugin, curry } from "~/src/sink"
+import { createPlugin, curryOne } from "~/src/sink"
 
 import { UploadEditor } from "../upload-plugin"
 import { createUploadAttachmentMethods } from "./methods"
@@ -52,7 +52,7 @@ export const UploadAttachmentPlugin = () =>
     return {
       name: "upload-attachment",
       editor: {
-        normalizeNode: curry(normalizeNode, editor),
+        normalizeNode: curryOne(normalizeNode, editor),
         isVoid: (el) => {
           if (el.type === "upload-attachment") return true
         },

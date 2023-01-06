@@ -4,7 +4,7 @@ import {
   createAutocompleteSpaceHandler,
   createHotkeyHandler,
   createPlugin,
-  curry,
+  curryOne,
   curryTwo,
 } from "~/src/sink"
 
@@ -36,7 +36,7 @@ export const HeadingPlugin = () =>
     return {
       name: "heading",
       editor: {
-        insertBreak: curry(insertBreak, editor),
+        insertBreak: curryOne(insertBreak, editor),
       },
       editableProps: {
         renderElement: ({ element, attributes, children }) => {

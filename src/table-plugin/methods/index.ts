@@ -1,6 +1,6 @@
 import { Editor } from "slate"
 
-import { curry } from "~/src/sink"
+import { curryOne } from "~/src/sink"
 
 import { getTableInfo } from "./get-table-info"
 import { insertColumn } from "./insert-column"
@@ -14,16 +14,16 @@ import { tabBackward, tabForward } from "./tab"
 
 export function createTableMethods(editor: Editor) {
   return {
-    getTableInfo: curry(getTableInfo, editor),
-    insertTable: curry(insertTable, editor),
-    insertColumn: curry(insertColumn, editor),
-    insertRow: curry(insertRow, editor),
-    removeTable: curry(removeTable, editor),
-    removeColumn: curry(removeColumn, editor),
-    removeRow: curry(removeRow, editor),
-    tabForward: curry(tabForward, editor),
-    tabBackward: curry(tabBackward, editor),
-    down: curry(down, editor),
-    up: curry(up, editor),
+    getTableInfo: curryOne(getTableInfo, editor),
+    insertTable: curryOne(insertTable, editor),
+    insertColumn: curryOne(insertColumn, editor),
+    insertRow: curryOne(insertRow, editor),
+    removeTable: curryOne(removeTable, editor),
+    removeColumn: curryOne(removeColumn, editor),
+    removeRow: curryOne(removeRow, editor),
+    tabForward: curryOne(tabForward, editor),
+    tabBackward: curryOne(tabBackward, editor),
+    down: curryOne(down, editor),
+    up: curryOne(up, editor),
   }
 }
