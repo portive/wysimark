@@ -1,8 +1,6 @@
-import React from "react"
-
 import { createHotkeyHandler, createPlugin } from "~/src/sink"
 
-import { $InlineCode } from "./styles"
+import { $InlineCode, $InvisibleSpan } from "./styles"
 import { InlineCodePluginCustomTypes } from "./types"
 export * from "./styles"
 export * from "./types"
@@ -21,7 +19,15 @@ export const InlineCodePlugin = () =>
       editableProps: {
         renderLeaf: ({ leaf, children }) => {
           if (leaf.code) {
-            return <$InlineCode>{children}</$InlineCode>
+            return (
+              <$InlineCode>
+                {/* These invisible spans are necessary. See comments for $InvisibleSpan. */}
+                <$InvisibleSpan contentEditable={false}>|</$InvisibleSpan>
+                {children}
+                {/* These invisible spans are necessary. See comments for $InvisibleSpan. */}
+                <$InvisibleSpan contentEditable={false}>|</$InvisibleSpan>
+              </$InlineCode>
+            )
           } else {
             return children
           }

@@ -1,4 +1,4 @@
-import { Editor, Text, Transforms } from "slate"
+import { Editor, Location, Text, Transforms } from "slate"
 
 /**
  * Toggles a mark.
@@ -13,10 +13,13 @@ import { Editor, Text, Transforms } from "slate"
 export function toggleMark(
   editor: Editor,
   markKey: keyof Text,
-  unsetKey?: keyof Text
+  unsetKey?: keyof Text,
+  { at = editor.selection }: { at?: Location | null } = {}
 ) {
+  if (at == null) return
   const [match] = Editor.nodes(editor, {
     match: (n) => Text.isText(n) && !!n[markKey],
+    at,
   })
   Transforms.setNodes(
     editor,
@@ -24,12 +27,14 @@ export function toggleMark(
     {
       match: (n) => Text.isText(n),
       split: true,
+      at,
     }
   )
   if (typeof unsetKey === "string") {
     Transforms.unsetNodes(editor, unsetKey, {
       match: (n) => Text.isText(n),
       split: true,
+      at,
     })
   }
 }
