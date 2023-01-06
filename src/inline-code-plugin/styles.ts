@@ -5,7 +5,7 @@ export const $InlineCode = styled("code", forwardRef)`
   background-color: var(--inline-code-bgcolor);
   border: 1px solid var(--inline-code-border-color);
   border-radius: 0.25em;
-  padding: 0.25em 0.125em;
+  padding: 0.125em 0.125em;
   font-size: 0.875em;
 `
 

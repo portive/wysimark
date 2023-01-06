@@ -20,7 +20,7 @@ export const InlineCodePlugin = () =>
         renderLeaf: ({ leaf, children }) => {
           if (leaf.code) {
             return (
-              <$InlineCode>
+              <$InlineCode spellCheck={false}>
                 {/* These invisible spans are necessary. See comments for $InvisibleSpan. */}
                 <$InvisibleSpan contentEditable={false}>|</$InvisibleSpan>
                 {children}
