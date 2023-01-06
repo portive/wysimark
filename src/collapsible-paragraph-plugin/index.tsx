@@ -7,7 +7,7 @@ import { Paragraph } from "./render-element/paragraph"
 
 export type CollapsibleParagraphEditor = {
   collapsibleParagraph: {
-    toggleParagraph: () => void
+    convertParagraph: () => void
   }
 }
 
@@ -27,7 +27,7 @@ export const CollapsibleParagraphPlugin = () =>
   createPlugin<CollapsibleParagraphPluginCustomTypes>((editor) => {
     editor.convertElement.addConvertElementType("paragraph")
     editor.collapsibleParagraph = {
-      toggleParagraph: () => {
+      convertParagraph: () => {
         editor.convertElement.convertElements<ParagraphElement>(
           () => false,
           {
@@ -55,7 +55,7 @@ export const CollapsibleParagraphPlugin = () =>
           }
         },
         onKeyDown: createHotkeyHandler({
-          "super+0": editor.collapsibleParagraph.toggleParagraph,
+          "super+0": editor.collapsibleParagraph.convertParagraph,
         }),
       },
     }

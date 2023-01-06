@@ -22,11 +22,9 @@ import {
 
 export * from "./types"
 
-type TableMethods = ReturnType<typeof createTableMethods>
-
 export type TableEditor = {
   supportsTable: true
-  tablePlugin: TableMethods
+  tablePlugin: ReturnType<typeof createTableMethods>
 }
 
 export type TablePluginCustomTypes = {
@@ -42,7 +40,7 @@ export type TablePluginCustomTypes = {
 export const TablePlugin = () =>
   createPlugin<TablePluginCustomTypes>((editor) => {
     editor.supportsTable = true
-    const p = (editor.tablePlugin = createTableMethods(editor))
+    editor.tablePlugin = createTableMethods(editor)
     return {
       name: "table",
       editor: {
@@ -97,24 +95,24 @@ export const TablePlugin = () =>
           /**
            * navigation
            */
-          tab: p.tabForward,
-          "shift+tab": p.tabBackward,
-          down: p.down,
-          up: p.up,
+          tab: editor.tablePlugin.tabForward,
+          "shift+tab": editor.tablePlugin.tabBackward,
+          down: editor.tablePlugin.down,
+          up: editor.tablePlugin.up,
           /**
            * insert
            */
-          "super+t": () => p.insertTable(3, 2),
-          "mod+shift+enter": () => p.insertRow({ offset: 0 }),
-          "mod+enter": () => p.insertRow({ offset: 1 }),
-          "super+[": () => p.insertColumn({ offset: 0 }),
-          "super+]": () => p.insertColumn({ offset: 1 }),
+          "super+t": () => editor.tablePlugin.insertTable(3, 2),
+          "mod+shift+enter": () => editor.tablePlugin.insertRow({ offset: 0 }),
+          "mod+enter": () => editor.tablePlugin.insertRow({ offset: 1 }),
+          "super+[": () => editor.tablePlugin.insertColumn({ offset: 0 }),
+          "super+]": () => editor.tablePlugin.insertColumn({ offset: 1 }),
           /**
            * remove
            */
-          "super+backspace": p.removeTable,
-          "mod+backspace": p.removeRow,
-          "mod+shift+backspace": p.removeColumn,
+          "super+backspace": editor.tablePlugin.removeTable,
+          "mod+backspace": editor.tablePlugin.removeRow,
+          "mod+shift+backspace": editor.tablePlugin.removeColumn,
         }),
       },
     }
