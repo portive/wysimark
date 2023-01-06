@@ -28,9 +28,13 @@ export const CollapsibleParagraphPlugin = () =>
     editor.toggleElement.addToggleElementType("paragraph")
     editor.collapsibleParagraph = {
       toggleParagraph: () => {
-        editor.toggleElement.toggleElements<ParagraphElement>(() => false, {
-          type: "paragraph",
-        })
+        editor.toggleElement.convertElements<ParagraphElement>(
+          () => false,
+          {
+            type: "paragraph",
+          },
+          false
+        )
       },
     }
     if (!editor.normalizeAfterDelete) {
