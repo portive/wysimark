@@ -18,9 +18,22 @@ function toggleHeading(editor: Editor, level: 1 | 2 | 3 | 4 | 5 | 6) {
   )
 }
 
+function convertHeading(
+  editor: Editor,
+  level: 1 | 2 | 3 | 4 | 5 | 6,
+  allowToggle: boolean
+) {
+  editor.toggleElement.convertElements<HeadingElement>(
+    (element) => element.type === "heading" && element.level == level,
+    { type: "heading", level },
+    allowToggle
+  )
+}
+
 export function createHeadingMethods(editor: Editor) {
   return {
-    setHeading: curry(setHeading, editor),
-    toggleHeading: curry(toggleHeading, editor),
+    // setHeading: curry(setHeading, editor),
+    // toggleHeading: curry(toggleHeading, editor),
+    convertHeading: curry(convertHeading, editor),
   }
 }

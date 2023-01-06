@@ -7,9 +7,10 @@ import { rewrapElement, TargetElement } from "~/src/sink"
  * method. TypeScript, unfortunately, cannot automatically curry generics for
  * us so we have to do it manually.
  */
-export type CurriedToggleElements = <T extends Element = Element>(
-  match: (element: Element) => boolean,
-  targetElement: TargetElement<T>
+export type CurriedConvertElements = <T extends Element = Element>(
+  matchForToggle: (element: Element) => boolean,
+  targetElement: TargetElement<T>,
+  allowToggle: boolean
 ) => void
 
 /**
@@ -28,8 +29,9 @@ export type CurriedToggleElements = <T extends Element = Element>(
  */
 export function convertElements<T extends Element = Element>(
   editor: Editor,
-  match: (element: Element) => boolean,
-  targetElement: TargetElement<T>
+  matchForToggle: (element: Element) => boolean,
+  targetElement: TargetElement<T>,
+  allowToggle: boolean
 ): boolean {
   /**
    * Find convertible elements
@@ -41,10 +43,20 @@ export function convertElements<T extends Element = Element>(
     })
   )
   /**
-   * If there aren't any, don't toggle
+   * If there aren't any convertible elements, there's nothing to do
    */
   if (entries.length === 0) return false
-  if (entries.every((entry) => match(entry[0]))) {
+
+  /**
+   * If `allowToggle` is `true` and all of the convertible elements match the
+   * `matchForToggle` (for example, if converting to a heading level 2, if all
+   * the matching convertible elements are heading level 2) then we want to
+   * toggle back to a paragraph.
+   */
+  const shouldToggle =
+    allowToggle && entries.every((entry) => matchForToggle(entry[0]))
+
+  if (shouldToggle) {
     /**
      * If all of the entries are already the target type, then revert them to
      * a paragraph
