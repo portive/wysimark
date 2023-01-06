@@ -18,9 +18,9 @@
  * const curriedToggleElements =
  *   curry(toggleElements, editor) as CurriedToggleElements
  */
-export function curry<CA, RA extends unknown[], R>(
-  fn: (curriedArg: CA, ...restArgs: RA) => R,
-  curriedArg: CA
-): (...args: RA) => R {
+export function curry<CurriedArg, RestArgs extends unknown[], R>(
+  fn: (curriedArg: CurriedArg, ...restArgs: RestArgs) => R,
+  curriedArg: CurriedArg
+): (...args: RestArgs) => R {
   return fn.bind(null, curriedArg)
 }

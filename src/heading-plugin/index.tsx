@@ -1,8 +1,12 @@
 export * from "./types"
 
-import { createHotkeyHandler, createPlugin, curry } from "~/src/sink"
+import {
+  createAutocompleteSpaceHandler,
+  createHotkeyHandler,
+  createPlugin,
+  curry,
+} from "~/src/sink"
 
-import { createAutocompleteSpaceHandler } from "./create-autocomplete-space-handler"
 import { insertBreak } from "./insert-break"
 import { createHeadingMethods } from "./methods"
 import { $Heading } from "./styles"
@@ -20,7 +24,7 @@ export const HeadingPlugin = () =>
       "super+5": curry(editor.heading.toggleHeading, 5),
       "super+6": curry(editor.heading.toggleHeading, 6),
     })
-    const autocompleteSpaceHandler = createAutocompleteSpaceHandler(editor, {
+    const autocompleteHandler = createAutocompleteSpaceHandler(editor, {
       "#": curry(editor.heading.setHeading, 1),
       "##": curry(editor.heading.setHeading, 2),
       "###": curry(editor.heading.setHeading, 3),
@@ -46,7 +50,7 @@ export const HeadingPlugin = () =>
         },
         onKeyDown: (e) => {
           if (hotkeyHandler(e)) return true
-          if (autocompleteSpaceHandler(e)) return true
+          if (autocompleteHandler(e)) return true
           return false
         },
       },
