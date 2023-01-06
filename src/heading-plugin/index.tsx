@@ -4,26 +4,14 @@ import { createHotkeyHandler, createPlugin, curry } from "~/src/sink"
 
 import { createAutocompleteSpaceHandler } from "./create-autocomplete-space-handler"
 import { insertBreak } from "./insert-break"
+import { createHeadingMethods } from "./methods"
 import { $Heading } from "./styles"
-import { HeadingElement, HeadingPluginCustomTypes } from "./types"
+import { HeadingPluginCustomTypes } from "./types"
 
 export const HeadingPlugin = () =>
   createPlugin<HeadingPluginCustomTypes>((editor) => {
     editor.toggleElement.addToggleElementType("heading")
-    editor.heading = {
-      setHeading: (level) => {
-        editor.toggleElement.setElements<HeadingElement>({
-          type: "heading",
-          level,
-        })
-      },
-      toggleHeading: (level) => {
-        editor.toggleElement.toggleElements<HeadingElement>(
-          (element) => element.type === "heading" && element.level == level,
-          { type: "heading", level }
-        )
-      },
-    }
+    editor.heading = createHeadingMethods(editor)
     const hotkeyHandler = createHotkeyHandler({
       "super+1": curry(editor.heading.toggleHeading, 1),
       "super+2": curry(editor.heading.toggleHeading, 2),
@@ -32,7 +20,7 @@ export const HeadingPlugin = () =>
       "super+5": curry(editor.heading.toggleHeading, 5),
       "super+6": curry(editor.heading.toggleHeading, 6),
     })
-    const autocompleteHandler = createAutocompleteSpaceHandler(editor, {
+    const autocompleteSpaceHandler = createAutocompleteSpaceHandler(editor, {
       "#": curry(editor.heading.setHeading, 1),
       "##": curry(editor.heading.setHeading, 2),
       "###": curry(editor.heading.setHeading, 3),
@@ -58,7 +46,7 @@ export const HeadingPlugin = () =>
         },
         onKeyDown: (e) => {
           if (hotkeyHandler(e)) return true
-          if (autocompleteHandler(e)) return true
+          if (autocompleteSpaceHandler(e)) return true
           return false
         },
       },

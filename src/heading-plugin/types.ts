@@ -1,10 +1,9 @@
 import { Descendant } from "slate"
 
+import { createHeadingMethods } from "./methods"
+
 export type HeadingEditor = {
-  heading: {
-    setHeading: (level: HeadingElement["level"]) => void
-    toggleHeading: (level: HeadingElement["level"]) => void
-  }
+  heading: ReturnType<typeof createHeadingMethods>
 }
 
 export type HeadingElement = {

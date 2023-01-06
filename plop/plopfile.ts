@@ -50,10 +50,20 @@ export default function (plop: NodePlopAPI) {
         type: "addMany",
         base: "../src/template/",
         transform: transformVarNames,
-        templateFiles: [
-          "../src/template/methods/**/*.(ts|tsx)",
-          "../src/template/temp-methods.ts",
-        ],
+        templateFiles: ["../src/template/methods/**/*.(ts|tsx)"],
+        destination: "../src/{{ dashCase name }}-plugin/",
+      },
+    ],
+  })
+  plop.setGenerator("plugin index hints", {
+    description: "Add methods to existing plugin",
+    prompts: [PLUGIN_NAME_PROMPT],
+    actions: [
+      {
+        type: "addMany",
+        base: "../src/template/",
+        transform: transformVarNames,
+        templateFiles: ["../src/template/TEMP_INDEX.tsx"],
         destination: "../src/{{ dashCase name }}-plugin/",
       },
     ],
