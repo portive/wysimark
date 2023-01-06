@@ -9,7 +9,7 @@ function convertHeading(
   level: 1 | 2 | 3 | 4 | 5 | 6,
   allowToggle: boolean
 ) {
-  editor.toggleElement.convertElements<HeadingElement>(
+  editor.convertElement.convertElements<HeadingElement>(
     (element) => element.type === "heading" && element.level == level,
     { type: "heading", level },
     allowToggle

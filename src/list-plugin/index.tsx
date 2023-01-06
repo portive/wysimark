@@ -24,7 +24,7 @@ export const isListItem = createIsElementType<ListItemElement>(LIST_ITEM_TYPES)
 
 export const ListPlugin = () =>
   createPlugin<ListPluginCustomTypes>((editor) => {
-    editor.toggleElement.addToggleElementType(LIST_ITEM_TYPES)
+    editor.convertElement.addConvertElementType(LIST_ITEM_TYPES)
     const list = (editor.list = createListMethods(editor))
     const hotkeyHandler = createHotkeyHandler({
       tab: list.indent,

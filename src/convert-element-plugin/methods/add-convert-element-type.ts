@@ -11,13 +11,13 @@ import { Editor, Element } from "slate"
  * - headings
  * - list items
  */
-export function addToggleElementType(
+export function addConvertElementType(
   editor: Editor,
   type: Element["type"] | Array<Element["type"]>
 ): void {
   if (Array.isArray(type)) {
-    editor.toggleElement.toggleElementTypes.push(...type)
+    editor.convertElement.convertElementTypes.push(...type)
   } else {
-    editor.toggleElement.toggleElementTypes.push(type)
+    editor.convertElement.convertElementTypes.push(type)
   }
 }

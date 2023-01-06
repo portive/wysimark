@@ -7,7 +7,7 @@ import {
 } from ".."
 
 export function convertOrderedList(editor: Editor, allowToggle: boolean) {
-  return editor.toggleElement.convertElements<OrderedListItemElement>(
+  return editor.convertElement.convertElements<OrderedListItemElement>(
     (element) => element.type === "ordered-list-item",
     (element) => {
       return {
@@ -20,7 +20,7 @@ export function convertOrderedList(editor: Editor, allowToggle: boolean) {
 }
 
 export function convertTaskList(editor: Editor, allowToggle: boolean) {
-  return editor.toggleElement.convertElements<TaskListItemElement>(
+  return editor.convertElement.convertElements<TaskListItemElement>(
     (element) => element.type === "task-list-item",
     (element) => {
       return {
@@ -34,7 +34,7 @@ export function convertTaskList(editor: Editor, allowToggle: boolean) {
 }
 
 export function convertUnorderedList(editor: Editor, allowToggle: boolean) {
-  return editor.toggleElement.convertElements<UnorderedListItemElement>(
+  return editor.convertElement.convertElements<UnorderedListItemElement>(
     (element) => element.type === "unordered-list-item",
     (element) => {
       return {

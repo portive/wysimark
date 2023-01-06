@@ -55,7 +55,8 @@ export function convertElements<T extends Element = Element>(
   const entries = Array.from(
     Editor.nodes<Element>(editor, {
       match: (node) =>
-        Element.isElement(node) && editor.toggleElement.isToggleElement(node),
+        Element.isElement(node) &&
+        editor.convertElement.isConvertibleElement(node),
     })
   )
   /**

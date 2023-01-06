@@ -20,23 +20,6 @@ export type SinkEditor<
    */
   isMaster: (node: Element) => boolean
   /**
-   * An Element that is able to be toggled with a Paragraph or easily converted
-   * to another type like a list item to a heading.
-   *
-   * Some examples are:
-   *
-   * - list item
-   * - heading
-   *
-   * The characteristics of such an Element are:
-   *
-   * - It contains a single Element with no dependant elements
-   * - It has children that are Text or Inline elements only
-   * - Generally doesn't carry too many properties which make it more natural
-   *   to convert to another type.
-   */
-  isConvertible: (node: Element) => boolean
-  /**
    * a slave Element is one that is dependant on another Element. For example,
    * `table-row`, `table-cell` and `table-cotent` elements are all considered
    * slave elements.
