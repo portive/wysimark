@@ -25,6 +25,10 @@
  * const curriedToggleElements = curry(toggleElements, editor) as
  *   CurriedToggleElements
  */
+
+/**
+ * Curry one argument from the left
+ */
 export function curryOne<CurriedArg, RestArgs extends unknown[], R>(
   fn: (curriedArg: CurriedArg, ...restArgs: RestArgs) => R,
   curriedArg: CurriedArg
@@ -32,6 +36,9 @@ export function curryOne<CurriedArg, RestArgs extends unknown[], R>(
   return fn.bind(null, curriedArg)
 }
 
+/**
+ * Curry two arguments from the left
+ */
 export function curryTwo<Arg1, Arg2, RestArgs extends unknown[], R>(
   fn: (arg1: Arg1, arg2: Arg2, ...restArgs: RestArgs) => R,
   arg1: Arg1,
