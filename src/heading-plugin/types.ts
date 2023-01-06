@@ -2,6 +2,7 @@ import { Descendant } from "slate"
 
 export type HeadingEditor = {
   heading: {
+    setHeading: (level: HeadingElement["level"]) => void
     toggleHeading: (level: HeadingElement["level"]) => void
   }
 }

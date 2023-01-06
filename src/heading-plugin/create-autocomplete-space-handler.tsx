@@ -1,8 +1,9 @@
+import { isHotkey } from "is-hotkey"
 import { Editor, Element as SlateElement, Range, Transforms } from "slate"
 
 import { findElementUp, stopEvent } from "~/src/sink"
 
-import { isSpace } from "./index"
+export const isSpace = isHotkey(" ")
 
 export function createAutocompleteSpaceHandler(
   editor: Editor,

@@ -30,7 +30,7 @@ export function toggleElements<T extends Element = Element>(
   editor: Editor,
   match: (element: Element) => boolean,
   targetElement: TargetElement<T>
-) {
+): boolean {
   /**
    * Find convertible elements
    */
