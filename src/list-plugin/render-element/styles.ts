@@ -54,7 +54,7 @@ export const $TaskListItem = styled($ListItem, forwardRef)`
   list-style-type: none;
   .--list-item-icon {
     position: absolute;
-    top: 0;
+    top: 0.1375em;
     left: -1.5em;
     line-height: 1.5em;
     color: var(--shade-300);
