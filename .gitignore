@@ -25,3 +25,6 @@ eslint.log
 
 # ignore the increment typescript build info
 tsconfig.tsbuildinfo
+
+# ignore .yarn used by yarn
+.yarn

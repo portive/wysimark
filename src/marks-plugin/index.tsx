@@ -1,5 +1,5 @@
 import { clsx } from "clsx"
-import { isHotkey, isKeyHotkey, toKeyCode, toKeyName } from "is-hotkey"
+import { isHotkey, toKeyCode, toKeyName } from "is-hotkey"
 import React from "react"
 import { Editor, Element, Point, Range, Text, Transforms } from "slate"
 
