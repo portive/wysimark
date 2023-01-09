@@ -1,0 +1,12 @@
+{
+  "name": "demo",
+  "packageManager": "yarn@3.3.1",
+  "dependencies": {
+    "next": "12.x"
+  },
+  "scripts": {
+    "-- next": "# NextJs",
+    "start:local": "DOTENV=../../.env/local.env next dev -p 3732",
+    "open": "open -a 'google chrome' http://localhost:3732"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "extends": "./tsconfig.custom.json",
+  "compilerOptions": {
+    /**
+     * When we output using `ts-node` we want it to end up in a `commonjs`
+     * module so that it can be executed by plain node.
+     *
+     * NOTE: This assumption hasn't been tested but I think this needs to be
+     * `commonjs`. We may want to test to see if this might work without this
+     * specification.
+     */
+    "module": "commonjs"
+  },
+  /**
+   * `ts-node` needs `tsconfig-paths/register` or it won't work with
+   * our custom `paths` specified in the base.
+   */
+  "ts-node": {
+    "require": ["tsconfig-paths/register"]
+  }
+}

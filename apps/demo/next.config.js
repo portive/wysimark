@@ -37,4 +37,4 @@ console.log(env)
 /**
  * Sets `process.env` in Next.js
  */
-module.exports = { env }
+module.exports = { env, experimental: { externalDir: true } }

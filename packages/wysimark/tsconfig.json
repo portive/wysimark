@@ -1,0 +1,18 @@
+/**
+ * Next.js insists on using the main `tsconfig.json` file so this is actually
+ * the config file for Next.js
+ */
+{
+  "extends": "./tsconfig.custom.json",
+  "compilerOptions": {
+    /**
+     * These are settings that Next.js insists exists. If they aren't there,
+     * Next.js will create them
+     */
+    "module": "ESNext",
+    "sourceMap": true,
+    "incremental": true,
+    "jsx": "preserve",
+    "allowJs": true
+  }
+}

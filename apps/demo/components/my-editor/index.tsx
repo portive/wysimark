@@ -1,58 +1,69 @@
-import "../../src/setup"
+import "wysimark/src/setup"
 
 import { useState } from "react"
 import { BaseEditor, BaseText, createEditor } from "slate"
 import { HistoryEditor, withHistory } from "slate-history"
 import { ReactEditor, RenderLeafProps, Slate, withReact } from "slate-react"
-
-import { AnchorPlugin, AnchorPluginCustomTypes } from "~/src/anchor-plugin"
+import {
+  AnchorPlugin,
+  AnchorPluginCustomTypes,
+} from "wysimark/src/anchor-plugin"
 import {
   AtomicDeletePlugin,
   AtomicDeletePluginCustomTypes,
-} from "~/src/atomic-delete-plugin"
+} from "wysimark/src/atomic-delete-plugin"
 import {
   BlockQuotePlugin,
   BlockQuotePluginCustomTypes,
-} from "~/src/block-quote-plugin"
+} from "wysimark/src/block-quote-plugin"
 import {
   CodeBlockPlugin,
   CodeBlockPluginCustomTypes,
-} from "~/src/code-block-plugin"
+} from "wysimark/src/code-block-plugin"
 import {
   CollapsibleParagraphPlugin,
   CollapsibleParagraphPluginCustomTypes,
-} from "~/src/collapsible-paragraph-plugin"
+} from "wysimark/src/collapsible-paragraph-plugin"
 import {
   ConvertElementPlugin,
   ConvertElementPluginCustomTypes,
-} from "~/src/convert-element-plugin"
-import { HeadingPlugin, HeadingPluginCustomTypes } from "~/src/heading-plugin"
+} from "wysimark/src/convert-element-plugin"
+import {
+  HeadingPlugin,
+  HeadingPluginCustomTypes,
+} from "wysimark/src/heading-plugin"
 import {
   HorizontalRulePlugin,
   HorizontalRulePluginCustomTypes,
-} from "~/src/horizontal-rule-plugin"
-import { ImagePlugin } from "~/src/image-plugin"
-import { ImagePluginCustomTypes } from "~/src/image-plugin/types"
+} from "wysimark/src/horizontal-rule-plugin"
+import { ImagePlugin } from "wysimark/src/image-plugin"
+import { ImagePluginCustomTypes } from "wysimark/src/image-plugin/types"
 import {
   InlineCodePlugin,
   InlineCodePluginCustomTypes,
-} from "~/src/inline-code-plugin"
-import { ListPlugin, ListPluginCustomTypes } from "~/src/list-plugin"
-import { MarksPlugin, MarksPluginCustomTypes } from "~/src/marks-plugin"
+} from "wysimark/src/inline-code-plugin"
+import { ListPlugin, ListPluginCustomTypes } from "wysimark/src/list-plugin"
+import { MarksPlugin, MarksPluginCustomTypes } from "wysimark/src/marks-plugin"
 import {
   NormalizeAfterDeletePlugin,
   NormalizeAfterDeletePluginCustomTypes,
-} from "~/src/normalize-after-delete-plugin"
-import { createSink, MergePluginCustomTypes } from "~/src/sink"
-import { TablePlugin, TablePluginCustomTypes } from "~/src/table-plugin"
-import { ThemePlugin, ThemePluginCustomTypes } from "~/src/theme-plugin"
-import { ToolbarPlugin, ToolbarPluginCustomTypes } from "~/src/toolbar-plugin"
-import { TrailingBlockPlugin } from "~/src/trailing-block-plugin"
+} from "wysimark/src/normalize-after-delete-plugin"
+import { createSink, MergePluginCustomTypes } from "wysimark/src/sink"
+import { TablePlugin, TablePluginCustomTypes } from "wysimark/src/table-plugin"
+import { ThemePlugin, ThemePluginCustomTypes } from "wysimark/src/theme-plugin"
+import {
+  ToolbarPlugin,
+  ToolbarPluginCustomTypes,
+} from "wysimark/src/toolbar-plugin"
+import { TrailingBlockPlugin } from "wysimark/src/trailing-block-plugin"
 import {
   UploadAttachmentPlugin,
   UploadAttachmentPluginCustomTypes,
-} from "~/src/upload-attachment-plugin"
-import { UploadPlugin, UploadPluginCustomTypes } from "~/src/upload-plugin"
+} from "wysimark/src/upload-attachment-plugin"
+import {
+  UploadPlugin,
+  UploadPluginCustomTypes,
+} from "wysimark/src/upload-plugin"
 
 import { initialValue } from "./initial-value"
 
