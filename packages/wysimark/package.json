@@ -1,9 +1,9 @@
 {
   "name": "wysimark",
   "version": "1.0.0",
-  "main": "index.js",
-  "author": "Sunny Hirai <thesunny@gmail.com>",
   "license": "MIT",
+  "author": "Sunny Hirai <thesunny@gmail.com>",
+  "main": "index.js",
   "devDependencies": {
     "@thesunny/assert-type": "^0.1.13",
     "@types/handlebars-helpers": "^0.5.3",
@@ -23,29 +23,6 @@
     "tsconfig-paths": "^4.1.2",
     "type-fest": "^3.2.0",
     "typescript": "^4.9.4"
-  },
-  "scripts": {
-    "-- preset": "# Run preset from @thesunny/presets",
-    "preset": "ts-node --project node_modules/@thesunny/presets/tsconfig.ts-node.json node_modules/@thesunny/presets/bin/index.ts",
-    "-- fix": "# fix syntax",
-    "fix:prettier": "yarn lint:prettier --write",
-    "fix:eslint": "yarn lint:eslint --fix",
-    "-- lint": "# lint syntax",
-    "lint": "concurrently 'yarn lint:prettier' 'yarn lint:eslint' 'yarn lint:tsc'",
-    "lint:prettier": "prettier --check \"**/*.{css,md,js,jsx,json,ts,tsx}\"",
-    "lint:eslint": "eslint .",
-    "lint:tsc": "tsc --build ./ --force",
-    "--- test": "#",
-    "test:once": "yarn test:clearcache && jest --config=jest.config.js",
-    "test:watch": "jest --watch --config=jest.fast.config.js",
-    "test:watch:types": "yarn test:clearcache && jest --watch --config=jest.config.js",
-    "test:clearcache": "jest --clearCache",
-    "-- next": "# NextJs",
-    "start:local": "DOTENV=.env/local.env next dev -p 3732",
-    "open": "open -a 'google chrome' http://localhost:3732",
-    "-- plop": "# Plop: specify ts-node https://github.com/plopjs/plop/issues/192",
-    "plop": "TS_NODE_PROJECT=tsconfig.ts-node.json plop --plopfile plop/plopfile.ts",
-    "-- end": "# end"
   },
   "dependencies": {
     "@emoji-mart/data": "^1.1.0",
@@ -70,5 +47,28 @@
     "slate-history": "^0.85.0",
     "slate-react": "^0.83.2",
     "zustand": "^4.1.5"
+  },
+  "scripts": {
+    "-- fix": "# fix syntax",
+    "fix:eslint": "yarn lint:eslint --fix",
+    "fix:prettier": "yarn lint:prettier --write",
+    "-- lint": "# lint syntax",
+    "lint": "concurrently 'yarn lint:prettier' 'yarn lint:eslint' 'yarn lint:tsc'",
+    "lint:eslint": "eslint .",
+    "lint:prettier": "prettier --check \"**/*.{css,md,js,jsx,json,ts,tsx}\"",
+    "lint:tsc": "tsc --build ./ --force",
+    "-- next": "# NextJs",
+    "open": "open -a 'google chrome' http://localhost:3732",
+    "start:local": "DOTENV=.env/local.env next dev -p 3732",
+    "-- plop": "# Plop: specify ts-node https://github.com/plopjs/plop/issues/192",
+    "plop": "TS_NODE_PROJECT=tsconfig.ts-node.json plop --plopfile plop/plopfile.ts",
+    "--- test": "#",
+    "test:clearcache": "jest --clearCache",
+    "test:once": "yarn test:clearcache && jest --config=jest.config.js",
+    "test:watch": "jest --watch --config=jest.fast.config.js",
+    "test:watch:types": "yarn test:clearcache && jest --watch --config=jest.config.js",
+    "-- preset": "# Run preset from ~/presets",
+    "preset": "ts-node --project $HOME/presets/tsconfig.ts-node.json $HOME/presets/bin/index.ts",
+    "-- end": "# end"
   }
 }
