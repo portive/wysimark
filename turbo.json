@@ -4,6 +4,15 @@
     "build": {
       "outputs": [".next/**"]
     },
+    "lint:eslint": {
+      "outputs": []
+    },
+    "lint:tsc": {
+      "outputs": []
+    },
+    "lint:prettier": {
+      "outputs": []
+    },
     "lint": {
       "outputs": []
     }

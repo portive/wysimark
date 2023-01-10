@@ -23,7 +23,8 @@
     "-- lint": "# lint",
     "lint": "yarn turbo lint",
     "lint:eslint": "yarn turbo lint:eslint",
-    "lint:old": "concurrently 'yarn lint:prettier' 'yarn lint:eslint' 'yarn lint:tsc'",
+    "lint:prettier": "yarn turbo lint:prettier",
+    "lint:tsc": "yarn turbo lint:tsc",
     "-- preset": "# Run preset from ~/presets",
     "preset": "ts-node --project $HOME/presets/tsconfig.ts-node.json $HOME/presets/bin/index.ts",
     "-- end": "# end"
