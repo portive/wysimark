@@ -2670,6 +2670,8 @@ __metadata:
   resolution: "demo@workspace:apps/demo"
   dependencies:
     next: 12.x
+    react: 17.x
+    react-dom: 17.x
   languageName: unknown
   linkType: soft
 
@@ -2971,6 +2973,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "eslint-config-custom@workspace:packages/eslint-config-custom"
   dependencies:
+    "@typescript-eslint/eslint-plugin": ^5.15.0
+    "@typescript-eslint/parser": ^5.15.0
+    eslint: ^8.4.1
     eslint-config-prettier: ^8.1.0
     eslint-import-resolver-node: ^0.3
     eslint-import-resolver-typescript: ^3.5
@@ -8614,11 +8619,10 @@ __metadata:
     "@types/prismjs": ^1.26.0
     "@types/react": 17.x
     "@types/react-dom": 17.x
-    "@typescript-eslint/eslint-plugin": ^5.15.0
-    "@typescript-eslint/parser": ^5.15.0
     change-case: ^4.1.2
     clsx: ^1.2.1
     concurrently: ^7.2
+    csstype: ^3.0.2
     dotenv: 16.x
     emoji-mart: ^5.4.0
     goober: ^2.1.11
