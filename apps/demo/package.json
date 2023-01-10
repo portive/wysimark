@@ -21,6 +21,9 @@
     "lint:tsc": "tsc --build ./ --force",
     "-- next": "# NextJs",
     "start:local": "DOTENV=../../.env/local.env next dev -p 3732",
-    "open": "open -a 'google chrome' http://localhost:3732"
+    "open": "open -a 'google chrome' http://localhost:3732",
+    "-- preset": "# Run preset from ~/presets",
+    "preset": "ts-node --project $HOME/presets/tsconfig.ts-node.json $HOME/presets/bin/index.ts",
+    "-- end": "# end"
   }
 }
