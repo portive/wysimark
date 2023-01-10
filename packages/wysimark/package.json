@@ -24,7 +24,6 @@
     "eslint-plugin-no-secrets": "^0.8",
     "eslint-plugin-react": "^7.27",
     "eslint-plugin-simple-import-sort": "^8.0",
-    "handlebars-helpers": "^0.10.0",
     "jest": "^27",
     "plop": "^2",
     "prettier": "^2",

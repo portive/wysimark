@@ -1,7 +1,7 @@
 import { camelCase, paramCase, pascalCase } from "change-case"
 import { NodePlopAPI } from "plop"
 
-import { registerHandleBarHelpers } from "./register-handle-bar-helpers"
+// import { registerHandleBarHelpers } from "./register-handle-bar-helpers"
 
 function transformVarNames(template: string, data: Record<string, string>) {
   let nextTemplate = template
@@ -28,7 +28,7 @@ const PLUGIN_NAME_PROMPT = {
 }
 
 export default function (plop: NodePlopAPI) {
-  registerHandleBarHelpers(plop)
+  // registerHandleBarHelpers(plop)
   plop.setGenerator("plugin", {
     description: "Create new plugin",
     prompts: [PLUGIN_NAME_PROMPT],

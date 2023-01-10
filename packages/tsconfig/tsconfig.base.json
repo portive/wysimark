@@ -64,17 +64,52 @@
      * To fix the breakage, we would use `node12` or greater or `nodenext`
      */
     "moduleResolution": "node",
-    "paths": {
-      "~/*": ["../../packages/wysimark/*"],
-      /**
-       * Required to support `typeRoots`
-       * https://stackoverflow.com/questions/64287224/typeroots-fails-to-find-d-ts-declaration-files-in-project
-       */
-      "*": ["types/*"]
-    },
+    /**
+     * Moved to tsconfig.custom.json
+     */
+    // "paths": {
+    //   "~/*": ["../../packages/wysimark/*"]
+    //   /**
+    //    * Required to support `typeRoots`
+    //    * https://stackoverflow.com/questions/64287224/typeroots-fails-to-find-d-ts-declaration-files-in-project
+    //    */
+    //   // "*": ["types/*"]
+    // },
     "resolveJsonModule": true,
-    "rootDir": ".",
-    "typeRoots": ["./types", "./node_modules/@types"],
+    /**
+     * Why not `rootDir`?
+     *
+     * When in our monorepo, we need to remove `rootDir` from tsconfig because
+     * all the files have to be under `rootDir` and since these rootDir is
+     * relative to this shared `tsconfig` and none of the files for the
+     * actual packages are in this `tsconfig` workspace, the `rootDir` setting
+     * ends up causing issues.
+     *
+     * NOTE:
+     *
+     * Leave this here for the moment though. We may be tempted to put `rootDir`
+     * back in temporarily to help with creating a better build file with
+     * tsc. In that case, this comment is helpful.
+     */
+    // "rootDir": ".",
+    /**
+     * Removed typeRoots
+     *
+     * We removed typeRoots because if we specify them, then the specified
+     * typeRoots are used exactly. Previously, we needed this to specify our
+     * custom `./types`; however, it is now better to use the default because
+     * it automatically includes the types of parent `node_modules` directory
+     * such as the `node_modules` at the top of our monorepo.
+     *
+     * If we do need to add our own custom `typeRoots` be sure to include
+     * references to all the relevant `node_modules` directories.
+     */
+    // "typeRoots": [
+    // "./types"
+    // "./node_modules/@types"
+    // "../../node_modules/@types"
+    // ],
+
     /**
      * Emit
      *
@@ -87,7 +122,11 @@
      * - `skipLibCheck` improves performance but sacrifices accuracy with duplicate libraries
      */
     "skipLibCheck": true
-  },
-  "include": ["**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+  }
+  /**
+   * Given the use of our monorepo, it's probably best for us to specify
+   * these in each specific package.
+   */
+  // "include": ["**/*.ts", "**/*.tsx"],
+  // "exclude": ["node_modules"]
 }

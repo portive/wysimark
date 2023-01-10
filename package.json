@@ -6,7 +6,6 @@
     "packages/*"
   ],
   "devDependencies": {
-    "@types/node": "^18.11.18",
     "concurrently": "^7.2",
     "eslint": "^8.4.1",
     "eslint-config-custom": "*",
@@ -15,7 +14,9 @@
     "typescript": "^4.9.4"
   },
   "scripts": {
+    "-- demo": "# demo",
     "start:local": "yarn workspace demo start:local",
+    "open": "yarn workspace demo open",
     "-- lint": "# lint",
     "lint": "concurrently 'yarn lint:prettier' 'yarn lint:eslint' 'yarn lint:tsc'",
     "lint:eslint": "eslint \"./{packages,apps}/**/*.{js,jsx,ts,tsx}\"",
