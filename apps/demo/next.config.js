@@ -31,9 +31,6 @@ if (typeof process.env.DOTENV === "string") {
   )
 }
 
-console.log("=======================")
-console.log(env)
-
 /**
  * Sets `process.env` in Next.js
  */

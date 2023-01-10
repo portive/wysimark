@@ -11,6 +11,7 @@
     "eslint-config-custom": "*",
     "prettier": "^2",
     "tsconfig-paths": "^4.1.2",
+    "turbo": "^1.6.3",
     "typescript": "^4.9.4"
   },
   "scripts": {
@@ -18,9 +19,11 @@
     "start:local": "yarn workspace demo start:local",
     "open": "yarn workspace demo open",
     "-- lint": "# lint",
-    "lint": "concurrently 'yarn lint:prettier' 'yarn lint:eslint' 'yarn lint:tsc'",
-    "lint:eslint": "eslint \"./{packages,apps}/**/*.{js,jsx,ts,tsx}\"",
-    "lint:tsc": "tsc --build ./ --force",
-    "lint:prettier": "prettier --check \"**/*.{css,md,js,jsx,json,ts,tsx}\""
+    "lint": "yarn turbo lint",
+    "lint:eslint": "yarn turbo lint:eslint",
+    "lint:old": "concurrently 'yarn lint:prettier' 'yarn lint:eslint' 'yarn lint:tsc'",
+    "lint:eslint:old": "eslint \"./{packages,apps}/**/*.{js,jsx,ts,tsx}\"",
+    "lint:tsc:old": "tsc --build ./ --force",
+    "lint:prettier:old": "prettier --check \"**/*.{css,md,js,jsx,json,ts,tsx}\""
   }
 }

@@ -28,3 +28,6 @@ tsconfig.tsbuildinfo
 
 # ignore .yarn used by yarn
 .yarn
+
+# ignore turborepo files in .turbo
+.turbo
