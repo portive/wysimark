@@ -1,33 +1,17 @@
-import { Text } from "../../types"
+import * as Slate from "slate"
+import { AnchorElement } from "wysimark/src/anchor-plugin"
 
-/**
- * Normalize text by separating out spaces that occur at the boundaries between
- * each `Text` Node.
- *
- * For example:
- *
- * - " alpha" => " ", "alpha"
- * - "alpha " => "alpha", " "
- * - " alpha " => " ", "alpha", " "
- * - "alpha", " bravo" => "alpha", " ", "bravo"
- * - "alpha ", "bravo" => "alpha", " ", "bravo"
- * - "alpha ", " barvo" => "alpha", "  ", "bravo"
- */
-export function normalizeLineSpaces(texts: Text[]) {
-  const nextTexts: Text[] = [{ text: "" }]
-  for (let i = 0; i < texts.length + 1; i++) {
-    /**
-     * The last item in nextTexts
-     */
-    const a = nextTexts[nextTexts.length - 1] || { text: "" }
-    const b = texts[i] || { text: "" }
-    const mergedTexts = normalizeSpacesInAdjacentText(a, b)
-    nextTexts.splice(-1, 1, ...mergedTexts)
-  }
-  return nextTexts.filter((text) => text.text.length > 0)
+import { Segment, Text } from "../../types"
+
+function isText(segment: Segment | undefined): segment is Text {
+  return Slate.Text.isText(segment)
 }
 
-function normalizeSpacesInAdjacentText(a: Text, b: Text): Text[] {
+function isAnchor(segment: Segment): segment is AnchorElement {
+  return Slate.Element.isElement(segment)
+}
+
+function resliceSpacesInAdjacentTexts(a: Text, b: Text): Text[] {
   /**
    * Check if a ends in a space or b starts with a space
    */
@@ -49,4 +33,50 @@ function normalizeSpacesInAdjacentText(a: Text, b: Text): Text[] {
     },
     { ...b, text: bMatch ? bMatch[2] : b.text },
   ].filter((text) => text.text.length > 0)
+}
+
+/**
+ * Normalize text by separating out spaces that occur at the edges of
+ * each `Text` Node.
+ *
+ * For example:
+ *
+ * - " alpha" => " ", "alpha"
+ * - "alpha " => "alpha", " "
+ * - " alpha " => " ", "alpha", " "
+ * - "alpha", " bravo" => "alpha", " ", "bravo"
+ * - "alpha ", "bravo" => "alpha", " ", "bravo"
+ * - "alpha ", " barvo" => "alpha", "  ", "bravo"
+ */
+export function normalizeLineSpaces(segments: Segment[]) {
+  const nextSegments: Segment[] = [{ text: "" }]
+  for (let i = 0; i < segments.length + 1; i++) {
+    const aNode = nextSegments[nextSegments.length - 1]
+    const bNode = segments[i]
+
+    /**
+     * This is the last item sitting on nextTexts and we will be merging the
+     * result of merging texts to replace this text.
+     */
+    const aText = isText(aNode) ? aNode : { text: "" }
+    const bText = isText(bNode) ? bNode : { text: "" }
+
+    const reslicedTexts = resliceSpacesInAdjacentTexts(aText, bText)
+    nextSegments.splice(-1, 1, ...reslicedTexts)
+
+    if (isAnchor(bNode)) {
+      /**
+       * If the bNode is an anchor, we didn't process is and provided a blank
+       * Text earlier. Here we add it directly and then we also add another
+       * blank Text on the end so that when the next call to normalizeLineSpaces
+       * happens, it sees the blank text to start from.
+       */
+      const anchorElement: AnchorElement = {
+        ...bNode,
+        children: normalizeLineSpaces(bNode.children as Segment[]),
+      }
+      nextSegments.push(anchorElement, { text: "" })
+    }
+  }
+  return nextSegments.filter((text) => isAnchor(text) || text.text.length > 0)
 }
