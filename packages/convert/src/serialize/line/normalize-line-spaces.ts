@@ -1,17 +1,30 @@
 import { Text } from "../../types"
 
+/**
+ * Normalize text by separating out spaces that occur at the boundaries between
+ * each `Text` Node.
+ *
+ * For example:
+ *
+ * - " alpha" => " ", "alpha"
+ * - "alpha " => "alpha", " "
+ * - " alpha " => " ", "alpha", " "
+ * - "alpha", " bravo" => "alpha", " ", "bravo"
+ * - "alpha ", "bravo" => "alpha", " ", "bravo"
+ * - "alpha ", " barvo" => "alpha", "  ", "bravo"
+ */
 export function normalizeLineSpaces(texts: Text[]) {
-  const nextTexts: Text[] = [texts[0]]
-  for (let i = 1; i < texts.length; i++) {
+  const nextTexts: Text[] = [{ text: "" }]
+  for (let i = 0; i < texts.length + 1; i++) {
     /**
      * The last item in nextTexts
      */
-    const a = nextTexts[nextTexts.length - 1]
-    const b = texts[i]
+    const a = nextTexts[nextTexts.length - 1] || { text: "" }
+    const b = texts[i] || { text: "" }
     const mergedTexts = normalizeSpacesInAdjacentText(a, b)
     nextTexts.splice(-1, 1, ...mergedTexts)
   }
-  return nextTexts
+  return nextTexts.filter((text) => text.text.length > 0)
 }
 
 function normalizeSpacesInAdjacentText(a: Text, b: Text): Text[] {
