@@ -67,11 +67,11 @@ describe("normalize line segment spaces around anchors", () => {
     ])
   })
 
-  it("should not merge spaces around anchors at this point in time", async () => {
+  it("should not move spaces around anchors up", async () => {
     const nodes = normalizeLine([
-      { text: "alpha " },
+      { text: "alpha" },
       { type: "anchor", href: "", children: [{ text: " bravo " }] },
-      { text: " charlie" },
+      { text: "charlie" },
     ])
     expect(nodes).toEqual([
       { text: "alpha" },
@@ -79,7 +79,7 @@ describe("normalize line segment spaces around anchors", () => {
       {
         type: "anchor",
         href: "",
-        children: [{ text: " " }, { text: "bravo" }, { text: " " }],
+        children: [{ text: "bravo" }],
       },
       { text: " " },
       { text: "charlie" },

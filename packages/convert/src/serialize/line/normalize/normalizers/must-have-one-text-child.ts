@@ -1,4 +1,4 @@
-import { isElement, NormalizeOptions } from "./utils"
+import { isElement, NormalizeOptions } from "../utils"
 
 export function mustHaveOneTextChild({ node }: NormalizeOptions): boolean {
   if (!isElement(node)) return false
