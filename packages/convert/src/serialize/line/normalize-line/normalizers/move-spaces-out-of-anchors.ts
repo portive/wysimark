@@ -1,5 +1,5 @@
 import { Segment } from "../../../../types"
-import { isElement, isSpace, isText, NormalizeOptions } from "../utils"
+import { isElement, isPlainSpace, isText, NormalizeOptions } from "../utils"
 
 export function moveSpacesAtStartOfAnchor({
   node,
@@ -11,11 +11,11 @@ export function moveSpacesAtStartOfAnchor({
   if (node.type !== "anchor") return false
   node
   const firstChild = node.children[0] as Segment
-  if (isText(firstChild) && isSpace(firstChild)) {
+  if (isText(firstChild) && isPlainSpace(firstChild)) {
     // remove the first child from the anchor
     node.children.splice(0, 1)
     // add the first child
-    if (isText(prevNode) && isSpace(prevNode)) {
+    if (isText(prevNode) && isPlainSpace(prevNode)) {
       prevNode.text = `${prevNode.text}${firstChild.text}`
     } else {
       nodes.splice(index, 0, { text: firstChild.text })
@@ -35,11 +35,11 @@ export function moveSpacesAtEndOfAnchor({
   if (node.type !== "anchor") return false
   node
   const lastChild = node.children[node.children.length - 1] as Segment
-  if (isText(lastChild) && isSpace(lastChild)) {
+  if (isText(lastChild) && isPlainSpace(lastChild)) {
     // remove the first child from the anchor
     node.children.splice(node.children.length - 1, 1)
     // add the first child
-    if (isText(nextNode) && isSpace(nextNode)) {
+    if (isText(nextNode) && isPlainSpace(nextNode)) {
       nextNode.text = `${lastChild.text}${nextNode.text}`
     } else {
       nodes.splice(index + 1, 0, { text: lastChild.text })

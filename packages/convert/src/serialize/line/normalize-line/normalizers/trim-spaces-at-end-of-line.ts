@@ -1,4 +1,4 @@
-import { isElement, isSpace, isText, NormalizeOptions } from "../utils"
+import { isElement, isPlainSpace, isText, NormalizeOptions } from "../utils"
 
 export function trimSpaceAtEndOfLine({
   index,
@@ -9,7 +9,7 @@ export function trimSpaceAtEndOfLine({
   if (index !== nodes.length - 1) return false
   if (nodes.length <= 1) return false
   if (!isText(node)) return false
-  if (!isSpace(node)) return false
+  if (!isPlainSpace(node)) return false
   if (parent && isElement(parent) && parent.type === "line") {
     nodes.splice(nodes.length - 1, 1)
     return true

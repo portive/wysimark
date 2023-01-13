@@ -10,6 +10,7 @@ describe("merge adjacent spaces", () => {
     ])
     expect(nodes).toEqual([{ text: "" }])
   })
+
   it("should merge a bunch of spaces into one space even when there are attached to words", async () => {
     const nodes = normalizeLine([
       { text: "alpha " },
@@ -20,6 +21,21 @@ describe("merge adjacent spaces", () => {
       { text: "alpha" },
       { text: "   " }, // 3 spaces
       { text: "bravo", italic: true },
+    ])
+  })
+
+  it("should not merge spaces if it's code", async () => {
+    const nodes = normalizeLine([
+      { text: "alpha" },
+      { text: " ", code: true },
+      { text: " " },
+      { text: "bravo" },
+    ])
+    expect(nodes).toEqual([
+      { text: "alpha" },
+      { text: " ", code: true },
+      { text: " " },
+      { text: "bravo" },
     ])
   })
 })

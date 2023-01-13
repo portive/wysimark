@@ -43,8 +43,13 @@ export function isElement(
 }
 
 /**
- * Does the passed in `Text` node made up of only one or more spaces
+ * Identify this as a plain, non-code Text space. This is fairly specific
+ * because we only want to manipulate non-code Text spaces. If the Text is
+ * `code` then we can apply our marks next to it.
+ *
+ * - Does the passed in `Text` node made up of only one or more spaces
+ * - The `Text` node must not be `code`
  */
-export function isSpace(text: Text) {
-  return text.text.match(/^\s+$/)
+export function isPlainSpace(text: Text) {
+  return text.text.match(/^\s+$/) && !text.code
 }

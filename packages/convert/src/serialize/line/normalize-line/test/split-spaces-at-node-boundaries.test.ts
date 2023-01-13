@@ -27,6 +27,7 @@ describe("normalize line spaces", () => {
       ])
     })
   })
+
   describe("don't split spaces in the middle of a word", () => {
     it("should not normalize boundaries in the middle of a word", async () => {
       const nodes = normalizeLine([
@@ -40,5 +41,20 @@ describe("normalize line spaces", () => {
         { text: "o charlie", italic: true },
       ])
     })
+  })
+
+  describe("don't split spaces in inline code", () => {
+    const nodes = normalizeLine([
+      { text: "alpha ", bold: true },
+      { text: " bravo ", code: true },
+      { text: " charlie", italic: true },
+    ])
+    expect(nodes).toEqual([
+      { text: "alpha", bold: true },
+      { text: " " },
+      { text: " bravo ", code: true },
+      { text: " " },
+      { text: "charlie", italic: true },
+    ])
   })
 })

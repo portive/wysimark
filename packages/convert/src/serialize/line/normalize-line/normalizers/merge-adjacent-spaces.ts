@@ -1,4 +1,4 @@
-import { isSpace, isText, NormalizeOptions } from "../utils"
+import { isPlainSpace, isText, NormalizeOptions } from "../utils"
 
 /**
  * If we ever find two spaces next to each other, merge them together.
@@ -14,8 +14,8 @@ export function mergeAdjacentSpaces({
   nodes: nodes,
   index,
 }: NormalizeOptions): boolean {
-  if (!isText(node) || !isSpace(node)) return false
-  if (!isText(nextNode) || !isSpace(nextNode)) return false
+  if (!isText(node) || !isPlainSpace(node) || node.code) return false
+  if (!isText(nextNode) || !isPlainSpace(nextNode) || node.code) return false
   nodes.splice(index, 2, { text: `${node.text}${nextNode.text}` })
   return true
 }
