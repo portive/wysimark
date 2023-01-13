@@ -12,7 +12,7 @@ export type NormalizeOptions = {
   node: Node
   prevNode?: Node
   nextNode?: Node
-  segments: Node[]
+  nodes: Node[]
   index: number
 }
 

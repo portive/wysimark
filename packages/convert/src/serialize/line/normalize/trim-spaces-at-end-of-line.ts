@@ -1,8 +1,8 @@
 import { isElement, isSpace, isText, NormalizeOptions } from "./utils"
 
-export function trimSpaceAtEnd({
+export function trimSpaceAtEndOfLine({
   index,
-  segments,
+  nodes: segments,
   node,
   parent,
 }: NormalizeOptions): boolean {

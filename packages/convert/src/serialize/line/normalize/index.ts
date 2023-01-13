@@ -5,15 +5,15 @@ import { Segment } from "../../../types"
 import { mergeAdjacentSpaces } from "./merge-adjacent-spaces"
 import { mustHaveOneTextChild } from "./must-have-one-text-child"
 import { sliceSpacesAtNodeBoundaries } from "./slice-spaces-at-node-boundaries"
-import { trimSpaceAtEnd } from "./trimSpaceAtEnd"
-import { trimSpaceAtStart } from "./trimSpaceAtStart"
+import { trimSpaceAtEndOfLine } from "./trim-spaces-at-end-of-line"
+import { trimSpaceAtStartOfLine } from "./trim-spaces-at-start-of-line"
 import { LineElement, Node, NormalizeOptions } from "./utils"
 
 const normalizers: Array<(options: NormalizeOptions) => boolean> = [
   sliceSpacesAtNodeBoundaries,
   mergeAdjacentSpaces,
-  trimSpaceAtStart,
-  trimSpaceAtEnd,
+  trimSpaceAtStartOfLine,
+  trimSpaceAtEndOfLine,
   mustHaveOneTextChild,
 ]
 
@@ -69,7 +69,7 @@ function normalizeNodes(
         prevNode: prevSegment,
         nextNode: nextSegment,
         index: i,
-        segments: nodes,
+        nodes: nodes,
       }
       if (!runNormalizers(options)) continue
       isUpdated = true

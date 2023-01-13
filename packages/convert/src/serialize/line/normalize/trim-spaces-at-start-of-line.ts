@@ -1,8 +1,8 @@
 import { isElement, isSpace, isText, NormalizeOptions } from "./utils"
 
-export function trimSpaceAtStart({
+export function trimSpaceAtStartOfLine({
   index,
-  segments,
+  nodes: segments,
   node,
   parent,
 }: NormalizeOptions): boolean {

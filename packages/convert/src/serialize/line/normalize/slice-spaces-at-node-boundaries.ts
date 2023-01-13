@@ -3,7 +3,7 @@ import { isSpace, isText, NormalizeOptions } from "./utils"
 
 export function sliceSpacesAtNodeBoundaries({
   node: segment,
-  segments,
+  nodes: segments,
   index,
 }: NormalizeOptions): boolean {
   if (!isText(segment)) return false
