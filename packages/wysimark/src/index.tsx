@@ -144,6 +144,9 @@ export type PluginCustomTypes = MergePluginCustomTypes<
   ]
 >
 
+export type Element = PluginCustomTypes["Element"]
+export type Text = PluginCustomTypes["Text"]
+
 declare module "slate" {
   interface CustomTypes {
     Editor: BaseEditor &
