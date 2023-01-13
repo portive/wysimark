@@ -1,60 +1,25 @@
 import * as Slate from "slate"
 import { AnchorElement } from "wysimark/src/anchor-plugin"
 
-import { Segment, Text } from "../../../types"
-import { normalizeAdjacentSpaces } from "./normalizeAdjacentSpaces"
-import { normalizeSpacesAtEdgeOfText } from "./normalizeSpacesAtEdgeOfText"
-
-type LineElement = { type: "line"; children: Segment[] }
-type Node = LineElement | AnchorElement | Text
-
-export function isText(segment: Node | undefined): segment is Text {
-  return Slate.Text.isText(segment)
-}
-
-export function isSpace(text: Text) {
-  return text.text.match(/^\s+$/)
-}
-
-function isAnchor(segment: Segment): segment is AnchorElement {
-  return Slate.Element.isElement(segment)
-}
-
-export type NormalizeOptions = {
-  parent?: Segment | LineElement
-  node: Node
-  prevNode?: Segment
-  nextNode?: Segment
-  segments: Segment[]
-  index: number
-}
+import { Segment } from "../../../types"
+import { mergeAdjacentSpaces } from "./merge-adjacent-spaces"
+import { mustHaveOneTextChild } from "./must-have-one-text-child"
+import { sliceSpacesAtNodeBoundaries } from "./slice-spaces-at-node-boundaries"
+import { trimSpaceAtEnd } from "./trimSpaceAtEnd"
+import { trimSpaceAtStart } from "./trimSpaceAtStart"
+import { LineElement, Node, NormalizeOptions } from "./utils"
 
 const normalizers: Array<(options: NormalizeOptions) => boolean> = [
-  normalizeAdjacentSpaces,
-  normalizeSpacesAtEdgeOfText,
-  // normalizeNoSpaceInFirstPosition,
-  // normalizeRequiresOneSegment,
+  sliceSpacesAtNodeBoundaries,
+  mergeAdjacentSpaces,
+  trimSpaceAtStart,
+  trimSpaceAtEnd,
+  mustHaveOneTextChild,
 ]
-
-function normalizeNoSpaceInFirstPosition(options: NormalizeOptions): boolean {
-  if (options.index !== 0) return false
-  if (options.segments.length === 0) return false
-  if (!isText(options.node)) return false
-  if (!isSpace(options.node)) return false
-  options.segments.splice(0, 1)
-  return true
-}
-
-function normalizeRequiresOneSegment(options: NormalizeOptions): boolean {
-  console.log(2222)
-  if (options.segments.length > 0) return false
-  options.segments.splice(0, 0, { text: "" })
-  return true
-}
 
 export function normalizeLine(segments: Segment[]) {
   const line: LineElement = { type: "line", children: segments }
-  normalizeSegments(segments, line)
+  normalizeNodes([line], undefined)
   return line.children
 }
 
@@ -68,14 +33,14 @@ function runNormalizers(options: NormalizeOptions) {
   return false
 }
 
-export function normalizeSegments(
-  segments: Segment[],
-  parent: AnchorElement | LineElement = { type: "line", children: segments }
-): Segment[] {
-  const nextSegments = segments
+function normalizeNodes(
+  nodes: Node[],
+  parent?: AnchorElement | LineElement
+): boolean {
+  let isAnyUpdated = false
   let isUpdated
   let runs = 0
-  const maxReruns = segments.length * 72
+  const maxReruns = (nodes.length + 1) * 72
   do {
     isUpdated = false
     runs = runs + 1
@@ -83,22 +48,34 @@ export function normalizeSegments(
       throw new Error(
         `There have been ${runs} normalization passes (72x the number of nodes at this level). This likely indicates a bug in the code.`
       )
-    segmentLoop: for (let i = 0; i < segments.length; i++) {
-      const segment: Segment = segments[i]
-      const prevSegment: Segment | undefined = segments[i - 1]
-      const nextSegment: Segment | undefined = segments[i + 1]
+    segmentLoop: for (let i = 0; i < nodes.length; i++) {
+      const node: Node = nodes[i]
+      if (Slate.Element.isElement(node)) {
+        const isChildrenUpdated = normalizeNodes(
+          node.children as Array<AnchorElement | LineElement>,
+          node
+        )
+        if (isChildrenUpdated) {
+          isUpdated = true
+          isAnyUpdated = true
+          break segmentLoop
+        }
+      }
+      const prevSegment: Node | undefined = nodes[i - 1]
+      const nextSegment: Node | undefined = nodes[i + 1]
       const options: NormalizeOptions = {
         parent,
-        node: segment,
+        node: node,
         prevNode: prevSegment,
         nextNode: nextSegment,
         index: i,
-        segments,
+        segments: nodes,
       }
       if (!runNormalizers(options)) continue
       isUpdated = true
+      isAnyUpdated = true
       break segmentLoop
     }
   } while (isUpdated)
-  return nextSegments
+  return isAnyUpdated
 }

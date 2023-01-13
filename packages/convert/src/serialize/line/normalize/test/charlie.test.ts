@@ -1,6 +1,6 @@
 import beautify from "json-beautify"
 
-import { normalizeLineSpaces } from "../normalize-line-spaces"
+import { normalizeLine } from ".."
 
 export function log(value: unknown) {
   /**
@@ -15,12 +15,12 @@ export function log(value: unknown) {
 
 describe("normalize line segment spaces around anchors", () => {
   it("should leave anchor alone when boundaries touch words", async () => {
-    const segments = normalizeLineSpaces([
+    const nodes = normalizeLine([
       { text: "alpha" },
       { type: "anchor", href: "", children: [{ text: "bravo" }] },
       { text: "charlie" },
     ])
-    expect(segments).toEqual([
+    expect(nodes).toEqual([
       { text: "alpha" },
       {
         type: "anchor",
@@ -32,12 +32,12 @@ describe("normalize line segment spaces around anchors", () => {
   })
 
   it("should normalize space at start and end of anchor", async () => {
-    const segments = normalizeLineSpaces([
+    const nodes = normalizeLine([
       { text: "alpha" },
       { type: "anchor", href: "", children: [{ text: " bravo " }] },
       { text: "charlie" },
     ])
-    expect(segments).toEqual([
+    expect(nodes).toEqual([
       { text: "alpha" },
       {
         type: "anchor",
@@ -49,12 +49,12 @@ describe("normalize line segment spaces around anchors", () => {
   })
 
   it("should keep spaces just outside of anchor", async () => {
-    const segments = normalizeLineSpaces([
+    const nodes = normalizeLine([
       { text: "alpha " },
       { type: "anchor", href: "", children: [{ text: "bravo" }] },
       { text: " charlie" },
     ])
-    expect(segments).toEqual([
+    expect(nodes).toEqual([
       { text: "alpha" },
       { text: " " },
       {
@@ -68,21 +68,21 @@ describe("normalize line segment spaces around anchors", () => {
   })
 
   it("should not merge spaces around anchors at this point in time", async () => {
-    const segments = normalizeLineSpaces([
+    const nodes = normalizeLine([
       { text: "alpha " },
       { type: "anchor", href: "", children: [{ text: " bravo " }] },
       { text: " charlie" },
     ])
-    // expect(segments).toEqual([
-    //   { text: "alpha" },
-    //   { text: " " },
-    //   {
-    //     type: "anchor",
-    //     href: "",
-    //     children: [{ text: "bravo" }],
-    //   },
-    //   { text: " " },
-    //   { text: "charlie" },
-    // ])
+    expect(nodes).toEqual([
+      { text: "alpha" },
+      { text: " " },
+      {
+        type: "anchor",
+        href: "",
+        children: [{ text: " " }, { text: "bravo" }, { text: " " }],
+      },
+      { text: " " },
+      { text: "charlie" },
+    ])
   })
 })

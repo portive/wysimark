@@ -1,6 +1,6 @@
-import { isSpace, isText, NormalizeOptions } from "./index"
+import { isSpace, isText, NormalizeOptions } from "./utils"
 
-export function normalizeAdjacentSpaces({
+export function mergeAdjacentSpaces({
   node: segment,
   nextNode: nextSegment,
   segments,

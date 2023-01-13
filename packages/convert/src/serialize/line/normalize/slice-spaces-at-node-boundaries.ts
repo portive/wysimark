@@ -1,7 +1,7 @@
 import { Text } from "../../../types"
-import { isSpace, isText, NormalizeOptions } from "./index"
+import { isSpace, isText, NormalizeOptions } from "./utils"
 
-export function normalizeSpacesAtEdgeOfText({
+export function sliceSpacesAtNodeBoundaries({
   node: segment,
   segments,
   index,
