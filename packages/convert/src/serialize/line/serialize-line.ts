@@ -68,6 +68,13 @@ export function serializeLine(inputSegments: Segment[]): string {
      * the call to `normalizeLine`
      */
     const nextMarks = getNextMarks(segments, i)
+    const trailingDiff = diffMarks(leadingDiff.nextOrderedMarks, nextMarks)
+    substrings.push(convertMarksToSymbols(trailingDiff.remove))
+
+    /**
+     * The `trailingDiff` becomes the new `leadingDiff`
+     */
+    leadingDiff = trailingDiff
   }
   return substrings.join("")
 }
@@ -76,6 +83,7 @@ function getNextMarks(segments: Segment[], i: number): MarkKey[] {
   const nextSegment = segments[i + 1]
   if (!isPlainSpace(nextSegment)) return getMarksFromSegment(nextSegment)
   const nextNextSegment = segments[i + 2]
-  if (!isPlainSpace(nextNextSegment)) return getMarksFromSegment(nextSegment)
+  if (!isPlainSpace(nextNextSegment))
+    return getMarksFromSegment(nextNextSegment)
   return []
 }

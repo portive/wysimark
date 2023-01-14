@@ -1,6 +1,6 @@
 import { MarkKey } from "../../types"
 
-export const PREFERRED_MARK_KEY_ORDER: MarkKey[] = [
+export const ORDERED_MARK_KEYS: MarkKey[] = [
   "bold",
   "italic",
   "strike",
@@ -15,4 +15,5 @@ export const MARK_KEY_TO_TOKEN = {
   strike: "~~",
   sup: "^",
   sub: "~",
-} as const
+  code: "`",
+} as Record<MarkKey, string>
