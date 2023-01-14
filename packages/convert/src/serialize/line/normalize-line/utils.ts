@@ -50,6 +50,8 @@ export function isElement(
  * - Does the passed in `Text` node made up of only one or more spaces
  * - The `Text` node must not be `code`
  */
-export function isPlainSpace(text: Text) {
-  return text.text.match(/^\s+$/) && !text.code
+export function isPlainSpace(segment: Segment): boolean {
+  return (
+    Slate.Text.isText(segment) && !!segment.text.match(/^\s+$/) && !segment.code
+  )
 }

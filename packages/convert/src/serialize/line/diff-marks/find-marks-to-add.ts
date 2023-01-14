@@ -55,9 +55,9 @@ export function findMarksToAdd(
    *
    * https://stackoverflow.com/a/44063445
    */
-  const marksToAdd = marksWeNeedToAdd
+  const orderedMarksToAdd = marksWeNeedToAdd
     .slice()
     .sort((a, b) => MARK_KEY_ORDER.indexOf(a) - MARK_KEY_ORDER.indexOf(b))
 
-  return marksToAdd
+  return { orderedMarksToAdd }
 }

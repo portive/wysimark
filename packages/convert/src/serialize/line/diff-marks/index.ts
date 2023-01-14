@@ -45,9 +45,10 @@ export function diffMarks(orderedMarks: MarkKey[], targetMarks: MarkKey[]) {
    * that feels nice and makes sense. For example, superscript/subscript is more
    * nested than bold because they are more likely to be toggled.
    */
-  const orderedMarksToAdd: MarkKey[] = findMarksToAdd(
-    nextOrderedMarks,
-    targetMarks
-  )
-  return { remove: orderedMarksToRemove, add: orderedMarksToAdd }
+  const { orderedMarksToAdd } = findMarksToAdd(nextOrderedMarks, targetMarks)
+  return {
+    remove: orderedMarksToRemove,
+    add: orderedMarksToAdd,
+    nextOrderedMarks: [...nextOrderedMarks, ...orderedMarksToAdd],
+  }
 }
