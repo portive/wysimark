@@ -2,11 +2,10 @@
  * FIXME: Temporary disable
  */
 /* eslint-disable prefer-const */
-import { Text as SlateText } from "slate"
+import { Descendant } from "slate"
 
-import { Element, MarkKey, MarkProps, Segment, Text } from "../../types"
-import { MARK_KEY_TO_TOKEN, PREFERRED_MARK_KEY_ORDER } from "./mark-constants"
-import { serializeSegment } from "./serialize-segment"
+import { MarkKey, MarkProps, Text } from "../../types"
+import { MARK_KEY_TO_TOKEN } from "./mark-constants"
 
 function getMarksPropsFromText(text: Text): MarkProps {
   const { text: _, ...marks } = text
@@ -39,19 +38,19 @@ function getMarksPropsFromText(text: Text): MarkProps {
 //   }
 //   return parts.join("")
 // }
-export function serializeLine(inlines: Array<Text>) {
+export function serializeLine(inlines: Array<Descendant>) {
   const parts: string[] = []
   let a: Text = { text: "" }
   /**
    * NOTE:
    *
    * We call this `orderedMarks` because the order matters. In markdown, we
-   * can't add a bold, then an italic, and then close the bold. For example,
-   * we can't do:
+   * can't add a bold, then an italic, and then close the bold before first
+   * closing the italic. For example, we can't do:
    *
    * **bold _and italic**_
    *
-   * We have to first peel off the italic like this
+   * We have to first close the italic like this
    *
    * **bold _and italic_**
    *
