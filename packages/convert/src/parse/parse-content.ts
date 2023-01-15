@@ -1,9 +1,10 @@
-import type { Content } from "mdast"
+import type { Content, Link } from "mdast"
 import { Element } from "wysimark/src"
 
 import { parseHeading } from "./parse-heading"
 import { parseList } from "./parse-list"
 import { parseParagraph } from "./parse-paragraph"
+import { parsePhrasingContents } from "./parse-phrasing-content"
 import { parseThematicBreak } from "./parse-thematic-break"
 
 export function parseContents(contents: Content[]): Element[] {
@@ -24,6 +25,8 @@ export function parseContent(content: Content): Element[] {
       return parseThematicBreak()
     case "list":
       return parseList(content)
+    case "link":
+      return parseLink(content)
   }
   /**
    * TEMP:
@@ -33,4 +36,14 @@ export function parseContent(content: Content): Element[] {
    */
   console.log(JSON.stringify(content, null, 2))
   throw new Error(`Unhandled content type ${content.type}`)
+}
+
+function parseLink(content: Link): Element[] {
+  return [
+    {
+      type: "anchor",
+      href: content.url,
+      children: parsePhrasingContents(content.children),
+    },
+  ]
 }

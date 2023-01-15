@@ -5,6 +5,7 @@ import { diffMarks } from "./diff-marks"
 import { normalizeLine } from "./normalize-line"
 import {
   convertMarksToSymbols,
+  escapeText,
   getCommonAnchorMarks,
   getMarksFromSegment,
   isPlainSpace,
@@ -60,7 +61,7 @@ export function serializeLine(
      * Then we add the Text for the segment
      */
     if (SlateText.isText(segment)) {
-      substrings.push(segment.text)
+      substrings.push(escapeText(segment.text))
     } else if (segment.type === "anchor") {
       const commonAnchorMarks = getCommonAnchorMarks(
         segment.children as Segment[]

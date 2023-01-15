@@ -32,7 +32,10 @@ export function check(
   try {
     expect(elements).toEqual(expectedElements)
   } catch (e) {
+    console.log("Generated elements")
     log(elements)
+    console.log("Expected elements")
+    log(expectedElements)
     console.log(`Error occurred in markdown to elements conversion`)
     throw e
   }

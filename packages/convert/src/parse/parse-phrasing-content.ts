@@ -1,14 +1,13 @@
 import type { PhrasingContent } from "mdast"
-import { Text } from "wysimark/src"
+import { Element, Text } from "wysimark/src"
 
 import { MarkProps } from "../types"
 
 export function parsePhrasingContents(
   phrasingContents: PhrasingContent[],
   marks: MarkProps = {}
-): Text[] {
-  // console.log(JSON.stringify(phrasingContents, null, 2))
-  const texts: Text[] = []
+): Array<Text | Element> {
+  const texts: Array<Text | Element> = []
   for (const phrasingContent of phrasingContents) {
     texts.push(...parsePhrasingContent(phrasingContent, marks))
   }
@@ -18,7 +17,7 @@ export function parsePhrasingContents(
 function parsePhrasingContent(
   phrasingContent: PhrasingContent,
   marks: MarkProps = {}
-): Text[] {
+): Array<Text | Element> {
   switch (phrasingContent.type) {
     case "text":
       return [{ text: phrasingContent.value, ...marks }]
@@ -37,6 +36,14 @@ function parsePhrasingContent(
         ...marks,
         strike: true,
       })
+    case "link":
+      return [
+        {
+          type: "anchor",
+          href: phrasingContent.url,
+          children: parsePhrasingContents(phrasingContent.children, marks),
+        },
+      ]
   }
   throw new Error(`Unhandled phrasingContent type ${phrasingContent.type}`)
 }

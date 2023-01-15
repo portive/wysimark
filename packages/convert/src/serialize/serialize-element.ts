@@ -12,6 +12,10 @@ export function serializeElement(element: Element) {
       break
     case "paragraph":
       return `${serializeLine(element.children as Segment[])}\n\n`
+    case "anchor":
+      return `[${serializeLine(element.children as Segment[])}](${
+        element.href
+      })`
     case "horizontal-rule":
       return "---\n\n"
   }
