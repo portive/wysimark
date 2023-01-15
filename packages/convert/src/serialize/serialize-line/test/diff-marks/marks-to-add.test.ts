@@ -1,4 +1,4 @@
-import { diffMarks } from ".."
+import { diffMarks } from "../../diff-marks"
 
 describe("marks-to-add", () => {
   it("should add one mark", async () => {

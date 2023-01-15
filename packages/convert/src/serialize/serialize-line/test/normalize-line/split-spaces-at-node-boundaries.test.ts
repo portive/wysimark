@@ -1,4 +1,4 @@
-import { normalizeLine } from ".."
+import { normalizeLine } from "../../normalize-line"
 
 describe("normalize line spaces", () => {
   describe("split spaces between words", () => {

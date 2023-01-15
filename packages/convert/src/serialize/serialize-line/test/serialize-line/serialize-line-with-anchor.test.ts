@@ -1,5 +1,4 @@
-import { log } from "../../../test/test-utils"
-import { serializeLine } from "../serialize-line"
+import { serializeLine } from "../../serialize-line"
 
 describe("serialize anchor", () => {
   describe("anchor by itself", () => {

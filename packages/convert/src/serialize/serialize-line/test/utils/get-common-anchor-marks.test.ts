@@ -1,8 +1,4 @@
-import { getCommonAnchorMarks } from "../anchor-utils"
-
-function log(x: unknown) {
-  console.log(JSON.stringify(x, null, 2))
-}
+import { getCommonAnchorMarks } from "../../utils"
 
 describe("get common anchor marks", () => {
   describe("single child", () => {

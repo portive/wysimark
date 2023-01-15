@@ -1,5 +1,4 @@
 import { parse } from "../.."
-import { log } from "../test-utils"
 
 describe("nested lists", () => {
   it("should parse a nested unordered list", async () => {

@@ -1,4 +1,4 @@
-import { diffMarks } from ".."
+import { diffMarks } from "../../diff-marks"
 
 describe("marks-combo", () => {
   it("should change an inner mark", async () => {

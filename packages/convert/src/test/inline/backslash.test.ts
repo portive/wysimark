@@ -1,5 +1,4 @@
 import { parse } from "../.."
-import { log } from "../test-utils"
 
 describe("marks", () => {
   /**

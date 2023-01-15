@@ -1,5 +1,3 @@
-// import { Root } from "remark-parse/lib"
-import type { Root } from "mdast"
 import remarkGfm from "remark-gfm"
 import remarkParse from "remark-parse"
 import { unified } from "unified"

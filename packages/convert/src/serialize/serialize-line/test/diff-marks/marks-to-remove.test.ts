@@ -1,4 +1,4 @@
-import { diffMarks } from ".."
+import { diffMarks } from "../../diff-marks"
 
 describe("marks-to-remove", () => {
   describe("remove one mark", () => {

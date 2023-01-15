@@ -1,4 +1,4 @@
-import { normalizeLine } from ".."
+import { normalizeLine } from "../../normalize-line"
 
 describe("merge adjacent spaces", () => {
   it("should merge a bunch of spaces into one space", async () => {

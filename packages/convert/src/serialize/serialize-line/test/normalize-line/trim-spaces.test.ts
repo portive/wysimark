@@ -1,4 +1,4 @@
-import { normalizeLine } from ".."
+import { normalizeLine } from "../../normalize-line"
 
 describe("spaces at the start and end of a line", () => {
   describe("trim spaces", () => {

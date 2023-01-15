@@ -1,6 +1,6 @@
 import beautify from "json-beautify"
 
-import { normalizeLine } from ".."
+import { normalizeLine } from "../../normalize-line"
 
 export function log(value: unknown) {
   /**
