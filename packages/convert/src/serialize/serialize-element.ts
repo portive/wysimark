@@ -1,16 +1,17 @@
 import { Element } from "wysimark/src"
 
-import { serializeLine } from "./line"
+import { Segment } from "../types"
+import { serializeLine } from "./serialize-line"
 
 export function serializeElement(element: Element) {
   switch (element.type) {
     case "heading":
       return `${"#".repeat(element.level)} ${serializeLine(
-        element.children
+        element.children as Segment[]
       )}\n\n`
       break
     case "paragraph":
-      return `${serializeLine(element.children)}\n\n`
+      return `${serializeLine(element.children as Segment[])}\n\n`
     case "horizontal-rule":
       return "---\n\n"
   }

@@ -3,6 +3,7 @@ import { Text as SlateText } from "slate"
 import { MarkKey, Segment } from "../../types"
 import { getMarksFromSegment } from "../utils"
 import { diffMarks } from "./diff-marks"
+import { getCommonAnchorMarks } from "./get-common-anchor-marks"
 import { MARK_KEY_TO_TOKEN } from "./mark-constants"
 import { normalizeLine } from "./normalize-line"
 import { isPlainSpace } from "./normalize-line/utils"
@@ -13,12 +14,16 @@ function convertMarksToSymbols(marks: MarkKey[]) {
     .join("")
 }
 
-export function serializeLine(inputSegments: Segment[]): string {
+export function serializeLine(
+  inputSegments: Segment[],
+  leadingMarks: MarkKey[] = [],
+  trailingMarks: MarkKey[] = []
+): string {
   const segments = normalizeLine(inputSegments)
   const substrings: string[] = []
 
   // eslint-disable-next-line prefer-const
-  let leadingDiff = diffMarks([], getMarksFromSegment(segments[0]))
+  let leadingDiff = diffMarks(leadingMarks, getMarksFromSegment(segments[0]))
 
   /**
    * In each iteration, we want to serialize the following:
@@ -59,6 +64,9 @@ export function serializeLine(inputSegments: Segment[]): string {
     if (SlateText.isText(segment)) {
       substrings.push(segment.text)
     } else if (segment.type === "anchor") {
+      const commonAnchorMarks = getCommonAnchorMarks(
+        segment.children as Segment[]
+      )
       substrings.push(
         /**
          * TODO:
@@ -73,7 +81,11 @@ export function serializeLine(inputSegments: Segment[]): string {
          *   inline images as that is an acceptable inline value which is
          *   currently not defined as part of Segment.
          */
-        `[${serializeLine(segment.children as Segment[])}](${segment.href})`
+        `[${serializeLine(
+          segment.children as Segment[],
+          commonAnchorMarks,
+          commonAnchorMarks
+        )}](${segment.href})`
       )
     }
 
@@ -84,7 +96,7 @@ export function serializeLine(inputSegments: Segment[]): string {
      * because this would have been normalized to one `isPlainSpace` segment in
      * the call to `normalizeLine`
      */
-    const nextMarks = getNextMarks(segments, i)
+    const nextMarks = getNextMarks(segments, i, trailingMarks)
     const trailingDiff = diffMarks(leadingDiff.nextOrderedMarks, nextMarks)
     substrings.push(convertMarksToSymbols(trailingDiff.remove))
 
@@ -96,11 +108,17 @@ export function serializeLine(inputSegments: Segment[]): string {
   return substrings.join("")
 }
 
-function getNextMarks(segments: Segment[], i: number): MarkKey[] {
-  const nextSegment = segments[i + 1]
+function getNextMarks(
+  segments: Segment[],
+  i: number,
+  trailingMarks: MarkKey[]
+): MarkKey[] {
+  const nextSegment: Segment | undefined = segments[i + 1]
+  if (nextSegment === undefined) return trailingMarks
   if (!isPlainSpace(nextSegment)) return getMarksFromSegment(nextSegment)
   const nextNextSegment = segments[i + 2]
+  if (nextNextSegment === undefined) return trailingMarks
   if (!isPlainSpace(nextNextSegment))
     return getMarksFromSegment(nextNextSegment)
-  return []
+  return trailingMarks
 }
