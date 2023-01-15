@@ -1,5 +1,5 @@
 import { normalizers } from "./normalizers"
-import { NormalizeOptions } from "./utils"
+import { NormalizeOptions } from "./types"
 
 /**
  * Attempts to run all normalizers on the given Node one by one.

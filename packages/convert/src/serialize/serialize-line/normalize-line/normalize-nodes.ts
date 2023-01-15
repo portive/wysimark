@@ -1,7 +1,8 @@
 import { AnchorElement } from "wysimark/src/anchor-plugin"
 
+import { isElement } from "../utils"
 import { runNormalizersOnNode } from "./run-normalizers-on-node"
-import { isElement, LineElement, Node, NormalizeOptions } from "./utils"
+import { LineElement, Node, NormalizeOptions } from "./types"
 
 const MAX_RERUNS = 72
 

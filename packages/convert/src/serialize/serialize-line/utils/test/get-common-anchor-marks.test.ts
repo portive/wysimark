@@ -1,4 +1,4 @@
-import { getCommonAnchorMarks } from "../../utils/get-common-anchor-marks"
+import { getCommonAnchorMarks } from "../anchor-utils"
 
 function log(x: unknown) {
   console.log(JSON.stringify(x, null, 2))

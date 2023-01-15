@@ -1,19 +1,21 @@
 import { Text as SlateText } from "slate"
 
-import { MarkKey, MarkProps, Segment, Text } from "../types"
-import { isPlainSpace } from "./serialize-line/normalize-line/utils"
-import { getCommonAnchorMarks } from "./serialize-line/utils"
+import { MarkKey, Segment, Text } from "../../../types"
+import { MARK_KEY_TO_TOKEN } from "../constants"
+import { getCommonAnchorMarks } from "."
+import { isPlainSpace } from "./is-utils"
 
-export function getMarksPropsFromText(text: Text): MarkProps {
-  const { text: _, ...marks } = text
-  return marks
-}
-
+/**
+ * Gets all the marks in current `Text`
+ */
 export function getMarksFromText(text: Text): MarkKey[] {
   const { text: _, ...marks } = text
   return Object.keys(marks) as MarkKey[]
 }
 
+/**
+ * Gets all the marks from the current segment
+ */
 export function getMarksFromSegment(segment: Segment): MarkKey[] {
   if (SlateText.isText(segment)) {
     if (isPlainSpace(segment)) {
@@ -32,4 +34,21 @@ export function getMarksFromSegment(segment: Segment): MarkKey[] {
      */
     throw new Error(`Unhandled type ${segment.type}`)
   }
+}
+
+/**
+ * Convert a single mark to a string
+ */
+function convertMarkToSymbol(mark: MarkKey): string {
+  if (mark in MARK_KEY_TO_TOKEN) return MARK_KEY_TO_TOKEN[mark]
+  throw new Error(
+    `Could not find mark ${JSON.stringify(mark)} in MARK_KEY_TO_TOKEN lookup`
+  )
+}
+
+/**
+ * Convert an array of marks to a string
+ */
+export function convertMarksToSymbols(marks: MarkKey[]) {
+  return marks.map(convertMarkToSymbol).join("")
 }

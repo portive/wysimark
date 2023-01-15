@@ -1,6 +1,6 @@
 import { MarkKey, Segment } from "../../../types"
-import { getMarksFromText } from "../../utils"
-import { isPlainSpace, isText } from "../normalize-line/utils"
+import { isPlainSpace, isText } from "./is-utils"
+import { getMarksFromText } from "./mark-utils"
 
 export function getCommonAnchorMarks(segments: Segment[]): MarkKey[] {
   let commonMarks: MarkKey[] | undefined

@@ -1,19 +1,18 @@
 import { Text as SlateText } from "slate"
 
 import { MarkKey, Segment } from "../../types"
-import { getMarksFromSegment } from "../utils"
-import { MARK_KEY_TO_TOKEN } from "./constants"
 import { diffMarks } from "./diff-marks"
 import { normalizeLine } from "./normalize-line"
-import { isPlainSpace } from "./normalize-line/utils"
-import { getCommonAnchorMarks } from "./utils"
+import {
+  convertMarksToSymbols,
+  getCommonAnchorMarks,
+  getMarksFromSegment,
+  isPlainSpace,
+} from "./utils"
 
-function convertMarksToSymbols(marks: MarkKey[]) {
-  return marks
-    .map((mark) => (mark in MARK_KEY_TO_TOKEN ? MARK_KEY_TO_TOKEN[mark] : ""))
-    .join("")
-}
-
+/**
+ * Takes a line (an array of Segment) and turns it into markdown.
+ */
 export function serializeLine(
   inputSegments: Segment[],
   leadingMarks: MarkKey[] = [],
@@ -22,7 +21,6 @@ export function serializeLine(
   const segments = normalizeLine(inputSegments)
   const substrings: string[] = []
 
-  // eslint-disable-next-line prefer-const
   let leadingDiff = diffMarks(leadingMarks, getMarksFromSegment(segments[0]))
 
   /**
@@ -108,33 +106,33 @@ export function serializeLine(
   return substrings.join("")
 }
 
+/**
+ * Looks for the next set of valid marks by
+ *
+ * This method is local to `serialize-line` as it's intimiately tied with the
+ * call to `getNextMarks` in `serializeLine`
+ */
 function getNextMarks(
   segments: Segment[],
-  i: number,
+  index: number,
   trailingMarks: MarkKey[]
 ): MarkKey[] {
   /**
-   * Look at the next Segment
-   * - Check to see if the next Segment exists.
-   * - If it doesn't, then next marks will be `trailingMarks`
-   * - It it does exist, we grab the marks from the Segment.
-   * - If the segment is a plain space (not a code space) then the next
-   *   marks is not from the space but from the next next segment.
-   * - If the segment is an anchor, `getMarksFromSegment` will be the lowest
-   *   common marks inside the anchor.
+   * Starting at the index `i` following the current index `index`
+   *
+   * If it's a plain space, skip it.
+   *
+   * If it isn't, get the marks for the segment.
+   *
+   * NOTE:
+   *
+   * If the segment is an `anchor` we the common marks for all the segments in
+   * the anchor not including the plain spaces.
    */
-  const nextSegment: Segment | undefined = segments[i + 1]
-  if (nextSegment === undefined) return trailingMarks
-  if (!isPlainSpace(nextSegment)) return getMarksFromSegment(nextSegment)
-
-  /**
-   * DO the same for the next next Segment
-   */
-  const nextNextSegment: Segment | undefined = segments[i + 2]
-  if (nextNextSegment === undefined) return trailingMarks
-  if (!isPlainSpace(nextNextSegment))
-    return getMarksFromSegment(nextNextSegment)
-  throw new Error(
-    `It looks like we hit two plain space segments in a row but this shouldn't happen`
-  )
+  for (let i = index + 1; i < segments.length; i++) {
+    const segment = segments[i]
+    if (isPlainSpace(segment)) continue
+    return getMarksFromSegment(segment)
+  }
+  return trailingMarks
 }

@@ -1,4 +1,5 @@
-import { isPlainSpace, isText, NormalizeOptions } from "../utils"
+import { isPlainSpace, isText } from "../../utils"
+import { NormalizeOptions } from "../types"
 
 /**
  * If we ever find two spaces next to each other, merge them together.

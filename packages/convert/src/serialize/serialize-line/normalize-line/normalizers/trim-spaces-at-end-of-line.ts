@@ -1,4 +1,5 @@
-import { isElement, isPlainSpace, isText, NormalizeOptions } from "../utils"
+import { isElement, isPlainSpace, isText } from "../../utils"
+import { NormalizeOptions } from "../types"
 
 export function trimSpaceAtEndOfLine({
   index,

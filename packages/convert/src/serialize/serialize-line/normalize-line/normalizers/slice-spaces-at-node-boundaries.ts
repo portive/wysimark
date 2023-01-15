@@ -1,5 +1,6 @@
 import { Text } from "../../../../types"
-import { isPlainSpace, isText, NormalizeOptions } from "../utils"
+import { isPlainSpace, isText } from "../../utils"
+import { NormalizeOptions } from "../types"
 
 /**
  * If a Text Node has spaces at the very start, or at the very end, we slice

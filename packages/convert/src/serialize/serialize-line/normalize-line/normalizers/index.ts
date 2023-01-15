@@ -1,4 +1,4 @@
-import { NormalizeOptions } from "../utils"
+import { NormalizeOptions } from "../types"
 import { mergeAdjacentSpaces } from "./merge-adjacent-spaces"
 import {
   moveSpacesAtEndOfAnchor,

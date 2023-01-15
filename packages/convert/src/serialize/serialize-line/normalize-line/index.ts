@@ -1,6 +1,6 @@
 import { Segment } from "../../../types"
 import { normalizeNodes } from "./normalize-nodes"
-import { LineElement } from "./utils"
+import { LineElement } from "./types"
 
 /**
  * Entry Point for normalizing
