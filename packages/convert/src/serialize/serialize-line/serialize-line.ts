@@ -4,9 +4,9 @@ import { MarkKey, Segment } from "../../types"
 import { getMarksFromSegment } from "../utils"
 import { MARK_KEY_TO_TOKEN } from "./constants"
 import { diffMarks } from "./diff-marks"
-import { getCommonAnchorMarks } from "./get-common-anchor-marks"
 import { normalizeLine } from "./normalize-line"
 import { isPlainSpace } from "./normalize-line/utils"
+import { getCommonAnchorMarks } from "./utils"
 
 function convertMarksToSymbols(marks: MarkKey[]) {
   return marks
@@ -113,12 +113,28 @@ function getNextMarks(
   i: number,
   trailingMarks: MarkKey[]
 ): MarkKey[] {
+  /**
+   * Look at the next Segment
+   * - Check to see if the next Segment exists.
+   * - If it doesn't, then next marks will be `trailingMarks`
+   * - It it does exist, we grab the marks from the Segment.
+   * - If the segment is a plain space (not a code space) then the next
+   *   marks is not from the space but from the next next segment.
+   * - If the segment is an anchor, `getMarksFromSegment` will be the lowest
+   *   common marks inside the anchor.
+   */
   const nextSegment: Segment | undefined = segments[i + 1]
   if (nextSegment === undefined) return trailingMarks
   if (!isPlainSpace(nextSegment)) return getMarksFromSegment(nextSegment)
-  const nextNextSegment = segments[i + 2]
+
+  /**
+   * DO the same for the next next Segment
+   */
+  const nextNextSegment: Segment | undefined = segments[i + 2]
   if (nextNextSegment === undefined) return trailingMarks
   if (!isPlainSpace(nextNextSegment))
     return getMarksFromSegment(nextNextSegment)
-  return trailingMarks
+  throw new Error(
+    `It looks like we hit two plain space segments in a row but this shouldn't happen`
+  )
 }
