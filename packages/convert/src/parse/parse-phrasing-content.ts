@@ -36,6 +36,9 @@ function parsePhrasingContent(
         ...marks,
         strike: true,
       })
+    case "inlineCode":
+      phrasingContent
+      return [{ text: phrasingContent.value, ...marks, code: true }]
     case "link":
       return [
         {
@@ -45,5 +48,10 @@ function parsePhrasingContent(
         },
       ]
   }
+  assertUnreachable(phrasingContent)
   throw new Error(`Unhandled phrasingContent type ${phrasingContent.type}`)
+}
+
+function assertUnreachable(x: never): never {
+  throw new Error("Didn't expect to get here")
 }
