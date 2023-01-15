@@ -2,6 +2,7 @@ import type { PhrasingContent } from "mdast"
 import { Element, Text } from "wysimark/src"
 
 import { MarkProps } from "../types"
+import { assertUnreachable } from "../utils"
 
 export function parsePhrasingContents(
   phrasingContents: PhrasingContent[],
@@ -51,10 +52,4 @@ function parsePhrasingContent(
       return [{ text: phrasingContent.value, code: true }]
   }
   assertUnreachable(phrasingContent)
-}
-
-function assertUnreachable(x: never): never {
-  throw new Error(
-    `Didn't expect to get here with value ${JSON.stringify(x, null, 2)}`
-  )
 }

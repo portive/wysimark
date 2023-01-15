@@ -9,7 +9,6 @@ export function serializeElement(element: Element) {
       return `${"#".repeat(element.level)} ${serializeLine(
         element.children as Segment[]
       )}\n\n`
-      break
     case "paragraph":
       return `${serializeLine(element.children as Segment[])}\n\n`
     case "anchor":

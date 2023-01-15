@@ -1,5 +1,4 @@
-import { parse } from "../.."
-import { check, log } from "../test-utils"
+import { check } from "../test-utils"
 
 describe("link", () => {
   it("should convert a link", async () => {
