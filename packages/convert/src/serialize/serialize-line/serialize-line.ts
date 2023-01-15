@@ -3,48 +3,83 @@ import { Text as SlateText } from "slate"
 import { MarkKey, Segment } from "../../types"
 import { diffMarks } from "./diff-marks"
 import { normalizeLine } from "./normalize-line"
-import { serializeCodeTextSegment } from "./segment/serialize-code-text"
+import { serializeSegment } from "./segment/serialize-segment"
 import {
   convertMarksToSymbolsExceptCode,
-  escapeText,
-  getCommonAnchorMarks,
   getMarksFromSegment,
   isPlainSpace,
 } from "./utils"
 
 /**
  * Takes a line (an array of Segment) and turns it into markdown.
+ *
+ * The majority of this code deals with how we convert marks like `bold` and
+ * `italic` into symbols and where to place them. There are several complicated
+ * cases we need to handle like:
+ *
+ * - Symbols must always be placed on the inside of spaces next to the word like
+ *   " **bold** " and not "** bold **". We need to be aware of our placement of
+ *   symbols around spaces but spaces themselves can safely and actually must
+ *   ignore the actual marks on them. A bold space and a not-bold space are
+ *   considered the same in Markdown.
+ * - Anchors must have common marks moved out of them
+ * - Anchors must have not common marks set inside of them
  */
 export function serializeLine(
   inputSegments: Segment[],
   leadingMarks: MarkKey[] = [],
   trailingMarks: MarkKey[] = []
 ): string {
+  /**
+   * Normalize line does a lot of the work here to take any spaces that can be
+   * found around the edges of segments and turns them into their own segments.
+   * We don't need to do this in spaces on the inside of segments though.
+   *
+   * This is important because at the boundaries of segments, that's when marks
+   * change (e.g. bold/italic) and it is at these points, we need to put spaces
+   * into separate segments so that we can place the symbols for the marks
+   * around them.
+   */
   const segments = normalizeLine(inputSegments)
   const substrings: string[] = []
 
+  /**
+   * In order to seed the loop, we start by creating a `leadingDiff` going from
+   * the `leadingMarks` provided to this method and the marks in the first
+   * segment.
+   *
+   * The `leadingMarks` will always be `[]` at the beginning. When we get into a
+   * nested `anchor` though, there may be some marks that had been previously
+   * set outside of the anchor that need to be considered.
+   */
   let leadingDiff = diffMarks(leadingMarks, getMarksFromSegment(segments[0]))
 
   /**
    * In each iteration, we want to serialize the following:
    *
    * - Symbols that represent all the marks to add to this segment
-   * - The text for the segment itself
+   * - The markdown for the segment itself (text, inline code, anchor, inline
+   *   image)
    * - Symbols that represent all the marks to remove from this segment
    */
   for (let i = 0; i < segments.length; i++) {
     /**
-     * This is the current segment that we are looking at and it should not be a
-     * plain space segment. If it is, something went wrong.
+     * This is the current segment that we are looking at.
      */
     const segment = segments[i]
 
     /**
-     * If the current segment is just a plain text string, then we just want to
-     * add the spaces as is to the returned string.
+     * If it's plain space, add it to markdown and start at the top of the loop
+     * again
      *
-     * We continue which preserves the `leadingDiff` from the last segment that
-     * we processed.
+     * Basically, ignore the symbols we need to add when it's a space.
+     *
+     * The symbols get handled by the non-space segments.
+     *
+     * When we continue, we end up with the same `leadingDiff` from the last
+     * segment which is what we want. This is because the `leadingDiff` actually
+     * applies to the next Segment which should be either a not space Text or an
+     * Element.
      */
     if (SlateText.isText(segment) && isPlainSpace(segment)) {
       substrings.push(segment.text)
@@ -52,7 +87,7 @@ export function serializeLine(
     }
 
     /**
-     * Here is where we add the serialization of a proper Text segment.
+     * Here is where we add the serialization of the segment.
      *
      * First we start by adding the symbols needed to add the marks to this
      * segment.
@@ -62,37 +97,7 @@ export function serializeLine(
     /**
      * Then we add the Text or the Anchor for the segment
      */
-    if (SlateText.isText(segment)) {
-      if (segment.code) {
-        substrings.push(serializeCodeTextSegment(segment))
-      } else {
-        substrings.push(escapeText(segment.text))
-      }
-    } else if (segment.type === "anchor") {
-      const commonAnchorMarks = getCommonAnchorMarks(
-        segment.children as Segment[]
-      )
-      substrings.push(
-        /**
-         * TODO:
-         *
-         * We type cast `children` as `Segment` here because the children of an
-         * `anchor` is limited to be Inline types. There are two things to do
-         * related to this though:
-         *
-         * - [ ] consider fixing the `anchor` type to actually limit the
-         *   children as expected.
-         * - [ ] consider expanding the definition of `Segment` to include
-         *   inline images as that is an acceptable inline value which is
-         *   currently not defined as part of Segment.
-         */
-        `[${serializeLine(
-          segment.children as Segment[],
-          commonAnchorMarks,
-          commonAnchorMarks
-        )}](${segment.href})`
-      )
-    }
+    substrings.push(serializeSegment(segment))
 
     /**
      * Now we are searching for the next segment which we want to grab the marks

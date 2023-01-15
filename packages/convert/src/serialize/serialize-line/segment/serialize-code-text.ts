@@ -1,6 +1,6 @@
 import { Text } from "wysimark/src"
 
-export function serializeCodeTextSegment(text: Text): string {
+export function serializeCodeText(text: Text): string {
   let max = 0
   for (const match of text.text.matchAll(/[`]+/g)) {
     max = Math.max(max, match[0].length)
