@@ -2,9 +2,9 @@ import { Text as SlateText } from "slate"
 
 import { MarkKey, Segment } from "../../types"
 import { getMarksFromSegment } from "../utils"
+import { MARK_KEY_TO_TOKEN } from "./constants"
 import { diffMarks } from "./diff-marks"
 import { getCommonAnchorMarks } from "./get-common-anchor-marks"
-import { MARK_KEY_TO_TOKEN } from "./mark-constants"
 import { normalizeLine } from "./normalize-line"
 import { isPlainSpace } from "./normalize-line/utils"
 
