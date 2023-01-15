@@ -1,26 +1,5 @@
 import { MarkKey } from "../../../types"
-
-/**
- * When adding back marks, this is the order in which we add them back.
- *
- * The order is determined by an educated guess about which marks are more
- * likely to be chaging inside other marks. For example, this is probably pretty
- * common:
- *
- * **This is x^2^**
- *
- * Having a superscript inside of a bold. But it's probably rare to have bold
- * switched on/off inside a superscript.
- */
-const MARK_KEY_ORDER: MarkKey[] = [
-  "bold",
-  "italic",
-  "underline",
-  "strike",
-  "sup",
-  "sub",
-  "code",
-]
+import { sortMarks } from "../utils"
 
 /**
  * Find the marks to add in ordere to get our orderedMarks to match the
@@ -50,14 +29,6 @@ export function findMarksToAdd(
   const marksWeNeedToAdd = targetMarks.filter(
     (mark) => !orderedMarks.includes(mark)
   )
-  /**
-   * Sort Algorithm
-   *
-   * https://stackoverflow.com/a/44063445
-   */
-  const orderedMarksToAdd = marksWeNeedToAdd
-    .slice()
-    .sort((a, b) => MARK_KEY_ORDER.indexOf(a) - MARK_KEY_ORDER.indexOf(b))
-
+  const orderedMarksToAdd = sortMarks(marksWeNeedToAdd)
   return { orderedMarksToAdd }
 }

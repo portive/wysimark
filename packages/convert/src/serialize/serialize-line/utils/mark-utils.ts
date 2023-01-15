@@ -1,7 +1,7 @@
 import { Text as SlateText } from "slate"
 
 import { MarkKey, Segment, Text } from "../../../types"
-import { MARK_KEY_TO_TOKEN } from "../constants"
+import { MARK_KEY_TO_TOKEN, ORDERED_MARK_KEYS } from "../constants"
 import { getCommonAnchorMarks } from "."
 import { isPlainSpace } from "./is-utils"
 
@@ -51,4 +51,15 @@ function convertMarkToSymbol(mark: MarkKey): string {
  */
 export function convertMarksToSymbols(marks: MarkKey[]) {
   return marks.map(convertMarkToSymbol).join("")
+}
+
+/**
+ * Sort Algorithm
+ *
+ * https://stackoverflow.com/a/44063445
+ */
+export function sortMarks(marks: MarkKey[]): MarkKey[] {
+  return marks
+    .slice()
+    .sort((a, b) => ORDERED_MARK_KEYS.indexOf(a) - ORDERED_MARK_KEYS.indexOf(b))
 }
