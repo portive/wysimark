@@ -50,7 +50,7 @@ export function check(
     console.log(
       `Error occurred in regenerated markdown (i.e. markdown converted to elements then converted again to markdown)`
     )
-    log(elements)
+    log(regeneratedMarkdown)
     throw e
   }
 
