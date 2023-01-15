@@ -3,8 +3,9 @@ import { Text as SlateText } from "slate"
 import { MarkKey, Segment } from "../../types"
 import { diffMarks } from "./diff-marks"
 import { normalizeLine } from "./normalize-line"
+import { serializeCodeTextSegment } from "./segment/serialize-code-text"
 import {
-  convertMarksToSymbols,
+  convertMarksToSymbolsExceptCode,
   escapeText,
   getCommonAnchorMarks,
   getMarksFromSegment,
@@ -53,15 +54,20 @@ export function serializeLine(
     /**
      * Here is where we add the serialization of a proper Text segment.
      *
-     * First we start by adding the symbols for adding marks to this segment.
+     * First we start by adding the symbols needed to add the marks to this
+     * segment.
      */
-    substrings.push(convertMarksToSymbols(leadingDiff.add))
+    substrings.push(convertMarksToSymbolsExceptCode(leadingDiff.add))
 
     /**
-     * Then we add the Text for the segment
+     * Then we add the Text or the Anchor for the segment
      */
     if (SlateText.isText(segment)) {
-      substrings.push(escapeText(segment.text))
+      if (segment.code) {
+        substrings.push(serializeCodeTextSegment(segment))
+      } else {
+        substrings.push(escapeText(segment.text))
+      }
     } else if (segment.type === "anchor") {
       const commonAnchorMarks = getCommonAnchorMarks(
         segment.children as Segment[]
@@ -97,7 +103,7 @@ export function serializeLine(
      */
     const nextMarks = getNextMarks(segments, i, trailingMarks)
     const trailingDiff = diffMarks(leadingDiff.nextOrderedMarks, nextMarks)
-    substrings.push(convertMarksToSymbols(trailingDiff.remove))
+    substrings.push(convertMarksToSymbolsExceptCode(trailingDiff.remove))
 
     /**
      * The `trailingDiff` becomes the new `leadingDiff`

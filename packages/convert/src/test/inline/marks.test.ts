@@ -1,4 +1,3 @@
-import { parse } from "../.."
 import { check } from "../test-utils"
 
 describe("marks", () => {

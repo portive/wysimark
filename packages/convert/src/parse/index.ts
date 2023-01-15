@@ -4,10 +4,14 @@ import { unified } from "unified"
 
 import { parseContents } from "./parse-content"
 
+export function parseToAst(markdown: string) {
+  return unified().use(remarkParse).use(remarkGfm).parse(markdown)
+}
+
 /**
  * Takes a Markdown string as input and returns a remarkParse AST
  */
 export function parse(markdown: string) {
-  const ast = unified().use(remarkParse).use(remarkGfm).parse(markdown)
+  const ast = parseToAst(markdown)
   return parseContents(ast.children)
 }

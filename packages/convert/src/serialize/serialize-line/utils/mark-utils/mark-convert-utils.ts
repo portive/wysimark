@@ -7,7 +7,18 @@ export const MARK_KEY_TO_TOKEN = {
   strike: "~~",
   sup: "^",
   sub: "~",
-  code: "`",
+  /**
+   * IMPORTANT!
+   *
+   * We noop `code` here.
+   *
+   * We accept the `code` mark so as not to throw an error if it is found. We do
+   * this because we handle `code` text specially because of the way it needs to
+   * be escaped.
+   *
+   * This is handled in the `serializeLine` code.
+   */
+  code: "",
 } as Record<MarkKey, string>
 
 /**
@@ -23,6 +34,6 @@ function convertMarkToSymbol(mark: MarkKey): string {
 /**
  * Convert an array of marks to a string
  */
-export function convertMarksToSymbols(marks: MarkKey[]) {
+export function convertMarksToSymbolsExceptCode(marks: MarkKey[]) {
   return marks.map(convertMarkToSymbol).join("")
 }

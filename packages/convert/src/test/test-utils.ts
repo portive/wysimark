@@ -2,6 +2,7 @@ import beautify from "json-beautify"
 import { Element } from "wysimark/src"
 
 import { parse, serialize } from ".."
+import { parseToAst } from "../parse"
 
 export { parse, serialize } from ".."
 
@@ -34,8 +35,6 @@ export function check(
   } catch (e) {
     console.log("Generated elements")
     log(elements)
-    console.log("Expected elements")
-    log(expectedElements)
     console.log(`Error occurred in markdown to elements conversion`)
     throw e
   }
@@ -67,6 +66,7 @@ export function check(
   try {
     expect(secondElements).toEqual(secondExpectedElements)
   } catch (e) {
+    log(parseToAst(regeneratedMarkdown))
     log(elements)
     console.log(
       `Error occurred in second markdown to elements conversion (i.e. markdown converted to elements converted to markdown then converted a second time to elements)`

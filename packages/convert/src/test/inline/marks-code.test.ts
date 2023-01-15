@@ -60,4 +60,22 @@ describe("marks", () => {
       },
     ])
   })
+
+  it("should not escape in inline code", async () => {
+    check("`**alpha**`", [
+      {
+        type: "paragraph",
+        children: [{ text: "**alpha**", code: true }],
+      },
+    ])
+  })
+
+  it("should allow backticks", async () => {
+    check("`` alpha`bravo` ``", [
+      {
+        type: "paragraph",
+        children: [{ text: "alpha`bravo`", code: true }],
+      },
+    ])
+  })
 })
