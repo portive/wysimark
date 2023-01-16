@@ -9,4 +9,17 @@ describe("paragraph", () => {
       },
     ])
   })
+
+  it("should parse two paragraphs", async () => {
+    check("alpha\n\nbravo", [
+      {
+        type: "paragraph",
+        children: [{ text: "alpha" }],
+      },
+      {
+        type: "paragraph",
+        children: [{ text: "bravo" }],
+      },
+    ])
+  })
 })

@@ -1,10 +1,11 @@
-import type { Content, Link } from "mdast"
+import type { Content, HTML, Link } from "mdast"
 import { Element } from "wysimark/src"
 
+import { assertUnreachable } from "../utils"
+import { parseCodeBlock } from "./parse-code-block"
 import { parseHeading } from "./parse-heading"
 import { parseList } from "./parse-list"
 import { parseParagraph } from "./parse-paragraph"
-import { parsePhrasingContents } from "./parse-phrasing-content"
 import { parseThematicBreak } from "./parse-thematic-break"
 
 export function parseContents(contents: Content[]): Element[] {
@@ -17,33 +18,33 @@ export function parseContents(contents: Content[]): Element[] {
 
 export function parseContent(content: Content): Element[] {
   switch (content.type) {
+    case "code":
+      return parseCodeBlock(content)
     case "heading":
       return parseHeading(content)
+    case "html":
+      return parseHTML(content)
     case "paragraph":
       return parseParagraph(content)
     case "thematicBreak":
       return parseThematicBreak()
     case "list":
       return parseList(content)
-    case "link":
-      return parseLink(content)
+    case "listItem":
+      throw new Error(`Expected listItem to only appear as child of list`)
   }
-  /**
-   * TEMP:
-   *
-   * This console.log only shows the AST in the case where we haven't handled
-   * a content type so this will not pollute our output normally.
-   */
-  console.log(JSON.stringify(content, null, 2))
-  throw new Error(`Unhandled content type ${content.type}`)
+  assertUnreachable(content)
 }
 
-function parseLink(content: Link): Element[] {
+function parseHTML(content: HTML): Element[] {
   return [
     {
-      type: "anchor",
-      href: content.url,
-      children: parsePhrasingContents(content.children),
+      type: "code-block",
+      language: "html",
+      children: content.value.split("\n").map((line) => ({
+        type: "code-block-line",
+        children: [{ text: line }],
+      })),
     },
   ]
 }

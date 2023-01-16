@@ -1,6 +1,7 @@
 import type { PhrasingContent } from "mdast"
 import { Element, Text } from "wysimark/src"
 
+import { log } from "../test/test-utils"
 import { MarkProps } from "../types"
 import { assertUnreachable } from "../utils"
 
@@ -48,6 +49,11 @@ function parsePhrasingContent(
           children: parsePhrasingContents(phrasingContent.children, marks),
         },
       ]
+    case "linkReference":
+    case "imageReference":
+      throw new Error(
+        `linkReference and imageReference should be converted to link and image through our transformInlineLinks function`
+      )
     case "html":
       return [{ text: phrasingContent.value, code: true }]
   }
