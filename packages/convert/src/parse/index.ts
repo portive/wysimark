@@ -4,12 +4,13 @@ import { unified } from "unified"
 
 import { parseContents } from "./parse-content"
 import { transformInlineLinks } from "./remark-inline-links"
-// import { remarkInlineLinks } from "./remark-inline-links"
+
+const parser = unified().use(remarkParse).use(remarkGfm)
 
 export function parseToAst(markdown: string) {
-  const ast = unified().use(remarkParse).use(remarkGfm).parse(markdown)
+  const ast = parser.parse(markdown)
   /**
-   * Takes linkRefernce and imageReference and turns them into link and image.
+   * Takes linkReference and imageReference and turns them into link and image.
    */
   transformInlineLinks(ast)
   return ast
@@ -20,6 +21,5 @@ export function parseToAst(markdown: string) {
  */
 export function parse(markdown: string) {
   const ast = parseToAst(markdown)
-  // log(ast)
   return parseContents(ast.children)
 }

@@ -1,4 +1,4 @@
-import type { Content, HTML, Link } from "mdast"
+import type { BlockContent, Blockquote, Content, HTML, Link } from "mdast"
 import { Element } from "wysimark/src"
 
 import { assertUnreachable } from "../utils"
@@ -8,7 +8,7 @@ import { parseList } from "./parse-list"
 import { parseParagraph } from "./parse-paragraph"
 import { parseThematicBreak } from "./parse-thematic-break"
 
-export function parseContents(contents: Content[]): Element[] {
+export function parseContents(contents: BlockContent[]): Element[] {
   const elements: Element[] = []
   for (const content of contents) {
     elements.push(...parseContent(content))
@@ -16,22 +16,22 @@ export function parseContents(contents: Content[]): Element[] {
   return elements
 }
 
-export function parseContent(content: Content): Element[] {
+export function parseContent(content: BlockContent): Element[] {
   switch (content.type) {
+    case "blockquote":
+      return parseBlockquote(content)
     case "code":
       return parseCodeBlock(content)
     case "heading":
       return parseHeading(content)
     case "html":
       return parseHTML(content)
+    case "list":
+      return parseList(content)
     case "paragraph":
       return parseParagraph(content)
     case "thematicBreak":
       return parseThematicBreak()
-    case "list":
-      return parseList(content)
-    case "listItem":
-      throw new Error(`Expected listItem to only appear as child of list`)
   }
   assertUnreachable(content)
 }
@@ -47,4 +47,8 @@ function parseHTML(content: HTML): Element[] {
       })),
     },
   ]
+}
+
+export function parseBlockquote(content: Blockquote): Element[] {
+  return [{ type: "block-quote", children: parseContents(content.children) }]
 }

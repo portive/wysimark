@@ -2833,6 +2833,7 @@ __metadata:
     eslint-plugin-simple-import-sort: ^8.0
     jest: ^29
     json-beautify: ^1.1.1
+    mdast-util-definitions: ^5.1.1
     prettier: ^2
     remark-gfm: ^3.0.1
     remark-parse: ^10.0.1
@@ -6672,6 +6673,17 @@ __metadata:
   version: 3.0.3
   resolution: "markdown-table@npm:3.0.3"
   checksum: 8fcd3d9018311120fbb97115987f8b1665a603f3134c93fbecc5d1463380c8036f789e2a62c19432058829e594fff8db9ff81c88f83690b2f8ed6c074f8d9e10
+  languageName: node
+  linkType: hard
+
+"mdast-util-definitions@npm:^5.1.1":
+  version: 5.1.1
+  resolution: "mdast-util-definitions@npm:5.1.1"
+  dependencies:
+    "@types/mdast": ^3.0.0
+    "@types/unist": ^2.0.0
+    unist-util-visit: ^4.0.0
+  checksum: f8025e2c35f6f8641528037abe18f492ef100e00a48c92cf78b7a313f9ccdb0e30c6aed0b40539767a3f425be09e78cb0f2f9bc4131fff41ea4664a1a7314a14
   languageName: node
   linkType: hard
 
