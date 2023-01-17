@@ -1,4 +1,3 @@
-import { Descendant } from "slate"
 import { Element } from "wysimark/src"
 
 import { Segment } from "../types"
@@ -6,6 +5,7 @@ import { assertUnreachable } from "../utils"
 import { serializeCodeBlock } from "./serialize-code-block"
 import { serializeElements } from "./serialize-elements"
 import { serializeLine } from "./serialize-line"
+import { serializeTable } from "./serialize-table"
 
 export function serializeElement(element: Element): string {
   switch (element.type) {
@@ -34,6 +34,8 @@ export function serializeElement(element: Element): string {
       return "---\n\n"
     case "paragraph":
       return `${serializeLine(element.children as Segment[])}\n\n`
+    case "table":
+      return serializeTable(element)
   }
   assertUnreachable(element)
 }
