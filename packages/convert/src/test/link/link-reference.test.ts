@@ -22,5 +22,5 @@ describe("link", () => {
     )
   })
 
-  // FIXME: Add a test for converting an imageReference to an image
+  // TODO: Add a test for converting an imageReference to an image
 })

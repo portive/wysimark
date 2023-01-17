@@ -1,7 +1,6 @@
 import type { PhrasingContent } from "mdast"
 import { Element, Text } from "wysimark/src"
 
-import { log } from "../test/test-utils"
 import { MarkProps } from "../types"
 import { assertUnreachable } from "../utils"
 
