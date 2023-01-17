@@ -20,7 +20,6 @@ export function createRenderElement(
   originalFn: EditableProps["renderElement"],
   plugins: PluginObject<ArraySafePluginCustomTypes>[]
 ): NonNullable<EditableProps["renderElement"]> {
-  console.log("setup")
   const fns = plugins
     .map((plugin) => plugin.editableProps?.renderElement)
     .filter(defined)
