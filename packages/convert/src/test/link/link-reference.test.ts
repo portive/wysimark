@@ -10,11 +10,13 @@ describe("link", () => {
         {
           type: "paragraph",
           children: [
+            { text: "" },
             {
               type: "anchor",
               href: "http://localhost/alpha",
               children: [{ text: "alpha" }],
             },
+            { text: "" },
           ],
         },
       ],

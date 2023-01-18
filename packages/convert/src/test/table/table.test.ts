@@ -154,6 +154,7 @@ describe("table", () => {
                         href: "http://bravo.com/",
                         children: [{ text: "bravo" }],
                       },
+                      { text: "" },
                     ],
                   },
                 ],

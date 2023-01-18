@@ -6,11 +6,13 @@ describe("link", () => {
       {
         type: "paragraph",
         children: [
+          { text: "" },
           {
             type: "anchor",
             href: "https://localhost/alpha",
             children: [{ text: "alpha" }],
           },
+          { text: "" },
         ],
       },
     ])
@@ -46,6 +48,7 @@ describe("link", () => {
               href: "https://localhost/bravo",
               children: [{ text: "bravo" }],
             },
+            { text: "" },
             {
               type: "anchor",
               href: "https://localhost/charlie",
@@ -71,6 +74,7 @@ describe("link", () => {
               href: "https://localhost/bravo",
               children: [{ text: "bravo", bold: true }],
             },
+            { text: "" },
             {
               type: "anchor",
               href: "https://localhost/charlie",
@@ -88,6 +92,7 @@ describe("link", () => {
       {
         type: "paragraph",
         children: [
+          { text: "" },
           {
             type: "anchor",
             href: "https://localhost/alpha",
@@ -96,6 +101,7 @@ describe("link", () => {
               { text: "bravo", bold: true, italic: true },
             ],
           },
+          { text: "" },
         ],
       },
     ])

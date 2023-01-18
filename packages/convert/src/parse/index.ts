@@ -1,4 +1,4 @@
-import type { BlockContent } from "mdast"
+import type { BlockContent, TopLevelContent } from "mdast"
 import remarkGfm from "remark-gfm"
 import remarkParse from "remark-parse"
 import { unified } from "unified"
@@ -22,5 +22,5 @@ export function parseToAst(markdown: string) {
  */
 export function parse(markdown: string) {
   const ast = parseToAst(markdown)
-  return parseContents(ast.children as BlockContent[])
+  return parseContents(ast.children as TopLevelContent[])
 }

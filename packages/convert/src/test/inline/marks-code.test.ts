@@ -33,11 +33,13 @@ describe("marks", () => {
       {
         type: "paragraph",
         children: [
+          { text: "" },
           {
             type: "anchor",
             href: "http://localhost:alpha",
             children: [{ text: "alpha", code: true }, { text: " bravo" }],
           },
+          { text: "" },
         ],
       },
     ])
