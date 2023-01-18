@@ -5,7 +5,7 @@ import {
   TableRowElement,
 } from "wysimark/src/table-plugin"
 
-import { parsePhrasingContents } from "./parse-phrasing-content"
+import { parsePhrasingContents } from "./parse-phrasing-content/parse-phrasing-content"
 
 export function parseTable(table: Table): [TableElement] {
   if (table.align == null)

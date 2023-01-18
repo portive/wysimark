@@ -1,6 +1,6 @@
 import { AnchorElement } from "wysimark/src/anchor-plugin"
 
-import { normalizeSegments } from "../../parse/parse-phrasing-content"
+import { normalizeSegments } from "../../parse/parse-phrasing-content/normalize-segments"
 
 const anchor: AnchorElement = {
   type: "anchor",
@@ -9,6 +9,13 @@ const anchor: AnchorElement = {
 }
 
 describe("normalize segments", () => {
+  describe("no empty children", () => {
+    it("should always have at least one segment.", async () => {
+      const segments = normalizeSegments([])
+      expect(segments).toEqual([{ text: "" }])
+    })
+  })
+
   describe("merge similar text segments together", () => {
     it("should merge two similar text segments", async () => {
       const segments = normalizeSegments([{ text: "alpha" }, { text: "bravo" }])

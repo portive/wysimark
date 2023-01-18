@@ -2,7 +2,7 @@ import type { ListItem } from "mdast"
 import { Element } from "wysimark/src"
 
 import { parseContent } from "../parse-content"
-import { parsePhrasingContents } from "../parse-phrasing-content"
+import { parsePhrasingContents } from "../parse-phrasing-content/parse-phrasing-content"
 import { parseList } from "./parse-list"
 
 export function parseListItemChild(

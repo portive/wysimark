@@ -4,7 +4,7 @@ import remarkParse from "remark-parse"
 import { unified } from "unified"
 
 import { parseContents } from "./parse-content"
-import { transformInlineLinks } from "./remark-inline-links"
+import { transformInlineLinks } from "./transform-inline-links"
 
 const parser = unified().use(remarkParse).use(remarkGfm)
 
