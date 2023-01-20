@@ -21,9 +21,9 @@ describe("image", () => {
       ])
     })
 
-    it("should convert an image to an ImageInline and parse out width/height and srcWidth/srcHeight", async () => {
+    it("should convert a Portive image to an ImageInline and parse out width/height and srcWidth/srcHeight", async () => {
       check(
-        `![Pretty Flowers](http://localhost:3030/alpha--1024x768.jpg?size=320x240 "title")`,
+        `![Pretty Flowers](http://files.portive.com:3030/alpha--1024x768.jpg?size=320x240 "title")`,
         [
           {
             type: "paragraph",
@@ -31,7 +31,7 @@ describe("image", () => {
               { text: "" },
               {
                 type: "image-inline",
-                url: "http://localhost:3030/alpha--1024x768.jpg?size=320x240",
+                url: "http://files.portive.com:3030/alpha--1024x768.jpg?size=320x240",
                 title: "title",
                 alt: "Pretty Flowers",
                 width: 320,
