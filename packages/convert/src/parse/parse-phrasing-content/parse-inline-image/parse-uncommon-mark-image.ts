@@ -28,7 +28,7 @@ export function parseUncommonMarkImage(image: Image): ImageData | undefined {
    * `ImageData`
    */
   return {
-    url: image.url,
+    url: `${url.origin}${url.pathname}`,
     title: image.title || undefined,
     alt: image.alt || undefined,
     width: size.width,

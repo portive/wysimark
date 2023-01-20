@@ -1,8 +1,8 @@
 import { check } from "../test-utils"
 
 describe("image", () => {
-  describe("valid image urls", () => {
-    it("should convert an image to an ImageInline", async () => {
+  describe("generic image urls", () => {
+    it("should convert a generic image to an ImageInline", async () => {
       check(`![Pretty Flowers](http://localhost/alpha.jpg "title")`, [
         {
           type: "paragraph",
@@ -20,7 +20,9 @@ describe("image", () => {
         },
       ])
     })
+  })
 
+  describe("Portive image URLs", () => {
     it("should convert a Portive image to an ImageInline and parse out width/height and srcWidth/srcHeight", async () => {
       check(
         `![Pretty Flowers](http://files.portive.com:3030/alpha--1024x768.jpg?size=320x240 "title")`,
@@ -31,7 +33,7 @@ describe("image", () => {
               { text: "" },
               {
                 type: "image-inline",
-                url: "http://files.portive.com:3030/alpha--1024x768.jpg?size=320x240",
+                url: "http://files.portive.com:3030/alpha--1024x768.jpg",
                 title: "title",
                 alt: "Pretty Flowers",
                 width: 320,
@@ -117,7 +119,7 @@ describe("image", () => {
   })
 
   describe("Uncommon mark", () => {
-    it("should not get image size if missing query", async () => {
+    it("should get image size from uncommonMark hints", async () => {
       check(
         `![alt](http://localhost:3030/image.jpg#srcSize=1024x768&size=320x240 "title")`,
         [
@@ -127,7 +129,7 @@ describe("image", () => {
               { text: "" },
               {
                 type: "image-inline",
-                url: "http://localhost:3030/image.jpg#srcSize=1024x768&size=320x240",
+                url: "http://localhost:3030/image.jpg",
                 title: "title",
                 alt: "alt",
                 width: 320,

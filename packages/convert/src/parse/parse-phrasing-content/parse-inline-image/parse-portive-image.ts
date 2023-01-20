@@ -29,7 +29,7 @@ export function parsePortiveImage(image: Image): ImageData | undefined {
    * Return the `ImageData`
    */
   return {
-    url: image.url,
+    url: `${url.origin}${url.pathname}`,
     title: image.title || undefined,
     alt: image.alt || undefined,
     width: size.width,
