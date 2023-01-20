@@ -1,5 +1,5 @@
 import { clsx } from "clsx"
-import { useState } from "react"
+import React, { useCallback, useState } from "react"
 import { useSelected } from "slate-react"
 
 import { useUpload } from "~/src/upload-plugin/store"
@@ -8,7 +8,11 @@ import {
   $Image,
   $ImageContainer,
 } from "../../styles/image-with-controls-styles/image-with-controls-styles"
-import { ImageBlockElement, ImageInlineElement } from "../../types"
+import {
+  ImageBlockElement,
+  ImageInlineElement,
+  ImageSizePreset,
+} from "../../types"
 import { ImageResizeControl } from "./image-resize-handle"
 import { ImageResizePresets } from "./image-resize-presets"
 import { ImageSizeStatus } from "./image-size-status"
@@ -28,9 +32,10 @@ import { ImageSizeStatus } from "./image-size-status"
  */
 export function ImageWithControls({
   element,
+  presets,
 }: {
   element: ImageBlockElement | ImageInlineElement
-  inline?: boolean
+  presets: ImageSizePreset[]
 }) {
   const upload = useUpload(element.url)
 
@@ -68,6 +73,7 @@ export function ImageWithControls({
     "--selected": selected,
     "--dragging": isDragging,
     "--small": size && (size.width <= 64 || size.height <= 64),
+    "--loaded": upload.status === "success",
   })
 
   return (
@@ -79,6 +85,7 @@ export function ImageWithControls({
           size={size}
           setSize={setSize}
           srcSize={srcSize}
+          presets={presets}
         />
       )}
       {isDragging && size ? <ImageSizeStatus size={size} /> : null}

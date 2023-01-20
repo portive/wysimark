@@ -105,3 +105,15 @@ export type ImagePluginCustomTypes = {
   Editor: ImageEditor
   Element: ImageBlockElement | ImageInlineElement
 }
+
+/**
+ * A preset is defined either as a bound or as a scale:
+ *
+ * - bounds: The image will be placed within the bounds.
+ * - scale: The image will be scaled to the given `scale` value. The max
+ *   value should be `1`.
+ */
+
+export type ImageSizePreset =
+  | { name: string; type: "bounds"; width: number; height: number }
+  | { name: string; type: "scale"; scale: number }

@@ -1,7 +1,7 @@
 import { Editor } from "slate"
 import { ReactEditor } from "slate-react"
 
-import { ImageSizePreset } from "../render-element/image-with-controls/image-resize-presets"
+import { ImageSizePreset } from "../render-element/image-with-controls/types"
 import { ImageSize } from "../types"
 
 /**

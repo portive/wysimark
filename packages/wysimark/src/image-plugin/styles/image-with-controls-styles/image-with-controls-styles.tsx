@@ -61,10 +61,16 @@ export const $Image = styled("img", forwardRef)`
     outline-offset: 1px;
   }
   /**
-   * If the image hasn't loaded yet, we want to have some color filling the
-   * space that the image will eventually load into.
+   * If the image isn't loaded yet, we want to have some color filling the space
+   * that the image will eventually load into. This helps indicates to the user
+   * the space that the image will fill into.
+   *
+   * Once the image is finished loading, we want to respect transparency so at
+   * that point we hide the background shading.
    */
-  background: var(--shade-100);
+  .--loading > & {
+    background: var(--shade-100);
+  }
 
   /**
    * When we change the image via a preset, we want to animate the change;
