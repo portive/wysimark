@@ -16,10 +16,15 @@ export type ImageSizePreset =
   | { name: string; type: "scale"; scale: number }
 
 const presets: ImageSizePreset[] = [
+  /**
+   * Pixel Presets
+   */
   { name: "S", type: "bounds", width: 160, height: 160 },
   { name: "M", type: "bounds", width: 320, height: 320 },
   { name: "L", type: "bounds", width: 640, height: 640 },
-
+  /**
+   * Scale Presets
+   */
   { name: "⅓", type: "scale", scale: 1 / 3 },
   { name: "½", type: "scale", scale: 0.5 },
   { name: "Full", type: "scale", scale: 1 },
