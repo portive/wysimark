@@ -16,6 +16,7 @@ export type AnchorElement = {
   type: "anchor"
   href: string
   target?: string
+  title?: string
   children: Descendant[]
 }
 

@@ -1,4 +1,4 @@
-import type { BlockContent, TopLevelContent } from "mdast"
+import type { TopLevelContent } from "mdast"
 import remarkGfm from "remark-gfm"
 import remarkParse from "remark-parse"
 import { unified } from "unified"

@@ -1,4 +1,4 @@
-import { Text as SlateText } from "slate"
+import { Element as SlateElement, Text as SlateText } from "slate"
 
 import { MarkKey, Segment } from "../../types"
 import { diffMarks } from "./diff-marks"
@@ -144,6 +144,8 @@ function getNextMarks(
   for (let i = index + 1; i < segments.length; i++) {
     const segment = segments[i]
     if (isPlainSpace(segment)) continue
+    if (SlateElement.isElement(segment) && segment.type === "image-inline")
+      continue
     return getMarksFromSegment(segment)
   }
   return trailingMarks

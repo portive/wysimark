@@ -3,6 +3,7 @@ import type { PhrasingContent } from "mdast"
 import { MarkProps, Segment } from "../../types"
 import { assertUnreachable } from "../../utils"
 import { normalizeSegments } from "./normalize-segments"
+import { parseInlineImage } from "./parse-inline-image"
 
 export function parsePhrasingContents(
   phrasingContents: PhrasingContent[],
@@ -35,6 +36,8 @@ function parsePhrasingContent(
       return [{ text: `[${phrasingContent.identifier}]` }]
     case "html":
       return [{ text: phrasingContent.value, code: true }]
+    case "image":
+      return parseInlineImage(phrasingContent)
     case "inlineCode": {
       return [{ text: phrasingContent.value, ...marks, code: true }]
     }

@@ -62,7 +62,8 @@ export interface ImageInterface {
    *   `hashUrl` will be converted to the actual `url` of the file.
    */
   url: string
-  title: string
+  title?: string
+  alt?: string
   bytes?: number
   /**
    * If the `maxWidth` and `maxHeight` are present, it indicates that the image

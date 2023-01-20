@@ -106,4 +106,24 @@ describe("link", () => {
       },
     ])
   })
+
+  it.skip("should convert link with alt tag ", async () => {
+    check(`**[alpha _bravo_](https://localhost/alpha "charlie")**`, [
+      {
+        type: "paragraph",
+        children: [
+          { text: "" },
+          {
+            type: "anchor",
+            href: "https://localhost/alpha",
+            children: [
+              { text: "alpha ", bold: true },
+              { text: "bravo", bold: true, italic: true },
+            ],
+          },
+          { text: "" },
+        ],
+      },
+    ])
+  })
 })

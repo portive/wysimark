@@ -1,4 +1,5 @@
 import { Text as SlateText } from "slate"
+import { ImageInlineElement } from "wysimark/src/image-plugin/types"
 
 import { Segment } from "../../../types"
 import { serializeCodeText } from "../segment/serialize-code-text"
@@ -22,9 +23,17 @@ export function serializeSegment(segment: Segment): string {
     case "anchor": {
       return serializeAnchor(segment)
     }
+    case "image-inline":
+      return serializeImageInline(segment)
     default:
       throw new Error(
         `Unhandled inline Element type for serializing which is ${segment.type}`
       )
   }
+}
+
+function serializeImageInline(image: ImageInlineElement): string {
+  return `![${image.alt}](${image.url}${
+    typeof image.title === "string" ? ` "${image.title}"` : ""
+  })`
 }

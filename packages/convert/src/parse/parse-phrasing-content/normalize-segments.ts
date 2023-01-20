@@ -1,7 +1,5 @@
 import { Text as SlateText } from "slate"
-import { Text } from "wysimark/src"
 
-import { getMarksFromText } from "../../serialize/serialize-line/utils"
 import { Segment } from "../../types"
 import { normalizeSegment } from "./normalize-segment"
 
