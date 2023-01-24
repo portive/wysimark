@@ -14,10 +14,10 @@ import {
   ImageInlineElement,
   ImageSizePreset,
 } from "../../types"
+import { ImageTypeButtons } from "./image-convert-type-buttons"
 import { ImageResizeControl } from "./image-resize-handle"
 import { ImageResizePresets } from "./image-resize-presets"
 import { ImageSizeStatus } from "./image-size-status"
-import { ImageTypeButtons } from "./image-type-buttons"
 
 /**
  * The `Image` Component is responsible for:
