@@ -54,11 +54,14 @@ export function ImagePresetButton({
 
   const className = clsx({
     "--disabled": isDisabled,
-    "--selected": isSelected,
+    "--selected": !isDisabled && isSelected,
   })
 
   return (
-    <$ImageButton className={className} onClick={onClick}>
+    <$ImageButton
+      className={className}
+      onClick={isDisabled ? undefined : onClick}
+    >
       {preset.name}
     </$ImageButton>
   )
