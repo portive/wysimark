@@ -4,14 +4,14 @@ import { useSlateStatic } from "slate-react"
 
 import {
   $ImageButton,
-  $ImageButtons,
+  $ImageButtonGroup,
 } from "../../../styles/image-with-controls-styles/image-buttons-styles"
 import { ImageBlockElement, ImageInlineElement } from "../../../types"
 import { BlockIcon, InlineIcon } from "../../icons"
 import { convertToBlockImage } from "./convert-to-block-image"
 import { convertToInlineImage } from "./convert-to-inline-image"
 
-export function ImageTypeButtons({
+export function ImageTypeButtonGroup({
   element,
 }: {
   element: ImageBlockElement | ImageInlineElement
@@ -28,7 +28,7 @@ export function ImageTypeButtons({
   }, [editor, element])
 
   return (
-    <$ImageButtons>
+    <$ImageButtonGroup>
       {/* convert to image block button */}
       <$ImageButton
         className={element.type === "image-block" ? "--selected" : ""}
@@ -43,6 +43,6 @@ export function ImageTypeButtons({
       >
         <InlineIcon />
       </$ImageButton>
-    </$ImageButtons>
+    </$ImageButtonGroup>
   )
 }

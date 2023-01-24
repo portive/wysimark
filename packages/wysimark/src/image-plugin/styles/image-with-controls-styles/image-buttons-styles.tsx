@@ -5,7 +5,7 @@ import { forwardRef } from "react"
  * Styling for a collection of buttons in the $ImageButtonsContainer at the top
  * of the image.
  */
-export const $ImageButtons = styled("span", forwardRef)`
+export const $ImageButtonGroup = styled("span", forwardRef)`
   /* font-size: 0.75em; */
   border-radius: 0.5em;
   display: flex;

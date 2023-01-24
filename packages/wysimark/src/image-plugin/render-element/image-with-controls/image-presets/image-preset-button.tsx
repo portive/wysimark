@@ -19,7 +19,7 @@ import { resizeInPreset } from "../../../utils"
  * nothing except show the image at its full size. For this reason, the
  * preset is disabled if the srcSize is smaller than the preset.
  */
-export function ImageResizePreset({
+export function ImagePresetButton({
   element,
   preset,
   size,

@@ -1,7 +1,7 @@
 import { styled } from "goober"
 import { forwardRef } from "react"
 
-export const $ImageButtonsContainer = styled("span", forwardRef)`
+export const $ImageToolbar = styled("span", forwardRef)`
   position: absolute;
   /**
    * On top of the image +1 for space inside outline, +2 for outline,

@@ -15,7 +15,7 @@ import {
 } from "../../types"
 import { ImageResizeControl } from "./image-resize-controls/image-resize-control"
 import { ImageSizeStatus } from "./image-size-status/image-size-status"
-import { ImageToolbar } from "./image-toolbar"
+import { ImageToolbar } from "./image-toolbar/image-toolbar"
 
 /**
  * The `Image` Component is responsible for:
@@ -38,9 +38,7 @@ export function ImageWithControls({
   presets: ImageSizePreset[]
 }) {
   const upload = useUpload(element.url)
-
   const selected = useSelected()
-
   const [isDragging, setIsDragging] = useState(false)
   const [size, setSize] = useState(
     element.srcWidth && element.srcHeight && element.width && element.height
@@ -65,9 +63,7 @@ export function ImageWithControls({
   const showControls = selected && size && srcSize
 
   /**
-   * Add classes for:
-   *
-   * - selected state
+   * Add classes for different states.
    */
   const className = clsx({
     "--selected": selected,
@@ -105,8 +101,8 @@ export function ImageWithControls({
         />
       ) : null}
       {/**
-       * Show the size status bar only when the user is actually dragging to
-       * resize the image.
+       * Show the size status bar only when the user is dragging to resize the
+       * image.
        */}
       {isDragging && size ? <ImageSizeStatus size={size} /> : null}
       {showControls ? (

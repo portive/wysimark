@@ -1,15 +1,15 @@
 import { Dispatch, SetStateAction } from "react"
 
-import { $ImageButtons } from "../../../styles/image-with-controls-styles/image-buttons-styles"
+import { $ImageButtonGroup } from "../../../styles/image-with-controls-styles/image-buttons-styles"
 import {
   ImageBlockElement,
   ImageInlineElement,
   ImageSize,
   ImageSizePreset,
 } from "../../../types"
-import { ImageResizePreset } from "./image-resize-preset"
+import { ImagePresetButton } from "./image-preset-button"
 
-export function ImageResizePresets({
+export function ImagePresetButtonGroup({
   element,
   size,
   setSize,
@@ -24,10 +24,10 @@ export function ImageResizePresets({
   presets: ImageSizePreset[]
 }) {
   return (
-    <$ImageButtons>
+    <$ImageButtonGroup>
       {presets.map((preset, i) => {
         return (
-          <ImageResizePreset
+          <ImagePresetButton
             element={element}
             key={i}
             preset={preset}
@@ -37,6 +37,6 @@ export function ImageResizePresets({
           />
         )
       })}
-    </$ImageButtons>
+    </$ImageButtonGroup>
   )
 }
