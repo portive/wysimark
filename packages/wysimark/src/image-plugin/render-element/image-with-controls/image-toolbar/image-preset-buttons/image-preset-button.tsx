@@ -3,14 +3,14 @@ import { Dispatch, SetStateAction, useCallback } from "react"
 import { Transforms } from "slate"
 import { ReactEditor, useSlateStatic } from "slate-react"
 
-import { $ImageButton } from "../../../styles/image-with-controls-styles/image-buttons-styles"
+import { $ImageButton } from "../../../../styles/image-with-controls-styles/image-buttons-styles"
 import {
   ImageBlockElement,
   ImageInlineElement,
   ImageSize,
   ImageSizePreset,
-} from "../../../types"
-import { resizeInPreset } from "../../../utils"
+} from "../../../../types"
+import { resizeInPreset } from "../../../../utils"
 
 /**
  * Shows a single preset image sizes as defined by the `Preset` type.
@@ -33,6 +33,7 @@ export function ImagePresetButton({
   srcSize: ImageSize
 }) {
   const editor = useSlateStatic()
+  const presetSize = resizeInPreset(size, srcSize, preset)
 
   const onClick = useCallback(() => {
     const path = ReactEditor.findPath(editor, element)
@@ -45,8 +46,16 @@ export function ImagePresetButton({
     preset.type === "scale"
       ? true
       : preset.width <= srcSize.width || preset.height <= srcSize.height
+
   const isDisabled = !isEnabled
-  const className = clsx({ "--disabled": isDisabled })
+
+  const isSelected =
+    size.width === presetSize.width && size.height === presetSize.height
+
+  const className = clsx({
+    "--disabled": isDisabled,
+    "--selected": isSelected,
+  })
 
   return (
     <$ImageButton className={className} onClick={onClick}>

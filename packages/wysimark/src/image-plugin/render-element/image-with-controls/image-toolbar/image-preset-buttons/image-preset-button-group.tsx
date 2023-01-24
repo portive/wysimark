@@ -1,12 +1,12 @@
 import { Dispatch, SetStateAction } from "react"
 
-import { $ImageButtonGroup } from "../../../styles/image-with-controls-styles/image-buttons-styles"
+import { $ImageButtonGroup } from "../../../../styles/image-with-controls-styles/image-buttons-styles"
 import {
   ImageBlockElement,
   ImageInlineElement,
   ImageSize,
   ImageSizePreset,
-} from "../../../types"
+} from "../../../../types"
 import { ImagePresetButton } from "./image-preset-button"
 
 export function ImagePresetButtonGroup({
