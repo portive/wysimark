@@ -8,14 +8,6 @@ import { Item } from "../../types"
 import { CloseMask } from "../shared/close-mask"
 import { MenuItem } from "./menu-item"
 
-export const key = {
-  cmd: "\u2318",
-  ctrl: "\u2303",
-  shift: "⇧",
-  opt: "⌥",
-  enter: "⏎",
-}
-
 export function Menu({
   dest,
   items,

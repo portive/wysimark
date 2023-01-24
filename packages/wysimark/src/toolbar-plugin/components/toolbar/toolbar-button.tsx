@@ -8,6 +8,7 @@ import { useTooltip } from "~/src/use-tooltip"
 import * as Icon from "../../icons"
 import { $ToolbarButton } from "../../styles"
 import { Item } from "../../types"
+import { formatHotkey } from "../menu/format-hotkey"
 import { Menu } from "../menu/menu"
 
 export function ToolbarButton({
@@ -21,7 +22,7 @@ export function ToolbarButton({
   const ref = useRef<HTMLDivElement>(null)
   const tooltip = useTooltip({
     title: item.title,
-    hotkey: item.hotkey?.toUpperCase(),
+    hotkey: item.hotkey ? formatHotkey(item.hotkey) : undefined,
   })
   const menu = useLayer("menu")
 
@@ -56,17 +57,6 @@ export function ToolbarButton({
   const onMouseEnter = useCallback(
     (e: MouseEvent<HTMLElement>) => {
       tooltip.onMouseEnter(e)
-      // const title = item.title
-      // const hotkey = item.hotkey
-      // const dest = e.currentTarget
-      // /**
-      //  * Open tooltip
-      //  */
-      // if (title !== undefined) {
-      //   tooltip.open(() => (
-      //     <Tooltip title={title} hotkey={hotkey} dest={dest} />
-      //   ))
-      // }
       /**
        * If any `menu` is already open, then we open up the currently hovered
        * `menu` automatically. This replicates behavior in menus in windowing

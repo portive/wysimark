@@ -4,7 +4,7 @@ import { ReactEditor } from "slate-react"
 
 import { $MenuItem } from "../../styles"
 import { Item } from "../../types"
-import { key } from "./menu"
+import { formatHotkey } from "./format-hotkey"
 
 export function MenuItem({
   editor,
@@ -29,8 +29,7 @@ export function MenuItem({
         </div>
         <div className="--title">{item.title}</div>
         <div className="--hotkey">
-          {key.opt}
-          {key.cmd}1
+          {item.hotkey ? formatHotkey(item.hotkey) : undefined}
         </div>
       </$MenuItem>
     </>
