@@ -1,8 +1,8 @@
 import { Editor, Transforms } from "slate"
 import { ReactEditor } from "slate-react"
 
-import { ImageBlockElement } from "../../types"
-import { resizeInPreset } from "../../utils"
+import { ImageBlockElement } from "../../../types"
+import { resizeInPreset } from "../../../utils"
 
 export function convertToInlineImage(
   editor: Editor,

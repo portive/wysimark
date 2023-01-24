@@ -1,9 +1,9 @@
 import { Editor, Text, Transforms } from "slate"
 import { ReactEditor } from "slate-react"
 
-import { findElementUp } from "../../../sink"
-import { ImageInlineElement } from "../../types"
-import { resizeInPreset } from "../../utils"
+import { findElementUp } from "../../../../sink"
+import { ImageInlineElement } from "../../../types"
+import { resizeInPreset } from "../../../utils"
 
 export function convertToBlockImage(
   editor: Editor,

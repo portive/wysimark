@@ -9,9 +9,13 @@ import { useResizeBrowser } from "~/src/use-reposition/hooks"
 import {
   $ImageResizeHandle,
   $ImageResizeInvisibleHandle,
-} from "../../styles/image-with-controls-styles/image-resize-handle-styles"
-import { ImageBlockElement, ImageInlineElement, ImageSize } from "../../types"
-import { getEditorWidth, minMax, resizeToWidth } from "../../utils"
+} from "../../../styles/image-with-controls-styles/image-resize-handle-styles"
+import {
+  ImageBlockElement,
+  ImageInlineElement,
+  ImageSize,
+} from "../../../types"
+import { getEditorWidth, minMax, resizeToWidth } from "../../../utils"
 
 /**
  * Helper function finds the `img` inside the current Slate `Element`.
@@ -226,6 +230,10 @@ export function ImageResizeControl({
 
   return (
     <>
+      {/**
+       * The invisible handle is not visible but gives a larger drag handle
+       * target for the mouse and touch events
+       */}
       <$ImageResizeInvisibleHandle
         className={className}
         onMouseDown={onMouseDown}

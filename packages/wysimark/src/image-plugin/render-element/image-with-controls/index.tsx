@@ -4,7 +4,6 @@ import { useSelected } from "slate-react"
 
 import { useUpload } from "~/src/upload-plugin/store"
 
-import { $ImageButtonsContainer } from "../../styles/image-with-controls-styles/image-buttons-container-styles"
 import {
   $Image,
   $ImageContainer,
@@ -14,10 +13,9 @@ import {
   ImageInlineElement,
   ImageSizePreset,
 } from "../../types"
-import { ImageTypeButtons } from "./image-convert-type-buttons"
-import { ImageResizeControl } from "./image-resize-handle"
-import { ImageResizePresets } from "./image-resize-presets"
-import { ImageSizeStatus } from "./image-size-status"
+import { ImageResizeControl } from "./image-resize-controls/image-resize-control"
+import { ImageSizeStatus } from "./image-size-status/image-size-status"
+import { ImageToolbar } from "./image-toolbar"
 
 /**
  * The `Image` Component is responsible for:
@@ -64,7 +62,7 @@ export function ImageWithControls({
    * Show resize controls if the element is selected, it has a `size` and
    * it has a `srcSize`
    */
-  const isResizable = selected && size && srcSize
+  const showControls = selected && size && srcSize
 
   /**
    * Add classes for:
@@ -78,25 +76,40 @@ export function ImageWithControls({
     "--loaded": upload.status === "success",
   })
 
+  /**
+   * The purpose of the surrounding $ImageContainer is simply to surround the
+   * image tightly so that we can place the other control elements relative
+   * to the image.
+   *
+   * In order to do this, the $ImageContainer must be an `inline-block` or else
+   * space gets added on the inside of the container.
+   *
+   * NOTE:
+   *
+   * Everything inside the $ImageContainer must be safe to insert into a
+   * `<p>` tag which means `<div>` tags are not allowed. Use `<span>` tags
+   * instead, even if they are blocks. This is because we get some invalid
+   * nested warning otherwise as `<div>` tags are not supposed to be children
+   * of `<p>` tags.
+   */
   return (
     <$ImageContainer className={className}>
       <$Image src={upload.url} width={size?.width} height={size?.height} />
-      {selected && (
-        <$ImageButtonsContainer>
-          {isResizable && (
-            <ImageResizePresets
-              element={element}
-              size={size}
-              setSize={setSize}
-              srcSize={srcSize}
-              presets={presets}
-            />
-          )}
-          <ImageTypeButtons element={element} />
-        </$ImageButtonsContainer>
-      )}
+      {showControls ? (
+        <ImageToolbar
+          element={element}
+          size={size}
+          setSize={setSize}
+          srcSize={srcSize}
+          presets={presets}
+        />
+      ) : null}
+      {/**
+       * Show the size status bar only when the user is actually dragging to
+       * resize the image.
+       */}
       {isDragging && size ? <ImageSizeStatus size={size} /> : null}
-      {isResizable ? (
+      {showControls ? (
         <ImageResizeControl
           element={element}
           srcSize={srcSize}

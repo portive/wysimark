@@ -3,14 +3,14 @@ import { Dispatch, SetStateAction, useCallback } from "react"
 import { Transforms } from "slate"
 import { ReactEditor, useSlateStatic } from "slate-react"
 
-import { $ImageButton } from "../../styles/image-with-controls-styles/image-buttons-styles"
+import { $ImageButton } from "../../../styles/image-with-controls-styles/image-buttons-styles"
 import {
   ImageBlockElement,
   ImageInlineElement,
   ImageSize,
   ImageSizePreset,
-} from "../../types"
-import { resizeInPreset } from "../../utils"
+} from "../../../types"
+import { resizeInPreset } from "../../../utils"
 
 /**
  * Shows a single preset image sizes as defined by the `Preset` type.

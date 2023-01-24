@@ -5,9 +5,9 @@ import { useSlateStatic } from "slate-react"
 import {
   $ImageButton,
   $ImageButtons,
-} from "../../styles/image-with-controls-styles/image-buttons-styles"
-import { ImageBlockElement, ImageInlineElement } from "../../types"
-import { BlockIcon, InlineIcon } from "../icons"
+} from "../../../styles/image-with-controls-styles/image-buttons-styles"
+import { ImageBlockElement, ImageInlineElement } from "../../../types"
+import { BlockIcon, InlineIcon } from "../../icons"
 import { convertToBlockImage } from "./convert-to-block-image"
 import { convertToInlineImage } from "./convert-to-inline-image"
 
