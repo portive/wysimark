@@ -1,7 +1,7 @@
 import { styled } from "goober"
 import { forwardRef } from "react"
 
-export const $ImageSizeStatus = styled("div", forwardRef)`
+export const $ImageSizeStatus = styled("span", forwardRef)`
   position: absolute;
   /**
    * The status appears with a 1px gap from the outline.

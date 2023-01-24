@@ -196,7 +196,6 @@ export function ImageResizeControl({
         setSize(nextSize)
       }
       const onDocumentTouchEnd = () => {
-        console.log("end")
         document.removeEventListener("touchmove", onDocumentTouchMove)
         document.removeEventListener("touchend", onDocumentTouchEnd)
         const path = ReactEditor.findPath(editor, element)
@@ -233,9 +232,9 @@ export function ImageResizeControl({
         onTouchStart={onTouchStart}
       >
         <$ImageResizeHandle>
-          <div className="--bar --bar-left" />
-          <div className="--bar --bar-center" />
-          <div className="--bar --bar-right" />
+          <span className="--bar --bar-left" />
+          <span className="--bar --bar-center" />
+          <span className="--bar --bar-right" />
         </$ImageResizeHandle>
       </$ImageResizeInvisibleHandle>
     </>

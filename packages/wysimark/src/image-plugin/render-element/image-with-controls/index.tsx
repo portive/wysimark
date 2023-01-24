@@ -1,9 +1,10 @@
 import { clsx } from "clsx"
-import React, { useCallback, useState } from "react"
+import React, { useState } from "react"
 import { useSelected } from "slate-react"
 
 import { useUpload } from "~/src/upload-plugin/store"
 
+import { $ImageButtonsContainer } from "../../styles/image-with-controls-styles/image-buttons-container-styles"
 import {
   $Image,
   $ImageContainer,
@@ -16,6 +17,7 @@ import {
 import { ImageResizeControl } from "./image-resize-handle"
 import { ImageResizePresets } from "./image-resize-presets"
 import { ImageSizeStatus } from "./image-size-status"
+import { ImageTypeButtons } from "./image-type-buttons"
 
 /**
  * The `Image` Component is responsible for:
@@ -79,14 +81,19 @@ export function ImageWithControls({
   return (
     <$ImageContainer className={className}>
       <$Image src={upload.url} width={size?.width} height={size?.height} />
-      {isResizable && (
-        <ImageResizePresets
-          element={element}
-          size={size}
-          setSize={setSize}
-          srcSize={srcSize}
-          presets={presets}
-        />
+      {selected && (
+        <$ImageButtonsContainer>
+          {isResizable && (
+            <ImageResizePresets
+              element={element}
+              size={size}
+              setSize={setSize}
+              srcSize={srcSize}
+              presets={presets}
+            />
+          )}
+          <ImageTypeButtons element={element} />
+        </$ImageButtonsContainer>
       )}
       {isDragging && size ? <ImageSizeStatus size={size} /> : null}
       {isResizable ? (

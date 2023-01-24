@@ -1,7 +1,7 @@
 import { styled } from "goober"
 import { forwardRef } from "react"
 
-export const $ImageResizeInvisibleHandle = styled("div", forwardRef)`
+export const $ImageResizeInvisibleHandle = styled("span", forwardRef)`
   position: absolute;
   display: block;
   /**
@@ -29,7 +29,7 @@ export const $ImageResizeInvisibleHandle = styled("div", forwardRef)`
     width: 1.25em;
   }
 `
-export const $ImageResizeHandle = styled("div", forwardRef)`
+export const $ImageResizeHandle = styled("span", forwardRef)`
   position: absolute;
   display: block;
   background: var(--select-color);

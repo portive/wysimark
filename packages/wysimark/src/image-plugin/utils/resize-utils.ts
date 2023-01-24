@@ -1,8 +1,7 @@
 import { Editor } from "slate"
 import { ReactEditor } from "slate-react"
 
-import { ImageSizePreset } from "../render-element/image-with-controls/types"
-import { ImageSize } from "../types"
+import { ImageSize, ImageSizePreset } from "../types"
 
 /**
  * Takes a src image and resizes it to the exact width while preserving the
