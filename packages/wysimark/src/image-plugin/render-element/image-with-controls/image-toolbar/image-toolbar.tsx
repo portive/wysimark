@@ -33,6 +33,7 @@ export function ImageToolbar({
 }) {
   return (
     <$ImageToolbar>
+      <ImageTypeButtonGroup element={element} />
       <ImagePresetButtonGroup
         element={element}
         size={size}
@@ -40,7 +41,6 @@ export function ImageToolbar({
         srcSize={srcSize}
         presets={presets}
       />
-      <ImageTypeButtonGroup element={element} />
     </$ImageToolbar>
   )
 }

@@ -68,8 +68,8 @@ export function resizeInPreset(
       return resizeInBounds(srcSize, preset)
     case "scale":
       return {
-        width: srcSize.width * preset.scale,
-        height: srcSize.height * preset.scale,
+        width: Math.round(srcSize.width * preset.scale),
+        height: Math.round(srcSize.height * preset.scale),
       }
   }
 }

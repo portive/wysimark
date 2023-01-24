@@ -35,6 +35,7 @@ export function convertToInlineImage(
      */
     const nextSize = resizeInPreset(size, srcSize, {
       name: "initial-inline-image",
+      title: "",
       type: "bounds",
       width: 24,
       height: 24,

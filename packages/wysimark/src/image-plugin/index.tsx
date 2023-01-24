@@ -16,7 +16,6 @@ export const ImagePlugin = ({
   imageInlinePresets = [],
 }: ImagePluginConfig = {}) =>
   createPlugin<ImagePluginCustomTypes>((editor) => {
-    console.log(imageBlockPresets)
     editor.image = {
       ...createImageMethods(editor),
       maxInitialInlineImageSize,

@@ -37,6 +37,7 @@ export function convertToBlockImage(
      */
     const nextSize = resizeInPreset(size, srcSize, {
       name: "initial-block-image",
+      title: "",
       type: "bounds",
       width: 320,
       height: 320,

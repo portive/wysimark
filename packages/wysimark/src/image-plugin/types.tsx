@@ -117,5 +117,16 @@ export type ImagePluginCustomTypes = {
  */
 
 export type ImageSizePreset =
-  | { name: string; type: "bounds"; width: number; height: number }
-  | { name: string; type: "scale"; scale: number }
+  | {
+      name: string
+      title: string
+      type: "bounds"
+      width: number
+      height: number
+    }
+  | {
+      name: string
+      title: string
+      type: "scale"
+      scale: number
+    }

@@ -1,7 +1,7 @@
 import { styled } from "goober"
 import { forwardRef } from "react"
 
-function useRect(dest: HTMLElement): DOMRect {
+export function useRect(dest: HTMLElement): DOMRect {
   return dest.getBoundingClientRect()
 }
 
@@ -49,7 +49,7 @@ export function Tooltip({
     >
       {title}
 
-      {hotkey ? <$Hotkey>{hotkey.toUpperCase()}</$Hotkey> : null}
+      {hotkey ? <$Hotkey>{hotkey}</$Hotkey> : null}
     </$Tooltip>
   )
 }

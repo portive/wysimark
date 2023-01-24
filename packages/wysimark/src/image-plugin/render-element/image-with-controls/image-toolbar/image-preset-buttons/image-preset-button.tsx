@@ -3,6 +3,8 @@ import { Dispatch, SetStateAction, useCallback } from "react"
 import { Transforms } from "slate"
 import { ReactEditor, useSlateStatic } from "slate-react"
 
+import { useTooltip } from "~/src/use-tooltip"
+
 import { $ImageButton } from "../../../../styles/image-with-controls-styles/image-buttons-styles"
 import {
   ImageBlockElement,
@@ -34,6 +36,10 @@ export function ImagePresetButton({
 }) {
   const editor = useSlateStatic()
   const presetSize = resizeInPreset(size, srcSize, preset)
+  const tooltip = useTooltip({
+    title: preset.title,
+    hotkey: `${presetSize.width}x${presetSize.height}`,
+  })
 
   const onClick = useCallback(() => {
     const path = ReactEditor.findPath(editor, element)
@@ -61,6 +67,8 @@ export function ImagePresetButton({
     <$ImageButton
       className={className}
       onClick={isDisabled ? undefined : onClick}
+      onMouseEnter={tooltip.onMouseEnter}
+      onMouseLeave={tooltip.onMouseLeave}
     >
       {preset.name}
     </$ImageButton>

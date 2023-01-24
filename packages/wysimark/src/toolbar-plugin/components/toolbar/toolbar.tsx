@@ -1,5 +1,3 @@
-import { Layers } from "~/src/use-layer"
-
 import { items } from "../../items"
 import { $Toolbar, $ToolbarDivider } from "../../styles"
 import { Item } from "../../types"
@@ -15,12 +13,10 @@ function ToolbarItem({ item }: { item: Item }) {
 
 export function Toolbar() {
   return (
-    <Layers>
-      <$Toolbar>
-        {items.map((item, index) => (
-          <ToolbarItem key={index} item={item} />
-        ))}
-      </$Toolbar>
-    </Layers>
+    <$Toolbar>
+      {items.map((item, index) => (
+        <ToolbarItem key={index} item={item} />
+      ))}
+    </$Toolbar>
   )
 }

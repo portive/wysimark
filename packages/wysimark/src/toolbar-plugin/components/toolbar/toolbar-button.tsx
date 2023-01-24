@@ -1,15 +1,14 @@
 import { clsx } from "clsx"
-import { MouseEvent, useCallback, useEffect, useRef } from "react"
+import { MouseEvent, useCallback, useRef } from "react"
 import { ReactEditor, useSlateStatic } from "slate-react"
 
-import { useLayer } from "../../../use-layer"
+import { useLayer } from "~/src/use-layer"
+import { useTooltip } from "~/src/use-tooltip"
+
 import * as Icon from "../../icons"
 import { $ToolbarButton } from "../../styles"
 import { Item } from "../../types"
 import { Menu } from "../menu/menu"
-import { Tooltip } from "./tooltip"
-
-const debug = false
 
 export function ToolbarButton({
   active,
@@ -20,7 +19,10 @@ export function ToolbarButton({
 }) {
   const editor = useSlateStatic()
   const ref = useRef<HTMLDivElement>(null)
-  const tooltip = useLayer("tooltip")
+  const tooltip = useTooltip({
+    title: item.title,
+    hotkey: item.hotkey?.toUpperCase(),
+  })
   const menu = useLayer("menu")
 
   const openMenu = useCallback(() => {
@@ -53,17 +55,18 @@ export function ToolbarButton({
    */
   const onMouseEnter = useCallback(
     (e: MouseEvent<HTMLElement>) => {
-      const title = item.title
-      const hotkey = item.hotkey
-      const dest = e.currentTarget
-      /**
-       * Open tooltip
-       */
-      if (title !== undefined) {
-        tooltip.open(() => (
-          <Tooltip title={title} hotkey={hotkey} dest={dest} />
-        ))
-      }
+      tooltip.onMouseEnter(e)
+      // const title = item.title
+      // const hotkey = item.hotkey
+      // const dest = e.currentTarget
+      // /**
+      //  * Open tooltip
+      //  */
+      // if (title !== undefined) {
+      //   tooltip.open(() => (
+      //     <Tooltip title={title} hotkey={hotkey} dest={dest} />
+      //   ))
+      // }
       /**
        * If any `menu` is already open, then we open up the currently hovered
        * `menu` automatically. This replicates behavior in menus in windowing
@@ -74,28 +77,11 @@ export function ToolbarButton({
     [menu.layer]
   )
 
-  /**
-   * DEBUG:
-   *
-   * Immediately open the menu so we can view it while playing with it when
-   * `debug` is true.
-   */
-  useEffect(() => {
-    if (debug) {
-      openMenu()
-      const dest = ref.current
-      if (!dest) return
-      tooltip.open(() => (
-        <Tooltip title={"Bold"} hotkey={"mod+b"} dest={dest} />
-      ))
-    }
-  }, [])
-
   return (
     <$ToolbarButton
       ref={ref}
       onMouseEnter={onMouseEnter}
-      onMouseLeave={tooltip.close}
+      onMouseLeave={tooltip.onMouseLeave}
       onClick={onClick}
       className={clsx({ "--active": active })}
     >
