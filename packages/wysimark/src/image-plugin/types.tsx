@@ -45,6 +45,8 @@ export type ImagePluginConfig = {
    * This is the maximum visual image
    */
   maxImageSize?: ImageSize // default = 1024
+  imageBlockPresets?: ImageSizePreset[]
+  imageInlinePresets?: ImageSizePreset[]
 }
 
 export type ImageEditor = {

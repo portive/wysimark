@@ -12,13 +12,18 @@ export const ImagePlugin = ({
   maxInitialInlineImageSize = { width: 64, height: 64 },
   maxInitialImageSize = { width: 320, height: 320 },
   maxImageSize = { width: 1024, height: 1024 },
+  imageBlockPresets = [],
+  imageInlinePresets = [],
 }: ImagePluginConfig = {}) =>
   createPlugin<ImagePluginCustomTypes>((editor) => {
+    console.log(imageBlockPresets)
     editor.image = {
       ...createImageMethods(editor),
       maxInitialInlineImageSize,
       maxInitialImageSize,
       maxImageSize,
+      imageBlockPresets,
+      imageInlinePresets,
     }
     editor.upload.onUploadImageFile = (e) => {
       if (e.width <= 64 && e.height <= 64) {
