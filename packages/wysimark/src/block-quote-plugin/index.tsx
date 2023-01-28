@@ -42,6 +42,9 @@ function matchBlockQuoteSafe(node: Node) {
       node.type === "code-block" ||
       node.type === "table" ||
       node.type === "horizontal-rule" ||
+      node.type === "task-list-item" ||
+      node.type === "unordered-list-item" ||
+      node.type === "ordered-list-item" ||
       node.type === "heading")
   )
 }

@@ -22,7 +22,7 @@ export function ToolbarButton({
   const ref = useRef<HTMLDivElement>(null)
   const tooltip = useTooltip({
     title: item.title,
-    hotkey: item.hotkey ? formatHotkey(item.hotkey) : undefined,
+    hotkey: () => (item.hotkey ? formatHotkey(item.hotkey) : undefined),
   })
   const menu = useLayer("menu")
 

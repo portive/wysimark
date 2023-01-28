@@ -41,7 +41,7 @@ export const items: Item[] = [
   "divider",
   {
     icon: Icon.BulletList,
-    title: "Bullet List",
+    title: "Lists",
     more: true,
     children: listItems,
   },
