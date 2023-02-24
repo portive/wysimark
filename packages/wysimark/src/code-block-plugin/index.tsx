@@ -1,7 +1,7 @@
 import React from "react"
 import { useSelected } from "slate-react"
 
-import { createHotkeyHandler, createPlugin } from "~/src/sink"
+import { createHotkeyHandler, createPlugin, curryOne } from "~/src/sink"
 
 import { decorate } from "./decorate"
 import { createCodeBlockMethods } from "./methods"
@@ -10,7 +10,7 @@ import { $CodeBlock, $CodeLine } from "./styles"
 import { CodeBlockPluginCustomTypes } from "./types"
 export * from "./decorate"
 export * from "./types"
-import { Editor, Element, Node, Transforms } from "slate"
+import { normalizeNode } from "./normalizeNode"
 
 export const CodeBlockPlugin = () =>
   createPlugin<CodeBlockPluginCustomTypes>((editor) => {
@@ -35,64 +35,7 @@ export const CodeBlockPlugin = () =>
         isMaster(element) {
           if (element.type === "code-block") return true
         },
-        normalizeNode(entry) {
-          /**
-           * Code lines should only contain plain text.
-           *
-           * - If they contain void elements like images, remove them
-           * - If they contain non-void elements, unwrap them
-           *
-           * TODO:
-           *
-           * Convert pasted in elements to Markdown code
-           */
-          if (
-            Element.isElement(entry[0]) &&
-            entry[0].type === "code-block-line"
-          ) {
-            for (const [child, path] of Node.children(editor, entry[1])) {
-              if (!Element.isElement(child)) continue
-              if (editor.isVoid(child)) {
-                Transforms.removeNodes(editor, { at: path })
-                return true
-              } else {
-                Transforms.unwrapNodes(editor, { at: path })
-                return true
-              }
-            }
-          }
-          /**
-           * Code blocks should only contain code lines.
-           *
-           * - If they contain void blocks like images, remove them
-           * - If they contain non-void blocks, then convert them to code lines
-           *
-           * TODO:
-           *
-           * Convert pasted in elements to Markdown code
-           */
-          if (Element.isElement(entry[0]) && entry[0].type === "code-block") {
-            for (const [child, path] of Node.children(editor, entry[1])) {
-              if (
-                Element.isElement(child) &&
-                child.type !== "code-block-line"
-              ) {
-                if (editor.isVoid(child)) {
-                  Transforms.removeNodes(editor, { at: path })
-                  return true
-                } else {
-                  Transforms.removeNodes(editor, { at: path })
-                  Transforms.insertNodes(editor, {
-                    type: "code-block-line",
-                    children: [{ text: Node.string(child) }],
-                  })
-                  return true
-                }
-              }
-            }
-          }
-          return false
-        },
+        normalizeNode: curryOne(normalizeNode, editor),
       },
       editableProps: {
         decorate,
