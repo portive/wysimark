@@ -1,9 +1,3 @@
-import "./setup"
-
-import { useState } from "react"
-import { BaseEditor, BaseText, createEditor } from "slate"
-import { HistoryEditor, withHistory } from "slate-history"
-import { ReactEditor, RenderLeafProps, Slate, withReact } from "slate-react"
 import {
   AnchorPlugin,
   AnchorPluginCustomTypes,
@@ -64,8 +58,6 @@ import {
   UploadPlugin,
   UploadPluginCustomTypes,
 } from "wysimark/src/upload-plugin"
-
-import { initialValue } from "./initial-value"
 
 /**
  * TODO:
@@ -165,8 +157,8 @@ const Sink = createSink([
     ],
   }),
 ])
-
 const { withSink, SinkEditable } = Sink
+export { SinkEditable, withSink }
 
 export type PluginCustomTypes = MergePluginCustomTypes<
   [
@@ -190,70 +182,3 @@ export type PluginCustomTypes = MergePluginCustomTypes<
     ImagePluginCustomTypes
   ]
 >
-
-export type Element = PluginCustomTypes["Element"]
-export type Text = PluginCustomTypes["Text"]
-
-declare module "slate" {
-  interface CustomTypes {
-    Editor: BaseEditor &
-      ReactEditor &
-      HistoryEditor &
-      PluginCustomTypes["Editor"]
-    Element: PluginCustomTypes["Element"]
-    Text: BaseText & PluginCustomTypes["Text"]
-  }
-}
-
-function renderLeaf({ children, attributes }: RenderLeafProps) {
-  return <span {...attributes}>{children}</span>
-}
-
-export const MyEditor = () => {
-  /**
-   * TODO:
-   *
-   * We want to get a new instance of the editor if any of the plugins are
-   * updated.
-   *
-   * In order to get this to work, I think we need to create the Sink inside
-   * of the Component. Otherwise, React doesn't recognize the changes in the
-   * Editor components.
-   */
-
-  // function useEditor<T extends BaseEditor>(fn: () => T, deps: unknown[]): T {
-  //   const [editor, setEditor] = useState(fn)
-  //   useMemo(() => {
-  //     setEditor(fn())
-  //   }, deps)
-  //   return editor
-  // }
-
-  const [editor] = useState(() => {
-    const editor = createEditor()
-    const nextEditor = withSink(withReact(withHistory(editor)))
-    nextEditor.convertElement.addConvertElementType("paragraph")
-    return nextEditor
-  })
-
-  return (
-    <div>
-      <Slate editor={editor} value={initialValue}>
-        <SinkEditable renderLeaf={renderLeaf} />
-      </Slate>
-      <div className="">
-        {[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0].map((x, i) => (
-          <p key={i}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-          </p>
-        ))}
-      </div>
-    </div>
-  )
-}

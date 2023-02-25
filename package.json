@@ -17,6 +17,8 @@
     "typescript": "^4.9.4"
   },
   "scripts": {
+    "-- turbo": "# turbo",
+    "build": "turbo build",
     "-- demo": "# demo",
     "open": "yarn workspace demo open",
     "start:local": "yarn workspace demo start:local",

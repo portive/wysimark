@@ -122,11 +122,11 @@
      * - `skipLibCheck` improves performance but sacrifices accuracy with duplicate libraries
      */
     "skipLibCheck": true
-  }
+  },
   /**
    * Given the use of our monorepo, it's probably best for us to specify
    * these in each specific package.
    */
   // "include": ["**/*.ts", "**/*.tsx"],
-  // "exclude": ["node_modules"]
+  "exclude": ["node_modules", ".dist"]
 }

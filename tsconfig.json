@@ -1,3 +1,4 @@
 {
-  "extends": "tsconfig/tsconfig.custom.json"
+  "extends": "tsconfig/tsconfig.custom.json",
+  "exclude": ["node_modules", ".dist"]
 }
