@@ -7,7 +7,9 @@ import { serializeElements } from "./serialize-elements"
 import { serializeLine } from "./serialize-line"
 import { serializeTable } from "./serialize-table"
 
-export function serializeElement(element: Element): string {
+const LIST_INDENT_SIZE = 4
+
+export function serializeElement(element: Element, orders: number[]): string {
   switch (element.type) {
     case "anchor":
       return `[${serializeLine(element.children as Segment[])}](${
@@ -36,6 +38,28 @@ export function serializeElement(element: Element): string {
       return `${serializeLine(element.children as Segment[])}\n\n`
     case "table":
       return serializeTable(element)
+    case "table-row":
+    case "table-cell":
+    case "table-content":
+      throw new Error(
+        `Table elements should only be present as children of table which should be handled by serializeTable. Got ${element.type} may indicate an error in normalization.`
+      )
+    case "unordered-list-item": {
+      const indent = " ".repeat(element.depth * LIST_INDENT_SIZE)
+      return `${indent}- ${serializeLine(element.children as Segment[])}\n\n`
+    }
+    case "ordered-list-item": {
+      const indent = " ".repeat(element.depth * LIST_INDENT_SIZE)
+      return `${indent}${orders[element.depth]}. ${serializeLine(
+        element.children as Segment[]
+      )}\n\n`
+    }
+    case "task-list-item": {
+      const indent = " ".repeat(element.depth * LIST_INDENT_SIZE)
+      return `${indent}- [${element.checked ? "x" : " "}] ${serializeLine(
+        element.children as Segment[]
+      )}\n\n`
+    }
   }
   assertUnreachable(element)
 }

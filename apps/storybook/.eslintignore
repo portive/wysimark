@@ -1,0 +1,7 @@
+.build/
+.dist/
+.next/
+.npm/
+.vercel/
+cypress/
+node_modules/

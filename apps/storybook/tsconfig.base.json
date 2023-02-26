@@ -1,0 +1,93 @@
+{
+  /**
+   * Compiler Options
+   *
+   * NOTE:
+   *
+   * Ordered and grouped according to
+   * https://www.typescriptlang.org/tsconfig
+   */
+  "compilerOptions": {
+    /**
+     * Type Checking
+     *
+     * - `strict` to reduce type issues
+     */
+    "strict": true,
+    /**
+     * Interop Constraints
+     *
+     * - allow default imports like `import x from 'x'`
+     * - esModuleInterop supports supports
+     *   - `import * as x from 'x'` and
+     *   - `import x from 'x'`
+     * - ensure case sensitivity
+     * - strict isolated modules to help with interop
+     */
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    /**
+     * Languages and Environment
+     *
+     * - `target` and `lib` for modern JavaScript
+     */
+    "target": "esnext",
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "jsx": "preserve",
+    /**
+     * Modules
+     *
+     * - `baseUrl` to support `src/abc` to access `./src/abc`
+     * - `commonjs` for node projects
+     * - `node` for Node.js CommonJS implementation (`node12` or `nodenext` for future)
+     * - support JSON with `resolveJsonModule`
+     * - `rootDir` to specify what `.dist` root will be
+     * - `typeRoots` for where to look for premade types to be included
+     */
+    "baseUrl": ".",
+    /**
+     * Removed `module` from the base config because it is different in many
+     * tsconfig. By leaving it out here, we try to make it more explicit when
+     * extending tsconfig.base.json.
+     */
+    // "module": "commonjs",
+    /**
+     * Setting this to `node` means that TypeScript won't support `exports`.
+     * We are keeping it like this for now because there's a likelihood that
+     * others have it set up this way and we want our imported libraries to
+     * break if they are.
+     *
+     * https://github.com/microsoft/TypeScript/issues/33079#issuecomment-1043271180
+     *
+     * To fix the breakage, we would use `node12` or greater or `nodenext`
+     */
+    "moduleResolution": "node",
+    "paths": {
+      "~/*": ["*"],
+      /**
+       * Required to support `typeRoots`
+       * https://stackoverflow.com/questions/64287224/typeroots-fails-to-find-d-ts-declaration-files-in-project
+       */
+      "*": ["types/*"]
+    },
+    "resolveJsonModule": true,
+    "rootDir": ".",
+    "typeRoots": ["./types", "./node_modules/@types"],
+    /**
+     * Emit
+     *
+     * - Don't emit in the regular `tsconfig`. We only do it in `tsconfig.build`
+     */
+    "noEmit": true,
+    /**
+     * Completeness
+     *
+     * - `skipLibCheck` improves performance but sacrifices accuracy with duplicate libraries
+     */
+    "skipLibCheck": true
+  },
+  "include": ["**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"]
+}

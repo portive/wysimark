@@ -1,0 +1,7 @@
+/**
+ * Make your own customizations here
+ */
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {}
+}
