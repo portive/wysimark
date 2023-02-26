@@ -36,6 +36,9 @@ export function serializeElement(element: Element, orders: number[]): string {
       return "---\n\n"
     case "paragraph":
       return `${serializeLine(element.children as Segment[])}\n\n`
+    /**
+     * Table
+     */
     case "table":
       return serializeTable(element)
     case "table-row":
@@ -44,6 +47,9 @@ export function serializeElement(element: Element, orders: number[]): string {
       throw new Error(
         `Table elements should only be present as children of table which should be handled by serializeTable. Got ${element.type} may indicate an error in normalization.`
       )
+    /**
+     * List
+     */
     case "unordered-list-item": {
       const indent = " ".repeat(element.depth * LIST_INDENT_SIZE)
       return `${indent}- ${serializeLine(element.children as Segment[])}\n\n`
@@ -60,6 +66,17 @@ export function serializeElement(element: Element, orders: number[]): string {
         element.children as Segment[]
       )}\n\n`
     }
+    /**
+     * TODO: Handle upload attachments.
+     */
+    case "upload-attachment":
+      throw new Error(`Upload attachments not yet supported.`)
+    /**
+     * TODO: Handle image elements.
+     */
+    case "image-block":
+    case "image-inline":
+      throw new Error(`Image elements not yet supported.`)
   }
   assertUnreachable(element)
 }

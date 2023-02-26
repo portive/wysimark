@@ -52,7 +52,7 @@ export function check(
     console.log(
       `Error occurred in regenerated markdown (i.e. markdown converted to elements then converted again to markdown)`
     )
-    log(regeneratedMarkdown)
+    console.log(JSON.stringify(regeneratedMarkdown).replace(/\\n/g, "\n"))
     throw e
   }
 

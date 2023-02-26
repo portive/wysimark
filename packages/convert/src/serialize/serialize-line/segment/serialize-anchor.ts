@@ -8,7 +8,7 @@ export function serializeAnchor(anchor: AnchorElement): string {
   const commonAnchorMarks = getCommonAnchorMarks(anchor.children as Segment[])
   return (
     /**
-     * TODO:
+     * TODO: Handle anchor children more elegantly in serializeAnchor.
      *
      * We type cast `children` as `Segment` here because the children of an
      * `anchor` is limited to be Inline types. There are two things to do

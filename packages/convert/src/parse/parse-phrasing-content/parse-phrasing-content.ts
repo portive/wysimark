@@ -72,7 +72,7 @@ function parsePhrasingContent(
       return [{ text: "\n" }]
     case "footnote":
       /**
-       * TODO:
+       * TODO: Support footnotes
        *
        * This is a footnote, and should be converte to a suitable alternative or
        * for us to explicitly support a Footnote type in the future. At the

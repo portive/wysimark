@@ -68,7 +68,7 @@ import {
 import { initialValue } from "./initial-value"
 
 /**
- * TODO:
+ * TODO: Extract the `PluginCustomTypes` from the `Sink` object.
  *
  * One of the big challenges has been whether we can extract the
  * PluginCustomTypes from the `Sink` object.
@@ -208,14 +208,15 @@ function renderLeaf({ children, attributes }: RenderLeafProps) {
 
 export const MyEditor = () => {
   /**
-   * TODO:
+   * TODO: Create a custom hook that returns a new editor instance on plugin
+   * change
    *
    * We want to get a new instance of the editor if any of the plugins are
    * updated.
    *
-   * In order to get this to work, I think we need to create the Sink inside
-   * of the Component. Otherwise, React doesn't recognize the changes in the
-   * Editor components.
+   * In order to get this to work, I think we need to create the Sink inside of
+   * the Component. Otherwise, React doesn't recognize the changes in the Editor
+   * components.
    */
 
   // function useEditor<T extends BaseEditor>(fn: () => T, deps: unknown[]): T {

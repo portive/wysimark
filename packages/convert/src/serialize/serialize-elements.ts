@@ -10,39 +10,39 @@ export function serializeElements(elements: Element[]): string {
    * depth. This is used to generate the number for each ordered list item.
    */
   let orders: number[] = []
+
   for (const element of elements) {
-    /**
-     * TODO:
-     *
-     * This logic isn't correct yet except for in the simplest of cases.
-     * Namely, we have to reset the orders above the current depth level all
-     * the time by deleting them.
-     */
     if (element.type === "ordered-list-item") {
+      /**
+       * When we're at an ordered list item, we increment the order at the
+       * current depth level and we remove any orders at a deeper depth level.
+       */
       orders[element.depth] = (orders[element.depth] || 0) + 1
+      orders = orders.slice(0, element.depth + 1)
     } else if (
       element.type === "unordered-list-item" ||
       element.type === "task-list-item"
     ) {
       /**
-       * TODO:
-       *
-       * Check to make sure this logic is correct. I haven't tested it yet.
+       * When we're at an unordered list item, we slice the orders array to
+       * remove any orders at a deeper depth level.
        */
       orders = orders.slice(0, element.depth)
     } else {
       /**
-       * When we've switched to another element type, we can reset the orders
-       * at every depth level.
+       * When we're at any other element, we reset the orders array because
+       * we're no longer in a list.
        */
       orders = []
     }
+
     segments.push(serializeElement(element, orders))
   }
   /**
    * NOTE:
    *
    * We remove trailing whitespace because we want minimum viable markdown.
+   * It also makes it easier to test.
    */
   return segments.join("").trim()
 }
