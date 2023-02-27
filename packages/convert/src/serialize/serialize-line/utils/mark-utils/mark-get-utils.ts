@@ -30,9 +30,7 @@ export function getMarksFromSegment(segment: Segment): MarkKey[] {
     return getCommonAnchorMarks(segment.children as Segment[])
   } else {
     /**
-     * TODO:
-     *
-     * Need to handle images still.
+     * TODO: Need to handle images still.
      */
     throw new Error(`Unhandled type ${segment.type}`)
   }
@@ -43,10 +41,8 @@ export function getCommonAnchorMarks(segments: Segment[]): MarkKey[] {
   for (const segment of segments) {
     if (!isText(segment))
       /**
-       * TODO:
-       *
-       * This is not actually true. It can be an inline image which we still
-       * need to add.
+       * TODO: This is not actually true. It can be an inline image which we
+       * still need to add.
        */
       throw new Error(
         `Expected every segment in an anchor to be a Text segment`
