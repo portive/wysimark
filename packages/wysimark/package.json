@@ -16,6 +16,8 @@
     "change-case": "^4.1.2",
     "concurrently": "^7.2",
     "csstype": "^3.0.2",
+    "eslint": "^8.4.1",
+    "eslint-config-custom": "workspace:*",
     "jest": "^27",
     "nanoid": "^4.0.0",
     "plop": "^2",
