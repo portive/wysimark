@@ -29,6 +29,8 @@
     "lint:tsc": "yarn turbo lint:tsc",
     "-- preset": "# Run preset from ~/presets",
     "preset": "ts-node --project $HOME/presets/tsconfig.ts-node.json $HOME/presets/bin/index.ts",
+    "-- storybook": "# Run storybook app",
+    "storybook": "yarn workspace wysimark-storybook storybook",
     "-- end": "# end"
   }
 }
