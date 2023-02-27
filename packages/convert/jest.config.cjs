@@ -18,6 +18,7 @@ if (!fs.existsSync("tsconfig.ts-jest.json")) {
   throw new Error("tsconfig.ts-jest.json does not exist but is required.")
 }
 
+/** @type {import('ts-jest/dist/types').InitialOptionsTsJest} */
 module.exports = {
   setupFiles: ["./jest.setup.cjs"],
   /**

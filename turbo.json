@@ -15,6 +15,9 @@
     },
     "lint": {
       "outputs": []
+    },
+    "test:once": {
+      "outputs": []
     }
   }
 }
