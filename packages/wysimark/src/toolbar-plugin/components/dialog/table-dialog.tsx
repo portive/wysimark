@@ -32,14 +32,14 @@ export function TableDialog({
   const cols = createRange(5).map((i) => i + 1)
 
   const hoverCell = useCallback(
-    (x, y) => {
+    (x: number, y: number) => {
       setHover({ x, y })
     },
     [setHover]
   )
 
   const createTable = useCallback(
-    (x, y) => {
+    (x: number, y: number) => {
       editor.tablePlugin.insertTable(x, y)
       ReactEditor.focus(editor)
       close()
