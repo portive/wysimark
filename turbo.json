@@ -16,6 +16,10 @@
     "lint": {
       "outputs": []
     },
+    "ready": {
+      "dependsOn": ["lint", "test:once"],
+      "outputs": []
+    },
     "test:once": {
       "outputs": []
     }
