@@ -1,8 +1,8 @@
 import beautify from "json-beautify"
-import { Element } from "wysimark/src"
 
 import { parse, serialize } from ".."
 import { parseToAst } from "../parse"
+import { Element } from "../types"
 
 export { parse, serialize } from ".."
 

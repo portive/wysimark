@@ -1,5 +1,6 @@
-import { Element } from "wysimark/src"
 import { ListItemElement } from "wysimark/src/list-plugin/types"
+
+import { Element } from "../../types"
 
 /**
  * Provides a type guard for `ListItemElement`.

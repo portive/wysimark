@@ -1,5 +1,4 @@
-import { Text } from "wysimark/src"
-
+import { Text } from "../../../types"
 import { escapeText } from "../utils"
 
 export function serializeNonCodeText(text: Text): string {

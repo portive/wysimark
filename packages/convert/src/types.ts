@@ -1,5 +1,5 @@
-import type { Element, Text } from "wysimark/src"
 import { AnchorElement } from "wysimark/src/anchor-plugin"
+import type { Element, Text } from "wysimark/src/entry/SinkEditable"
 import { ImageInlineElement } from "wysimark/src/image-plugin/types"
 
 export { Element, Text }

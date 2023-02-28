@@ -1,6 +1,6 @@
 import type { List } from "mdast"
-import { Element } from "wysimark/src"
 
+import { Element } from "../../types"
 import { parseListItem } from "./parse-list-item"
 
 export function parseList(list: List, depth = 0): Element[] {

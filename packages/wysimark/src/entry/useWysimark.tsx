@@ -4,8 +4,7 @@ import { withHistory } from "slate-history"
 import { withReact } from "slate-react"
 
 import { parse, serialize } from "../../../convert/src"
-import { Element } from ".."
-import { withSink } from "./SinkEditable"
+import { Element, withSink } from "./SinkEditable"
 
 export type UseWysimarkValue = {
   editor: Editor

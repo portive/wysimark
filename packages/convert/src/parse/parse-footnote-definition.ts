@@ -1,6 +1,6 @@
 import type { FootnoteDefinition } from "mdast"
-import { Element } from "wysimark/src"
 
+import { Element } from "../types"
 import { parseContents } from "./parse-content"
 
 /**

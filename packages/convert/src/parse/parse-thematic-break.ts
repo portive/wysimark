@@ -1,4 +1,4 @@
-import { Element } from "wysimark/src"
+import { Element } from "../types"
 
 export function parseThematicBreak(): Element[] {
   return [

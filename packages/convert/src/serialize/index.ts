@@ -1,5 +1,4 @@
-import { Element } from "wysimark/src"
-
+import { Element } from "../types"
 import { normalizeElementListDepths } from "./normalize/normalizeElementListDepths"
 import { serializeElements } from "./serialize-elements"
 

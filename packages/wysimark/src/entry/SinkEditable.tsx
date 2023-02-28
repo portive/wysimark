@@ -1,3 +1,6 @@
+import { BaseEditor, BaseText } from "slate"
+import { HistoryEditor } from "slate-history"
+import { ReactEditor } from "slate-react"
 import {
   AnchorPlugin,
   AnchorPluginCustomTypes,
@@ -182,3 +185,17 @@ export type PluginCustomTypes = MergePluginCustomTypes<
     ImagePluginCustomTypes
   ]
 >
+
+export type Element = PluginCustomTypes["Element"]
+export type Text = PluginCustomTypes["Text"]
+
+declare module "slate" {
+  interface CustomTypes {
+    Editor: BaseEditor &
+      ReactEditor &
+      HistoryEditor &
+      PluginCustomTypes["Editor"]
+    Element: PluginCustomTypes["Element"]
+    Text: BaseText & PluginCustomTypes["Text"]
+  }
+}

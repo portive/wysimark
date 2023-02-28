@@ -1,6 +1,6 @@
 import type { ListItem } from "mdast"
-import { Element } from "wysimark/src"
 
+import { Element } from "../../types"
 import { parseListItemChild } from "./parse-list-item-child"
 
 export function parseListItem(

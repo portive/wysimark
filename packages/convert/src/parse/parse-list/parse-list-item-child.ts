@@ -1,6 +1,6 @@
 import type { ListItem } from "mdast"
-import { Element } from "wysimark/src"
 
+import { Element } from "../../types"
 import { parseContent } from "../parse-content"
 import { parsePhrasingContents } from "../parse-phrasing-content/parse-phrasing-content"
 import { parseList } from "./parse-list"

@@ -1,6 +1,4 @@
-import { Element } from "wysimark/src"
-
-import { Segment } from "../types"
+import { Element, Segment } from "../types"
 import { assertUnreachable } from "../utils"
 import { serializeCodeBlock } from "./serialize-code-block"
 import { serializeElements } from "./serialize-elements"

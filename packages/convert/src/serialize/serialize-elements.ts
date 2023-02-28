@@ -1,5 +1,4 @@
-import { Element } from "wysimark/src"
-
+import { Element } from "../types"
 import { serializeElement } from "./serialize-element"
 
 export function serializeElements(elements: Element[]): string {

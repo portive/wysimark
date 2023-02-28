@@ -1,6 +1,6 @@
 import type { Paragraph } from "mdast"
-import { Element } from "wysimark/src"
 
+import { Element } from "../types"
 import { parsePhrasingContents } from "./parse-phrasing-content/parse-phrasing-content"
 
 export function parseParagraph(content: Paragraph): Element[] {

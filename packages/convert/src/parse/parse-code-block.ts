@@ -1,5 +1,6 @@
 import type { Code } from "mdast"
-import { Element } from "wysimark/src"
+
+import { Element } from "../types"
 
 export function parseCodeBlock(content: Code): Element[] {
   const codeLines = content.value.split("\n")

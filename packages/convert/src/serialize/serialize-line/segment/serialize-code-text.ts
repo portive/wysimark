@@ -1,4 +1,4 @@
-import { Text } from "wysimark/src"
+import { Text } from "../../../types"
 
 export function serializeCodeText(text: Text): string {
   let max = 0
