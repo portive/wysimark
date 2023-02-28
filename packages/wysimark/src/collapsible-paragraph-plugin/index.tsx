@@ -23,7 +23,7 @@ export type CollapsibleParagraphPluginCustomTypes = {
   Element: ParagraphElement
 }
 
-export const CollapsibleParagraphPlugin = () =>
+export const CollapsibleParagraphPlugin =
   createPlugin<CollapsibleParagraphPluginCustomTypes>((editor) => {
     editor.convertElement.addConvertElementType("paragraph")
     editor.collapsibleParagraph = {

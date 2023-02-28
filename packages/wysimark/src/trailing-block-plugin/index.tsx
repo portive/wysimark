@@ -7,18 +7,8 @@ type TrailingBlockPluginCustomType = {
   Editor: { allowTrailingBlock: true }
 }
 
-type Config = {
-  /**
-   * This needs to be a function instead of an Object because we want the
-   * resulting object to be reference unique. This is because the object is
-   * used in Slate's WeakMap and we end up with errors related to duplicate
-   * keys.
-   */
-  createTrailingBlock: () => Element
-}
-
-export const TrailingBlockPlugin = (config: Config) =>
-  createPlugin<TrailingBlockPluginCustomType>((editor) => {
+export const TrailingBlockPlugin = createPlugin<TrailingBlockPluginCustomType>(
+  (editor) => {
     editor.allowTrailingBlock = true
     return {
       name: "trailing-block",
@@ -47,12 +37,17 @@ export const TrailingBlockPlugin = (config: Config) =>
             Editor.hasBlocks(editor, lastElement) ||
             Editor.isVoid(editor, lastElement)
           ) {
-            Transforms.insertNodes(editor, config.createTrailingBlock(), {
-              at: Path.next(lastPath),
-            })
+            Transforms.insertNodes(
+              editor,
+              { type: "paragraph", children: [{ text: "" }] },
+              {
+                at: Path.next(lastPath),
+              }
+            )
           }
           return true
         },
       },
     }
-  })
+  }
+)

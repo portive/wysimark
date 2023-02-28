@@ -12,8 +12,8 @@ export * from "./decorate"
 export * from "./types"
 import { normalizeNode } from "./normalizeNode"
 
-export const CodeBlockPlugin = () =>
-  createPlugin<CodeBlockPluginCustomTypes>((editor) => {
+export const CodeBlockPlugin = createPlugin<CodeBlockPluginCustomTypes>(
+  (editor) => {
     editor.codeBlock = createCodeBlockMethods(editor)
     return {
       name: "code-block",
@@ -76,4 +76,5 @@ export const CodeBlockPlugin = () =>
         },
       },
     }
-  })
+  }
+)

@@ -32,72 +32,71 @@ export type MarksPluginCustomTypes = {
   Text: MarksText
 }
 
-export const MarksPlugin = () =>
-  createPlugin<MarksPluginCustomTypes>((editor) => {
-    editor.marksPlugin = createMarksMethods(editor)
-    // const originalInsertText = editor.insertText
-    // editor.insertText = (text) => {
-    //   console.log("tirggered")
-    //   if (text === "*") {
-    //     return
-    //   }
-    //   originalInsertText(text)
-    // }
-    const hotkeyHandler = createHotkeyHandler({
-      "mod+b": editor.marksPlugin.toggleBold,
-      "mod+i": editor.marksPlugin.toggleItalic,
-      "mod+u": editor.marksPlugin.toggleUnderline,
-      "super+p": editor.marksPlugin.toggleSup,
-      "super+b": editor.marksPlugin.toggleSub,
-      "super+k": editor.marksPlugin.toggleStrike,
-    })
-    return {
-      name: "marks",
-      editor: {
-        insertText: curryOne(insertText, editor),
-      },
-      editableProps: {
-        renderLeaf: ({ leaf, children }) => {
-          return (
-            <$MarksSpan
-              className={clsx({
-                "--bold": leaf.bold,
-                "--italic": leaf.italic,
-                "--underline": leaf.underline,
-                "--sup": leaf.sup,
-                "--sub": leaf.sub,
-                "--strike": leaf.strike,
-              })}
-            >
-              {children}
-            </$MarksSpan>
-          )
-        },
-        onKeyDown: (e) => {
-          if (hotkeyHandler(e)) return true
-          // if (
-          //   autocompleteMarker(editor, e, {
-          //     triggerMarker: "`",
-          //     regexp: /([`])(\S.*?)([`])$/,
-          //     mark: "code",
-          //   })
-          // ) {
-          //   return true
-          // }
-          // if (
-          //   autocompleteMarker(editor, e, {
-          //     triggerMarker: "*",
-          //     regexp: /([*])(.+?)([*])$/,
-          //     mark: "italic",
-          //   })
-          // ) {
-          //   return true
-          // }
-          return false
-        },
-      },
-    }
+export const MarksPlugin = createPlugin<MarksPluginCustomTypes>((editor) => {
+  editor.marksPlugin = createMarksMethods(editor)
+  // const originalInsertText = editor.insertText
+  // editor.insertText = (text) => {
+  //   console.log("tirggered")
+  //   if (text === "*") {
+  //     return
+  //   }
+  //   originalInsertText(text)
+  // }
+  const hotkeyHandler = createHotkeyHandler({
+    "mod+b": editor.marksPlugin.toggleBold,
+    "mod+i": editor.marksPlugin.toggleItalic,
+    "mod+u": editor.marksPlugin.toggleUnderline,
+    "super+p": editor.marksPlugin.toggleSup,
+    "super+b": editor.marksPlugin.toggleSub,
+    "super+k": editor.marksPlugin.toggleStrike,
   })
+  return {
+    name: "marks",
+    editor: {
+      insertText: curryOne(insertText, editor),
+    },
+    editableProps: {
+      renderLeaf: ({ leaf, children }) => {
+        return (
+          <$MarksSpan
+            className={clsx({
+              "--bold": leaf.bold,
+              "--italic": leaf.italic,
+              "--underline": leaf.underline,
+              "--sup": leaf.sup,
+              "--sub": leaf.sub,
+              "--strike": leaf.strike,
+            })}
+          >
+            {children}
+          </$MarksSpan>
+        )
+      },
+      onKeyDown: (e) => {
+        if (hotkeyHandler(e)) return true
+        // if (
+        //   autocompleteMarker(editor, e, {
+        //     triggerMarker: "`",
+        //     regexp: /([`])(\S.*?)([`])$/,
+        //     mark: "code",
+        //   })
+        // ) {
+        //   return true
+        // }
+        // if (
+        //   autocompleteMarker(editor, e, {
+        //     triggerMarker: "*",
+        //     regexp: /([*])(.+?)([*])$/,
+        //     mark: "italic",
+        //   })
+        // ) {
+        //   return true
+        // }
+        return false
+      },
+    },
+  }
+})
 
 // function autocompleteMarker(
 //   editor: Editor,

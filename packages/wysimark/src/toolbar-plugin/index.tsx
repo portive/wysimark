@@ -11,8 +11,8 @@ export type ToolbarPluginCustomTypes = {
   Editor: ToolbarEditor
 }
 
-export const ToolbarPlugin = () =>
-  createPlugin<ToolbarPluginCustomTypes>((editor) => {
+export const ToolbarPlugin = createPlugin<ToolbarPluginCustomTypes>(
+  (editor) => {
     editor.toolbar = true
     return {
       name: "toolbar",
@@ -20,4 +20,5 @@ export const ToolbarPlugin = () =>
       renderEditable,
       editableProps: {},
     }
-  })
+  }
+)

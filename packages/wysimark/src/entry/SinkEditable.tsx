@@ -88,29 +88,24 @@ import {
  * with an emphasis on how we wrote the `Element` portion.
  */
 const Sink = createSink([
-  ConvertElementPlugin(),
-  AnchorPlugin(),
-  HeadingPlugin(),
-  MarksPlugin(),
-  InlineCodePlugin(),
-  BlockQuotePlugin(),
-  CodeBlockPlugin(),
-  TablePlugin(),
-  HorizontalRulePlugin(),
-  TrailingBlockPlugin({
-    createTrailingBlock: () => ({
-      type: "paragraph",
-      children: [{ text: "" }],
-    }),
-  }),
-  ListPlugin(),
-  AtomicDeletePlugin(),
-  NormalizeAfterDeletePlugin(),
-  CollapsibleParagraphPlugin(),
-  ThemePlugin(),
-  ToolbarPlugin(),
+  ConvertElementPlugin,
+  AnchorPlugin,
+  HeadingPlugin,
+  MarksPlugin,
+  InlineCodePlugin,
+  BlockQuotePlugin,
+  CodeBlockPlugin,
+  TablePlugin,
+  HorizontalRulePlugin,
+  TrailingBlockPlugin,
+  ListPlugin,
+  AtomicDeletePlugin,
+  NormalizeAfterDeletePlugin,
+  CollapsibleParagraphPlugin,
+  ThemePlugin,
+  ToolbarPlugin,
   UploadPlugin({ authToken: process.env.NEXT_PUBLIC_PORTIVE_AUTH_TOKEN }),
-  UploadAttachmentPlugin(),
+  UploadAttachmentPlugin,
   ImagePlugin({
     imageBlockPresets: [
       /**

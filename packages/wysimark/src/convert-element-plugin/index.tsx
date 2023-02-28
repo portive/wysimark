@@ -11,7 +11,7 @@ export type ConvertElementPluginCustomTypes = {
   Editor: ConvertElementEditor
 }
 
-export const ConvertElementPlugin = () =>
+export const ConvertElementPlugin =
   createPlugin<ConvertElementPluginCustomTypes>((editor) => {
     editor.convertElement = createConvertElementMethods(editor)
     return {

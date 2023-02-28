@@ -31,8 +31,8 @@ export type AtomicDeletePluginCustomTypes = {
  * - User backward deletes at the start of a code block. Text from inside the
  *   code block is pulled outside the code block.
  */
-export const AtomicDeletePlugin = () =>
-  createPlugin<AtomicDeletePluginCustomTypes>((editor) => {
+export const AtomicDeletePlugin = createPlugin<AtomicDeletePluginCustomTypes>(
+  (editor) => {
     editor.atomicDelete = true
     return {
       name: "atomic-delete",
@@ -55,4 +55,5 @@ export const AtomicDeletePlugin = () =>
         },
       },
     }
-  })
+  }
+)

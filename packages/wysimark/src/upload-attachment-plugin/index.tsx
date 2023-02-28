@@ -36,7 +36,7 @@ export type UploadAttachmentPluginCustomTypes = {
   Element: UploadAttachmentElement
 }
 
-export const UploadAttachmentPlugin = () =>
+export const UploadAttachmentPlugin =
   createPlugin<UploadAttachmentPluginCustomTypes>((editor) => {
     editor.uploadAttachment = createUploadAttachmentMethods(editor)
     editor.upload.onUploadFile = ({ hashUrl, file }) => {

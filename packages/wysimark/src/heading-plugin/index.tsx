@@ -13,8 +13,8 @@ import { createHeadingMethods } from "./methods"
 import { $Heading } from "./styles"
 import { HeadingPluginCustomTypes } from "./types"
 
-export const HeadingPlugin = () =>
-  createPlugin<HeadingPluginCustomTypes>((editor) => {
+export const HeadingPlugin = createPlugin<HeadingPluginCustomTypes>(
+  (editor) => {
     editor.convertElement.addConvertElementType("heading")
     editor.heading = createHeadingMethods(editor)
     const hotkeyHandler = createHotkeyHandler({
@@ -56,4 +56,5 @@ export const HeadingPlugin = () =>
         },
       },
     }
-  })
+  }
+)

@@ -49,8 +49,8 @@ function matchBlockQuoteSafe(node: Node) {
   )
 }
 
-export const BlockQuotePlugin = () =>
-  createPlugin<BlockQuotePluginCustomTypes>((editor) => {
+export const BlockQuotePlugin = createPlugin<BlockQuotePluginCustomTypes>(
+  (editor) => {
     editor.supportsBlockQuote = true
     editor.blockQuotePlugin = {
       indent: () => {
@@ -98,4 +98,5 @@ export const BlockQuotePlugin = () =>
         }),
       },
     }
-  })
+  }
+)

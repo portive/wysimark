@@ -7,7 +7,7 @@ import { createHorizontalRuleMethods } from "./methods"
 import { HorizontalRulePluginCustomTypes } from "./types"
 export * from "./types"
 
-export const HorizontalRulePlugin = () =>
+export const HorizontalRulePlugin =
   createPlugin<HorizontalRulePluginCustomTypes>((editor) => {
     editor.horizontalRule = createHorizontalRuleMethods(editor)
     return {

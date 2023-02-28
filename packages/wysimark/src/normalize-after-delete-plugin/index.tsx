@@ -34,7 +34,7 @@ function forceNormalizeNearestElement(editor: Editor) {
  * Element. If neither of these are true, the delete will cause a normalzation
  * on its own because the text will have changed.
  */
-export const NormalizeAfterDeletePlugin = () =>
+export const NormalizeAfterDeletePlugin =
   createPlugin<NormalizeAfterDeletePluginCustomTypes>((editor) => {
     editor.normalizeAfterDelete = true
     return {

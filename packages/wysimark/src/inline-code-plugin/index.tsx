@@ -5,8 +5,8 @@ import { InlineCodePluginCustomTypes } from "./types"
 export * from "./styles"
 export * from "./types"
 
-export const InlineCodePlugin = () =>
-  createPlugin<InlineCodePluginCustomTypes>((editor) => {
+export const InlineCodePlugin = createPlugin<InlineCodePluginCustomTypes>(
+  (editor) => {
     if (!editor.marksPlugin)
       throw new Error(
         "InlineCodePlugin has a dependency on the MarksPlugin but the MarksPlugin has not been added or is added after the InlineCodePlugin"
@@ -40,4 +40,5 @@ export const InlineCodePlugin = () =>
         }),
       },
     }
-  })
+  }
+)

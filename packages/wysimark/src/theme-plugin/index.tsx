@@ -11,20 +11,19 @@ export type ThemePluginCustomTypes = {
   Editor: ThemeEditor
 }
 
-export const ThemePlugin = () =>
-  createPlugin<ThemePluginCustomTypes>((editor) => {
-    editor.theme = true
-    return {
-      name: "theme",
-      editor: {},
-      renderEditable: ({ attributes, Editable }) => {
-        return (
-          <>
-            <GlobalStyles />
-            <Editable {...attributes} />
-          </>
-        )
-      },
-      editableProps: {},
-    }
-  })
+export const ThemePlugin = createPlugin<ThemePluginCustomTypes>((editor) => {
+  editor.theme = true
+  return {
+    name: "theme",
+    editor: {},
+    renderEditable: ({ attributes, Editable }) => {
+      return (
+        <>
+          <GlobalStyles />
+          <Editable {...attributes} />
+        </>
+      )
+    },
+    editableProps: {},
+  }
+})
