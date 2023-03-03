@@ -19,7 +19,7 @@ export type RenderEditable = (props: RenderEditableProps) => React.ReactElement
  * Once a Plugin is executed, it returns this Object that defines how the
  * plugin should behave.
  */
-export type PluginObject<T extends BasePluginCustomTypes> = {
+export type PluginPolicy<T extends BasePluginCustomTypes> = {
   /**
    * A string literal that uniquely identifies this plugin
    */

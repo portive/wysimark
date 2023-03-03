@@ -1,7 +1,7 @@
 import { Editor } from "slate"
 
 import { BasePluginCustomTypes } from "./plugin-custom-types"
-import { PluginObject } from "./plugin-object"
+import { PluginPolicy } from "./plugin-object"
 
 export type PluginFunction<T extends BasePluginCustomTypes> = (
   /**
@@ -10,4 +10,4 @@ export type PluginFunction<T extends BasePluginCustomTypes> = (
    * for Transform methods and such that take an `Editor` object.
    */
   editor: T["Editor"] & Editor
-) => PluginObject<T>
+) => PluginPolicy<T>

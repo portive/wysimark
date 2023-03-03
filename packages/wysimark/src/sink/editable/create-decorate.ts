@@ -1,7 +1,7 @@
 import { NodeEntry, Range } from "slate"
 import { EditableProps } from "slate-react/dist/components/editable"
 
-import { ArraySafePluginCustomTypes, PluginObject } from "../types"
+import { ArraySafePluginCustomTypes, PluginPolicy } from "../types"
 import { defined } from "./utils"
 
 /**
@@ -13,7 +13,7 @@ import { defined } from "./utils"
  */
 export function createDecorate(
   originalFn: EditableProps["decorate"],
-  plugins: PluginObject<ArraySafePluginCustomTypes>[]
+  plugins: PluginPolicy<ArraySafePluginCustomTypes>[]
 ): NonNullable<EditableProps["decorate"]> {
   const fns = plugins
     .map((plugin) => plugin.editableProps?.decorate)

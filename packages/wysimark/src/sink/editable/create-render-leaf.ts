@@ -2,7 +2,7 @@ import { cloneElement } from "react"
 import { RenderLeafProps } from "slate-react"
 import { EditableProps } from "slate-react/dist/components/editable"
 
-import { ArraySafePluginCustomTypes, PluginObject } from "../types"
+import { ArraySafePluginCustomTypes, PluginPolicy } from "../types"
 import { defined } from "./utils"
 
 /**
@@ -16,7 +16,7 @@ import { defined } from "./utils"
 
 export function createRenderLeaf(
   originalFn: EditableProps["renderLeaf"],
-  plugins: PluginObject<ArraySafePluginCustomTypes>[]
+  plugins: PluginPolicy<ArraySafePluginCustomTypes>[]
 ): NonNullable<EditableProps["renderLeaf"]> {
   if (originalFn === undefined) {
     throw new Error(`renderLeaf was not defined on SinkEditable`)

@@ -33,6 +33,11 @@ module.exports = {
      */
     "@typescript-eslint/ban-ts-comment": "off",
     /**
+     * We want to allow @ts-ignore because if we are using it, it's because we
+     * know what we are doing.
+     */
+    "@typescript-eslint/ban-types": ["error", { types: { "{}": false } }],
+    /**
      * We don't require explicit return types as sometimes we want them
      * derived from the function.
      */

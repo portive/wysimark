@@ -1,6 +1,6 @@
 import { EditableProps } from "slate-react/dist/components/editable"
 
-import { ArraySafePluginCustomTypes, PluginObject } from "../types"
+import { ArraySafePluginCustomTypes, PluginPolicy } from "../types"
 
 /**
  * Create the substituted event handler method.
@@ -40,7 +40,7 @@ import { ArraySafePluginCustomTypes, PluginObject } from "../types"
  * automatically; however, this appears to be impossible and may be due to a
  * current limitation of TypeScript.
  */
-type BasePluginObject = PluginObject<ArraySafePluginCustomTypes>
+type BasePluginObject = PluginPolicy<ArraySafePluginCustomTypes>
 
 /**
  * Here we define strictly the type for a method that creates an Event Handler

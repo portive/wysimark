@@ -1,6 +1,6 @@
 import { Element } from "slate"
 
-import { BasePluginCustomTypes, PluginObject } from ".."
+import { BasePluginCustomTypes, PluginPolicy } from ".."
 
 /**
  * SinkEditor just adds a `sink` object where we drop all of our sink
@@ -30,6 +30,6 @@ export type SinkEditor<
   isSlave: (node: Element) => boolean
   isStandalone: (node: Element) => boolean
   sink: {
-    plugins: PluginObject<T>[]
+    plugins: PluginPolicy<T>[]
   }
 }
