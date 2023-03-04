@@ -1,19 +1,26 @@
-import { styled } from "goober"
-import { forwardRef } from "react"
+import { useCallback } from "react"
+import { useWysimark, Wysimark } from "wysimark/src/entry"
 
-import { MyEditor } from "../components/my-editor"
+export default function Page() {
+  const wysimark = useWysimark({ initialValue: "# Hello World" })
 
-const $Page = styled("div", forwardRef)`
-  max-width: 720px;
-  margin: 4em auto;
-`
+  const getValue = useCallback(() => {
+    const value = wysimark.getValue()
+    console.log(value)
+  }, [wysimark])
 
-const Index = () => {
+  const resetValue = useCallback(() => {
+    wysimark.resetValue(`# This is a reset with the reset button
+    
+And this is a paragraph`)
+  }, [wysimark])
+
   return (
-    <$Page>
-      <MyEditor />
-    </$Page>
+    <div style={{ maxWidth: 720, margin: "2em auto" }}>
+      <h1>Wysimark</h1>
+      <button onClick={getValue}>Get</button>
+      <button onClick={resetValue}>Reset</button>
+      <Wysimark wysimark={wysimark} />
+    </div>
   )
 }
-
-export default Index

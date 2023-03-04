@@ -2,7 +2,7 @@ import { BaseEditor, Element } from "slate"
 import { HistoryEditor } from "slate-history"
 import { ReactEditor } from "slate-react"
 
-import { BasePluginCustomTypes, BasePluginPolicy, PluginPolicy } from ".."
+import { BasePluginPolicy } from ".."
 
 /**
  * SinkEditor just adds a `sink` object where we drop all of our sink
