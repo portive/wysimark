@@ -1,17 +1,19 @@
 import { SinkEditable } from "../editable"
 import { createWithSink } from "../editor"
-import { ArraySafePluginCustomTypes, PluginFunction } from "../types"
+import {
+  ArraySafePluginCustomTypes,
+  BasePluginFn,
+  TypedPluginFunction,
+} from "../types"
 
 /**
  * A sink is just a function
  */
-export const createSink = (
-  pluginFunctions: PluginFunction<ArraySafePluginCustomTypes>[]
-) => {
+export const createSink = (pluginFunctions: BasePluginFn[]) => {
   const withSink = createWithSink(pluginFunctions)
 
   const returnValue = { withSink, SinkEditable }
   return returnValue as {
-    PluginFunctions: PluginFunction<ArraySafePluginCustomTypes>
+    PluginFunctions: TypedPluginFunction<ArraySafePluginCustomTypes>
   } & typeof returnValue
 }

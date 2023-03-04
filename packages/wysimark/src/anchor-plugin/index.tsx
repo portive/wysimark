@@ -27,27 +27,29 @@ export type AnchorPluginCustomTypes = {
   Element: AnchorElement
 }
 
-export const AnchorPlugin = createPlugin<AnchorPluginCustomTypes>((editor) => {
-  editor.anchor = createAnchorMethods(editor)
-  return {
-    name: "anchor",
-    editor: {
-      isInline(element) {
-        if (element.type === "anchor") return true
+export const AnchorPlugin = createPlugin<AnchorPluginCustomTypes>(
+  (editor, options, { createPolicy }) => {
+    editor.anchor = createAnchorMethods(editor)
+    return createPolicy({
+      name: "anchor",
+      editor: {
+        isInline(element) {
+          if (element.type === "anchor") return true
+        },
+        normalizeNode: curryOne(normalizeNode, editor),
       },
-      normalizeNode: curryOne(normalizeNode, editor),
-    },
-    editableProps: {
-      onPaste: curryOne(onPaste, editor),
-      renderElement: ({ element, attributes, children }) => {
-        if (element.type === "anchor") {
-          return (
-            <Anchor element={element} attributes={attributes}>
-              {children}
-            </Anchor>
-          )
-        }
+      editableProps: {
+        onPaste: curryOne(onPaste, editor),
+        renderElement: ({ element, attributes, children }) => {
+          if (element.type === "anchor") {
+            return (
+              <Anchor element={element} attributes={attributes}>
+                {children}
+              </Anchor>
+            )
+          }
+        },
       },
-    },
+    })
   }
-})
+)

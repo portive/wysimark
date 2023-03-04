@@ -1,10 +1,10 @@
 import type { Image } from "mdast"
-import { ImageInterface } from "wysimark/src/image-plugin/types"
+import { ImageSharedElement } from "wysimark/src/image-plugin/types"
 
 import { Segment } from "../../../types"
 import { imageParsers } from "./image-parsers"
 
-export type ImageData = Omit<ImageInterface, "children">
+export type ImageData = Omit<ImageSharedElement, "children">
 
 /**
  * Iterate through all the image parsers utnil we find one that returns

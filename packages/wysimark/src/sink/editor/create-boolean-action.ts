@@ -1,6 +1,6 @@
-import { BaseEditor, Element, Node } from "slate"
+import { Element, Node } from "slate"
 
-import { BasePluginCustomTypes, PluginPolicy, SinkEditor } from "../types"
+import { BasePluginPolicy, FullSinkEditor } from "../types"
 
 /**
  * Creates an overrideable editor action that takes a `Node` and returns a
@@ -16,9 +16,9 @@ import { BasePluginCustomTypes, PluginPolicy, SinkEditor } from "../types"
 export function createBooleanAction<
   K extends "isVoid" | "isInline" | "isMaster" | "isSlave" | "isStandalone"
 >(
-  editor: BaseEditor & SinkEditor,
+  editor: FullSinkEditor,
   actionKey: K,
-  plugins: PluginPolicy<BasePluginCustomTypes>[]
+  plugins: BasePluginPolicy[]
 ): (node: Element) => boolean {
   const originalAction = editor[actionKey]
   const actionPlugins = plugins.filter((plugin) => plugin.editor?.[actionKey])

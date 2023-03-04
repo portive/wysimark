@@ -1,4 +1,4 @@
-import { BaseText, Text } from "slate"
+import { Text } from "slate"
 
 import { createCodeBlockMethods } from "./methods"
 
@@ -23,5 +23,5 @@ export type CodeBlockPluginCustomTypes = {
   Name: "code-block"
   Editor: CodeBlockEditor
   Element: CodeBlockElement | CodeBlockLineElement
-  Text: BaseText & { prismToken?: string }
+  Text: { text: string; prismToken?: string }
 }

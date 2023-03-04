@@ -1,6 +1,6 @@
 import { BaseEditor } from "slate"
 
-import { BasePluginCustomTypes, PluginPolicy } from "../types"
+import { BasePluginCustomTypes, BasePluginPolicy, PluginPolicy } from "../types"
 
 /**
  * Creates an overrideable editor action like `insertBreak` or `deleteBackward`
@@ -23,11 +23,7 @@ export function createVoidAction<
     | "insertFragment"
     | "insertNode"
     | "insertText"
->(
-  editor: BaseEditor,
-  actionKey: K,
-  plugins: PluginPolicy<BasePluginCustomTypes>[]
-) {
+>(editor: BaseEditor, actionKey: K, plugins: BasePluginPolicy[]) {
   const originalAction = editor[actionKey]
   const actionPlugins = plugins.filter((plugin) => plugin.editor?.[actionKey])
   return function nextVoidAction(...args: Parameters<BaseEditor[K]>[]): void {

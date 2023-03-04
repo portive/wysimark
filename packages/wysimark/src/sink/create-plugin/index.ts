@@ -1,8 +1,5 @@
-import { PluginFunction } from "../types"
-import {
-  CreatePluginOutputCustomTypes,
-  InputPluginCustomTypes,
-} from "../types/plugin/plugin-custom-types-for-create"
+import { BasePluginFn, TypedPluginFunction } from "../types"
+import { InputPluginCustomTypes } from "../types/plugin/plugin-custom-types-for-create"
 
 /**
  * The `createPlugin` method here takes a function and returns the same
@@ -31,7 +28,7 @@ import {
  * on having that done explicitly.
  */
 export const createPlugin = <T extends InputPluginCustomTypes>(
-  fn: PluginFunction<CreatePluginOutputCustomTypes<T>>
+  fn: TypedPluginFunction<T>
 ) => {
-  return fn as PluginFunction<CreatePluginOutputCustomTypes<T>>
+  return fn as BasePluginFn
 }

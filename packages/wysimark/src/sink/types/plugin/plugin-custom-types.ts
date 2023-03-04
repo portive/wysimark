@@ -1,5 +1,3 @@
-import { BaseEditor, BaseElement, BaseText } from "slate"
-
 /**
  * When creating a single PluginCustomType, we want to constrain it as much as
  * possible. These are the constraints.
@@ -17,15 +15,15 @@ export type BasePluginCustomTypes = {
    * This is the **extension** to the Editor and not the combined editor.
    * In other words, the properties here will not be part of `BaseEditor`.
    */
-  Editor: Omit<Record<string, unknown>, keyof BaseEditor>
+  Editor: Record<string, unknown>
   /**
    * Element should extend the BaseElement
    */
-  Element: BaseElement
+  Element: Record<string, unknown>
   /**
    * Text should extend the BaseText
    */
-  Text: BaseText
+  Text: Record<string, unknown>
 }
 
 /**

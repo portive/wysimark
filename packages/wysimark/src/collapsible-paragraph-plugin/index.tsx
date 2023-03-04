@@ -48,10 +48,15 @@ export const CollapsibleParagraphPlugin =
         normalizeNode: curryOne(normalizeNode, editor),
       },
       editableProps: {
-        renderElement: (props) => {
-          switch (props.element.type) {
-            case "paragraph":
-              return <Paragraph {...props} />
+        renderElement: ({ element, attributes, children }) => {
+          switch (element.type) {
+            case "paragraph": {
+              return (
+                <Paragraph element={element} attributes={attributes}>
+                  {children}
+                </Paragraph>
+              )
+            }
           }
         },
         onKeyDown: createHotkeyHandler({

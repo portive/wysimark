@@ -37,31 +37,33 @@ export type UploadAttachmentPluginCustomTypes = {
 }
 
 export const UploadAttachmentPlugin =
-  createPlugin<UploadAttachmentPluginCustomTypes>((editor) => {
-    editor.uploadAttachment = createUploadAttachmentMethods(editor)
-    editor.upload.onUploadFile = ({ hashUrl, file }) => {
-      Transforms.insertNodes(editor, {
-        type: "upload-attachment",
-        title: file.name,
-        url: hashUrl,
-        bytes: file.size,
-        children: [{ text: "" }],
+  createPlugin<UploadAttachmentPluginCustomTypes>(
+    (editor, options, { createPolicy }) => {
+      editor.uploadAttachment = createUploadAttachmentMethods(editor)
+      editor.upload.onUploadFile = ({ hashUrl, file }) => {
+        Transforms.insertNodes(editor, {
+          type: "upload-attachment",
+          title: file.name,
+          url: hashUrl,
+          bytes: file.size,
+          children: [{ text: "" }],
+        })
+        return true
+      }
+      return createPolicy({
+        name: "upload-attachment",
+        editor: {
+          normalizeNode: curryOne(normalizeNode, editor),
+          isVoid: (el) => {
+            if (el.type === "upload-attachment") return true
+          },
+          isInline: (el) => {
+            if (el.type === "upload-attachment") return true
+          },
+        },
+        editableProps: {
+          renderElement,
+        },
       })
-      return true
     }
-    return {
-      name: "upload-attachment",
-      editor: {
-        normalizeNode: curryOne(normalizeNode, editor),
-        isVoid: (el) => {
-          if (el.type === "upload-attachment") return true
-        },
-        isInline: (el) => {
-          if (el.type === "upload-attachment") return true
-        },
-      },
-      editableProps: {
-        renderElement,
-      },
-    }
-  })
+  )

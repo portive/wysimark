@@ -1,7 +1,11 @@
 import { RenderElementProps } from "slate-react"
 import { EditableProps } from "slate-react/dist/components/editable"
 
-import { ArraySafePluginCustomTypes, PluginPolicy } from "../types"
+import {
+  ArraySafePluginCustomTypes,
+  BasePluginPolicy,
+  PluginPolicy,
+} from "../types"
 import { defined } from "./utils"
 
 /**
@@ -18,7 +22,7 @@ import { defined } from "./utils"
 
 export function createRenderElement(
   originalFn: EditableProps["renderElement"],
-  plugins: PluginPolicy<ArraySafePluginCustomTypes>[]
+  plugins: BasePluginPolicy[]
 ): NonNullable<EditableProps["renderElement"]> {
   const fns = plugins
     .map((plugin) => plugin.editableProps?.renderElement)

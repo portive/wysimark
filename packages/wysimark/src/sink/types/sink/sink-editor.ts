@@ -1,14 +1,14 @@
-import { Element } from "slate"
+import { BaseEditor, Element } from "slate"
+import { HistoryEditor } from "slate-history"
+import { ReactEditor } from "slate-react"
 
-import { BasePluginCustomTypes, PluginPolicy } from ".."
+import { BasePluginCustomTypes, BasePluginPolicy, PluginPolicy } from ".."
 
 /**
  * SinkEditor just adds a `sink` object where we drop all of our sink
  * related data on.
  */
-export type SinkEditor<
-  T extends BasePluginCustomTypes = BasePluginCustomTypes
-> = {
+export type SinkEditor = {
   /**
    * a master Element is one that has one or more elements that are depedant
    * on it. For example, a `table` Element. For clarity, a `table-row` Element
@@ -30,6 +30,11 @@ export type SinkEditor<
   isSlave: (node: Element) => boolean
   isStandalone: (node: Element) => boolean
   sink: {
-    plugins: PluginPolicy<T>[]
+    plugins: BasePluginPolicy[]
   }
 }
+
+export type FullSinkEditor = SinkEditor &
+  BaseEditor &
+  ReactEditor &
+  HistoryEditor

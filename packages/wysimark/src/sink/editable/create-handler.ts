@@ -1,6 +1,6 @@
 import { EditableProps } from "slate-react/dist/components/editable"
 
-import { ArraySafePluginCustomTypes, PluginPolicy } from "../types"
+import { BasePluginPolicy } from "../types"
 
 /**
  * Create the substituted event handler method.
@@ -31,18 +31,6 @@ import { ArraySafePluginCustomTypes, PluginPolicy } from "../types"
  */
 
 /**
- * TODO:
- *
- * This is the generalized version of the PluginObject but should probably be
- * typed in a global manner. Needs a bit more thought before I do it though as
- * it's intermingled in a lot of code. It's a holdover (and needlessly complex
- * most likely) because we were at first trying to derive the CustomTypes
- * automatically; however, this appears to be impossible and may be due to a
- * current limitation of TypeScript.
- */
-type BasePluginObject = PluginPolicy<ArraySafePluginCustomTypes>
-
-/**
  * Here we define strictly the type for a method that creates an Event Handler
  * on Editable. We define this separately because (a) it is easier to do it and
  * give clarity to it as a separate type and (b) we want to check the actual
@@ -59,7 +47,7 @@ type BasePluginObject = PluginPolicy<ArraySafePluginCustomTypes>
  */
 type CreateHandler<K extends keyof EditableProps> = (
   originalFn: EditableProps[K],
-  plugins: BasePluginObject[]
+  plugins: BasePluginPolicy[]
 ) => NonNullable<EditableProps[K]>
 
 /**
@@ -69,12 +57,12 @@ type CreateHandler<K extends keyof EditableProps> = (
  * and no `undefined` in it.
  */
 function extractEditableFns<
-  K extends keyof Required<BasePluginObject>["editableProps"]
+  K extends keyof Required<BasePluginPolicy>["editableProps"]
 >(
-  plugins: BasePluginObject[],
+  plugins: BasePluginPolicy[],
   key: K
-): NonNullable<Required<BasePluginObject>["editableProps"][K]>[] {
-  const fns: NonNullable<Required<BasePluginObject>["editableProps"][K]>[] = []
+): NonNullable<Required<BasePluginPolicy>["editableProps"][K]>[] {
+  const fns: NonNullable<Required<BasePluginPolicy>["editableProps"][K]>[] = []
   for (const plugin of plugins) {
     const maybeFn = plugin.editableProps?.[key]
     if (maybeFn) fns.push(maybeFn)

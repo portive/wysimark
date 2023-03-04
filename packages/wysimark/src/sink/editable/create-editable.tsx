@@ -1,7 +1,7 @@
 import { Editable } from "slate-react"
 import { EditableProps } from "slate-react/dist/components/editable"
 
-import { ArraySafePluginCustomTypes, PluginPolicy } from "../types"
+import { BasePluginPolicy } from "../types"
 import { defined } from "./utils"
 
 type EditableType = (editableProps: EditableProps) => JSX.Element
@@ -14,7 +14,7 @@ type EditableType = (editableProps: EditableProps) => JSX.Element
  * attribute on `SinkEditable`.
  */
 export function createEditable(
-  plugins: PluginPolicy<ArraySafePluginCustomTypes>[]
+  plugins: BasePluginPolicy[]
 ): NonNullable<EditableType> {
   const fns = plugins.map((plugin) => plugin.renderEditable).filter(defined)
   return function SinkEditable(props) {

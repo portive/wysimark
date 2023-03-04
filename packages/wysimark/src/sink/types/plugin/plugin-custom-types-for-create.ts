@@ -1,6 +1,6 @@
-import { BaseElement, BaseText } from "slate"
+import { SetOptional } from "type-fest"
 
-import { SinkEditor } from ".."
+import { BasePluginCustomTypes } from ".."
 
 /**
  * TODO:
@@ -22,29 +22,33 @@ import { SinkEditor } from ".."
  * keys except for `Name` are optional.
  */
 
-export type InputPluginCustomTypes = {
-  Name: string
-  /**
-   * This describes the additional properties on the Editor, not the full
-   * Editor. This is why it does not extend BaseEditor.
-   */
-  Editor?: Record<string, unknown>
-  /**
-   * This describes an Element type to be used with this plugin. Note that it
-   * can actually be multiple Element types combined with `|`
-   */
-  Element?: BaseElement
-  /**
-   * This describes a Text type to be used with this plugin.
-   */
-  Text?: BaseText
-}
-export type CreatePluginOutputCustomTypes<T extends InputPluginCustomTypes> = {
-  Name: T["Name"]
-  Editor: T["Editor"] extends Record<string, unknown>
-    ? T["Editor"] & SinkEditor
-    : // eslint-disable-next-line @typescript-eslint/ban-types
-      {}
-  Element: T["Element"] extends BaseElement ? T["Element"] : BaseElement
-  Text: T["Text"] extends BaseText ? T["Text"] : BaseText
-}
+// export type InputPluginCustomTypes = {
+//   Name: string
+//   /**
+//    * This describes the additional properties on the Editor, not the full
+//    * Editor. This is why it does not extend BaseEditor.
+//    */
+//   Editor?: Record<string, unknown>
+//   /**
+//    * This describes an Element type to be used with this plugin. Note that it
+//    * can actually be multiple Element types combined with `|`
+//    */
+//   Element?: BaseElement
+//   /**
+//    * This describes a Text type to be used with this plugin.
+//    */
+//   Text?: BaseText
+// }
+
+export type InputPluginCustomTypes = SetOptional<
+  BasePluginCustomTypes,
+  "Editor" | "Element" | "Text"
+>
+
+export type NormalizeInputPluginCustomTypes<T extends InputPluginCustomTypes> =
+  {
+    Name: T["Name"]
+    Editor: T["Editor"] extends object ? T["Editor"] : {}
+    Element: T["Element"] extends object ? T["Element"] : never
+    Text: T["Text"] extends object ? T["Text"] : {}
+  }

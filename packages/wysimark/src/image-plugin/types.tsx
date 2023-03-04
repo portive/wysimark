@@ -53,7 +53,7 @@ export type ImageEditor = {
   image: ImageMethods & Required<ImagePluginConfig>
 }
 
-export interface ImageInterface {
+export type ImageSharedElement = {
   /**
    * The `url` represents either
    *
@@ -91,7 +91,7 @@ export interface ImageInterface {
 
 export type ImageBlockElement = {
   type: "image-block"
-} & ImageInterface
+} & ImageSharedElement
 /**
  * Default for smaller images, 48px and less
  *
@@ -100,7 +100,7 @@ export type ImageBlockElement = {
 
 export type ImageInlineElement = {
   type: "image-inline"
-} & ImageInterface
+} & ImageSharedElement
 
 export type ImagePluginCustomTypes = {
   Name: "image"

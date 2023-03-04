@@ -13,9 +13,9 @@ export * from "./types"
 import { normalizeNode } from "./normalizeNode"
 
 export const CodeBlockPlugin = createPlugin<CodeBlockPluginCustomTypes>(
-  (editor) => {
+  (editor, options, { createPolicy }) => {
     editor.codeBlock = createCodeBlockMethods(editor)
-    return {
+    return createPolicy({
       name: "code-block",
       editor: {
         isInline(element) {
@@ -75,6 +75,6 @@ export const CodeBlockPlugin = createPlugin<CodeBlockPluginCustomTypes>(
           }
         },
       },
-    }
+    })
   }
 )

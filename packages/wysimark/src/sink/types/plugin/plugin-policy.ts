@@ -1,12 +1,16 @@
 import React from "react"
 import { BaseRange, NodeEntry, Path } from "slate"
 import { Editable } from "slate-react"
-import { EditableProps } from "slate-react/dist/components/editable"
+import {
+  EditableProps,
+  RenderElementProps,
+  RenderLeafProps,
+} from "slate-react/dist/components/editable"
 import { SetReturnType } from "type-fest"
 
 import { ConstrainedRenderElementProps, ConstrainedRenderLeafProps } from ".."
 import { BasePluginCustomTypes } from "./plugin-custom-types"
-import { VoidActionReturn } from "./void-action"
+import { VoidActionReturn } from "./VoidActionReturn"
 
 export type RenderEditableProps = {
   attributes: EditableProps
@@ -14,6 +18,46 @@ export type RenderEditableProps = {
 }
 
 export type RenderEditable = (props: RenderEditableProps) => React.ReactElement
+
+/**
+ * The return type of the BasePluginFn which specifies how the Plugin is
+ * supposed to behave.
+ */
+
+export type BasePluginPolicy = {
+  name: string
+  editor?: {
+    isInline?: (element: Element) => boolean | void
+    isVoid?: (element: Element) => boolean | void
+    isMaster?: (element: Element) => boolean | void
+    isSlave?: (element: Element) => boolean | void
+    isStandalone?: (element: Element) => boolean | void
+    deleteBackward?: (
+      unit: "character" | "word" | "line" | "block"
+    ) => VoidActionReturn
+    deleteForward?: (
+      unit: "character" | "word" | "line" | "block"
+    ) => VoidActionReturn
+    deleteFragment?: () => VoidActionReturn
+    insertBreak?: () => VoidActionReturn
+    insertFragment?: (fragment: Node[]) => VoidActionReturn
+    insertNode?: (node: Node) => VoidActionReturn
+    insertText?: (text: string) => VoidActionReturn
+    normalizeNode?: (entry: NodeEntry) => VoidActionReturn
+  }
+  renderEditable?: RenderEditable
+  editableProps?: {
+    decorate?: ((entry: NodeEntry) => BaseRange[]) | undefined
+    renderElement?: (
+      props: RenderElementProps
+    ) => React.ReactElement | undefined
+    renderLeaf?: (props: RenderLeafProps) => React.ReactElement | undefined
+    onKeyDown?: EditableVoidToBooleanHandlerType<"onKeyDown">
+    onKeyUp?: EditableVoidToBooleanHandlerType<"onKeyDown">
+    onPaste?: EditableVoidToBooleanHandlerType<"onPaste">
+    onDrop?: EditableVoidToBooleanHandlerType<"onDrop">
+  }
+}
 
 /**
  * Once a Plugin is executed, it returns this Object that defines how the

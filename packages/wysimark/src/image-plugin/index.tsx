@@ -15,7 +15,7 @@ export const ImagePlugin = ({
   imageBlockPresets = [],
   imageInlinePresets = [],
 }: ImagePluginConfig = {}) =>
-  createPlugin<ImagePluginCustomTypes>((editor) => {
+  createPlugin<ImagePluginCustomTypes>((editor, options, { createPolicy }) => {
     editor.image = {
       ...createImageMethods(editor),
       maxInitialInlineImageSize,
@@ -56,7 +56,7 @@ export const ImagePlugin = ({
       }
       return true
     }
-    return {
+    return createPolicy({
       name: "image",
       editor: {
         isVoid: (element) => {
@@ -72,5 +72,5 @@ export const ImagePlugin = ({
       editableProps: {
         renderElement,
       },
-    }
+    })
   })

@@ -8,24 +8,26 @@ import { HorizontalRulePluginCustomTypes } from "./types"
 export * from "./types"
 
 export const HorizontalRulePlugin =
-  createPlugin<HorizontalRulePluginCustomTypes>((editor) => {
-    editor.horizontalRule = createHorizontalRuleMethods(editor)
-    return {
-      name: "horizontal-rule",
-      editor: {
-        isVoid(element) {
-          if (element.type === "horizontal-rule") return true
+  createPlugin<HorizontalRulePluginCustomTypes>(
+    (editor, options, { createPolicy }) => {
+      editor.horizontalRule = createHorizontalRuleMethods(editor)
+      return createPolicy({
+        name: "horizontal-rule",
+        editor: {
+          isVoid(element) {
+            if (element.type === "horizontal-rule") return true
+          },
         },
-      },
-      editableProps: {
-        renderElement: (props) => {
-          if (props.element.type === "horizontal-rule") {
-            return <HorizontalRule {...props} />
-          }
+        editableProps: {
+          renderElement: (props) => {
+            if (props.element.type === "horizontal-rule") {
+              return <HorizontalRule {...props} />
+            }
+          },
+          onKeyDown: createHotkeyHandler({
+            "super+-": editor.horizontalRule.insertHorizontalRule,
+          }),
         },
-        onKeyDown: createHotkeyHandler({
-          "super+-": editor.horizontalRule.insertHorizontalRule,
-        }),
-      },
+      })
     }
-  })
+  )
