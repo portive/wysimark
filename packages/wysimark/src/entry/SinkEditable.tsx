@@ -33,7 +33,7 @@ import {
   HorizontalRulePlugin,
   HorizontalRulePluginCustomTypes,
 } from "wysimark/src/horizontal-rule-plugin"
-// import { ImagePlugin } from "wysimark/src/image-plugin"
+import { ImagePlugin } from "wysimark/src/image-plugin"
 import { ImagePluginCustomTypes } from "wysimark/src/image-plugin/types"
 import {
   InlineCodePlugin,
@@ -58,13 +58,32 @@ import {
 } from "wysimark/src/toolbar-plugin"
 import { TrailingBlockPlugin } from "wysimark/src/trailing-block-plugin"
 import {
-  // UploadAttachmentPlugin,
+  UploadAttachmentPlugin,
   UploadAttachmentPluginCustomTypes,
 } from "wysimark/src/upload-attachment-plugin"
 import {
-  // UploadPlugin,
+  UploadPlugin,
   UploadPluginCustomTypes,
 } from "wysimark/src/upload-plugin"
+
+// const plugins = [
+//   ConvertElementPlugin,
+//   AnchorPlugin,
+//   HeadingPlugin,
+//   MarksPlugin,
+//   InlineCodePlugin,
+//   BlockQuotePlugin,
+//   CodeBlockPlugin,
+//   TablePlugin,
+//   HorizontalRulePlugin,
+//   TrailingBlockPlugin,
+//   ListPlugin,
+//   AtomicDeletePlugin,
+//   NormalizeAfterDeletePlugin,
+//   CollapsibleParagraphPlugin,
+//   ThemePlugin,
+//   ToolbarPlugin,
+// ]
 
 const plugins = [
   ConvertElementPlugin,
@@ -83,6 +102,9 @@ const plugins = [
   CollapsibleParagraphPlugin,
   ThemePlugin,
   ToolbarPlugin,
+  UploadPlugin,
+  UploadAttachmentPlugin,
+  ImagePlugin,
 ]
 
 type PluginCustomTypes2 = ExtractCustomTypes<typeof plugins>
@@ -116,74 +138,80 @@ type TextType = PluginCustomTypes2["Text"]
  * may wish to take inspiration from `MergePluginCustomTypes` and particularly
  * with an emphasis on how we wrote the `Element` portion.
  */
-const Sink = createSink([
-  ConvertElementPlugin,
-  AnchorPlugin,
-  HeadingPlugin,
-  MarksPlugin,
-  InlineCodePlugin,
-  BlockQuotePlugin,
-  CodeBlockPlugin,
-  TablePlugin,
-  HorizontalRulePlugin,
-  TrailingBlockPlugin,
-  ListPlugin,
-  AtomicDeletePlugin,
-  NormalizeAfterDeletePlugin,
-  CollapsibleParagraphPlugin,
-  ThemePlugin,
-  ToolbarPlugin,
-  // UploadPlugin({ authToken: process.env.NEXT_PUBLIC_PORTIVE_AUTH_TOKEN }),
-  // UploadAttachmentPlugin,
-  // ImagePlugin({
-  //   imageBlockPresets: [
-  //     /**
-  //      * Pixel Presets
-  //      */
-  //     { name: "S", title: "Small", type: "bounds", width: 160, height: 160 },
-  //     { name: "M", title: "Medium", type: "bounds", width: 320, height: 320 },
-  //     { name: "L", title: "Large", type: "bounds", width: 640, height: 640 },
-  //     /**
-  //      * Scale Presets
-  //      */
-  //     { name: "⅓", title: "1/3 scale", type: "scale", scale: 1 / 3 },
-  //     { name: "½", title: "1/2 scale", type: "scale", scale: 0.5 },
-  //     { name: "Full", title: "Full size", type: "scale", scale: 1 },
-  //   ],
-  //   imageInlinePresets: [
-  //     /**
-  //      * Pixel Presets
-  //      */
-  //     {
-  //       name: "16",
-  //       title: "16 pixels",
-  //       type: "bounds",
-  //       width: 16,
-  //       height: 16,
-  //     },
-  //     {
-  //       name: "24",
-  //       title: "24 pixels",
-  //       type: "bounds",
-  //       width: 24,
-  //       height: 24,
-  //     },
-  //     {
-  //       name: "32",
-  //       title: "32 pixels",
-  //       type: "bounds",
-  //       width: 32,
-  //       height: 32,
-  //     },
-  //     /**
-  //      * Scale Presets
-  //      */
-  //     { name: "⅓", title: "1/3 scale", type: "scale", scale: 1 / 3 },
-  //     { name: "½", title: "1/2 scale", type: "scale", scale: 0.5 },
-  //     { name: "Full", title: "Full size", type: "scale", scale: 1 },
-  //   ],
-  // }),
-])
+
+const Sink = createSink(plugins)
+// const Sink = createSink([
+//   ConvertElementPlugin,
+//   AnchorPlugin,
+//   HeadingPlugin,
+//   MarksPlugin,
+//   InlineCodePlugin,
+//   BlockQuotePlugin,
+//   CodeBlockPlugin,
+//   TablePlugin,
+//   HorizontalRulePlugin,
+//   TrailingBlockPlugin,
+//   ListPlugin,
+//   AtomicDeletePlugin,
+//   NormalizeAfterDeletePlugin,
+//   CollapsibleParagraphPlugin,
+//   ThemePlugin,
+//   ToolbarPlugin,
+//   UploadPlugin,
+//   UploadAttachmentPlugin,
+//   ImagePlugin,
+//   // UploadPlugin({ authToken: process.env.NEXT_PUBLIC_PORTIVE_AUTH_TOKEN }),
+//   // UploadAttachmentPlugin,
+//   // ImagePlugin({
+//   //   imageBlockPresets: [
+//   //     /**
+//   //      * Pixel Presets
+//   //      */
+//   //     { name: "S", title: "Small", type: "bounds", width: 160, height: 160 },
+//   //     { name: "M", title: "Medium", type: "bounds", width: 320, height: 320 },
+//   //     { name: "L", title: "Large", type: "bounds", width: 640, height: 640 },
+//   //     /**
+//   //      * Scale Presets
+//   //      */
+//   //     { name: "⅓", title: "1/3 scale", type: "scale", scale: 1 / 3 },
+//   //     { name: "½", title: "1/2 scale", type: "scale", scale: 0.5 },
+//   //     { name: "Full", title: "Full size", type: "scale", scale: 1 },
+//   //   ],
+//   //   imageInlinePresets: [
+//   //     /**
+//   //      * Pixel Presets
+//   //      */
+//   //     {
+//   //       name: "16",
+//   //       title: "16 pixels",
+//   //       type: "bounds",
+//   //       width: 16,
+//   //       height: 16,
+//   //     },
+//   //     {
+//   //       name: "24",
+//   //       title: "24 pixels",
+//   //       type: "bounds",
+//   //       width: 24,
+//   //       height: 24,
+//   //     },
+//   //     {
+//   //       name: "32",
+//   //       title: "32 pixels",
+//   //       type: "bounds",
+//   //       width: 32,
+//   //       height: 32,
+//   //     },
+//   //     /**
+//   //      * Scale Presets
+//   //      */
+//   //     { name: "⅓", title: "1/3 scale", type: "scale", scale: 1 / 3 },
+//   //     { name: "½", title: "1/2 scale", type: "scale", scale: 0.5 },
+//   //     { name: "Full", title: "Full size", type: "scale", scale: 1 },
+//   //   ],
+//   // }),
+// ])
+
 const { withSink, SinkEditable } = Sink
 export { SinkEditable, withSink }
 
@@ -215,11 +243,11 @@ export type Text = PluginCustomTypes["Text"]
 
 declare module "slate" {
   interface CustomTypes {
-    Editor: BaseEditor &
-      ReactEditor &
-      HistoryEditor &
-      PluginCustomTypes["Editor"]
-    Element: PluginCustomTypes["Element"]
-    Text: BaseText & PluginCustomTypes["Text"]
+    Editor: BaseEditor & ReactEditor & HistoryEditor & EditorType
+    // PluginCustomTypes2["Editor"]
+    Element: //PluginCustomTypes2["Element"]
+    ElementType
+    Text: BaseText & // & PluginCustomTypes2["Text"]
+      TextType
   }
 }

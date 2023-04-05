@@ -1,4 +1,4 @@
-import { BasePluginFn, InputPluginSchema, TypedPluginFunction } from "../types"
+import { InputPluginSchema, TypedPluginFunction } from "../types"
 import { BasePlugin } from "../types/plugin/plugin"
 
 /**

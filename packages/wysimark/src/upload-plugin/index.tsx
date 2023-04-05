@@ -1,6 +1,6 @@
 import { Client, createClient } from "@portive/client"
 
-import { createPlugin } from "~/src/sink"
+import { createPlugin, TypedPlugin } from "~/src/sink"
 
 import { createUploadMethods } from "./methods"
 import { createUploadStore } from "./store"
@@ -24,8 +24,10 @@ export type UploadPluginCustomTypes = {
   Editor: UploadEditor
 }
 
-export const UploadPlugin = ({ authToken }: { authToken?: string }) =>
+export const UploadPlugin = //({ authToken }: { authToken?: string }) =>
   createPlugin<UploadPluginCustomTypes>((editor) => {
+    // TODO: This should be passed into options
+    const authToken = process.env.NEXT_PUBLIC_PORTIVE_AUTH_TOKEN
     if (!authToken) {
       throw new Error(`You must provide an authToken`)
     }
@@ -65,4 +67,4 @@ export const UploadPlugin = ({ authToken }: { authToken?: string }) =>
         },
       },
     }
-  })
+  }) as TypedPlugin<UploadPluginCustomTypes>

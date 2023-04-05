@@ -1,10 +1,6 @@
 import { Editor } from "slate"
 
 import { FullSinkEditor } from "../sink/sink-editor"
-import {
-  InputPluginCustomTypes,
-  NormalizeInputPluginCustomTypes,
-} from "./plugin-custom-types-for-create"
 import { BasePluginPolicy, PluginPolicy } from "./plugin-policy"
 import { InputPluginSchema, NormalizeInputPluginSchema } from "./schema-types"
 

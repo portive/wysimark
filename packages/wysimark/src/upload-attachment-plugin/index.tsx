@@ -1,6 +1,6 @@
 import { Descendant, Transforms } from "slate"
 
-import { createPlugin, curryOne } from "~/src/sink"
+import { createPlugin, curryOne, TypedPlugin } from "~/src/sink"
 
 import { UploadEditor } from "../upload-plugin"
 import { createUploadAttachmentMethods } from "./methods"
@@ -66,4 +66,4 @@ export const UploadAttachmentPlugin =
         },
       })
     }
-  )
+  ) as TypedPlugin<UploadAttachmentPluginCustomTypes>

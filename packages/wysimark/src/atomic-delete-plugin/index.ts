@@ -4,9 +4,13 @@ import { createPlugin, TypedPlugin } from "~/src/sink"
 
 import { isSafeDelete } from "./is-safe-delete"
 
+type AtomicDeleteEditor = {
+  atomicDelete: true
+}
+
 export type AtomicDeletePluginCustomTypes = {
   Name: "atomic-delete"
-  Editor: { atomicDelete: true }
+  Editor: AtomicDeleteEditor
 }
 
 /**

@@ -13,7 +13,6 @@ import {
   ConstrainedRenderElementProps,
   ConstrainedRenderLeafProps,
 } from ".."
-import { BasePluginCustomTypes } from "./plugin-custom-types"
 import { VoidActionReturn } from "./VoidActionReturn"
 
 export type RenderEditableProps = {
