@@ -5,6 +5,7 @@ import {
   createHotkeyHandler,
   createPlugin,
   normalizeSiblings,
+  TypedPlugin,
 } from "~/src/sink"
 
 import { $BlockQuote } from "./styles"
@@ -99,4 +100,4 @@ export const BlockQuotePlugin = createPlugin<BlockQuotePluginCustomTypes>(
       },
     }
   }
-)
+) as TypedPlugin<BlockQuotePluginCustomTypes>

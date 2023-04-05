@@ -1,6 +1,6 @@
 import React from "react"
 
-import { createHotkeyHandler, createPlugin } from "~/src/sink"
+import { createHotkeyHandler, createPlugin, TypedPlugin } from "~/src/sink"
 
 import { HorizontalRule } from "./horizontal-rule"
 import { createHorizontalRuleMethods } from "./methods"
@@ -30,4 +30,4 @@ export const HorizontalRulePlugin =
         },
       })
     }
-  )
+  ) as TypedPlugin<HorizontalRulePluginCustomTypes>

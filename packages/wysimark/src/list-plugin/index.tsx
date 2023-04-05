@@ -5,6 +5,7 @@ import {
   createIsElementType,
   createPlugin,
   curryOne,
+  TypedPlugin,
 } from "~/src/sink"
 
 import { createListMethods } from "./methods"
@@ -49,4 +50,4 @@ export const ListPlugin = createPlugin<ListPluginCustomTypes>(
       },
     })
   }
-)
+) as TypedPlugin<ListPluginCustomTypes>

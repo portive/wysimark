@@ -8,7 +8,11 @@ import {
 } from "slate-react/dist/components/editable"
 import { SetReturnType } from "type-fest"
 
-import { ConstrainedRenderElementProps, ConstrainedRenderLeafProps } from ".."
+import {
+  BasePluginSchema,
+  ConstrainedRenderElementProps,
+  ConstrainedRenderLeafProps,
+} from ".."
 import { BasePluginCustomTypes } from "./plugin-custom-types"
 import { VoidActionReturn } from "./VoidActionReturn"
 
@@ -63,7 +67,7 @@ export type BasePluginPolicy = {
  * Once a Plugin is executed, it returns this Object that defines how the
  * plugin should behave.
  */
-export type PluginPolicy<T extends BasePluginCustomTypes> = {
+export type PluginPolicy<T extends BasePluginSchema> = {
   /**
    * A string literal that uniquely identifies this plugin
    */

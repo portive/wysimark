@@ -6,6 +6,7 @@ import {
   createPlugin,
   curryOne,
   curryTwo,
+  TypedPlugin,
 } from "~/src/sink"
 
 import { insertBreak } from "./insert-break"
@@ -57,4 +58,4 @@ export const HeadingPlugin = createPlugin<HeadingPluginCustomTypes>(
       },
     }
   }
-)
+) as TypedPlugin<HeadingPluginCustomTypes>

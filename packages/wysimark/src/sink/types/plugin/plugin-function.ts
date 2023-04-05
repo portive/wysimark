@@ -6,6 +6,7 @@ import {
   NormalizeInputPluginCustomTypes,
 } from "./plugin-custom-types-for-create"
 import { BasePluginPolicy, PluginPolicy } from "./plugin-policy"
+import { InputPluginSchema, NormalizeInputPluginSchema } from "./schema-types"
 
 /**
  * Shape of a PluginFn (Plugin Function).
@@ -17,7 +18,7 @@ export type BasePluginFn = (
   helpers: { createPolicy: (value: unknown) => unknown }
 ) => BasePluginPolicy
 
-export type TypedPluginFunction<T extends InputPluginCustomTypes> = (
+export type TypedPluginFunction<T extends InputPluginSchema> = (
   /**
    * We make this T["Editor"] to make sure we get all off the properties
    * for the plugin but also add `Editor` so that Editor will pass the typing
@@ -27,7 +28,7 @@ export type TypedPluginFunction<T extends InputPluginCustomTypes> = (
   options: {}, // TODO: temporarily it's always empty
   helpers: {
     createPolicy: (
-      policy: PluginPolicy<NormalizeInputPluginCustomTypes<T>>
+      policy: PluginPolicy<NormalizeInputPluginSchema<T>>
     ) => BasePluginPolicy
   }
 ) => BasePluginPolicy

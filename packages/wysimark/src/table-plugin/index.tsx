@@ -6,6 +6,7 @@ import {
   findElementUp,
   isEndOfElement,
   isStartOfElement,
+  TypedPlugin,
 } from "~/src/sink"
 
 import { deleteFragmentWithProtectedTypes } from "./delete-fragment"
@@ -117,4 +118,4 @@ export const TablePlugin = createPlugin<TablePluginCustomTypes>(
       },
     })
   }
-)
+) as TypedPlugin<TablePluginCustomTypes>

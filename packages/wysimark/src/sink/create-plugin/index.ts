@@ -1,5 +1,5 @@
-import { BasePluginFn, TypedPluginFunction } from "../types"
-import { InputPluginCustomTypes } from "../types/plugin/plugin-custom-types-for-create"
+import { BasePluginFn, InputPluginSchema, TypedPluginFunction } from "../types"
+import { BasePlugin } from "../types/plugin/plugin"
 
 /**
  * The `createPlugin` method here takes a function and returns the same
@@ -27,8 +27,8 @@ import { InputPluginCustomTypes } from "../types/plugin/plugin-custom-types-for-
  * You can add dependencies between plugins, but when we do that, it insists
  * on having that done explicitly.
  */
-export const createPlugin = <T extends InputPluginCustomTypes>(
+export const createPlugin = <T extends InputPluginSchema>(
   fn: TypedPluginFunction<T>
 ) => {
-  return fn as BasePluginFn
+  return { fn } as BasePlugin
 }

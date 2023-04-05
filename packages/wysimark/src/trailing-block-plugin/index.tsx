@@ -1,6 +1,6 @@
 import { Editor, Element, Node, Path, Transforms } from "slate"
 
-import { createPlugin } from "~/src/sink"
+import { createPlugin, TypedPlugin } from "~/src/sink"
 
 type TrailingBlockPluginCustomType = {
   Name: "trailing-block"
@@ -50,4 +50,4 @@ export const TrailingBlockPlugin = createPlugin<TrailingBlockPluginCustomType>(
       },
     }
   }
-)
+) as TypedPlugin<TrailingBlockPluginCustomType>

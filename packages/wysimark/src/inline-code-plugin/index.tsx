@@ -1,4 +1,4 @@
-import { createHotkeyHandler, createPlugin } from "~/src/sink"
+import { createHotkeyHandler, createPlugin, TypedPlugin } from "~/src/sink"
 
 import { $InlineCode, $InvisibleSpan } from "./styles"
 import { InlineCodePluginCustomTypes } from "./types"
@@ -41,4 +41,4 @@ export const InlineCodePlugin = createPlugin<InlineCodePluginCustomTypes>(
       },
     }
   }
-)
+) as TypedPlugin<InlineCodePluginCustomTypes>

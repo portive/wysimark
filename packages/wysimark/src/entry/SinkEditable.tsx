@@ -45,7 +45,11 @@ import {
   NormalizeAfterDeletePlugin,
   NormalizeAfterDeletePluginCustomTypes,
 } from "wysimark/src/normalize-after-delete-plugin"
-import { createSink, MergePluginCustomTypes } from "wysimark/src/sink"
+import {
+  createSink,
+  ExtractCustomTypes,
+  MergePluginCustomTypes,
+} from "wysimark/src/sink"
 import { TablePlugin, TablePluginCustomTypes } from "wysimark/src/table-plugin"
 import { ThemePlugin, ThemePluginCustomTypes } from "wysimark/src/theme-plugin"
 import {
@@ -61,6 +65,31 @@ import {
   // UploadPlugin,
   UploadPluginCustomTypes,
 } from "wysimark/src/upload-plugin"
+
+const plugins = [
+  ConvertElementPlugin,
+  AnchorPlugin,
+  HeadingPlugin,
+  MarksPlugin,
+  InlineCodePlugin,
+  BlockQuotePlugin,
+  CodeBlockPlugin,
+  TablePlugin,
+  HorizontalRulePlugin,
+  TrailingBlockPlugin,
+  ListPlugin,
+  AtomicDeletePlugin,
+  NormalizeAfterDeletePlugin,
+  CollapsibleParagraphPlugin,
+  ThemePlugin,
+  ToolbarPlugin,
+]
+
+type PluginCustomTypes2 = ExtractCustomTypes<typeof plugins>
+
+type EditorType = PluginCustomTypes2["Editor"]
+type ElementType = PluginCustomTypes2["Element"]
+type TextType = PluginCustomTypes2["Text"]
 
 /**
  * TODO:

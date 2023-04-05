@@ -1,7 +1,12 @@
 import React from "react"
 import { useSelected } from "slate-react"
 
-import { createHotkeyHandler, createPlugin, curryOne } from "~/src/sink"
+import {
+  createHotkeyHandler,
+  createPlugin,
+  curryOne,
+  TypedPlugin,
+} from "~/src/sink"
 
 import { decorate } from "./decorate"
 import { createCodeBlockMethods } from "./methods"
@@ -77,4 +82,4 @@ export const CodeBlockPlugin = createPlugin<CodeBlockPluginCustomTypes>(
       },
     })
   }
-)
+) as TypedPlugin<CodeBlockPluginCustomTypes>

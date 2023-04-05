@@ -1,6 +1,11 @@
 import { Descendant } from "slate"
 
-import { createHotkeyHandler, createPlugin, curryOne } from "~/src/sink"
+import {
+  createHotkeyHandler,
+  createPlugin,
+  curryOne,
+  TypedPlugin,
+} from "~/src/sink"
 
 import { normalizeNode } from "./normalize-node"
 import { Paragraph } from "./render-element/paragraph"
@@ -64,4 +69,4 @@ export const CollapsibleParagraphPlugin =
         }),
       },
     }
-  })
+  }) as TypedPlugin<CollapsibleParagraphPluginCustomTypes>

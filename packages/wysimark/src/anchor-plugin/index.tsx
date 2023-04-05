@@ -2,6 +2,7 @@ import { Descendant } from "slate"
 
 import { createPlugin, curryOne } from "~/src/sink"
 
+import { TypedPlugin } from "../sink/types/plugin/plugin"
 import { onPaste } from "./editable/on-paste"
 import { createAnchorMethods } from "./methods"
 import { normalizeNode } from "./normalize-node"
@@ -52,4 +53,4 @@ export const AnchorPlugin = createPlugin<AnchorPluginCustomTypes>(
       },
     })
   }
-)
+) as TypedPlugin<AnchorPluginCustomTypes>

@@ -1,6 +1,6 @@
 import { Editor, Transforms } from "slate"
 
-import { createPlugin } from "~/src/sink"
+import { createPlugin, TypedPlugin } from "~/src/sink"
 
 import { isSafeDelete } from "./is-safe-delete"
 
@@ -56,4 +56,4 @@ export const AtomicDeletePlugin = createPlugin<AtomicDeletePluginCustomTypes>(
       },
     }
   }
-)
+) as TypedPlugin<AtomicDeletePluginCustomTypes>

@@ -1,4 +1,4 @@
-import { createPlugin } from "~/src/sink"
+import { createPlugin, TypedPlugin } from "~/src/sink"
 
 import { renderEditable } from "./render-editable"
 
@@ -21,4 +21,4 @@ export const ToolbarPlugin = createPlugin<ToolbarPluginCustomTypes>(
       editableProps: {},
     }
   }
-)
+) as TypedPlugin<ToolbarPluginCustomTypes>

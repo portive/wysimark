@@ -1,4 +1,4 @@
-import { createPlugin } from "~/src/sink"
+import { createPlugin, TypedPlugin } from "~/src/sink"
 
 import { createConvertElementMethods } from "./methods"
 
@@ -17,4 +17,4 @@ export const ConvertElementPlugin =
     return {
       name: "convert-element",
     }
-  })
+  }) as TypedPlugin<ConvertElementPluginCustomTypes>

@@ -1,6 +1,11 @@
 import { clsx } from "clsx"
 
-import { createHotkeyHandler, createPlugin, curryOne } from "~/src/sink"
+import {
+  createHotkeyHandler,
+  createPlugin,
+  curryOne,
+  TypedPlugin,
+} from "~/src/sink"
 
 import { insertText } from "./editor/insert-text"
 import { createMarksMethods } from "./methods"
@@ -96,7 +101,7 @@ export const MarksPlugin = createPlugin<MarksPluginCustomTypes>((editor) => {
       },
     },
   }
-})
+}) as TypedPlugin<MarksPluginCustomTypes>
 
 // function autocompleteMarker(
 //   editor: Editor,

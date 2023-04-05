@@ -18,12 +18,33 @@
  * we don't want to accidentally have `Editor` be provided as a return type
  * or this will create the circular reference.
  */
-export type BasePluginTypes = {
-  Name: string
-  Options: Record<string, unknown>
-  Editor: Record<string, unknown>
-  Element: { type: string }
-  Text: Record<string, unknown>
+// export type BasePluginTypes = {
+//   Name: string
+//   Options: Record<string, unknown>
+//   Editor: Record<string, unknown>
+//   Element: { type: string }
+//   Text: Record<string, unknown>
+// }
+
+import { BasePluginFn } from "./plugin-function"
+import {
+  BasePluginSchema,
+  InputPluginSchema,
+  NormalizeInputPluginSchema,
+} from "./schema-types"
+
+/**
+ * When a Plugin is created using the `createPlugin` method, it returns a
+ * Plugin.
+ */
+export type BasePlugin = { fn: BasePluginFn; __types__: BasePluginSchema }
+
+/**
+ * When a Plugin is created using `createPlugin` we must
+ */
+export type TypedPlugin<T extends InputPluginSchema> = {
+  fn: BasePluginFn
+  __types__: NormalizeInputPluginSchema<T>
 }
 
 // /**

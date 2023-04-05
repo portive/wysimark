@@ -1,4 +1,4 @@
-import { createPlugin } from "~/src/sink"
+import { createPlugin, TypedPlugin } from "~/src/sink"
 
 import { GlobalStyles } from "./global-styles"
 
@@ -26,4 +26,4 @@ export const ThemePlugin = createPlugin<ThemePluginCustomTypes>((editor) => {
     },
     editableProps: {},
   }
-})
+}) as TypedPlugin<ThemePluginCustomTypes>

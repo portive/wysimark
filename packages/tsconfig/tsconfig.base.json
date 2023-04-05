@@ -121,7 +121,15 @@
      *
      * - `skipLibCheck` improves performance but sacrifices accuracy with duplicate libraries
      */
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    /**
+     * This increases the length of the type information that is displayed in
+     * VSCode when hovering over a type to 1600 characters. This is helpful
+     * when inspecting a type.
+     *
+     * https://stackoverflow.com/questions/53113031/how-to-see-a-fully-expanded-typescript-type-without-n-more-and/53131824#53131824
+     */
+    "noErrorTruncation": true
   },
   /**
    * Given the use of our monorepo, it's probably best for us to specify
