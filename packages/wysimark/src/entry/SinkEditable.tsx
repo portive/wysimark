@@ -1,70 +1,26 @@
 import { BaseEditor, BaseText } from "slate"
 import { HistoryEditor } from "slate-history"
 import { ReactEditor } from "slate-react"
-import {
-  AnchorPlugin,
-  AnchorPluginCustomTypes,
-} from "wysimark/src/anchor-plugin"
-import {
-  AtomicDeletePlugin,
-  AtomicDeletePluginCustomTypes,
-} from "wysimark/src/atomic-delete-plugin"
-import {
-  BlockQuotePlugin,
-  BlockQuotePluginCustomTypes,
-} from "wysimark/src/block-quote-plugin"
-import {
-  CodeBlockPlugin,
-  CodeBlockPluginCustomTypes,
-} from "wysimark/src/code-block-plugin"
-import {
-  CollapsibleParagraphPlugin,
-  CollapsibleParagraphPluginCustomTypes,
-} from "wysimark/src/collapsible-paragraph-plugin"
-import {
-  ConvertElementPlugin,
-  ConvertElementPluginCustomTypes,
-} from "wysimark/src/convert-element-plugin"
-import {
-  HeadingPlugin,
-  HeadingPluginCustomTypes,
-} from "wysimark/src/heading-plugin"
-import {
-  HorizontalRulePlugin,
-  HorizontalRulePluginCustomTypes,
-} from "wysimark/src/horizontal-rule-plugin"
+import { AnchorPlugin } from "wysimark/src/anchor-plugin"
+import { AtomicDeletePlugin } from "wysimark/src/atomic-delete-plugin"
+import { BlockQuotePlugin } from "wysimark/src/block-quote-plugin"
+import { CodeBlockPlugin } from "wysimark/src/code-block-plugin"
+import { CollapsibleParagraphPlugin } from "wysimark/src/collapsible-paragraph-plugin"
+import { ConvertElementPlugin } from "wysimark/src/convert-element-plugin"
+import { HeadingPlugin } from "wysimark/src/heading-plugin"
+import { HorizontalRulePlugin } from "wysimark/src/horizontal-rule-plugin"
 import { ImagePlugin } from "wysimark/src/image-plugin"
-import { ImagePluginCustomTypes } from "wysimark/src/image-plugin/types"
-import {
-  InlineCodePlugin,
-  InlineCodePluginCustomTypes,
-} from "wysimark/src/inline-code-plugin"
-import { ListPlugin, ListPluginCustomTypes } from "wysimark/src/list-plugin"
-import { MarksPlugin, MarksPluginCustomTypes } from "wysimark/src/marks-plugin"
-import {
-  NormalizeAfterDeletePlugin,
-  NormalizeAfterDeletePluginCustomTypes,
-} from "wysimark/src/normalize-after-delete-plugin"
-import {
-  createSink,
-  ExtractCustomTypes,
-  MergePluginCustomTypes,
-} from "wysimark/src/sink"
-import { TablePlugin, TablePluginCustomTypes } from "wysimark/src/table-plugin"
-import { ThemePlugin, ThemePluginCustomTypes } from "wysimark/src/theme-plugin"
-import {
-  ToolbarPlugin,
-  ToolbarPluginCustomTypes,
-} from "wysimark/src/toolbar-plugin"
+import { InlineCodePlugin } from "wysimark/src/inline-code-plugin"
+import { ListPlugin } from "wysimark/src/list-plugin"
+import { MarksPlugin } from "wysimark/src/marks-plugin"
+import { NormalizeAfterDeletePlugin } from "wysimark/src/normalize-after-delete-plugin"
+import { createSink, ExtractCustomTypes } from "wysimark/src/sink"
+import { TablePlugin } from "wysimark/src/table-plugin"
+import { ThemePlugin } from "wysimark/src/theme-plugin"
+import { ToolbarPlugin } from "wysimark/src/toolbar-plugin"
 import { TrailingBlockPlugin } from "wysimark/src/trailing-block-plugin"
-import {
-  UploadAttachmentPlugin,
-  UploadAttachmentPluginCustomTypes,
-} from "wysimark/src/upload-attachment-plugin"
-import {
-  UploadPlugin,
-  UploadPluginCustomTypes,
-} from "wysimark/src/upload-plugin"
+import { UploadAttachmentPlugin } from "wysimark/src/upload-attachment-plugin"
+import { UploadPlugin } from "wysimark/src/upload-plugin"
 
 // const plugins = [
 //   ConvertElementPlugin,
@@ -112,6 +68,9 @@ type PluginCustomTypes2 = ExtractCustomTypes<typeof plugins>
 type EditorType = PluginCustomTypes2["Editor"]
 type ElementType = PluginCustomTypes2["Element"]
 type TextType = PluginCustomTypes2["Text"]
+
+export type Element = ElementType
+export type Text = TextType
 
 /**
  * TODO:
@@ -215,31 +174,31 @@ const Sink = createSink(plugins)
 const { withSink, SinkEditable } = Sink
 export { SinkEditable, withSink }
 
-export type PluginCustomTypes = MergePluginCustomTypes<
-  [
-    ConvertElementPluginCustomTypes,
-    AnchorPluginCustomTypes,
-    HeadingPluginCustomTypes,
-    MarksPluginCustomTypes,
-    InlineCodePluginCustomTypes,
-    BlockQuotePluginCustomTypes,
-    CodeBlockPluginCustomTypes,
-    TablePluginCustomTypes,
-    HorizontalRulePluginCustomTypes,
-    ListPluginCustomTypes,
-    AtomicDeletePluginCustomTypes,
-    NormalizeAfterDeletePluginCustomTypes,
-    CollapsibleParagraphPluginCustomTypes,
-    ThemePluginCustomTypes,
-    ToolbarPluginCustomTypes,
-    UploadPluginCustomTypes,
-    UploadAttachmentPluginCustomTypes,
-    ImagePluginCustomTypes
-  ]
->
+// export type PluginCustomTypes = MergePluginCustomTypes<
+//   [
+//     ConvertElementPluginCustomTypes,
+//     AnchorPluginCustomTypes,
+//     HeadingPluginCustomTypes,
+//     MarksPluginCustomTypes,
+//     InlineCodePluginCustomTypes,
+//     BlockQuotePluginCustomTypes,
+//     CodeBlockPluginCustomTypes,
+//     TablePluginCustomTypes,
+//     HorizontalRulePluginCustomTypes,
+//     ListPluginCustomTypes,
+//     AtomicDeletePluginCustomTypes,
+//     NormalizeAfterDeletePluginCustomTypes,
+//     CollapsibleParagraphPluginCustomTypes,
+//     ThemePluginCustomTypes,
+//     ToolbarPluginCustomTypes,
+//     UploadPluginCustomTypes,
+//     UploadAttachmentPluginCustomTypes,
+//     ImagePluginCustomTypes
+//   ]
+// >
 
-export type Element = PluginCustomTypes["Element"]
-export type Text = PluginCustomTypes["Text"]
+// export type Element = PluginCustomTypes["Element"]
+// export type Text = PluginCustomTypes["Text"]
 
 declare module "slate" {
   interface CustomTypes {

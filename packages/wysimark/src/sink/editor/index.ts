@@ -4,7 +4,7 @@ import { BasePluginFn, FullSinkEditor } from "../types"
 import { createBooleanAction } from "./create-boolean-action"
 import { createVoidAction } from "./create-void-action"
 
-export function createWithSink(pluginConfigs: BasePluginFn[]) {
+export function createWithSink(pluginFns: BasePluginFn[]) {
   /**
    * The `editor` in the props can be a `BaseEditor` but we transform it
    * into a `SinkEditor` before returning it.
@@ -16,7 +16,7 @@ export function createWithSink(pluginConfigs: BasePluginFn[]) {
      * Executes the plugin on the `editor` with every one of the
      * `pluginFunctions` to get the `pluginObject`
      */
-    const plugins = pluginConfigs.map((plugin) =>
+    const plugins = pluginFns.map((plugin) =>
       plugin(editor, {}, { createPolicy: (x) => x })
     )
     editor.sink = { plugins }
