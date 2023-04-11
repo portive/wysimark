@@ -1,4 +1,4 @@
-import create from "zustand"
+import { create } from "zustand"
 
 import { Upload } from "../types"
 import { UploadStore } from "./index"

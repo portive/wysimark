@@ -8,15 +8,12 @@ import { renderElement } from "./render-element"
 import { ImagePluginConfig, ImagePluginCustomTypes } from "./types"
 import { resizeInBounds } from "./utils"
 
-const DEFAULT_OPTIONS = {
+const DEFAULT_OPTIONS: ImagePluginConfig = {
   maxInitialInlineImageSize: { width: 64, height: 64 },
   maxInitialImageSize: { width: 320, height: 320 },
   maxImageSize: { width: 1024, height: 1024 },
-  imageBlockPresets: [],
-  imageInlinePresets: [],
-}
-
-const TEMP_OPTIONS: ImagePluginConfig = {
+  // imageBlockPresets: [],
+  // imageInlinePresets: [],
   imageBlockPresets: [
     /**
      * Pixel Presets
@@ -65,6 +62,58 @@ const TEMP_OPTIONS: ImagePluginConfig = {
   ],
 }
 
+// const TEMP_OPTIONS: ImagePluginConfig = {
+//   maxInitialInlineImageSize: { width: 64, height: 64 },
+//   maxInitialImageSize: { width: 320, height: 320 },
+//   maxImageSize: { width: 1024, height: 1024 },
+//   imageBlockPresets: [
+//     /**
+//      * Pixel Presets
+//      */
+//     { name: "S", title: "Small", type: "bounds", width: 160, height: 160 },
+//     { name: "M", title: "Medium", type: "bounds", width: 320, height: 320 },
+//     { name: "L", title: "Large", type: "bounds", width: 640, height: 640 },
+//     /**
+//      * Scale Presets
+//      */
+//     { name: "⅓", title: "1/3 scale", type: "scale", scale: 1 / 3 },
+//     { name: "½", title: "1/2 scale", type: "scale", scale: 0.5 },
+//     { name: "Full", title: "Full size", type: "scale", scale: 1 },
+//   ],
+//   imageInlinePresets: [
+//     /**
+//      * Pixel Presets
+//      */
+//     {
+//       name: "16",
+//       title: "16 pixels",
+//       type: "bounds",
+//       width: 16,
+//       height: 16,
+//     },
+//     {
+//       name: "24",
+//       title: "24 pixels",
+//       type: "bounds",
+//       width: 24,
+//       height: 24,
+//     },
+//     {
+//       name: "32",
+//       title: "32 pixels",
+//       type: "bounds",
+//       width: 32,
+//       height: 32,
+//     },
+//     /**
+//      * Scale Presets
+//      */
+//     { name: "⅓", title: "1/3 scale", type: "scale", scale: 1 / 3 },
+//     { name: "½", title: "1/2 scale", type: "scale", scale: 0.5 },
+//     { name: "Full", title: "Full size", type: "scale", scale: 1 },
+//   ],
+// }
+
 export const ImagePlugin = //({
   //   maxInitialInlineImageSize = { width: 64, height: 64 },
   //   maxInitialImageSize = { width: 320, height: 320 },
@@ -73,8 +122,11 @@ export const ImagePlugin = //({
   //   imageInlinePresets = [],
   // }: ImagePluginConfig = {}) =>
   createPlugin<ImagePluginCustomTypes>(
-    (editor, __ADD_THESE_OPTIONS__, { createPolicy }) => {
-      const options = { ...DEFAULT_OPTIONS, ...TEMP_OPTIONS }
+    (editor, sinkOptions, { createPolicy }) => {
+      const options: ImagePluginConfig = {
+        ...DEFAULT_OPTIONS,
+        ...sinkOptions.image,
+      }
       editor.image = {
         ...createImageMethods(editor),
         maxInitialInlineImageSize: options.maxInitialInlineImageSize,

@@ -44,7 +44,7 @@ export type InputPluginSchema = SetOptional<
   "Options" | "Editor" | "Element" | "Text"
 >
 /**
- * Takes an `InputPluginTypes` (that has some optional types) and turns them
+ * Takes an `InputPluginSchema` (that has some optional types) and turns them
  * into a regular PluginTypes with any missing types filled in with defaults.
  */
 export type NormalizeInputPluginSchema<T extends InputPluginSchema> = {

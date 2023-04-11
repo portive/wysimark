@@ -19,7 +19,7 @@ export type ImagePluginConfig = {
    *
    * The user can convert an image from one image type to the other manually.
    */
-  maxInitialInlineImageSize?: ImageSize // default = { width: 64, height: 64 }
+  maxInitialInlineImageSize: ImageSize // default = { width: 64, height: 64 }
   /**
    * When an image is first uploaded, it may come in at a large size but for
    * some applications, you don't want the image to overwhelm the page,
@@ -35,7 +35,7 @@ export type ImagePluginConfig = {
    * This is the displayed image width. On retina displays, the actualy image
    * file delivered to the browser may be a multiple of the provided value.
    */
-  maxInitialImageSize?: ImageSize | null // default = { width: 320, height: 320 }
+  maxInitialImageSize: ImageSize | null // default = { width: 320, height: 320 }
   /**
    * When an image is displayed at full size, you may still want to limit the
    * size of the image file.
@@ -44,13 +44,15 @@ export type ImagePluginConfig = {
    *
    * This is the maximum visual image
    */
-  maxImageSize?: ImageSize // default = 1024
-  imageBlockPresets?: ImageSizePreset[]
-  imageInlinePresets?: ImageSizePreset[]
+  maxImageSize: ImageSize // default = 1024
+  imageBlockPresets: ImageSizePreset[]
+  imageInlinePresets: ImageSizePreset[]
 }
 
+export type ImagePluginOptions = { image: Partial<ImagePluginConfig> }
+
 export type ImageEditor = {
-  image: ImageMethods & Required<ImagePluginConfig>
+  image: ImageMethods & ImagePluginConfig
 }
 
 export type ImageSharedElement = {
@@ -106,6 +108,7 @@ export type ImagePluginCustomTypes = {
   Name: "image"
   Editor: ImageEditor
   Element: ImageBlockElement | ImageInlineElement
+  Options: ImagePluginOptions
 }
 
 /**
