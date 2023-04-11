@@ -34,4 +34,14 @@ if (typeof process.env.DOTENV === "string") {
 /**
  * Sets `process.env` in Next.js
  */
-module.exports = { env, experimental: { externalDir: true } }
+module.exports = {
+  env,
+  experimental: { externalDir: true },
+  webpack: function (config) {
+    config.module.rules.push({
+      test: /\.md$/,
+      use: "raw-loader",
+    })
+    return config
+  },
+}

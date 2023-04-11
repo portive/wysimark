@@ -1,8 +1,10 @@
 import { useCallback } from "react"
 import { useWysimark, Wysimark } from "wysimark/src/entry"
 
+import content from "../content/basic.md"
+
 export default function Page() {
-  const wysimark = useWysimark({ initialValue: "# Hello World" })
+  const wysimark = useWysimark({ initialValue: content })
 
   const getValue = useCallback(() => {
     const value = wysimark.getValue()
@@ -15,9 +17,10 @@ export default function Page() {
 And this is a paragraph`)
   }, [wysimark])
 
+  console.log(content)
+
   return (
     <div style={{ maxWidth: 720, margin: "2em auto" }}>
-      <h1>Wysimark</h1>
       <button onClick={getValue}>Get</button>
       <button onClick={resetValue}>Reset</button>
       <Wysimark wysimark={wysimark} />
