@@ -1,15 +1,20 @@
 import { BaseEditor } from "slate"
 
-import { BasePluginFn, FullSinkEditor } from "../types"
+import { BasePluginFn, ExtractedPluginSchema, FullSinkEditor } from "../types"
 import { createBooleanAction } from "./create-boolean-action"
 import { createVoidAction } from "./create-void-action"
 
-export function createWithSink(pluginFns: BasePluginFn[]) {
+export function createWithSink<T extends ExtractedPluginSchema>(
+  pluginFns: BasePluginFn[]
+) {
   /**
    * The `editor` in the props can be a `BaseEditor` but we transform it
    * into a `SinkEditor` before returning it.
    */
-  return <E extends BaseEditor>(originalEditor: E): E & FullSinkEditor => {
+  return <E extends BaseEditor>(
+    originalEditor: E,
+    options: T["Options"]
+  ): E & FullSinkEditor => {
     const editor = originalEditor as E & FullSinkEditor
 
     /**
@@ -17,7 +22,7 @@ export function createWithSink(pluginFns: BasePluginFn[]) {
      * `pluginFunctions` to get the `pluginObject`
      */
     const plugins = pluginFns.map((plugin) =>
-      plugin(editor, {}, { createPolicy: (x) => x })
+      plugin(editor, options, { createPolicy: (x) => x })
     )
     editor.sink = { plugins }
 

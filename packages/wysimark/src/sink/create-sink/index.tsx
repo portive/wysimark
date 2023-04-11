@@ -1,13 +1,16 @@
 import { SinkEditable } from "../editable"
 import { createWithSink } from "../editor"
-import { BasePlugin } from "../types"
+import { BasePlugin, ExtractedPluginSchema } from "../types"
 
 /**
  * A sink is just a function
  */
-export const createSink = (pluginFunctions: BasePlugin[]) => {
+export const createSink = <T extends ExtractedPluginSchema>(
+  pluginFunctions: BasePlugin[],
+  options: T["Options"]
+) => {
   const fns = pluginFunctions.map((plugin) => plugin.fn)
-  const withSink = createWithSink(fns)
+  const withSink = createWithSink<T>(fns)
 
   const returnValue = { withSink, SinkEditable }
   return returnValue

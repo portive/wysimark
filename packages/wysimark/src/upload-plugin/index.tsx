@@ -19,15 +19,18 @@ export type UploadEditor = {
   }
 }
 
+export type UploadOptions = { upload?: { authToken?: string } }
+
 export type UploadPluginCustomTypes = {
   Name: "upload"
   Editor: UploadEditor
+  Options: UploadOptions
 }
 
 export const UploadPlugin = //({ authToken }: { authToken?: string }) =>
-  createPlugin<UploadPluginCustomTypes>((editor) => {
+  createPlugin<UploadPluginCustomTypes>((editor, options) => {
     // TODO: This should be passed into options
-    const authToken = process.env.NEXT_PUBLIC_PORTIVE_AUTH_TOKEN
+    const authToken = options.upload?.authToken // process.env.NEXT_PUBLIC_PORTIVE_AUTH_TOKEN
     if (!authToken) {
       throw new Error(`You must provide an authToken`)
     }

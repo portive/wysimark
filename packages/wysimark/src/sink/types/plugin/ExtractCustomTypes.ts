@@ -7,6 +7,9 @@ import { SinkEditor } from "../sink/sink-editor"
 import { BasePlugin } from "./plugin"
 
 export type ExtractCustomTypes<TA extends Array<BasePlugin>> =
+  /**
+   * This code takes an array of types and merges them together into a union.
+   */
   TA extends Array<{
     __types__: infer U
   }>
@@ -23,6 +26,9 @@ export type ExtractCustomTypes<TA extends Array<BasePlugin>> =
         Element: U extends { Element: infer E } ? E : never
         Text: Simplify<
           UnionToIntersection<U extends { Text: infer T } ? T : never>
+        >
+        Options: Simplify<
+          UnionToIntersection<U extends { Options: infer T } ? T : never>
         >
       }
     : never

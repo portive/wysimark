@@ -54,3 +54,19 @@ export type NormalizeInputPluginSchema<T extends InputPluginSchema> = {
   Element: T["Element"] extends object ? T["Element"] : never
   Text: T["Text"] extends object ? T["Text"] : {}
 }
+
+/**
+ * The result of calling ExtractCustomTypes (may be renamed to
+ * ExtractPluginSchema or something else in the future) on an array of
+ * `PluginSchema` types.
+ *
+ * This value is used as an input to `createSink` so that we have access to the
+ * `Options` type since the second argument to `createSink` is `options:
+ * Options`
+ */
+export type ExtractedPluginSchema = {
+  Options: Record<string, unknown>
+  // Editor: Record<string, unknown>
+  Element: { type: string }
+  Text: Record<string, unknown>
+}

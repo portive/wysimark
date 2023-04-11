@@ -1,6 +1,7 @@
 import { BaseEditor, BaseText } from "slate"
 import { HistoryEditor } from "slate-history"
 import { ReactEditor } from "slate-react"
+import { Simplify } from "type-fest"
 import { AnchorPlugin } from "wysimark/src/anchor-plugin"
 import { AtomicDeletePlugin } from "wysimark/src/atomic-delete-plugin"
 import { BlockQuotePlugin } from "wysimark/src/block-quote-plugin"
@@ -63,11 +64,12 @@ const plugins = [
   ImagePlugin,
 ]
 
-type PluginCustomTypes2 = ExtractCustomTypes<typeof plugins>
+type PluginTypes = ExtractCustomTypes<typeof plugins>
 
-type EditorType = PluginCustomTypes2["Editor"]
-type ElementType = PluginCustomTypes2["Element"]
-type TextType = PluginCustomTypes2["Text"]
+type EditorType = PluginTypes["Editor"]
+type ElementType = PluginTypes["Element"]
+type TextType = PluginTypes["Text"]
+type OptionsType = PluginTypes["Options"]
 
 export type Element = ElementType
 export type Text = TextType
@@ -98,7 +100,9 @@ export type Text = TextType
  * with an emphasis on how we wrote the `Element` portion.
  */
 
-const Sink = createSink(plugins)
+const Sink = createSink<PluginTypes>(plugins, {
+  upload: { authToken: process.env.NEXT_PUBLIC_PORTIVE_AUTH_TOKEN },
+})
 // const Sink = createSink([
 //   ConvertElementPlugin,
 //   AnchorPlugin,
@@ -203,10 +207,7 @@ export { SinkEditable, withSink }
 declare module "slate" {
   interface CustomTypes {
     Editor: BaseEditor & ReactEditor & HistoryEditor & EditorType
-    // PluginCustomTypes2["Editor"]
-    Element: //PluginCustomTypes2["Element"]
-    ElementType
-    Text: BaseText & // & PluginCustomTypes2["Text"]
-      TextType
+    Element: ElementType
+    Text: BaseText & TextType
   }
 }

@@ -20,7 +20,9 @@ export function useWysimark({
 }): UseWysimarkValue {
   const [editor] = useState(() => {
     const editor = createEditor()
-    const nextEditor = withSink(withReact(withHistory(editor)))
+    const nextEditor = withSink(withReact(withHistory(editor)), {
+      upload: { authToken: process.env.NEXT_PUBLIC_PORTIVE_AUTH_TOKEN },
+    })
     nextEditor.convertElement.addConvertElementType("paragraph")
     return nextEditor
   })

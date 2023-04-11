@@ -1,4 +1,5 @@
 import { Editor } from "slate"
+import { Simplify } from "type-fest"
 
 import { FullSinkEditor } from "../sink/sink-editor"
 import { BasePluginPolicy, PluginPolicy } from "./plugin-policy"
@@ -21,7 +22,7 @@ export type TypedPluginFunction<T extends InputPluginSchema> = (
    * for Transform methods and such that take an `Editor` object.
    */
   editor: T["Editor"] & Editor,
-  options: {}, // TODO: temporarily it's always empty
+  options: Simplify<NormalizeInputPluginSchema<T>["Options"]>, // TODO: temporarily it's always empty
   helpers: {
     createPolicy: (
       policy: PluginPolicy<NormalizeInputPluginSchema<T>>
