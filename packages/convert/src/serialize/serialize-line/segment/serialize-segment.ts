@@ -2,9 +2,9 @@ import { Text as SlateText } from "slate"
 
 import { Segment } from "../../../types"
 import { assertUnreachable } from "../../../utils"
+import { serializeImageShared } from "../../serialize-image-shared"
 import { serializeCodeText } from "../segment/serialize-code-text"
 import { serializeAnchor } from "./serialize-anchor"
-import { serializeInlineImage } from "./serialize-inline-image"
 import { serializeNonCodeText } from "./serialize-non-code-text"
 
 export function serializeSegment(segment: Segment): string {
@@ -25,7 +25,7 @@ export function serializeSegment(segment: Segment): string {
       return serializeAnchor(segment)
     }
     case "image-inline":
-      return serializeInlineImage(segment)
+      return serializeImageShared(segment)
     default:
       assertUnreachable(segment)
   }

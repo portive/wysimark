@@ -1,4 +1,4 @@
-import { ImageInlineElement } from "wysimark/src/image-plugin/types"
+import { ImageSharedElement } from "wysimark/src/image-plugin/types"
 
 import { serializeGenericImageUrl } from "./serialize-generic-image-url"
 import { serializePortiveImageUrl } from "./serialize-portive-image-url"
@@ -10,7 +10,7 @@ const urlSerializers = [
   serializeGenericImageUrl,
 ]
 
-export function serializeInlineImage(image: ImageInlineElement): string {
+export function serializeImageShared(image: ImageSharedElement): string {
   for (const urlSerializer of urlSerializers) {
     const url = urlSerializer(image)
     if (url) {

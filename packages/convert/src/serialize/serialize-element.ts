@@ -2,6 +2,7 @@ import { Element, Segment } from "../types"
 import { assertUnreachable } from "../utils"
 import { serializeCodeBlock } from "./serialize-code-block"
 import { serializeElements } from "./serialize-elements"
+import { serializeImageBlock } from "./serialize-image-block"
 import { serializeLine } from "./serialize-line"
 import { serializeTable } from "./serialize-table"
 
@@ -73,6 +74,7 @@ export function serializeElement(element: Element, orders: number[]): string {
      * TODO: Handle image elements.
      */
     case "image-block":
+      return serializeImageBlock(element)
     case "image-inline":
       throw new Error(`Image elements not yet supported.`)
   }

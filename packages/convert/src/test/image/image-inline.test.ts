@@ -1,36 +1,39 @@
 import { check } from "../test-utils"
 
-describe("image", () => {
+describe("image-inline", () => {
   describe("generic image urls", () => {
     it("should convert a generic image to an ImageInline", async () => {
-      check(`![Pretty Flowers](http://localhost/alpha.jpg "title")`, [
-        {
-          type: "paragraph",
-          children: [
-            { text: "" },
-            {
-              type: "image-inline",
-              url: "http://localhost/alpha.jpg",
-              title: "title",
-              alt: "Pretty Flowers",
-              children: [{ text: "" }],
-            },
-            { text: "" },
-          ],
-        },
-      ])
+      check(
+        `alpha ![Pretty Flowers](http://localhost/alpha.jpg "title") bravo`,
+        [
+          {
+            type: "paragraph",
+            children: [
+              { text: "alpha " },
+              {
+                type: "image-inline",
+                url: "http://localhost/alpha.jpg",
+                title: "title",
+                alt: "Pretty Flowers",
+                children: [{ text: "" }],
+              },
+              { text: " bravo" },
+            ],
+          },
+        ]
+      )
     })
   })
 
   describe("Portive image URLs", () => {
     it("should convert a Portive image to an ImageInline and parse out width/height and srcWidth/srcHeight", async () => {
       check(
-        `![Pretty Flowers](http://files.portive.com:3030/alpha--1024x768.jpg?size=320x240 "title")`,
+        `alpha ![Pretty Flowers](http://files.portive.com:3030/alpha--1024x768.jpg?size=320x240 "title") bravo`,
         [
           {
             type: "paragraph",
             children: [
-              { text: "" },
+              { text: "alpha " },
               {
                 type: "image-inline",
                 url: "http://files.portive.com:3030/alpha--1024x768.jpg",
@@ -42,7 +45,7 @@ describe("image", () => {
                 srcHeight: 768,
                 children: [{ text: "" }],
               },
-              { text: "" },
+              { text: " bravo" },
             ],
           },
         ]
@@ -53,12 +56,12 @@ describe("image", () => {
   describe("invalid url format for width/height", () => {
     it("should not get image size if missing query", async () => {
       check(
-        `![Pretty Flowers](http://localhost:3030/alpha--1024x768.jpg "title")`,
+        `alpha ![Pretty Flowers](http://localhost:3030/alpha--1024x768.jpg "title") bravo`,
         [
           {
             type: "paragraph",
             children: [
-              { text: "" },
+              { text: "alpha " },
               {
                 type: "image-inline",
                 url: "http://localhost:3030/alpha--1024x768.jpg",
@@ -66,7 +69,7 @@ describe("image", () => {
                 alt: "Pretty Flowers",
                 children: [{ text: "" }],
               },
-              { text: "" },
+              { text: " bravo" },
             ],
           },
         ]
@@ -75,12 +78,12 @@ describe("image", () => {
 
     it("should not get image size if bad query", async () => {
       check(
-        `![Pretty Flowers](http://localhost:3030/alpha--1024x768.jpg?size=320xtwoforty "title")`,
+        `alpha ![Pretty Flowers](http://localhost:3030/alpha--1024x768.jpg?size=320xtwoforty "title") bravo`,
         [
           {
             type: "paragraph",
             children: [
-              { text: "" },
+              { text: "alpha " },
               {
                 type: "image-inline",
                 url: "http://localhost:3030/alpha--1024x768.jpg?size=320xtwoforty",
@@ -88,7 +91,7 @@ describe("image", () => {
                 alt: "Pretty Flowers",
                 children: [{ text: "" }],
               },
-              { text: "" },
+              { text: " bravo" },
             ],
           },
         ]
@@ -97,12 +100,12 @@ describe("image", () => {
 
     it("should not get image size if bad pathname", async () => {
       check(
-        `![Pretty Flowers](http://localhost:3030/alpha--1024x.jpg?size=320x240 "title")`,
+        `alpha ![Pretty Flowers](http://localhost:3030/alpha--1024x.jpg?size=320x240 "title") bravo`,
         [
           {
             type: "paragraph",
             children: [
-              { text: "" },
+              { text: "alpha " },
               {
                 type: "image-inline",
                 url: "http://localhost:3030/alpha--1024x.jpg?size=320x240",
@@ -110,7 +113,7 @@ describe("image", () => {
                 alt: "Pretty Flowers",
                 children: [{ text: "" }],
               },
-              { text: "" },
+              { text: " bravo" },
             ],
           },
         ]
@@ -121,12 +124,12 @@ describe("image", () => {
   describe("Uncommon mark", () => {
     it("should get image size from uncommonMark hints", async () => {
       check(
-        `![alt](http://localhost:3030/image.jpg#srcSize=1024x768&size=320x240 "title")`,
+        `alpha ![alt](http://localhost:3030/image.jpg#srcSize=1024x768&size=320x240 "title") bravo`,
         [
           {
             type: "paragraph",
             children: [
-              { text: "" },
+              { text: "alpha " },
               {
                 type: "image-inline",
                 url: "http://localhost:3030/image.jpg",
@@ -138,7 +141,7 @@ describe("image", () => {
                 srcHeight: 768,
                 children: [{ text: "" }],
               },
-              { text: "" },
+              { text: " bravo" },
             ],
           },
         ]

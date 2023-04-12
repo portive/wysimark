@@ -1,4 +1,4 @@
-import { ImageInlineElement } from "wysimark/src/image-plugin/types"
+import { ImageSharedElement } from "wysimark/src/image-plugin/types"
 
 /**
  * In UncommonMark, we provide hints after the hash `#` portion of the URL that
@@ -8,7 +8,7 @@ import { ImageInlineElement } from "wysimark/src/image-plugin/types"
  * https://imageservice.com/abcdefg.jpg#srcSize=1024x768&size=640x480
  */
 export function serializeUncommonmarkImageUrl(
-  image: ImageInlineElement
+  image: ImageSharedElement
 ): string | undefined {
   if (image.width && image.height && image.srcWidth && image.srcHeight)
     return `${image.url}#srcSize=${image.srcWidth}x${image.srcHeight}&size=${image.width}x${image.height}`

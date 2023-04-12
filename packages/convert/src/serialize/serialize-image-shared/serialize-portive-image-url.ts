@@ -1,4 +1,4 @@
-import { ImageInlineElement } from "wysimark/src/image-plugin/types"
+import { ImageSharedElement } from "wysimark/src/image-plugin/types"
 
 /**
  * When an image is in the `.portive.com` subdomain like `files.portive.com` or
@@ -21,7 +21,7 @@ import { ImageInlineElement } from "wysimark/src/image-plugin/types"
  *   is still returned in the correct size.
  */
 export function serializePortiveImageUrl(
-  image: ImageInlineElement
+  image: ImageSharedElement
 ): string | undefined {
   const { hostname } = new URL(image.url)
   /**
