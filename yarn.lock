@@ -20053,7 +20053,6 @@ __metadata:
     just-throttle: ^4.2.0
     lodash.throttle: ^4.1.1
     nanoid: ^4.0.0
-    next: 12.x
     plop: ^2
     prettier: ^2
     pretty-bytes: ^6.0.0
