@@ -37,6 +37,12 @@ if (typeof process.env.DOTENV === "string") {
 module.exports = {
   env,
   experimental: { externalDir: true },
+  /**
+   * Add this code to enable importing of file content as a string.
+   * You must also add a type declaration for the file extension.
+   *
+   * See `/types/md.d.ts` for an example.
+   */
   webpack: function (config) {
     config.module.rules.push({
       test: /\.md$/,

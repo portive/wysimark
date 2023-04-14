@@ -1,11 +1,16 @@
 {
   "name": "wysimark",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "license": "MIT",
   "author": "Sunny Hirai <thesunny@gmail.com>",
   "main": ".dist/index.js",
   "types": ".dist/index.d.ts",
+  "files": [
+    "README.md",
+    ".dist/"
+  ],
   "devDependencies": {
+    "@portive/client": "^10.0.2",
     "@thesunny/assert-type": "^0.1.13",
     "@types/handlebars-helpers": "^0.5.3",
     "@types/jest": "^27",
@@ -21,6 +26,7 @@
     "eslint-config-custom": "workspace:*",
     "jest": "^27",
     "nanoid": "^4.0.0",
+    "np": "^7.7.0",
     "plop": "^2",
     "prettier": "^2",
     "pretty-bytes": "^6.0.0",
@@ -35,7 +41,6 @@
   "dependencies": {
     "@emoji-mart/data": "^1.1.0",
     "@emoji-mart/react": "^1.1.0",
-    "@portive/client": "^10.0.2",
     "clsx": "^1.2.1",
     "dotenv": "16.x",
     "emoji-mart": "^5.4.0",
@@ -53,7 +58,7 @@
     "zustand": "^4.1.5"
   },
   "scripts": {
-    "--build": "# build",
+    "--build": "# build with tsup.config.js",
     "build": "rimraf .dist && tsup src/entry/index.tsx",
     "build:cli": "rimraf .dist && tsup src/entry/index.tsx --dts --tsconfig=tsconfig.tsup.json --out-dir=.dist",
     "build:watch": "yarn build --watch",
@@ -70,6 +75,8 @@
     "start:local": "DOTENV=.env/local.env next dev -p 3732",
     "-- plop": "# Plop: specify ts-node https://github.com/plopjs/plop/issues/192",
     "plop": "TS_NODE_PROJECT=tsconfig.ts-node.json plop --plopfile plop/plopfile.ts",
+    "-- release": "# publish to npm",
+    "release": "np",
     "--- test": "# Temporarily disabling tests as there are none yet",
     "z:test:clearcache": "jest --clearCache",
     "z:test:once": "yarn test:clearcache && jest --config=jest.config.js",
