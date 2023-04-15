@@ -6,7 +6,7 @@ export default defineConfig(() => {
     external: ["react", "react-dom"],
     dts: true,
     outDir: ".dist",
-    sourcemap: false,
+    sourcemap: true,
     splitting: true,
     // metafile: true,
     /**

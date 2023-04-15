@@ -1,6 +1,6 @@
 {
   "name": "wysimark",
-  "version": "0.2.1",
+  "version": "0.2.3",
   "license": "MIT",
   "author": "Sunny Hirai <thesunny@gmail.com>",
   "main": ".dist/index.js",
@@ -10,7 +10,6 @@
     ".dist/"
   ],
   "devDependencies": {
-    "@portive/client": "^10.0.2",
     "@thesunny/assert-type": "^0.1.13",
     "@types/handlebars-helpers": "^0.5.3",
     "@types/jest": "^27",
@@ -26,7 +25,6 @@
     "eslint-config-custom": "workspace:*",
     "jest": "^27",
     "nanoid": "^4.0.0",
-    "np": "^7.7.0",
     "plop": "^2",
     "prettier": "^2",
     "pretty-bytes": "^6.0.0",
@@ -41,6 +39,7 @@
   "dependencies": {
     "@emoji-mart/data": "^1.1.0",
     "@emoji-mart/react": "^1.1.0",
+    "@portive/client": "^10.0.2",
     "clsx": "^1.2.1",
     "dotenv": "16.x",
     "emoji-mart": "^5.4.0",
@@ -76,7 +75,7 @@
     "-- plop": "# Plop: specify ts-node https://github.com/plopjs/plop/issues/192",
     "plop": "TS_NODE_PROJECT=tsconfig.ts-node.json plop --plopfile plop/plopfile.ts",
     "-- release": "# publish to npm",
-    "release": "np",
+    "release": "npm publish",
     "--- test": "# Temporarily disabling tests as there are none yet",
     "z:test:clearcache": "jest --clearCache",
     "z:test:once": "yarn test:clearcache && jest --config=jest.config.js",

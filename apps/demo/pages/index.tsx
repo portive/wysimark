@@ -4,7 +4,10 @@ import { useWysimark, Wysimark } from "wysimark/src/entry"
 import content from "../content/basic.md"
 
 export default function Page() {
-  const wysimark = useWysimark({ initialValue: content })
+  const wysimark = useWysimark({
+    initialValue: content,
+    uploadAuthToken: process.env.NEXT_PUBLIC_PORTIVE_AUTH_TOKEN,
+  })
 
   const getValue = useCallback(() => {
     const value = wysimark.getValue()

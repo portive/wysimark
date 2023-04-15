@@ -15,13 +15,15 @@ export type UseWysimarkValue = {
 
 export function useWysimark({
   initialValue,
+  uploadAuthToken,
 }: {
   initialValue: string
+  uploadAuthToken?: string
 }): UseWysimarkValue {
   const [editor] = useState(() => {
     const editor = createEditor()
     const nextEditor = withSink(withReact(withHistory(editor)), {
-      upload: { authToken: process.env.NEXT_PUBLIC_PORTIVE_AUTH_TOKEN },
+      upload: { authToken: uploadAuthToken },
       image: {},
     })
     nextEditor.convertElement.addConvertElementType("paragraph")
