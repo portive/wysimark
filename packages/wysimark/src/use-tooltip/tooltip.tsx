@@ -6,7 +6,7 @@ export function useRect(dest: HTMLElement): DOMRect {
 }
 
 const $Tooltip = styled("div", forwardRef)`
-  position: absolute;
+  position: fixed;
   z-index: 10;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

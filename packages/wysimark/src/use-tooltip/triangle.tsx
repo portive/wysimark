@@ -4,7 +4,7 @@ import { forwardRef } from "react"
 import { useRect } from "./tooltip"
 
 const $Triangle = styled("span", forwardRef)`
-  position: absolute;
+  position: fixed;
   z-index: 10;
   width: 0;
   height: 0;
