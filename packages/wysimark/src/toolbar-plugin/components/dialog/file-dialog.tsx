@@ -11,11 +11,13 @@ import { CloseMask } from "../shared/close-mask"
 export function FileDialog({
   dest,
   close,
+  icon,
   buttonCaption,
   buttonHint,
 }: {
   dest: HTMLElement
   close: () => void
+  icon: React.ReactNode
   buttonCaption: string
   buttonHint: string
 }) {
@@ -58,8 +60,9 @@ export function FileDialog({
             onChange={onChange}
           />
           <$DialogButton>
-            <span style={{ marginRight: "0.5em" }}>{buttonCaption}</span>
-            <Icon.Upload />
+            {icon}
+
+            <span style={{ marginLeft: "0.5em" }}>{buttonCaption}</span>
           </$DialogButton>
         </label>
         <$DialogHint>{buttonHint}</$DialogHint>
@@ -79,6 +82,7 @@ export function AttachmentDialog({
     <FileDialog
       dest={dest}
       close={close}
+      icon={<Icon.FileUpload />}
       buttonCaption="Select files..."
       buttonHint="Select files to insert as attachments"
     />
@@ -96,8 +100,9 @@ export function ImageDialog({
     <FileDialog
       dest={dest}
       close={close}
-      buttonCaption="Select image files..."
-      buttonHint="Select images to insert"
+      icon={<Icon.PhotoUp />}
+      buttonCaption="Select images..."
+      buttonHint="Select image files to insert"
     />
   )
 }

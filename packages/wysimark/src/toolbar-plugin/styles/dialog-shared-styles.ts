@@ -21,6 +21,7 @@ export const $DialogButton = styled("div", forwardRef)`
   }
   border-radius: 0.25em;
   svg {
+    color: var(--blue-200);
     font-size: 1.25em;
     stroke-width: 2px;
   }

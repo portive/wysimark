@@ -159,10 +159,21 @@ export const Attachment = () => (
   </TablerIcon>
 )
 
-export const Upload = () => (
+export const FileUpload = () => (
   <TablerIcon>
     <path stroke="none" d="M0 0h24v24H0z" />
-    <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2M7 9l5-5 5 5M12 4v12" />
+    <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+    <path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2zM12 11v6" />
+    <path d="M9.5 13.5 12 11l2.5 2.5" />
+  </TablerIcon>
+)
+
+export const PhotoUp = () => (
+  <TablerIcon>
+    <path stroke="none" d="M0 0h24v24H0z" />
+    <path d="M15 8h.01M12.5 21H6a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v6.5" />
+    <path d="m3 16 5-5c.928-.893 2.072-.893 3 0l3.5 3.5" />
+    <path d="m14 14 1-1c.679-.653 1.473-.829 2.214-.526M19 22v-6M22 19l-3-3-3 3" />
   </TablerIcon>
 )
 
