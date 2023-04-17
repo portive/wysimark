@@ -1,4 +1,5 @@
-import { Descendant, Transforms } from "slate"
+import { Descendant, Editor, Transforms } from "slate"
+import { ReactEditor } from "slate-react"
 
 import { createPlugin, curryOne, TypedPlugin } from "~/src/sink"
 
@@ -41,6 +42,7 @@ export const UploadAttachmentPlugin =
     (editor, options, { createPolicy }) => {
       editor.uploadAttachment = createUploadAttachmentMethods(editor)
       editor.upload.onUploadFile = ({ hashUrl, file }) => {
+        const { selection } = editor
         Transforms.insertNodes(editor, {
           type: "upload-attachment",
           title: file.name,
@@ -48,6 +50,18 @@ export const UploadAttachmentPlugin =
           bytes: file.size,
           children: [{ text: "" }],
         })
+        /**
+         * If there is no selection the element is inserted at the bottom of the
+         * editor. When this happens, the insertion point may not be visible and
+         * so this code scrolls to the bottom of the editor. We don't do this if
+         * there is a selection because if the user made a selection, it is
+         * likely already in view.
+         */
+        if (!selection) {
+          const lastPos = Editor.end(editor, [])
+          Transforms.select(editor, lastPos)
+          ReactEditor.focus(editor)
+        }
         return true
       }
       return createPolicy({

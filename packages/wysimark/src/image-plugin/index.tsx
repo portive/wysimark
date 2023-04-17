@@ -1,4 +1,5 @@
-import { Transforms } from "slate"
+import { Editor, Transforms } from "slate"
+import { ReactEditor } from "slate-react"
 
 import { createPlugin, curryOne, TypedPlugin } from "~/src/sink"
 
@@ -136,6 +137,7 @@ export const ImagePlugin = //({
         imageInlinePresets: options.imageInlinePresets,
       }
       editor.upload.onUploadImageFile = (e) => {
+        const { selection } = editor
         if (e.width <= 64 && e.height <= 64) {
           Transforms.insertNodes(editor, {
             type: "image-inline",
@@ -164,6 +166,19 @@ export const ImagePlugin = //({
             srcHeight: e.height,
             children: [{ text: "" }],
           })
+        }
+
+        /**
+         * If there is no selection the element is inserted at the bottom of the
+         * editor. When this happens, the insertion point may not be visible and
+         * so this code scrolls to the bottom of the editor. We don't do this if
+         * there is a selection because if the user made a selection, it is
+         * likely already in view.
+         */
+        if (!selection) {
+          const lastPos = Editor.end(editor, [])
+          Transforms.select(editor, lastPos)
+          ReactEditor.focus(editor)
         }
         return true
       }

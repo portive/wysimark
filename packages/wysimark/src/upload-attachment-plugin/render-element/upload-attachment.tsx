@@ -39,7 +39,7 @@ export function UploadAttachment({
       style={{ background }}
       draggable
     >
-      <div className="--flex" contentEditable={false}>
+      <span className="--flex" contentEditable={false}>
         <span className="--paperclip">
           <PaperclipIcon />
         </span>
@@ -58,7 +58,7 @@ export function UploadAttachment({
             <DownloadIcon />
           </a>
         )}
-      </div>
+      </span>
       {children}
     </$UploadAttachment>
   )
