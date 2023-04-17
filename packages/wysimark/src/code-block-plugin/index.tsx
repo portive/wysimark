@@ -45,7 +45,8 @@ export const CodeBlockPlugin = createPlugin<CodeBlockPluginCustomTypes>(
       editableProps: {
         decorate,
         onKeyDown: createHotkeyHandler({
-          "super+`": editor.codeBlock.createCodeBlock,
+          "super+`": () =>
+            editor.codeBlock.createCodeBlock({ language: "text" }),
         }),
         renderElement: ({ element, attributes, children }) => {
           const selected = useSelected()

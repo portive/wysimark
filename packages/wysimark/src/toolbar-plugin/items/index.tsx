@@ -4,6 +4,7 @@ import { EmojiDialog } from "../components/dialog/emoji-dialog"
 import { AttachmentDialog, ImageDialog } from "../components/dialog/file-dialog"
 import * as Icon from "../icons"
 import { Item } from "../types"
+import { codeBlockItems } from "./codeBlockItems"
 import { headingItems } from "./heading-items"
 import { listItems } from "./list-items"
 import { quoteItems } from "./quote-items"
@@ -59,7 +60,12 @@ export const items: Item[] = [
     more: true,
     children: quoteItems,
   },
-  { icon: Icon.Code, title: "Code Block", more: true },
+  {
+    icon: Icon.Code,
+    title: "Code Block",
+    more: true,
+    children: codeBlockItems,
+  },
   "divider",
   {
     icon: Icon.Link,

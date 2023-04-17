@@ -36,6 +36,7 @@ export function normalizeSiblings<T extends Descendant>(
 ): boolean {
   const [, path] = entry
 
+  console.log(path, editor.children)
   const prevEntry = Editor.previous<T>(editor, { at: path })
   if (prevEntry && transform(prevEntry, entry)) return true
 

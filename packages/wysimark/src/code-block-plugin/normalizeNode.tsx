@@ -38,7 +38,15 @@ export function normalizeNode(editor: Editor, entry: NodeEntry<Node>): boolean {
     for (const [child, path] of Node.children(editor, entry[1])) {
       if (!Element.isElement(child)) continue
       if (child.type === "code-block-line") continue
-      if (editor.isVoid(child)) {
+      if (child.type === "code-block") {
+        /**
+         * When pasting two or more lines of `code-block-line`, Slate will paste
+         * it as a `code-block` which will create a `code-block` in a
+         * `code-block`. The following code removes the lower `code-block`.
+         */
+        Transforms.unwrapNodes(editor, { at: path })
+        return true
+      } else if (editor.isVoid(child)) {
         Transforms.removeNodes(editor, { at: path })
         return true
       } else {
