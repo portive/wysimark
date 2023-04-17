@@ -13,11 +13,10 @@ import { positionInside, useAbsoluteReposition } from "~/src/use-reposition"
 import * as Icon from "../../icons"
 import {
   $AnchorDialog,
-  $AnchorDialogButton,
-  $AnchorDialogHint,
   $AnchorDialogInput,
   $AnchorDialogInputLine,
 } from "../../styles"
+import { $DialogButton, $DialogHint } from "../../styles/dialog-shared-styles"
 import { CloseMask } from "../shared/close-mask"
 
 const isEnter = isHotkey("enter")
@@ -38,7 +37,7 @@ export function AnchorDialog({
         src,
         viewport,
         {
-          left: dest.left,
+          left: dest.left - 12,
           top: dest.top + dest.height,
         },
         { margin: 16 }
@@ -80,12 +79,12 @@ export function AnchorDialog({
             onChange={onChangeInput}
             onKeyDown={onKeyDown}
           />
-          <$AnchorDialogButton onClick={insertLink}>
+          <$DialogButton onClick={insertLink}>
             <Icon.Link />
             <Icon.LinkPlus />
-          </$AnchorDialogButton>
+          </$DialogButton>
         </$AnchorDialogInputLine>
-        <$AnchorDialogHint>Enter URL of link</$AnchorDialogHint>
+        <$DialogHint>Enter URL of link</$DialogHint>
       </$AnchorDialog>
     </>
   )

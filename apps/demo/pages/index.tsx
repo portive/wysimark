@@ -1,22 +1,8 @@
-import { styled } from "goober"
-import { forwardRef, useCallback } from "react"
+import Head from "next/head"
+import { useCallback } from "react"
 import { useWysimark, Wysimark } from "wysimark/src/entry"
 
 import content from "../content/basic.md"
-import Head from "next/head"
-
-const $ButtonsDiv = styled("div", forwardRef)`
-  margin-bottom: 0.5em;
-`
-const $Button = styled("button", forwardRef)`
-  /* margin-right: 0.25em;
-  background: #3498db;
-  background-image: linear-gradient(to bottom, #3498db, #2980b9);
-  border: none;
-  border-radius: 0.5em;
-  color: #ffffff;
-  padding: 0.5em 1em; */
-`
 
 export default function Page() {
   const wysimark = useWysimark({

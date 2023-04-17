@@ -22,7 +22,7 @@ export const $Menu = styled($Panel, forwardRef)`
  */
 export const $MenuItem = styled("div", forwardRef)`
   display: flex;
-  padding: 0 1em 0 1.5em;
+  padding: 0 1em 0 1.25em;
   height: 2em;
   align-items: center;
   /**

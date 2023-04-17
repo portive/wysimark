@@ -26,7 +26,7 @@ export function TableDialog({
   const editor = useSlateStatic()
   const ref = useRef<HTMLDivElement>(null)
   const style = useAbsoluteReposition({ src: ref, dest }, ({ dest }) => {
-    return { left: dest.left, top: dest.top + dest.height }
+    return { left: dest.left - 8, top: dest.top + dest.height }
   })
   const rows = createRange(5).map((i) => i + 1)
   const cols = createRange(5).map((i) => i + 1)

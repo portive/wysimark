@@ -159,6 +159,13 @@ export const Attachment = () => (
   </TablerIcon>
 )
 
+export const Upload = () => (
+  <TablerIcon>
+    <path stroke="none" d="M0 0h24v24H0z" />
+    <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2M7 9l5-5 5 5M12 4v12" />
+  </TablerIcon>
+)
+
 /**
  * Text Styles
  */

@@ -1,7 +1,7 @@
 import { TableDialog } from "../components"
 import { AnchorDialog } from "../components/dialog/anchor-dialog"
-import { AttachmentDialog } from "../components/dialog/attachment-dialog"
 import { EmojiDialog } from "../components/dialog/emoji-dialog"
+import { AttachmentDialog, ImageDialog } from "../components/dialog/file-dialog"
 import * as Icon from "../icons"
 import { Item } from "../types"
 import { headingItems } from "./heading-items"
@@ -65,16 +65,12 @@ export const items: Item[] = [
     icon: Icon.Link,
     title: "Insert Link",
     hotkey: "mod+k",
-    // action: (editor) =>
-    //   editor.anchor.insertLink("https://www.google.com/", "Google", {
-    //     select: true,
-    //   }),
     Component: AnchorDialog,
   },
   {
     icon: Icon.Image,
     title: "Insert Image",
-    Component: AttachmentDialog,
+    Component: ImageDialog,
   },
   {
     icon: Icon.Attachment,
