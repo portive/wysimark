@@ -5,6 +5,7 @@ import {
   createHotkeyHandler,
   createPlugin,
   curryOne,
+  findElementUp,
   TypedPlugin,
 } from "~/src/sink"
 
@@ -15,6 +16,8 @@ import { $CodeBlock, $CodeLine } from "./styles"
 import { CodeBlockPluginCustomTypes } from "./types"
 export * from "./decorate"
 export * from "./types"
+import { Editor, Element, Transforms } from "slate"
+
 import { normalizeNode } from "./normalizeNode"
 
 export const CodeBlockPlugin = createPlugin<CodeBlockPluginCustomTypes>(
@@ -47,6 +50,19 @@ export const CodeBlockPlugin = createPlugin<CodeBlockPluginCustomTypes>(
         onKeyDown: createHotkeyHandler({
           "super+`": () =>
             editor.codeBlock.createCodeBlock({ language: "text" }),
+          "mod+a": () => {
+            /**
+             * When selection is in code-block and the user pressed mod+a,
+             * select the code-block instead of the full document.
+             */
+            const entry = findElementUp(
+              editor,
+              (el) => Element.isElement(el) && el.type === "code-block"
+            )
+            if (!entry) return false
+            Transforms.select(editor, entry[1])
+            return true
+          },
         }),
         renderElement: ({ element, attributes, children }) => {
           const selected = useSelected()
