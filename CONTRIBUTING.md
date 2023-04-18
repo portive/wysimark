@@ -3,7 +3,7 @@
 Contributing Requirements:
 
 - Yarn 3
-- Built only tested in a \*nix environment
+- Build only tested in a \*nix environment
 
 ## Getting Started
 
@@ -30,3 +30,19 @@ yarn start:local
 ```
 
 You can edit Wysimark code and the changes will update live in the demo without a build step. Updates will be hot reloaded; however, due to the way that the editor is cached for performance, in some instances you will need to reload the browser.
+
+## Running Unit Tests
+
+Run unit tests once
+
+```sh
+# from root
+yarn test
+```
+
+Run unit tests in watch mode for `packages/convert`. Note that only `packages/convert` is unit tested.
+
+```sh
+# cd into `packages/convert` first
+yarn test:watch
+```
