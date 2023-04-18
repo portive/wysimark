@@ -13,7 +13,7 @@ export function renderElement({
   if (element.type === "code-block") {
     return (
       <$CodeBlock className={selected ? "--selected" : ""} {...attributes}>
-        <$CodeBlockLanguage contentEditable="false">
+        <$CodeBlockLanguage contentEditable={false}>
           {element.language}
         </$CodeBlockLanguage>
         <code style={{ fontFamily: "andale mono" }}>{children}</code>
