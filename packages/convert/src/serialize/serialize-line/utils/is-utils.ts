@@ -1,5 +1,6 @@
 import * as Slate from "slate"
-import { AnchorElement } from "wysimark/src/anchor-plugin"
+
+import { AnchorElement } from "~wysimark/src/anchor-plugin"
 
 import { Segment, Text } from "../../../types"
 import { LineElement, Node } from "../normalize-line/types"

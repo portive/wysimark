@@ -1,4 +1,4 @@
-import { ImageSharedElement } from "wysimark/src/image-plugin/types"
+import { ImageSharedElement } from "~wysimark/src/image-plugin/types"
 
 /**
  * When an image is in the `.portive.com` subdomain like `files.portive.com` or

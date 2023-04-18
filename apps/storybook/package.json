@@ -31,6 +31,13 @@
     "tsconfig-paths": "^4.1.2",
     "typescript": "^4.9.5"
   },
+  "dependencies": {
+    "@wysimark/react": "workspace:*",
+    "dotenv": "16.x",
+    "next": "12.x",
+    "react": "18.x",
+    "react-dom": "18.x"
+  },
   "scripts": {
     "-- preset": "# Run preset from ~/presets",
     "preset": "ts-node --project $HOME/presets/tsconfig.ts-node.json $HOME/presets/bin/index.ts",
@@ -53,11 +60,5 @@
     "-- end": "# end",
     "storybook": "DOTENV=../../.env/local.env start-storybook -p 6006",
     "build-storybook": "build-storybook"
-  },
-  "dependencies": {
-    "dotenv": "16.x",
-    "next": "12.x",
-    "react": "18.x",
-    "react-dom": "18.x"
   }
 }

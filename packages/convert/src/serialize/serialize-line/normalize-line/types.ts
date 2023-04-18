@@ -1,5 +1,5 @@
-import { AnchorElement } from "wysimark/src/anchor-plugin"
-import { ImageInlineElement } from "wysimark/src/image-plugin/types"
+import { AnchorElement } from "~wysimark/src/anchor-plugin"
+import { ImageInlineElement } from "~wysimark/src/image-plugin/types"
 
 import { Segment, Text } from "../../../types"
 

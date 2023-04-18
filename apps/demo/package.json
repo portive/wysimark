@@ -2,11 +2,11 @@
   "name": "demo",
   "packageManager": "yarn@3.3.1",
   "dependencies": {
+    "@wysimark/react": "workspace:*",
     "next": "12.x",
     "react": ">=17.x",
     "react-dom": ">=17.x",
-    "slate-react": "^0.83.2",
-    "wysimark": "workspace:*"
+    "slate-react": "^0.83.2"
   },
   "devDependencies": {
     "concurrently": "^7.2",

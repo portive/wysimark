@@ -1,4 +1,4 @@
-import "wysimark/src/setup"
+import "~wysimark/src/setup"
 
 import { RenderLeafProps, Slate } from "slate-react"
 

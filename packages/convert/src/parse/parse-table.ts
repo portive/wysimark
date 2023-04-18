@@ -1,9 +1,10 @@
 import type { Table, TableCell, TableRow } from "mdast"
+
 import {
   TableCellElement,
   TableElement,
   TableRowElement,
-} from "wysimark/src/table-plugin"
+} from "~wysimark/src/table-plugin"
 
 import { parsePhrasingContents } from "./parse-phrasing-content/parse-phrasing-content"
 

@@ -1,7 +1,7 @@
 import "./button.css"
 
+import { useWysimark, Wysimark } from "@wysimark/react"
 import React from "react"
-import { useWysimark, Wysimark } from "wysimark"
 
 type EditorProps = {
   value: string

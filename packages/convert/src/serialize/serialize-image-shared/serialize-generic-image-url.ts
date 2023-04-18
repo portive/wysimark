@@ -1,4 +1,4 @@
-import { ImageSharedElement } from "wysimark/src/image-plugin/types"
+import { ImageSharedElement } from "~wysimark/src/image-plugin/types"
 
 /**
  * As a fallback, if there is no width/height or srcWidth/srcHeight info then

@@ -1,8 +1,9 @@
 import type { Paragraph } from "mdast"
+
 import {
   ImageBlockElement,
   ImageInlineElement,
-} from "wysimark/src/image-plugin/types"
+} from "~wysimark/src/image-plugin/types"
 
 import { Element, Segment } from "../types"
 import { parsePhrasingContents } from "./parse-phrasing-content/parse-phrasing-content"

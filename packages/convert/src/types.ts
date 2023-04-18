@@ -1,6 +1,6 @@
-import { AnchorElement } from "wysimark/src/anchor-plugin"
-import type { Element, Text } from "wysimark/src/entry/SinkEditable"
-import { ImageInlineElement } from "wysimark/src/image-plugin/types"
+import { AnchorElement } from "~wysimark/src/anchor-plugin"
+import type { Element, Text } from "~wysimark/src/entry/SinkEditable"
+import { ImageInlineElement } from "~wysimark/src/image-plugin/types"
 
 export { Element, Text }
 export type Segment = Text | AnchorElement | ImageInlineElement

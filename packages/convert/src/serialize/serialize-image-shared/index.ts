@@ -1,4 +1,4 @@
-import { ImageSharedElement } from "wysimark/src/image-plugin/types"
+import { ImageSharedElement } from "~wysimark/src/image-plugin/types"
 
 import { serializeGenericImageUrl } from "./serialize-generic-image-url"
 import { serializePortiveImageUrl } from "./serialize-portive-image-url"

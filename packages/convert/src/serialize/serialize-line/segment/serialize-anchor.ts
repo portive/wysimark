@@ -1,4 +1,4 @@
-import { AnchorElement } from "wysimark/src/anchor-plugin"
+import { AnchorElement } from "~wysimark/src/anchor-plugin"
 
 import { Segment } from "../../../types"
 import { serializeLine } from "../serialize-line"

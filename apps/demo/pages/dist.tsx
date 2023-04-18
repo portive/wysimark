@@ -1,4 +1,4 @@
-import { useWysimark, Wysimark } from "wysimark"
+import { useWysimark, Wysimark } from "@wysimark/react"
 
 export default function Page() {
   const wysimark = useWysimark({ initialValue: "# Hello World" })

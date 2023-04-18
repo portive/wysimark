@@ -1,4 +1,4 @@
-import { CodeBlockElement } from "wysimark/src/code-block-plugin"
+import { CodeBlockElement } from "~wysimark/src/code-block-plugin"
 
 import { serializeCodeLine } from "./serialize-code-line"
 

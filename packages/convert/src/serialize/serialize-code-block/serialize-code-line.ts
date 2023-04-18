@@ -1,4 +1,4 @@
-import { CodeBlockLineElement } from "wysimark/src/code-block-plugin"
+import { CodeBlockLineElement } from "~wysimark/src/code-block-plugin"
 
 /**
  * Serializing a code line is simple under the assumption that the normalizers

@@ -1,5 +1,5 @@
+import { useWysimark, Wysimark } from "@wysimark/react/src/entry"
 import { useCallback } from "react"
-import { useWysimark, Wysimark } from "wysimark/src/entry"
 
 import content from "../content/basic.md"
 
