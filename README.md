@@ -10,6 +10,12 @@ Wysimark has these integrations:
 - jQuery: Future
 - Angular: Future
 
+## License and Social Expectations
+
+Wysimark is an [open source](LICENSE.md) project that aims to provide the best editor for startups and greenfield projects. You are legally free to use it commercially.
+
+You can help support the development of Wysimark by connecting Wysimark to [Portive](https://www.portive.com) for file and image uploading and resizing services.
+
 ## CommonMark and GitHub Flavored Markdown
 
 Wysimark supports CommonMark and GitHub Flavored Markdown extensions including:
