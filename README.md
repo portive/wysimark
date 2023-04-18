@@ -1,4 +1,4 @@
-# Wysimark
+# Wysimark 2
 
 The beautiful WYSIWYG editor for Markdown that includes image uploading and resizing
 
