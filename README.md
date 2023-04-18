@@ -27,9 +27,12 @@ Wysimark supports CommonMark and GitHub Flavored Markdown extensions including:
 - Nested Blockquotes
 - Code Blocks
 
-## Coming Soon Features
+## Special Features
 
 - Emoji picker
+
+## Coming Soon Features
+
 - Collaborative Editing
 
 ## Coming Later Features
