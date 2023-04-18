@@ -22,7 +22,7 @@ export const $Menu = styled($Panel, forwardRef)`
  */
 export const $MenuItem = styled("div", forwardRef)`
   display: flex;
-  padding: 0 1em 0 1.25em;
+  padding: 0 1em 0 1.5em;
   height: 2em;
   align-items: center;
   /**
@@ -38,6 +38,8 @@ export const $MenuItem = styled("div", forwardRef)`
     padding-right: 0.75em;
     color: var(--shade-400);
     svg {
+      position: relative;
+      top: -0.375em;
       stroke-width: 1.5px;
     }
   }

@@ -1,5 +1,4 @@
-import React from "react"
-import { useSelected } from "slate-react"
+import { Element, Transforms } from "slate"
 
 import {
   createHotkeyHandler,
@@ -12,13 +11,12 @@ import {
 import { decorate } from "./decorate"
 import { createCodeBlockMethods } from "./methods"
 import { tokenStyles } from "./prism-theme"
-import { $CodeBlock, $CodeLine } from "./styles"
 import { CodeBlockPluginCustomTypes } from "./types"
 export * from "./decorate"
 export * from "./types"
-import { Editor, Element, Transforms } from "slate"
 
 import { normalizeNode } from "./normalizeNode"
+import { renderElement } from "./render-element"
 
 export const CodeBlockPlugin = createPlugin<CodeBlockPluginCustomTypes>(
   (editor, options, { createPolicy }) => {
@@ -64,28 +62,7 @@ export const CodeBlockPlugin = createPlugin<CodeBlockPluginCustomTypes>(
             return true
           },
         }),
-        renderElement: ({ element, attributes, children }) => {
-          const selected = useSelected()
-          if (element.type === "code-block") {
-            return (
-              <$CodeBlock
-                className={selected ? "--selected" : ""}
-                {...attributes}
-              >
-                <code style={{ fontFamily: "andale mono" }}>{children}</code>
-              </$CodeBlock>
-            )
-          } else if (element.type === "code-block-line") {
-            return (
-              <$CodeLine
-                className={selected ? "--selected" : ""}
-                {...attributes}
-              >
-                {children}
-              </$CodeLine>
-            )
-          }
-        },
+        renderElement,
         renderLeaf: ({ leaf, children }) => {
           const style = leaf.prismToken
             ? tokenStyles[leaf.prismToken] || null

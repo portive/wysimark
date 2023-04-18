@@ -4,7 +4,17 @@ import { createCodeBlockMethods } from "./methods"
 
 type CodeBlockMethods = ReturnType<typeof createCodeBlockMethods>
 
-export type BuiltInLanguage = "text" | "markup" | "css" | "clike" | "javascript"
+export type BuiltInLanguage =
+  | "text"
+  | "html"
+  | "svg"
+  | "markup"
+  | "css"
+  | "javascript"
+  | "js"
+  | "java"
+  | "c"
+  | "clike"
 
 /**
  * Maps a number of supported or semi-supported syntax highlighting languages
@@ -29,6 +39,12 @@ export const LanguageMap: Record<string, BuiltInLanguage> = {
   "c++": "clike",
   java: "clike",
   javascript: "javascript",
+  js: "javascript",
+}
+
+export const LanguageCaptionMap: Record<string, string> = {
+  javascript: "Javascript",
+  js: "Javascript",
 }
 
 export type CodeBlockEditor = {
