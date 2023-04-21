@@ -8,7 +8,7 @@ export default function Page() {
       <h1>Wysimark</h1>
       <button onClick={() => console.log(wysimark.getValue())}>Get</button>
       <button onClick={() => wysimark.resetValue("# Reset")}>Reset</button>
-      <Wysimark wysimark={wysimark} />
+      <Wysimark wysimark={wysimark} style={{ maxHeight: 400 }} />
     </div>
   )
 }

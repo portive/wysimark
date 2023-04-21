@@ -11,10 +11,16 @@ function renderLeaf({ children, attributes }: RenderLeafProps) {
 
 export { useWysimark } from "./useWysimark"
 
-export function Wysimark({ wysimark }: { wysimark: UseWysimarkValue }) {
+type ExtraProps = React.TextareaHTMLAttributes<HTMLDivElement>
+
+export function Wysimark({
+  wysimark,
+  ...extraProps
+}: { wysimark: UseWysimarkValue } & ExtraProps) {
+  console.log("extraProps", extraProps)
   return (
     <Slate editor={wysimark.editor} value={wysimark.editorInitialValue}>
-      <SinkEditable renderLeaf={renderLeaf} />
+      <SinkEditable renderLeaf={renderLeaf} {...extraProps} />
     </Slate>
   )
 }

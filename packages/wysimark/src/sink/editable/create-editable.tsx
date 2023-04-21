@@ -7,11 +7,8 @@ import { defined } from "./utils"
 type EditableType = (editableProps: EditableProps) => JSX.Element
 
 /**
- * Create the substituted `decorate` method.
- *
- * With decorate, we are taking all the ranges from all the decorators and
- * combining them together, including the ranges created from the `decorate`
- * attribute on `SinkEditable`.
+ * create a new Editable component that takes all the `renderEditable` functions
+ * which are components and have them wrap around the original Editable component.
  */
 export function createEditable(
   plugins: BasePluginPolicy[]
@@ -19,14 +16,15 @@ export function createEditable(
   const fns = plugins.map((plugin) => plugin.renderEditable).filter(defined)
   return function SinkEditable(props) {
     /**
-     * This creates the bottom-most RenderEditable which itself will only
-     * take an `attributes` prop.
-     *
-     * Every RenderEditable in the chain
+     * This creates the inner-most RenderEditable.
      */
     let CurrentRenderEditable = (props: EditableProps) => (
       <Editable {...props} />
     )
+    /**
+     * We iterate through all the `renderEditable` functions and wrap them
+     * around the next inner-most `renderEditable`.
+     */
     for (const fn of fns) {
       /**
        * Assigns the CurrentRenderEditable as the previous one so that we can
