@@ -1,25 +1,18 @@
-import { useMemo, useState } from "react"
-import { createEditor, Descendant, Editor, Transforms } from "slate"
+import { useState } from "react"
+import { createEditor, Editor, Transforms } from "slate"
 import { withHistory } from "slate-history"
 import { withReact } from "slate-react"
 
 import { parse, serialize } from "../../../convert/src"
 import { Element, withSink } from "./SinkEditable"
 
-export type UseWysimarkValue = {
-  editor: Editor
-  editorInitialValue: Descendant[]
-  getValue: () => string
-  resetValue: (value: string) => void
-}
-
 export function useEditor({
-  initialValue,
+  initialMarkdown,
   uploadAuthToken,
 }: {
-  initialValue: string
+  initialMarkdown: string
   uploadAuthToken?: string
-}): UseWysimarkValue {
+}): Editor {
   const [editor] = useState(() => {
     const editor = createEditor()
     const nextEditor = withSink(withReact(withHistory(editor)), {
@@ -27,37 +20,22 @@ export function useEditor({
       image: {},
     })
     nextEditor.convertElement.addConvertElementType("paragraph")
-    return nextEditor
-  })
-
-  /**
-   * Sets the initial value. This value should be set once and never changed.o
-   *
-   * After setting the value initially, if you need to programmatically change
-   * the value, then use the `setValue` method.
-   */
-  const editorInitialValue = useMemo(() => {
-    return parse(initialValue)
-  }, [])
-
-  const getValue = useMemo(() => {
-    return () => {
+    editor.wysimark = {
+      initialMarkdown,
+      initialValue: parse(initialMarkdown),
+    }
+    console.log("wysimark", editor.wysimark)
+    editor.getMarkdown = () => {
       return serialize(editor.children as Element[])
     }
-  }, [editor])
-
-  const resetValue = useMemo(() => {
-    return (value: string) => {
-      const documentValue = parse(value)
+    editor.resetMarkdown = (markdown: string) => {
+      const documentValue = parse(markdown)
       editor.children = documentValue
       editor.selection = null
       Transforms.select(editor, Editor.start(editor, [0]))
     }
-  }, [editor])
+    return nextEditor
+  })
 
-  const wysimarkConfig = useMemo(() => {
-    return { editor, editorInitialValue, getValue, resetValue }
-  }, [editor, editorInitialValue])
-
-  return wysimarkConfig
+  return editor
 }

@@ -5,17 +5,16 @@ import content from "../content/basic.md"
 
 export default function Page() {
   const editor = useEditor({
-    initialValue: content,
+    initialMarkdown: content,
     uploadAuthToken: process.env.NEXT_PUBLIC_PORTIVE_AUTH_TOKEN,
   })
 
-  const getValue = useCallback(() => {
-    const value = editor.getValue()
-    console.log(value)
+  const getMarkdown = useCallback(() => {
+    console.log(editor.getMarkdown())
   }, [editor])
 
-  const resetValue = useCallback(() => {
-    editor.resetValue(`# This is a reset with the reset button
+  const resetMarkdown = useCallback(() => {
+    editor.resetMarkdown(`# This is a reset with the reset button
     
 And this is a paragraph`)
   }, [editor])
@@ -23,14 +22,14 @@ And this is a paragraph`)
   return (
     <div style={{ maxWidth: 720, margin: "2em auto" }}>
       <div className="mb-2">
-        <button className="btn btn-primary me-1" onClick={getValue}>
+        <button className="btn btn-primary me-1" onClick={getMarkdown}>
           Log Value
         </button>
-        <button className="btn btn-primary" onClick={resetValue}>
+        <button className="btn btn-primary" onClick={resetMarkdown}>
           Reset Value
         </button>
       </div>
-      <Editable wysimark={editor} />
+      <Editable editor={editor} />
     </div>
   )
 }

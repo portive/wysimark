@@ -1,6 +1,6 @@
 import "./button.css"
 
-import { useEditor, Wysimark } from "@wysimark/react"
+import { Editable, useEditor } from "@wysimark/react"
 import React from "react"
 
 type EditorProps = {
@@ -33,10 +33,10 @@ type EditorProps = {
  */
 export const InnerEditor = ({ value, ...props }: EditorProps) => {
   const editor = useEditor({
-    initialValue: value,
+    initialMarkdown: value,
     ...props,
   })
-  return <Wysimark wysimark={editor} />
+  return <Editable editor={editor} />
 }
 
 /**
