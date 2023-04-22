@@ -26,4 +26,6 @@ export const $OuterContainer = styled($Container, forwardRef)`
    * https://stackoverflow.com/a/73051006
    */
   overflow-y: clip;
+  display: flex;
+  flex-direction: column;
 `

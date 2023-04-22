@@ -11,6 +11,7 @@ export const $Toolbar = styled("div", forwardRef)`
    */
   position: sticky;
   display: flex;
+  flex: 0 0 auto;
   align-items: center;
   top: 0;
   z-index: 2;

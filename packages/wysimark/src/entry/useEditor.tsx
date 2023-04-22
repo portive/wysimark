@@ -9,15 +9,22 @@ import { Element, withSink } from "./SinkEditable"
 export function useEditor({
   initialMarkdown,
   uploadAuthToken,
+  height,
+  minHeight,
+  maxHeight,
 }: {
   initialMarkdown: string
   uploadAuthToken?: string
+  height?: string | number
+  minHeight?: string | number
+  maxHeight?: string | number
 }): Editor {
   const [editor] = useState(() => {
     const editor = createEditor()
     const nextEditor = withSink(withReact(withHistory(editor)), {
       upload: { authToken: uploadAuthToken },
       image: {},
+      toolbar: { height, minHeight, maxHeight },
     })
     nextEditor.convertElement.addConvertElementType("paragraph")
     editor.wysimark = {

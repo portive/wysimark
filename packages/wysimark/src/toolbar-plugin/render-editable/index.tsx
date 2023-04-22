@@ -1,5 +1,5 @@
 import { clsx } from "clsx"
-import { useFocused } from "slate-react"
+import { useFocused, useSlateStatic } from "slate-react"
 
 import { RenderEditableProps } from "~/src/sink"
 import { Layers } from "~/src/use-layer"
@@ -8,6 +8,7 @@ import { Toolbar } from "../components"
 import { $Editable, $OuterContainer } from "../styles"
 
 export function renderEditable({ attributes, Editable }: RenderEditableProps) {
+  const editor = useSlateStatic()
   const focused = useFocused()
   /**
    * The Toolbar works by rendering an $OuterContainer which is the border
@@ -32,9 +33,20 @@ export function renderEditable({ attributes, Editable }: RenderEditableProps) {
    */
   return (
     <Layers>
-      <$OuterContainer className={clsx({ "--focused": focused })}>
+      <$OuterContainer
+        className={clsx({ "--focused": focused })}
+        style={{
+          height: editor.toolbar.height,
+          minHeight: editor.toolbar.minHeight,
+          maxHeight: editor.toolbar.maxHeight,
+        }}
+      >
         <Toolbar />
-        <Editable as={$Editable} {...attributes} />
+        <Editable
+          as={$Editable}
+          {...attributes}
+          style={{ overflowY: "auto" }}
+        />
       </$OuterContainer>
     </Layers>
   )
