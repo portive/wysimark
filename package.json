@@ -33,6 +33,8 @@
     "preset": "ts-node --project $HOME/presets/tsconfig.ts-node.json $HOME/presets/bin/index.ts",
     "-- ready": "# ready",
     "ready": "yarn turbo ready",
+    "-- release": "# release",
+    "release": "yarn workspace @wysimark/react release",
     "-- storybook": "# Run storybook app",
     "storybook": "yarn workspace wysimark-storybook storybook",
     "-- test": "# test",
