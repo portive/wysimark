@@ -51,7 +51,7 @@ type CustomEditor = PluginTypes["Editor"]
 type CustomElement = PluginTypes["Element"]
 type CustomText = PluginTypes["Text"]
 
-type WysimarkEditor = {
+export type WysimarkEditor = {
   /**
    * Private state for the wysimark editor.
    */
