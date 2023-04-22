@@ -1,24 +1,24 @@
-import { useWysimark, Wysimark } from "@wysimark/react/src/entry"
+import { useEditor, Wysimark } from "@wysimark/react/src/entry"
 import { useCallback } from "react"
 
 import content from "../content/basic.md"
 
 export default function Page() {
-  const wysimark = useWysimark({
+  const editor = useEditor({
     initialValue: content,
     uploadAuthToken: process.env.NEXT_PUBLIC_PORTIVE_AUTH_TOKEN,
   })
 
   const getValue = useCallback(() => {
-    const value = wysimark.getValue()
+    const value = editor.getValue()
     console.log(value)
-  }, [wysimark])
+  }, [editor])
 
   const resetValue = useCallback(() => {
-    wysimark.resetValue(`# This is a reset with the reset button
+    editor.resetValue(`# This is a reset with the reset button
     
 And this is a paragraph`)
-  }, [wysimark])
+  }, [editor])
 
   return (
     <div style={{ maxWidth: 720, margin: "2em auto" }}>
@@ -30,7 +30,7 @@ And this is a paragraph`)
           Reset Value
         </button>
       </div>
-      <Wysimark wysimark={wysimark} />
+      <Wysimark wysimark={editor} />
     </div>
   )
 }

@@ -13,7 +13,7 @@ export type UseWysimarkValue = {
   resetValue: (value: string) => void
 }
 
-export function useWysimark({
+export function useEditor({
   initialValue,
   uploadAuthToken,
 }: {
