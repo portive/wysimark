@@ -7,13 +7,13 @@ import { parse, serialize } from "../../../convert/src"
 import { Element, withSink } from "./SinkEditable"
 
 export function useEditor({
-  initialMarkdown,
+  initialMarkdown = "",
   uploadAuthToken,
   height,
   minHeight,
   maxHeight,
 }: {
-  initialMarkdown: string
+  initialMarkdown?: string
   uploadAuthToken?: string
   height?: string | number
   minHeight?: string | number
