@@ -1,9 +1,9 @@
 import "~wysimark/src/setup"
 
-import { Editor } from "slate"
-import { RenderLeafProps, Slate } from "slate-react"
+import { BaseEditor } from "slate"
+import { ReactEditor, RenderLeafProps, Slate } from "slate-react"
 
-import { SinkEditable } from "./SinkEditable"
+import { SinkEditable, WysimarkEditor } from "./SinkEditable"
 
 function renderLeaf({ children, attributes }: RenderLeafProps) {
   return <span {...attributes}>{children}</span>
@@ -16,7 +16,9 @@ type ExtraProps = React.TextareaHTMLAttributes<HTMLDivElement>
 export function Editable({
   editor,
   ...extraProps
-}: { editor: Editor } & ExtraProps) {
+}: {
+  editor: BaseEditor & ReactEditor & WysimarkEditor
+} & ExtraProps) {
   return (
     <Slate editor={editor} value={editor.wysimark.initialValue}>
       <SinkEditable renderLeaf={renderLeaf} {...extraProps} />

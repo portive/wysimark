@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { createEditor, Editor, Transforms } from "slate"
 import { withHistory } from "slate-history"
-import { withReact } from "slate-react"
+import { ReactEditor, withReact } from "slate-react"
 
 import { parse, serialize } from "../../../convert/src"
 import { Element, withSink, WysimarkEditor } from "./SinkEditable"
@@ -18,7 +18,7 @@ export function useEditor({
   height?: string | number
   minHeight?: string | number
   maxHeight?: string | number
-}): WysimarkEditor {
+}): Editor & ReactEditor & WysimarkEditor {
   const [editor] = useState(() => {
     const editor = createEditor()
     const nextEditor = withSink(withReact(withHistory(editor)), {
