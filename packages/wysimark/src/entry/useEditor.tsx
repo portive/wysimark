@@ -31,7 +31,6 @@ export function useEditor({
       initialMarkdown,
       initialValue: parse(initialMarkdown),
     }
-    console.log("wysimark", editor.wysimark)
     editor.getMarkdown = () => {
       return serialize(editor.children as Element[])
     }
