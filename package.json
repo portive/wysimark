@@ -22,6 +22,8 @@
     "-- demo": "# demo",
     "open": "yarn workspace demo open",
     "start:local": "yarn workspace demo start:local",
+    "-- fix": "# fix",
+    "fix": "turbo fix",
     "-- lint": "# lint",
     "lint": "yarn turbo lint",
     "lint:eslint": "yarn turbo lint:eslint",

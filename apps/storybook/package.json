@@ -47,6 +47,7 @@
     "z:test:watch": "jest --watch --config=jest.fast.config.js",
     "z:test:watch:types": "yarn test:clearcache && jest --watch --config=jest.config.js",
     "-- fix": "# fix syntax",
+    "fix": "yarn fix:prettier && yarn fix:eslint",
     "fix:prettier": "yarn lint:prettier --write",
     "fix:eslint": "yarn lint:eslint --fix",
     "-- lint": "# lint syntax",

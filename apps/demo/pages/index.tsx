@@ -1,4 +1,4 @@
-import { useEditor, Wysimark } from "@wysimark/react/src/entry"
+import { Editable, useEditor } from "@wysimark/react/src/entry"
 import { useCallback } from "react"
 
 import content from "../content/basic.md"
@@ -30,7 +30,7 @@ And this is a paragraph`)
           Reset Value
         </button>
       </div>
-      <Wysimark wysimark={editor} />
+      <Editable wysimark={editor} />
     </div>
   )
 }

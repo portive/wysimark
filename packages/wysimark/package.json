@@ -62,6 +62,7 @@
     "build:cli": "rimraf .dist && tsup src/entry/index.tsx --dts --tsconfig=tsconfig.tsup.json --out-dir=.dist",
     "build:watch": "yarn build --watch",
     "-- fix": "# fix syntax",
+    "fix": "yarn fix:prettier && yarn fix:eslint",
     "fix:eslint": "yarn lint:eslint --fix",
     "fix:prettier": "yarn lint:prettier --write",
     "-- lint": "# lint syntax",

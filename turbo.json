@@ -5,6 +5,9 @@
       "dependsOn": ["^build"],
       "outputs": [".next/**", ".build/**"]
     },
+    "fix": {
+      "outputs": []
+    },
     "lint:eslint": {
       "outputs": []
     },

@@ -13,7 +13,7 @@ export { useEditor } from "./useEditor"
 
 type ExtraProps = React.TextareaHTMLAttributes<HTMLDivElement>
 
-export function Wysimark({
+export function Editable({
   wysimark,
   ...extraProps
 }: { wysimark: UseWysimarkValue } & ExtraProps) {
