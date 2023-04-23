@@ -4,7 +4,9 @@ import { withHistory } from "slate-history"
 import { ReactEditor, withReact } from "slate-react"
 
 import { parse, serialize } from "../../../convert/src"
-import { Element, withSink, WysimarkEditor } from "./SinkEditable"
+import { Element } from "./plugins"
+import { withSink } from "./SinkEditable"
+import { WysimarkEditor } from "./types"
 
 export function useEditor({
   initialMarkdown = "",
