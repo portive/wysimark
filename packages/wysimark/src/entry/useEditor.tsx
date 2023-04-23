@@ -10,13 +10,13 @@ import { WysimarkEditor } from "./types"
 
 export function useEditor({
   initialMarkdown = "",
-  uploadAuthToken,
+  authToken,
   height,
   minHeight,
   maxHeight,
 }: {
   initialMarkdown?: string
-  uploadAuthToken?: string
+  authToken?: string
   height?: string | number
   minHeight?: string | number
   maxHeight?: string | number
@@ -24,7 +24,7 @@ export function useEditor({
   const [editor] = useState(() => {
     const editor = createEditor()
     const nextEditor = withSink(withReact(withHistory(editor)), {
-      upload: { authToken: uploadAuthToken },
+      upload: { authToken },
       image: {},
       toolbar: { height, minHeight, maxHeight },
     })

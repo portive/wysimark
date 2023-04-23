@@ -6,7 +6,7 @@ import content from "../content/basic.md"
 export default function Page() {
   const editor = useEditor({
     initialMarkdown: content,
-    uploadAuthToken: process.env.NEXT_PUBLIC_PORTIVE_AUTH_TOKEN,
+    authToken: process.env.NEXT_PUBLIC_PORTIVE_AUTH_TOKEN,
     minHeight: 240,
     maxHeight: 720,
   })

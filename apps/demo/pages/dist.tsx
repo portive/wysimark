@@ -3,7 +3,7 @@ import { Editable, useEditor } from "@wysimark/react"
 export default function Page() {
   const editor = useEditor({
     initialMarkdown: "# Hello World",
-    uploadAuthToken: process.env.NEXT_PUBLIC_PORTIVE_AUTH_TOKEN,
+    authToken: process.env.NEXT_PUBLIC_PORTIVE_AUTH_TOKEN,
     minHeight: 240,
     maxHeight: 720,
   })
