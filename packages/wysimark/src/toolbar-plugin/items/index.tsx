@@ -77,11 +77,13 @@ export const items: Item[] = [
     icon: Icon.Image,
     title: "Insert Image",
     Component: ImageDialog,
+    show: (editor) => editor.toolbar.showUploadButtons,
   },
   {
     icon: Icon.Attachment,
     title: "Insert Attachment",
     Component: AttachmentDialog,
+    show: (editor) => editor.toolbar.showUploadButtons,
   },
   "divider",
 

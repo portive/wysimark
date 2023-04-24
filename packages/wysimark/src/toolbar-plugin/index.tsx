@@ -7,6 +7,7 @@ export type ToolbarEditor = {
     height?: string | number
     minHeight?: string | number
     maxHeight?: string | number
+    showUploadButtons?: boolean
   }
 }
 
@@ -15,6 +16,7 @@ export type ToolbarOptions = {
     height?: string | number
     minHeight?: string | number
     maxHeight?: string | number
+    showUploadButtons?: boolean
   }
 }
 
@@ -30,6 +32,7 @@ export const ToolbarPlugin = createPlugin<ToolbarPluginCustomTypes>(
       height: options.toolbar?.height,
       minHeight: options.toolbar?.minHeight,
       maxHeight: options.toolbar?.maxHeight,
+      showUploadButtons: options.toolbar?.showUploadButtons ?? true,
     }
     return {
       name: "toolbar",

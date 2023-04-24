@@ -26,7 +26,12 @@ export function useEditor({
     const nextEditor = withSink(withReact(withHistory(editor)), {
       upload: { authToken },
       image: {},
-      toolbar: { height, minHeight, maxHeight },
+      toolbar: {
+        height,
+        minHeight,
+        maxHeight,
+        showUploadButtons: false,
+      },
     })
     nextEditor.convertElement.addConvertElementType("paragraph")
     editor.wysimark = {
