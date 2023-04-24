@@ -9,6 +9,14 @@ import { setUpload } from "../store"
  */
 export function upload(editor: Editor, file: File) {
   const { client } = editor.upload
+  if (client === undefined)
+    /**
+     * NOTE: This indicates a logic error. When `authToken` is not defined, all
+     * code that uses the upload function should be disabled.
+     */
+    throw new Error(
+      `Expected editor.upload.client to be defined if upload is being called`
+    )
   /**
    * Before an upload is completed, we give the file what we call a hash URL
    * which is identified by starting with a `#` and followed by a unique id

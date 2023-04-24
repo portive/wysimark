@@ -6,22 +6,22 @@ import { Item } from "../../types"
 import { ToolbarButton } from "./toolbar-button"
 
 function ToolbarItem({ item }: { item: Item }) {
+  const editor = useSlateStatic()
   if (item === "divider") {
     return <$ToolbarDivider />
   } else {
+    const show = item.show === undefined ? true : item.show(editor)
+    if (!show) return null
     return <ToolbarButton item={item} />
   }
 }
 
 export function Toolbar() {
-  const editor = useSlateStatic()
   return (
     <$Toolbar>
-      {items.map((item, index) => {
-        const show = item.show === undefined ? true : item.show(editor)
-        if (!show) return null
-        return <ToolbarItem key={index} item={item} />
-      })}
+      {items.map((item, index) => (
+        <ToolbarItem key={index} item={item} />
+      ))}
     </$Toolbar>
   )
 }

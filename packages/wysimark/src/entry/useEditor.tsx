@@ -30,7 +30,10 @@ export function useEditor({
         height,
         minHeight,
         maxHeight,
-        showUploadButtons: false,
+        /**
+         * If `authToken` is provided then show upload buttons.
+         */
+        showUploadButtons: !!authToken,
       },
     })
     nextEditor.convertElement.addConvertElementType("paragraph")
