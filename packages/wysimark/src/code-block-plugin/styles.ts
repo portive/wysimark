@@ -1,7 +1,6 @@
-import { styled } from "goober"
-import { forwardRef } from "react"
+import styled from "@emotion/styled"
 
-export const $CodeBlock = styled("pre", forwardRef)`
+export const $CodeBlock = styled("pre")`
   position: relative;
   background: var(--code-block-bgcolor);
   margin: 1em 0;
@@ -18,7 +17,7 @@ export const $CodeBlock = styled("pre", forwardRef)`
   }
 `
 
-export const $CodeBlockLanguage = styled("span", forwardRef)`
+export const $CodeBlockLanguage = styled("span")`
   cursor: default;
   position: absolute;
   top: 0.25em;
@@ -27,7 +26,7 @@ export const $CodeBlockLanguage = styled("span", forwardRef)`
   color: var(--shade-500);
 `
 
-export const $CodeLine = styled("div", forwardRef)`
+export const $CodeLine = styled("div")`
   line-height: 1.5em;
   counter-increment: line;
   &.--selected {

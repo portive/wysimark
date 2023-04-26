@@ -1,7 +1,6 @@
-import { styled } from "goober"
-import { forwardRef } from "react"
+import styled from "@emotion/styled"
 
-export const $UploadAttachment = styled("span", forwardRef)`
+export const $UploadAttachment = styled("span")`
   @keyframes spin-progress-icon {
     0% {
       transform: rotate(0deg);

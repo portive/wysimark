@@ -1,7 +1,6 @@
-import { styled } from "goober"
-import { forwardRef } from "react"
+import styled from "@emotion/styled"
 
-export const $MarksSpan = styled("span", forwardRef)`
+export const $MarksSpan = styled("span")`
   &.--bold {
     font-weight: bold;
   }

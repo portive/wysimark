@@ -1,7 +1,6 @@
-import { styled } from "goober"
-import { forwardRef } from "react"
+import styled from "@emotion/styled"
 
-export const $Toolbar = styled("div", forwardRef)`
+export const $Toolbar = styled("div")`
   /**
    * If "position: sticky;" is not working, check the ancestor for "overflow:
    * hidden;" of any kind. This will stop sticky from working. A good workaround
@@ -32,7 +31,7 @@ export const $Toolbar = styled("div", forwardRef)`
   margin-bottom: -1px;
 `
 
-export const $ToolbarDivider = styled("div", forwardRef)`
+export const $ToolbarDivider = styled("div")`
   display: inline-block;
   background: var(--shade-200);
   opacity: 50%;
@@ -41,7 +40,7 @@ export const $ToolbarDivider = styled("div", forwardRef)`
   margin: 0 0.375em;
 `
 
-export const $ToolbarButton = styled("div", forwardRef)`
+export const $ToolbarButton = styled("div")`
   display: flex;
   font-size: 1.25em;
   padding: 0.375em 0.375em;

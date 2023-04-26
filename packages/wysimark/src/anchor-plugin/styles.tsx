@@ -1,7 +1,6 @@
-import { styled } from "goober"
-import { forwardRef } from "react"
+import styled from "@emotion/styled"
 
-export const $Anchor = styled("a", forwardRef)`
+export const $Anchor = styled("a")`
   /**
    * Link colors
    */
@@ -26,7 +25,7 @@ export const $Anchor = styled("a", forwardRef)`
  * designed to be 1px wide. A <span> can't be given a width so we fake this by
  * creating an empty span with 1px of width.
  */
-export const $Edge = styled("span", forwardRef)`
+export const $Edge = styled("span")`
   display: inline;
   padding: 0 1px 0 0;
 `

@@ -2,6 +2,7 @@
   "name": "demo",
   "packageManager": "yarn@3.3.1",
   "dependencies": {
+    "@emotion/react": "^11.10.6",
     "@wysimark/react": "workspace:*",
     "next": "12.x",
     "react": ">=17.x",

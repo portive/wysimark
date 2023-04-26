@@ -1,12 +1,11 @@
-import { styled } from "goober"
-import { forwardRef } from "react"
+import styled from "@emotion/styled"
 
 import { $Panel } from "./panel-styles"
 
 /**
  * Drop Down Menu
  */
-export const $Menu = styled($Panel, forwardRef)`
+export const $Menu = styled($Panel)`
   position: absolute;
   padding-top: 0.5em;
   padding-bottom: 0.5em;
@@ -20,7 +19,7 @@ export const $Menu = styled($Panel, forwardRef)`
 /**
  * Individual items in Drop Down Menu
  */
-export const $MenuItem = styled("div", forwardRef)`
+export const $MenuItem = styled("div")`
   display: flex;
   padding: 0 1em 0 1.5em;
   height: 2em;
@@ -61,7 +60,7 @@ export const $MenuItem = styled("div", forwardRef)`
   }
 `
 
-export const $MenuDivider = styled("div", forwardRef)`
+export const $MenuDivider = styled("div")`
   height: 1px;
   background: var(--shade-200);
   margin-top: 0.25em;

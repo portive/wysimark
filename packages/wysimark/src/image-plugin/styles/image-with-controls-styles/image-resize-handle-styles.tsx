@@ -1,7 +1,6 @@
-import { styled } from "goober"
-import { forwardRef } from "react"
+import styled from "@emotion/styled"
 
-export const $ImageResizeInvisibleHandle = styled("span", forwardRef)`
+export const $ImageResizeInvisibleHandle = styled("span")`
   position: absolute;
   display: block;
   /**
@@ -29,7 +28,7 @@ export const $ImageResizeInvisibleHandle = styled("span", forwardRef)`
     width: 1.25em;
   }
 `
-export const $ImageResizeHandle = styled("span", forwardRef)`
+export const $ImageResizeHandle = styled("span")`
   position: absolute;
   display: block;
   background: var(--select-color);

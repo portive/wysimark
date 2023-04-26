@@ -1,11 +1,10 @@
-import { styled } from "goober"
-import { forwardRef } from "react"
+import styled from "@emotion/styled"
 
 export function useRect(dest: HTMLElement): DOMRect {
   return dest.getBoundingClientRect()
 }
 
-const $Tooltip = styled("div", forwardRef)`
+const $Tooltip = styled("div")`
   position: fixed;
   z-index: 10;
   -webkit-font-smoothing: antialiased;
@@ -23,7 +22,7 @@ const $Tooltip = styled("div", forwardRef)`
   white-space: nowrap;
 `
 
-const $Hotkey = styled("span", forwardRef)`
+const $Hotkey = styled("span")`
   margin-left: 0.75em;
   font-size: 0.875em;
   font-weight: 500;

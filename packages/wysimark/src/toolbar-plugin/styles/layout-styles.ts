@@ -1,13 +1,12 @@
-import { styled } from "goober"
-import { forwardRef } from "react"
+import styled from "@emotion/styled"
 
 import { $Container } from "../../shared-layout"
 
-export const $Editable = styled("div", forwardRef)`
+export const $Editable = styled("div")`
   padding: 2em;
 `
 
-export const $OuterContainer = styled($Container, forwardRef)`
+export const $OuterContainer = styled($Container)`
   /**
    * We use this to make sure the top of the container is rounded even though
    * the toolbar inside is square. We keep the toolbar square so that as the

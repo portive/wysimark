@@ -1,7 +1,6 @@
-import { styled } from "goober"
-import { forwardRef } from "react"
+import styled from "@emotion/styled"
 
-export const $ImageToolbar = styled("span", forwardRef)`
+export const $ImageToolbar = styled("span")`
   position: absolute;
   /**
    * On top of the image +1 for space inside outline, +2 for outline,

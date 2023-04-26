@@ -1,7 +1,6 @@
-import { styled } from "goober"
-import { forwardRef } from "react"
+import styled from "@emotion/styled"
 
-export const $BlockQuote = styled("blockquote", forwardRef)`
+export const $BlockQuote = styled("blockquote")`
   position: relative;
   margin-top: 1em;
   margin-bottom: 1em;

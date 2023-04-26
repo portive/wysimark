@@ -1,7 +1,6 @@
-import { styled } from "goober"
-import { forwardRef } from "react"
+import styled from "@emotion/styled"
 
-export const $HorizontalRule = styled("hr", forwardRef)`
+export const $HorizontalRule = styled("hr")`
   position: relative;
   height: 1em;
   /* background-color: var(--hr-color); */

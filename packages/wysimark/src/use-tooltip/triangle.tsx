@@ -1,9 +1,8 @@
-import { styled } from "goober"
-import { forwardRef } from "react"
+import styled from "@emotion/styled"
 
 import { useRect } from "./tooltip"
 
-const $Triangle = styled("span", forwardRef)`
+const $Triangle = styled("span")`
   position: fixed;
   z-index: 10;
   width: 0;

@@ -1,11 +1,10 @@
-import { styled } from "goober"
-import { forwardRef } from "react"
+import styled from "@emotion/styled"
 
 /**
  * Table Menu
  */
 
-const $Menu = styled("div", forwardRef)`
+const $Menu = styled("div")`
   position: absolute;
   /**
    * very slightly shaded
@@ -31,7 +30,7 @@ const $Menu = styled("div", forwardRef)`
   }
 `
 
-export const $ColumnMenu = styled($Menu, forwardRef)`
+export const $ColumnMenu = styled($Menu)`
   /**
    * hangs out on top
    */
@@ -42,7 +41,7 @@ export const $ColumnMenu = styled($Menu, forwardRef)`
   top: -3em;
 `
 
-export const $RowMenu = styled($Menu, forwardRef)`
+export const $RowMenu = styled($Menu)`
   /**
    * hangs out on left
    */
@@ -56,7 +55,7 @@ export const $RowMenu = styled($Menu, forwardRef)`
  * Menu Tile
  */
 
-const $MenuTile = styled("div", forwardRef)`
+const $MenuTile = styled("div")`
   position: absolute;
   background: rgba(0, 0, 0, 0.05);
   border: 1px solid rgba(0, 0, 0, 0.05);
@@ -74,7 +73,7 @@ const $MenuTile = styled("div", forwardRef)`
  * The `$RowMenuTile` is the visible part of the `$RowMenu` and is the right
  * half of the `$RowMenu`.
  */
-export const $ColumnMenuTile = styled($MenuTile, forwardRef)`
+export const $ColumnMenuTile = styled($MenuTile)`
   top: 50%;
   border-bottom: none;
   border-right: none;
@@ -106,7 +105,7 @@ export const $ColumnMenuTile = styled($MenuTile, forwardRef)`
  * The `$RowMenuTile` is the visible part of the `$RowMenu` and is the right
  * half of the `$RowMenu`.
  */
-export const $RowMenuTile = styled($MenuTile, forwardRef)`
+export const $RowMenuTile = styled($MenuTile)`
   left: 50%;
   border-right: none;
   border-bottom: none;
@@ -138,7 +137,7 @@ export const $RowMenuTile = styled($MenuTile, forwardRef)`
  * Menu Button
  */
 
-const $MenuButton = styled("div", forwardRef)`
+const $MenuButton = styled("div")`
   position: absolute;
   font-size: 1.5em;
   background: white;
@@ -149,14 +148,14 @@ const $MenuButton = styled("div", forwardRef)`
   }
 `
 
-export const $AddMenuButton = styled($MenuButton, forwardRef)`
+export const $AddMenuButton = styled($MenuButton)`
   color: #c0c0c0;
   &:hover {
     color: royalblue;
   }
 `
 
-export const $RemoveMenuButton = styled($MenuButton, forwardRef)`
+export const $RemoveMenuButton = styled($MenuButton)`
   color: #c0c0c0;
   &:hover {
     color: firebrick;

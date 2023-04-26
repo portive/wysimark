@@ -1,6 +1,5 @@
-import { styled } from "goober"
-import { forwardRef } from "react"
+import styled from "@emotion/styled"
 
-export const $ImageInline = styled("span", forwardRef)`
+export const $ImageInline = styled("span")`
   display: inline;
 `

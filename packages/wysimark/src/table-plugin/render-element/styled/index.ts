@@ -1,11 +1,10 @@
-import { styled } from "goober"
-import { forwardRef } from "react"
+import styled from "@emotion/styled"
 export * from "./styled-menu"
 
 /**
  * Table
  */
-export const $Table = styled("table", forwardRef)`
+export const $Table = styled("table")`
   border-collapse: collapse;
   margin: 1em 0;
 `
@@ -13,7 +12,7 @@ export const $Table = styled("table", forwardRef)`
 /**
  * Table Row
  */
-export const $TableRow = styled("tr", forwardRef)`
+export const $TableRow = styled("tr")`
   position: relative;
   &:first-child {
     background: var(--table-head-bgcolor);
@@ -25,7 +24,7 @@ export const $TableRow = styled("tr", forwardRef)`
  *
  * - `--selected` indicates selected cell
  */
-export const $TableCell = styled("td", forwardRef)`
+export const $TableCell = styled("td")`
   position: relative;
   border-width: 1px;
   border-style: solid;
@@ -50,7 +49,7 @@ export const $TableCell = styled("td", forwardRef)`
 /**
  * Table Content (inside Table Cell)
  */
-export const $TableContent = styled("div", forwardRef)`
+export const $TableContent = styled("div")`
   /**
    * Smaller font inside a table than outside of it
    */

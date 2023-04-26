@@ -1,18 +1,17 @@
-import { styled } from "goober"
-import { forwardRef } from "react"
+import styled from "@emotion/styled"
 
 import { $Panel } from "./panel-styles"
 
-export const $AnchorDialog = styled($Panel, forwardRef)`
+export const $AnchorDialog = styled($Panel)`
   padding: 1em;
   width: 24em;
 `
-export const $AnchorDialogInputLine = styled("div", forwardRef)`
+export const $AnchorDialogInputLine = styled("div")`
   display: flex;
   gap: 0.5em;
 `
 
-export const $AnchorDialogInput = styled("input", forwardRef)`
+export const $AnchorDialogInput = styled("input")`
   flex: 1 1 auto;
   padding: 0.5em 0.75em;
   border-radius: 0.25em;

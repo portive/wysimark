@@ -1,11 +1,10 @@
-import { styled } from "goober"
-import { forwardRef } from "react"
+import styled from "@emotion/styled"
 
 /**
  * Wrap the image with a container so we can accurately place UI elements
  * around it.
  */
-export const $ImageContainer = styled("span", forwardRef)`
+export const $ImageContainer = styled("span")`
   /**
    * In order for this container to wrap tightly (without space), it needs to be
    * an "inline-block". If it's just an "inline" we end up with spacing
@@ -19,7 +18,7 @@ export const $ImageContainer = styled("span", forwardRef)`
   position: relative;
 `
 
-export const $Image = styled("img", forwardRef)`
+export const $Image = styled("img")`
   /**
    * TODO:
    *

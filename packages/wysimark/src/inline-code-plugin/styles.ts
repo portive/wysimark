@@ -1,7 +1,6 @@
-import { styled } from "goober"
-import { forwardRef } from "react"
+import styled from "@emotion/styled"
 
-export const $InlineCode = styled("code", forwardRef)`
+export const $InlineCode = styled("code")`
   color: var(--shade-600);
   background-color: var(--inline-code-bgcolor);
   border: 1px solid var(--inline-code-border-color);
@@ -30,7 +29,7 @@ export const $InlineCode = styled("code", forwardRef)`
  * this 1px wide span just inside of the inline code, we are able to workaround
  * this limitation.
  */
-export const $InvisibleSpan = styled("span", forwardRef)`
+export const $InvisibleSpan = styled("span")`
   display: inline-block;
   opacity: 0;
   width: 1px;

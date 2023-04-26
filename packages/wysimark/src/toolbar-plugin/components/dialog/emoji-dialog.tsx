@@ -1,7 +1,7 @@
 import data from "@emoji-mart/data"
 import Picker from "@emoji-mart/react"
-import { styled } from "goober"
-import { forwardRef, useCallback, useRef } from "react"
+import styled from "@emotion/styled"
+import { useCallback, useRef } from "react"
 import { Transforms } from "slate"
 import { ReactEditor, useSlateStatic } from "slate-react"
 
@@ -53,4 +53,4 @@ export function EmojiDialog({
   )
 }
 
-export const $EmojiDialog = styled($Panel, forwardRef)``
+export const $EmojiDialog = styled($Panel)``

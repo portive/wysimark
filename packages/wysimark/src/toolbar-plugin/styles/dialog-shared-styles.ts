@@ -1,7 +1,6 @@
-import { styled } from "goober"
-import { forwardRef } from "react"
+import styled from "@emotion/styled"
 
-export const $DialogButton = styled("div", forwardRef)`
+export const $DialogButton = styled("div")`
   /* Center vertically and horizontally */
   display: flex;
   align-items: center;
@@ -27,7 +26,7 @@ export const $DialogButton = styled("div", forwardRef)`
   }
 `
 
-export const $DialogHint = styled("div", forwardRef)`
+export const $DialogHint = styled("div")`
   font-size: 0.875em;
   margin-top: 0.5em;
   color: var(--shade-500);

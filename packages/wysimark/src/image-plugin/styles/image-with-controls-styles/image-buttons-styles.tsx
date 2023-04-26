@@ -1,11 +1,10 @@
-import { styled } from "goober"
-import { forwardRef } from "react"
+import styled from "@emotion/styled"
 
 /**
  * Styling for a collection of buttons in the $ImageButtonsContainer at the top
  * of the image.
  */
-export const $ImageButtonGroup = styled("span", forwardRef)`
+export const $ImageButtonGroup = styled("span")`
   /* font-size: 0.75em; */
   border-radius: 0.5em;
   display: flex;
@@ -20,7 +19,7 @@ export const $ImageButtonGroup = styled("span", forwardRef)`
   outline: 1px solid white;
 `
 
-export const $ImageButton = styled("span", forwardRef)`
+export const $ImageButton = styled("span")`
   font-size: 0.75em;
   line-height: 2em;
   padding: 0 0.625em;

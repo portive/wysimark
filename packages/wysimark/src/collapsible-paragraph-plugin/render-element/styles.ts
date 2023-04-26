@@ -1,7 +1,6 @@
-import { styled } from "goober"
-import { forwardRef } from "react"
+import styled from "@emotion/styled"
 
-export const $Paragraph = styled("p", forwardRef)`
+export const $Paragraph = styled("p")`
   padding: 0;
   margin: 1em 0;
 

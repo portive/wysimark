@@ -1,5 +1,4 @@
-import { styled } from "goober"
-import { forwardRef } from "react"
+import styled from "@emotion/styled"
 
 import { SinkReset } from "../sink/editable"
 
@@ -15,7 +14,7 @@ import { SinkReset } from "../sink/editable"
  *   the padding on the $Container but also use the $Container styling
  *   directly on the Editable Component.
  */
-export const $Container = styled(SinkReset, forwardRef)`
+export const $Container = styled(SinkReset)`
   border: 1px solid var(--shade-300); /* shade-300 */
   border-radius: 0.5em;
   color: rgb(39 39 42); /* shade-800 */

@@ -1,7 +1,6 @@
-import { styled } from "goober"
-import { forwardRef } from "react"
+import styled from "@emotion/styled"
 
-export const $Heading = styled("h1", forwardRef)`
+export const $Heading = styled("h1")`
   &:first-child {
     margin-top: 0;
   }

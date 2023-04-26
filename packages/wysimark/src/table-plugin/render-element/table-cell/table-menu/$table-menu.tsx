@@ -1,7 +1,6 @@
-import { styled } from "goober"
-import { forwardRef } from "react"
+import styled from "@emotion/styled"
 
-export const $TableMenu = styled("div", forwardRef)`
+export const $TableMenu = styled("div")`
   position: absolute;
   /**
    * very slightly shaded
@@ -39,7 +38,7 @@ export const $TableMenu = styled("div", forwardRef)`
  * The `$RowMenuTile` is the visible part of the `$RowMenu` and is the right
  * half of the `$RowMenu`.
  */
-export const $TableMenuTile = styled("div", forwardRef)`
+export const $TableMenuTile = styled("div")`
   position: absolute;
   left: 0;
   top: 0;

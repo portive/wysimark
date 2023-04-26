@@ -1,7 +1,6 @@
-import { styled } from "goober"
-import { forwardRef } from "react"
+import styled from "@emotion/styled"
 
-export const $ImageSizeStatus = styled("span", forwardRef)`
+export const $ImageSizeStatus = styled("span")`
   position: absolute;
   /**
    * The status appears with a 1px gap from the outline.

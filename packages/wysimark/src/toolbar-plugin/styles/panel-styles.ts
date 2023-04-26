@@ -1,5 +1,4 @@
-import { styled } from "goober"
-import { forwardRef } from "react"
+import styled from "@emotion/styled"
 
 import { SinkReset } from "~/src/sink/editable"
 
@@ -12,7 +11,7 @@ import { SinkReset } from "~/src/sink/editable"
  * Component appears at the root. So any styling, for example like from
  * Bootstrap or Material UI will affect what's in the Panel.
  */
-export const $Panel = styled(SinkReset, forwardRef)`
+export const $Panel = styled(SinkReset)`
   position: absolute;
   z-index: 1000;
   border: 1px solid var(--table-border-color);

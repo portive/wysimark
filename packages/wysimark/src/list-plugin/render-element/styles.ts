@@ -1,16 +1,15 @@
-import { styled } from "goober"
-import { forwardRef } from "react"
+import styled from "@emotion/styled"
 
 import { isDebug } from "~/src/sink"
 
-const $ListItem = styled("li", forwardRef)`
+const $ListItem = styled("li")`
   margin-top: 0.5em;
   margin-bottom: 0.5em;
   list-style-position: outside;
   margin-left: calc(2em + var(--list-item-depth) * 2em);
 `
 
-export const $UnorderedListItem = styled($ListItem, forwardRef)`
+export const $UnorderedListItem = styled($ListItem)`
   position: relative;
   list-style-type: none;
   .--list-item-icon {
@@ -22,7 +21,7 @@ export const $UnorderedListItem = styled($ListItem, forwardRef)`
   }
 `
 
-export const $OrderedListItem = styled($ListItem, forwardRef)`
+export const $OrderedListItem = styled($ListItem)`
   position: relative;
   list-style-type: none;
   counter-increment: var(--list-item-var);
@@ -49,7 +48,7 @@ export const $OrderedListItem = styled($ListItem, forwardRef)`
   }
 `
 
-export const $TaskListItem = styled($ListItem, forwardRef)`
+export const $TaskListItem = styled($ListItem)`
   position: relative;
   list-style-type: none;
   .--list-item-icon {

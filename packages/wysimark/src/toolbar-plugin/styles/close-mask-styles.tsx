@@ -1,7 +1,6 @@
-import { styled } from "goober"
-import { forwardRef } from "react"
+import styled from "@emotion/styled"
 
-export const $CloseMask = styled("div", forwardRef)`
+export const $CloseMask = styled("div")`
   position: fixed;
   user-select: none;
   top: 0;
