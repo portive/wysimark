@@ -5399,7 +5399,6 @@ __metadata:
     emoji-mart: ^5.4.0
     eslint: ^8.4.1
     eslint-config-custom: "workspace:*"
-    goober: ^2.1.11
     is-hotkey: ^0.2.0
     jest: ^27
     just-map-values: ^3.2.0
@@ -10356,15 +10355,6 @@ __metadata:
   version: 0.1.2
   resolution: "globrex@npm:0.1.2"
   checksum: adca162494a176ce9ecf4dd232f7b802956bb1966b37f60c15e49d2e7d961b66c60826366dc2649093cad5a0d69970cfa8875bd1695b5a1a2f33dcd2aa88da3c
-  languageName: node
-  linkType: hard
-
-"goober@npm:^2.1.11":
-  version: 2.1.13
-  resolution: "goober@npm:2.1.13"
-  peerDependencies:
-    csstype: ^3.0.10
-  checksum: 0c00b90d26d1a2fad432e311fd4f47bc9fef1eee2a733158d9e2c72a89cf76d414090d063a8d20fe378f2b2b8087df0a83b0f00a3244d1466b97a0d3b14344a7
   languageName: node
   linkType: hard
 

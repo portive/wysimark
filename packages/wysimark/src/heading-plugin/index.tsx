@@ -42,7 +42,12 @@ export const HeadingPlugin = createPlugin<HeadingPluginCustomTypes>(
       editableProps: {
         renderElement: ({ element, attributes, children }) => {
           if (element.type === "heading") {
-            const tag = `h${element.level}`
+            /**
+             * We type this to React.ElementType because we are confident that
+             * this will result in h1 through h6 which is a valid
+             * React.ElementType.
+             */
+            const tag = `h${element.level}` as React.ElementType
             return (
               <$Heading as={tag} {...attributes}>
                 {children}

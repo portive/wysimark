@@ -1,6 +1,8 @@
+import { Global } from "@emotion/react"
+
 import { createPlugin, TypedPlugin } from "~/src/sink"
 
-import { GlobalStyles } from "./global-styles"
+import { globalStyles } from "./global-styles"
 
 export type ThemeEditor = {
   theme: true
@@ -19,7 +21,7 @@ export const ThemePlugin = createPlugin<ThemePluginCustomTypes>((editor) => {
     renderEditable: ({ attributes, Editable }) => {
       return (
         <>
-          <GlobalStyles />
+          <Global styles={globalStyles} />
           <Editable {...attributes} />
         </>
       )

@@ -1,5 +1,3 @@
-import "~wysimark/src/setup"
-
 import { BaseEditor } from "slate"
 import { ReactEditor, RenderLeafProps, Slate } from "slate-react"
 

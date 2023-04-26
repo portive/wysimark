@@ -50,7 +50,6 @@
     "clsx": "^1.2.1",
     "dotenv": "16.x",
     "emoji-mart": "^5.4.0",
-    "goober": "^2.1.11",
     "is-hotkey": "^0.2.0",
     "just-map-values": "^3.2.0",
     "just-throttle": "^4.2.0",

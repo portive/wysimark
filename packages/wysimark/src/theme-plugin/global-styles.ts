@@ -1,4 +1,4 @@
-import { createGlobalStyles } from "goober/global"
+import { css } from "@emotion/react"
 
 const blue = `
 --blue-50: rgb(239 246 255);
@@ -58,7 +58,7 @@ const zincShades = `
 --shade-900: rgb(24 24 27);
 `
 
-export const GlobalStyles = createGlobalStyles`
+export const globalStyles = css`
   :root {
     /* Tailwind Colors */
     ${blue}
