@@ -2966,14 +2966,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@portive/client@npm:^10.0.2":
-  version: 10.0.2
-  resolution: "@portive/client@npm:10.0.2"
+"@portive/client@npm:^10.0.3":
+  version: 10.0.3
+  resolution: "@portive/client@npm:10.0.3"
   dependencies:
     "@portive/api-types": ^9.0.0
     axios: ^0.27.2
     resolvable-value: ^1.0.2
-  checksum: aa57b96a9ba35d3bbe972d8c5efae28b463141b63362e989c366694cd8e360023188fa6c453e6981864280baf830e492fdd42452b4363d886143462bfc317fc2
+  checksum: fa51c2d23f6e7de51f472d6afd1e73739a89d179b07466e1dc49ad3c9fa24fc843e9a2a6ad87c0b92116772385dc600a26ece0c5c3bb043e14daf3cf7e3c00cf
   languageName: node
   linkType: hard
 
@@ -5382,7 +5382,7 @@ __metadata:
     "@emotion/core": ^11.0.0
     "@emotion/react": ^11.10.6
     "@emotion/styled": ^11.10.6
-    "@portive/client": ^10.0.2
+    "@portive/client": ^10.0.3
     "@thesunny/assert-type": ^0.1.13
     "@types/handlebars-helpers": ^0.5.3
     "@types/jest": ^27
