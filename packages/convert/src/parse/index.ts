@@ -22,5 +22,16 @@ export function parseToAst(markdown: string) {
  */
 export function parse(markdown: string) {
   const ast = parseToAst(markdown)
+  /**
+   * If there is no content, remark returns a root ast with no children (i.e.
+   * no paragraphs) but for Slate, we need it to return an empty paragraph.
+   *
+   * So when this happens, we just generate an empty paragraph and return that
+   * s he result.
+   */
+  if (ast.children.length === 0) {
+    return [{ type: "paragraph", children: [{ text: "" }] }]
+  }
+
   return parseContents(ast.children as TopLevelContent[])
 }

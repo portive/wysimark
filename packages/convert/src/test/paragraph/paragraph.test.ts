@@ -22,4 +22,39 @@ describe("paragraph", () => {
       },
     ])
   })
+
+  it("should parse an empty string as a paragraph", async () => {
+    check("", [
+      {
+        type: "paragraph",
+        children: [{ text: "" }],
+      },
+    ])
+  })
+
+  it("should parse a newline as a paragraph and returns empty string for Markdown", async () => {
+    check(
+      "\n",
+      [
+        {
+          type: "paragraph",
+          children: [{ text: "" }],
+        },
+      ],
+      ""
+    )
+  })
+
+  it("should parse two newlines as a paragraph returns empty string for Markdown", async () => {
+    check(
+      "\n\n",
+      [
+        {
+          type: "paragraph",
+          children: [{ text: "" }],
+        },
+      ],
+      ""
+    )
+  })
 })
