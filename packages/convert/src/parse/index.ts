@@ -3,6 +3,7 @@ import remarkGfm from "remark-gfm"
 import remarkParse from "remark-parse"
 import { unified } from "unified"
 
+import { Element } from "../types"
 import { parseContents } from "./parse-content"
 import { transformInlineLinks } from "./transform-inline-links"
 
@@ -20,7 +21,7 @@ export function parseToAst(markdown: string) {
 /**
  * Takes a Markdown string as input and returns a remarkParse AST
  */
-export function parse(markdown: string) {
+export function parse(markdown: string): Element[] {
   const ast = parseToAst(markdown)
   /**
    * If there is no content, remark returns a root ast with no children (i.e.
@@ -30,7 +31,7 @@ export function parse(markdown: string) {
    * s he result.
    */
   if (ast.children.length === 0) {
-    return [{ type: "paragraph", children: [{ text: "" }] }]
+    return [{ type: "paragraph", children: [{ text: "" }] }] as Element[]
   }
 
   return parseContents(ast.children as TopLevelContent[])
