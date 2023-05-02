@@ -48,7 +48,10 @@ export function createWysimark(
       }
     },
     getMarkdown() {
-      return editorRef.current?.getMarkdown() || options.initialMarkdown || ""
+      const markdown = editorRef.current?.getMarkdown()
+      return typeof markdown === "string"
+        ? markdown
+        : options.initialMarkdown || ""
     },
     setMarkdown(markdown: string) {
       editorRef.current?.resetMarkdown(markdown)

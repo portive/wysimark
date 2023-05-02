@@ -5416,7 +5416,7 @@ __metadata:
     ts-jest: ^27
     ts-node: ^10.9.1
     tsconfig-paths: ^4.1.2
-    tsup: ^6.6.3
+    tsup: ^6.7.0
     type-fest: ^3.2.0
     typescript: ^4.9.4
     zustand: ^4.1.5
@@ -5469,7 +5469,7 @@ __metadata:
     ts-jest: ^27
     ts-node: ^10.9.1
     tsconfig-paths: ^4.1.2
-    tsup: ^6.6.3
+    tsup: ^6.7.0
     type-fest: ^3.2.0
     typescript: ^4.9.4
     zustand: ^4.1.5
@@ -8221,6 +8221,25 @@ __metadata:
   languageName: node
   linkType: hard
 
+"demo-js@workspace:apps/demo-js":
+  version: 0.0.0-use.local
+  resolution: "demo-js@workspace:apps/demo-js"
+  dependencies:
+    "@emotion/react": ^11.10.6
+    "@wysimark/react": "workspace:*"
+    concurrently: ^7.2
+    eslint: ^8.4.1
+    eslint-config-custom: "*"
+    next: 12.x
+    prettier: ^2
+    react: ">=17.x"
+    react-dom: ">=17.x"
+    slate-react: ^0.83.2
+    typescript: ^4.9.4
+    vite: ^4.3.3
+  languageName: unknown
+  linkType: soft
+
 "demo@workspace:apps/demo":
   version: 0.0.0-use.local
   resolution: "demo@workspace:apps/demo"
@@ -8817,7 +8836,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"esbuild@npm:^0.17.6":
+"esbuild@npm:^0.17.5, esbuild@npm:^0.17.6":
   version: 0.17.18
   resolution: "esbuild@npm:0.17.18"
   dependencies:
@@ -16025,7 +16044,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.2.15":
+"postcss@npm:^8.2.15, postcss@npm:^8.4.23":
   version: 8.4.23
   resolution: "postcss@npm:8.4.23"
   dependencies:
@@ -17111,6 +17130,20 @@ __metadata:
   bin:
     rollup: dist/bin/rollup
   checksum: 443f26aa6e42b94b4b137fbc3a07c78254cafc4ae53e0547bf5a94337b0658ca100d4e1c7e24870e399e5c7068a419cc0d367bfd35f4b1552d0b5e6d3482c517
+  languageName: node
+  linkType: hard
+
+"rollup@npm:^3.21.0":
+  version: 3.21.2
+  resolution: "rollup@npm:3.21.2"
+  dependencies:
+    fsevents: ~2.3.2
+  dependenciesMeta:
+    fsevents:
+      optional: true
+  bin:
+    rollup: dist/bin/rollup
+  checksum: 1a0261b551ea7846f4ef7514930263c28c67e356ab1cbbe9e69e923a081b571fb483576ea53b69e851df9e58be36ab135057d21635d8bbdb5e63c3ccc34a0419
   languageName: node
   linkType: hard
 
@@ -18954,7 +18987,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tsup@npm:^6.6.3":
+"tsup@npm:^6.7.0":
   version: 6.7.0
   resolution: "tsup@npm:6.7.0"
   dependencies:
@@ -19819,6 +19852,43 @@ __metadata:
     unist-util-stringify-position: ^3.0.0
     vfile-message: ^3.0.0
   checksum: 642cce703afc186dbe7cabf698dc954c70146e853491086f5da39e1ce850676fc96b169fcf7898aa3ff245e9313aeec40da93acd1e1fcc0c146dc4f6308b4ef9
+  languageName: node
+  linkType: hard
+
+"vite@npm:^4.3.3":
+  version: 4.3.3
+  resolution: "vite@npm:4.3.3"
+  dependencies:
+    esbuild: ^0.17.5
+    fsevents: ~2.3.2
+    postcss: ^8.4.23
+    rollup: ^3.21.0
+  peerDependencies:
+    "@types/node": ">= 14"
+    less: "*"
+    sass: "*"
+    stylus: "*"
+    sugarss: "*"
+    terser: ^5.4.0
+  dependenciesMeta:
+    fsevents:
+      optional: true
+  peerDependenciesMeta:
+    "@types/node":
+      optional: true
+    less:
+      optional: true
+    sass:
+      optional: true
+    stylus:
+      optional: true
+    sugarss:
+      optional: true
+    terser:
+      optional: true
+  bin:
+    vite: bin/vite.js
+  checksum: 99970cb1fed3330458e60f8341ec73c4260c82d815e51c95295321ab496e4c8cb447bc942daf4d94f78bbc8b2bed36cbc237f43fdc1cede19250fac737e5a0fc
   languageName: node
   linkType: hard
 

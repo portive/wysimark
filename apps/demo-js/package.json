@@ -1,0 +1,37 @@
+{
+  "name": "demo-js",
+  "packageManager": "yarn@3.3.1",
+  "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@wysimark/react": "workspace:*",
+    "next": "12.x",
+    "react": ">=17.x",
+    "react-dom": ">=17.x",
+    "slate-react": "^0.83.2"
+  },
+  "devDependencies": {
+    "concurrently": "^7.2",
+    "eslint": "^8.4.1",
+    "eslint-config-custom": "*",
+    "prettier": "^2",
+    "typescript": "^4.9.4",
+    "vite": "^4.3.3"
+  },
+  "scripts": {
+    "-- fix": "# fix syntax",
+    "fix": "yarn fix:prettier && yarn fix:eslint",
+    "fix:eslint": "yarn lint:eslint --fix",
+    "fix:prettier": "yarn lint:prettier --write",
+    "-- lint": "# lint syntax",
+    "lint": "concurrently 'yarn lint:prettier' 'yarn lint:eslint' 'yarn lint:tsc'",
+    "lint:prettier": "prettier --check \"**/*.{css,md,js,jsx,json,ts,tsx}\" --ignore-path '../../.prettierignore'",
+    "lint:eslint": "eslint .",
+    "lint:tsc": "tsc --build ./ --force",
+    "-- next": "# NextJs",
+    "start:local": "vite",
+    "open": "open -a 'google chrome' http://localhost:3732",
+    "-- preset": "# Run preset from ~/presets",
+    "preset": "ts-node --project $HOME/presets/tsconfig.ts-node.json $HOME/presets/bin/index.ts",
+    "-- end": "# end"
+  }
+}

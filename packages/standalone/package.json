@@ -3,8 +3,9 @@
   "version": "2.0.9",
   "license": "MIT",
   "author": "Sunny Hirai <thesunny@gmail.com>",
-  "main": ".dist/index.js",
+  "main": ".dist/index.cjs.js",
   "types": ".dist/index.d.ts",
+  "module": ".dist/index.esm.js",
   "files": [
     "README.md",
     ".dist/"
@@ -24,7 +25,6 @@
     "eslint": "^8.4.1",
     "eslint-config-custom": "workspace:*",
     "jest": "^27",
-    "nanoid": "^4.0.0",
     "plop": "^2",
     "prettier": "^2",
     "pretty-bytes": "^6.0.0",
@@ -32,7 +32,7 @@
     "ts-jest": "^27",
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^4.1.2",
-    "tsup": "^6.6.3",
+    "tsup": "^6.7.0",
     "type-fest": "^3.2.0",
     "typescript": "^4.9.4"
   },
@@ -54,11 +54,17 @@
     "just-map-values": "^3.2.0",
     "just-throttle": "^4.2.0",
     "lodash.throttle": "^4.1.1",
+    "nanoid": "^4.0.0",
     "prismjs": "^1.29.0",
     "slate": "^0.85.0",
     "slate-history": "^0.85.0",
     "slate-react": "^0.83.2",
-    "zustand": "^4.1.5"
+    "zustand": "^4.1.5",
+    "mdast-util-definitions": "^5.1.1",
+    "remark-gfm": "^3.0.1",
+    "remark-parse": "^10.0.1",
+    "unified": "^10.1.2",
+    "unist-util-visit": "^4.1.2"
   },
   "scripts": {
     "--build": "# build with tsup.config.js",
