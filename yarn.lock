@@ -5373,6 +5373,59 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@wysimark/js@workspace:packages/standalone":
+  version: 0.0.0-use.local
+  resolution: "@wysimark/js@workspace:packages/standalone"
+  dependencies:
+    "@emoji-mart/data": ^1.1.0
+    "@emoji-mart/react": ^1.1.0
+    "@emotion/core": ^11.0.0
+    "@emotion/react": ^11.10.6
+    "@emotion/styled": ^11.10.6
+    "@portive/client": ^10.0.3
+    "@thesunny/assert-type": ^0.1.13
+    "@types/handlebars-helpers": ^0.5.3
+    "@types/jest": ^27
+    "@types/lodash.throttle": ^4.1.7
+    "@types/node": ^18.11.18
+    "@types/prismjs": ^1.26.0
+    "@types/react": ">=17.x"
+    "@types/react-dom": ">=17.x"
+    change-case: ^4.1.2
+    clsx: ^1.2.1
+    concurrently: ^7.2
+    csstype: ^3.0.2
+    dotenv: 16.x
+    emoji-mart: ^5.4.0
+    eslint: ^8.4.1
+    eslint-config-custom: "workspace:*"
+    is-hotkey: ^0.2.0
+    jest: ^27
+    just-map-values: ^3.2.0
+    just-throttle: ^4.2.0
+    lodash.throttle: ^4.1.1
+    nanoid: ^4.0.0
+    plop: ^2
+    prettier: ^2
+    pretty-bytes: ^6.0.0
+    prismjs: ^1.29.0
+    rimraf: ^4.1.2
+    slate: ^0.85.0
+    slate-history: ^0.85.0
+    slate-react: ^0.83.2
+    ts-jest: ^27
+    ts-node: ^10.9.1
+    tsconfig-paths: ^4.1.2
+    tsup: ^6.6.3
+    type-fest: ^3.2.0
+    typescript: ^4.9.4
+    zustand: ^4.1.5
+  peerDependencies:
+    react: ">=17.x"
+    react-dom: ">=17.x"
+  languageName: unknown
+  linkType: soft
+
 "@wysimark/react@workspace:*, @wysimark/react@workspace:packages/wysimark":
   version: 0.0.0-use.local
   resolution: "@wysimark/react@workspace:packages/wysimark"
