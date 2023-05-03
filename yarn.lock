@@ -5633,6 +5633,33 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@wysimark/convert@workspace:*, @wysimark/convert@workspace:packages/convert":
+  version: 0.0.0-use.local
+  resolution: "@wysimark/convert@workspace:packages/convert"
+  dependencies:
+    "@types/jest": ^29
+    "@types/mdast": ^3.0.0
+    "@types/node": ^18.11.18
+    "@typescript-eslint/eslint-plugin": ^5.15.0
+    "@typescript-eslint/parser": ^5.15.0
+    concurrently: ^7.2
+    eslint: ^8.4.1
+    eslint-config-custom: "workspace:*"
+    jest: ^29
+    json-beautify: ^1.1.1
+    mdast-util-definitions: ^5.1.1
+    prettier: ^2
+    remark-gfm: ^3.0.1
+    remark-parse: ^10.0.1
+    ts-jest: ^29
+    ts-node: ^10.9.1
+    tsconfig-paths: ^4.1.2
+    typescript: ^4.9.4
+    unified: ^10.1.2
+    unist-util-visit: ^4.1.2
+  languageName: unknown
+  linkType: soft
+
 "@wysimark/js@workspace:packages/standalone":
   version: 0.0.0-use.local
   resolution: "@wysimark/js@workspace:packages/standalone"
@@ -5651,6 +5678,7 @@ __metadata:
     "@types/prismjs": ^1.26.0
     "@types/react": ">=17.x"
     "@types/react-dom": ">=17.x"
+    "@wysimark/react": "workspace:*"
     change-case: ^4.1.2
     clsx: ^1.2.1
     concurrently: ^7.2
@@ -5709,6 +5737,7 @@ __metadata:
     "@types/prismjs": ^1.26.0
     "@types/react": ">=17.x"
     "@types/react-dom": ">=17.x"
+    "@wysimark/convert": "workspace:*"
     change-case: ^4.1.2
     clsx: ^1.2.1
     concurrently: ^7.2
@@ -5768,6 +5797,7 @@ __metadata:
     "@types/react": ">=17.x"
     "@types/react-dom": ">=17.x"
     "@vitejs/plugin-vue": ^4.2.1
+    "@wysimark/react": "workspace:*"
     change-case: ^4.1.2
     clsx: ^1.2.1
     concurrently: ^7.2
@@ -20515,7 +20545,6 @@ __metadata:
     unified: ^10.1.2
     unist-util-visit: ^4.1.2
     vite: ^4.3.3
-    vite-plugin-dts: ^2.3.0
     vue: ^3
     zustand: ^4.1.5
   peerDependencies:
@@ -21041,33 +21070,6 @@ __metadata:
   checksum: 53e991bbf928faf5dc6efac9b8eb9ab6497c69feeb94f963d648b7a3530a720b19ec2e0ec037344257e05a4f35bd9ad04d9de6f289615ffb133282031b18c61c
   languageName: node
   linkType: hard
-
-"wysimark-convert@workspace:packages/convert":
-  version: 0.0.0-use.local
-  resolution: "wysimark-convert@workspace:packages/convert"
-  dependencies:
-    "@types/jest": ^29
-    "@types/mdast": ^3.0.0
-    "@types/node": ^18.11.18
-    "@typescript-eslint/eslint-plugin": ^5.15.0
-    "@typescript-eslint/parser": ^5.15.0
-    concurrently: ^7.2
-    eslint: ^8.4.1
-    eslint-config-custom: "workspace:*"
-    jest: ^29
-    json-beautify: ^1.1.1
-    mdast-util-definitions: ^5.1.1
-    prettier: ^2
-    remark-gfm: ^3.0.1
-    remark-parse: ^10.0.1
-    ts-jest: ^29
-    ts-node: ^10.9.1
-    tsconfig-paths: ^4.1.2
-    typescript: ^4.9.4
-    unified: ^10.1.2
-    unist-util-visit: ^4.1.2
-  languageName: unknown
-  linkType: soft
 
 "wysimark-storybook@workspace:apps/storybook":
   version: 0.0.0-use.local

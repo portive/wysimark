@@ -18,6 +18,6 @@
   "compilerOptions": {
     "declaration": true
   },
-  "include": ["**/*.ts", "**/*.tsx"],
+  "include": ["**/*.ts", "**/*.tsx", "**/*.vue", "**/*.d.ts"],
   "exclude": ["node_modules"]
 }

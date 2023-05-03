@@ -1,4 +1,4 @@
-import { check } from "../test-utils"
+import { check, serialize } from "../test-utils"
 
 describe("image-inline", () => {
   describe("generic image urls", () => {
@@ -146,6 +146,32 @@ describe("image-inline", () => {
           },
         ]
       )
+    })
+  })
+
+  describe("Hash ID in URL", () => {
+    it("should get image size from uncommonMark hints", async () => {
+      const markdown = serialize([
+        {
+          type: "paragraph",
+          children: [
+            { text: "alpha " },
+            {
+              type: "image-inline",
+              url: "#abc",
+              title: "title",
+              alt: "alt",
+              width: 320,
+              height: 240,
+              srcWidth: 1024,
+              srcHeight: 768,
+              children: [{ text: "" }],
+            },
+            { text: " bravo" },
+          ],
+        },
+      ])
+      expect(markdown).toEqual("alpha  bravo")
     })
   })
 })

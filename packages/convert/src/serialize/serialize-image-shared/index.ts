@@ -13,7 +13,14 @@ const urlSerializers = [
 export function serializeImageShared(image: ImageSharedElement): string {
   for (const urlSerializer of urlSerializers) {
     const url = urlSerializer(image)
-    if (url) {
+    if (typeof url === "string") {
+      /**
+       * Sometimes the serialized URL will return "" which means that the URL
+       * hasn't returned yet. When this happens, we don't want the markdown for
+       * the image to be added to the final value because the image would be
+       * invalid. This happens when the image is uploading.
+       */
+      if (url === "") return ""
       return `![${image.alt}](${url}${
         typeof image.title === "string" ? ` "${image.title}"` : ""
       })`

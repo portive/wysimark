@@ -28,5 +28,22 @@ export default defineConfig({
       external: ["vue"],
     },
   },
-  plugins: [vue(), dts()],
+  plugins: [
+    vue(),
+    dts({
+      root: __dirname,
+      entryRoot: "./src",
+      cleanVueFileName: true,
+      // tsConfigFilePath: "./tsconfig.json",
+      /**
+       * TODO: Skip all the errors which we shouldn't do.
+       *
+       * Currently, `vite-plugin-dts` is looking at everything in
+       * "../wysimark/src" which has `tsx` files that are incompatible with
+       * vue and causing errors. These shouldn't be parsed at all but they are
+       * in their entirety.
+       */
+      skipDiagnostics: true,
+    }),
+  ],
 })

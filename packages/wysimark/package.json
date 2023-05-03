@@ -46,6 +46,7 @@
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@portive/client": "^10.0.3",
+    "@wysimark/convert": "workspace:*",
     "clsx": "^1.2.1",
     "dotenv": "16.x",
     "emoji-mart": "^5.4.0",

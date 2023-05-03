@@ -5,6 +5,8 @@
 .npm/
 .build
 .dist/
+# By Vite. Added so we don't use it if it hasn't been configured yet.
+dist/
 
 # ignore Next.js directory
 .next/

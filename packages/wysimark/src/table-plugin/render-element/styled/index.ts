@@ -14,7 +14,7 @@ export const $Table = styled("table")`
  */
 export const $TableRow = styled("tr")`
   position: relative;
-  &:first-child {
+  &:first-of-type {
     background: var(--table-head-bgcolor);
   }
 `
@@ -38,10 +38,10 @@ export const $TableCell = styled("td")`
   /**
    * Stronger borders on the left and right edge
    */
-  &:first-child {
+  &:first-of-type {
     border-left-color: var(--table-border-color);
   }
-  &:last-child {
+  &:last-of-type {
     border-right-color: var(--table-border-color);
   }
 `
@@ -57,7 +57,7 @@ export const $TableContent = styled("div")`
   /**
    * Even smaller font and dimmer for the heading row
    */
-  tr:first-child & {
+  tr:first-of-type & {
     color: rgba(0, 0, 0, 0.6);
     font-size: 0.875em; /* 14px */
   }

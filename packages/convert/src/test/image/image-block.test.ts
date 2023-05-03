@@ -1,4 +1,4 @@
-import { check } from "../test-utils"
+import { check, serialize } from "../test-utils"
 
 describe("image-block", () => {
   describe("generic image urls", () => {
@@ -101,6 +101,44 @@ describe("image-block", () => {
           },
         ]
       )
+    })
+  })
+
+  describe("Hash ID in URL", () => {
+    it("should not serialize image with hash ID in URL", async () => {
+      const markdown = serialize([
+        {
+          type: "image-block",
+          url: "#abc",
+          title: "title",
+          alt: "alt",
+          width: 320,
+          height: 240,
+          srcWidth: 1024,
+          srcHeight: 768,
+          children: [{ text: "" }],
+        },
+      ])
+      expect(markdown).toEqual("")
+    })
+
+    it("should not serialize image with hash ID in URL with surrounding paragraphs", async () => {
+      const markdown = serialize([
+        { type: "paragraph", children: [{ text: "alpha" }] },
+        {
+          type: "image-block",
+          url: "#abc",
+          title: "title",
+          alt: "alt",
+          width: 320,
+          height: 240,
+          srcWidth: 1024,
+          srcHeight: 768,
+          children: [{ text: "" }],
+        },
+        { type: "paragraph", children: [{ text: "bravo" }] },
+      ])
+      expect(markdown).toEqual("alpha\n\nbravo")
     })
   })
 })

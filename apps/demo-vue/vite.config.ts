@@ -12,21 +12,16 @@
 // }
 
 import vue from "@vitejs/plugin-vue"
+import dotenv from "dotenv"
 import { defineConfig } from "vite"
-import dts from "vite-plugin-dts"
 
-export default defineConfig({
-  build: {
-    lib: {
-      entry: "src/index.vue",
-      fileName: "index",
-      formats: ["es", "cjs"],
+export default defineConfig(() => {
+  const result = dotenv.config({ path: "../../.env/local.env" })
+  console.log(result.parsed?.PORTIVE_AUTH_TOKEN)
+  return {
+    define: {
+      "process.env": JSON.stringify(result.parsed),
     },
-    outDir: ".dist",
-    sourcemap: true,
-    rollupOptions: {
-      external: ["vue"],
-    },
-  },
-  plugins: [vue(), dts()],
+    plugins: [vue()],
+  }
 })

@@ -18,6 +18,7 @@
 
 Lorem ipsum dolar..."
         :height="240"
+        :auth-token="PORTIVE_AUTH_TOKEN"
         @update:model-value="log"
       />
     </div>
@@ -26,7 +27,7 @@ Lorem ipsum dolar..."
 
 <script lang="ts">
 import { ref } from "vue"
-import Wysimark from "./Wysimark.vue"
+import Wysimark from "@wysimark/vue/src/index.vue"
 export default {
   name: "App",
   components: { Wysimark },
@@ -46,11 +47,18 @@ export default {
       }
     }
 
+    /**
+     * onClick handler for "Get Markdown" button
+     */
     const clickGetMarkdown = () => {
       withWysimark((wysimark) => {
         console.log(wysimark.getMarkdown())
       })
     }
+
+    /**
+     * onClick handler for "Set Markdown" button
+     */
     const clickSetMarkdown = () => {
       withWysimark((wysimark) => {
         wysimark.setMarkdown("# Hello World")
@@ -60,8 +68,15 @@ export default {
     const log = (markdown: string) => {
       console.log(markdown)
     }
+    console.log(process.env)
 
-    return { wysimark: wysimarkRef, clickGetMarkdown, clickSetMarkdown, log }
+    return {
+      wysimark: wysimarkRef,
+      clickGetMarkdown,
+      clickSetMarkdown,
+      log,
+      PORTIVE_AUTH_TOKEN: process.env.PORTIVE_AUTH_TOKEN,
+    }
   },
 }
 </script>

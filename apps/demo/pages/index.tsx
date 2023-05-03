@@ -39,7 +39,12 @@ And this is a paragraph`)
           setMarkdown(editor.getMarkdown())
         }}
       />
-      <textarea className="mt-4 form-control" rows={10} value={markdown} />
+      <textarea
+        className="mt-4 form-control"
+        rows={10}
+        value={markdown}
+        readOnly
+      />
     </div>
   )
 }

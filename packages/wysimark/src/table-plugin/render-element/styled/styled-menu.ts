@@ -78,10 +78,10 @@ export const $ColumnMenuTile = styled($MenuTile)`
   border-bottom: none;
   border-right: none;
   bottom: 1px;
-  td:first-child & {
+  td:first-of-type & {
     border-top-left-radius: 0.5em;
   }
-  td:last-child & {
+  td:last-of-type & {
     border-top-right-radius: 0.5em;
     border-right: 1px solid rgba(0, 0, 0, 0.05);
     right: -1px;
@@ -110,10 +110,10 @@ export const $RowMenuTile = styled($MenuTile)`
   border-right: none;
   border-bottom: none;
   right: 1px;
-  tr:first-child & {
+  tr:first-of-type & {
     border-top-left-radius: 0.5em;
   }
-  tr:last-child & {
+  tr:last-of-type & {
     border-bottom-left-radius: 0.5em;
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     bottom: 0;
