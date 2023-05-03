@@ -1,9 +1,11 @@
 import { Editable, useEditor } from "@wysimark/react/src/entry"
-import { useCallback } from "react"
+import { useCallback, useState } from "react"
 
 import content from "../content/basic.md"
 
 export default function Page() {
+  const [markdown, setMarkdown] = useState(content)
+
   const editor = useEditor({
     initialMarkdown: content,
     authToken: process.env.NEXT_PUBLIC_PORTIVE_AUTH_TOKEN,
@@ -25,13 +27,19 @@ And this is a paragraph`)
     <div style={{ maxWidth: 720, margin: "2em auto" }}>
       <div className="mb-2">
         <button className="btn btn-primary me-1" onClick={getMarkdown}>
-          Log Value
+          Get Markdown
         </button>
         <button className="btn btn-primary" onClick={resetMarkdown}>
-          Reset Value
+          Set Markdown
         </button>
       </div>
-      <Editable editor={editor} />
+      <Editable
+        editor={editor}
+        onChange={() => {
+          setMarkdown(editor.getMarkdown())
+        }}
+      />
+      <textarea className="mt-4 form-control" rows={10} value={markdown} />
     </div>
   )
 }

@@ -11,16 +11,18 @@ function renderLeaf({ children, attributes }: RenderLeafProps) {
   return <span {...attributes}>{children}</span>
 }
 
-type ExtraProps = React.TextareaHTMLAttributes<HTMLDivElement>
-
-export function Editable({
-  editor,
-  ...extraProps
-}: {
+export type EditableProps = {
   editor: BaseEditor & ReactEditor & WysimarkEditor
-} & ExtraProps) {
+  onChange?: () => void
+} & Omit<React.TextareaHTMLAttributes<HTMLDivElement>, "onChange">
+
+export function Editable({ editor, onChange, ...extraProps }: EditableProps) {
   return (
-    <Slate editor={editor} value={editor.wysimark.initialValue}>
+    <Slate
+      editor={editor}
+      value={editor.wysimark.initialValue}
+      onChange={onChange}
+    >
       <SinkEditable renderLeaf={renderLeaf} {...extraProps} />
     </Slate>
   )

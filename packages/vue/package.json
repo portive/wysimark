@@ -1,5 +1,5 @@
 {
-  "name": "@wysimark/js",
+  "name": "@wysimark/vue",
   "version": "2.0.9",
   "license": "MIT",
   "author": "Sunny Hirai <thesunny@gmail.com>",
@@ -19,6 +19,7 @@
     "@types/prismjs": "^1.26.0",
     "@types/react": ">=17.x",
     "@types/react-dom": ">=17.x",
+    "@vitejs/plugin-vue": "^4.2.1",
     "change-case": "^4.1.2",
     "concurrently": "^7.2",
     "csstype": "^3.0.2",
@@ -34,7 +35,10 @@
     "tsconfig-paths": "^4.1.2",
     "tsup": "^6.7.0",
     "type-fest": "^3.2.0",
-    "typescript": "^4.9.4"
+    "typescript": "^4.9.4",
+    "vite": "^4.3.3",
+    "vite-plugin-dts": "^2.3.0",
+    "vue": "^3"
   },
   "peerDependencies": {
     "react": ">=17.x",
@@ -68,8 +72,7 @@
   },
   "scripts": {
     "--build": "# build with tsup.config.js",
-    "build": "rimraf .dist && tsup src/entry/index.tsx",
-    "build:cli": "rimraf .dist && tsup src/entry/index.tsx --dts --tsconfig=tsconfig.tsup.json --out-dir=.dist",
+    "build": "rimraf .dist && vite build",
     "build:watch": "yarn build --watch",
     "-- fix": "# fix syntax",
     "fix": "yarn fix:prettier && yarn fix:eslint",

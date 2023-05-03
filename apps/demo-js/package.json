@@ -1,5 +1,5 @@
 {
-  "name": "demo-js",
+  "name": "standalone-demo",
   "packageManager": "yarn@3.3.1",
   "dependencies": {
     "@emotion/react": "^11.10.6",
@@ -28,8 +28,8 @@
     "lint:eslint": "eslint .",
     "lint:tsc": "tsc --build ./ --force",
     "-- next": "# NextJs",
-    "start:local": "vite",
-    "open": "open -a 'google chrome' http://localhost:3732",
+    "start:local": "vite --port 3733",
+    "open": "open -a 'google chrome' http://localhost:3733",
     "-- preset": "# Run preset from ~/presets",
     "preset": "ts-node --project $HOME/presets/tsconfig.ts-node.json $HOME/presets/bin/index.ts",
     "-- end": "# end"

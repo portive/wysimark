@@ -53,17 +53,17 @@
     "just-map-values": "^3.2.0",
     "just-throttle": "^4.2.0",
     "lodash.throttle": "^4.1.1",
+    "mdast-util-definitions": "^5.1.1",
     "nanoid": "^4.0.0",
     "prismjs": "^1.29.0",
+    "remark-gfm": "^3.0.1",
+    "remark-parse": "^10.0.1",
     "slate": "^0.85.0",
     "slate-history": "^0.85.0",
     "slate-react": "^0.83.2",
-    "zustand": "^4.1.5",
-    "mdast-util-definitions": "^5.1.1",
-    "remark-gfm": "^3.0.1",
-    "remark-parse": "^10.0.1",
     "unified": "^10.1.2",
-    "unist-util-visit": "^4.1.2"
+    "unist-util-visit": "^4.1.2",
+    "zustand": "^4.1.5"
   },
   "scripts": {
     "--build": "# build with tsup.config.js",

@@ -6,11 +6,11 @@ export function sayHello() {
   console.log("Hello, world!")
 }
 
-type EditorOptions = Parameters<typeof useEditor>[0]
+type EditorOptions = Parameters<typeof useEditor>[0] & { onChange?: () => void }
 type Editor = ReturnType<typeof useEditor>
 
 function StandaloneEditor({
-  options,
+  options: { onChange, ...options },
   editorRef,
 }: {
   options: EditorOptions
@@ -20,7 +20,7 @@ function StandaloneEditor({
 
   useImperativeHandle(editorRef, () => editor, [editor])
 
-  return <Editable editor={editor} />
+  return <Editable editor={editor} onChange={onChange} />
 }
 
 type Wysimark = {
