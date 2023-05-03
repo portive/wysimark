@@ -16883,9 +16883,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-demo@workspace:apps/demo":
+"react-demo@workspace:apps/react-demo":
   version: 0.0.0-use.local
-  resolution: "react-demo@workspace:apps/demo"
+  resolution: "react-demo@workspace:apps/react-demo"
   dependencies:
     "@emotion/react": ^11.10.6
     "@wysimark/react": "workspace:*"
@@ -18460,9 +18460,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"standalone-demo@workspace:apps/demo-js":
+"standalone-demo@workspace:apps/standalone-demo":
   version: 0.0.0-use.local
-  resolution: "standalone-demo@workspace:apps/demo-js"
+  resolution: "standalone-demo@workspace:apps/standalone-demo"
   dependencies:
     "@emotion/react": ^11.10.6
     "@wysimark/react": "workspace:*"
@@ -20492,9 +20492,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vue-demo@workspace:apps/demo-vue":
+"vue-demo@workspace:apps/vue-demo":
   version: 0.0.0-use.local
-  resolution: "vue-demo@workspace:apps/demo-vue"
+  resolution: "vue-demo@workspace:apps/vue-demo"
   dependencies:
     "@types/node": ^18.11.18
     "@vitejs/plugin-vue": ^4.2.1
