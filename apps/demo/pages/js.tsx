@@ -1,4 +1,4 @@
-import { createWysimark } from "@wysimark/js/src"
+import { createWysimark } from "@wysimark/standalone/src"
 import { useEffect, useRef } from "react"
 
 type Wysimark = ReturnType<typeof createWysimark>

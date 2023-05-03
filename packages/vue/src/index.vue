@@ -12,7 +12,7 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, onBeforeUnmount, ref } from "vue"
-import { createWysimark } from "@wysimark/js"
+import { createWysimark } from "@wysimark/standalone"
 
 export default defineComponent({
   /**

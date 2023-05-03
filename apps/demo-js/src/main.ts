@@ -1,4 +1,4 @@
-import { createWysimark } from "@wysimark/js"
+import { createWysimark } from "@wysimark/standalone"
 
 /**
  * Get the editor container element
@@ -13,7 +13,9 @@ const wysimark = createWysimark(container, {
   initialMarkdown: "# Hello World\n\nLorem ipsum dolar.",
   onChange: () => {
     const markdown = wysimark.getMarkdown()
-    document.getElementById("textarea")!.innerHTML = markdown
+    const textarea = document.getElementById("textarea")
+    if (textarea == null) throw new Error("Could not find textarea")
+    textarea.innerHTML = markdown
   },
 })
 

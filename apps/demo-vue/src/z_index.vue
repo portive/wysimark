@@ -36,7 +36,7 @@
  * https://v3.vuejs.org/guide/migration/global-api.html#vue-extend-removed
  */
 import { PropType, defineComponent } from "vue"
-import { createWysimark } from "@wysimark/js"
+import { createWysimark } from "@wysimark/standalone"
 // import { EditorEvent, OnChange, UploadOptions } from "./types"
 /**
  * IMPORTANT: Do not import `vue`.
