@@ -1,5 +1,6 @@
 {
   "name": "slate-pluggable-packages",
+  "private": true,
   "workspaces": [
     "apps/*",
     "packages/*"
@@ -13,7 +14,7 @@
     "prettier": "^2",
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^4.1.2",
-    "turbo": "^1.6.3",
+    "turbo": "^1.8.3",
     "typescript": "^4.9.4"
   },
   "scripts": {
@@ -24,6 +25,7 @@
     "open:standalone": "yarn workspace standalone-demo open",
     "open:vue": "yarn workspace vue-demo open",
     "-- start": "# demo",
+    "start": "concurrently 'yarn start:react' 'yarn start:standalone' 'yarn start:vue'",
     "start:react": "yarn workspace react-demo start:local",
     "start:standalone": "yarn workspace standalone-demo start:local",
     "start:vue": "yarn workspace vue-demo start:local",
