@@ -11,15 +11,24 @@
     "concurrently": "^7.2",
     "eslint": "^8.4.1",
     "eslint-config-custom": "*",
+    "husky": "^8.0.0",
+    "pinst": "^3.0.0",
     "prettier": "^2",
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^4.1.2",
     "turbo": "^1.8.3",
     "typescript": "^4.9.4"
   },
+  "dependencies": {
+    "@changesets/cli": "^2.26.1"
+  },
   "scripts": {
-    "-- turbo": "# turbo",
+    "-- build": "# build",
     "build": "turbo build",
+    "-- husky": "# husky git lifecycle hooks",
+    "husky:pre-commit": "yarn lint && yarn test",
+    "-- lifecycle": "# lifecycle",
+    "postinstall": "husky install",
     "-- open": "# demo",
     "open:react": "yarn workspace react-demo open",
     "open:standalone": "yarn workspace standalone-demo open",
@@ -47,8 +56,5 @@
     "-- test": "# test",
     "test": "yarn turbo test:once",
     "-- end": "# end"
-  },
-  "dependencies": {
-    "@changesets/cli": "^2.26.1"
   }
 }
