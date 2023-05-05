@@ -1,6 +1,6 @@
 {
   "name": "@wysimark/vue",
-  "version": "2.0.9",
+  "version": "2.0.11",
   "license": "MIT",
   "author": "Sunny Hirai <thesunny@gmail.com>",
   "main": ".dist/index.js",
@@ -51,7 +51,6 @@
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@portive/client": "^10.0.3",
-    "@wysimark/react": "workspace:*",
     "clsx": "^1.2.1",
     "dotenv": "16.x",
     "emoji-mart": "^5.4.0",

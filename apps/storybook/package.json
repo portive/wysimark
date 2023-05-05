@@ -1,6 +1,7 @@
 {
   "name": "wysimark-storybook",
   "packageManager": "yarn@3.3.1",
+  "private": true,
   "devDependencies": {
     "@babel/core": "^7.21.0",
     "@mdx-js/react": "^1.6.22",
@@ -61,5 +62,6 @@
     "-- end": "# end",
     "storybook": "DOTENV=../../.env/local.env start-storybook -p 6006",
     "build-storybook": "build-storybook"
-  }
+  },
+  "version": null
 }

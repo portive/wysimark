@@ -41,11 +41,14 @@
     "-- ready": "# ready",
     "ready": "yarn turbo ready",
     "-- release": "# release",
-    "release": "yarn workspace @wysimark/react release",
+    "release": "turbo run lint test && changeset version && changeset publish",
     "-- storybook": "# Run storybook app",
     "storybook": "yarn workspace wysimark-storybook storybook",
     "-- test": "# test",
     "test": "yarn turbo test:once",
     "-- end": "# end"
+  },
+  "dependencies": {
+    "@changesets/cli": "^2.26.1"
   }
 }

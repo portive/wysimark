@@ -1,7 +1,8 @@
 {
   "name": "@wysimark/convert",
-  "version": "1.0.0",
+  "version": "2.0.1",
   "license": "MIT",
+  "private": true,
   "author": "Sunny Hirai <thesunny@gmail.com>",
   "files": [
     ".dist/**/*"
@@ -46,7 +47,7 @@
     "preset": "ts-node --project $HOME/presets/tsconfig.ts-node.json $HOME/presets/bin/index.ts",
     "--- test": "#",
     "test:clearcache": "jest --clearCache",
-    "test:once": "yarn test:clearcache && jest --config=jest.config.cjs",
+    "test:once": "test:clearcache && jest --config=jest.config.cjs",
     "test:watch": "jest --watch --config=jest.fast.config.cjs",
     "test:watch:types": "yarn test:clearcache && jest --watch --config=jest.config.cjs",
     "-- fix": "# fix syntax",
