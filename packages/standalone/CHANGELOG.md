@@ -1,5 +1,11 @@
 # @wysimark/standalone
 
+## 2.0.14
+
+### Patch Changes
+
+- 47c5875: Fix toolbar action to set paragraph style
+
 ## 2.0.13
 
 ### Patch Changes
