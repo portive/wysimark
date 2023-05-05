@@ -43,8 +43,8 @@ export const headingItems: Item[] = [
     icon: Icon.Paragraph,
     title: "Paragraph",
     hotkey: "super+0",
-    action: () => {
-      console.log("Set Paragraph")
+    action: (editor) => {
+      editor.collapsibleParagraph.convertParagraph()
     },
   },
 ]
