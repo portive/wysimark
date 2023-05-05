@@ -1,5 +1,11 @@
 # @wysimark/vue
 
+## 2.0.13
+
+### Patch Changes
+
+- 25815ad: Publish 3 packages using changesets for testing purposes
+
 ## 2.0.11
 
 ### Patch Changes

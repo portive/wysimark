@@ -41,7 +41,7 @@
     "-- ready": "# ready",
     "ready": "yarn turbo ready",
     "-- release": "# release",
-    "release": "turbo run lint test && changeset version && changeset publish",
+    "release": "turbo run lint test:once && changeset version && changeset publish",
     "-- storybook": "# Run storybook app",
     "storybook": "yarn workspace wysimark-storybook storybook",
     "-- test": "# test",
