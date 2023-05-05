@@ -1,5 +1,5 @@
 {
-  "name": "slate-pluggable-packages",
+  "name": "wysimark-monorepo",
   "private": true,
   "workspaces": [
     "apps/*",

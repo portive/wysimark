@@ -18781,25 +18781,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"slate-pluggable-packages@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "slate-pluggable-packages@workspace:."
-  dependencies:
-    "@changesets/cli": ^2.26.1
-    "@types/node": ^18.11.18
-    concurrently: ^7.2
-    eslint: ^8.4.1
-    eslint-config-custom: "*"
-    husky: ^8.0.0
-    pinst: ^3.0.0
-    prettier: ^2
-    ts-node: ^10.9.1
-    tsconfig-paths: ^4.1.2
-    turbo: ^1.8.3
-    typescript: ^4.9.4
-  languageName: unknown
-  linkType: soft
-
 "slate-react@npm:^0.83.2":
   version: 0.83.2
   resolution: "slate-react@npm:0.83.2"
@@ -21789,6 +21770,25 @@ __metadata:
   checksum: 53e991bbf928faf5dc6efac9b8eb9ab6497c69feeb94f963d648b7a3530a720b19ec2e0ec037344257e05a4f35bd9ad04d9de6f289615ffb133282031b18c61c
   languageName: node
   linkType: hard
+
+"wysimark-monorepo@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "wysimark-monorepo@workspace:."
+  dependencies:
+    "@changesets/cli": ^2.26.1
+    "@types/node": ^18.11.18
+    concurrently: ^7.2
+    eslint: ^8.4.1
+    eslint-config-custom: "*"
+    husky: ^8.0.0
+    pinst: ^3.0.0
+    prettier: ^2
+    ts-node: ^10.9.1
+    tsconfig-paths: ^4.1.2
+    turbo: ^1.8.3
+    typescript: ^4.9.4
+  languageName: unknown
+  linkType: soft
 
 "wysimark-storybook@workspace:apps/storybook":
   version: 0.0.0-use.local
