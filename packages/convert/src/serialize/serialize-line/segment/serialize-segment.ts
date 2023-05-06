@@ -26,6 +26,8 @@ export function serializeSegment(segment: Segment): string {
     }
     case "image-inline":
       return serializeImageShared(segment)
+    case "upload-attachment":
+      throw new Error("upload attachment not supported yet")
     default:
       assertUnreachable(segment)
   }

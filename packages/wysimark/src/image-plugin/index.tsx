@@ -129,7 +129,7 @@ export const ImagePlugin = //({
         }
         return true
       }
-      editor.upload.onUploadFileSuccess = (e) => {
+      editor.upload.onUploadImageFileSuccess = (e) => {
         editor.upload.setElementTimeTraveling<
           ImageBlockElement | ImageInlineElement
         >({ url: e.hashUrl }, { url: e.url })

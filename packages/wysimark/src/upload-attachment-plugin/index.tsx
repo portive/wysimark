@@ -64,6 +64,15 @@ export const UploadAttachmentPlugin =
         }
         return true
       }
+
+      editor.upload.onUploadFileSuccess = (e) => {
+        editor.upload.setElementTimeTraveling<UploadAttachmentElement>(
+          { url: e.hashUrl },
+          { url: e.url }
+        )
+        return true
+      }
+
       return createPolicy({
         name: "upload-attachment",
         editor: {

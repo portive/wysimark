@@ -65,18 +65,13 @@ export function serializeElement(element: Element, orders: number[]): string {
         element.children as Segment[]
       )}\n\n`
     }
-    /**
-     * TODO: Handle upload attachments.
-     */
-    case "upload-attachment":
-      throw new Error(`Upload attachments not yet supported.`)
-    /**
-     * TODO: Handle image elements.
-     */
     case "image-block":
       return serializeImageBlock(element)
     case "image-inline":
-      throw new Error(`Image elements not yet supported.`)
+    case "upload-attachment":
+      throw new Error(
+        `This shouldn't happen because inlines are handled in serializeSegment`
+      )
   }
   assertUnreachable(element)
 }
