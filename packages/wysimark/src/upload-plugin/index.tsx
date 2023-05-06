@@ -10,11 +10,16 @@ type UploadMethods = ReturnType<typeof createUploadMethods>
 type UploadFileEvent = { hashUrl: string; file: File }
 type UploadImageFileEvent = UploadFileEvent & { width: number; height: number }
 
+type UploadFileSuccessEvent = UploadFileEvent & { url: string }
+type UploadImageFileSuccessEvent = UploadImageFileEvent & { url: string }
+
 export type UploadEditor = {
   upload: UploadMethods & {
     client?: Client
     onUploadImageFile: (e: UploadImageFileEvent) => boolean
     onUploadFile: (e: UploadFileEvent) => boolean
+    onUploadImageFileSuccess: (e: UploadImageFileSuccessEvent) => boolean
+    onUploadFileSuccess: (e: UploadFileSuccessEvent) => boolean
     useUploadStore: ReturnType<typeof createUploadStore>
   }
 }
@@ -29,8 +34,7 @@ export type UploadPluginCustomTypes = {
 
 export const UploadPlugin = //({ authToken }: { authToken?: string }) =>
   createPlugin<UploadPluginCustomTypes>((editor, options) => {
-    // TODO: This should be passed into options
-    const authToken = options.upload?.authToken // process.env.NEXT_PUBLIC_PORTIVE_AUTH_TOKEN
+    const authToken = options.upload?.authToken
     if (!authToken) {
       console.warn(`No authToken provided. Uploads are disabled.`)
     }
@@ -43,6 +47,14 @@ export const UploadPlugin = //({ authToken }: { authToken?: string }) =>
       },
       onUploadFile: () => {
         console.log("called onUploadFile")
+        return false
+      },
+      onUploadImageFileSuccess: () => {
+        console.log("called onUploadImageFileSuccess")
+        return false
+      },
+      onUploadFileSuccess: () => {
+        console.log("called onUploadFileSuccess")
         return false
       },
       useUploadStore: createUploadStore(),

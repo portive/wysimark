@@ -6,7 +6,12 @@ import { createPlugin, curryOne, TypedPlugin } from "~/src/sink"
 import { createImageMethods } from "./methods"
 import { normalizeNode } from "./normalize-node"
 import { renderElement } from "./render-element"
-import { ImagePluginConfig, ImagePluginCustomTypes } from "./types"
+import {
+  ImageBlockElement,
+  ImageInlineElement,
+  ImagePluginConfig,
+  ImagePluginCustomTypes,
+} from "./types"
 import { resizeInBounds } from "./utils"
 
 const DEFAULT_OPTIONS: ImagePluginConfig = {
@@ -82,6 +87,7 @@ export const ImagePlugin = //({
           Transforms.insertNodes(editor, {
             type: "image-inline",
             url: e.hashUrl,
+            alt: e.file.name,
             title: e.file.name,
             bytes: e.file.size,
             width: e.width,
@@ -98,6 +104,7 @@ export const ImagePlugin = //({
           Transforms.insertNodes(editor, {
             type: "image-block",
             url: e.hashUrl,
+            alt: e.file.name,
             title: e.file.name,
             bytes: e.file.size,
             width: initialSize.width,
@@ -122,6 +129,13 @@ export const ImagePlugin = //({
         }
         return true
       }
+      editor.upload.onUploadFileSuccess = (e) => {
+        editor.upload.setElementTimeTraveling<
+          ImageBlockElement | ImageInlineElement
+        >({ url: e.hashUrl }, { url: e.url })
+        return true
+      }
+
       return createPolicy({
         name: "image",
         editor: {

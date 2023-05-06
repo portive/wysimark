@@ -76,6 +76,23 @@ export function upload(editor: Editor, file: File) {
         status: "success",
         url: e.hostedFile.url,
       })
+      if (e.hostedFile.type === "image") {
+        if (
+          editor.upload.onUploadImageFileSuccess({
+            hashUrl,
+            file,
+            width: e.hostedFile.width,
+            height: e.hostedFile.height,
+            url: e.hostedFile.url,
+          })
+        )
+          return true
+      }
+      editor.upload.onUploadFileSuccess({
+        hashUrl,
+        file,
+        url: e.hostedFile.url,
+      })
     },
   })
   return false
