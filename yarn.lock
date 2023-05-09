@@ -5961,9 +5961,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@wysimark/react@workspace:*, @wysimark/react@workspace:packages/wysimark":
+"@wysimark/react@workspace:*, @wysimark/react@workspace:packages/react":
   version: 0.0.0-use.local
-  resolution: "@wysimark/react@workspace:packages/wysimark"
+  resolution: "@wysimark/react@workspace:packages/react"
   dependencies:
     "@emoji-mart/data": ^1.1.0
     "@emoji-mart/react": ^1.1.0

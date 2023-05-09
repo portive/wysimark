@@ -35,6 +35,5 @@
     "-- preset": "# Run preset from ~/presets",
     "preset": "ts-node --project $HOME/presets/tsconfig.ts-node.json $HOME/presets/bin/index.ts",
     "-- end": "# end"
-  },
-  "version": null
+  }
 }

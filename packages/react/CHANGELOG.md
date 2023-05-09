@@ -1,5 +1,16 @@
 # @wysimark/react
 
+## 2.1.0
+
+### Minor Changes
+
+- bcd2527: Attachments are now treated as normal Markdown links for easier conversion and compatibility
+
+### Patch Changes
+
+- Updated dependencies [bcd2527]
+  - @wysimark/convert@2.1.0
+
 ## 2.0.14
 
 ### Patch Changes

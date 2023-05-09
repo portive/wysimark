@@ -1,5 +1,11 @@
 # @wysimark/standalone
 
+## 2.1.0
+
+### Minor Changes
+
+- bcd2527: Attachments are now treated as normal Markdown links for easier conversion and compatibility
+
 ## 2.0.14
 
 ### Patch Changes
