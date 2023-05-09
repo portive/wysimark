@@ -23,7 +23,7 @@ export function upload(editor: Editor, file: File) {
    * that can be used to find the current state of the file upload from start
    * to completed upload.
    */
-  const hashUrl = `#${nanoid()}`
+  const hashUrl = `$${nanoid()}`
   const objectUrl = URL.createObjectURL(file)
   uploadFile({
     client,

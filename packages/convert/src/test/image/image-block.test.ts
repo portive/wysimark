@@ -109,7 +109,7 @@ describe("image-block", () => {
       const markdown = serialize([
         {
           type: "image-block",
-          url: "#abc",
+          url: "$abc",
           title: "title",
           alt: "alt",
           width: 320,
@@ -127,7 +127,7 @@ describe("image-block", () => {
         { type: "paragraph", children: [{ text: "alpha" }] },
         {
           type: "image-block",
-          url: "#abc",
+          url: "$abc",
           title: "title",
           alt: "alt",
           width: 320,

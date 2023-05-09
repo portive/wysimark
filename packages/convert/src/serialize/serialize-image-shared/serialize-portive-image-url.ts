@@ -23,7 +23,7 @@ import { ImageSharedElement } from "~wysimark/src/image-plugin/types"
 export function serializePortiveImageUrl(
   image: ImageSharedElement
 ): string | undefined {
-  if (image.url.startsWith("#")) return ""
+  if (image.url.startsWith("$")) return ""
   const { hostname } = new URL(image.url)
   /**
    * Only parse portive URL if it is a portive recognized domain

@@ -158,7 +158,7 @@ describe("image-inline", () => {
             { text: "alpha " },
             {
               type: "image-inline",
-              url: "#abc",
+              url: "$abc",
               title: "title",
               alt: "alt",
               width: 320,

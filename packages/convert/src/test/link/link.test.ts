@@ -126,4 +126,70 @@ describe("link", () => {
       },
     ])
   })
+
+  it("should convert a link with a hash id to be without the link", async () => {
+    /**
+     * The conversion doesn't convert both ways equally but this is okay.
+     *
+     * Normally, we should never see an `href` starting with a `$` in the
+     * markdown. It doesn't make sense there and the document to markdown
+     * serializer won't create it.
+     *
+     * We use it here to simplify our testing.
+     */
+    check(
+      "[alpha]($abc)",
+      [
+        {
+          type: "paragraph",
+          children: [
+            { text: "" },
+            {
+              type: "anchor",
+              href: "$abc",
+              children: [{ text: "alpha" }],
+            },
+            { text: "" },
+          ],
+        },
+      ],
+      "alpha",
+      [
+        {
+          type: "paragraph",
+          children: [{ text: "alpha" }],
+        },
+      ]
+    )
+  })
+
+  it("should convert a link with a hash id to be without the link", async () => {
+    /**
+     * Same as above but with surrounding text
+     */
+    check(
+      "alpha [bravo]($abc) charlie",
+      [
+        {
+          type: "paragraph",
+          children: [
+            { text: "alpha " },
+            {
+              type: "anchor",
+              href: "$abc",
+              children: [{ text: "bravo" }],
+            },
+            { text: " charlie" },
+          ],
+        },
+      ],
+      "alpha bravo charlie",
+      [
+        {
+          type: "paragraph",
+          children: [{ text: "alpha bravo charlie" }],
+        },
+      ]
+    )
+  })
 })

@@ -6,6 +6,12 @@ import { getCommonAnchorMarks } from "../utils"
 
 export function serializeAnchor(anchor: AnchorElement): string {
   const commonAnchorMarks = getCommonAnchorMarks(anchor.children as Segment[])
+  if (anchor.href.startsWith("$"))
+    return serializeLine(
+      anchor.children as Segment[],
+      commonAnchorMarks,
+      commonAnchorMarks
+    )
   return (
     /**
      * TODO: Handle anchor children more elegantly in serializeAnchor.
