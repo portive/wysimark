@@ -1,4 +1,5 @@
 import { RefObject, useRef } from "react"
+
 import { positionInside, useFixedReposition } from "../../use-reposition"
 import { $ProgressBar, $ProgressBarFill } from "../styles"
 

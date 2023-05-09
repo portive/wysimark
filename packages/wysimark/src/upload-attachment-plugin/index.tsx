@@ -2,12 +2,10 @@ import { Descendant, Editor, Transforms } from "slate"
 import { ReactEditor } from "slate-react"
 
 import { AnchorElement } from "~/src/anchor-plugin"
-import { createPlugin, curryOne, TypedPlugin } from "~/src/sink"
+import { createPlugin, TypedPlugin } from "~/src/sink"
 
 import { UploadEditor } from "../upload-plugin"
 import { createUploadAttachmentMethods } from "./methods"
-import { normalizeNode } from "./normalize-node"
-import { renderElement } from "./render-element"
 
 type UploadAttachmentMethods = ReturnType<typeof createUploadAttachmentMethods>
 
