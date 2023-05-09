@@ -36,7 +36,7 @@ And this is a paragraph`)
       <Editable
         editor={editor}
         onChange={() => {
-          setMarkdown(editor.getMarkdown())
+          // setMarkdown(editor.getMarkdown())
         }}
       />
       <textarea

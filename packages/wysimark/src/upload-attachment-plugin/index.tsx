@@ -1,6 +1,7 @@
 import { Descendant, Editor, Transforms } from "slate"
 import { ReactEditor } from "slate-react"
 
+import { AnchorElement } from "~/src/anchor-plugin"
 import { createPlugin, curryOne, TypedPlugin } from "~/src/sink"
 
 import { UploadEditor } from "../upload-plugin"
@@ -43,12 +44,11 @@ export const UploadAttachmentPlugin =
       editor.uploadAttachment = createUploadAttachmentMethods(editor)
       editor.upload.onUploadFile = ({ hashUrl, file }) => {
         const { selection } = editor
+        Transforms.insertText(editor, `🔗 `)
         Transforms.insertNodes(editor, {
-          type: "upload-attachment",
-          title: file.name,
-          url: hashUrl,
-          bytes: file.size,
-          children: [{ text: "" }],
+          type: "anchor",
+          href: hashUrl,
+          children: [{ text: file.name }],
         })
         /**
          * If there is no selection the element is inserted at the bottom of the
@@ -62,31 +62,23 @@ export const UploadAttachmentPlugin =
           Transforms.select(editor, lastPos)
           ReactEditor.focus(editor)
         }
+        /**
+         * Moves the cursor just outside of the inserted Anchor element.
+         */
+        Transforms.move(editor, { distance: 1, unit: "offset" })
         return true
       }
 
       editor.upload.onUploadFileSuccess = (e) => {
-        editor.upload.setElementTimeTraveling<UploadAttachmentElement>(
-          { url: e.hashUrl },
-          { url: e.url }
+        editor.upload.setElementTimeTraveling<AnchorElement>(
+          { href: e.hashUrl },
+          { href: e.url }
         )
         return true
       }
 
       return createPolicy({
         name: "upload-attachment",
-        editor: {
-          normalizeNode: curryOne(normalizeNode, editor),
-          isVoid: (el) => {
-            if (el.type === "upload-attachment") return true
-          },
-          isInline: (el) => {
-            if (el.type === "upload-attachment") return true
-          },
-        },
-        editableProps: {
-          renderElement,
-        },
       })
     }
   ) as TypedPlugin<UploadAttachmentPluginCustomTypes>
