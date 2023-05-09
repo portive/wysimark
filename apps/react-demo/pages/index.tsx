@@ -14,7 +14,9 @@ export default function Page() {
   })
 
   const getMarkdown = useCallback(() => {
-    console.log(editor.getMarkdown())
+    const markdown = editor.getMarkdown()
+    console.log(markdown)
+    setMarkdown(markdown)
   }, [editor])
 
   const resetMarkdown = useCallback(() => {
@@ -36,7 +38,7 @@ And this is a paragraph`)
       <Editable
         editor={editor}
         onChange={() => {
-          // setMarkdown(editor.getMarkdown())
+          setMarkdown(editor.getMarkdown())
         }}
       />
       <textarea
