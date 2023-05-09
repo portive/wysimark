@@ -1,5 +1,11 @@
 # @wysimark/react
 
+## 2.1.1
+
+### Patch Changes
+
+- 6a36e34: Fix dependency issue for @wysimark/react and @wysimark/convert in workspace
+
 ## 2.1.0
 
 ### Minor Changes
