@@ -1,5 +1,10 @@
 import { BaseEditor } from "slate"
-import { ReactEditor, RenderLeafProps, Slate } from "slate-react"
+import {
+  ReactEditor,
+  RenderLeafProps,
+  RenderPlaceholderProps,
+  Slate,
+} from "slate-react"
 
 import { SinkEditable } from "./SinkEditable"
 import { WysimarkEditor } from "./types"
@@ -23,7 +28,24 @@ export function Editable({ editor, onChange, ...extraProps }: EditableProps) {
       value={editor.wysimark.initialValue}
       onChange={onChange}
     >
-      <SinkEditable renderLeaf={renderLeaf} {...extraProps} />
+      <SinkEditable
+        renderLeaf={renderLeaf}
+        {...extraProps}
+        placeholder="Enter text here..."
+        renderPlaceholder={renderPlaceholder}
+      />
     </Slate>
   )
+}
+
+function renderPlaceholder(props: RenderPlaceholderProps) {
+  const nextAttributes: RenderPlaceholderProps["attributes"] = {
+    ...props.attributes,
+    style: {
+      ...props.attributes.style,
+      width: undefined,
+      maxWidth: undefined,
+    },
+  }
+  return <div {...nextAttributes}>{props.children}</div>
 }
