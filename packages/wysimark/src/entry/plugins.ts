@@ -20,9 +20,9 @@ import { TablePlugin } from "~wysimark/src/table-plugin"
 import { ThemePlugin } from "~wysimark/src/theme-plugin"
 import { ToolbarPlugin } from "~wysimark/src/toolbar-plugin"
 import { TrailingBlockPlugin } from "~wysimark/src/trailing-block-plugin"
-import { UploadAttachmentPlugin } from "~wysimark/src/upload-attachment-plugin"
 import { UploadPlugin } from "~wysimark/src/upload-plugin"
 
+import { AttachmentPlugin } from "../attachment-plugin"
 import { WysimarkEditor } from "./types"
 
 export const plugins = [
@@ -43,7 +43,7 @@ export const plugins = [
   ThemePlugin,
   ToolbarPlugin,
   UploadPlugin,
-  UploadAttachmentPlugin,
+  AttachmentPlugin,
   ImagePlugin,
 ]
 
