@@ -1,20 +1,24 @@
 import { Editable, useEditor } from "@wysimark/react/src/entry"
 import { useCallback, useState } from "react"
 
-import content from "../content/basic.md"
+// import content from "../content/basic.md"
+
+const initialMarkdown = "# Hello World"
 
 export default function Page() {
-  const [markdown, setMarkdown] = useState(content)
+  const [markdown, setMarkdown] = useState(initialMarkdown)
 
   const editor = useEditor({
-    initialMarkdown: content,
-    authToken: process.env.NEXT_PUBLIC_PORTIVE_AUTH_TOKEN,
+    initialMarkdown,
+    // authToken: process.env.NEXT_PUBLIC_PORTIVE_AUTH_TOKEN,
     minHeight: 240,
     maxHeight: 720,
   })
 
   const getMarkdown = useCallback(() => {
-    console.log(editor.getMarkdown())
+    const markdown = editor.getMarkdown()
+    console.log(markdown)
+    setMarkdown(markdown)
   }, [editor])
 
   const resetMarkdown = useCallback(() => {
@@ -36,7 +40,7 @@ And this is a paragraph`)
       <Editable
         editor={editor}
         onChange={() => {
-          // setMarkdown(editor.getMarkdown())
+          setMarkdown(editor.getMarkdown())
         }}
       />
       <textarea
