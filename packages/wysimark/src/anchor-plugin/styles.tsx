@@ -1,8 +1,6 @@
 import styled from "@emotion/styled"
 
 export const $Anchor = styled("a")`
-  position: relative;
-
   /**
    * Link colors
    */
@@ -30,4 +28,24 @@ export const $Anchor = styled("a")`
 export const $Edge = styled("span")`
   display: inline;
   padding: 0 1px 0 0;
+`
+
+export const $ProgressBar = styled("span")`
+  position: fixed;
+  width: 100px;
+  background: var(--shade-50);
+  height: 8px;
+  border-radius: 7px;
+  border: 1px solid var(--shade-400);
+  overflow: hidden;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+`
+
+export const $ProgressBarFill = styled("span")`
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 14px;
+  background: var(--blue-400);
+  transition: width 100ms linear;
 `
