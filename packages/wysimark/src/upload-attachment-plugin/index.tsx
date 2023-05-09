@@ -1,45 +1,24 @@
-import { Descendant, Editor, Transforms } from "slate"
+import { Editor, Transforms } from "slate"
 import { ReactEditor } from "slate-react"
 
 import { AnchorElement } from "~/src/anchor-plugin"
 import { createPlugin, TypedPlugin } from "~/src/sink"
 
 import { UploadEditor } from "../upload-plugin"
-import { createUploadAttachmentMethods } from "./methods"
-
-type UploadAttachmentMethods = ReturnType<typeof createUploadAttachmentMethods>
 
 export type UploadAttachmentEditor = {
-  uploadAttachment: UploadAttachmentMethods
-}
-
-export type UploadAttachmentElement = {
-  type: "upload-attachment"
-  /**
-   * The `url` represents either
-   *
-   * - a `hashUrl` that begins with a `#` during the upload process which
-   *   represents a unique id reference to a Zustand store where the actual
-   *   information about the upload is kept.
-   * - The actual `url` of the uploaded file. When the file is saved, the
-   *   `hashUrl` will be converted to the actual `url` of the file.
-   */
-  url: string
-  title: string
-  bytes?: number
-  children: Descendant[]
+  uploadAttachment: {}
 }
 
 export type UploadAttachmentPluginCustomTypes = {
   Name: "upload-attachment"
   Editor: UploadAttachmentEditor & UploadEditor
-  Element: UploadAttachmentElement
 }
 
 export const UploadAttachmentPlugin =
   createPlugin<UploadAttachmentPluginCustomTypes>(
     (editor, options, { createPolicy }) => {
-      editor.uploadAttachment = createUploadAttachmentMethods(editor)
+      editor.uploadAttachment = {}
       editor.upload.onUploadFile = ({ hashUrl, file }) => {
         const { selection } = editor
         Transforms.insertText(editor, `🔗 `)

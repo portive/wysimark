@@ -68,7 +68,6 @@ export function serializeElement(element: Element, orders: number[]): string {
     case "image-block":
       return serializeImageBlock(element)
     case "image-inline":
-    case "upload-attachment":
       throw new Error(
         `This shouldn't happen because inlines are handled in serializeSegment`
       )
