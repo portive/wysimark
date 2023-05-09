@@ -1,4 +1,4 @@
-import { createSink } from "~wysimark/src/sink"
+import { createSink } from "~/src/sink"
 
 import { plugins, PluginTypes } from "./plugins"
 

@@ -1,4 +1,4 @@
-import { AnchorElement } from "~wysimark/src/anchor-plugin"
+import { AnchorElement } from "~/src/anchor-plugin"
 
 import { isElement } from "../utils"
 import { runNormalizersOnNode } from "./run-normalizers-on-node"

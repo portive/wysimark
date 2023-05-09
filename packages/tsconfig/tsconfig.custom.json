@@ -5,8 +5,9 @@
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
     "paths": {
-      "~/*": ["../../packages/react/*"],
-      "~wysimark/*": ["../../packages/react/*"]
+      "~/*": ["../../packages/react/*"]
+      // NOTE: Below is obsolete
+      // "~wysimark/*": ["../../packages/react/*"]
       /**
        * Required to support `typeRoots`
        * https://stackoverflow.com/questions/64287224/typeroots-fails-to-find-d-ts-declaration-files-in-project

@@ -4,7 +4,7 @@ import {
   TableContentElement,
   TableElement,
   TableRowElement,
-} from "~wysimark/src/table-plugin"
+} from "~/src/table-plugin"
 
 import { Segment } from "../../types"
 import { assert, assertElementType } from "../../utils"

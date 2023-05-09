@@ -4,7 +4,7 @@ import {
   TableCellElement,
   TableElement,
   TableRowElement,
-} from "~wysimark/src/table-plugin"
+} from "~/src/table-plugin"
 
 import { parsePhrasingContents } from "./parse-phrasing-content/parse-phrasing-content"
 

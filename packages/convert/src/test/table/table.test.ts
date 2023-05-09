@@ -1,4 +1,4 @@
-import { TableCellElement, TableRowElement } from "~wysimark/src/table-plugin"
+import { TableCellElement, TableRowElement } from "~/src/table-plugin"
 
 import { check } from "../test-utils"
 

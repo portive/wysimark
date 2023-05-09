@@ -1,4 +1,4 @@
-import { AnchorElement } from "~wysimark/src/anchor-plugin"
+import { AnchorElement } from "~/src/anchor-plugin"
 
 import { normalizeSegments } from "../../parse/parse-phrasing-content/normalize-segments"
 
