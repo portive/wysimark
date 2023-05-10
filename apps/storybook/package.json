@@ -62,5 +62,6 @@
     "-- end": "# end",
     "storybook": "DOTENV=../../.env/local.env start-storybook -p 6006",
     "build-storybook": "build-storybook"
-  }
+  },
+  "version": null
 }

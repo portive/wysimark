@@ -1,5 +1,11 @@
 # @wysimark/convert
 
+## 2.2.0
+
+### Minor Changes
+
+- Add ability to specify a placeholder to Editable
+
 ## 2.1.0
 
 ### Minor Changes
