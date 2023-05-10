@@ -36,8 +36,9 @@ And this is a paragraph`)
       <Editable
         editor={editor}
         onChange={() => {
-          // setMarkdown(editor.getMarkdown())
+          setMarkdown(editor.getMarkdown())
         }}
+        placeholder="Enter text here..."
       />
       <textarea
         className="mt-4 form-control"

@@ -23,6 +23,7 @@ import { TrailingBlockPlugin } from "~/src/trailing-block-plugin"
 import { UploadPlugin } from "~/src/upload-plugin"
 
 import { AttachmentPlugin } from "../attachment-plugin"
+import { PlaceholderPlugin } from "../placeholder-plugin"
 import { WysimarkEditor } from "./types"
 
 export const plugins = [
@@ -45,6 +46,7 @@ export const plugins = [
   UploadPlugin,
   AttachmentPlugin,
   ImagePlugin,
+  PlaceholderPlugin,
 ]
 
 export type PluginTypes = ExtractCustomTypes<typeof plugins>

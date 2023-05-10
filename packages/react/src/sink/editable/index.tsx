@@ -14,6 +14,7 @@ import {
 } from "./create-handler"
 import { createRenderElement } from "./create-render-element"
 import { createRenderLeaf } from "./create-render-leaf"
+import { createRenderPlaceholder } from "./create-render-placeholder"
 export { SinkReset } from "./styles"
 
 /**
@@ -55,6 +56,10 @@ export function SinkEditable(originalProps: EditableProps): JSX.Element {
     decorate: createDecorate(originalProps.decorate, plugins),
     renderElement: createRenderElement(originalProps.renderElement, plugins),
     renderLeaf: createRenderLeaf(originalProps.renderLeaf, plugins),
+    renderPlaceholder: createRenderPlaceholder(
+      originalProps.renderPlaceholder,
+      plugins
+    ),
     /**
      * NOTE: We skip `onKeyUp` as it is deprecated. If somebody needs it in new
      * code, we can add it back in.
