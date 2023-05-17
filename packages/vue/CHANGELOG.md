@@ -1,5 +1,11 @@
 # @wysimark/vue
 
+## 2.2.1
+
+### Patch Changes
+
+- 3af5167: Add styling directly on headings so it works with resets
+
 ## 2.2.0
 
 ### Minor Changes
