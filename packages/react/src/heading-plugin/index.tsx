@@ -11,7 +11,7 @@ import {
 
 import { insertBreak } from "./insert-break"
 import { createHeadingMethods } from "./methods"
-import { $Heading } from "./styles"
+import { $H1, $H2, $H3, $H4, $H5, $H6 } from "./styles"
 import { HeadingPluginCustomTypes } from "./types"
 
 export const HeadingPlugin = createPlugin<HeadingPluginCustomTypes>(
@@ -42,17 +42,24 @@ export const HeadingPlugin = createPlugin<HeadingPluginCustomTypes>(
       editableProps: {
         renderElement: ({ element, attributes, children }) => {
           if (element.type === "heading") {
-            /**
-             * We type this to React.ElementType because we are confident that
-             * this will result in h1 through h6 which is a valid
-             * React.ElementType.
-             */
-            const tag = `h${element.level}` as React.ElementType
-            return (
-              <$Heading as={tag} {...attributes}>
-                {children}
-              </$Heading>
-            )
+            switch (element.level) {
+              case 1:
+                return <$H1 {...attributes}>{children}</$H1>
+              case 2:
+                return <$H2 {...attributes}>{children}</$H2>
+              case 3:
+                return <$H3 {...attributes}>{children}</$H3>
+              case 4:
+                return <$H4 {...attributes}>{children}</$H4>
+              case 5:
+                return <$H5 {...attributes}>{children}</$H5>
+              case 6:
+                return <$H6 {...attributes}>{children}</$H6>
+              default:
+                throw new Error(
+                  `Expected element.level to be 1-6 but got ${element.level}`
+                )
+            }
           }
         },
         onKeyDown: (e) => {

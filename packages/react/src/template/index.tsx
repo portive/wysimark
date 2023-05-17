@@ -22,8 +22,8 @@ export type __VarName__PluginCustomTypes = {
   Element: __VarName__Element
 }
 
-export const __VarName__Plugin = () =>
-  createPlugin<__VarName__PluginCustomTypes>((editor) => {
+export const __VarName__Plugin = createPlugin<__VarName__PluginCustomTypes>(
+  (editor) => {
     editor.__varName__ = create__VarName__Methods(editor)
     return {
       name: "__var-name__",
@@ -32,4 +32,5 @@ export const __VarName__Plugin = () =>
       },
       editableProps: {},
     }
-  })
+  }
+)

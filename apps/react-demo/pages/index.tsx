@@ -20,19 +20,30 @@ export default function Page() {
   const resetMarkdown = useCallback(() => {
     editor.resetMarkdown(`# This is a reset with the reset button
     
-And this is a paragraph`)
+And this is a paragraph
+fdsfs`)
   }, [editor])
 
   return (
     <div style={{ maxWidth: 720, margin: "2em auto" }}>
-      <div className="mb-2">
-        <button className="btn btn-primary me-1" onClick={getMarkdown}>
+      <div className="tabs">
+        <a className="active" href="/">
+          React Src
+        </a>
+        <a href="/dist">Dist</a>
+        <a href="http://localhost:3733/">Standalone Dist</a>
+        <a href="http://localhost:3734/">Vue Src</a>
+        <a href="http://localhost:3734/dist">Vue Dist</a>
+      </div>
+      <h1>Wysimark React Demo</h1>
+      <p>
+        <button className="button primary" onClick={getMarkdown}>
           Get Markdown
         </button>
-        <button className="btn btn-primary" onClick={resetMarkdown}>
+        <button className="button" onClick={resetMarkdown}>
           Set Markdown
         </button>
-      </div>
+      </p>
       <Editable
         editor={editor}
         onChange={() => {
@@ -41,10 +52,10 @@ And this is a paragraph`)
         placeholder="Enter text here..."
       />
       <textarea
-        className="mt-4 form-control"
         rows={10}
         value={markdown}
         readOnly
+        style={{ marginTop: "1em" }}
       />
     </div>
   )
