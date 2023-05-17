@@ -3,6 +3,10 @@ export default defineConfig(() => {
   return {
     entry: ["./src/index.ts"],
     format: ["esm", "cjs", "iife"],
+    target: ["es2020"],
+    outExtension: (context) => {
+      return { js: `.${context.format}.js` }
+    },
     external: ["react", "react-dom"],
     dts: true,
     outDir: ".dist",

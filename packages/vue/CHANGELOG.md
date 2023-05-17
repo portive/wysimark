@@ -1,5 +1,11 @@
 # @wysimark/vue
 
+## 2.2.2
+
+### Patch Changes
+
+- cf44cf6: Change nanoid to a devDependency so that it is included in the react package
+
 ## 2.2.1
 
 ### Patch Changes
