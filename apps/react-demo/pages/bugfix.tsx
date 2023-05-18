@@ -1,5 +1,6 @@
-import { Editable, useEditor } from "@wysimark/react/src/entry"
 import { useCallback, useState } from "react"
+
+import { Editable, useEditor } from "../../../packages/react/src/entry"
 
 // import content from "../content/basic.md"
 

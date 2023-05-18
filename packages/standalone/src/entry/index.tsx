@@ -1,4 +1,4 @@
-import { Editable, useEditor } from "@wysimark/react/src/entry"
+import { Editable, useEditor } from "@wysimark/react"
 import { createRef, RefObject, useImperativeHandle } from "react"
 import { createRoot } from "react-dom/client"
 
