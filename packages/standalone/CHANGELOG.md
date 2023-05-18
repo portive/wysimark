@@ -1,5 +1,11 @@
 # @wysimark/standalone
 
+## 2.2.6
+
+### Patch Changes
+
+- Update dependencies so that it works with commonjs
+
 ## 2.2.2
 
 ### Patch Changes

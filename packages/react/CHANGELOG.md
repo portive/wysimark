@@ -1,5 +1,30 @@
 # @wysimark/react
 
+## 2.2.6
+
+### Patch Changes
+
+- Update dependencies so that it works with commonjs
+
+## 2.2.5
+
+### Patch Changes
+
+- Remove dependency on just-throttle
+
+## 2.2.4
+
+### Patch Changes
+
+- Modify dependencies to make it work with cjs
+
+## 2.2.3
+
+### Patch Changes
+
+- Adjust dependencies
+- e8000d1: Update React package.json to try and fix dependency issues
+
 ## 2.2.2
 
 ### Patch Changes
