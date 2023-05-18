@@ -1,5 +1,11 @@
 # @wysimark/standalone
 
+## 2.2.7
+
+### Patch Changes
+
+- Fix React dependencies issue for @wysimark/standalone
+
 ## 2.2.6
 
 ### Patch Changes

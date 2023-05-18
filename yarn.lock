@@ -5991,10 +5991,9 @@ __metadata:
     is-hotkey: ^0.2.0
     jest: ^27
     just-map-values: ^3.2.0
-    just-throttle: ^4.2.0
     lodash.throttle: ^4.1.1
     mdast-util-definitions: ^5.1.1
-    nanoid: ^4.0.0
+    nanoid: ^3.3.6
     plop: ^2
     prettier: ^2
     pretty-bytes: ^6.0.0
@@ -6043,21 +6042,21 @@ __metadata:
     clsx: ^1.2.1
     concurrently: ^7.2
     csstype: ^3.0.2
-    dotenv: 16.x
     emoji-mart: ^5.4.0
     eslint: ^8.4.1
     eslint-config-custom: "workspace:*"
     is-hotkey: ^0.2.0
     jest: ^27
     just-map-values: ^3.2.0
-    just-throttle: ^4.2.0
     lodash.throttle: ^4.1.1
     mdast-util-definitions: ^5.1.1
-    nanoid: ^4.0.0
+    nanoid: ^3.3.6
     plop: ^2
     prettier: ^2
     pretty-bytes: ^6.0.0
     prismjs: ^1.29.0
+    react: ">=17.x"
+    react-dom: ">=17.x"
     remark-gfm: ^3.0.1
     remark-parse: ^10.0.1
     rimraf: ^4.1.2
@@ -6073,9 +6072,6 @@ __metadata:
     unified: ^10.1.2
     unist-util-visit: ^4.1.2
     zustand: ^4.1.5
-  peerDependencies:
-    react: ">=17.x"
-    react-dom: ">=17.x"
   languageName: unknown
   linkType: soft
 
@@ -6109,10 +6105,9 @@ __metadata:
     is-hotkey: ^0.2.0
     jest: ^27
     just-map-values: ^3.2.0
-    just-throttle: ^4.2.0
     lodash.throttle: ^4.1.1
     mdast-util-definitions: ^5.1.1
-    nanoid: ^4.0.0
+    nanoid: ^3.3.6
     plop: ^2
     prettier: ^2
     pretty-bytes: ^6.0.0
@@ -14019,13 +14014,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"just-throttle@npm:^4.2.0":
-  version: 4.2.0
-  resolution: "just-throttle@npm:4.2.0"
-  checksum: 7a246e422d0cecf49305fdc7f4df0700dc841852178dfc568feba01d6fb2ad78eb9d354f6b40723cbbb00abc8ec269622821354effe6600b4236cba122d908a4
-  languageName: node
-  linkType: hard
-
 "kind-of@npm:^3.0.2, kind-of@npm:^3.0.3, kind-of@npm:^3.2.0":
   version: 3.2.2
   resolution: "kind-of@npm:3.2.2"
@@ -15658,15 +15646,6 @@ __metadata:
   bin:
     nanoid: bin/nanoid.cjs
   checksum: 7d0eda657002738aa5206107bd0580aead6c95c460ef1bdd0b1a87a9c7ae6277ac2e9b945306aaa5b32c6dcb7feaf462d0f552e7f8b5718abfc6ead5c94a71b3
-  languageName: node
-  linkType: hard
-
-"nanoid@npm:^4.0.0":
-  version: 4.0.2
-  resolution: "nanoid@npm:4.0.2"
-  bin:
-    nanoid: bin/nanoid.js
-  checksum: 747c399cea4664dd0be1d0ec498ffd1ef8f1f5221676fc8b577e3f46f66d9afcddb9595d63d19a2e78d0bc6cc33984f65e66bf1682c850b9e26288883d96b53f
   languageName: node
   linkType: hard
 

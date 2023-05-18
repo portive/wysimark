@@ -7,7 +7,16 @@ export default defineConfig(() => {
     outExtension: (context) => {
       return { js: `.${context.format}.js` }
     },
-    external: ["react", "react-dom"],
+    external: ["crypto"],
+    // noExternal: [
+    //   "mdast-util-definitions",
+    //   "react",
+    //   "react-dom",
+    //   "remark-gfm",
+    //   "remark-parse",
+    //   "unified",
+    //   "unist-util-visit",
+    // ],
     dts: true,
     outDir: ".dist",
     sourcemap: true,
