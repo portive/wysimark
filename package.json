@@ -7,6 +7,7 @@
   ],
   "packageManager": "yarn@3.3.1",
   "devDependencies": {
+    "@thesunny/script-utils": "^0.2.2",
     "@types/node": "^18.11.18",
     "concurrently": "^7.2",
     "eslint": "^8.4.1",
@@ -50,7 +51,7 @@
     "-- ready": "# ready",
     "ready": "yarn turbo ready",
     "-- release": "# release",
-    "release": "turbo run lint test:once && changeset version && changeset publish",
+    "release": "is-git-clean && turbo run lint test:once && changeset version && changeset publish",
     "-- storybook": "# Run storybook app",
     "storybook": "yarn workspace wysimark-storybook storybook",
     "-- test": "# test",

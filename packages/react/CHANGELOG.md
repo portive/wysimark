@@ -1,5 +1,11 @@
 # @wysimark/react
 
+## 2.2.8
+
+### Patch Changes
+
+- ecd594f: Fix dependencies for all editor packages
+
 ## 2.2.6
 
 ### Patch Changes

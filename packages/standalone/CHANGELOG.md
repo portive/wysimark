@@ -1,5 +1,23 @@
 # @wysimark/standalone
 
+## 2.2.10
+
+### Patch Changes
+
+- Add React to standalone dependencies
+
+## 2.2.9
+
+### Patch Changes
+
+- Standalone build with a node and browser version
+
+## 2.2.8
+
+### Patch Changes
+
+- ecd594f: Fix dependencies for all editor packages
+
 ## 2.2.7
 
 ### Patch Changes

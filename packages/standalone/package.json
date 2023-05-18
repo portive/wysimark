@@ -1,11 +1,25 @@
 {
   "name": "@wysimark/standalone",
-  "version": "2.2.7",
+  "version": "2.2.10",
   "license": "MIT",
   "author": "Sunny Hirai <thesunny@gmail.com>",
-  "main": ".dist/index.cjs.js",
-  "types": ".dist/index.d.ts",
-  "module": ".dist/index.esm.js",
+  "main": ".dist/node/index.cjs.js",
+  "module": ".dist/node/index.esm.js",
+  "browser": ".dist/browser/index.cjs.js",
+  "types": ".dist/node/index.d.ts",
+  "exports": {
+    ".": {
+      "node": {
+        "require": "./.dist/node/index.cjs.js",
+        "import": "./.dist/node/index.esm.js"
+      },
+      "browser": {
+        "require": "./.dist/browser/index.cjs.js",
+        "import": "./.dist/browser/index.esm.js"
+      },
+      "types": "./.dist/node/index.d.ts"
+    }
+  },
   "files": [
     "README.md",
     ".dist/"
@@ -30,8 +44,6 @@
     "plop": "^2",
     "prettier": "^2",
     "pretty-bytes": "^6.0.0",
-    "react": ">=17.x",
-    "react-dom": ">=17.x",
     "remark-gfm": "^3.0.1",
     "remark-parse": "^10.0.1",
     "rimraf": "^4.1.2",
@@ -58,14 +70,19 @@
     "lodash.throttle": "^4.1.1",
     "nanoid": "^3.3.6",
     "prismjs": "^1.29.0",
+    "react": ">=17.x",
+    "react-dom": ">=17.x",
     "slate": "^0.85.0",
     "slate-history": "^0.85.0",
     "slate-react": "^0.83.2",
     "zustand": "^4.1.5"
   },
   "scripts": {
-    "--build": "# build with tsup.config.js",
-    "build": "rimraf .dist && tsup src/entry/index.tsx",
+    "-- build": "# build with tsup.config.js",
+    "build": "rimraf .dist && tsup",
+    "build:old": "rimraf .dist && concurrently 'yarn build:node' 'yarn build:browser'",
+    "build:browser": "tsup --config tsup.browser.config.ts",
+    "build:node": "tsup --config tsup.node.config.ts --dts",
     "build:cli": "rimraf .dist && tsup src/entry/index.tsx --dts --tsconfig=tsconfig.tsup.json --out-dir=.dist",
     "build:watch": "yarn build --watch",
     "-- fix": "# fix syntax",

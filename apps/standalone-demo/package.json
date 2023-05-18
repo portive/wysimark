@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@emotion/react": "^11.10.6",
-    "@wysimark/react": "workspace:*",
+    "@wysimark/standalone": "workspace:*",
     "next": "12.x",
     "react": ">=17.x",
     "react-dom": ">=17.x",
