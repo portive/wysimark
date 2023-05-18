@@ -1,5 +1,11 @@
 # @wysimark/standalone
 
+## 2.2.11
+
+### Patch Changes
+
+- 5c1d66b: Updated standalone to use a single tsup config file
+
 ## 2.2.10
 
 ### Patch Changes

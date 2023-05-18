@@ -4,6 +4,13 @@
 
 ### Patch Changes
 
+- Updated dependencies [5c1d66b]
+  - @wysimark/standalone@2.2.11
+
+## null
+
+### Patch Changes
+
 - Updated dependencies [ecd594f]
   - @wysimark/react@2.2.8
 
