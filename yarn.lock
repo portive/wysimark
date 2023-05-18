@@ -19317,7 +19317,7 @@ __metadata:
   resolution: "standalone-demo@workspace:apps/standalone-demo"
   dependencies:
     "@emotion/react": ^11.10.6
-    "@wysimark/react": "workspace:*"
+    "@wysimark/standalone": "workspace:*"
     concurrently: ^7.2
     eslint: ^8.4.1
     eslint-config-custom: "*"
@@ -20467,6 +20467,12 @@ __metadata:
   checksum: 91ff179f0b9828a6880b6decaa8603fd7af0311f46a38d3a93647a2497298750d676810aeff533a335443a01a7b340dbba7c76523bcd7a87d7b05b7677742901
   languageName: node
   linkType: hard
+
+"tsupconfig@workspace:packages/tsupconfig":
+  version: 0.0.0-use.local
+  resolution: "tsupconfig@workspace:packages/tsupconfig"
+  languageName: unknown
+  linkType: soft
 
 "tsutils@npm:^3.21.0":
   version: 3.21.0
