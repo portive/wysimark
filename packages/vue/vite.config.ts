@@ -25,7 +25,7 @@ export default defineConfig({
     outDir: ".dist",
     sourcemap: true,
     rollupOptions: {
-      external: ["vue"],
+      external: ["vue", "react", "react-dom"],
     },
   },
   plugins: [
