@@ -27,7 +27,7 @@
     "-- build": "# build",
     "build": "turbo build",
     "-- changesets": "# changesets",
-    "changeset": "is-git-clean && yarn run changset",
+    "changeset": "is-git-clean && changeset",
     "-- husky": "# husky git lifecycle hooks",
     "husky:pre-commit": "yarn lint && yarn test",
     "-- lifecycle": "# lifecycle",
