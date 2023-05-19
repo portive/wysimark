@@ -1,5 +1,11 @@
 # @wysimark/vue
 
+## 2.2.14
+
+### Patch Changes
+
+- 245e0f8: Fix dependencies in Vue
+
 ## 2.2.8
 
 ### Patch Changes
