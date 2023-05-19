@@ -24,13 +24,20 @@ const baseConfig = defineConfig({
 
 export default defineConfig([
   /**
+   * TypeScript types
+   */
+  {
+    ...baseConfig,
+    outDir: ".dist/types",
+    dts: { only: true },
+  },
+  /**
    * build for Node platform
    */
   {
     ...baseConfig,
     outDir: ".dist/node",
     platform: "node",
-    dts: true,
   },
   /**
    * build for browser platform

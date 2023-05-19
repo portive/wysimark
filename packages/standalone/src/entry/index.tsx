@@ -1,10 +1,7 @@
-import { Editable, useEditor } from "@wysimark/react"
 import { createRef, RefObject, useImperativeHandle } from "react"
 import { createRoot } from "react-dom/client"
 
-export function sayHello() {
-  console.log("Hello, world!")
-}
+import { Editable, useEditor } from "../../../react/src/entry"
 
 type EditorOptions = Parameters<typeof useEditor>[0] & { onChange?: () => void }
 type Editor = ReturnType<typeof useEditor>

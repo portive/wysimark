@@ -1,12 +1,12 @@
 {
   "name": "@wysimark/standalone",
-  "version": "2.2.11",
+  "version": "2.2.12",
   "license": "MIT",
   "author": "Sunny Hirai <thesunny@gmail.com>",
   "main": ".dist/node/index.cjs.js",
   "module": ".dist/node/index.esm.js",
   "browser": ".dist/browser/index.cjs.js",
-  "types": ".dist/node/index.d.ts",
+  "types": ".dist/types/index.d.ts",
   "exports": {
     ".": {
       "node": {
@@ -17,7 +17,7 @@
         "require": "./.dist/browser/index.cjs.js",
         "import": "./.dist/browser/index.esm.js"
       },
-      "types": "./.dist/node/index.d.ts"
+      "types": "./.dist/types/index.d.ts"
     }
   },
   "files": [

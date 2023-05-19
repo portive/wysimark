@@ -1,5 +1,11 @@
 # @wysimark/react
 
+## 2.2.12
+
+### Patch Changes
+
+- 92aa93d: Use a shared tsup config to build react and standalone
+
 ## 2.2.8
 
 ### Patch Changes
