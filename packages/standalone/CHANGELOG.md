@@ -1,5 +1,11 @@
 # @wysimark/standalone
 
+## 2.2.13
+
+### Patch Changes
+
+- 07a9ac3: Fix published types in standalone
+
 ## 2.2.12
 
 ### Patch Changes
