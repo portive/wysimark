@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react"
+import { ChangeEvent, useCallback, useState } from "react"
 
 import { Editable, useEditor } from "../../../packages/react/src/entry"
 import content from "../content/basic.md"
@@ -16,6 +16,15 @@ export default function Page() {
   const getMarkdown = useCallback(() => {
     console.log(editor.getMarkdown())
   }, [editor])
+
+  const onChange = useCallback(
+    (e: ChangeEvent<HTMLTextAreaElement>) => {
+      const markdown = e.target.value
+      setMarkdown(markdown)
+      editor.resetMarkdown(markdown)
+    },
+    [editor]
+  )
 
   const resetMarkdown = useCallback(() => {
     editor.resetMarkdown(`# This is a reset with the reset button
@@ -52,10 +61,17 @@ fdsfs`)
         placeholder="Enter text here..."
       />
       <textarea
-        rows={10}
         value={markdown}
-        readOnly
-        style={{ marginTop: "1em" }}
+        onChange={onChange}
+        style={{
+          marginTop: "1em",
+          width: "100%",
+          height: 480,
+          border: "1px solid #e0e0e0",
+          borderRadius: 10,
+          padding: 20,
+          fontFamily: "monospace",
+        }}
       />
     </div>
   )
