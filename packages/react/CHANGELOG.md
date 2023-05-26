@@ -1,5 +1,11 @@
 # @wysimark/react
 
+## 2.2.15
+
+### Patch Changes
+
+- ca2a8a0: Fix bug with relative image URLs in convert
+
 ## 2.2.12
 
 ### Patch Changes
