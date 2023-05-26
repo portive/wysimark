@@ -1,5 +1,6 @@
 import type { Image } from "mdast"
 
+import { parseUrl } from "../../../parseUrl"
 import { ImageData } from "./index"
 import { parseSize } from "./parse-utils"
 
@@ -9,7 +10,7 @@ import { parseSize } from "./parse-utils"
  * image that is rendered nor does it affect the `title` or `alt` attributes.
  */
 export function parseUncommonMarkImage(image: Image): ImageData | undefined {
-  const url = new URL(image.url)
+  const url = parseUrl(image.url)
   /**
    * If there's no hash, it's not UncommonMark
    */

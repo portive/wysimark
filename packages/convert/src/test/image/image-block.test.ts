@@ -15,6 +15,20 @@ describe("image-block", () => {
     })
   })
 
+  describe("local image urls", () => {
+    it("should convert a local image to an ImageInline", async () => {
+      check(`![Pretty Flowers](/alpha.jpg "title")`, [
+        {
+          type: "image-block",
+          url: "/alpha.jpg",
+          title: "title",
+          alt: "Pretty Flowers",
+          children: [{ text: "" }],
+        },
+      ])
+    })
+  })
+
   describe("Portive image URLs", () => {
     it("should convert a Portive image to an ImageInline and parse out width/height and srcWidth/srcHeight", async () => {
       check(
@@ -101,6 +115,22 @@ describe("image-block", () => {
           },
         ]
       )
+    })
+
+    it("should get image size from uncommonMark hints for local files", async () => {
+      check(`![alt](/image.jpg#srcSize=1024x768&size=320x240 "title")`, [
+        {
+          type: "image-block",
+          url: "/image.jpg",
+          title: "title",
+          alt: "alt",
+          width: 320,
+          height: 240,
+          srcWidth: 1024,
+          srcHeight: 768,
+          children: [{ text: "" }],
+        },
+      ])
     })
   })
 

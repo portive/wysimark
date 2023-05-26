@@ -14,6 +14,12 @@ function isImageBlock(segments: Segment[]): boolean {
   return true
 }
 
+/**
+ * Parses to a Paragraph or an ImageBlock element.
+ *
+ * We need to do it this way because an ImageBlock is a Paragraph that happens
+ * to have exactly one ImageInline child.
+ */
 export function parseParagraph(content: Paragraph): Element[] {
   const segments = parsePhrasingContents(content.children)
   if (isImageBlock(segments)) {

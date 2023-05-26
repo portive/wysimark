@@ -1,10 +1,12 @@
 import type { Image } from "mdast"
 
+import { parseUrl } from "../../../parseUrl"
 import { ImageData } from "./index"
 import { parseSize } from "./parse-utils"
 
 export function parsePortiveImage(image: Image): ImageData | undefined {
-  const url = new URL(image.url)
+  // const url = new URL(image.url)
+  const url = parseUrl(image.url)
   /**
    * Only parse portive URL if it is a portive recognized domain
    */

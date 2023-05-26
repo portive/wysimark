@@ -25,6 +25,27 @@ describe("image-inline", () => {
     })
   })
 
+  describe("local image urls", () => {
+    it("should convert a local image to an ImageInline", async () => {
+      check(`alpha ![Pretty Flowers](/alpha.jpg "title") bravo`, [
+        {
+          type: "paragraph",
+          children: [
+            { text: "alpha " },
+            {
+              type: "image-inline",
+              url: "/alpha.jpg",
+              title: "title",
+              alt: "Pretty Flowers",
+              children: [{ text: "" }],
+            },
+            { text: " bravo" },
+          ],
+        },
+      ])
+    })
+  })
+
   describe("Portive image URLs", () => {
     it("should convert a Portive image to an ImageInline and parse out width/height and srcWidth/srcHeight", async () => {
       check(
@@ -147,10 +168,36 @@ describe("image-inline", () => {
         ]
       )
     })
+
+    it("should get image size from uncommonMark hints for local files", async () => {
+      check(
+        `alpha ![alt](/image.jpg#srcSize=1024x768&size=320x240 "title") bravo`,
+        [
+          {
+            type: "paragraph",
+            children: [
+              { text: "alpha " },
+              {
+                type: "image-inline",
+                url: "/image.jpg",
+                title: "title",
+                alt: "alt",
+                width: 320,
+                height: 240,
+                srcWidth: 1024,
+                srcHeight: 768,
+                children: [{ text: "" }],
+              },
+              { text: " bravo" },
+            ],
+          },
+        ]
+      )
+    })
   })
 
   describe("Hash ID in URL", () => {
-    it("should get image size from uncommonMark hints", async () => {
+    it("should remove the image if it is a reference (starts with $)", async () => {
       const markdown = serialize([
         {
           type: "paragraph",

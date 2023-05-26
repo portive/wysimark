@@ -1,5 +1,7 @@
 import { ImageSharedElement } from "~/src/image-plugin/types"
 
+import { parseUrl } from "../../parseUrl"
+
 /**
  * When an image is in the `.portive.com` subdomain like `files.portive.com` or
  * `staging.files.portive.com` and if the image has a `width` and `height` then
@@ -24,7 +26,7 @@ export function serializePortiveImageUrl(
   image: ImageSharedElement
 ): string | undefined {
   if (image.url.startsWith("$")) return ""
-  const { hostname } = new URL(image.url)
+  const { hostname } = parseUrl(image.url)
   /**
    * Only parse portive URL if it is a portive recognized domain
    */

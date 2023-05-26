@@ -41,6 +41,9 @@ export function parseContent(content: TopLevelContent): Element[] {
     case "list":
       return parseList(content)
     case "paragraph":
+      /**
+       * Returns a `paragraph` or an `image-block` Element.
+       */
       return parseParagraph(content)
     case "table":
       return parseTable(content)
