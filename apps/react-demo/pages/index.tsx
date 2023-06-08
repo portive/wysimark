@@ -1,3 +1,4 @@
+import styled from "@emotion/styled"
 import { ChangeEvent, useCallback, useState } from "react"
 
 import { Editable, useEditor } from "../../../packages/react/src/entry"
@@ -17,7 +18,7 @@ export default function Page() {
     console.log(editor.getMarkdown())
   }, [editor])
 
-  const onChange = useCallback(
+  const onChangeTextarea = useCallback(
     (e: ChangeEvent<HTMLTextAreaElement>) => {
       const markdown = e.target.value
       setMarkdown(markdown)
@@ -34,7 +35,7 @@ fdsfs`)
   }, [editor])
 
   return (
-    <div style={{ maxWidth: 720, margin: "2em auto" }}>
+    <div style={{ margin: "2em" }}>
       <div className="tabs">
         <a className="active" href="/">
           React Src
@@ -53,26 +54,45 @@ fdsfs`)
           Set Markdown
         </button>
       </p>
-      <Editable
-        editor={editor}
-        onChange={() => {
-          setMarkdown(editor.getMarkdown())
-        }}
-        placeholder="Enter text here..."
-      />
-      <textarea
-        value={markdown}
-        onChange={onChange}
+      <div
         style={{
           marginTop: "1em",
-          width: "100%",
-          height: 480,
-          border: "1px solid #e0e0e0",
-          borderRadius: 10,
-          padding: 20,
-          fontFamily: "monospace",
+          display: "grid",
+          gap: "1em",
+          gridTemplateColumns: "1fr 1fr",
         }}
-      />
+      >
+        <div>
+          <Editable
+            editor={editor}
+            onChange={() => {
+              setMarkdown(editor.getMarkdown())
+            }}
+            placeholder="Enter text here..."
+          />
+        </div>
+        <div>
+          <Textarea value={markdown} onChange={onChangeTextarea} />
+        </div>
+      </div>
     </div>
   )
 }
+
+const Textarea = styled.textarea`
+  width: 100%;
+  height: 720px;
+  background: #011627;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  color: #d6deeb;
+  padding: 20px;
+  font-size: 13px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  /* font-family: "Consolas", "Monaco", "Courier New", monospace; */
+
+  &:hover {
+    outline: 2px solid #bfdbfe;
+  }
+`
