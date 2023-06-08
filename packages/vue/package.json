@@ -1,6 +1,6 @@
 {
   "name": "@wysimark/vue",
-  "version": "2.2.15",
+  "version": "2.2.16",
   "license": "MIT",
   "author": "Sunny Hirai <thesunny@gmail.com>",
   "main": ".dist/index.js",

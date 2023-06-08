@@ -1,5 +1,11 @@
 # @wysimark/standalone
 
+## 2.2.16
+
+### Patch Changes
+
+- 3a99d8d: Fix bug when inserting a link with an invalid URL
+
 ## 2.2.15
 
 ### Patch Changes
