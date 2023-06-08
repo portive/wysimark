@@ -28,7 +28,7 @@ export function Anchor({
     >
       {/* Edge allow Chrome to differentiate in/out of the link */}
       <$Edge contentEditable={false} />
-      {upload.status === "progress" ? (
+      {upload?.status === "progress" ? (
         <ProgressBar
           anchorRef={anchorRef}
           progress={upload.sentBytes / upload.totalBytes}
