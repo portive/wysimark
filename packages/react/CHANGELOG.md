@@ -1,5 +1,11 @@
 # @wysimark/react
 
+## 2.2.17
+
+### Patch Changes
+
+- 58db75e: Compile just-map-values into the React release to fix a bug in CRA
+
 ## 2.2.16
 
 ### Patch Changes
