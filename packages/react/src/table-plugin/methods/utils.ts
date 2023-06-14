@@ -5,7 +5,7 @@ export function createCell(
   children: TableContentElement[] = [
     {
       type: "table-content",
-      children: [{ type: "table-content", children: [{ text: "" }] }],
+      children: [{ text: "" }],
     },
   ]
 ): TableCellElement {
