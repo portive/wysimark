@@ -1,5 +1,11 @@
 # @wysimark/react
 
+## 2.2.18
+
+### Patch Changes
+
+- b36293e: Fix insertTable method
+
 ## 2.2.17
 
 ### Patch Changes

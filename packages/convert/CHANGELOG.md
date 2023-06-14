@@ -1,5 +1,11 @@
 # @wysimark/convert
 
+## 2.2.2
+
+### Patch Changes
+
+- b36293e: Fix insertTable method
+
 ## 2.2.1
 
 ### Patch Changes
