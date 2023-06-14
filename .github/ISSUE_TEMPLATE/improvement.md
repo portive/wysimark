@@ -7,7 +7,7 @@ assignees: ""
 ---
 
 **Problem**
-A clear and concise description of what the problem is. (e.g. There is no easy way to customize the toolbar)
+One improvement only per issue please. A clear and concise description of what the problem is. (e.g. There is no easy way to customize the toolbar)
 
 **Solution**
 A clear and concise description of what you want the solution to be. (e.g. Provide a way to customize the toolbar)

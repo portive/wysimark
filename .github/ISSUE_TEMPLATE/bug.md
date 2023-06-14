@@ -7,7 +7,7 @@ assignees: ""
 ---
 
 **Description**
-A clear and concise description of what the bug is.
+One bug only per issue please. A clear and concise description of what the bug is.
 
 **Reproduction**
 A GIF or video showing the issue happening. If you don't include this, your issue may be closed, if it's too hard to figure out exactly what is going wrong.
