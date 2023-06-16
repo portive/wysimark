@@ -1,5 +1,11 @@
 # @wysimark/react
 
+## 2.2.20
+
+### Patch Changes
+
+- a832a8b: Fix autocorrect italic
+
 ## 2.2.19
 
 ### Patch Changes
