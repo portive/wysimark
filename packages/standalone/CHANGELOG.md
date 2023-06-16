@@ -1,5 +1,11 @@
 # @wysimark/standalone
 
+## 2.2.19
+
+### Patch Changes
+
+- 772afe4: Fix issue with Safari breaking on negative look behind by disabling auto markup on single tilde and asterisk temporarily
+
 ## 2.2.16
 
 ### Patch Changes
