@@ -20,18 +20,16 @@ export function insertText(editor: Editor, text: string): VoidActionReturn {
       triggerMarker: "~",
       regexp: /(~~)([^~]+)(~~)$/,
       mark: "bold",
+    }) ||
+    autocompleteMark(editor, text, {
+      triggerMarker: "*",
+      regexp: /(?:[^*]|^)([*])([^*]+)([*])$/,
+      mark: "italic",
+    }) ||
+    autocompleteMark(editor, text, {
+      triggerMarker: "~",
+      regexp: /(?:[^~]|^)(~)([^~]+)(~)$/,
+      mark: "italic",
     })
-    // TODO: Reenable without negative lookbehind which doesn't run in Safari
-    //||
-    // autocompleteMark(editor, text, {
-    //   triggerMarker: "*",
-    //   regexp: /(?<!\*)([*])([^*]+)([*])$/,
-    //   mark: "italic",
-    // }) ||
-    // autocompleteMark(editor, text, {
-    //   triggerMarker: "~",
-    //   regexp: /(?<!~)(~)([^~]+)(~)$/,
-    //   mark: "italic",
-    // })
   )
 }
