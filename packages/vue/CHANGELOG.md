@@ -1,5 +1,11 @@
 # @wysimark/vue
 
+## 2.4.0
+
+### Minor Changes
+
+- 1f9b757: Add placeholder to Vue
+
 ## 2.2.22
 
 ### Patch Changes
