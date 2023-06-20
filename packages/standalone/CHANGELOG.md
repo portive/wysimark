@@ -1,5 +1,11 @@
 # @wysimark/standalone
 
+## 2.3.0
+
+### Minor Changes
+
+- 6366f9d: Add placeholder support to standalone
+
 ## 2.2.22
 
 ### Patch Changes
