@@ -1,5 +1,11 @@
 # @wysimark/react
 
+## 2.2.21
+
+### Patch Changes
+
+- 468b060: Move table row menu buttons to fit in editor container
+
 ## 2.2.20
 
 ### Patch Changes
