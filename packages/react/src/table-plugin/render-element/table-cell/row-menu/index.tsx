@@ -28,7 +28,7 @@ export function RowMenu({ cellElement }: { cellElement: TableCellElement }) {
           <$RemoveMenuButton
             style={{
               top: "50%",
-              left: 0,
+              left: "0.5em",
               marginTop: "-0.5em",
             }}
             onMouseDown={() =>
@@ -38,7 +38,7 @@ export function RowMenu({ cellElement }: { cellElement: TableCellElement }) {
             <MinusIcon />
           </$RemoveMenuButton>
           <$AddMenuButton
-            style={{ top: "-0.5em", left: 0 }}
+            style={{ top: "-0.5em", left: "0.5em" }}
             onMouseDown={() =>
               editor.tablePlugin.insertRow({ at: cellElement })
             }
@@ -46,7 +46,7 @@ export function RowMenu({ cellElement }: { cellElement: TableCellElement }) {
             <PlusIcon />
           </$AddMenuButton>
           <$AddMenuButton
-            style={{ bottom: "-0.5em", left: 0 }}
+            style={{ bottom: "-0.5em", left: "0.5em" }}
             onMouseDown={() =>
               editor.tablePlugin.insertRow({ at: cellElement, offset: 1 })
             }
