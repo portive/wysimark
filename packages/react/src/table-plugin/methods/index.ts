@@ -1,6 +1,6 @@
-import { Editor } from "slate"
+import { Editor, Transforms } from "slate"
 
-import { curryOne } from "~/src/sink"
+import { BetterAt, curryOne } from "~/src/sink"
 
 import { getTableInfo } from "./get-table-info"
 import { insertColumn } from "./insert-column"
@@ -23,7 +23,19 @@ export function createTableMethods(editor: Editor) {
     removeRow: curryOne(removeRow, editor),
     tabForward: curryOne(tabForward, editor),
     tabBackward: curryOne(tabBackward, editor),
+    selectCell: curryOne(selectCell, editor),
     down: curryOne(down, editor),
     up: curryOne(up, editor),
   }
+}
+
+function selectCell(
+  editor: Editor,
+  { at = editor.selection }: { at?: BetterAt } = {}
+) {
+  const t = getTableInfo(editor, { at })
+  if (t === undefined) return false
+  const { cellPath } = t
+  Transforms.select(editor, cellPath)
+  return true
 }

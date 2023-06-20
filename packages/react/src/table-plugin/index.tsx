@@ -101,6 +101,10 @@ export const TablePlugin = createPlugin<TablePluginCustomTypes>(
           down: editor.tablePlugin.down,
           up: editor.tablePlugin.up,
           /**
+           * selection
+           */
+          "mod+a": editor.tablePlugin.selectCell,
+          /**
            * insert
            */
           "super+t": () => editor.tablePlugin.insertTable(3, 2),
