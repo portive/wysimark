@@ -1,6 +1,6 @@
 {
   "name": "@wysimark/standalone",
-  "version": "2.2.21",
+  "version": "2.2.22",
   "license": "MIT",
   "author": "Sunny Hirai <thesunny@gmail.com>",
   "main": ".dist/node/index.cjs.js",

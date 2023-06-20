@@ -1,5 +1,11 @@
 # @wysimark/standalone
 
+## 2.2.22
+
+### Patch Changes
+
+- ea3dbc1: mod+a in table cell selects cell not document
+
 ## 2.2.21
 
 ### Patch Changes
