@@ -33,6 +33,7 @@ export default defineComponent({
     minHeight: { type: Number, required: false },
     maxHeight: { type: Number, required: false },
     onChange: { type: Function, required: false },
+    placeholder: { type: String, required: false },
     authToken: { type: String, required: false },
   },
 
@@ -76,6 +77,7 @@ export default defineComponent({
         onChange: () => {
           emit("update:modelValue", wysimark.getMarkdown())
         },
+        placeholder: props.placeholder,
       })
     })
 

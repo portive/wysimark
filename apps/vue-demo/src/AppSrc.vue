@@ -20,6 +20,7 @@ Lorem ipsum dolar..."
         :height="240"
         :auth-token="PORTIVE_AUTH_TOKEN"
         @update:model-value="log"
+        placeholder="Type something..."
       />
     </div>
   </div>
