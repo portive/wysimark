@@ -11,6 +11,7 @@ if (container == null) throw new Error("Could not find editor container")
  */
 const wysimark = createWysimark(container, {
   initialMarkdown: "# Hello World\n\nLorem ipsum dolar.",
+  placeholder: "Type something...",
   onChange: () => {
     const markdown = wysimark.getMarkdown()
     const textarea = document.getElementById("textarea")

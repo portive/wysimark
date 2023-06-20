@@ -3,11 +3,14 @@ import { createRoot } from "react-dom/client"
 
 import { Editable, useEditor } from "../../../react/src/entry"
 
-type EditorOptions = Parameters<typeof useEditor>[0] & { onChange?: () => void }
+type EditorOptions = Parameters<typeof useEditor>[0] & {
+  onChange?: () => void
+  placeholder?: string
+}
 type Editor = ReturnType<typeof useEditor>
 
 function StandaloneEditor({
-  options: { onChange, ...options },
+  options: { onChange, placeholder, ...options },
   editorRef,
 }: {
   options: EditorOptions
@@ -17,7 +20,9 @@ function StandaloneEditor({
 
   useImperativeHandle(editorRef, () => editor, [editor])
 
-  return <Editable editor={editor} onChange={onChange} />
+  return (
+    <Editable editor={editor} onChange={onChange} placeholder={placeholder} />
+  )
 }
 
 type Wysimark = {
