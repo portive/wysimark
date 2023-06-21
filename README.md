@@ -10,11 +10,21 @@ Wysimark has these integrations:
 - jQuery: Future
 - Angular: Future
 
+## Documentation
+
+https://wysimark.com/docs
+
+- React documentation: https://wysimark.com/docs/react
+- Vue documentation: https://wysimark.com/docs/vue
+- Plain JavaScript documentation: https://wysimark.com/docs/js
+
 ## License and Social Expectations
 
 Wysimark is an [open source](LICENSE.md) project that aims to provide the best editor for startups and greenfield projects. You are legally free to use it commercially.
 
-You can help support the development of Wysimark by connecting Wysimark to [Portive](https://www.portive.com) for file and image uploading and resizing services.
+While Wysimark is open source and free for personal or commercial use, there are some [social expectations](SOCIAL.md).
+
+You can help support the development of Wysimark by using [Portive](https://www.portive.com) for file and image uploading and resizing services.
 
 ## CommonMark and GitHub Flavored Markdown
 
