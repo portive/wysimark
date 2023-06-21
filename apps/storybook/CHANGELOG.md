@@ -4,6 +4,13 @@
 
 ### Patch Changes
 
+- Updated dependencies [e248671]
+  - @wysimark/react@2.4.1
+
+## null
+
+### Patch Changes
+
 - Updated dependencies [ea3dbc1]
   - @wysimark/react@2.2.22
 

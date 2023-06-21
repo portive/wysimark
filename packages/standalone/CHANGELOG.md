@@ -1,5 +1,11 @@
 # @wysimark/standalone
 
+## 2.4.1
+
+### Patch Changes
+
+- e248671: When pasting text/plain interpret it as Markdown
+
 ## 2.3.0
 
 ### Minor Changes
