@@ -23,10 +23,12 @@ import { TrailingBlockPlugin } from "~/src/trailing-block-plugin"
 import { UploadPlugin } from "~/src/upload-plugin"
 
 import { AttachmentPlugin } from "../attachment-plugin"
+import { PasteMarkdownPlugin } from "../paste-markdown-plugin"
 import { PlaceholderPlugin } from "../placeholder-plugin"
 import { WysimarkEditor } from "./types"
 
 export const plugins = [
+  PasteMarkdownPlugin,
   ConvertElementPlugin,
   AnchorPlugin,
   HeadingPlugin,
