@@ -21,6 +21,7 @@ export const $Menu = styled($Panel)`
  */
 export const $MenuItem = styled("div")`
   display: flex;
+  z-index: 10;
   padding: 0 1em 0 1.5em;
   height: 2em;
   align-items: center;
@@ -38,7 +39,6 @@ export const $MenuItem = styled("div")`
     color: var(--shade-400);
     svg {
       position: relative;
-      top: -0.375em;
       stroke-width: 1.5px;
     }
   }

@@ -31,6 +31,7 @@ const $Menu = styled("div")`
 `
 
 export const $ColumnMenu = styled($Menu)`
+  cursor: pointer;
   /**
    * hangs out on top
    */
