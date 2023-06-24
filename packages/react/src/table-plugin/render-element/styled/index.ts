@@ -1,12 +1,21 @@
 import styled from "@emotion/styled"
+
+import { TableColumn } from "../../types"
 export * from "./styled-menu"
 
 /**
  * Table
  */
-export const $Table = styled("table")`
+export const $Table = styled("table")<{ columns: TableColumn[] }>`
   border-collapse: collapse;
   margin: 1em 0;
+  ${({ columns }) =>
+    columns
+      .map(
+        (column, index) =>
+          `td:nth-of-type(${index + 1}) { text-align: ${column.align}; }`
+      )
+      .join("\n")}
 `
 
 /**

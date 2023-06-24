@@ -6,11 +6,11 @@ IMAGE GOES HERE
 
 The family of Oscar Weber Bilby claim the first-known hamburger on a bun was served on July 4, 1891, on Grandpa Oscar's farm. The bun was a yeast bun.
 
-| Year | Title             | Description                                                          |
-| :--: | :---------------- | :------------------------------------------------------------------- |
+| Year |             Title | Description                                                          |
+| :--: | ----------------: | :------------------------------------------------------------------- |
 | 1891 | Oscar Weber Bilby | Claims the first-known hamburger on a bun was served on July 4, 1891 |
-| 1940 | McDonald's        | Founding of world's largest restaurant chain by revenue              |
-| 2022 | Everybody         | Enjoying hamburgers every day for a very long time                   |
+| 1940 |        McDonald's | Founding of world's largest restaurant chain by revenue              |
+| 2022 |         Everybody | Enjoying hamburgers every day for a very long time                   |
 
 A hamburger (or burger for short) is a food, typically considered a sandwich, consisting of one or more cooked patties—usually ground meat, typically beef—placed inside a sliced bread roll or bun.
 

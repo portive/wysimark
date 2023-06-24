@@ -29,7 +29,7 @@ export function Table({
   }, [])
   return (
     <TableContext.Provider value={{ isSelected }}>
-      <$Table {...attributes}>
+      <$Table {...attributes} columns={element.columns}>
         <tbody>{children}</tbody>
       </$Table>
     </TableContext.Provider>
