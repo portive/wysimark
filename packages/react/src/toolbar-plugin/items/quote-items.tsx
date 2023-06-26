@@ -1,7 +1,8 @@
-import * as Icon from "../icons"
-import { Item } from "../types"
+import { MenuItemData } from "~/src/shared-overlays"
 
-export const quoteItems: Item[] = [
+import * as Icon from "../icons"
+
+export const quoteItems: MenuItemData[] = [
   {
     icon: Icon.Quote,
     title: "Add Block Quote",

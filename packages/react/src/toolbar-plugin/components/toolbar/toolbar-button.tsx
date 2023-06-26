@@ -2,21 +2,19 @@ import { clsx } from "clsx"
 import { MouseEvent, useCallback, useRef } from "react"
 import { ReactEditor, useSlateStatic } from "slate-react"
 
+import { formatHotkey, Menu, MenuItemData } from "~/src/shared-overlays"
 import { useLayer } from "~/src/use-layer"
 import { useTooltip } from "~/src/use-tooltip"
 
 import * as Icon from "../../icons"
 import { $ToolbarButton } from "../../styles"
-import { Item } from "../../types"
-import { formatHotkey } from "../menu/format-hotkey"
-import { Menu } from "../menu/menu"
 
 export function ToolbarButton({
   active,
   item,
 }: {
   active?: boolean
-  item: Exclude<Item, "divider">
+  item: Exclude<MenuItemData, "divider">
 }) {
   const editor = useSlateStatic()
   const ref = useRef<HTMLDivElement>(null)

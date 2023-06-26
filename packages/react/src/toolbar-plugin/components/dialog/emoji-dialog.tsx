@@ -5,10 +5,8 @@ import { useCallback, useRef } from "react"
 import { Transforms } from "slate"
 import { ReactEditor, useSlateStatic } from "slate-react"
 
+import { $Panel, CloseMask } from "~/src/shared-overlays"
 import { positionInside, useAbsoluteReposition } from "~/src/use-reposition"
-
-import { $Panel } from "../../styles"
-import { CloseMask } from "../shared/close-mask"
 
 export function EmojiDialog({
   dest,

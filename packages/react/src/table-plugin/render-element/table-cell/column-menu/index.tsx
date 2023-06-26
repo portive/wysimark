@@ -1,10 +1,9 @@
 import React, { useCallback, useRef, useState } from "react"
 import { useSlateStatic } from "slate-react"
 
+import { Menu, MenuItemData } from "~/src/shared-overlays"
 import { useLayer } from "~/src/use-layer"
 
-import { Menu } from "../../../../toolbar-plugin/components/menu/menu"
-import { Item } from "../../../../toolbar-plugin/types"
 import {
   AlignCenter,
   AlignLeft,
@@ -19,7 +18,7 @@ import {
   $ColumnMenu,
   $ColumnMenuTile,
   $RemoveMenuButton,
-} from "../../styled"
+} from "../../styles"
 
 export function ColumnMenu({ cellElement }: { cellElement: TableCellElement }) {
   const editor = useSlateStatic()
@@ -39,7 +38,7 @@ export function ColumnMenu({ cellElement }: { cellElement: TableCellElement }) {
     if (menu.layer) menu.close()
     const dest = buttonRef.current
     if (dest === null) return
-    const items: Item[] = [
+    const items: MenuItemData[] = [
       {
         icon: AlignLeft,
         title: "Align Column left",

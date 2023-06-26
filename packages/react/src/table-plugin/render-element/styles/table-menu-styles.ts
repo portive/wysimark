@@ -4,7 +4,7 @@ import styled from "@emotion/styled"
  * Table Menu
  */
 
-const $Menu = styled("div")`
+const $BaseMenu = styled("div")`
   position: absolute;
   /**
    * very slightly shaded
@@ -30,7 +30,7 @@ const $Menu = styled("div")`
   }
 `
 
-export const $ColumnMenu = styled($Menu)`
+export const $ColumnMenu = styled($BaseMenu)`
   cursor: pointer;
   /**
    * hangs out on top
@@ -42,7 +42,7 @@ export const $ColumnMenu = styled($Menu)`
   top: -3em;
 `
 
-export const $RowMenu = styled($Menu)`
+export const $RowMenu = styled($BaseMenu)`
   /**
    * hangs out on left
    */

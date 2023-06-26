@@ -1,9 +1,10 @@
+import { MenuItemData } from "~/src/shared-overlays"
+
 import { TableDialog } from "../components"
 import { AnchorDialog } from "../components/dialog/anchor-dialog"
 import { EmojiDialog } from "../components/dialog/emoji-dialog"
 import { AttachmentDialog, ImageDialog } from "../components/dialog/file-dialog"
 import * as Icon from "../icons"
-import { Item } from "../types"
 import { codeBlockItems } from "./codeBlockItems"
 import { headingItems } from "./heading-items"
 import { listItems } from "./list-items"
@@ -19,7 +20,7 @@ import { styleItems } from "./style-items"
  * An `Item` is described in the same way whether it is a button or a menu
  * item making them interchangeable.
  */
-export const items: Item[] = [
+export const items: MenuItemData[] = [
   {
     icon: Icon.H,
     title: "Paragraph Style",

@@ -3,10 +3,10 @@ import { useSlateStatic } from "slate-react"
 
 import { useAbsoluteReposition } from "~/src/use-reposition"
 
-import { $Menu, $MenuDivider } from "../../styles"
-import { Item } from "../../types"
-import { CloseMask } from "../shared/close-mask"
-import { MenuItem } from "./menu-item"
+import { $Menu, $MenuDivider } from "../../../toolbar-plugin/styles"
+import { MenuItemData } from "../../types"
+import { CloseMask } from "../CloseMask"
+import { MenuItem } from "./MenuItem"
 
 export function Menu({
   dest,
@@ -15,7 +15,7 @@ export function Menu({
 }: {
   dest: HTMLElement
   close: () => void
-  items: Item[]
+  items: MenuItemData[]
 }) {
   const editor = useSlateStatic()
   const ref = useRef<HTMLDivElement>(null)

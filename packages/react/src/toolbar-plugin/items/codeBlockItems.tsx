@@ -1,8 +1,9 @@
 import { Editor } from "slate"
 
+import { MenuItemData } from "~/src/shared-overlays"
+
 import { BuiltInLanguage } from "../../code-block-plugin"
 import * as Icon from "../icons"
-import { Item } from "../types"
 
 function codeBlockAction(language: BuiltInLanguage) {
   return (editor: Editor) =>
@@ -10,7 +11,7 @@ function codeBlockAction(language: BuiltInLanguage) {
     editor.codeBlock.createCodeBlock({ language })
 }
 
-export const codeBlockItems: Item[] = [
+export const codeBlockItems: MenuItemData[] = [
   {
     icon: Icon.BulletList,
     title: "Plain text",

@@ -1,7 +1,7 @@
 import styled from "@emotion/styled"
 
 import { TableColumn } from "../../types"
-export * from "./styled-menu"
+export * from "./table-menu-styles"
 
 /**
  * Table

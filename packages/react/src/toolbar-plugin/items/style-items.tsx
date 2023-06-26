@@ -1,7 +1,8 @@
-import * as Icon from "../icons"
-import { Item } from "../types"
+import { MenuItemData } from "~/src/shared-overlays"
 
-export const styleItems: Item[] = [
+import * as Icon from "../icons"
+
+export const styleItems: MenuItemData[] = [
   {
     icon: Icon.Superscript,
     title: "Superscript",

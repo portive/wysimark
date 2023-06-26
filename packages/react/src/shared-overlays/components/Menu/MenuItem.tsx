@@ -2,9 +2,9 @@ import { useCallback } from "react"
 import { Editor } from "slate"
 import { ReactEditor } from "slate-react"
 
-import { $MenuItem } from "../../styles"
-import { Item } from "../../types"
-import { formatHotkey } from "./format-hotkey"
+import { $MenuItem } from "../../../toolbar-plugin/styles"
+import { MenuItemData } from "../../types"
+import { formatHotkey } from "./formatHotkey"
 
 export function MenuItem({
   editor,
@@ -12,7 +12,7 @@ export function MenuItem({
   close,
 }: {
   editor: Editor
-  item: Exclude<Item, "divider">
+  item: Exclude<MenuItemData, "divider">
   close: () => void
 }) {
   const onClick = useCallback(() => {

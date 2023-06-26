@@ -10,6 +10,7 @@ import { ReactEditor, useSlateStatic } from "slate-react"
 
 import { positionInside, useAbsoluteReposition } from "~/src/use-reposition"
 
+import { CloseMask } from "../../../shared-overlays/components/CloseMask"
 import * as Icon from "../../icons"
 import {
   $AnchorDialog,
@@ -17,7 +18,6 @@ import {
   $AnchorDialogInputLine,
 } from "../../styles"
 import { $DialogButton, $DialogHint } from "../../styles/dialog-shared-styles"
-import { CloseMask } from "../shared/close-mask"
 
 const isEnter = isHotkey("enter")
 

@@ -1,6 +1,6 @@
 import React, { useRef } from "react"
 
-import { $CloseMask } from "../../styles"
+import { $CloseMask } from "../../styles/$CloseMask"
 
 /**
  * Add this `CloseMask` before the Component you want this `CloseMask` to be

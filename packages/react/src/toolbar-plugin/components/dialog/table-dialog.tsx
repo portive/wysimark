@@ -2,6 +2,7 @@ import { clsx } from "clsx"
 import { useCallback, useRef, useState } from "react"
 import { ReactEditor, useSlateStatic } from "slate-react"
 
+import { CloseMask } from "~/src/shared-overlays"
 import { useAbsoluteReposition } from "~/src/use-reposition"
 
 import {
@@ -9,7 +10,6 @@ import {
   $TableDialogGrid,
   $TableDialogGridCell,
 } from "../../styles/table-styles"
-import { CloseMask } from "../shared/close-mask"
 
 function createRange(size: number): number[] {
   return [...Array(size).keys()]

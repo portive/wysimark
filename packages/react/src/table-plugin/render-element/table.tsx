@@ -5,7 +5,7 @@ import { ConstrainedRenderElementProps } from "~/src/sink"
 
 import { normalizeTableIndexes } from "../normalize/normalize-table"
 import { TableElement } from "../types"
-import { $Table } from "./styled"
+import { $Table } from "./styles"
 import { TableContext } from "./table-context"
 
 export function Table({

@@ -1,7 +1,12 @@
 import { FunctionComponent } from "react"
 import { Editor } from "slate"
 
-export type Item =
+/**
+ * Data for a menu item.
+ *
+ * Can't be named `MenuItem` because it conflicts with the component.
+ */
+export type MenuItemData =
   | {
       /**
        * Icon to show as a part of the button.
@@ -34,7 +39,7 @@ export type Item =
        * `Component` prop; however, we allow it to be set manually.
        */
       more?: boolean
-      children?: Item[]
+      children?: MenuItemData[]
       Component?: FunctionComponent<{ dest: HTMLElement; close: () => void }>
     }
   | "divider"

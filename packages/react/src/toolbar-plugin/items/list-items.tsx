@@ -1,7 +1,8 @@
-import * as Icon from "../icons"
-import { Item } from "../types"
+import { MenuItemData } from "~/src/shared-overlays"
 
-export const listItems: Item[] = [
+import * as Icon from "../icons"
+
+export const listItems: MenuItemData[] = [
   {
     icon: Icon.BulletList,
     title: "Bullet List",

@@ -1,6 +1,6 @@
 import styled from "@emotion/styled"
 
-import { $Panel } from "."
+import { $Panel } from "../../shared-overlays"
 
 export const $TableDialog = styled($Panel)`
   padding: 0.5em;

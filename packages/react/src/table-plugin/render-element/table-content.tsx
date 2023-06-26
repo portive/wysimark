@@ -1,7 +1,7 @@
 import { ConstrainedRenderElementProps } from "~/src/sink"
 
 import { TableContentElement } from "../types"
-import { $TableContent } from "./styled"
+import { $TableContent } from "./styles"
 
 export function TableContent({
   attributes,

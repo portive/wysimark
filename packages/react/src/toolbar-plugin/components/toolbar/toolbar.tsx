@@ -1,11 +1,11 @@
 import { useSlateStatic } from "slate-react"
 
+import { MenuItemData } from "../../../shared-overlays/types"
 import { items } from "../../items"
 import { $Toolbar, $ToolbarDivider } from "../../styles"
-import { Item } from "../../types"
 import { ToolbarButton } from "./toolbar-button"
 
-function ToolbarItem({ item }: { item: Item }) {
+function ToolbarItem({ item }: { item: MenuItemData }) {
   const editor = useSlateStatic()
   if (item === "divider") {
     return <$ToolbarDivider />

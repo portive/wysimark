@@ -4,7 +4,7 @@ import { useSelected } from "slate-react"
 import { ConstrainedRenderElementProps } from "~/src/sink"
 
 import { TableCellElement } from "../../types"
-import { $TableCell } from "../styled"
+import { $TableCell } from "../styles"
 import { TableContext } from "../table-context"
 import { ColumnMenu } from "./column-menu"
 import { RowMenu } from "./row-menu"

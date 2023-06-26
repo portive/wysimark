@@ -8,7 +8,7 @@ import {
   $RemoveMenuButton,
   $RowMenu,
   $RowMenuTile,
-} from "../../styled"
+} from "../../styles"
 
 export function RowMenu({ cellElement }: { cellElement: TableCellElement }) {
   const editor = useSlateStatic()

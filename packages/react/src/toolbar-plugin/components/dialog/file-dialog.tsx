@@ -1,12 +1,13 @@
 import { useRef } from "react"
 import { useSlateStatic } from "slate-react"
 
-import { stopEvent } from "../../../sink"
-import { positionInside, useAbsoluteReposition } from "../../../use-reposition"
+import { CloseMask } from "~/src/shared-overlays"
+import { stopEvent } from "~/src/sink"
+import { positionInside, useAbsoluteReposition } from "~/src/use-reposition"
+
 import * as Icon from "../../icons"
 import { $DialogButton, $DialogHint } from "../../styles/dialog-shared-styles"
 import { $FileDialog } from "../../styles/file-dialog-styles"
-import { CloseMask } from "../shared/close-mask"
 
 export function FileDialog({
   dest,
