@@ -1,5 +1,4 @@
 import React, { useCallback, useRef, useState } from "react"
-import { Editor, Transforms } from "slate"
 import { useSlateStatic } from "slate-react"
 
 import { useLayer } from "~/src/use-layer"
@@ -14,7 +13,6 @@ import {
   MinusIcon,
   PlusIcon,
 } from "../../../icons"
-import { getTableInfo } from "../../../methods/get-table-info"
 import { TableCellElement } from "../../../types"
 import {
   $AddMenuButton,
@@ -22,19 +20,6 @@ import {
   $ColumnMenuTile,
   $RemoveMenuButton,
 } from "../../styled"
-
-function setTableColumnAlign(
-  editor: Editor,
-  { align }: { align: "left" | "center" | "right" }
-) {
-  const t = getTableInfo(editor)
-  if (t === undefined) return false
-  const { tableElement, tablePath, cellIndex } = t
-  const nextColumns = tableElement.columns.slice()
-  nextColumns.splice(cellIndex, 1, { align })
-  Transforms.setNodes(editor, { columns: nextColumns }, { at: tablePath })
-  return true
-}
 
 export function ColumnMenu({ cellElement }: { cellElement: TableCellElement }) {
   const editor = useSlateStatic()
@@ -59,21 +44,21 @@ export function ColumnMenu({ cellElement }: { cellElement: TableCellElement }) {
         icon: AlignLeft,
         title: "Align Column left",
         action: () => {
-          setTableColumnAlign(editor, { align: "left" })
+          editor.tablePlugin.setTableColumnAlign({ align: "left" })
         },
       },
       {
         icon: AlignCenter,
         title: "Align Column Center",
         action: () => {
-          setTableColumnAlign(editor, { align: "center" })
+          editor.tablePlugin.setTableColumnAlign({ align: "center" })
         },
       },
       {
         icon: AlignRight,
         title: "Align Column Right",
         action: () => {
-          setTableColumnAlign(editor, { align: "right" })
+          editor.tablePlugin.setTableColumnAlign({ align: "right" })
         },
       },
     ]

@@ -10,6 +10,7 @@ import { down, up } from "./navigation"
 import { removeColumn } from "./remove-column"
 import { removeRow } from "./remove-row"
 import { removeTable } from "./remove-table"
+import { setTableColumnAlign } from "./setTableColumnAlign"
 import { tabBackward, tabForward } from "./tab"
 
 export function createTableMethods(editor: Editor) {
@@ -26,6 +27,7 @@ export function createTableMethods(editor: Editor) {
     selectCell: curryOne(selectCell, editor),
     down: curryOne(down, editor),
     up: curryOne(up, editor),
+    setTableColumnAlign: curryOne(setTableColumnAlign, editor),
   }
 }
 
