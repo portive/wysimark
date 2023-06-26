@@ -2,11 +2,18 @@ import React, { useCallback, useRef, useState } from "react"
 import { Editor, Transforms } from "slate"
 import { useSlateStatic } from "slate-react"
 
-import { BarsIcon, MinusIcon, PlusIcon } from "~/src/table-plugin/icons"
 import { useLayer } from "~/src/use-layer"
 
 import { Menu } from "../../../../toolbar-plugin/components/menu/menu"
 import { Item } from "../../../../toolbar-plugin/types"
+import {
+  AlignCenter,
+  AlignLeft,
+  AlignRight,
+  BarsIcon,
+  MinusIcon,
+  PlusIcon,
+} from "../../../icons"
 import { getTableInfo } from "../../../methods/get-table-info"
 import { TableCellElement } from "../../../types"
 import {
@@ -18,7 +25,7 @@ import {
 
 function setTableColumnAlign(
   editor: Editor,
-  align: "left" | "center" | "right"
+  { align }: { align: "left" | "center" | "right" }
 ) {
   const t = getTableInfo(editor)
   if (t === undefined) return false
@@ -49,24 +56,24 @@ export function ColumnMenu({ cellElement }: { cellElement: TableCellElement }) {
     if (dest === null) return
     const items: Item[] = [
       {
-        icon: BarsIcon,
-        title: "Align left",
+        icon: AlignLeft,
+        title: "Align Column left",
         action: () => {
-          setTableColumnAlign(editor, "left")
+          setTableColumnAlign(editor, { align: "left" })
         },
       },
       {
-        icon: BarsIcon,
-        title: "Align Center",
+        icon: AlignCenter,
+        title: "Align Column Center",
         action: () => {
-          setTableColumnAlign(editor, "center")
+          setTableColumnAlign(editor, { align: "center" })
         },
       },
       {
-        icon: BarsIcon,
-        title: "Align Right",
+        icon: AlignRight,
+        title: "Align Column Right",
         action: () => {
-          setTableColumnAlign(editor, "right")
+          setTableColumnAlign(editor, { align: "right" })
         },
       },
     ]

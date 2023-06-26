@@ -41,3 +41,21 @@ export const BarsIcon = () => (
     <path d="M4 6h16M4 12h16M4 18h16" />
   </TablerIcon>
 )
+
+export const AlignLeft = () => (
+  <TablerIcon>
+    <path d="M4 6h16M4 12h10M4 18h14" />
+  </TablerIcon>
+)
+
+export const AlignCenter = () => (
+  <TablerIcon>
+    <path d="M4 6h16M8 12h8M6 18h12" />
+  </TablerIcon>
+)
+
+export const AlignRight = () => (
+  <TablerIcon>
+    <path d="M4 6h16M10 12h10M6 18h14" />
+  </TablerIcon>
+)
