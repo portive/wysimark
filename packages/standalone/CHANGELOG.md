@@ -1,5 +1,11 @@
 # @wysimark/standalone
 
+## 2.5.0
+
+### Minor Changes
+
+- ce20a5a: Add table column alignment menu
+
 ## 2.4.1
 
 ### Patch Changes
