@@ -1,33 +1,24 @@
-import { useSelected } from "slate-react"
-
 import { ConstrainedRenderElementProps } from "../../sink"
-import { $CodeBlock, $CodeBlockLanguage, $CodeLine } from "../styles"
 import { CodeBlockElement, CodeBlockLineElement } from "../types"
+import { CodeBlock } from "./CodeBlock"
+import { CodeBlockLine } from "./CodeBlockLine"
 
 export function renderElement({
   element,
   attributes,
   children,
 }: ConstrainedRenderElementProps<CodeBlockElement | CodeBlockLineElement>) {
-  const selected = useSelected()
   if (element.type === "code-block") {
     return (
-      <$CodeBlock className={selected ? "--selected" : ""} {...attributes}>
-        <$CodeBlockLanguage contentEditable={false}>
-          {element.language}
-        </$CodeBlockLanguage>
-        <code style={{ fontFamily: "andale mono" }}>{children}</code>
-      </$CodeBlock>
+      <CodeBlock element={element} attributes={attributes}>
+        {children}
+      </CodeBlock>
     )
   } else if (element.type === "code-block-line") {
     return (
-      <$CodeLine
-        className={selected ? "--selected" : ""}
-        {...attributes}
-        spellCheck="false"
-      >
+      <CodeBlockLine element={element} attributes={attributes}>
         {children}
-      </$CodeLine>
+      </CodeBlockLine>
     )
   }
 }

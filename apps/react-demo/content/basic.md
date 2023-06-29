@@ -2,6 +2,12 @@
 
 According to [White Castle](<https://en.wikipedia.org/wiki/White_Castle_(restaurant)>), **Otto Kuase was the inventor of the hamburger**. In 1891, he created a beef patty cooked in butter and topped with a fried egg. German sailors would later omit the fried egg.
 
+```javascript
+function hello() {
+  console.log("Hello World")
+}
+```
+
 IMAGE GOES HERE
 
 The family of Oscar Weber Bilby claim the first-known hamburger on a bun was served on July 4, 1891, on Grandpa Oscar's farm. The bun was a yeast bun.
