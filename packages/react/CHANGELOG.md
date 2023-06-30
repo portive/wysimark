@@ -1,5 +1,11 @@
 # @wysimark/react
 
+## 2.5.1
+
+### Patch Changes
+
+- 33bdffe: Enable ability to select language from code block itself
+
 ## 2.5.0
 
 ### Minor Changes
