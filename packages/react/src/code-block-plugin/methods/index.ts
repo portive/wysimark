@@ -2,7 +2,7 @@ import { Editor } from "slate"
 
 import { curryOne } from "~/src/sink"
 
-import { createCodeBlock } from "./create-code-block"
+import { createCodeBlock } from "./createCodeBlock"
 import { setCodeBlockLanguage } from "./setCodeBlockLanguage"
 
 export function createCodeBlockMethods(editor: Editor) {
