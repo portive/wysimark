@@ -1,6 +1,6 @@
 import { Editor, Element, Transforms } from "slate"
 
-import { findElementUp } from "~/src/sink"
+import { BetterAt, findElementUp } from "~/src/sink"
 
 import { BuiltInLanguage } from "../types"
 
@@ -10,11 +10,13 @@ import { BuiltInLanguage } from "../types"
  */
 export function setCodeBlockLanguage(
   editor: Editor,
-  language: BuiltInLanguage
+  language: BuiltInLanguage,
+  options: { at?: BetterAt } = {}
 ): boolean {
   const entry = findElementUp(
     editor,
-    (el) => Element.isElement(el) && el.type === "code-block"
+    (el) => Element.isElement(el) && el.type === "code-block",
+    { at: options.at }
   )
   if (!entry) return false
   Transforms.setNodes(editor, { language }, { at: entry[1] })

@@ -1,19 +1,43 @@
-import { SVGProps } from "react"
+import { SVGProps, useCallback, useRef } from "react"
 import { useSelected } from "slate-react"
 
+import { Menu, MenuItemData } from "../../shared-overlays"
 import { ConstrainedRenderElementProps, TablerIcon } from "../../sink"
+import { AlignCenter, AlignLeft, AlignRight } from "../../table-plugin/icons"
+import { useLayer } from "../../use-layer"
 import { $CodeBlock, $CodeBlockLanguage } from "../styles"
-import { CodeBlockElement } from "../types"
+import { CodeBlockElement, LanguageList } from "../types"
 
 export function CodeBlock({
   element,
   attributes,
   children,
 }: ConstrainedRenderElementProps<CodeBlockElement>) {
+  const ref = useRef<HTMLDivElement>(null)
   const selected = useSelected()
+  const dropdown = useLayer("code-block-dropdown")
+  const onClick = useCallback(() => {
+    if (dropdown.layer) dropdown.close()
+    const dest = ref.current
+    if (dest === null) return
+    const items: MenuItemData[] = LanguageList.map((language) => {
+      return {
+        icon: () => <span />,
+        title: language,
+        action: (editor) => {
+          editor.codeBlock.setCodeBlockLanguage(language, { at: element })
+        },
+      }
+    })
+    // Menu
+    dropdown.open(() => (
+      <Menu dest={dest} items={items} close={dropdown.close} />
+    ))
+  }, [element])
+
   return (
     <$CodeBlock className={selected ? "--selected" : ""} {...attributes}>
-      <$CodeBlockLanguage contentEditable={false}>
+      <$CodeBlockLanguage contentEditable={false} onClick={onClick} ref={ref}>
         <span>{element.language}</span>
         <ChevronDownIcon />
       </$CodeBlockLanguage>

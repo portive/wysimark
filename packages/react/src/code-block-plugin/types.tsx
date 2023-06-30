@@ -47,6 +47,16 @@ export const LanguageCaptionMap: Record<string, string> = {
   js: "Javascript",
 }
 
+export const LanguageList: BuiltInLanguage[] = [
+  "text",
+  "html",
+  "css",
+  "svg",
+  "javascript",
+  "java",
+  "c",
+]
+
 export type CodeBlockEditor = {
   codeBlock: CodeBlockMethods
 }
