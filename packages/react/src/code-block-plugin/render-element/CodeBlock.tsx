@@ -1,9 +1,10 @@
-import { SVGProps, useCallback, useRef } from "react"
+import { useCallback, useRef } from "react"
 import { useSelected } from "slate-react"
 
 import { Menu, MenuItemData } from "../../shared-overlays"
-import { ConstrainedRenderElementProps, TablerIcon } from "../../sink"
+import { ConstrainedRenderElementProps } from "../../sink"
 import { useLayer } from "../../use-layer"
+import { ChevronDownIcon } from "../icons/ChevronDownIcon"
 import { $CodeBlock, $CodeBlockLanguage } from "../styles"
 import { CodeBlockElement, LanguageList } from "../types"
 
@@ -44,9 +45,3 @@ export function CodeBlock({
     </$CodeBlock>
   )
 }
-
-export const ChevronDownIcon = (props: SVGProps<SVGSVGElement>) => (
-  <TablerIcon {...props}>
-    <path d="m6 9 6 6 6-6" />
-  </TablerIcon>
-)
