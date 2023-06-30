@@ -3,7 +3,6 @@ import { useSelected } from "slate-react"
 
 import { Menu, MenuItemData } from "../../shared-overlays"
 import { ConstrainedRenderElementProps, TablerIcon } from "../../sink"
-import { AlignCenter, AlignLeft, AlignRight } from "../../table-plugin/icons"
 import { useLayer } from "../../use-layer"
 import { $CodeBlock, $CodeBlockLanguage } from "../styles"
 import { CodeBlockElement, LanguageList } from "../types"
