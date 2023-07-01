@@ -1,6 +1,6 @@
 # The Hamburger
 
-According to [White Castle](<https://en.wikipedia.org/wiki/White_Castle_(restaurant)>), **Otto Kuase was the inventor of the hamburger**. In 1891, he created a beef patty cooked in butter and topped with a fried egg. German sailors would later omit the fried egg.
+According to more text more text more text more text [White Castle long enough to extend](<https://en.wikipedia.org/wiki/White_Castle_(restaurant)>), **Otto Kuase was the inventor of the hamburger**. In 1891, he created a beef patty cooked in butter and topped with a fried egg. German sailors would later omit the fried egg.
 
 ```javascript
 function hello() {
