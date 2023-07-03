@@ -4,6 +4,13 @@
 
 ### Patch Changes
 
+- Updated dependencies [6fadab0]
+  - @wysimark/react@2.6.0
+
+## null
+
+### Patch Changes
+
 - Updated dependencies [33bdffe]
   - @wysimark/react@2.5.1
 

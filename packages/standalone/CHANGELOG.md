@@ -1,5 +1,11 @@
 # @wysimark/standalone
 
+## 2.6.0
+
+### Minor Changes
+
+- 6fadab0: Add context dialog for anchor links
+
 ## 2.5.1
 
 ### Patch Changes
