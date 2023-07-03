@@ -3,44 +3,55 @@ import { useCallback } from "react"
 import { useSlateStatic } from "slate-react"
 
 import { $Panel } from "../../shared-overlays"
+import { useLayer } from "../../use-layer"
 import { useAbsoluteReposition } from "../../use-reposition"
 import { useTooltip } from "../../use-tooltip"
 import { AnchorElement } from "../index"
+import { AnchorEditDialog } from "./AnchorEditDialog"
 import { ExternalLinkIcon, LinkOffIcon, PencilIcon } from "./icons"
 
 const $AnchorDialog = styled($Panel)`
   position: absolute;
   display: flex;
-  bottom: -2em;
   width: 20em;
-  height: 4em;
   z-index: 10;
-  padding: 0.5em 1em;
-  .--url {
+  padding: 1em;
+  color: var(--shade-400);
+
+  a.--link {
+    display: flex;
     flex: 1 1 auto;
-    margin-left: 0.5em;
-    color: var(--blue-600);
-    &:hover {
-      color: var(--blue-700);
-    }
-    .--hostname {
-    }
-    .--pathname {
-      color: var(--shade-500);
-      font-size: 0.75em;
-      overflow: ellipsis;
-    }
-  }
-  .--icon {
-    flex: 0 0 auto;
-    margin-top: 0.25em;
-    margin-left: 0.5em;
-    cursor: pointer;
     color: var(--shade-400);
     &:hover {
       color: var(--blue-600);
     }
+    transition: all 200ms;
   }
+  .--icons {
+    display: flex;
+    flex: 0 0 auto;
+  }
+
+  .--url {
+    margin-left: 0.5em;
+    .--hostname {
+      font-size: 0.875em;
+      color: var(--blue-600);
+    }
+    .--pathname {
+      font-size: 0.75em;
+      overflow: ellipsis;
+    }
+  }
+
+  .--icon {
+    cursor: pointer;
+    margin-left: 0.5em;
+    &:hover {
+      color: var(--blue-600);
+    }
+  }
+
   svg {
     width: 1.25em;
     height: 1.25em;
@@ -66,6 +77,7 @@ export function AnchorDialog({
   destStartEdge: HTMLSpanElement
   element: AnchorElement
 }) {
+  const dialog = useLayer("dialog")
   const editor = useSlateStatic()
   const url = parseUrl(element.href)
   const style = useAbsoluteReposition(
@@ -85,29 +97,47 @@ export function AnchorDialog({
     editor.anchor.removeLink({ at: element })
   }, [editor])
 
+  const openEditDialog = useCallback(() => {
+    dialog.open(() => (
+      <AnchorEditDialog
+        destAnchor={destAnchor}
+        destStartEdge={destStartEdge}
+        element={element}
+      />
+    ))
+  }, [destAnchor, destStartEdge, element])
+
   return (
     <$AnchorDialog contentEditable={false} style={style}>
-      <a href={element.href} target="_blank" rel="noreferrer">
+      <a
+        className="--link"
+        href={element.href}
+        target="_blank"
+        rel="noreferrer"
+      >
         <ExternalLinkIcon />
+        <div className="--url">
+          <div className="--hostname">{url.hostname}</div>
+          <div className="--pathname">{url.pathname}</div>
+        </div>
       </a>
-      <a className="--url" href={element.href} target="_blank" rel="noreferrer">
-        <div className="--hostname">{url.hostname}</div>
-        <div className="--pathname">{url.pathname}</div>
-      </a>
-      <span
-        className="--icon"
-        onClick={removeLink}
-        onMouseEnter={removeTooltip.onMouseEnter}
-        onMouseLeave={removeTooltip.onMouseLeave}
-      >
-        <LinkOffIcon />
-      </span>
-      <span
-        className="--icon"
-        onMouseEnter={editTooltip.onMouseEnter}
-        onMouseLeave={editTooltip.onMouseLeave}
-      >
-        <PencilIcon />
+      <span className="--icons">
+        <span
+          className="--icon"
+          onClick={removeLink}
+          onMouseEnter={removeTooltip.onMouseEnter}
+          onMouseLeave={removeTooltip.onMouseLeave}
+        >
+          <LinkOffIcon />
+        </span>
+        <span
+          className="--icon"
+          onMouseEnter={editTooltip.onMouseEnter}
+          onMouseLeave={editTooltip.onMouseLeave}
+          onClick={openEditDialog}
+        >
+          <PencilIcon />
+        </span>
       </span>
     </$AnchorDialog>
   )

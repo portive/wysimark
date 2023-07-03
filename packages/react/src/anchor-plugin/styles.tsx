@@ -30,6 +30,9 @@ export const $Edge = styled("span")`
   padding: 0 1px 0 0;
 `
 
+/**
+ * Shows progress bar of an uploading attachment. This part is the outline.
+ */
 export const $ProgressBar = styled("span")`
   position: fixed;
   width: 100px;
@@ -41,6 +44,9 @@ export const $ProgressBar = styled("span")`
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
 `
 
+/**
+ * Show the fill part of the progress bar.
+ */
 export const $ProgressBarFill = styled("span")`
   position: absolute;
   left: 0;
