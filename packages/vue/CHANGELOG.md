@@ -1,5 +1,11 @@
 # @wysimark/vue
 
+## 2.6.2
+
+### Patch Changes
+
+- 9b70ac1: Support properly inline image in link
+
 ## 2.6.0
 
 ### Minor Changes
