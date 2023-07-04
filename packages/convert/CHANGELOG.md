@@ -1,5 +1,11 @@
 # @wysimark/convert
 
+## 2.2.3
+
+### Patch Changes
+
+- 9543bb4: Fix anchor dialog not opening in certain cases
+
 ## 2.2.2
 
 ### Patch Changes

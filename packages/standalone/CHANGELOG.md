@@ -1,5 +1,11 @@
 # @wysimark/standalone
 
+## 2.6.1
+
+### Patch Changes
+
+- 9543bb4: Fix anchor dialog not opening in certain cases
+
 ## 2.6.0
 
 ### Minor Changes
