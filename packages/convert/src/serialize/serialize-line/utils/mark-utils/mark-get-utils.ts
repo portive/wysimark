@@ -39,7 +39,13 @@ export function getMarksFromSegment(segment: Segment): MarkKey[] {
 export function getCommonAnchorMarks(segments: Segment[]): MarkKey[] {
   let commonMarks: MarkKey[] | undefined
   for (const segment of segments) {
-    if (!isText(segment))
+    if (!isText(segment)) {
+      /**
+       * Use this to test for images in anchors
+       *
+       * [![Semantic description](https://roneo.org/img/ok.png "Your title")](http://jamstack.club)
+       */
+      if (segment.type === "image-inline") continue
       /**
        * TODO: This is not actually true. It can be an inline image which we
        * still need to add.
@@ -47,6 +53,7 @@ export function getCommonAnchorMarks(segments: Segment[]): MarkKey[] {
       throw new Error(
         `Expected every segment in an anchor to be a Text segment`
       )
+    }
     if (isPlainSpace(segment)) continue
     const currentMarks = getMarksFromText(segment)
     if (commonMarks === undefined) {

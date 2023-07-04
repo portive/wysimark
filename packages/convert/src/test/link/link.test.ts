@@ -107,6 +107,9 @@ describe("link", () => {
     ])
   })
 
+  /**
+   * TODO: Convert title tag in link
+   */
   it.skip("should convert link with alt tag ", async () => {
     check(`**[alpha _bravo_](https://localhost/alpha "charlie")**`, [
       {
@@ -188,6 +191,36 @@ describe("link", () => {
         {
           type: "paragraph",
           children: [{ text: "alpha bravo charlie" }],
+        },
+      ]
+    )
+  })
+
+  it("should convert a link with an image", async () => {
+    check(
+      "[![Image](https://example.com/image.png)](https://localhost/alpha)",
+      [
+        {
+          type: "paragraph",
+          children: [
+            { text: "" },
+            {
+              type: "anchor",
+              href: "https://localhost/alpha",
+              children: [
+                { text: "" },
+                {
+                  type: "image-inline",
+                  url: "https://example.com/image.png",
+                  title: undefined,
+                  alt: "Image",
+                  children: [{ text: "" }],
+                },
+                { text: "" },
+              ],
+            },
+            { text: "" },
+          ],
         },
       ]
     )
