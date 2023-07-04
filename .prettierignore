@@ -5,3 +5,4 @@
 .vercel/
 node_modules/
 **/.next
+**/*.md

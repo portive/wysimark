@@ -72,14 +72,14 @@ fdsfs`)
           />
         </div>
         <div>
-          <Textarea value={markdown} onChange={onChangeTextarea} />
+          <$Textarea value={markdown} onChange={onChangeTextarea} />
         </div>
       </div>
     </div>
   )
 }
 
-const Textarea = styled.textarea`
+const $Textarea = styled.textarea`
   width: 100%;
   height: 720px;
   background: #011627;

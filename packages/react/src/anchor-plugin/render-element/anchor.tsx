@@ -1,6 +1,6 @@
 import { clsx } from "clsx"
 import { useEffect, useRef } from "react"
-import { useSelected } from "slate-react"
+import { useFocused, useSelected } from "slate-react"
 
 import { ConstrainedRenderElementProps } from "~/src/sink"
 
@@ -19,6 +19,7 @@ export function Anchor({
   const startEdgeRef = useRef<HTMLSpanElement>(null)
   const anchorRef = useRef<HTMLAnchorElement>(null)
   const selected = useSelected()
+  const focused = useFocused()
   const upload = useUpload(element.href)
   const dialog = useLayer("dialog")
 
@@ -35,21 +36,25 @@ export function Anchor({
     const anchor = anchorRef.current
     const startEdge = startEdgeRef.current
     if (!anchor || !startEdge) return
-    if (selected) {
-      dialog.open(() => (
-        <AnchorDialog
-          destAnchor={anchor}
-          destStartEdge={startEdge}
-          element={element}
-        />
-      ))
+    if (focused && selected) {
+      /**
+       * The setTimeout delay is necessary when first clicking into the browser
+       * and when switching from one link to another. Without it, the dialog
+       * will not open.
+       */
+      setTimeout(() => {
+        dialog.open(() => (
+          <AnchorDialog
+            destAnchor={anchor}
+            destStartEdge={startEdge}
+            element={element}
+          />
+        ))
+      })
     } else {
       dialog.close()
     }
-    return () => {
-      console.log("teardown anchor")
-    }
-  }, [selected, element])
+  }, [focused, selected, element])
 
   return (
     <$Anchor

@@ -42,6 +42,25 @@ const $AnchorDialog = styled($Panel)`
       font-size: 0.75em;
       overflow: ellipsis;
     }
+    .--tooltip {
+      position: relative;
+      margin-top: 1em;
+      font-size: 0.875em;
+      line-height: 1.5em;
+      background: var(--shade-200);
+      border-radius: 0.5em;
+      padding: 0.5em 0.75em;
+      color: var(--shade-600);
+    }
+    .--tooltip::before {
+      content: "";
+      position: absolute;
+      top: -0.5em; /* Height of the triangle */
+      left: 0.5em; /* Position it on the left side */
+      border-left: 0.5em solid transparent; /* Half the width of the triangle */
+      border-right: 0.5em solid transparent; /* Half the width of the triangle */
+      border-bottom: 0.5em solid var(--shade-200); /* Height and color of the triangle */
+    }
   }
 
   .--icon {
@@ -53,6 +72,7 @@ const $AnchorDialog = styled($Panel)`
   }
 
   svg {
+    flex: 0 0 auto;
     width: 1.25em;
     height: 1.25em;
     stroke-width: 1.5;
@@ -118,7 +138,12 @@ export function AnchorDialog({
         <ExternalLinkIcon />
         <div className="--url">
           <div className="--hostname">{url.hostname}</div>
-          <div className="--pathname">{url.pathname}</div>
+          {url.pathname === "" || url.pathname === "/" ? null : (
+            <div className="--pathname">{url.pathname}</div>
+          )}
+          {element.title == null || element.title === "" ? null : (
+            <div className="--tooltip">{element.title}</div>
+          )}
         </div>
       </a>
       <span className="--icons">
