@@ -19,7 +19,6 @@ export function Anchor({
   const startEdgeRef = useRef<HTMLSpanElement>(null)
   const anchorRef = useRef<HTMLAnchorElement>(null)
   const selected = useSelected()
-  const focused = useFocused()
   const upload = useUpload(element.href)
   const dialog = useLayer("dialog")
 
@@ -36,7 +35,22 @@ export function Anchor({
     const anchor = anchorRef.current
     const startEdge = startEdgeRef.current
     if (!anchor || !startEdge) return
-    if (focused && selected) {
+    /**
+     * NOTE: Do not use `focused && selected` here because when we click or
+     * focus on the pop up dialogs themselves, this will cause the dialogs to
+     * close.
+     *
+     * TODO: Figure out how to make the dialogs not close when clicking on them.
+     *
+     * It has to support these use cases:
+     *
+     * - Closes when user clicks somewhere in the document outside the link
+     * - Stays open when user clicks on the dialog
+     * - Stays open when user is in an input in the dialog
+     * - Closes when the editor loses focus but stays open when the editor loses
+     *   focus to the anchor dialog or the anchor edit dialog
+     */
+    if (selected) {
       /**
        * The setTimeout delay is necessary when first clicking into the browser
        * and when switching from one link to another. Without it, the dialog
@@ -54,7 +68,7 @@ export function Anchor({
     } else {
       dialog.close()
     }
-  }, [focused, selected, element])
+  }, [selected, element])
 
   return (
     <$Anchor
