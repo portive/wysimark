@@ -4,17 +4,26 @@ export const $CodeBlock = styled("div")`
   position: relative;
   background: var(--code-block-bgcolor);
   margin: 1em 0;
-  padding: 1.5em 1em 1.5em 1em;
   border-radius: 0.5em;
   border: 1px solid var(--code-block-border-color);
-  code {
-    font-size: 0.825em;
-  }
-  counter-reset: line;
+  /**
+   * DO NOT REMOVE: Code for adding line numbering if enabled. See $CodeBlockLine
+  * for more details.
+   * counter-reset: line;
+   */
   &.--selected {
     outline: 2px solid var(--select-color);
   }
-  /* width: 100%; */
+  /**
+   * NOTE: Required to make the border radius work on the first and last lines.
+   * Otherwise they will be square.
+   */
+  overflow-x: hidden;
+`
+
+export const $CodeBlockScroller = styled("div")`
+  padding: 2.25em 1em 1.5em 1em;
+  border-radius: 0.5em;
   overflow-x: auto;
 `
 

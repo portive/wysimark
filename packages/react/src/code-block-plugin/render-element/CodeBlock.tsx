@@ -5,7 +5,7 @@ import { Menu, MenuItemData } from "../../shared-overlays"
 import { ConstrainedRenderElementProps } from "../../sink"
 import { useLayer } from "../../use-layer"
 import { ChevronDownIcon } from "../icons/ChevronDownIcon"
-import { $CodeBlock, $CodeBlockLanguage } from "../styles"
+import { $CodeBlock, $CodeBlockLanguage, $CodeBlockScroller } from "../styles"
 import { CodeBlockElement, LanguageList } from "../types"
 
 export function CodeBlock({
@@ -41,7 +41,7 @@ export function CodeBlock({
         <span>{element.language}</span>
         <ChevronDownIcon />
       </$CodeBlockLanguage>
-      {children}
+      <$CodeBlockScroller>{children}</$CodeBlockScroller>
     </$CodeBlock>
   )
 }
