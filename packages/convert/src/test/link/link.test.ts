@@ -1,4 +1,4 @@
-import { check } from "../test-utils"
+import { check, serialize } from "../test-utils"
 
 describe("link", () => {
   it("should convert a link", async () => {
@@ -107,10 +107,7 @@ describe("link", () => {
     ])
   })
 
-  /**
-   * TODO: Convert title tag in link
-   */
-  it.skip("should convert link with alt tag ", async () => {
+  it("should convert link with title tag", async () => {
     check(`**[alpha _bravo_](https://localhost/alpha "charlie")**`, [
       {
         type: "paragraph",
@@ -119,6 +116,70 @@ describe("link", () => {
           {
             type: "anchor",
             href: "https://localhost/alpha",
+            title: "charlie",
+            children: [
+              { text: "alpha ", bold: true },
+              { text: "bravo", bold: true, italic: true },
+            ],
+          },
+          { text: "" },
+        ],
+      },
+    ])
+  })
+
+  it("should convert link with title tag that is empty string", async () => {
+    const markdown = serialize([
+      {
+        type: "paragraph",
+        children: [
+          { text: "" },
+          {
+            type: "anchor",
+            href: "https://localhost/alpha",
+            children: [
+              { text: "alpha ", bold: true },
+              { text: "bravo", bold: true, italic: true },
+            ],
+          },
+          { text: "" },
+        ],
+      },
+    ])
+    expect(markdown).toEqual(`**[alpha _bravo_](https://localhost/alpha)**`)
+  })
+
+  it("should escape a title tag with a double quote", async () => {
+    check(`**[alpha _bravo_](https://localhost/alpha "double\\"quote[]")**`, [
+      {
+        type: "paragraph",
+        children: [
+          { text: "" },
+          {
+            type: "anchor",
+            href: "https://localhost/alpha",
+            title: "double\"quote[]",
+            children: [
+              { text: "alpha ", bold: true },
+              { text: "bravo", bold: true, italic: true },
+            ],
+          },
+          { text: "" },
+        ],
+      },
+    ])
+  })
+
+  it("should allow any other characters in title tag and not fail", async () => {
+    check(`**[alpha _bravo_](https://localhost/alpha "[]()''")**`, [
+      {
+        type: "paragraph",
+        children: [
+          { text: "" },
+          {
+            type: "anchor",
+            href: "https://localhost/alpha",
+            title: "[]()''",
             children: [
               { text: "alpha ", bold: true },
               { text: "bravo", bold: true, italic: true },

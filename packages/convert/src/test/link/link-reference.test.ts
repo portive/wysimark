@@ -14,13 +14,14 @@ describe("link", () => {
             {
               type: "anchor",
               href: "http://localhost/alpha",
+              title: "Optional Title Here",
               children: [{ text: "alpha" }],
             },
             { text: "" },
           ],
         },
       ],
-      `[alpha](http://localhost/alpha)`
+      `[alpha](http://localhost/alpha "Optional Title Here")`
     )
   })
 

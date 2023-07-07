@@ -46,6 +46,11 @@ function parsePhrasingContent(
         {
           type: "anchor",
           href: phrasingContent.url,
+          title:
+            /**
+             * Ensure that `title` is undefined if it's null.
+             */
+            phrasingContent.title == null ? undefined : phrasingContent.title,
           children: parsePhrasingContents(phrasingContent.children, marks),
         },
       ]
