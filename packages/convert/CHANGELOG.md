@@ -1,5 +1,11 @@
 # @wysimark/convert
 
+## 2.2.4
+
+### Patch Changes
+
+- 2c5564f: Fix title support for links in markdown conversion
+
 ## 2.2.3
 
 ### Patch Changes

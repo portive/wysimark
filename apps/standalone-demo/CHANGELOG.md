@@ -4,6 +4,13 @@
 
 ### Patch Changes
 
+- Updated dependencies [2c5564f]
+  - @wysimark/standalone@2.6.6
+
+## null
+
+### Patch Changes
+
 - Updated dependencies [f930188]
   - @wysimark/standalone@2.6.5
 

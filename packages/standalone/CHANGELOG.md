@@ -1,5 +1,11 @@
 # @wysimark/standalone
 
+## 2.6.6
+
+### Patch Changes
+
+- 2c5564f: Fix title support for links in markdown conversion
+
 ## 2.6.5
 
 ### Patch Changes
