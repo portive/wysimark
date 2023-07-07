@@ -1,5 +1,11 @@
 # @wysimark/standalone
 
+## 2.6.3
+
+### Patch Changes
+
+- 82e5f65: Fix bug that closes anchor dialog when clicked on
+
 ## 2.6.2
 
 ### Patch Changes
