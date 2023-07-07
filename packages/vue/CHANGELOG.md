@@ -1,5 +1,11 @@
 # @wysimark/vue
 
+## 2.6.4
+
+### Patch Changes
+
+- 2774d50: Fix spacing in code block issue
+
 ## 2.6.3
 
 ### Patch Changes
