@@ -36,3 +36,6 @@ tsconfig.tsbuildinfo
 
 # ignore .vscode settings for now because it's being used to disable copilot comments dynamically
 .vscode
+
+# ignore the crash test from https://roneo.org/markdown/ until I get permission
+roneo-crash-test.md

@@ -14,6 +14,8 @@ export const $CodeBlock = styled("div")`
   &.--selected {
     outline: 2px solid var(--select-color);
   }
+  /* width: 100%; */
+  overflow-x: auto;
 `
 
 export const $CodeBlockLanguage = styled("span")`
@@ -45,13 +47,19 @@ export const $CodeBlockLanguage = styled("span")`
 `
 
 export const $CodeBlockLine = styled("div")`
+  white-space: pre;
   line-height: 1.5em;
   counter-increment: line;
   font-family: "andale mono", AndaleMono, monospace;
+  font-size: 0.875em;
   &.--selected {
     background-color: var(--shade-100);
   }
-  &:before {
+  /*
+    DO NOT REMOVE: Code for adding line numbering.
+    TODO: Make optional in future.
+    */
+  /* &:before {
     content: counter(line);
     color: rgba(0, 0, 0, 0.25);
     border-right: 1px solid rgba(0, 0, 0, 0.05);
@@ -59,6 +67,6 @@ export const $CodeBlockLine = styled("div")`
     padding: 0em 1em 0 0;
     text-align: right;
     display: inline-block;
-    width: 1.25em;
-  }
+    width: 2em;
+  } */
 `

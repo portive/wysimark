@@ -41,7 +41,7 @@ export function CodeBlock({
         <span>{element.language}</span>
         <ChevronDownIcon />
       </$CodeBlockLanguage>
-      <code>{children}</code>
+      {children}
     </$CodeBlock>
   )
 }
