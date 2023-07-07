@@ -1,5 +1,11 @@
 # @wysimark/vue
 
+## 2.6.5
+
+### Patch Changes
+
+- f930188: Improve code blocks so syntax language does not horizontally scroll
+
 ## 2.6.4
 
 ### Patch Changes
