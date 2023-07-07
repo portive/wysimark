@@ -158,7 +158,7 @@ describe("link", () => {
           {
             type: "anchor",
             href: "https://localhost/alpha",
-            title: "double\"quote[]",
+            title: 'double"quote[]',
             children: [
               { text: "alpha ", bold: true },
               { text: "bravo", bold: true, italic: true },
