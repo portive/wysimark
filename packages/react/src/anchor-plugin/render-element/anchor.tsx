@@ -1,6 +1,6 @@
 import { clsx } from "clsx"
 import { useEffect, useRef } from "react"
-import { useFocused, useSelected } from "slate-react"
+import { useSelected } from "slate-react"
 
 import { ConstrainedRenderElementProps } from "~/src/sink"
 

@@ -18,39 +18,54 @@ const $AnchorDialog = styled($Panel)`
   padding: 1em;
   color: var(--shade-400);
 
-  a.--link {
+  .--icons {
     display: flex;
-    flex: 1 1 auto;
+    overflow: hidden;
+    flex: 0 0 6em;
+  }
+
+  .--link {
+    display: flex;
+    flex: 0 0 14em;
+    overflow: hidden;
     color: var(--shade-400);
     &:hover {
       color: var(--blue-600);
     }
     transition: all 200ms;
   }
-  .--icons {
-    display: flex;
-    flex: 0 0 auto;
-  }
 
   .--url {
     margin-left: 0.5em;
     .--hostname {
       font-size: 0.875em;
+      width: 14em;
+      line-height: 1.5em;
       color: var(--blue-600);
+      overflow-wrap: break-word;
+      /* width: 13.5em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis; */
     }
     .--pathname {
+      margin-top: 0.25em;
       font-size: 0.75em;
-      overflow: ellipsis;
+      width: 16.25em;
+      line-height: 1.5em;
+      overflow-wrap: break-word;
     }
     .--tooltip {
       position: relative;
       margin-top: 1em;
       font-size: 0.875em;
+      width: 14em;
       line-height: 1.5em;
       background: var(--shade-200);
       border-radius: 0.5em;
       padding: 0.5em 0.75em;
       color: var(--shade-600);
+      overflow-wrap: break-word;
     }
     .--tooltip::before {
       content: "";
