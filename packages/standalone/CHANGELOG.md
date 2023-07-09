@@ -1,5 +1,11 @@
 # @wysimark/standalone
 
+## 2.6.7
+
+### Patch Changes
+
+- fa67abd: Improve display of long urls and title of links in anchor dialog
+
 ## 2.6.6
 
 ### Patch Changes
