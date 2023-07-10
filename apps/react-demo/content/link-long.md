@@ -1,5 +1,9 @@
 # Sample text with links
 
+- Long link: [A very long link with long text, anchor and title](https://www.example-of-a-domain-that-is-ridiculously-long.com/this/is/a/ver/long/path/in/the/url/that_should/for/the/path-to-wrap "Very long tooltip showing for this long link")
+- Normal link: [Normal link](https://example.com/normal/path "A tooltip")
+- Minimal Link: [Minimal link](https://example.com)
+
 The world of technology is fascinating and ever-changing. One of the prominent areas that's gaining popularity is [artificial intelligence](https://www.ibm.com/cloud/learn/what-is-artificial-intelligence "IBM's definition of AI"). Artificial intelligence, or AI, refers to the capability of a machine to imitate intelligent human behavior.
 
 One major application of AI is in the field of [machine learning](https://www.expert.ai/blog/machine-learning-definition/ "Machine Learning Definition"), a subset of AI that provides systems the ability to learn and improve from experience without being explicitly programmed. Machine learning focuses on the development of computer programs that can access data and use it to learn for themselves.
