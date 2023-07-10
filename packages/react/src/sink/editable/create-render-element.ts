@@ -23,7 +23,9 @@ export function createRenderElement(
   const fns = plugins
     .map((plugin) => plugin.editableProps?.renderElement)
     .filter(defined)
-  return function (renderElementProps: RenderElementProps): JSX.Element {
+  return function renderElement(
+    renderElementProps: RenderElementProps
+  ): JSX.Element {
     for (const fn of fns) {
       const result = fn(renderElementProps)
       if (result) return result
