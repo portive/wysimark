@@ -1,11 +1,18 @@
-import { createRef, RefObject, useImperativeHandle } from "react"
+import {
+  createRef,
+  RefObject,
+  useCallback,
+  useImperativeHandle,
+  useState,
+} from "react"
 import { createRoot } from "react-dom/client"
 
 import { Editable, useEditor } from "../../../react/src/entry"
 
 type EditorOptions = Parameters<typeof useEditor>[0] & {
-  onChange?: () => void
+  onChange?: (markdown: string) => void
   placeholder?: string
+  initialMarkdown?: string
 }
 type Editor = ReturnType<typeof useEditor>
 
@@ -16,12 +23,26 @@ function StandaloneEditor({
   options: EditorOptions
   editorRef: RefObject<Editor>
 }) {
+  const [markdown, setMarkdown] = useState(options.initialMarkdown || "")
   const editor = useEditor(options)
 
   useImperativeHandle(editorRef, () => editor, [editor])
 
+  const onChangeEditable = useCallback(
+    (markdown: string) => {
+      setMarkdown(markdown)
+      onChange?.(markdown)
+    },
+    [editor]
+  )
+
   return (
-    <Editable editor={editor} onChange={onChange} placeholder={placeholder} />
+    <Editable
+      editor={editor}
+      value={markdown}
+      onChange={onChangeEditable}
+      placeholder={placeholder}
+    />
   )
 }
 
@@ -56,7 +77,7 @@ export function createWysimark(
         : options.initialMarkdown || ""
     },
     setMarkdown(markdown: string) {
-      editorRef.current?.resetMarkdown(markdown)
+      editorRef.current?.setMarkdown(markdown)
     },
   }
 }

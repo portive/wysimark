@@ -9,13 +9,11 @@ import { withSink } from "./SinkEditable"
 import { WysimarkEditor } from "./types"
 
 export function useEditor({
-  initialMarkdown = "",
   authToken,
   height,
   minHeight,
   maxHeight,
 }: {
-  initialMarkdown?: string
   authToken?: string
   height?: string | number
   minHeight?: string | number
@@ -38,13 +36,13 @@ export function useEditor({
     })
     nextEditor.convertElement.addConvertElementType("paragraph")
     editor.wysimark = {
-      initialMarkdown,
-      initialValue: parse(initialMarkdown),
+      //   initialMarkdown,
+      //   initialValue: parse(initialMarkdown),
     }
     editor.getMarkdown = () => {
       return serialize(editor.children as Element[])
     }
-    editor.resetMarkdown = (markdown: string) => {
+    editor.setMarkdown = (markdown: string) => {
       const documentValue = parse(markdown)
       editor.children = documentValue
       editor.selection = null

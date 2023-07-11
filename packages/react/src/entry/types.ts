@@ -5,12 +5,16 @@ export type WysimarkEditor = {
    * Private state for the wysimark editor.
    */
   wysimark: {
-    initialMarkdown: string
-    initialValue: Descendant[]
+    prevValue?: {
+      markdown: string
+      children: Descendant[]
+    }
+    // prevMarkdown: string
+    // prevValue: Descendant[]
   }
   /**
    * Public methods for the wysimark editor.
    */
   getMarkdown: () => string
-  resetMarkdown: (markdown: string) => void
+  setMarkdown: (markdown: string) => void
 }

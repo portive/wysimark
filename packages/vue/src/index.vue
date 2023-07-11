@@ -74,8 +74,8 @@ export default defineComponent({
         height: props.height,
         minHeight: props.minHeight,
         maxHeight: props.maxHeight,
-        onChange: () => {
-          emit("update:modelValue", wysimark.getMarkdown())
+        onChange: (markdown: string) => {
+          emit("update:modelValue", markdown)
         },
         placeholder: props.placeholder,
       })

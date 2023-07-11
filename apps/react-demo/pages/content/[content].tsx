@@ -44,7 +44,6 @@ const Page: NextPage<PageProps> = ({ baseNames, initialMarkdown }) => {
   const [markdown, setMarkdown] = useState(initialMarkdown)
 
   const editor = useEditor({
-    initialMarkdown,
     authToken: process.env.NEXT_PUBLIC_PORTIVE_AUTH_TOKEN,
     minHeight: 240,
     maxHeight: 720,
@@ -58,13 +57,13 @@ const Page: NextPage<PageProps> = ({ baseNames, initialMarkdown }) => {
     (e: ChangeEvent<HTMLTextAreaElement>) => {
       const markdown = e.target.value
       setMarkdown(markdown)
-      editor.resetMarkdown(markdown)
+      editor.setMarkdown(markdown)
     },
     [editor]
   )
 
   const resetMarkdown = useCallback(() => {
-    editor.resetMarkdown(`# This is a reset with the reset button
+    setMarkdown(`# This is a reset with the reset button
     
 And this is a paragraph
 fdsfs`)
@@ -102,8 +101,9 @@ fdsfs`)
         <div className="col-5">
           <Editable
             editor={editor}
-            onChange={() => {
-              setMarkdown(editor.getMarkdown())
+            value={markdown}
+            onChange={(markdown) => {
+              setMarkdown(markdown)
             }}
             placeholder="Enter text here..."
           />

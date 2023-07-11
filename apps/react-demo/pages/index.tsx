@@ -8,7 +8,6 @@ export default function Page() {
   const [markdown, setMarkdown] = useState(content)
 
   const editor = useEditor({
-    initialMarkdown: content,
     authToken: process.env.NEXT_PUBLIC_PORTIVE_AUTH_TOKEN,
     minHeight: 240,
     maxHeight: 720,
@@ -22,13 +21,13 @@ export default function Page() {
     (e: ChangeEvent<HTMLTextAreaElement>) => {
       const markdown = e.target.value
       setMarkdown(markdown)
-      editor.resetMarkdown(markdown)
+      editor.setMarkdown(markdown)
     },
     [editor]
   )
 
   const resetMarkdown = useCallback(() => {
-    editor.resetMarkdown(`# This is a reset with the reset button
+    editor.setMarkdown(`# This is a reset with the reset button
     
 And this is a paragraph
 fdsfs`)
@@ -65,8 +64,9 @@ fdsfs`)
         <div>
           <Editable
             editor={editor}
-            onChange={() => {
-              setMarkdown(editor.getMarkdown())
+            value={markdown}
+            onChange={(markdown) => {
+              setMarkdown(markdown)
             }}
             placeholder="Enter text here..."
           />

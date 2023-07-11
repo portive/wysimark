@@ -1,30 +1,10 @@
 import "./button.css"
 
 import { Editable, useEditor } from "@wysimark/react"
-import React from "react"
+import React, { useState } from "react"
 
 type EditorProps = {
   value: string
-  // /**
-  //  * Is this the principal call to action on the page?
-  //  */
-  // primary?: boolean
-  // /**
-  //  * What background color to use
-  //  */
-  // backgroundColor?: string
-  // /**
-  //  * How large should the button be?
-  //  */
-  // size?: "small" | "medium" | "large"
-  // /**
-  //  * Button contents
-  //  */
-  // label: string
-  // /**
-  //  * Optional click handler
-  //  */
-  // onClick?: () => void
 }
 
 /**
@@ -32,11 +12,10 @@ type EditorProps = {
  * changes.
  */
 export const InnerEditor = ({ value, ...props }: EditorProps) => {
-  const editor = useEditor({
-    initialMarkdown: value,
-    ...props,
-  })
-  return <Editable editor={editor} />
+  const [markdown, setMarkdown] = useState(value)
+  const editor = useEditor(props)
+
+  return <Editable editor={editor} value={markdown} onChange={setMarkdown} />
 }
 
 /**

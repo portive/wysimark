@@ -1,8 +1,10 @@
-import { BaseEditor } from "slate"
-import { ReactEditor, RenderLeafProps, Slate } from "slate-react"
+import throttle from "lodash.throttle"
+import { useCallback } from "react"
+import { Editor, Element, Transforms } from "slate"
+import { RenderLeafProps, Slate } from "slate-react"
 
+import { parse, serialize } from "../../../convert/src"
 import { SinkEditable } from "./SinkEditable"
-import { WysimarkEditor } from "./types"
 
 export type { Element, Text } from "./plugins"
 export { useEditor } from "./useEditor"
@@ -12,18 +14,62 @@ function renderLeaf({ children, attributes }: RenderLeafProps) {
 }
 
 export type EditableProps = {
-  editor: BaseEditor & ReactEditor & WysimarkEditor
-  onChange?: () => void
+  // editor: BaseEditor & ReactEditor & HistoryEditor & SinkEditor & WysimarkEditor
+  editor: Editor
+  throttleInMs?: number
+  value: string
+  onChange: (markdown: string) => void
 } & Omit<React.TextareaHTMLAttributes<HTMLDivElement>, "onChange">
 
-export function Editable({ editor, onChange, ...extraProps }: EditableProps) {
+export function Editable({
+  editor,
+  throttleInMs = 1000,
+  value,
+  onChange,
+  ...extraProps
+}: EditableProps) {
+  const onSlateChange = useCallback(
+    throttle(
+      () => {
+        const markdown = serialize(editor.children as Element[])
+        editor.wysimark.prevValue = {
+          markdown,
+          children: editor.children,
+        }
+        onChange(markdown)
+      },
+      throttleInMs,
+      { leading: false, trailing: true }
+    ),
+    [editor, onChange]
+  )
+
+  if (editor.wysimark.prevValue == null) {
+    const children = parse(value)
+    editor.wysimark.prevValue = {
+      markdown: value,
+      children,
+    }
+  } else {
+    if (value !== editor.wysimark.prevValue.markdown) {
+      const documentValue = parse(value)
+      editor.children = documentValue
+      editor.selection = null
+      Transforms.select(editor, Editor.start(editor, [0]))
+    }
+  }
+
+  const onBlur = useCallback(() => {
+    onSlateChange.flush()
+  }, [onSlateChange])
+
   return (
     <Slate
       editor={editor}
-      value={editor.wysimark.initialValue}
-      onChange={onChange}
+      value={editor.wysimark.prevValue.children}
+      onChange={onSlateChange}
     >
-      <SinkEditable renderLeaf={renderLeaf} {...extraProps} />
+      <SinkEditable renderLeaf={renderLeaf} onBlur={onBlur} {...extraProps} />
     </Slate>
   )
 }
