@@ -16,17 +16,22 @@ function renderLeaf({ children, attributes }: RenderLeafProps) {
 export type EditableProps = {
   // editor: BaseEditor & ReactEditor & HistoryEditor & SinkEditor & WysimarkEditor
   editor: Editor
-  throttleInMs?: number
   value: string
   onChange: (markdown: string) => void
-} & Omit<React.TextareaHTMLAttributes<HTMLDivElement>, "onChange">
+  throttleInMs?: number
+  placeholder?: string
+  className?: string
+  style?: React.CSSProperties
+} // & Omit<React.TextareaHTMLAttributes<HTMLDivElement>, "onChange">
 
 export function Editable({
   editor,
-  throttleInMs = 1000,
   value,
   onChange,
-  ...extraProps
+  throttleInMs = 1000,
+  placeholder,
+  className,
+  style,
 }: EditableProps) {
   const onSlateChange = useCallback(
     throttle(
@@ -69,7 +74,13 @@ export function Editable({
       value={editor.wysimark.prevValue.children}
       onChange={onSlateChange}
     >
-      <SinkEditable renderLeaf={renderLeaf} onBlur={onBlur} {...extraProps} />
+      <SinkEditable
+        renderLeaf={renderLeaf}
+        onBlur={onBlur}
+        placeholder={placeholder}
+        className={className}
+        style={style}
+      />
     </Slate>
   )
 }

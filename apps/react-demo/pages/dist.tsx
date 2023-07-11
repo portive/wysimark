@@ -14,12 +14,7 @@ export default function Page() {
       <h1>Wysimark</h1>
       <button onClick={() => console.log(editor.getMarkdown())}>Get</button>
       <button onClick={() => editor.setMarkdown("# Reset")}>Reset</button>
-      <Editable
-        editor={editor}
-        value={markdown}
-        onChange={setMarkdown}
-        style={{ maxHeight: 400 }}
-      />
+      <Editable editor={editor} value={markdown} onChange={setMarkdown} />
     </div>
   )
 }
