@@ -1,5 +1,11 @@
 # @wysimark/react
 
+## 2.7.0
+
+### Minor Changes
+
+- aff17cf: Convert Wysimark into a controlled component
+
 ## 2.6.7
 
 ### Patch Changes
