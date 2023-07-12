@@ -1,5 +1,11 @@
 # @wysimark/vue
 
+## 2.8.0
+
+### Minor Changes
+
+- 4aee21c: Improve way-way binding in Vue and state change rejection
+
 ## 2.7.0
 
 ### Minor Changes
