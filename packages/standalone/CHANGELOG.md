@@ -1,5 +1,11 @@
 # @wysimark/standalone
 
+## 2.8.1
+
+### Patch Changes
+
+- f57d23a: Add throttleInMs to hook dependencies
+
 ## 2.8.0
 
 ### Minor Changes
