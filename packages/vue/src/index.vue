@@ -37,6 +37,14 @@ export default defineComponent({
     authToken: { type: String, required: false },
   },
 
+  watch: {
+    modelValue(nextValue, prevValue) {
+      if (nextValue !== prevValue) {
+        this.setMarkdown(nextValue)
+      }
+    },
+  },
+
   /**
    * Events that a component can emits to its parents.
    *
@@ -67,7 +75,6 @@ export default defineComponent({
 
     onMounted(() => {
       if (containerRef.value == null) throw new Error(`containerRef is null`)
-      console.log("authToken", props.authToken)
       wysimark = createWysimark(containerRef.value, {
         initialMarkdown: props.modelValue,
         authToken: props.authToken,

@@ -14,14 +14,15 @@
     <div>
       <wysimark
         ref="wysimark"
-        model-value="# Hello World
-
-Lorem ipsum dolar..."
+        v-model="markdown"
         :height="240"
         :auth-token="PORTIVE_AUTH_TOKEN"
-        @update:model-value="log"
         placeholder="Type something..."
       />
+      <textarea
+        v-model="markdown"
+        style="width: 100%; height: 240px; margin-top: 1em"
+      ></textarea>
     </div>
   </div>
 </template>
@@ -34,45 +35,29 @@ export default {
   components: { Wysimark },
   setup() {
     const wysimarkRef = ref<typeof Wysimark>()
-
-    /**
-     * Helper to execute functions with wysimark which it's possible may not exist.
-     * If it doesn't exit, we just ignore. This is likel
-     */
-    const withWysimark = (fn: (wysimark: typeof Wysimark) => void) => {
-      const wysimark = wysimarkRef.value
-      if (wysimark) {
-        fn(wysimark)
-      } else {
-        console.warn("wysimark is not ready yet")
-      }
-    }
+    const markdownRef = ref<string>("# Hello World 100")
 
     /**
      * onClick handler for "Get Markdown" button
      */
     const clickGetMarkdown = () => {
-      withWysimark((wysimark) => {
-        console.log(wysimark.getMarkdown())
-      })
+      console.log(markdownRef.value)
     }
 
     /**
      * onClick handler for "Set Markdown" button
      */
     const clickSetMarkdown = () => {
-      withWysimark((wysimark) => {
-        wysimark.setMarkdown("# Hello World")
-      })
+      markdownRef.value = "blah blah blah"
     }
 
     const log = (markdown: string) => {
-      console.log(markdown)
+      console.log({ markdown })
     }
-    console.log(process.env)
 
     return {
       wysimark: wysimarkRef,
+      markdown: markdownRef,
       clickGetMarkdown,
       clickSetMarkdown,
       log,

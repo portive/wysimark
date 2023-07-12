@@ -3,33 +3,76 @@ import {
   RefObject,
   useCallback,
   useImperativeHandle,
+  useRef,
   useState,
 } from "react"
 import { createRoot } from "react-dom/client"
 
 import { Editable, useEditor } from "../../../react/src/entry"
 
-type EditorOptions = Parameters<typeof useEditor>[0] & {
+type Editor = ReturnType<typeof useEditor>
+
+/**
+ * The options passed into the standalone version of Wysimark.
+ */
+type StandaloneOptions = Parameters<typeof useEditor>[0] & {
   onChange?: (markdown: string) => void
   placeholder?: string
   initialMarkdown?: string
 }
-type Editor = ReturnType<typeof useEditor>
+
+type StandaloneMethods = {
+  getMarkdown: () => string
+  setMarkdown: (markdown: string) => void
+}
+
+/**
+ * The object returned by `createWysimark`
+ */
+type Wysimark = {
+  unmount: () => void
+  getMarkdown: () => string
+  setMarkdown: (markdown: string) => void
+}
 
 function StandaloneEditor({
-  options: { onChange, placeholder, ...options },
-  editorRef,
+  standaloneOptions: { onChange, placeholder, ...options },
+  standaloneMethodsRef,
 }: {
-  options: EditorOptions
-  editorRef: RefObject<Editor>
+  standaloneOptions: StandaloneOptions
+  standaloneMethodsRef: RefObject<StandaloneMethods>
 }) {
   const [markdown, setMarkdown] = useState(options.initialMarkdown || "")
+  const markdownRef = useRef(markdown)
   const editor = useEditor(options)
 
-  useImperativeHandle(editorRef, () => editor, [editor])
+  markdownRef.current = markdown
+
+  useImperativeHandle(
+    standaloneMethodsRef,
+    () => {
+      return {
+        getMarkdown() {
+          return markdownRef.current
+        },
+        setMarkdown(markdown: string) {
+          markdownRef.current = markdown
+          setMarkdown(markdown)
+        },
+      }
+    },
+    [markdownRef, setMarkdown]
+  )
 
   const onChangeEditable = useCallback(
     (markdown: string) => {
+      /**
+       * Setting the ref is important in the case where there is an attempt to
+       * call the `getMarkdown` method from `onChange`. Otherwise the `ref`
+       * doesn't get updated until the next render which happens sometime after
+       * the `onChange` callback is called.
+       */
+      markdownRef.current = markdown
       setMarkdown(markdown)
       onChange?.(markdown)
     },
@@ -46,21 +89,23 @@ function StandaloneEditor({
   )
 }
 
-type Wysimark = {
-  unmount: () => void
-  getMarkdown: () => string
-  setMarkdown: (markdown: string) => void
-}
-
+/**
+ * The primary entry point for the standalone version of Wysimark.
+ */
 export function createWysimark(
   containerElement: HTMLElement,
-  options: EditorOptions
+  options: StandaloneOptions
 ): Wysimark {
-  const editorRef = createRef<Editor>()
+  const standaloneMethodsRef = createRef<StandaloneMethods>()
 
   const root = createRoot(containerElement)
 
-  root.render(<StandaloneEditor editorRef={editorRef} options={options} />)
+  root.render(
+    <StandaloneEditor
+      standaloneMethodsRef={standaloneMethodsRef}
+      standaloneOptions={options}
+    />
+  )
 
   return {
     unmount() {
@@ -71,13 +116,14 @@ export function createWysimark(
       }
     },
     getMarkdown() {
-      const markdown = editorRef.current?.getMarkdown()
-      return typeof markdown === "string"
-        ? markdown
-        : options.initialMarkdown || ""
+      return standaloneMethodsRef.current?.getMarkdown() || ""
+      // const markdown = editorRef.current?.getMarkdown()
+      // return typeof markdown === "string"
+      //   ? markdown
+      //   : options.initialMarkdown || ""
     },
     setMarkdown(markdown: string) {
-      editorRef.current?.setMarkdown(markdown)
+      standaloneMethodsRef.current?.setMarkdown(markdown)
     },
   }
 }
