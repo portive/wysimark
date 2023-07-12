@@ -66,7 +66,7 @@ export function Editable({
       throttleInMs,
       { leading: false, trailing: true }
     ),
-    [editor, onChange]
+    [editor, onChange, throttleInMs]
   )
 
   /**
