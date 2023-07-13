@@ -33,7 +33,7 @@ export const $Toolbar = styled("div")`
 
 export const $ToolbarDivider = styled("div")`
   display: inline-block;
-  background: var(--shade-200);
+  background: var(--shade-300);
   opacity: 50%;
   width: 1px;
   height: 3em;
@@ -41,6 +41,7 @@ export const $ToolbarDivider = styled("div")`
 `
 
 export const $ToolbarButton = styled("div")`
+  position: relative;
   display: flex;
   font-size: 1.25em;
   padding: 0.375em 0.375em;
@@ -66,5 +67,16 @@ export const $ToolbarButton = styled("div")`
     svg {
       /* stroke-width: 2px; */
     }
+  }
+
+  &.--more {
+    padding: 0.375em 0.5em;
+  }
+  .--more-icon {
+    position: absolute;
+    bottom: -0.2em;
+    left: 50%;
+    margin-left: -0.25em;
+    opacity: 0.375;
   }
 `

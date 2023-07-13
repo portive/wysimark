@@ -7,8 +7,8 @@ export const H = () => (
 )
 
 export const More = () => (
-  <TablerIcon width="0.5em" viewBox="0 0 12 24">
-    <path d="m2 12 4 4 4-4" opacity={0.375} />
+  <TablerIcon className="--more-icon" width="0.5em" viewBox="0 0 12 24">
+    <path d="m2 12 4 4 4-4" />
   </TablerIcon>
 )
 

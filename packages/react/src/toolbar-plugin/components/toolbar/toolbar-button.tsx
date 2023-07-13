@@ -71,7 +71,7 @@ export function ToolbarButton({
       onMouseEnter={onMouseEnter}
       onMouseLeave={tooltip.onMouseLeave}
       onClick={onClick}
-      className={clsx({ "--active": active })}
+      className={clsx({ "--active": active, "--more": item.more })}
     >
       <item.icon />
       {item.more ? <Icon.More /> : null}

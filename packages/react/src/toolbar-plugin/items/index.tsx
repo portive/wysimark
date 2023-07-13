@@ -48,7 +48,6 @@ export const items: MenuItemData[] = [
     more: true,
     children: listItems,
   },
-  "divider",
   {
     icon: Icon.Table,
     title: "Table",
@@ -71,22 +70,28 @@ export const items: MenuItemData[] = [
   {
     icon: Icon.Link,
     title: "Insert Link",
+    more: true,
     hotkey: "mod+k",
     Component: AnchorDialog,
   },
   {
     icon: Icon.Image,
     title: "Insert Image",
+    more: true,
     Component: ImageDialog,
     show: (editor) => editor.toolbar.showUploadButtons ?? false,
   },
   {
     icon: Icon.Attachment,
     title: "Insert Attachment",
+    more: true,
     Component: AttachmentDialog,
     show: (editor) => editor.toolbar.showUploadButtons ?? false,
   },
-  "divider",
-
-  { icon: Icon.Emoji, title: "Insert Emoji", Component: EmojiDialog },
+  {
+    icon: Icon.Emoji,
+    title: "Insert Emoji",
+    more: true,
+    Component: EmojiDialog,
+  },
 ]
