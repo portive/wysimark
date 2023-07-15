@@ -155,7 +155,9 @@ export const Image = () => (
 
 export const Attachment = () => (
   <TablerIcon>
-    <path d="m15 7-6.5 6.5a1.5 1.5 0 0 0 3 3L18 10a3 3 0 0 0-6-6l-6.5 6.5a4.5 4.5 0 0 0 9 9L21 13" />
+    <path stroke="none" d="M0 0h24v24H0z" />
+    <path d="M14 3v4a1 1 0 0 0 1 1h4" />
+    <path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2zM12 11v6M9 14h6" />
   </TablerIcon>
 )
 

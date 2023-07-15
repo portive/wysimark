@@ -1,15 +1,10 @@
 import { MenuItemData } from "~/src/shared-overlays"
 
-import { TableDialog } from "../components"
-import { AnchorDialog } from "../components/dialog/anchor-dialog"
-import { EmojiDialog } from "../components/dialog/emoji-dialog"
-import { AttachmentDialog, ImageDialog } from "../components/dialog/file-dialog"
-import * as Icon from "../icons"
-import { codeBlockItems } from "./codeBlockItems"
-import { headingItems } from "./heading-items"
-import { listItems } from "./list-items"
-import { quoteItems } from "./quote-items"
-import { styleItems } from "./style-items"
+import { blockDropdownItem } from "./block-items"
+import { compactDialogItems, expandedDialogItems } from "./dialogItems"
+import { dropdownItems } from "./dropdownItems"
+import { linkItem } from "./linkItem"
+import { compactMarkItems, expandedMarkItems } from "./mark-items"
 
 /**
  * A collection of `Item` objects that describe either
@@ -20,78 +15,42 @@ import { styleItems } from "./style-items"
  * An `Item` is described in the same way whether it is a button or a menu
  * item making them interchangeable.
  */
-export const items: MenuItemData[] = [
-  {
-    icon: Icon.H,
-    title: "Paragraph Style",
-    more: true,
-    children: headingItems,
-  },
+
+export const largeItems: MenuItemData[] = [
+  blockDropdownItem,
   "divider",
-  {
-    icon: Icon.Bold,
-    title: "Bold",
-    hotkey: "mod+b",
-    action: (editor) => editor.marksPlugin.toggleBold(),
-  },
-  {
-    icon: Icon.Italic,
-    title: "Italic",
-    hotkey: "mod+i",
-    action: (editor) => editor.marksPlugin.toggleItalic(),
-  },
-  { icon: Icon.Style, title: "Text Style", more: true, children: styleItems },
+  ...expandedMarkItems,
   "divider",
-  {
-    icon: Icon.BulletList,
-    title: "Lists",
-    more: true,
-    children: listItems,
-  },
-  {
-    icon: Icon.Table,
-    title: "Table",
-    more: true,
-    Component: TableDialog,
-  },
-  {
-    icon: Icon.Blockquote,
-    title: "Block Quote",
-    more: true,
-    children: quoteItems,
-  },
-  {
-    icon: Icon.Code,
-    title: "Code Block",
-    more: true,
-    children: codeBlockItems,
-  },
+  linkItem,
+  ...dropdownItems,
   "divider",
-  {
-    icon: Icon.Link,
-    title: "Insert Link",
-    more: true,
-    hotkey: "mod+k",
-    Component: AnchorDialog,
-  },
-  {
-    icon: Icon.Image,
-    title: "Insert Image",
-    more: true,
-    Component: ImageDialog,
-    show: (editor) => editor.toolbar.showUploadButtons ?? false,
-  },
-  {
-    icon: Icon.Attachment,
-    title: "Insert Attachment",
-    more: true,
-    Component: AttachmentDialog,
-    show: (editor) => editor.toolbar.showUploadButtons ?? false,
-  },
-  {
-    icon: Icon.Emoji,
-    title: "Insert Emoji",
-    more: true,
-    Component: EmojiDialog,
-  },
+  ...expandedDialogItems,
 ]
+
+export const mediumItems: MenuItemData[] = [
+  blockDropdownItem,
+  "divider",
+  ...expandedMarkItems,
+  "divider",
+  linkItem,
+  ...dropdownItems,
+  "divider",
+  ...compactDialogItems,
+]
+
+export const smallItems: MenuItemData[] = [
+  blockDropdownItem,
+  "divider",
+  ...compactMarkItems,
+  "divider",
+  linkItem,
+  ...dropdownItems,
+  "divider",
+  ...compactDialogItems,
+]
+
+export const initialItems: MenuItemData[] = [blockDropdownItem, "divider"]
+
+export const items = mediumItems
+
+export const itemSets: MenuItemData[][] = [largeItems, mediumItems, smallItems]

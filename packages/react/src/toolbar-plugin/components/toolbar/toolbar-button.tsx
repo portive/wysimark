@@ -22,7 +22,7 @@ export function ToolbarButton({
     title: item.title,
     hotkey: () => (item.hotkey ? formatHotkey(item.hotkey) : undefined),
   })
-  const menu = useLayer("menu")
+  const menuLayer = useLayer("menu")
 
   const openMenu = useCallback(() => {
     const dest = ref.current
@@ -30,9 +30,11 @@ export function ToolbarButton({
     const Component = item.Component
     if (!dest) return
     if (items) {
-      menu.open(() => <Menu dest={dest} items={items} close={menu.close} />)
+      menuLayer.open(() => (
+        <Menu dest={dest} items={items} close={menuLayer.close} />
+      ))
     } else if (Component) {
-      menu.open(() => <Component dest={dest} close={menu.close} />)
+      menuLayer.open(() => <Component dest={dest} close={menuLayer.close} />)
     }
   }, [item])
 
@@ -42,12 +44,12 @@ export function ToolbarButton({
       ReactEditor.focus(editor)
       return
     }
-    if (menu.layer) {
-      menu.close()
+    if (menuLayer.layer) {
+      menuLayer.close()
     } else {
       openMenu()
     }
-  }, [menu.layer, item])
+  }, [menuLayer.layer, item])
 
   /**
    * On hover
@@ -60,13 +62,14 @@ export function ToolbarButton({
        * `menu` automatically. This replicates behavior in menus in windowing
        * systems.
        */
-      if (menu.layer) openMenu()
+      if (menuLayer.layer) openMenu()
     },
-    [menu.layer]
+    [menuLayer.layer]
   )
 
   return (
     <$ToolbarButton
+      data-item-type="button"
       ref={ref}
       onMouseEnter={onMouseEnter}
       onMouseLeave={tooltip.onMouseLeave}

@@ -10,8 +10,6 @@ import { createRoot } from "react-dom/client"
 
 import { Editable, useEditor } from "../../../react/src/entry"
 
-type Editor = ReturnType<typeof useEditor>
-
 /**
  * The options passed into the standalone version of Wysimark.
  */

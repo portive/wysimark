@@ -32,7 +32,13 @@ export function Menu({
             return <$MenuDivider key={index} />
           } else {
             return (
-              <MenuItem key={index} editor={editor} item={item} close={close} />
+              <MenuItem
+                key={index}
+                editor={editor}
+                item={item}
+                close={close}
+                dest={dest}
+              />
             )
           }
         })}

@@ -1,6 +1,11 @@
 import styled from "@emotion/styled"
 
-export const $Toolbar = styled("div")`
+export const $ToolbarContainer = styled("div")`
+  /**
+   * This flex rule applies to the "display: flex;" of the parent container.
+   * Ensures the toolbar does not shrink or grow vertically.
+   */
+  flex: 0 0 auto;
   /**
    * If "position: sticky;" is not working, check the ancestor for "overflow:
    * hidden;" of any kind. This will stop sticky from working. A good workaround
@@ -9,16 +14,13 @@ export const $Toolbar = styled("div")`
    * https://stackoverflow.com/a/73051006
    */
   position: sticky;
-  display: flex;
-  flex: 0 0 auto;
-  align-items: center;
   top: 0;
   z-index: 2;
   background: var(--shade-50);
+  /* font-size: 0.875em; */
   font-size: 0.9375em;
   padding: 0 0.5em;
   border-bottom: 1px solid var(--shade-300);
-  box-sizing: border-box;
   /**
    * Prevent clicks from stealing focus from the editor
    */
@@ -29,6 +31,27 @@ export const $Toolbar = styled("div")`
    * fix the 2px bottom border and make it the proper 1px.
    */
   margin-bottom: -1px;
+
+  /**
+   * NOTE: The space in the equation is significant
+   */
+  height: calc(
+    3em + 1px
+  ); // $ToolbarDivider height + border-bottom of 1px above
+  overflow: hidden;
+`
+
+export const $Toolbar = styled("div")`
+  display: inline-block;
+  height: calc(
+    3em + 1px
+  ); // $ToolbarDivider height + border-bottom of 1px above
+`
+
+export const $ToolbarDividerContainer = styled("div")`
+  display: inline-block;
+  height: 3em;
+  padding: 0 0.375em;
 `
 
 export const $ToolbarDivider = styled("div")`
@@ -37,13 +60,14 @@ export const $ToolbarDivider = styled("div")`
   opacity: 50%;
   width: 1px;
   height: 3em;
-  margin: 0 0.375em;
 `
 
 export const $ToolbarButton = styled("div")`
   position: relative;
-  display: flex;
+  display: inline-block;
+  vertical-align: top;
   font-size: 1.25em;
+  margin-top: 0.25em;
   padding: 0.375em 0.375em;
   border-radius: 0.25em;
   text-align: center;

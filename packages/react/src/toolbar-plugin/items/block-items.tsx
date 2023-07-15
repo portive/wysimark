@@ -2,7 +2,7 @@ import { MenuItemData } from "~/src/shared-overlays/types"
 
 import * as Icon from "../icons"
 
-export const headingItems: MenuItemData[] = [
+const blockItems: MenuItemData[] = [
   {
     icon: Icon.H1,
     title: "Heading 1",
@@ -49,3 +49,10 @@ export const headingItems: MenuItemData[] = [
     },
   },
 ]
+
+export const blockDropdownItem: MenuItemData = {
+  icon: Icon.H,
+  title: "Paragraph Style",
+  more: true,
+  children: blockItems,
+}
