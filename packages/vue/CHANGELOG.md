@@ -1,5 +1,11 @@
 # @wysimark/vue
 
+## 2.8.2
+
+### Patch Changes
+
+- a88f3ad: Make toolbar dynamic based on width
+
 ## 2.8.1
 
 ### Patch Changes
