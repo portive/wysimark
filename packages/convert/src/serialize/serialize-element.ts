@@ -61,9 +61,11 @@ export function serializeElement(element: Element, orders: number[]): string {
     }
     case "task-list-item": {
       const indent = " ".repeat(element.depth * LIST_INDENT_SIZE)
-      return `${indent}- [${element.checked ? "x" : " "}] ${serializeLine(
-        element.children as Segment[]
-      )}\n\n`
+      let line = serializeLine(element.children as Segment[])
+      if (line.trim() === "") {
+        line = "&#32;"
+      }
+      return `${indent}- [${element.checked ? "x" : " "}] ${line}\n\n`
     }
     case "image-block":
       return serializeImageBlock(element)
