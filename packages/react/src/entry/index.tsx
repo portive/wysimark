@@ -1,7 +1,7 @@
 import throttle from "lodash.throttle"
 import { useCallback, useRef } from "react"
 import { Editor, Element, Transforms } from "slate"
-import { RenderLeafProps, Slate } from "slate-react"
+import { ReactEditor, RenderLeafProps, Slate } from "slate-react"
 
 import { parse, serialize } from "../../../convert/src"
 import { SinkEditable } from "./SinkEditable"
@@ -130,6 +130,16 @@ export function Editable({
     >
       <SinkEditable
         renderLeaf={renderLeaf}
+        onMouseDown={() => {
+          /**
+           * For some reason, Firefox doesn't focus the editor when clicking on
+           * it until the second try. This is a workaround for that.
+           * Handled narrowly to avoid potentially breaking other browsers.
+           */
+          if (navigator.userAgent.toLowerCase().includes("firefox")) {
+            ReactEditor.focus(editor)
+          }
+        }}
         onBlur={onBlur}
         placeholder={placeholder}
         className={className}
