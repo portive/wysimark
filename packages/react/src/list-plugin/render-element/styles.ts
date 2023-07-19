@@ -14,7 +14,7 @@ export const $UnorderedListItem = styled($ListItem)`
   list-style-type: none;
   .--list-item-icon {
     position: absolute;
-    top: 0;
+    top: 0.25em;
     left: -1.375em;
     line-height: 1.5em;
     color: var(--shade-600);
@@ -53,7 +53,7 @@ export const $TaskListItem = styled($ListItem)`
   list-style-type: none;
   .--list-item-icon {
     position: absolute;
-    top: 0.1375em;
+    top: 0.25em;
     left: -1.5em;
     line-height: 1.5em;
     color: var(--shade-300);
