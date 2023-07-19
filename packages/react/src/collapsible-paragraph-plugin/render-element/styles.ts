@@ -3,6 +3,9 @@ import styled from "@emotion/styled"
 export const $Paragraph = styled("p")`
   padding: 0;
   margin: 1em 0;
+  &:first-child {
+    margin-top: 0;
+  }
 
   transition: background-color 200ms, margin-top 200ms, padding-top 200ms,
     margin-bottom 200ms, padding-bottom 200ms, font-size 200ms;
