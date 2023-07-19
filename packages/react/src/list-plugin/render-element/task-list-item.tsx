@@ -1,3 +1,6 @@
+import { useCallback } from "react"
+import { useSlateStatic } from "slate-react"
+
 import { ConstrainedRenderElementProps } from "~/src/sink"
 
 import { TaskListItemElement } from "../types"
@@ -9,11 +12,20 @@ export function TaskListItem({
   attributes,
   children,
 }: ConstrainedRenderElementProps<TaskListItemElement>) {
+  const editor = useSlateStatic()
+  const toggle = useCallback(() => {
+    editor.list.toggleTaskListItem({ at: element })
+  }, [editor, element])
+
   const style = { "--list-item-depth": element.depth } as React.CSSProperties
   return (
     <$TaskListItem {...attributes} style={style}>
       <div className="--list-item-icon" contentEditable={false}>
-        {element.checked ? <CheckedIcon /> : <UncheckedIcon />}
+        {element.checked ? (
+          <CheckedIcon onClick={toggle} style={{ cursor: "pointer" }} />
+        ) : (
+          <UncheckedIcon onClick={toggle} style={{ cursor: "pointer" }} />
+        )}
       </div>
       {children}
     </$TaskListItem>

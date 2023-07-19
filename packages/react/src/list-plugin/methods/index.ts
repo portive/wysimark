@@ -10,6 +10,7 @@ import {
 import { indent } from "./indent"
 import { insertBreak } from "./insert-break"
 import { outdent } from "./outdent"
+import { toggleTaskListItem } from "./toggleTaskListItem"
 
 export function createListMethods(editor: Editor) {
   return {
@@ -19,5 +20,6 @@ export function createListMethods(editor: Editor) {
     convertOrderedList: curryOne(convertOrderedList, editor),
     convertTaskList: curryOne(convertTaskList, editor),
     insertBreak: curryOne(insertBreak, editor),
+    toggleTaskListItem: curryOne(toggleTaskListItem, editor),
   }
 }
