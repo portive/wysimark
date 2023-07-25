@@ -1,9 +1,9 @@
 import throttle from "lodash.throttle"
-import { useCallback, useRef } from "react"
-import { Editor, Element, Transforms } from "slate"
+import { useCallback, useEffect, useRef } from "react"
+import { Descendant, Editor, Element, Transforms } from "slate"
 import { ReactEditor, RenderLeafProps, Slate } from "slate-react"
 
-import { parse, serialize } from "../../../convert/src"
+import { parse, serialize } from "../convert"
 import { SinkEditable } from "./SinkEditable"
 
 export type { Element, Text } from "./plugins"
@@ -33,7 +33,10 @@ export function Editable({
   className,
   style,
 }: EditableProps) {
+  console.log("Editable render")
+
   const ignoreNextChangeRef = useRef(false)
+  const initialValueRef = useRef<Descendant[]>()
 
   /**
    * Throttled version of `onChange` for the `Slate` component. This method gets
@@ -91,6 +94,7 @@ export function Editable({
   if (editor.wysimark.prevValue == null) {
     ignoreNextChangeRef.current = true
     const children = parse(value)
+    initialValueRef.current = children
     editor.wysimark.prevValue = {
       markdown: value,
       children,
@@ -114,32 +118,55 @@ export function Editable({
     }
   }
 
+  const onSinkeEditableMouseDown = useCallback(() => {
+    /**
+     * For some reason, Firefox doesn't focus the editor when clicking on
+     * it until the second try. This is a workaround for that.
+     * Handled narrowly to avoid potentially breaking other browsers.
+     */
+    if (navigator.userAgent.toLowerCase().includes("firefox")) {
+      ReactEditor.focus(editor)
+    }
+  }, [editor])
+
   /**
    * When the user exits the editor, we want to call the `onChange` callback
    * immediately.
    */
   const onBlur = useCallback(() => {
+    console.log("onBlur")
     onThrottledSlateChange.flush()
   }, [onThrottledSlateChange])
+
+  useEffect(() => {
+    console.log("Editable mount")
+    return () => {
+      console.log("Editable unmount")
+    }
+  }, [
+    Slate,
+    SinkEditable,
+    initialValueRef.current,
+    editor,
+    onSlateChange,
+    renderLeaf,
+    onSinkeEditableMouseDown,
+    onBlur,
+    placeholder,
+    className,
+    style,
+  ])
 
   return (
     <Slate
       editor={editor}
-      value={editor.wysimark.prevValue.children}
+      /* NOTE: This is the initial value even though it is named value */
+      value={initialValueRef.current!}
       onChange={onSlateChange}
     >
       <SinkEditable
         renderLeaf={renderLeaf}
-        onMouseDown={() => {
-          /**
-           * For some reason, Firefox doesn't focus the editor when clicking on
-           * it until the second try. This is a workaround for that.
-           * Handled narrowly to avoid potentially breaking other browsers.
-           */
-          if (navigator.userAgent.toLowerCase().includes("firefox")) {
-            ReactEditor.focus(editor)
-          }
-        }}
+        onMouseDown={onSinkeEditableMouseDown}
         onBlur={onBlur}
         placeholder={placeholder}
         className={className}

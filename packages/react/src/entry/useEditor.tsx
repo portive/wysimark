@@ -3,7 +3,7 @@ import { createEditor, Editor, Transforms } from "slate"
 import { withHistory } from "slate-history"
 import { ReactEditor, withReact } from "slate-react"
 
-import { parse, serialize } from "../../../convert/src"
+import { parse, serialize } from "../convert"
 import { Element } from "./plugins"
 import { withSink } from "./SinkEditable"
 import { WysimarkEditor } from "./types"

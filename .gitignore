@@ -40,3 +40,6 @@ tsconfig.tsbuildinfo
 # ignore the crash test from https://roneo.org/markdown/ until I get permission
 roneo-crash-test.md
 roneo.md
+
+# tsup
+tsup.config.bundled*.mjs

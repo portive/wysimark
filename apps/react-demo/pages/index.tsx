@@ -65,9 +65,7 @@ fdsfs`)
           <Editable
             editor={editor}
             value={markdown}
-            onChange={(markdown) => {
-              setMarkdown(markdown)
-            }}
+            onChange={setMarkdown}
             placeholder="Enter text here..."
           />
         </div>

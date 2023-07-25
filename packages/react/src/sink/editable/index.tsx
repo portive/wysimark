@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useMemo } from "react"
 import { Editor } from "slate"
 import { useSlateStatic } from "slate-react"
 import { EditableProps } from "slate-react/dist/components/editable"
@@ -22,7 +22,7 @@ export { SinkReset } from "./styles"
  * the editor.
  */
 export function SinkEditable(originalProps: EditableProps): JSX.Element {
-  const editor = useSlateStatic() as unknown as Editor & SinkEditor
+  const editor = (useSlateStatic() as unknown) as Editor & SinkEditor
 
   /**
    * We ask Slate to normalize the editor once at the very start.
@@ -52,27 +52,42 @@ export function SinkEditable(originalProps: EditableProps): JSX.Element {
 
   const { plugins } = editor.sink
 
-  const nextProps: EditableProps = {
-    decorate: createDecorate(originalProps.decorate, plugins),
-    renderElement: createRenderElement(originalProps.renderElement, plugins),
-    renderLeaf: createRenderLeaf(originalProps.renderLeaf, plugins),
-    renderPlaceholder: createRenderPlaceholder(
-      originalProps.renderPlaceholder,
-      plugins
-    ),
-    /**
-     * NOTE: We skip `onKeyUp` as it is deprecated. If somebody needs it in new
-     * code, we can add it back in.
-     *
-     * https://developer.mozilla.org/en-US/docs/Web/API/Element/keypress_event
-     */
-    onKeyDown: createOnKeyDown(originalProps.onKeyDown, plugins),
-    onKeyUp: createOnKeyUp(originalProps.onKeyUp, plugins),
-    onPaste: createOnPaste(originalProps.onPaste, plugins),
-    onDrop: createOnDrop(originalProps.onDrop, plugins),
-  }
+  const nextProps: EditableProps = useMemo(
+    () => ({
+      ...originalProps,
+      decorate: createDecorate(originalProps.decorate, plugins),
+      renderElement: createRenderElement(originalProps.renderElement, plugins),
+      renderLeaf: createRenderLeaf(originalProps.renderLeaf, plugins),
+      renderPlaceholder: createRenderPlaceholder(
+        originalProps.renderPlaceholder,
+        plugins
+      ),
+      /**
+       * NOTE: We skip `onKeyUp` as it is deprecated. If somebody needs it in new
+       * code, we can add it back in.
+       *
+       * https://developer.mozilla.org/en-US/docs/Web/API/Element/keypress_event
+       */
+      onKeyDown: createOnKeyDown(originalProps.onKeyDown, plugins),
+      onKeyUp: createOnKeyUp(originalProps.onKeyUp, plugins),
+      onPaste: createOnPaste(originalProps.onPaste, plugins),
+      onDrop: createOnDrop(originalProps.onDrop, plugins),
+    }),
+    Object.values(originalProps)
+  )
 
-  const NextEditable = createEditable(plugins)
+  const NextEditable = useMemo(() => createEditable(plugins), [plugins])
 
-  return <NextEditable {...originalProps} {...nextProps} />
+  console.log("SinkEditable render")
+
+  console.log(Object.values(nextProps))
+
+  useEffect(() => {
+    console.log("SinkEditable mount")
+    return () => {
+      console.log("SinkEditable unmount")
+    }
+  }, [NextEditable, nextProps])
+
+  return <NextEditable {...nextProps} />
 }
