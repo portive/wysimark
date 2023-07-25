@@ -1,10 +1,12 @@
-import { Editor } from "slate"
+import { Editor, Path, Transforms } from "slate"
 
 import {
   createHotkeyHandler,
   createIsElementType,
   createPlugin,
   curryOne,
+  findElementUp,
+  isStartOfElement,
   TypedPlugin,
 } from "~/src/sink"
 
@@ -40,6 +42,38 @@ export const ListPlugin = createPlugin<ListPluginCustomTypes>(
       editor: {
         normalizeNode: (entry) => normalizeNode(editor, entry),
         insertBreak: list.insertBreak,
+        deleteBackward: (unit) => {
+          /**
+           * This handles the logic where if the cursor is at the start of a
+           * list item, and the user presses backspace, then the list item
+           * should be converted to a paragraph if there are no list items
+           * before it. If there is a list item before it, then the normal
+           * delete behavior which would merge the list items together will
+           * occur.
+           */
+          if (unit !== "character") return false
+          if (!isStartOfElement(editor, isListItem)) return false
+          const listItem = findElementUp<ListItemElement>(editor, isListItem)
+          if (!listItem) return false
+          const listItemPath = listItem[1]
+          /**
+           * If the current list item is the first element in the document,
+           * convert it to a paragraph.
+           */
+          if (!Path.hasPrevious(listItemPath)) {
+            editor.collapsibleParagraph.convertParagraph()
+            return true
+          }
+          const prevElementPath = Path.previous(listItemPath)
+          const prevElementEntry = Editor.node(editor, prevElementPath)
+          if (isListItem(prevElementEntry[0])) return false
+          /**
+           * If the previous element is not a list item, then convert the
+           * current list item to a paragraph.
+           */
+          editor.collapsibleParagraph.convertParagraph()
+          return true
+        },
       },
       editableProps: {
         renderElement,
