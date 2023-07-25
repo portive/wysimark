@@ -1,5 +1,12 @@
 # @wysimark/convert
 
+## 2.2.5
+
+### Patch Changes
+
+- 09c647e: Improve first paragraph spacing and fix firefox requires two clicks to focus
+- 2f84090: Enable valid serialization of an empty task list
+
 ## 2.2.4
 
 ### Patch Changes

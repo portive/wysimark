@@ -1,5 +1,15 @@
 # @wysimark/react
 
+## 2.8.3
+
+### Patch Changes
+
+- 09c647e: Improve first paragraph spacing and fix firefox requires two clicks to focus
+- 2f84090: Enable valid serialization of an empty task list
+- 8a4fe70: Allow backspace to turn empty list item to paragraph
+- 53c105e: Fix list item icon position
+- 279d135: Enable click to toggle task list item
+
 ## 2.8.2
 
 ### Patch Changes
