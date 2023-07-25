@@ -1,5 +1,8 @@
 {
-  "extends": "tsconfig/tsconfig.custom.json",
+  /**
+   * `extends` must be relative at root
+   */
+  "extends": "./packages/tsconfig/tsconfig.custom.json",
   "include": ["**/*.ts", "**/*.tsx", "**/*.vue"],
   "exclude": ["node_modules", ".dist"]
 }

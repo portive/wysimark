@@ -1,12 +1,13 @@
 {
   "name": "react-demo",
   "private": true,
-  "packageManager": "yarn@3.3.1",
+  "packageManager": "pnpm@8.6.6",
   "devDependencies": {
     "concurrently": "^7.2",
     "eslint": "^8.4.1",
     "eslint-config-custom": "*",
     "prettier": "^2",
+    "tsconfig": "workspace:*",
     "ts-node": "^10.9.1",
     "typescript": "^4.9.4"
   },
@@ -20,11 +21,11 @@
   },
   "scripts": {
     "-- fix": "# fix syntax",
-    "fix": "yarn fix:prettier && yarn fix:eslint",
-    "fix:eslint": "yarn lint:eslint --fix",
-    "fix:prettier": "yarn lint:prettier --write",
+    "fix": "pnpm fix:prettier && pnpm fix:eslint",
+    "fix:eslint": "pnpm lint:eslint --fix",
+    "fix:prettier": "pnpm lint:prettier --write",
     "-- lint": "# lint syntax",
-    "lint": "concurrently 'yarn lint:prettier' 'yarn lint:eslint' 'yarn lint:tsc'",
+    "lint": "concurrently 'pnpm lint:prettier' 'pnpm lint:eslint' 'pnpm lint:tsc'",
     "lint:prettier": "prettier --check \"**/*.{css,md,js,jsx,json,ts,tsx}\" --ignore-path '../../.prettierignore'",
     "lint:eslint": "eslint .",
     "lint:tsc": "tsc --build ./ --force",

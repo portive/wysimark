@@ -16,6 +16,10 @@
   //   "allowJs": true
   // },
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["../../packages/react/*"]
+    },
     "jsx": "react-jsx"
   },
   "include": ["**/*.ts", "**/*.tsx"],

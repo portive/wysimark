@@ -1,4 +1,4 @@
-import type { TopLevelContent } from "mdast"
+import type { Root, TopLevelContent } from "mdast"
 import remarkGfm from "remark-gfm"
 import remarkParse from "remark-parse"
 import { unified } from "unified"
@@ -10,7 +10,7 @@ import { transformInlineLinks } from "./transform-inline-links"
 const parser = unified().use(remarkParse).use(remarkGfm)
 
 export function parseToAst(markdown: string) {
-  const ast = parser.parse(markdown)
+  const ast = parser.parse(markdown) as Root
   /**
    * Takes linkReference and imageReference and turns them into link and image.
    */

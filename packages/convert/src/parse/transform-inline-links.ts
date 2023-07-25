@@ -1,6 +1,11 @@
-import type { Image, Link, Root } from "mdast"
+import type { Content, Image, Link, Parent, Root } from "mdast"
 import { definitions } from "mdast-util-definitions"
+import type { Node } from "unist"
+// import type { Node } from "unist"
 import { SKIP, visit } from "unist-util-visit"
+// import { Node } from "unist-util-visit/lib"
+
+// type Node = Root | Image | Link // | Definition | Parent;
 
 /**
  * Based on the code from `remark-inline-links` but rewritten here because, for
@@ -20,7 +25,9 @@ import { SKIP, visit } from "unist-util-visit"
 export function transformInlineLinks(tree: Root): void {
   const definition = definitions(tree)
 
-  visit(tree, (node, index, parent) => {
+  visit<Node>(tree as Node, (n, index, p) => {
+    const node = (n as unknown) as Content
+    const parent = (p as unknown) as Parent | null
     if (
       node.type === "definition" &&
       parent !== null &&
@@ -31,7 +38,11 @@ export function transformInlineLinks(tree: Root): void {
     }
 
     if (node.type === "imageReference" || node.type === "linkReference") {
-      const def = definition(node.identifier)
+      const identifier =
+        "identifier" in node && typeof node.identifier === "string"
+          ? node.identifier
+          : ""
+      const def = definition(identifier)
 
       if (def && parent !== null && typeof index === "number") {
         const replacement: Image | Link =
