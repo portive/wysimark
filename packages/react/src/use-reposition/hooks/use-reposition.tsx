@@ -1,6 +1,9 @@
 import { useEffect } from "react"
 
-import { useThrottledRefresh } from "./use-throttled-refresh"
+import {
+  useThrottledRefresh,
+  UseThrottledRefreshReturnType,
+} from "./use-throttled-refresh"
 
 /**
  * Refreshes the Component whenever the page is resized or the window is
@@ -12,7 +15,7 @@ import { useThrottledRefresh } from "./use-throttled-refresh"
  * update the components while still respected the fact that the updates will
  * be throttled so as not to overload the browser.
  */
-export function useReposition() {
+export function useReposition(): UseThrottledRefreshReturnType {
   /**
    * Create a throttled `refresh` method.
    */

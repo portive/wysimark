@@ -4,6 +4,13 @@
  */
 {
   "extends": "tsconfig/tsconfig.custom.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["*"]
+    },
+    "jsx": "react-jsx"
+  },
   // "compilerOptions": {
   //   /**
   //    * These are settings that Next.js insists exists. If they aren't there,
@@ -15,9 +22,6 @@
   //   "jsx": "preserve",
   //   "allowJs": true
   // },
-  "compilerOptions": {
-    "jsx": "react-jsx"
-  },
   "include": ["**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
 }

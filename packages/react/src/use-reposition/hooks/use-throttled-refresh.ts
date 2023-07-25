@@ -12,6 +12,10 @@
 import throttle from "lodash.throttle"
 import { useState } from "react"
 
+export type UseThrottledRefreshReturnType = ReturnType<typeof throttle> & {
+  counter: number
+}
+
 /**
  * Creates a hook that rerenders a component when the returned `refresh`
  * method is called; however, it throttles the refresh based on the
@@ -19,7 +23,9 @@ import { useState } from "react"
  *
  * This is a useful component used when throttling reposition updates.
  */
-export function useThrottledRefresh(intervalInMs = 100) {
+export function useThrottledRefresh(
+  intervalInMs = 100
+): UseThrottledRefreshReturnType {
   const [counter, setState] = useState(0)
 
   const refresh = throttle(
