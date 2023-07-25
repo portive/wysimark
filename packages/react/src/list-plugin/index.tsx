@@ -1,4 +1,4 @@
-import { Editor, Path, Transforms } from "slate"
+import { Editor, Path } from "slate"
 
 import {
   createHotkeyHandler,
