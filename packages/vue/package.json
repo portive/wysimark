@@ -29,7 +29,7 @@
     "jest": "^27",
     "mdast-util-definitions": "^5.1.1",
     "plop": "^2",
-    "prettier": "^2",
+    "prettier": "^2.8",
     "pretty-bytes": "^6.0.0",
     "remark-gfm": "^3.0.1",
     "remark-parse": "^10.0.1",
