@@ -49,37 +49,37 @@ export function createEditable(
   return CurrentRenderEditable
 
   // return function SinkEditable(props) {
-    // /**
-    //  * This creates the inner-most RenderEditable.
-    //  */
-    // let CurrentRenderEditable = (props: EditableProps) => (
-    //   <Editable {...props} />
-    // )
-    // /**
-    //  * We iterate through all the `renderEditable` functions and wrap them
-    //  * around the next inner-most `renderEditable`.
-    //  */
-    // for (const fn of fns) {
-    //   /**
-    //    * Assigns the CurrentRenderEditable as the previous one so that we can
-    //    * have it available to call in the NextRenderEditable
-    //    */
-    //   const PrevRenderEditable = CurrentRenderEditable
-    //   CurrentRenderEditable = (props: EditableProps) => {
-    //     /**
-    //      * TODO:
-    //      *
-    //      * This should probably be fixed in the actual types; however, we
-    //      * know at this point that `renderEditable` is defined because we
-    //      * filtered it in an earlier step.
-    //      */
-    //     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    //     return fn({
-    //       attributes: props,
-    //       Editable: PrevRenderEditable,
-    //     })
-    //   }
-    // }
-    // return <CurrentRenderEditable {...props} />
+  // /**
+  //  * This creates the inner-most RenderEditable.
+  //  */
+  // let CurrentRenderEditable = (props: EditableProps) => (
+  //   <Editable {...props} />
+  // )
+  // /**
+  //  * We iterate through all the `renderEditable` functions and wrap them
+  //  * around the next inner-most `renderEditable`.
+  //  */
+  // for (const fn of fns) {
+  //   /**
+  //    * Assigns the CurrentRenderEditable as the previous one so that we can
+  //    * have it available to call in the NextRenderEditable
+  //    */
+  //   const PrevRenderEditable = CurrentRenderEditable
+  //   CurrentRenderEditable = (props: EditableProps) => {
+  //     /**
+  //      * TODO:
+  //      *
+  //      * This should probably be fixed in the actual types; however, we
+  //      * know at this point that `renderEditable` is defined because we
+  //      * filtered it in an earlier step.
+  //      */
+  //     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  //     return fn({
+  //       attributes: props,
+  //       Editable: PrevRenderEditable,
+  //     })
+  //   }
+  // }
+  // return <CurrentRenderEditable {...props} />
   // }
 }

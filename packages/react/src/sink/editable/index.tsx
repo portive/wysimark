@@ -22,7 +22,7 @@ export { SinkReset } from "./styles"
  * the editor.
  */
 export function SinkEditable(originalProps: EditableProps): JSX.Element {
-  const editor = (useSlateStatic() as unknown) as Editor & SinkEditor
+  const editor = useSlateStatic() as unknown as Editor & SinkEditor
 
   /**
    * We ask Slate to normalize the editor once at the very start.

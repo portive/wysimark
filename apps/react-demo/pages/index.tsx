@@ -1,7 +1,8 @@
 import styled from "@emotion/styled"
 import { ChangeEvent, useCallback, useState } from "react"
 
-import { Editable, useEditor } from "../../../packages/react/src/entry"
+import { Editable, useEditor } from "~/src/entry"
+
 import content from "../content/basic.md"
 
 export default function Page() {

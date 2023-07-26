@@ -34,9 +34,9 @@
     "remark-gfm": "^3.0.1",
     "remark-parse": "^10.0.1",
     "rimraf": "^4.1.2",
-    "tsconfig": "workspace:*",
     "ts-jest": "^27",
     "ts-node": "^10.9.1",
+    "tsconfig": "workspace:*",
     "tsconfig-paths": "^4.1.2",
     "tsup": "^6.7.0",
     "type-fest": "^3.2.0",
@@ -45,7 +45,7 @@
     "unist-util-visit": "^4.1.2",
     "vite": "^4.3.3",
     "vite-plugin-dts": "^2.3.0",
-    "vue": "^3"
+    "vue": "^3.3.4"
   },
   "dependencies": {
     "@emoji-mart/data": "^1.1.0",
@@ -55,7 +55,7 @@
     "@emotion/styled": "^11.10.6",
     "@portive/client": "^10.0.3",
     "clsx": "^1.2.1",
-    "dotenv": "16.x",
+    "dotenv": "^16.3",
     "emoji-mart": "^5.4.0",
     "is-hotkey": "^0.2.0",
     "just-map-values": "^3.2.0",

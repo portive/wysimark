@@ -33,8 +33,6 @@ export function Editable({
   className,
   style,
 }: EditableProps) {
-  console.log("Editable render")
-
   const ignoreNextChangeRef = useRef(false)
   const initialValueRef = useRef<Descendant[]>()
 
@@ -134,7 +132,6 @@ export function Editable({
    * immediately.
    */
   const onBlur = useCallback(() => {
-    console.log("onBlur")
     onThrottledSlateChange.flush()
   }, [onThrottledSlateChange])
 
@@ -157,11 +154,15 @@ export function Editable({
     style,
   ])
 
+  if (!initialValueRef.current) {
+    throw new Error("initialValueRef.current is null")
+  }
+
   return (
     <Slate
       editor={editor}
       /* NOTE: This is the initial value even though it is named value */
-      value={initialValueRef.current!}
+      value={initialValueRef.current}
       onChange={onSlateChange}
     >
       <SinkEditable

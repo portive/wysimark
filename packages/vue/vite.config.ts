@@ -32,6 +32,7 @@ export default defineConfig({
     vue(),
     dts({
       root: __dirname,
+      outputDir: ".dist",
       entryRoot: "./src",
       cleanVueFileName: true,
       // tsConfigFilePath: "./tsconfig.json",

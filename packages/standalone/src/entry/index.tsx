@@ -27,7 +27,7 @@ type StandaloneMethods = {
 /**
  * The object returned by `createWysimark`
  */
-type Wysimark = {
+export type Wysimark = {
   unmount: () => void
   getMarkdown: () => string
   setMarkdown: (markdown: string) => void

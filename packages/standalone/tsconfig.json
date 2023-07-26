@@ -4,6 +4,10 @@
  */
 {
   "extends": "tsconfig/tsconfig.custom.json",
+  "compilerOptions": {
+    "rootDir": "..",
+    "baseUrl": "."
+  },
   // "compilerOptions": {
   //   /**
   //    * These are settings that Next.js insists exists. If they aren't there,

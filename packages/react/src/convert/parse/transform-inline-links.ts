@@ -1,11 +1,7 @@
 import type { Content, Image, Link, Parent, Root } from "mdast"
 import { definitions } from "mdast-util-definitions"
 import type { Node } from "unist"
-// import type { Node } from "unist"
 import { SKIP, visit } from "unist-util-visit"
-// import { Node } from "unist-util-visit/lib"
-
-// type Node = Root | Image | Link // | Definition | Parent;
 
 /**
  * Based on the code from `remark-inline-links` but rewritten here because, for
@@ -26,8 +22,8 @@ export function transformInlineLinks(tree: Root): void {
   const definition = definitions(tree)
 
   visit<Node>(tree as Node, (n, index, p) => {
-    const node = (n as unknown) as Content
-    const parent = (p as unknown) as Parent | null
+    const node = n as unknown as Content
+    const parent = p as unknown as Parent | null
     if (
       node.type === "definition" &&
       parent !== null &&

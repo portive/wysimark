@@ -5,6 +5,7 @@
 {
   "extends": "tsconfig/tsconfig.custom.json",
   "compilerOptions": {
+    "rootDir": ".",
     "baseUrl": ".",
     "paths": {
       "~/*": ["*"]

@@ -3,6 +3,20 @@
  * the config file for Next.js
  */ {
   "extends": "tsconfig/tsconfig.next.json",
+  "compilerOptions": {
+    "rootDir": "../..",
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["../../packages/react/*"]
+      // NOTE: Below is obsolete
+      // "~wysimark/*": ["../../packages/react/*"]
+      /**
+       * Required to support `typeRoots`
+       * https://stackoverflow.com/questions/64287224/typeroots-fails-to-find-d-ts-declaration-files-in-project
+       */
+      // "*": ["types/*"]
+    }
+  },
   // "compilerOptions": {
   //   /**
   //    * These are settings that Next.js insists exists. If they aren't there,

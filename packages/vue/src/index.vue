@@ -12,7 +12,7 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, onBeforeUnmount, ref } from "vue"
-import { createWysimark } from "@wysimark/standalone"
+import { Wysimark, createWysimark } from "@wysimark/standalone"
 
 export default defineComponent({
   /**
@@ -71,11 +71,19 @@ export default defineComponent({
      */
 
     const containerRef = ref<null | HTMLDivElement>(null)
-    let wysimark: ReturnType<typeof createWysimark>
+    let wysimark: Wysimark
 
     onMounted(() => {
       if (containerRef.value == null) throw new Error(`containerRef is null`)
-      wysimark = createWysimark(containerRef.value, {
+      /**
+       * For some reason, TypeScript is struggling on getting
+       * `containerRef.value`. It slows vscode down, prevent Vite from building
+       * the `.d.ts` file and has even cause vscode to crash.
+       *
+       * Adding a type here fixes the issue.
+       */
+      const container = containerRef.value as HTMLDivElement
+      wysimark = createWysimark(container, {
         initialMarkdown: props.modelValue,
         authToken: props.authToken,
         height: props.height,
@@ -97,11 +105,11 @@ export default defineComponent({
     })
 
     return {
-      container: containerRef,
-      getMarkdown() {
+      // container: containerRef,
+      getMarkdown(): string {
         return wysimark.getMarkdown()
       },
-      setMarkdown(markdown: string) {
+      setMarkdown(markdown: string): void {
         wysimark.setMarkdown(markdown)
       },
     }
