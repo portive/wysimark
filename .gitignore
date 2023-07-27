@@ -1,45 +1,47 @@
-# ignore dotenv environment variables
-.env/
+# build
+.build/
+build/
 
-# ignore build/dist directories
-.npm/
-.build
+# dist (`dist` used by Vite)
 .dist/
-# By Vite. Added so we don't use it if it hasn't been configured yet.
 dist/
 
-# ignore Next.js directory
-.next/
+# dotenv
+.env/
 
-# ignore vercel link directory
-.vercel/
+# eslint
+eslint.log
+.eslintcache
 
-# ignore .temp directory used during testing
-.temp/
-
-# standard ignorable files found when using Yarn
-node_modules/
+# mac
 .DS_Store
 
-# logging we can ignore
-yarn-error.log
-eslint.log
+# next.js
+.next/
 
-# ignore the increment typescript build info
-tsconfig.tsbuildinfo
+# node_modules
+node_modules/
 
-# ignore .yarn used by yarn
-.yarn
-
-# ignore turborepo files in .turbo
-.turbo
-
-# ignore .vscode settings for now because it's being used to disable copilot comments dynamically
-.vscode
-
-# ignore the crash test from https://roneo.org/markdown/ until I get permission
-roneo-crash-test.md
-roneo.md
+# temp
+.temp/
 
 # tsup
 tsup.config.bundled*.mjs
+
+# turborepo
+.turbo
+
+# typescript
+tsconfig.tsbuildinfo
+
+# vercel
+.vercel/
+
+# --- custom ---
+
+# https://roneo.org/markdown/ until I get permission
+roneo-crash-test.md
+roneo.md
+
+# yarn
+.yarn/

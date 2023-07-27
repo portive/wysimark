@@ -30,6 +30,9 @@ importers:
       husky:
         specifier: ^8.0.0
         version: 8.0.0
+      node-pty:
+        specifier: ^1.0.0
+        version: 1.0.0
       pinst:
         specifier: ^3.0.0
         version: 3.0.0
@@ -95,8 +98,8 @@ importers:
         specifier: '*'
         version: link:../../packages/eslint-config-custom
       prettier:
-        specifier: ^2
-        version: 2.0.0
+        specifier: ^2.8
+        version: 2.8.8
       ts-node:
         specifier: ^10.9.1
         version: 10.9.1(@types/node@18.17.0)(typescript@4.9.5)
@@ -138,8 +141,8 @@ importers:
         specifier: '*'
         version: link:../../packages/eslint-config-custom
       prettier:
-        specifier: ^2
-        version: 2.0.0
+        specifier: ^2.8
+        version: 2.8.8
       ts-node:
         specifier: ^10.9.1
         version: 10.9.1(@types/node@18.17.0)(typescript@4.9.5)
@@ -280,8 +283,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/eslint-config-custom
       prettier:
-        specifier: ^2
-        version: 2.0.0
+        specifier: ^2.8
+        version: 2.8.8
       rimraf:
         specifier: ^4.1.2
         version: 4.1.2
@@ -618,8 +621,8 @@ importers:
         specifier: ^2
         version: 2.0.0
       prettier:
-        specifier: ^2
-        version: 2.0.0
+        specifier: ^2.8
+        version: 2.8.8
       pretty-bytes:
         specifier: ^6.0.0
         version: 6.0.0
@@ -786,8 +789,8 @@ importers:
         specifier: ^2
         version: 2.0.0
       prettier:
-        specifier: ^2
-        version: 2.0.0
+        specifier: ^2.8
+        version: 2.8.8
       pretty-bytes:
         specifier: ^6.0.0
         version: 6.0.0
@@ -3900,6 +3903,31 @@ packages:
     resolution: {integrity: sha512-eajaHprq5AaCdhWLlLW53mJWykWSgThAJ2IBUvm2Jx13ruole3t6rMOVPR2MvTacaq8ayj3zRtLM5j9j4Ejqyw==}
     dev: false
 
+  /@next/react-dev-overlay@12.0.0(react-dom@18.0.0)(react@18.0.0):
+    resolution: {integrity: sha512-sGDNFQFV6H+KAi6yQRIv4LtZ8Mg8zu1CwyVimwgYboai4eVIOg4rigZADV2xp4YEtwkgvQEijDh6J7rLCKPDXA==}
+    peerDependencies:
+      react: ^17.0.2
+      react-dom: ^17.0.2
+      webpack: ^4 || ^5
+    peerDependenciesMeta:
+      webpack:
+        optional: true
+    dependencies:
+      '@babel/code-frame': 7.12.11
+      anser: 1.4.9
+      chalk: 4.0.0
+      classnames: 2.2.6
+      css.escape: 1.5.1
+      data-uri-to-buffer: 3.0.1
+      platform: 1.3.6
+      react: 18.0.0
+      react-dom: 18.0.0(react@18.0.0)
+      shell-quote: 1.7.2
+      source-map: 0.8.0-beta.0
+      stacktrace-parser: 0.1.10
+      strip-ansi: 6.0.1
+    dev: false
+
   /@next/react-dev-overlay@12.0.0(react-dom@18.0.0)(react@18.0.0)(webpack@5.88.2):
     resolution: {integrity: sha512-sGDNFQFV6H+KAi6yQRIv4LtZ8Mg8zu1CwyVimwgYboai4eVIOg4rigZADV2xp4YEtwkgvQEijDh6J7rLCKPDXA==}
     peerDependencies:
@@ -3924,6 +3952,18 @@ packages:
       stacktrace-parser: 0.1.10
       strip-ansi: 6.0.1
       webpack: 5.88.2
+    dev: false
+
+  /@next/react-refresh-utils@12.0.0(react-refresh@0.8.3):
+    resolution: {integrity: sha512-S5EjnsNus4vX4hU0Ky/NIGXAWO2aPxS78ZQO2qK4yvEpNJ554B/xDoErb6D1HSpMiwBxSXE36FLsjvaxMvUs3g==}
+    peerDependencies:
+      react-refresh: 0.8.3
+      webpack: ^4 || ^5
+    peerDependenciesMeta:
+      webpack:
+        optional: true
+    dependencies:
+      react-refresh: 0.8.3
     dev: false
 
   /@next/react-refresh-utils@12.0.0(react-refresh@0.8.3)(webpack@5.88.2):
@@ -14132,7 +14172,6 @@ packages:
   /nan@2.17.0:
     resolution: {integrity: sha512-2ZTgtl0nJsO0KQCjEpxcIr5D+Yv90plTitZt9JBfQvVJDS5seMl3FOvsh3+9CoYWXf/1l5OaZzzF6nDm4cagaQ==}
     dev: true
-    optional: true
 
   /nanoid@3.3.6:
     resolution: {integrity: sha512-BGcqMMJuToF7i1rt+2PWSNVnWIkGCU78jBG3RxO/bZlnZPK2Cmi2QaffxGO/2RvWi9sL+FAiRiXMgsyxQ1DIDA==}
@@ -14281,8 +14320,8 @@ packages:
       '@hapi/accept': 5.0.2
       '@next/env': 12.0.0
       '@next/polyfill-module': 12.0.0
-      '@next/react-dev-overlay': 12.0.0(react-dom@18.0.0)(react@18.0.0)(webpack@5.88.2)
-      '@next/react-refresh-utils': 12.0.0(react-refresh@0.8.3)(webpack@5.88.2)
+      '@next/react-dev-overlay': 12.0.0(react-dom@18.0.0)(react@18.0.0)
+      '@next/react-refresh-utils': 12.0.0(react-refresh@0.8.3)
       '@node-rs/helper': 1.2.1
       assert: 2.0.0
       browserify-zlib: 0.2.0
@@ -14459,6 +14498,13 @@ packages:
       lodash.get: 4.4.2
       mkdirp: 0.5.6
       resolve: 1.22.2
+    dev: true
+
+  /node-pty@1.0.0:
+    resolution: {integrity: sha512-wtBMWWS7dFZm/VgqElrTvtfMq4GzJ6+edFI0Y0zyzygUSZMgZdraDUMUhCIvkjhJjme15qWmbyJbtAx4ot4uZA==}
+    requiresBuild: true
+    dependencies:
+      nan: 2.17.0
     dev: true
 
   /node-releases@1.1.77:
