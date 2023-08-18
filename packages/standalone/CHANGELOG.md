@@ -1,5 +1,12 @@
 # @wysimark/standalone
 
+## 3.0.1
+
+### Patch Changes
+
+- 501042d: Remove unnecessary console.log used for debugging
+- 30cf489: When user clicks inside editor but outside content focus the editor
+
 ## 3.0.0
 
 ### Major Changes
