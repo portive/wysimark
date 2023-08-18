@@ -2,8 +2,6 @@ import { useState } from "react"
 
 import { Editable, useEditor } from "~/src/entry"
 
-import content from "../../content/basic.md"
-
 /**
  * Sample to replicate issue:
  *
@@ -11,7 +9,13 @@ import content from "../../content/basic.md"
  */
 
 export default function Page() {
-  const [markdown, setMarkdown] = useState("")
+  const [markdown, setMarkdown] = useState(`1. Item 1
+2. Item 2
+3. Item 3
+
+Paragraph
+
+1. Item 1 again`)
 
   const editor = useEditor({
     authToken: process.env.NEXT_PUBLIC_PORTIVE_AUTH_TOKEN,
