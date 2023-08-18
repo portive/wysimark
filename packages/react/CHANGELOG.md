@@ -1,5 +1,11 @@
 # @wysimark/react
 
+## 3.0.0
+
+### Major Changes
+
+- a02532c: Fix remove styles in menu and hotkey
+
 ## 2.8.3
 
 ### Patch Changes
