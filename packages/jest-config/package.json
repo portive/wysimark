@@ -1,7 +1,7 @@
 {
   "name": "jest-config",
   "version": "1.0.0",
-  "privagte": true,
+  "private": true,
   "description": "",
   "main": "index.js",
   "exports": {
