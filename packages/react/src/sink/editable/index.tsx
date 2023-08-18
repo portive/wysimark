@@ -78,16 +78,26 @@ export function SinkEditable(originalProps: EditableProps): JSX.Element {
 
   const NextEditable = useMemo(() => createEditable(plugins), [plugins])
 
-  console.log("SinkEditable render")
+  /**
+   * NOTE:
+   *
+   * The following code is used to see if we are getting unnecessary re-renders.
+   *
+   * Comment it out when we are happy.
+   *
+   * - We SHOULD see `SinkeEditable render` whenever the markdown is updated
+   * - We SHOULD NOT see `SinkEditable mount` or unmount at each update
+   */
+  // console.log("SinkEditable render")
 
-  console.log(Object.values(nextProps))
+  // console.log(Object.values(nextProps))
 
-  useEffect(() => {
-    console.log("SinkEditable mount")
-    return () => {
-      console.log("SinkEditable unmount")
-    }
-  }, [NextEditable, nextProps])
+  // useEffect(() => {
+  //   console.log("SinkEditable mount")
+  //   return () => {
+  //     console.log("SinkEditable unmount")
+  //   }
+  // }, [NextEditable, nextProps])
 
   return <NextEditable {...nextProps} />
 }

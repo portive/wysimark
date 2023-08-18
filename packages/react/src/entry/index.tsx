@@ -135,24 +135,34 @@ export function Editable({
     onThrottledSlateChange.flush()
   }, [onThrottledSlateChange])
 
-  useEffect(() => {
-    console.log("Editable mount")
-    return () => {
-      console.log("Editable unmount")
-    }
-  }, [
-    Slate,
-    SinkEditable,
-    initialValueRef.current,
-    editor,
-    onSlateChange,
-    renderLeaf,
-    onSinkeEditableMouseDown,
-    onBlur,
-    placeholder,
-    className,
-    style,
-  ])
+  /**
+   * NOTE:
+   *
+   * The following code is used to see if we are getting unnecessary re-renders.
+   *
+   * Comment it out when we are happy.
+   *
+   * - We SHOULD see `Editable mount` on the initial render.
+   * - We SHOULD NOT see `Editable mount` or unmount at each markdown update.
+   */
+  // useEffect(() => {
+  //   console.log("Editable mount")
+  //   return () => {
+  //     console.log("Editable unmount")
+  //   }
+  // }, [
+  //   Slate,
+  //   SinkEditable,
+  //   initialValueRef.current,
+  //   editor,
+  //   onSlateChange,
+  //   renderLeaf,
+  //   onSinkeEditableMouseDown,
+  //   onBlur,
+  //   placeholder,
+  //   className,
+  //   style,
+  // ])
 
   if (!initialValueRef.current) {
     throw new Error("initialValueRef.current is null")
