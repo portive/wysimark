@@ -1,0 +1,15 @@
+{
+  "extends": "tsconfig/tsconfig.base.json",
+  "compilerOptions": {
+    /**
+     * Setting jsx to "react-jsx" lets TypeScript know that you're using the new
+     * JSX transform introduced in React 17, which supports JSX without having
+     * to import React from 'react' at the beginning of every file.
+     *
+     * If you're using tsup for building, it would likely expect this setting in
+     * order to correctly transpile your TypeScript code into valid JavaScript
+     * that uses the new JSX Transform.
+     */
+    "jsx": "react-jsx"
+  }
+}

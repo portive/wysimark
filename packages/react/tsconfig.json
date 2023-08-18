@@ -11,18 +11,5 @@
       "~/*": ["*"]
     },
     "jsx": "react-jsx"
-  },
-  // "compilerOptions": {
-  //   /**
-  //    * These are settings that Next.js insists exists. If they aren't there,
-  //    * Next.js will create them
-  //    */
-  //   "module": "ESNext",
-  //   "sourceMap": true,
-  //   "incremental": true,
-  //   "jsx": "preserve",
-  //   "allowJs": true
-  // },
-  "include": ["**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+  }
 }

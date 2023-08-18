@@ -1,8 +1,25 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-/** @type {import('ts-jest/dist/types').InitialOptionsTsJest} */
-
 const fs = require("fs")
-const esmModules = require("./jest.esm-modules.cjs").join("|")
+const path = require("path")
+
+/**
+ * Get the value of the `FAST` environment variable and use it to return the
+ * value of `isolatedModules`. When `isolatedModules` is `true`, the tests will
+ * run faster but will not perform full type checking on the test files.
+ */
+function getIsolatedModules() {
+  switch (process.env.FAST) {
+    case "1":
+      return true
+    case "0":
+      return false
+    default:
+      throw new Error("FAST environment variable must be 0 or 1")
+  }
+}
+
+const isolatedModules = getIsolatedModules()
+
+const TSCONFIG_FILENAME = "tsconfig.ts-node.json"
 
 /**
  * Make sure the file `tsconfig.ts-jest.json` was copied into the directory.
@@ -13,14 +30,33 @@ const esmModules = require("./jest.esm-modules.cjs").join("|")
  * This throws an error earlier so we can copy `tsconfig.ts-jest.json` to fix
  * the error.
  */
-if (!fs.existsSync("tsconfig.ts-jest.json")) {
-  console.log()
-  throw new Error("tsconfig.ts-jest.json does not exist but is required.")
+function ensureTsconfigExists(tsconfigFilename) {
+  if (!fs.existsSync(tsconfigFilename)) {
+    throw new Error(`${tsconfigFilename} does not exist but is required.`)
+  } else {
+    console.log(
+      `Using tsconfig "${path.join(process.cwd(), tsconfigFilename)}"`
+    )
+  }
 }
 
-/** @type {import('ts-jest/dist/types').InitialOptionsTsJest} */
+// Use the function like this:
+ensureTsconfigExists(TSCONFIG_FILENAME)
+
+/** @type {import('ts-jest/dist/types').JestConfigWithTsJest} */
 module.exports = {
-  setupFiles: ["./jest.setup.cjs"],
+  /**
+   * To enable dotenv variables in unit tests, uncomment the following line
+   * and make sure the `dotenv` package is installed.
+   *
+   * Create a `jest.setup.js` file in the package directory and add code similar
+   * to the following.
+   *
+   * ```js
+   * require("dotenv").config({ path: "../../.env/test.env" })
+   * ```
+   */
+  // setupFiles: ["./jest.setup.js"],
   /**
    * Configuration for getting `ts-jest` running
    * https://github.com/kulshekhar/ts-jest
@@ -40,7 +76,7 @@ module.exports = {
         /**
          * Change the tsconfig file used to `tsconfig.ts-jest.json`
          */
-        tsconfig: "tsconfig.ts-jest.json",
+        tsconfig: TSCONFIG_FILENAME,
         /**
          * Use `esm` set to true
          */
@@ -53,11 +89,21 @@ module.exports = {
          * be passed before a deploy, for example, but `jest.fast.config.js`
          * is useful when wanting to quickly test and get responses.
          */
-        isolatedModules: false,
+        isolatedModules,
       },
     ],
   },
-  transformIgnorePatterns: [`node_modules/(?!(${esmModules}))`],
+  /**
+   * By default, this is set to `node_modules` which means that files in
+   * `node_modules` will NOT be transformed.
+   *
+   * This is a problem for `esm` modules because they need to be transformed to
+   * work with jest which is expecing `commonjs` modules.
+   *
+   * For this reason, we remove `node_modules` from the
+   * `transformIgnorePatterns` array.
+   */
+  transformIgnorePatterns: [],
   /**
    * Sometimes, our tests use temp files that we keep in a `.temp` directory.
    * These files are manipulated during the test and we don't want that to
