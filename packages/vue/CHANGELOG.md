@@ -1,5 +1,11 @@
 # @wysimark/vue
 
+## 3.0.2
+
+### Patch Changes
+
+- 82716be: Fix numbering of ordered list items in separate lists
+
 ## 3.0.1
 
 ### Patch Changes
