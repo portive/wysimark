@@ -1,4 +1,5 @@
 import styled from "@emotion/styled"
+import Head from "next/head"
 import { ChangeEvent, useCallback, useState } from "react"
 
 import { Editable, useEditor } from "~/src/entry"
@@ -36,6 +37,9 @@ fdsfs`)
 
   return (
     <div style={{ margin: "2em" }}>
+      <Head>
+        <link rel="stylesheet" href="/preflight.css" />
+      </Head>
       <div className="tabs">
         <a className="active" href="/">
           React Src
@@ -43,7 +47,7 @@ fdsfs`)
         <a href="/dist">Dist</a>
         <a href="http://localhost:3733/">Standalone Dist</a>
         <a href="http://localhost:3734/">Vue Src</a>
-        <a href="http://localhost:3734/dist">Vue Dist</a>
+        <a href="http://localhost:3734/dist">Vue Dist</a>H
       </div>
       <h1>Wysimark React Demo</h1>
       <p>

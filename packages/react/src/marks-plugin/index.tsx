@@ -39,21 +39,14 @@ export type MarksPluginCustomTypes = {
 
 export const MarksPlugin = createPlugin<MarksPluginCustomTypes>((editor) => {
   editor.marksPlugin = createMarksMethods(editor)
-  // const originalInsertText = editor.insertText
-  // editor.insertText = (text) => {
-  //   console.log("tirggered")
-  //   if (text === "*") {
-  //     return
-  //   }
-  //   originalInsertText(text)
-  // }
   const hotkeyHandler = createHotkeyHandler({
     "mod+b": editor.marksPlugin.toggleBold,
     "mod+i": editor.marksPlugin.toggleItalic,
     "mod+u": editor.marksPlugin.toggleUnderline,
-    "super+p": editor.marksPlugin.toggleSup,
+    "super+0": editor.marksPlugin.removeMarks,
     "super+b": editor.marksPlugin.toggleSub,
     "super+k": editor.marksPlugin.toggleStrike,
+    "super+p": editor.marksPlugin.toggleSup,
   })
   return {
     name: "marks",

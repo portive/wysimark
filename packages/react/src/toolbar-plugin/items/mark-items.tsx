@@ -52,7 +52,7 @@ const secondaryMarkItems: MenuItemData[] = [
     /**
      * TODO: Enable remove styles
      */
-    // action: (editor) => editor.marksPlugin.removeStyles(),
+    action: (editor) => editor.marksPlugin.removeMarks(),
   },
 ]
 
