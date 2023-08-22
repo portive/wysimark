@@ -17,7 +17,7 @@ export default function Document() {
           crossOrigin="anonymous"
         /> */}
         {/* https://github.com/tailwindlabs/tailwindcss/blob/master/src/css/preflight.css */}
-        <link rel="stylesheet" href="/preflight.css" />
+        {/* <link rel="stylesheet" href="/preflight.css" /> */}
         {/* <link rel="stylesheet" href="https://unpkg.com/chota@latest" /> */}
       </Head>
       <body>

@@ -13,7 +13,6 @@
   "types": ".dist/index.d.ts",
   "devDependencies": {
     "@types/node": "^18.11.18",
-    "@vitejs/plugin-vue": "^4.2.1",
     "concurrently": "^7.2",
     "dotenv": "16.x",
     "eslint": "^8.4.1",
@@ -23,9 +22,13 @@
     "ts-node": "^10.9.1",
     "tsconfig": "workspace:*",
     "tsconfig-paths": "^4.1.2",
-    "typescript": "^4.9.4",
+    "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "@vitejs/plugin-vue": "^4.2.1",
+    "@wysimark/vue": "workspace:*",
     "vite": "^4.3.3",
-    "vue": "^3"
+    "vue": "^3.3.4"
   },
   "scripts": {
     "-- fix": "# fix syntax",

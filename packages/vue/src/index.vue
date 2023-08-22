@@ -105,7 +105,7 @@ export default defineComponent({
     })
 
     return {
-      // container: containerRef,
+      container: containerRef,
       getMarkdown(): string {
         return wysimark.getMarkdown()
       },
