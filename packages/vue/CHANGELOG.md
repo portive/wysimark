@@ -1,5 +1,11 @@
 # @wysimark/vue
 
+## 3.0.3
+
+### Patch Changes
+
+- 772c80c: Fix containerRef bug in vue release
+
 ## 3.0.2
 
 ### Patch Changes
