@@ -1,5 +1,11 @@
 # @wysimark/react
 
+## 3.0.4
+
+### Patch Changes
+
+- 2692951: Fix placement of drop down arrow in toolbar
+
 ## 3.0.2
 
 ### Patch Changes
