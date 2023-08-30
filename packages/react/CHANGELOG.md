@@ -1,5 +1,11 @@
 # @wysimark/react
 
+## 3.0.5
+
+### Patch Changes
+
+- 0d53d35: Deleting in an empty code block deletes code block
+
 ## 3.0.4
 
 ### Patch Changes
