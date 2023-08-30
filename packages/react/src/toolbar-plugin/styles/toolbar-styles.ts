@@ -68,6 +68,7 @@ export const $ToolbarButton = styled("div")`
   vertical-align: top;
   font-size: 1.25em;
   margin-top: 0.25em;
+  height: 2em;
   padding: 0.375em 0.375em;
   border-radius: 0.25em;
   text-align: center;

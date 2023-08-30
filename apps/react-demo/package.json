@@ -9,8 +9,9 @@
     "eslint": "^8.4.1",
     "eslint-config-custom": "*",
     "prettier": "^2.8",
-    "tsconfig": "workspace:*",
+    "raw-loader": "^4.0.2",
     "ts-node": "^10.9.1",
+    "tsconfig": "workspace:*",
     "typescript": "^4.9.4"
   },
   "dependencies": {
