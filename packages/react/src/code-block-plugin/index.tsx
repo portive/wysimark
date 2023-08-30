@@ -1,10 +1,11 @@
-import { Element, Transforms } from "slate"
+import { Editor, Element, Transforms } from "slate"
 
 import {
   createHotkeyHandler,
   createPlugin,
   curryOne,
   findElementUp,
+  isCollapsed,
   TypedPlugin,
 } from "~/src/sink"
 
@@ -21,9 +22,25 @@ import { renderElement } from "./render-element"
 export const CodeBlockPlugin = createPlugin<CodeBlockPluginCustomTypes>(
   (editor, options, { createPolicy }) => {
     editor.codeBlock = createCodeBlockMethods(editor)
+
+    function onDelete(): boolean {
+      const { selection } = editor
+      if (!isCollapsed(selection)) return false
+      const codeBlockEntry = findElementUp(editor, "code-block")
+      if (codeBlockEntry == null) return false
+      const codeBlockText = Editor.string(editor, codeBlockEntry[1])
+      if (codeBlockText === "") {
+        Transforms.removeNodes(editor, { at: codeBlockEntry[1] })
+        return true
+      }
+      return false
+    }
+
     return createPolicy({
       name: "code-block",
       editor: {
+        deleteBackward: onDelete,
+        deleteForward: onDelete,
         isInline(element) {
           if (
             element.type === "code-block" ||
