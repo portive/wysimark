@@ -1,5 +1,11 @@
 # @wysimark/vue
 
+## 3.0.6
+
+### Patch Changes
+
+- df4f56d: bugfix: If you click a checkbox immediately after first render onchange doesn't get called
+
 ## 3.0.5
 
 ### Patch Changes
