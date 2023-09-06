@@ -34,7 +34,17 @@ export function Editable({
   style,
 }: EditableProps) {
   const ignoreNextChangeRef = useRef(false)
+
+  /**
+   * This is a temporary ref that is only used once to store the initial value
+   * derived from the initial Markdown value.
+   */
   const initialValueRef = useRef<Descendant[]>()
+
+  /**
+   *
+   */
+  const prevValueRef = useRef<Descendant[]>()
 
   /**
    * Throttled version of `onChange` for the `Slate` component. This method gets
@@ -72,27 +82,33 @@ export function Editable({
 
   /**
    * This handles the initial `onChange` event from the `Slate` component and
-   * makes sure to ignore the change event after the initial normalization and
-   * after the user sets the value of the editor directly.
+   * makes sure to ignore any change events that don't change the content of
+   * the editor. For example, if the user just moves the cursor around, we
+   * don't want to call the `onChange` callback.
    *
    * If it's neither, then it passes the call to the throttled `onChange` method.
    */
   const onSlateChange = useCallback(() => {
-    if (ignoreNextChangeRef.current) {
-      ignoreNextChangeRef.current = false
+    if (prevValueRef.current === editor.children) {
       return
     }
+    prevValueRef.current = editor.children
     onThrottledSlateChange()
   }, [onThrottledSlateChange])
 
   /**
-   * Handle the initial mounting of the component where `prevValue` would not
-   * have been set yet.
+   * Handle the initial mounting of the component. This is where we set the
+   * initial value of the editor. We also set the `prevValue` on the editor
+   * which is used to determine if a change in the editor resulted in a change
+   * in the contents of the editor vs just changing the cursor position for
+   * example.
+   *
+   * NOTE: This value hasn't been normalized yet.
    */
   if (editor.wysimark.prevValue == null) {
     ignoreNextChangeRef.current = true
     const children = parse(value)
-    initialValueRef.current = children
+    prevValueRef.current = initialValueRef.current = children
     editor.wysimark.prevValue = {
       markdown: value,
       children,
