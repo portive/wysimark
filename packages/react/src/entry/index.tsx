@@ -1,5 +1,5 @@
 import throttle from "lodash.throttle"
-import { useCallback, useEffect, useRef } from "react"
+import { useCallback, useRef } from "react"
 import { Descendant, Editor, Element, Transforms } from "slate"
 import { ReactEditor, RenderLeafProps, Slate } from "slate-react"
 
@@ -42,7 +42,9 @@ export function Editable({
   const initialValueRef = useRef<Descendant[]>()
 
   /**
-   *
+   * Track the previous value of the editor. This is used to determine if the
+   * change from the editor resulted in a change in the contents of the editor
+   * as opposed to just a cursor movement for example.
    */
   const prevValueRef = useRef<Descendant[]>()
 
