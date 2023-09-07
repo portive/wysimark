@@ -1,5 +1,11 @@
 # @wysimark/react
 
+## 3.0.8
+
+### Patch Changes
+
+- c1cb7e7: Add keywords and description to package.json for React release
+
 ## 3.0.7
 
 ### Patch Changes
