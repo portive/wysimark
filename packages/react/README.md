@@ -1,28 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" height="3em" viewBox="0 0 125 60"><g fill="none" fill-rule="evenodd"><path fill="#000" d="M52.5 37.5 45 60 32.5 22.5 40 0l12.5 37.5ZM92.5 37.5 85 60 72.5 22.5 80 0l12.5 37.5Z"></path><path fill="#C04090" d="M40 0h25l20 60H60z"></path><path fill="#2088F8" d="M80 0h25l20 60h-25z"></path><path fill="#F02050" d="M0 0h25l20 60H20z"></path></g></svg>
+
 # Wysimark - The Rich Editor for Markdown
 
 Wysimark supports 100% of the CommonMark and GFM Markdown spec.
 
-It's modern, has great usability, and features image and file uploads.
+It has clean modern design, great usability, and features serverless image and file uploads.
 
 <img src="https://raw.githubusercontent.com/portive/wysimark/main/assets/readme/editor-preview@1x.jpg" 
      srcset="https://raw.githubusercontent.com/portive/wysimark/main/assets/readme/editor-preview@1x.jpg 1x, https://raw.githubusercontent.com/portive/wysimark/main/assets/readme/editor-preview@2x.jpg 2x"
      alt="Preview of Wysimark Editor">
 
-## Design Goals
+Learn more at the [Wysimark Website](https://wysimark.com).
 
-Wysimark is built with the following goals in mind:
+Read the [Getting Started Guide and API Reference for React](https://www.wysimark.com/docs/react).
 
-1. **100% Compatibility with Markdown** including the CommonMark and GFM Markdown Spec. It's easy to get the first 90% of Markdown correct and deceptively hard to get the last 10% right.
+## The Design Goals
 
-2. **Modern Design** - A rich text editor with a modern and clean look
+Wysimark is built to have:
 
-3. **Usability** - The editor has to have a beautiful user interface and support both a discoverable toolbar with dropdown menus, keyboard shortcuts to support every feature (also discoverable through the toolbar) and compatibility with Markdown shortcuts like double-asterisk for bold.
+1. **100% Compatibility with the CommonMark and GFM Markdown Spec** - Facilitates easy and 100% correct bi-directional conversion between Markdown renderers and text based Markdown editors. It's easy to get the first 90% of Markdown correct and deceptively hard to get the last 10% right.
 
-4. **Images** - It had to be easy to upload and resize images
+2. **Modern Design and UI** - Has a modern and clean look and user interface that's easy to integrate with modern web apps.
 
-5. **Attachments** - Support for uploading files directly into the editor.
+3. **Great Usability** - A toolbar with dropdown menus with 100% Markdown feature coverage for easy discoverability for users, keyboard shortcuts with 100% Markdown feature coverage and compatibility with Markdown shortcuts like typing a double-asterisk for \*\***bold**\*\* or prefix a line with # for a heading.
 
-## Markdown Feature Support
+4. **Images and Attachment Upload Support** - Easy to upload images/files and resize images with Portive's Serverless Web Component back-end
+
+## 100% Markdown Feature Support
 
 - Tables
 - Ordered and Ordered Lists
@@ -35,27 +39,29 @@ Wysimark is built with the following goals in mind:
 - Links
 - Text styling: bold, italic, inline code
 
-## Serverless Features
+## Serverless Upload and Image Resizing
+
+Wysimark supports optional serverless file and image uploading and image resizing using Portive Serverless back-end for Web Components.
 
 - Image uploading
 - Server side image resizing
 - Attachment Uploading
 
-## Usability Features
+## Excellent Usability
 
 - Toolbar with 100% feature support displaying keyboard shortcuts for easy discoverability
 - Keyboard shortcuts for every Markdown Feature
 - Context menus for resizing images
 - Context menus for manipulating tables
 
-## Browser Compatibility
+## All Modern Browser Compatibility
 
 - Google Chrome
 - Apple Safari
 - Microsoft Edge
 - Firefox
 
-## Device Compatibility
+## All Popular Device Compatibility
 
 - Desktop: Windows, Linux and Mac
 - Mobile/Tablet: iOS and Android
