@@ -1,5 +1,11 @@
 # @wysimark/react
 
+## 3.0.9
+
+### Patch Changes
+
+- daef476: Update README for React with Logo
+
 ## 3.0.8
 
 ### Patch Changes
