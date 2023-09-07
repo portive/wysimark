@@ -24,6 +24,22 @@
     "README.md",
     ".dist/"
   ],
+  "description": "A modern and clean rich text editor for React that supports 100% of CommonMark and GitHub Flavored Markdown.",
+  "keywords": [
+    "contenteditable",
+    "commonmark",
+    "editor",
+    "gfm",
+    "githubflavoredmarkdown",
+    "markdown",
+    "portive",
+    "rich",
+    "richtext",
+    "rich-text",
+    "text",
+    "wysimark",
+    "wysiwyg"
+  ],
   "devDependencies": {
     "@thesunny/assert-type": "^0.1.13",
     "@types/handlebars-helpers": "^0.5.3",
