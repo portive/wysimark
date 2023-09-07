@@ -1,5 +1,11 @@
 # @wysimark/react
 
+## 3.0.7
+
+### Patch Changes
+
+- e1c47ab: Add editor preview to README for NPM
+
 ## 3.0.6
 
 ### Patch Changes
