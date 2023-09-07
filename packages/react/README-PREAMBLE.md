@@ -10,7 +10,7 @@ It's modern, has great usability, and features image and file uploads.
 
 ## Design Goals
 
-Wysimark is built with the following goals in mind:
+Wysimark was built with the following goals in mind:
 
 1. **100% Compatibility with Markdown** including the CommonMark and GFM Markdown Spec. It's easy to get the first 90% of Markdown correct and deceptively hard to get the last 10% right.
 

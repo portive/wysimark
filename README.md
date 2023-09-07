@@ -1,10 +1,12 @@
-# Wysimark
+# Wysimark: The Rich Text Editor for Markdown
 
-The rich text editor that supports 100% of the CommonMark and GFM Markdown specs.
+Supports 100% of the CommonMark and GFM Markdown specs.
 
 Features tables, check lists, images, emojis and attachments.
 
-![Wysimark Editor Preview](https://raw.githubusercontent.com/ianstormtaylor/slate/main/docs/images/preview.png)
+<img src="https://raw.githubusercontent.com/portive/wysimark/main/assets/readme/editor-preview@1x.jpg" 
+     srcset="https://raw.githubusercontent.com/portive/wysimark/main/assets/readme/editor-preview@1x.jpg 1x, https://raw.githubusercontent.com/portive/wysimark/main/assets/readme/editor-preview@2x.jpg 2x"
+     alt="Preview of Wysimark Editor">
 
 Wysimark has these integrations:
 
