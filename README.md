@@ -1,6 +1,10 @@
-# Wysimark 2
+# Wysimark
 
-The beautiful WYSIWYG editor for Markdown that includes image uploading and resizing
+The rich text editor that supports 100% of the CommonMark and GFM Markdown specs.
+
+Features tables, check lists, images, emojis and attachments.
+
+![Wysimark Editor Preview](https://raw.githubusercontent.com/ianstormtaylor/slate/main/docs/images/preview.png)
 
 Wysimark has these integrations:
 

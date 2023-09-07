@@ -105,9 +105,13 @@ export function Editable({
    * in the contents of the editor vs just changing the cursor position for
    * example.
    *
+   * We add a check for `initialValueRef.current` not being null because the
+   * ref can be lost on a hot reload. This then reinitializes the editor with
+   * the initial value.
+   *
    * NOTE: This value hasn't been normalized yet.
    */
-  if (editor.wysimark.prevValue == null) {
+  if (editor.wysimark.prevValue == null || initialValueRef.current == null) {
     ignoreNextChangeRef.current = true
     const children = parse(value)
     prevValueRef.current = initialValueRef.current = children
@@ -181,10 +185,6 @@ export function Editable({
   //   className,
   //   style,
   // ])
-
-  if (!initialValueRef.current) {
-    throw new Error("initialValueRef.current is null")
-  }
 
   return (
     <Slate

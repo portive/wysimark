@@ -16,10 +16,10 @@
   },
   "dependencies": {
     "@emotion/core": "^11.0.0",
-    "@emotion/react": "^11.10.6",
-    "@emotion/styled": "^11.10.6",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
     "@wysimark/react": "workspace:*",
-    "next": "12.x",
+    "next": "~13.4.19",
     "react": ">=17.x",
     "react-dom": ">=17.x",
     "slate-react": "^0.83.2"

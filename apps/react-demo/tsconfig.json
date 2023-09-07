@@ -15,7 +15,13 @@
        * https://stackoverflow.com/questions/64287224/typeroots-fails-to-find-d-ts-declaration-files-in-project
        */
       // "*": ["types/*"]
-    }
+    },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "strictNullChecks": true
   },
   // "compilerOptions": {
   //   /**
@@ -28,6 +34,6 @@
   //   "jsx": "preserve",
   //   "allowJs": true
   // },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": [".next", "node_modules"]
 }
