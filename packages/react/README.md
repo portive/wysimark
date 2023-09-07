@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" height="3em" viewBox="0 0 125 60"><g fill="none" fill-rule="evenodd"><path fill="#000" d="M52.5 37.5 45 60 32.5 22.5 40 0l12.5 37.5ZM92.5 37.5 85 60 72.5 22.5 80 0l12.5 37.5Z"></path><path fill="#C04090" d="M40 0h25l20 60H60z"></path><path fill="#2088F8" d="M80 0h25l20 60h-25z"></path><path fill="#F02050" d="M0 0h25l20 60H20z"></path></g></svg>
 
-# Wysimark - The Rich Editor for Markdown
+# Wysimark - The Rich Editor for Markdown - For React.js
 
 Wysimark supports 100% of the CommonMark and GFM Markdown spec.
 
