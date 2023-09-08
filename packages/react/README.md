@@ -52,7 +52,29 @@ Wysimark supports optional serverless file and image uploading and image resizin
 - Context menus for resizing images
 - Context menus for manipulating tables
 
-<img src="https://raw.githubusercontent.com/portive/wysimark/main/assets/readme/editor-preview.jpg" >
+### Button Tooltips with hints and shortcuts
+
+Hovering over the toolbar displays helpful tooltips and keyboard shortcuts. Window, Linux and Mac each get their own OS specific shortcuts following the conventions of each operating system.
+
+<img src="https://raw.githubusercontent.com/portive/wysimark/main/assets/readme/toolbar-button@2x.png" width="540" height="95">
+
+### Sticky Dropdown Menus with Hints and shortcuts
+
+Menus stay closed until they are clicked open and then they stay open as you hover over other menu buttons. This makes discoverability in menus fast, easy and it works like your operating system. Drop down menus show icons, hints and device operating system dependant shortcuts.
+
+<img src="https://raw.githubusercontent.com/portive/wysimark/main/assets/readme/toolbar-menu@2x.png" width="541" height="292">
+
+### Quick Pick Table Builder
+
+Use the flyout to quickly select how many rows and columns in your table.
+
+<img src="https://raw.githubusercontent.com/portive/wysimark/main/assets/readme/toolbar-table-menu@2x.png" width="541" height="214">
+
+### Quick Pick Emoji Picker
+
+Integrates the `emoji-mart` Emoji Picker.
+
+<img src="https://raw.githubusercontent.com/portive/wysimark/main/assets/readme/toolbar-emoji-dialog@2x.png" width="559" height="523">
 
 ## All Modern Browser Compatibility
 
