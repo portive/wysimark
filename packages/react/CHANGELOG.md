@@ -1,5 +1,11 @@
 # @wysimark/react
 
+## 3.0.10
+
+### Patch Changes
+
+- 4028374: Add Logo to React README
+
 ## 3.0.9
 
 ### Patch Changes
