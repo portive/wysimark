@@ -1,8 +1,10 @@
 import styled from "@emotion/styled"
 import fs from "fs"
 import type { GetServerSideProps, InferGetServerSidePropsType } from "next"
+import Link from "next/link"
+import { useRouter } from "next/router"
 import nodePath from "path"
-import { useState } from "react"
+import { useRef, useState } from "react"
 
 import { Editable, useEditor } from "~/src/entry"
 
@@ -10,15 +12,13 @@ type Props = {
   name: string
   markdown: string
   baseNames: string[]
+  width: number
 }
 
 export const getServerSideProps: GetServerSideProps<Props> = async (
   context
 ) => {
   const { query } = context
-  // const filename = (context?.params?.content || "basic") as string
-  // try {
-  // console.log(context.query.content)
   const contentDir = nodePath.join(process.cwd(), "content")
   const baseNames = await fs
     .readdirSync(contentDir)
@@ -26,6 +26,8 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
     .map((filename) => nodePath.basename(filename, ".md"))
 
   const contentName = query.content || "index"
+  const width =
+    typeof query.width === "string" ? parseInt(query.width) || 540 : 540
 
   let markdown: string
 
@@ -37,7 +39,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
   } catch (e) {
     return { notFound: true }
   }
-  return { props: { name: "John Doe", baseNames, markdown } }
+  return { props: { name: "John Doe", baseNames, markdown, width } }
 }
 
 const $Container = styled.div`
@@ -83,7 +85,21 @@ const $Pre = styled.textarea`
 export default function Page(
   props: InferGetServerSidePropsType<typeof getServerSideProps>
 ) {
+  const prevMarkdownRef = useRef<string>(props.markdown)
+
   const [markdown, setMarkdown] = useState(props.markdown)
+
+  /**
+   * We need to call `setMarkdown` when `props.markdown` changes
+   */
+  if (prevMarkdownRef.current === null) {
+    prevMarkdownRef.current = props.markdown
+  } else if (prevMarkdownRef.current !== props.markdown) {
+    setMarkdown(props.markdown)
+    prevMarkdownRef.current = props.markdown
+  }
+
+  const router = useRouter()
 
   const editor = useEditor({
     authToken: process.env.NEXT_PUBLIC_PORTIVE_AUTH_TOKEN,
@@ -96,13 +112,34 @@ export default function Page(
         <ul>
           {props.baseNames.map((baseName) => (
             <li key={baseName}>
-              <a href={`/samples/readme?content=${baseName}`}>{baseName}</a>
+              <Link
+                href={{
+                  pathname: "/samples/readme",
+                  query: { ...router.query, content: baseName },
+                }}
+              >
+                {baseName}
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <ul>
+          {[720, 540, 480, 360].map((width) => (
+            <li key={width}>
+              <Link
+                href={{
+                  pathname: "/samples/readme",
+                  query: { ...router.query, width },
+                }}
+              >
+                {width}
+              </Link>
             </li>
           ))}
         </ul>
       </$Nav>
 
-      <$Main>
+      <$Main style={{ width: props.width }}>
         <Editable
           editor={editor}
           value={markdown}
