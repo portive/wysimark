@@ -1,5 +1,11 @@
 # @wysimark/react
 
+## 3.0.11
+
+### Patch Changes
+
+- 178d4cf: Fix toolbar arrow placement in default HTML page
+
 ## 3.0.10
 
 ### Patch Changes
