@@ -26,6 +26,7 @@
       "outputs": []
     },
     "test:once": {
+      "inputs": ["src/**/*.test.ts", "src/**/*.test.tsx"],
       "outputs": []
     }
   }
