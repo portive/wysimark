@@ -1,5 +1,11 @@
 # @wysimark/react
 
+## 3.0.12
+
+### Patch Changes
+
+- b6e7eb8: Add High DPI image for editor preview in React README
+
 ## 3.0.11
 
 ### Patch Changes
