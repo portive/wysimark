@@ -1,5 +1,11 @@
 # @wysimark/react
 
+## 3.0.13
+
+### Patch Changes
+
+- 3ee700d: Add Usability section to React README
+
 ## 3.0.12
 
 ### Patch Changes
