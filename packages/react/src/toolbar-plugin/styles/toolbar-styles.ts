@@ -63,6 +63,7 @@ export const $ToolbarDivider = styled("div")`
 `
 
 export const $ToolbarButton = styled("div")`
+  box-sizing: border-box;
   position: relative;
   display: inline-block;
   vertical-align: top;
