@@ -6,9 +6,7 @@ Wysimark supports 100% of the CommonMark and GFM Markdown spec.
 
 It has clean modern design, great usability, and features serverless image and file uploads with image resizing.
 
-<img src="https://raw.githubusercontent.com/portive/wysimark/main/assets/readme/editor-preview@1x.jpg" 
-     srcset="https://raw.githubusercontent.com/portive/wysimark/main/assets/readme/editor-preview.jpg 1x, https://raw.githubusercontent.com/portive/wysimark/main/assets/readme/editor-preview@2x.jpg 2x"
-     alt="Preview of Wysimark Editor">
+<img src="https://raw.githubusercontent.com/portive/wysimark/main/assets/readme/editor-preview@2x.jpg" width="545" height="504" alt="Preview of Wysimark Editor">
 
 Learn more about the Wysimark Markdown Editor at the [Wysimark Editor Home Page](https://wysimark.com).
 
@@ -53,6 +51,8 @@ Wysimark supports optional serverless file and image uploading and image resizin
 - Keyboard shortcuts for every Markdown Feature
 - Context menus for resizing images
 - Context menus for manipulating tables
+
+<img src="https://raw.githubusercontent.com/portive/wysimark/main/assets/readme/editor-preview.jpg" >
 
 ## All Modern Browser Compatibility
 

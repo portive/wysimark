@@ -3,10 +3,12 @@
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
+      "inputs": ["src/**/*.ts", "src/**/*.tsx"],
       "outputs": [".next/**", ".build/**"]
     },
     "fix": {
-      "outputs": []
+      "outputs": [],
+      "cache": false
     },
     "lint:eslint": {
       "outputs": []
