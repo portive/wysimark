@@ -80,15 +80,21 @@ Integrates the `emoji-mart` Emoji Picker.
 
 The Wysimark Toolbar dynamically adjusts the layout of its buttons depending on the width of the available space. Works with full screen editing all the way down to narrow devices in portrait mode or thinner web forms.
 
-### Responsive Wide Toolbar
+### Responsive: Wide Toolbar
 
 <img src="https://raw.githubusercontent.com/portive/wysimark/main/assets/readme/editor-wide@2x.jpg" width="721">
 
-### Responsive Narrow Toolbar
+### Responsive: Medium Width Toolbar
 
-Shown with several of the toolbar buttons moved into a drop down menu.
+Shown with the medium toolbar at a width of 480px, the insert features for table, images attachments and emoji are merged into one button.
 
-<img src="https://raw.githubusercontent.com/portive/wysimark/main/assets/readme/editor-narrow@2x.jpg" width="490">
+<img src="https://raw.githubusercontent.com/portive/wysimark/main/assets/readme/editor-medium-width@2x.jpg" width="559">
+
+### Responsive: Narrow Toolbar
+
+Shown with the narrow toolbar at a width of 360px, the **bold** and _italic_ styles are merged into the styles button to make the toolbar more compact.
+
+<img src="https://raw.githubusercontent.com/portive/wysimark/main/assets/readme/editor-narrow-width@2x.jpg" width="360">
 
 ## All Modern Browser Compatibility
 
