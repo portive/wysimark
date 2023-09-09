@@ -6,7 +6,7 @@ Wysimark supports 100% of the CommonMark and GFM Markdown spec.
 
 It has clean modern design, great usability, and features serverless image and file uploads with image resizing.
 
-<img src="https://raw.githubusercontent.com/portive/wysimark/main/assets/readme/editor-preview@2x.jpg" width="545" height="504" alt="Preview of Wysimark Editor">
+<img src="https://raw.githubusercontent.com/portive/wysimark/main/assets/readme/editor-preview@2x.jpg" width="545" alt="Preview of Wysimark Editor">
 
 Learn more about the Wysimark Markdown Editor at the [Wysimark Editor Home Page](https://wysimark.com).
 
@@ -56,25 +56,25 @@ Wysimark supports optional serverless file and image uploading and image resizin
 
 Hovering over the toolbar displays helpful tooltips and keyboard shortcuts. Window, Linux and Mac each get their own OS specific shortcuts following the conventions of each operating system.
 
-<img src="https://raw.githubusercontent.com/portive/wysimark/main/assets/readme/toolbar-button@2x.png" width="540" height="95">
+<img src="https://raw.githubusercontent.com/portive/wysimark/main/assets/readme/toolbar-button@2x.png" width="540">
 
 ### Sticky Dropdown Menus with Hints and shortcuts
 
 Menus stay closed until they are clicked open and then they stay open as you hover over other menu buttons. This makes discoverability in menus fast, easy and it works like your operating system. Drop down menus show icons, hints and device operating system dependant shortcuts.
 
-<img src="https://raw.githubusercontent.com/portive/wysimark/main/assets/readme/toolbar-menu@2x.png" width="541" height="292">
+<img src="https://raw.githubusercontent.com/portive/wysimark/main/assets/readme/toolbar-menu@2x.png" width="541">
 
 ### Quick Pick Table Builder
 
 Use the flyout to quickly select how many rows and columns in your table.
 
-<img src="https://raw.githubusercontent.com/portive/wysimark/main/assets/readme/toolbar-table-menu@2x.png" width="541" height="214">
+<img src="https://raw.githubusercontent.com/portive/wysimark/main/assets/readme/toolbar-table-menu@2x.png" width="541">
 
 ### Quick Pick Emoji Picker
 
 Integrates the `emoji-mart` Emoji Picker.
 
-<img src="https://raw.githubusercontent.com/portive/wysimark/main/assets/readme/toolbar-emoji-dialog@2x.png" width="559" height="523">
+<img src="https://raw.githubusercontent.com/portive/wysimark/main/assets/readme/toolbar-emoji-dialog@2x.png" width="559">
 
 ## Responsive Toolbar Layouts
 
@@ -82,7 +82,7 @@ The Wysimark Toolbar dynamically adjusts the layout of its buttons depending on 
 
 ### Responsive: Wide Toolbar
 
-<img src="https://raw.githubusercontent.com/portive/wysimark/main/assets/readme/editor-wide@2x.jpg" width="721">
+<img src="https://raw.githubusercontent.com/portive/wysimark/main/assets/readme/editor-wide-width@2x.jpg" width="540">
 
 ### Responsive: Medium Width Toolbar
 
