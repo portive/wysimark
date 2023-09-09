@@ -76,6 +76,20 @@ Integrates the `emoji-mart` Emoji Picker.
 
 <img src="https://raw.githubusercontent.com/portive/wysimark/main/assets/readme/toolbar-emoji-dialog@2x.png" width="559" height="523">
 
+## Responsive Toolbar Layouts
+
+The Wysimark Toolbar dynamically adjusts the layout of its buttons depending on the width of the available space. Works with full screen editing all the way down to narrow devices in portrait mode or thinner web forms.
+
+### Responsive Wide Toolbar
+
+<img src="https://raw.githubusercontent.com/portive/wysimark/main/assets/readme/editor-wide@2x.jpg" width="721">
+
+### Responsive Narrow Toolbar
+
+Shown with several of the toolbar buttons moved into a drop down menu.
+
+<img src="https://raw.githubusercontent.com/portive/wysimark/main/assets/readme/editor-narrow@2x.jpg" width="490">
+
 ## All Modern Browser Compatibility
 
 - Google Chrome
