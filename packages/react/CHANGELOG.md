@@ -1,5 +1,11 @@
 # @wysimark/react
 
+## 3.0.14
+
+### Patch Changes
+
+- b1d9e81: Update React README
+
 ## 3.0.13
 
 ### Patch Changes
