@@ -6,7 +6,7 @@ Wysimark supports 100% of the CommonMark and GFM Markdown spec.
 
 It has clean modern design, great usability, and features serverless image and file uploads with image resizing.
 
-<img src="https://raw.githubusercontent.com/portive/wysimark/main/assets/readme/editor-preview@2x.jpg" width="545" alt="Preview of Wysimark Editor">
+<img src="https://raw.githubusercontent.com/portive/wysimark-assets/main/readme/editor-preview@2x.jpg" width="545" alt="Preview of Wysimark Editor">
 
 Learn more about the Wysimark Markdown Editor at the [Wysimark Editor Home Page](https://wysimark.com).
 
@@ -56,60 +56,60 @@ Wysimark supports optional serverless file and image uploading and image resizin
 
 Hovering over the toolbar displays helpful tooltips and keyboard shortcuts. Window, Linux and Mac each get their own OS specific shortcuts following the conventions of each operating system.
 
-<img src="https://raw.githubusercontent.com/portive/wysimark/main/assets/readme/toolbar-button@2x.png" width="540">
+<img src="https://raw.githubusercontent.com/portive/wysimark-assets/main/readme/toolbar-button-tooltips@2x.png" width="540">
 
 ### Sticky Dropdown Menus with Hints and shortcuts
 
 Menus stay closed until they are clicked open and then they stay open as you hover over other menu buttons. This makes discoverability in menus fast, easy and it works like your operating system. Drop down menus show icons, hints and device operating system dependant shortcuts.
 
-<img src="https://raw.githubusercontent.com/portive/wysimark/main/assets/readme/toolbar-menu@2x.png" width="541">
+<img src="https://raw.githubusercontent.com/portive/wysimark-assets/main/readme/toolbar-menu@2x.png" width="541">
 
 ### Quick Pick Table Builder
 
 Use the flyout to quickly select how many rows and columns in your table.
 
-<img src="https://raw.githubusercontent.com/portive/wysimark/main/assets/readme/toolbar-table-menu@2x.png" width="541">
+<img src="https://raw.githubusercontent.com/portive/wysimark-assets/main/readme/toolbar-table-menu@2x.png" width="541">
 
 ### Quick Pick Emoji Picker
 
 Integrates the `emoji-mart` Emoji Picker.
 
-<img src="https://raw.githubusercontent.com/portive/wysimark/main/assets/readme/toolbar-emoji-dialog@2x.png" width="559">
+<img src="https://raw.githubusercontent.com/portive/wysimark-assets/main/readme/toolbar-emoji-dialog@2x.png" width="559">
 
 ## Responsive Toolbar Layouts
 
 The Wysimark Toolbar dynamically adjusts the layout of its buttons depending on the width of the available space. Works with full screen editing all the way down to narrow devices in portrait mode or thinner web forms.
 
-### Responsive: Wide Toolbar
+#### Wide
 
-<img src="https://raw.githubusercontent.com/portive/wysimark/main/assets/readme/editor-wide-width@2x.jpg" width="540">
+<img src="https://raw.githubusercontent.com/portive/wysimark-assets/main/readme/editor-wide-width@2x.jpg" width="540">
 
-### Responsive: Medium Width Toolbar
+#### Medium
 
-Shown with the medium toolbar at a width of 480px, the insert features for table, images attachments and emoji are merged into one button.
+Insert for table, images attachments and emoji are merged into one button.
 
-<img src="https://raw.githubusercontent.com/portive/wysimark/main/assets/readme/editor-medium-width@2x.jpg" width="559">
+<img src="https://raw.githubusercontent.com/portive/wysimark-assets/main/readme/editor-medium-width@2x.jpg" width="559">
 
-### Responsive: Narrow Toolbar
+#### Narrow
 
-Shown with the narrow toolbar at a width of 360px, the **bold** and _italic_ styles are merged into the styles button to make the toolbar more compact.
+The **bold** and _italic_ styles are merged into the styles button.
 
-<img src="https://raw.githubusercontent.com/portive/wysimark/main/assets/readme/editor-narrow-width@2x.jpg" width="360">
+<img src="https://raw.githubusercontent.com/portive/wysimark-assets/main/readme/editor-narrow-width@2x.jpg" width="360">
 
 ## Code Blocks with Syntax Highlighting
 
-Built-in support for syntax highlighting for code blocks.
+Built-in support for syntax highlighting in code blocks.
 
-<img src="https://raw.githubusercontent.com/portive/wysimark/main/assets/readme/syntax-highlighting@2x.png" width="544">
+<img src="https://raw.githubusercontent.com/portive/wysimark-assets/main/readme/syntax-highlighting@2x.png" width="544">
 
-## All Modern Browser Compatibility
+## Works in all Modern Browsers
 
 - Google Chrome
 - Apple Safari
 - Microsoft Edge
 - Firefox
 
-## All Popular Device Compatibility
+## Works in all Popular Devices
 
 - Desktop: Windows, Linux and Mac
 - Mobile/Tablet: iOS and Android
