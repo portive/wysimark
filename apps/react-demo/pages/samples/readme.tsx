@@ -9,10 +9,11 @@ import { useRef, useState } from "react"
 import { Editable, useEditor } from "~/src/entry"
 
 type Props = {
-  name: string
   markdown: string
+  baseName: string
   baseNames: string[]
   width: number
+  height: number
 }
 
 export const getServerSideProps: GetServerSideProps<Props> = async (
@@ -25,21 +26,24 @@ export const getServerSideProps: GetServerSideProps<Props> = async (
     .filter((filename) => filename.endsWith(".md"))
     .map((filename) => nodePath.basename(filename, ".md"))
 
-  const contentName = query.content || "index"
+  const baseName = typeof query.content === "string" ? query.content : "index"
   const width =
     typeof query.width === "string" ? parseInt(query.width) || 540 : 540
+  const height = typeof query.height === "string" ? parseInt(query.height) : 500
 
   let markdown: string
 
   try {
     markdown = await fs.readFileSync(
-      nodePath.join(contentDir, `${contentName}.md`),
+      nodePath.join(contentDir, `${baseName}.md`),
       "utf-8"
     )
   } catch (e) {
     return { notFound: true }
   }
-  return { props: { name: "John Doe", baseNames, markdown, width } }
+  return {
+    props: { baseName, baseNames, markdown, width, height },
+  }
 }
 
 const $Container = styled.div`
@@ -59,6 +63,15 @@ const $Container = styled.div`
 `
 const $Nav = styled.nav`
   flex: 1 1 auto;
+  h3 {
+    font: 0.925em sans-serif;
+    color: #808080;
+  }
+  ul {
+    /* margin-top: 0; */
+    /* margin: 0; */
+    padding: 0;
+  }
 `
 
 const $Main = styled.main`
@@ -74,6 +87,12 @@ const $Pre = styled.textarea`
   height: 480px;
   font-family: sans-serif;
   line-height: 1.5;
+`
+
+const $Link = styled(Link)`
+  &.--active {
+    color: orange;
+  }
 `
 
 /**
@@ -103,37 +122,57 @@ export default function Page(
 
   const editor = useEditor({
     authToken: process.env.NEXT_PUBLIC_PORTIVE_AUTH_TOKEN,
-    height: 500,
+    height: props.height,
   })
 
   return (
     <$Container>
       <$Nav>
+        <h3>Markdown</h3>
         <ul>
           {props.baseNames.map((baseName) => (
             <li key={baseName}>
-              <Link
+              <$Link
                 href={{
                   pathname: "/samples/readme",
                   query: { ...router.query, content: baseName },
                 }}
+                className={baseName === props.baseName ? "--active" : undefined}
               >
                 {baseName}
-              </Link>
+              </$Link>
             </li>
           ))}
         </ul>
+        <h3>Width</h3>
         <ul>
           {[720, 540, 480, 360].map((width) => (
             <li key={width}>
-              <Link
+              <$Link
                 href={{
                   pathname: "/samples/readme",
                   query: { ...router.query, width },
                 }}
+                className={width === props.width ? "--active" : undefined}
               >
                 {width}
-              </Link>
+              </$Link>
+            </li>
+          ))}
+        </ul>
+        <h3>Height</h3>
+        <ul>
+          {[500, 480, 360].map((height) => (
+            <li key={height}>
+              <$Link
+                href={{
+                  pathname: "/samples/readme",
+                  query: { ...router.query, height },
+                }}
+                className={height === props.height ? "--active" : undefined}
+              >
+                {height}
+              </$Link>
             </li>
           ))}
         </ul>

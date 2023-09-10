@@ -96,6 +96,12 @@ Shown with the narrow toolbar at a width of 360px, the **bold** and _italic_ sty
 
 <img src="https://raw.githubusercontent.com/portive/wysimark/main/assets/readme/editor-narrow-width@2x.jpg" width="360">
 
+## Code Blocks with Syntax Highlighting
+
+Built-in support for syntax highlighting for code blocks.
+
+<img src="https://raw.githubusercontent.com/portive/wysimark/main/assets/readme/syntax-highlighting@2x.png" width="544">
+
 ## All Modern Browser Compatibility
 
 - Google Chrome
