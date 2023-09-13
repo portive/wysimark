@@ -135,13 +135,21 @@ export function AnchorDialog({
   }, [editor])
 
   const openEditDialog = useCallback(() => {
-    dialog.open(() => (
-      <AnchorEditDialog
-        destAnchor={destAnchor}
-        destStartEdge={destStartEdge}
-        element={element}
-      />
-    ))
+    /**
+     * Force close the tooltip otherwise it will stay open because the
+     * `onMouseLeave` never gets called. Technically, the mouse never leaves
+     * the icon through a mouse movement. The edit icon simply disappears.
+     */
+    editTooltip.onMouseLeave()
+    dialog.open(() => {
+      return (
+        <AnchorEditDialog
+          destAnchor={destAnchor}
+          destStartEdge={destStartEdge}
+          element={element}
+        />
+      )
+    })
   }, [destAnchor, destStartEdge, element])
 
   return (
