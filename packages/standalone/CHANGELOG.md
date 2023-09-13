@@ -1,5 +1,11 @@
 # @wysimark/standalone
 
+## 3.0.17
+
+### Patch Changes
+
+- 4cf98fd: Close the edit tooltip before switching to the edit link dialog
+
 ## 3.0.16
 
 ### Patch Changes
