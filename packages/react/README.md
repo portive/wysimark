@@ -12,17 +12,26 @@ Learn more about the Wysimark Markdown Editor at the [Wysimark Editor Home Page]
 
 Read the [Getting Started Guide and API Reference for the Wysimark Editor for React](https://www.wysimark.com/docs/react).
 
-## The Design Goals
+## 🔍 Design Goals
 
-Wysimark is built to have:
+### 1️⃣ Complete Compatibility
 
-1. **100% Compatibility with the CommonMark and GFM Markdown Spec** - Facilitates easy and 100% correct bi-directional conversion between Markdown renderers and text based Markdown editors. It's easy to get the first 90% of Markdown correct and deceptively hard to get the last 10% right.
+- **CommonMark and GFM Markdown Spec**: Ensure smooth and accurate bi-directional conversion between Markdown renderers and text editors. While getting 90% of Markdown right is straightforward, we ensure the last challenging 10% is also nailed down.
 
-2. **Modern Design and UI** - Has a modern and clean look and user interface that's easy to integrate with modern web apps.
+### 2️⃣ Modern Design
 
-3. **Great Usability** - A toolbar with dropdown menus with 100% Markdown feature coverage for easy discoverability for users, keyboard shortcuts with 100% Markdown feature coverage and compatibility with Markdown shortcuts like typing a double-asterisk for \*\***bold**\*\* or prefix a line with # for a heading.
+- **Modern UI**: An aesthetic, contemporary interface that seamlessly integrates with today's web applications.
 
-4. **Images and Attachment Upload Support** - Easy to upload images/files and resize images with Portive's Serverless Web Component back-end
+### 3️⃣ User-Friendly
+
+- **Intuitive Toolbar**: Dropdown menus that cover 100% of Markdown features, ensuring all functionalities are within your fingertips.
+- **Markdown Shortcuts**: Supports familiar Markdown shortcuts for user's familiar with them. e.g., `**` for **bold**, `#` for a heading.
+- **Keyboard Shortcuts**: Supports familiar keyboard shortcuts from word processors. e.g., `CTRL+B` (Windows, Nix) or `CMD+B` (Mac) for **bold**, `CTRL+SHIFT+1` (Windows, Nix) or `CMD+OPT+1` (Mac) for a heading.
+
+### 4️⃣ Advanced Media Support
+
+- **Image/Attachment Upload**: Effortlessly upload files, powered by Portive's Serverless Web Component backend.
+- **Image Resizing/Optimization in the Cloud**: Automacally delivers server resized and optimized files through a high speed CDN in the cloud.
 
 ## 100% Markdown Feature Support
 
@@ -37,20 +46,7 @@ Wysimark is built to have:
 - Links
 - Text styling: bold, italic, inline code
 
-## Serverless Upload and Image Resizing
-
-Wysimark supports optional serverless file and image uploading and image resizing using Portive Serverless back-end for Web Components.
-
-- Image uploading
-- Server side image resizing
-- Attachment Uploading
-
-## Excellent Usability
-
-- Toolbar with 100% feature support displaying keyboard shortcuts for easy discoverability
-- Keyboard shortcuts for every Markdown Feature
-- Context menus for resizing images
-- Context menus for manipulating tables
+## Usability
 
 ### Button Tooltips with hints and shortcuts
 
@@ -75,6 +71,72 @@ Use the flyout to quickly select how many rows and columns in your table.
 Integrates the `emoji-mart` Emoji Picker.
 
 <img src="https://raw.githubusercontent.com/portive/wysimark-assets/main/readme/toolbar-emoji-dialog@2x.png" width="559">
+
+## Image and Attachment Uploading
+
+Wysimark supports image and file uploading using Portive, a service created by the creator of Wysimark to an Amazon AWS S3 Bucket. Wysimark supports three intuitive ways to upload images to Wysimark.
+
+### Upload from Toolbar
+
+Click the image or attachment icon in the toolbar then select an image from your computer to upload it.
+
+<img src="https://raw.githubusercontent.com/portive/wysimark-assets/main/readme/image-select-dialog@2x.png" width="577">
+
+### Drag and Drop Images and Files
+
+Drag and drop files from Windows Explorer the Mac Finder or your operating system's equivalent directly into editor to start uploading.
+
+<img src="https://raw.githubusercontent.com/portive/wysimark-assets/main/readme/image-drag-and-drop@2x.png" width="545">
+
+### Paste Images and Files
+
+Copy and paste images from anywhere in your operating system directly into the editor to start uploading.
+
+## Easy Image Resizing
+
+### Drag to Resize
+
+Grab a resize handle on the image and drag to resize.
+
+<img src="https://raw.githubusercontent.com/portive/wysimark-assets/main/readme/image-resize-drag@2x.jpg" width="545">
+
+The current width and height of the image are shown as you drag.
+
+An image, resized and optimized in the cloud, will be delivered to the user based on the final width and height.
+
+### Preset: Resize to Fixed Width
+
+You can provide a set of preset shortcuts to your users with fixed bounds that users can click.
+
+In this example, we provide S, M and L sizes and M is set to have bounds of 320x320. Based on this image, the preset value shows 320x213.
+
+<img src="https://raw.githubusercontent.com/portive/wysimark-assets/main/readme/image-resize-fixed@2x.jpg" width="545">
+
+### Preset: Resize to Fraction
+
+You can also provide a set of preset shortcuts to your users with fractional sizes that users can click. This is useful, for example, if a user takes a screenshot in a high DPI device (e.g. 2x) and the use wants to resize it to exactly half the uploaded size so as to maintain a 1 to 1 size in the editor.
+
+<img src="https://raw.githubusercontent.com/portive/wysimark-assets/main/readme/image-resize-fraction@2x.jpg" width="545">
+
+## Checklists
+
+Supports nested checklists. Supports toggling of checklists by clicking on them.
+
+<img src="https://raw.githubusercontent.com/portive/wysimark-assets/main/readme/checklist-nested@2x.png" width="545">
+
+## Lists: Mix Numbered, Bullet and Checklists
+
+Supports mixing of numbered, bullet and checklists.
+
+<img src="https://raw.githubusercontent.com/portive/wysimark-assets/main/readme/list-mixed@2x.png" width="545">
+
+## Nested Block Quotes
+
+Supports nesting of block quotes through the toolbar menu. Selected block quote indent and outdent content. Fully supports all content type in block quotes like lists, tables and images.
+
+<img src="https://raw.githubusercontent.com/portive/wysimark-assets/main/readme/blockquote-nested@2x.png" width="545">
+
+## Easy Link Creation and Editing
 
 ## Responsive Toolbar Layouts
 
