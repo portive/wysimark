@@ -122,7 +122,7 @@ export default function Page(
 
   const editor = useEditor({
     authToken: process.env.NEXT_PUBLIC_PORTIVE_AUTH_TOKEN,
-    height: props.height,
+    height: props.height > 0 ? props.height : undefined,
   })
 
   return (
@@ -162,7 +162,7 @@ export default function Page(
         </ul>
         <h3>Height</h3>
         <ul>
-          {[500, 480, 360].map((height) => (
+          {[500, 480, 360, 0].map((height) => (
             <li key={height}>
               <$Link
                 href={{
