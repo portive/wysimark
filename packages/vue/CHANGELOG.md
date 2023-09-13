@@ -1,5 +1,11 @@
 # @wysimark/vue
 
+## 3.0.16
+
+### Patch Changes
+
+- 4c261a4: Improve anchor dialog layout when there is no box-sizing reset in page
+
 ## 3.0.6
 
 ### Patch Changes
