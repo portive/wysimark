@@ -136,23 +136,35 @@ Supports nesting of block quotes through the toolbar menu. Selected block quote 
 
 <img src="https://raw.githubusercontent.com/portive/wysimark-assets/main/readme/blockquote-nested@2x.png" width="545">
 
-## Easy Link Creation and Editing
+## Links
+
+### Viewing Link Details
+
+Click a link in the editor to see its details, like the website domain, link path, and tooltip. Want to change or delete the link? Use the icons at the top of the dialog.
+
+<img src="https://raw.githubusercontent.com/portive/wysimark-assets/main/readme/link-view-detail-dialog@2x.png" width="545">
+
+### Editing Link Details
+
+When Viewing Link Details click the "Edit Link" icon to edit the link. You can easily edit the URL and tooltip text for any link.
+
+<img src="https://raw.githubusercontent.com/portive/wysimark-assets/main/readme/link-edit-dialog@2x.png" width="545">
 
 ## Responsive Toolbar Layouts
 
 The Wysimark Toolbar dynamically adjusts the layout of its buttons depending on the width of the available space. Works with full screen editing all the way down to narrow devices in portrait mode or thinner web forms.
 
-#### Wide
+### Wide Toolbar
 
 <img src="https://raw.githubusercontent.com/portive/wysimark-assets/main/readme/editor-wide-width@2x.jpg" width="540">
 
-#### Medium
+### Medium Toolbar
 
 Insert for table, images attachments and emoji are merged into one button.
 
 <img src="https://raw.githubusercontent.com/portive/wysimark-assets/main/readme/editor-medium-width@2x.jpg" width="559">
 
-#### Narrow
+### Narrow Toolbar
 
 The **bold** and _italic_ styles are merged into the styles button.
 
