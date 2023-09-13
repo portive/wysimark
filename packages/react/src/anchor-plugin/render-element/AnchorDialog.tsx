@@ -25,6 +25,7 @@ const $AnchorDialog = styled($Panel)`
   }
 
   .--link {
+    text-decoration: none;
     display: flex;
     flex: 0 0 14em;
     overflow: hidden;
@@ -49,13 +50,14 @@ const $AnchorDialog = styled($Panel)`
       text-overflow: ellipsis; */
     }
     .--pathname {
-      margin-top: 0.25em;
+      margin-top: 0.125em;
       font-size: 0.75em;
       width: 16.25em;
       line-height: 1.5em;
       overflow-wrap: break-word;
     }
     .--tooltip {
+      box-sizing: border-box;
       position: relative;
       margin-top: 1em;
       font-size: 0.875em;

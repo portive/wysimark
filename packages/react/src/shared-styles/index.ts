@@ -23,11 +23,13 @@ export const $FormHint = styled("div")`
 `
 
 export const $Textarea = styled("input")`
+  box-sizing: border-box;
   width: 100%;
   height: 6em;
   padding: 0.5em 0.75em;
   border-radius: 0.25em;
   color: var(--shade-700);
+  font-family: inherit;
   border: 1px solid var(--shade-300);
   font-size: 0.9375em;
   &:focus {
@@ -36,6 +38,7 @@ export const $Textarea = styled("input")`
 `
 
 export const $Input = styled("input")`
+  box-sizing: border-box;
   width: 100%;
   padding: 0.5em 0.75em;
   border-radius: 0.25em;
