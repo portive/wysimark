@@ -22,7 +22,7 @@ export function removeMarks(
     }),
   ]
   const setter: Record<string, null> = {}
-  for (const [node, path] of nodeEntries) {
+  for (const [node] of nodeEntries) {
     for (const key of Object.keys(node)) {
       if (key === "text") continue
       setter[key] = null
