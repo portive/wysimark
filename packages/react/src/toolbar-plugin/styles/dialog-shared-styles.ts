@@ -30,4 +30,5 @@ export const $DialogHint = styled("div")`
   font-size: 0.875em;
   margin-top: 0.5em;
   color: var(--shade-500);
+  line-height: 1.375;
 `

@@ -103,7 +103,7 @@ export function ImageDialog({
       close={close}
       icon={<Icon.PhotoUp />}
       buttonCaption="Select images..."
-      buttonHint="Select image files to insert"
+      buttonHint="Select image files to upload and insert into the editor"
     />
   )
 }
