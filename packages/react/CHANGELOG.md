@@ -1,5 +1,11 @@
 # @wysimark/react
 
+## 3.0.15
+
+### Patch Changes
+
+- 4f41f5c: Update React README with more samples
+
 ## 3.0.14
 
 ### Patch Changes
