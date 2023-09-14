@@ -1,5 +1,3 @@
-{{preamble}}
-
 <img src="https://raw.githubusercontent.com/portive/wysimark-assets/main/readme/editor-preview@2x.jpg" width="545" alt="Preview of Wysimark Editor">
 
 Learn more about the Wysimark Markdown Editor at the [Wysimark Editor Home Page](https://wysimark.com).

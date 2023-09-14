@@ -24,6 +24,7 @@
   "scripts": {
     "-- build": "# build",
     "build": "turbo build",
+    "build:readme": "ts-node scripts/build-readme/index.ts",
     "-- changesets": "# changesets",
     "changeset": "changeset",
     "-- fire": "# fire",
