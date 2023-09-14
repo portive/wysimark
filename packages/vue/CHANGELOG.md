@@ -1,5 +1,11 @@
 # @wysimark/vue
 
+## 3.0.19
+
+### Patch Changes
+
+- 6d61215: Update README cosmetic update
+
 ## 3.0.18
 
 ### Patch Changes

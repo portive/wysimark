@@ -1,6 +1,6 @@
 {
   "name": "@wysimark/react",
-  "version": "3.0.18",
+  "version": "3.0.19",
   "license": "MIT",
   "author": "Sunny Hirai <thesunny@gmail.com>",
   "main": ".dist/node/index.cjs.js",

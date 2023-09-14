@@ -1,5 +1,12 @@
 # vue-demo
 
+## 2.0.17
+
+### Patch Changes
+
+- Updated dependencies [6d61215]
+  - @wysimark/vue@3.0.19
+
 ## 2.0.16
 
 ### Patch Changes
