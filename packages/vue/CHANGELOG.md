@@ -1,5 +1,11 @@
 # @wysimark/vue
 
+## 3.0.18
+
+### Patch Changes
+
+- 40f6374: Update README with screenshots for all packages
+
 ## 3.0.17
 
 ### Patch Changes
