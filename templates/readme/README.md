@@ -6,21 +6,21 @@ Read the [Getting Started Guide and API Reference for the Wysimark Editor for Re
 
 ## 🔍 Design Goals
 
-### 1️⃣ Complete Compatibility
+### Complete Compatibility
 
 - **CommonMark and GFM Markdown Spec**: Ensure smooth and accurate bi-directional conversion between Markdown renderers and text editors. While getting 90% of Markdown right is straightforward, we ensure the last challenging 10% is also nailed down.
 
-### 2️⃣ Modern Design
+### Modern Design
 
 - **Modern UI**: An aesthetic, contemporary interface that seamlessly integrates with today's web applications.
 
-### 3️⃣ User-Friendly
+### User-Friendly
 
 - **Intuitive Toolbar**: Dropdown menus that cover 100% of Markdown features, ensuring all functionalities are within your fingertips.
 - **Markdown Shortcuts**: Supports familiar Markdown shortcuts for user's familiar with them. e.g., `**` for **bold**, `#` for a heading.
 - **Keyboard Shortcuts**: Supports familiar keyboard shortcuts from word processors. e.g., `CTRL+B` (Windows, Nix) or `CMD+B` (Mac) for **bold**, `CTRL+SHIFT+1` (Windows, Nix) or `CMD+OPT+1` (Mac) for a heading.
 
-### 4️⃣ Advanced Media Support
+### Advanced Media Support
 
 - **Image/Attachment Upload**: Effortlessly upload files, powered by Portive's Serverless Web Component backend.
 - **Image Resizing/Optimization in the Cloud**: Automacally delivers server resized and optimized files through a high speed CDN in the cloud.
