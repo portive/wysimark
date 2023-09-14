@@ -19,7 +19,7 @@ function concatenateReadmeForPackage(packageName: string): void {
   const preambleContent = fs.readFileSync(preamblePath, "utf8")
 
   // Concatenate
-  const concatenatedContent = `${preambleContent}\n\n${baseContent}`
+  const concatenatedContent = `${preambleContent}\n${baseContent}`
 
   // Write to the output README.md
   fs.writeFileSync(outputPath, concatenatedContent, "utf8")

@@ -23,7 +23,8 @@
   },
   "scripts": {
     "-- build": "# build",
-    "build": "turbo build",
+    "build": "concurrently 'pnpm build:readme' 'pnpm build:code'",
+    "build:code": "turbo build",
     "build:readme": "ts-node scripts/build-readme/index.ts",
     "-- changesets": "# changesets",
     "changeset": "changeset",
