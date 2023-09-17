@@ -4,9 +4,7 @@ Supports 100% of the CommonMark and GFM Markdown specs.
 
 Features tables, check lists, images, emojis and attachments.
 
-<img src="https://raw.githubusercontent.com/portive/wysimark/main/assets/readme/editor-preview@1x.jpg" 
-     srcset="https://raw.githubusercontent.com/portive/wysimark/main/assets/readme/editor-preview@1x.jpg 1x, https://raw.githubusercontent.com/portive/wysimark/main/assets/readme/editor-preview@2x.jpg 2x"
-     alt="Preview of Wysimark Editor">
+<img src="https://raw.githubusercontent.com/portive/wysimark/main/assets/readme/editor-preview@2x.jpg" width="545">
 
 Wysimark has these integrations:
 
