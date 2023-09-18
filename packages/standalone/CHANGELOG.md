@@ -1,5 +1,11 @@
 # @wysimark/standalone
 
+## 3.0.20
+
+### Patch Changes
+
+- 43b4d35: Preserve consecutive paragraphs in Markdown using nbsp
+
 ## 3.0.19
 
 ### Patch Changes
