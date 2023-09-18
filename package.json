@@ -60,6 +60,7 @@
     "storybook": "pnpm workspace wysimark-storybook storybook",
     "-- test": "# test",
     "test": "pnpm turbo test:once",
+    "test:watch": "pnpm --filter @wysimark/react run test:watch",
     "-- end": "# end"
   }
 }
