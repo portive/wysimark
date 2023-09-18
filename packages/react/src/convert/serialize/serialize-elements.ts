@@ -43,5 +43,37 @@ export function serializeElements(elements: Element[]): string {
    * We remove trailing whitespace because we want minimum viable markdown.
    * It also makes it easier to test.
    */
-  return segments.join("").trim()
+  const joined = segments.join("") //.trim()
+
+  /**
+   * If there is no content return an empty string for the Markdown.
+   */
+  if (joined.trim() === "") return ""
+
+  /**
+   * The following code replaces consecutive newlines with a single newline
+   * with a bit of additional logic to handle newlines at the beginning.
+   */
+  return replaceConsecutiveNewlines(replaceLeadingNewlines(joined)).trim()
+}
+
+/**
+ * Replace two leading newlines with a non-breaking space to indicate a
+ * paragraph that won't be collapsed.
+ */
+function replaceLeadingNewlines(input: string): string {
+  return input.replace(/^\n\n/g, "&nbsp;\n\n")
+}
+
+/**
+ * In the rest of the Markdown, replace four or more consecutive newlines with
+ * non-breaking spaces and newlines to indicate a paragraph that won't be
+ * collapsed.
+ */
+function replaceConsecutiveNewlines(input: string): string {
+  return input.replace(/(\n{4,})/g, (match) => {
+    const newlineCount = match.length
+    const count = Math.floor((newlineCount - 2) / 2)
+    return "\n\n" + Array(count).fill("&nbsp;").join("\n\n") + "\n\n"
+  })
 }

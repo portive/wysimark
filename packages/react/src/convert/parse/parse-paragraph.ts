@@ -14,6 +14,14 @@ function isImageBlock(segments: Segment[]): boolean {
   return true
 }
 
+const NBSP = "\u00A0"
+
+function isSingleNBSP(segments: Segment[]): boolean {
+  if (segments.length !== 1) return false
+  if (!("text" in segments[0]) || segments[0].text !== NBSP) return false
+  return true
+}
+
 /**
  * Parses to a Paragraph or an ImageBlock element.
  *
@@ -30,6 +38,15 @@ export function parseParagraph(content: Paragraph): Element[] {
     }
     return [imageBlockElement]
   }
+  if (isSingleNBSP(segments)) {
+    return [
+      {
+        type: "paragraph",
+        children: [{ text: "" }],
+      },
+    ]
+  }
+
   return [
     {
       type: "paragraph",

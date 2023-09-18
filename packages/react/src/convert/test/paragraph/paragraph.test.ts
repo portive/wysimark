@@ -57,4 +57,51 @@ describe("paragraph", () => {
       ""
     )
   })
+
+  it("should parse two empty paragraphs between text", async () => {
+    check("hello\n\n&nbsp;\n\nworld", [
+      {
+        type: "paragraph",
+        children: [{ text: "hello" }],
+      },
+      {
+        type: "paragraph",
+        children: [{ text: "" }],
+      },
+      {
+        type: "paragraph",
+        children: [{ text: "world" }],
+      },
+    ])
+  })
+
+  it("should parse an empty paragraphs followed by text", async () => {
+    check("&nbsp;\n\nworld", [
+      {
+        type: "paragraph",
+        children: [{ text: "" }],
+      },
+      {
+        type: "paragraph",
+        children: [{ text: "world" }],
+      },
+    ])
+  })
+
+  it("should parse two empty paragraphs followed by text", async () => {
+    check("&nbsp;\n\n&nbsp;\n\nworld", [
+      {
+        type: "paragraph",
+        children: [{ text: "" }],
+      },
+      {
+        type: "paragraph",
+        children: [{ text: "" }],
+      },
+      {
+        type: "paragraph",
+        children: [{ text: "world" }],
+      },
+    ])
+  })
 })
