@@ -30,6 +30,8 @@ export function Menu({
         {items.map((item, index) => {
           if (item === "divider") {
             return <$MenuDivider key={index} />
+          } else if (item.show && !item.show(editor)) {
+            return null
           } else {
             return (
               <MenuItem
