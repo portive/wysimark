@@ -3,7 +3,7 @@ import styled from "@emotion/styled"
 
 const headingStyles = css`
   margin-top: 1em;
-  &:first-child {
+  &:first-of-type {
     margin-top: 0;
   }
   font-weight: bold;

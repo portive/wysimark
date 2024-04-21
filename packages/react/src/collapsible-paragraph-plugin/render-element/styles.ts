@@ -3,7 +3,7 @@ import styled from "@emotion/styled"
 export const $Paragraph = styled("p")`
   padding: 0;
   margin: 1em 0;
-  &:first-child {
+  &:first-of-type {
     margin-top: 0;
   }
 
