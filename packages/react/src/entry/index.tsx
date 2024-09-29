@@ -1,9 +1,10 @@
 import throttle from "lodash.throttle"
-import { useCallback, useRef } from "react"
+import { useCallback, useEffect, useRef } from "react"
 import { Descendant, Editor, Element, Transforms } from "slate"
 import { ReactEditor, RenderLeafProps, Slate } from "slate-react"
 
 import { parse, serialize } from "../markdown"
+import { $state } from "./$state"
 import { SinkEditable } from "./SinkEditable"
 
 export type { Element, Text } from "./plugins"
@@ -162,29 +163,29 @@ export function Editable({
    *
    * The following code is used to see if we are getting unnecessary re-renders.
    *
-   * Comment it out when we are happy.
-   *
-   * - We SHOULD see `Editable mount` on the initial render.
-   * - We SHOULD NOT see `Editable mount` or unmount at each markdown update.
+   * You can enable this by setting `$state.debug.rerender` to `true` in
+   * `$state.tsx`
    */
-  // useEffect(() => {
-  //   console.log("Editable mount")
-  //   return () => {
-  //     console.log("Editable unmount")
-  //   }
-  // }, [
-  //   Slate,
-  //   SinkEditable,
-  //   initialValueRef.current,
-  //   editor,
-  //   onSlateChange,
-  //   renderLeaf,
-  //   onSinkeEditableMouseDown,
-  //   onBlur,
-  //   placeholder,
-  //   className,
-  //   style,
-  // ])
+  useEffect(() => {
+    if ($state.debug.rerender) {
+      console.log("Editable mount")
+      return () => {
+        console.log("Editable unmount")
+      }
+    }
+  }, [
+    Slate,
+    SinkEditable,
+    initialValueRef.current,
+    editor,
+    onSlateChange,
+    renderLeaf,
+    onSinkeEditableMouseDown,
+    onBlur,
+    placeholder,
+    className,
+    style,
+  ])
 
   return (
     <Slate
