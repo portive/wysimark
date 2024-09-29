@@ -11,13 +11,13 @@ import { Editor, Element } from "slate"
  * - headings
  * - list items
  */
-export function addConvertElementType(
+export function addSwitchElementType(
   editor: Editor,
   type: Element["type"] | Array<Element["type"]>
 ): void {
   if (Array.isArray(type)) {
-    editor.convertElement.convertElementTypes.push(...type)
+    editor.switchElement.switchElementTypes.push(...type)
   } else {
-    editor.convertElement.convertElementTypes.push(type)
+    editor.switchElement.switchElementTypes.push(type)
   }
 }

@@ -3,7 +3,7 @@ import { createEditor, Editor, Transforms } from "slate"
 import { withHistory } from "slate-history"
 import { ReactEditor, withReact } from "slate-react"
 
-import { parse, serialize } from "../convert"
+import { parse, serialize } from "../markdown"
 import { Element } from "./plugins"
 import { withSink } from "./SinkEditable"
 import { WysimarkEditor } from "./types"
@@ -34,7 +34,7 @@ export function useEditor({
         showUploadButtons: !!authToken,
       },
     })
-    nextEditor.convertElement.addConvertElementType("paragraph")
+    nextEditor.switchElement.addSwitchElementType("paragraph")
     editor.wysimark = {
       //   initialMarkdown,
       //   initialValue: parse(initialMarkdown),

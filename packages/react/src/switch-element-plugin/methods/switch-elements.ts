@@ -7,7 +7,7 @@ import { rewrapElement, TargetElement } from "~/src/sink"
  * method. TypeScript, unfortunately, cannot automatically curry generics for
  * us so we have to do it manually.
  */
-export type CurriedConvertElements = <T extends Element = Element>(
+export type CurriedSwitchElements = <T extends Element = Element>(
   matchForToggle: (element: Element) => boolean,
   targetElement: TargetElement<T>,
   allowToggle: boolean
@@ -43,7 +43,7 @@ export type CurriedConvertElements = <T extends Element = Element>(
  * `allowToggle` and pass it through to this `convertElements` function making
  * that code easier to understand.
  */
-export function convertElements<T extends Element = Element>(
+export function switchElements<T extends Element = Element>(
   editor: Editor,
   matchForToggle: (element: Element) => boolean,
   targetElement: TargetElement<T>,
@@ -55,8 +55,7 @@ export function convertElements<T extends Element = Element>(
   const entries = Array.from(
     Editor.nodes<Element>(editor, {
       match: (node) =>
-        Element.isElement(node) &&
-        editor.convertElement.isConvertibleElement(node),
+        Element.isElement(node) && editor.switchElement.isSwitchElement(node),
     })
   )
   /**

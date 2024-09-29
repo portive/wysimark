@@ -2,7 +2,7 @@ import { Editor, Transforms } from "slate"
 
 import { curryOne } from "~/src/sink"
 
-import { parse } from "../../convert"
+import { parse } from "../../markdown"
 
 function pasteMarkdown(editor: Editor, markdown: string) {
   const fragment = parse(markdown)

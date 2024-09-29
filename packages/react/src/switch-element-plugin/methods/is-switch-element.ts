@@ -5,6 +5,6 @@ import { Editor, Element } from "slate"
  * previously been registered as a convertible element using the
  * `editor.convertElement.addConvertElementType` method.
  */
-export function isConvertElement(editor: Editor, element: Element): boolean {
-  return editor.convertElement.convertElementTypes.includes(element.type)
+export function isSwitchElement(editor: Editor, element: Element): boolean {
+  return editor.switchElement.switchElementTypes.includes(element.type)
 }

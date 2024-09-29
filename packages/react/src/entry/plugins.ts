@@ -7,7 +7,6 @@ import { AtomicDeletePlugin } from "~/src/atomic-delete-plugin"
 import { BlockQuotePlugin } from "~/src/block-quote-plugin"
 import { CodeBlockPlugin } from "~/src/code-block-plugin"
 import { CollapsibleParagraphPlugin } from "~/src/collapsible-paragraph-plugin"
-import { ConvertElementPlugin } from "~/src/convert-element-plugin"
 import { HeadingPlugin } from "~/src/heading-plugin"
 import { HorizontalRulePlugin } from "~/src/horizontal-rule-plugin"
 import { ImagePlugin } from "~/src/image-plugin"
@@ -16,6 +15,7 @@ import { ListPlugin } from "~/src/list-plugin"
 import { MarksPlugin } from "~/src/marks-plugin"
 import { NormalizeAfterDeletePlugin } from "~/src/normalize-after-delete-plugin"
 import { ExtractCustomTypes } from "~/src/sink"
+import { SwitchElementPlugin } from "~/src/switch-element-plugin"
 import { TablePlugin } from "~/src/table-plugin"
 import { ThemePlugin } from "~/src/theme-plugin"
 import { ToolbarPlugin } from "~/src/toolbar-plugin"
@@ -29,7 +29,7 @@ import { WysimarkEditor } from "./types"
 
 export const plugins = [
   PasteMarkdownPlugin,
-  ConvertElementPlugin,
+  SwitchElementPlugin,
   AnchorPlugin,
   HeadingPlugin,
   MarksPlugin,

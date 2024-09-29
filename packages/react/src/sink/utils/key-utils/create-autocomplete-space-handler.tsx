@@ -37,7 +37,7 @@ export function createAutocompleteSpaceHandler(
          * the global Eleent and the Slate Element.
          */
         SlateElement.isElement(node) &&
-        editor.convertElement.isConvertibleElement(node)
+        editor.switchElement.isSwitchElement(node)
     )
     if (!convertibleBlockEntry) return false
 

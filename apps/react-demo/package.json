@@ -5,11 +5,14 @@
   "devDependencies": {
     "@types/react": ">=17.x",
     "@types/react-dom": ">=17.x",
+    "autoprefixer": "^10.4.20",
     "concurrently": "^7.2",
     "eslint": "^8.4.1",
     "eslint-config-custom": "*",
+    "postcss": "^8.4.47",
     "prettier": "^2.8",
     "raw-loader": "^4.0.2",
+    "tailwindcss": "^3.4.13",
     "ts-node": "^10.9.1",
     "tsconfig": "workspace:*",
     "typescript": "^4.9.4"
@@ -19,10 +22,12 @@
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@wysimark/react": "workspace:*",
+    "clsx": "^1.2.1",
     "next": "~13.4.19",
     "react": ">=17.x",
     "react-dom": ">=17.x",
-    "slate-react": "^0.83.2"
+    "slate-react": "^0.83.2",
+    "tailwind-merge": "^2.5.2"
   },
   "scripts": {
     "-- fix": "# fix syntax",
@@ -35,7 +40,7 @@
     "lint:eslint": "eslint .",
     "lint:tsc": "tsc --build ./ --force",
     "-- next": "# NextJs",
-    "demo": "DOTENV=../../.env/local.env next dev -p 3732",
+    "dev": "DOTENV=../../.env/local.env next dev -p 3732",
     "start:local": "DOTENV=../../.env/local.env next dev -p 3732",
     "open": "open -a 'google chrome' http://localhost:3732",
     "-- preset": "# Run preset from ~/presets",

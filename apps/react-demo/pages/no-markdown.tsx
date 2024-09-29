@@ -1,12 +1,9 @@
-import "../globals.css"
-
 import Head from "next/head"
-import { ChangeEvent, useCallback, useState } from "react"
+import { useCallback, useState } from "react"
 
 import { Editable, useEditor } from "~/src/entry"
 
 import content from "../content/basic.md"
-import { telem } from "../lib/twui"
 
 export default function Page() {
   const [markdown, setMarkdown] = useState(content)
@@ -21,14 +18,14 @@ export default function Page() {
     console.log(editor.getMarkdown())
   }, [editor])
 
-  const onChangeTextarea = useCallback(
-    (e: ChangeEvent<HTMLTextAreaElement>) => {
-      const markdown = e.target.value
-      setMarkdown(markdown)
-      editor.setMarkdown(markdown)
-    },
-    [editor]
-  )
+  // const onChangeTextarea = useCallback(
+  //   (e: ChangeEvent<HTMLTextAreaElement>) => {
+  //     const markdown = e.target.value
+  //     setMarkdown(markdown)
+  //     editor.setMarkdown(markdown)
+  //   },
+  //   [editor]
+  // )
 
   const resetMarkdown = useCallback(() => {
     editor.setMarkdown(`# This is a reset with the reset button
@@ -60,7 +57,14 @@ fdsfs`)
           Set Markdown
         </button>
       </p>
-      <div className="mt-4 grid gap-4 grid-cols-[1fr_1fr]">
+      <div
+        style={{
+          marginTop: "1em",
+          display: "grid",
+          gap: "1em",
+          gridTemplateColumns: "1fr 1fr",
+        }}
+      >
         <div>
           <Editable
             editor={editor}
@@ -69,15 +73,7 @@ fdsfs`)
             placeholder="Enter text here..."
           />
         </div>
-        <div>
-          <$textarea value={markdown} onChange={onChangeTextarea} />
-        </div>
       </div>
     </div>
   )
 }
-
-const $textarea = telem(
-  "w-full h-[720px] bg-zinc-900 border rounded-lg text-zinc-200 p-6 text-xs font-mono hover:outline hover:outline-2 hover:outline-blue-200",
-  "textarea"
-)

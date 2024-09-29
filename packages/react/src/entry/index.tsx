@@ -3,7 +3,7 @@ import { useCallback, useRef } from "react"
 import { Descendant, Editor, Element, Transforms } from "slate"
 import { ReactEditor, RenderLeafProps, Slate } from "slate-react"
 
-import { parse, serialize } from "../convert"
+import { parse, serialize } from "../markdown"
 import { SinkEditable } from "./SinkEditable"
 
 export type { Element, Text } from "./plugins"

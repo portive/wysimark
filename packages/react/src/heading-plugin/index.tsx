@@ -16,7 +16,7 @@ import { HeadingPluginCustomTypes } from "./types"
 
 export const HeadingPlugin = createPlugin<HeadingPluginCustomTypes>(
   (editor) => {
-    editor.convertElement.addConvertElementType("heading")
+    editor.switchElement.addSwitchElementType("heading")
     editor.heading = createHeadingMethods(editor)
     const hotkeyHandler = createHotkeyHandler({
       "super+1": curryTwo(editor.heading.convertHeading, 1, true),
